@@ -1,0 +1,33 @@
+PODS:
+  - Device.swift (0.3.1)
+  - RainbowNavigation (1.0.0)
+  - SnapKit (0.15.0)
+  - TPKeyboardAvoiding (1.2.11)
+  - UIColor_Hex_Swift (1.9)
+  - YYCache (1.0)
+  - YYImage (1.0):
+    - YYImage/Core (= 1.0)
+  - YYImage/Core (1.0)
+  - YYWebImage (1.0):
+    - YYCache
+    - YYImage
+
+DEPENDENCIES:
+  - Device.swift
+  - RainbowNavigation
+  - SnapKit (~> 0.15.0)
+  - TPKeyboardAvoiding (~> 1.2)
+  - UIColor_Hex_Swift (~> 1.9)
+  - YYWebImage (~> 1.0)
+
+SPEC CHECKSUMS:
+  Device.swift: d396648eebcfc424944acfdb7391817e4bdec4e9
+  RainbowNavigation: f22e8fa746a5c9cee7bc8ef4a02352e2f06d34e7
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
+  UIColor_Hex_Swift: 2ee747c0fed8b72b2135ef474b80a6921e489daa
+  YYCache: 671da5662bbd0165f144bfab1c2ba9d9548200d3
+  YYImage: 11b1cad71b00a06c216c120e842c22f930449ee8
+  YYWebImage: 61497d881d103dd4ec36fdbbe019f952edbfcc4d
+
+COCOAPODS: 0.39.0
