@@ -10,6 +10,8 @@ import UIKit
 
 class SignupViewController: ViewController {
     
+    @IBOutlet weak var signupButtonViewContainer: UIView!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(true)
@@ -20,7 +22,14 @@ class SignupViewController: ViewController {
         
         setNavigationBarGreen()
         self.title = "Sign Up"
-//        initViews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        initViews()
+    }
+    
+    private func initViews(){
+        signupButtonViewContainer.round()
     }
 
 }
