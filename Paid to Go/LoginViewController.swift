@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: ViewController {
     
     @IBOutlet weak var usernameTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordBottomConstraint: NSLayoutConstraint!
@@ -34,6 +34,13 @@ class LoginViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         initViews()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setNavigationBarVisible(false)
+    }
+    
     
     private func initConstraints(){
         let screenSize: CGRect = UIScreen.mainScreen().bounds

@@ -16,7 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.customizeNavigationBar()
+
         return true
+    }
+    
+    private func customizeNavigationBar() {
+   UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        UINavigationBar.appearance().tintColor = UIColor.darkGrayColor()                                                // Navigation bar buttons color
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGrayColor()]   // Navigation bar title color
+
     }
 
     func applicationWillResignActive(application: UIApplication) {

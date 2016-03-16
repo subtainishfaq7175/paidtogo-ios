@@ -84,7 +84,6 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Paid to Go/Device_swift.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
   install_framework "Pods-Paid to Go/SnapKit.framework"
   install_framework "Pods-Paid to Go/TPKeyboardAvoiding.framework"
@@ -94,7 +93,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Paid to Go/YYWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Paid to Go/Device_swift.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
   install_framework "Pods-Paid to Go/SnapKit.framework"
   install_framework "Pods-Paid to Go/TPKeyboardAvoiding.framework"

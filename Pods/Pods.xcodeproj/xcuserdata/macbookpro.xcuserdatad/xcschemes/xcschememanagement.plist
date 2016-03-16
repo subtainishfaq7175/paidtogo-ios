@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Device.swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Paid to Go.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>186BD95242AF051DD5F1D45BEF67BC85</key>
+		<key>237FDFBB60D7CD51519520BE1B02F873</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>399BC2C795502E3753326CC459051DB8</key>
+		<key>43437D796B446669E98CD1A867838BD8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B44F9214E0A382EDCB5E6B6F11387E3</key>
+		<key>4A1F5036796B6C6E4B5D84021C3F6D45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E380B153ECC8DA7035787311A989630</key>
+		<key>619A194D7CF529000ADDF485D9CD3036</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C3C7A92FEE47C6B42A93313B4BA2AA4</key>
+		<key>6827267D881DB756E65AC0F63458EAD5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DE7CD0C5F7E0F955078E9935CBE777B</key>
+		<key>8D51EB521F20471622A4157AB0A011DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7F676FE06DF65C7457723427787B3EA</key>
+		<key>E89D9E74E1F21DB302AD84D86E0D5041</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC12A2C9D116FCA34FC930251C7E0194</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F37B78175E6775C4F83C8FF195CF4D9A</key>
+		<key>EA84258E9EBF259496E50B5FE478CF8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
