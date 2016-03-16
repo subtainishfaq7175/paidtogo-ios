@@ -11,6 +11,7 @@
 		52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD11C99A115002DBBFA /* NavigationController.swift */; };
 		52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD51C99A331002DBBFA /* CustomColors.swift */; };
 		52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD71C99A666002DBBFA /* SignupViewController.swift */; };
+		52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD91C99F2E9002DBBFA /* String+Localize.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		52227FD11C99A115002DBBFA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		52227FD51C99A331002DBBFA /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		52227FD71C99A666002DBBFA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		52227FD91C99F2E9002DBBFA /* String+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 			children = (
 				524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */,
 				524D200E1C989CBA00FCE996 /* UIView+Round.swift */,
+				52227FD91C99F2E9002DBBFA /* String+Localize.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
+				52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
