@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '10986174468BC9EAA71C8F19'
+               BlueprintIdentifier = '04F2ED1513D067BB8BABBF14'
                BlueprintName = 'RainbowNavigation'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RainbowNavigation.framework'>

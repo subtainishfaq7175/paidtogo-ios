@@ -4,6 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Paid to Go' do
+    
     # Change navigation bar colors in animations and transitions
     # Github: https://github.com/DanisFabric/RainbowNavigation
     pod 'RainbowNavigation'
@@ -26,6 +27,9 @@ target 'Paid to Go' do
     # Github https://github.com/SnapKit/SnapKit
     pod 'SnapKit', '~> 0.15.0'
     
+    # iOS view controller shows left and right views on top of everything by pressing button or gesture.
+    # Github https://github.com/Friend-LGA/LGSideMenuController
+    pod 'LGSideMenuController', '~> 1.0.0'
 
     
 end

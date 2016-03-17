@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A00E84BE31E1402A592CEAF1'
-               BlueprintName = 'Pods-Paid to Go'
+               BlueprintIdentifier = '8E1468F84A23741950A4D84F'
+               BlueprintName = 'LGSideMenuController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_Paid_to_Go.framework'>
+               BuildableName = 'LGSideMenuController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

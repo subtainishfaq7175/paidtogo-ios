@@ -1,4 +1,5 @@
 PODS:
+  - LGSideMenuController (1.0.10)
   - RainbowNavigation (1.0.0)
   - SnapKit (0.15.0)
   - TPKeyboardAvoiding (1.2.11)
@@ -12,6 +13,7 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - LGSideMenuController (~> 1.0.0)
   - RainbowNavigation
   - SnapKit (~> 0.15.0)
   - TPKeyboardAvoiding (~> 1.2)
@@ -19,6 +21,7 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0)
 
 SPEC CHECKSUMS:
+  LGSideMenuController: 8682bdbd0008c1acfbce95eaf96cc3657bca5f95
   RainbowNavigation: f22e8fa746a5c9cee7bc8ef4a02352e2f06d34e7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7

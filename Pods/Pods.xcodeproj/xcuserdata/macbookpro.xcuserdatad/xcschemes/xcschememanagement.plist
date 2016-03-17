@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>LGSideMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Paid to Go.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>237FDFBB60D7CD51519520BE1B02F873</key>
+		<key>188A5D59EE8028306F94402E2DBF53EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43437D796B446669E98CD1A867838BD8</key>
+		<key>2DAB276B81F85D4F45827821B1056C5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A1F5036796B6C6E4B5D84021C3F6D45</key>
+		<key>6BF4DD954DCF59B9027206B8DE2534D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>619A194D7CF529000ADDF485D9CD3036</key>
+		<key>74CFBA9D5124A4E1FD989580A9F42A5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6827267D881DB756E65AC0F63458EAD5</key>
+		<key>93575F2703BDEFD0D1349F44A57AFCE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D51EB521F20471622A4157AB0A011DF</key>
+		<key>A4A5897FFE40534CC0D808512F092F44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E89D9E74E1F21DB302AD84D86E0D5041</key>
+		<key>A9CE75B1D9F4A8F6EC05F5187E3300C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA84258E9EBF259496E50B5FE478CF8E</key>
+		<key>BD7233A9366A5F2C274052A0791CB515</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E69B92A33BF0DA69766632232536DFFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

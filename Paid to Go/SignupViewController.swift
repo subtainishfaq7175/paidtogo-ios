@@ -17,14 +17,16 @@ class SignupViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(true)
+        self.title = "Sign Up"
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBarGreen()
-        self.title = "Sign Up"
     }
+    
     
     override func viewDidLayoutSubviews() {
         initViews()
