@@ -2,7 +2,7 @@
 //  SignupViewController.swift
 //  Paid to Go
 //
-//  Created by MacbookPro on 16/3/16.
+//  Created by German Campagno on 16/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ class SignupViewController: ViewController {
     
     @IBOutlet weak var signupButtonViewContainer: UIView!
     @IBOutlet weak var registerPhotoImageView: UIImageView!
+    @IBOutlet weak var addImageView: UIImageView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +32,7 @@ class SignupViewController: ViewController {
     
     private func initViews(){
         signupButtonViewContainer.round()
+        registerPhotoImageView.roundWholeView()
     }
 
     
@@ -59,6 +61,7 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         self.registerPhotoImageView.image = image
+        self.addImageView.hidden = true
         picker.dismissViewControllerAnimated(true, completion: nil);
         
     }

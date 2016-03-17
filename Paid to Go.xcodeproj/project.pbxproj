@@ -12,6 +12,10 @@
 		52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD51C99A331002DBBFA /* CustomColors.swift */; };
 		52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD71C99A666002DBBFA /* SignupViewController.swift */; };
 		52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD91C99F2E9002DBBFA /* String+Localize.swift */; };
+		52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C0B1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift */; };
+		52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */; };
+		52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */; };
+		52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C131C9AF10000E3DAC7 /* HomeViewController.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
@@ -28,6 +32,10 @@
 		52227FD51C99A331002DBBFA /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		52227FD71C99A666002DBBFA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		52227FD91C99F2E9002DBBFA /* String+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
+		52258C0B1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardRouter.swift; sourceTree = "<group>"; };
+		52258C131C9AF10000E3DAC7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +83,7 @@
 		52227FD31C99A321002DBBFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52258C101C9AF04100E3DAC7 /* Navigation */,
 				52227FD41C99A326002DBBFA /* Appearance */,
 			);
 			name = Utils;
@@ -86,6 +95,23 @@
 				52227FD51C99A331002DBBFA /* CustomColors.swift */,
 			);
 			name = Appearance;
+			sourceTree = "<group>";
+		};
+		52258C0D1C9AEFB700E3DAC7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */,
+				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		52258C101C9AF04100E3DAC7 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */,
+			);
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 		524D200B1C98923F00FCE996 /* Extensions */ = {
@@ -141,6 +167,7 @@
 		52A374451C984ADA00E3A4A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				52258C0D1C9AEFB700E3DAC7 /* Home */,
 				52227FD01C99A109002DBBFA /* Base */,
 				52A374461C984B0400E3A4A5 /* Main */,
 			);
@@ -153,6 +180,7 @@
 				52A374341C9844A900E3A4A5 /* LoginViewController.swift */,
 				52A374361C9844A900E3A4A5 /* Main.storyboard */,
 				52227FD71C99A666002DBBFA /* SignupViewController.swift */,
+				52258C0B1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -229,6 +257,7 @@
 				52A3743D1C9844A900E3A4A5 /* LaunchScreen.storyboard in Resources */,
 				52A3743A1C9844A900E3A4A5 /* Assets.xcassets in Resources */,
 				52A374381C9844A900E3A4A5 /* Main.storyboard in Resources */,
+				52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +320,14 @@
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
+				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
 				52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
+				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
+				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

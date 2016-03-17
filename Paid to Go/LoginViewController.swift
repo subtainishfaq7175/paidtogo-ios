@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Paid to Go
 //
-//  Created by German on 15/3/16.
+//  Created by German Campagno on 15/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 

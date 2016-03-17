@@ -2,7 +2,7 @@
 //  ColorConstants.swift
 //  Celebrastic
 //
-//  Created by MacbookPro on 18/2/16.
+//  Created by German Campagno on 18/2/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 

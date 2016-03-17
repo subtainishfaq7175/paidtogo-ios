@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func customizeNavigationBar() {
    UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         UINavigationBar.appearance().tintColor = UIColor.darkGrayColor()                                                // Navigation bar buttons color
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGrayColor()]   // Navigation bar title color
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGrayColor()]   // Navigation bar title attributes
 
     }
 
