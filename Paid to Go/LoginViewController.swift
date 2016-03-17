@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: ViewController {
     
+    //MARK: - Variables and constants
     @IBOutlet weak var usernameTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordBottomConstraint: NSLayoutConstraint!
     
@@ -18,10 +19,13 @@ class LoginViewController: ViewController {
     @IBOutlet weak var facebookViewContainer: UIView!
     @IBOutlet weak var signupViewContainer: UIView!
     
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    // MARK: - Super
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         initConstraints()
         
     }
@@ -37,10 +41,34 @@ class LoginViewController: ViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
         setNavigationBarVisible(false)
     }
     
+    // MARK: - Actions
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        //Validate
+        if usernameTextField.text == "" {
+            showAlert("Username field is empty")
+            return
+        }
+        if passwordTextField.text == "" {
+            showAlert("Password field is empty")
+            return
+        }
+        
+        
+        presentHomeViewController()
+    }
+    
+    @IBAction func facebookButtonAction(sender: AnyObject) {
+        presentHomeViewController()
+    }
+    
+    // MARK: - Functions
+    
+    private func presentHomeViewController(){
+        self.presentViewController(StoryboardRouter.homeMainViewController(), animated: true, completion: nil)
+    }
     
     private func initConstraints(){
         let screenSize: CGRect = UIScreen.mainScreen().bounds

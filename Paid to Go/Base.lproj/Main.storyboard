@@ -62,6 +62,9 @@
                                                         <state key="normal" title="Log In">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pI4-SU-mfN"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,6 +90,9 @@
                                                         <state key="normal" title="Login With Facebook">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="facebookButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fGx-fC-JgV"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.23921568627450979" green="0.3529411764705882" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -238,7 +244,9 @@
                         <outlet property="facebookViewContainer" destination="Okt-bh-ket" id="Owv-c3-nj7"/>
                         <outlet property="forgotPasswordBottomConstraint" destination="jfx-v7-7kC" id="0p3-fQ-Jtz"/>
                         <outlet property="loginViewContainer" destination="yKn-vL-FC5" id="phE-Td-png"/>
+                        <outlet property="passwordTextField" destination="d7F-GG-fEq" id="epe-i9-5dk"/>
                         <outlet property="signupViewContainer" destination="T1U-IY-v3M" id="IRR-iA-Bwi"/>
+                        <outlet property="usernameTextField" destination="MEp-RW-mxh" id="PUS-55-4Z6"/>
                         <outlet property="usernameTopConstraint" destination="qhN-k6-eSe" id="PNE-A3-UnC"/>
                     </connections>
                 </viewController>
@@ -549,7 +557,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-h5-vkc" userLabel="Content Label">
                                                 <rect key="frame" x="12" y="10" width="296" height="1421"/>
-                                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et ex mi. Cras eu iaculis lorem. Donec faucibus urna suscipit enim tristique efficitur. Maecenas efficitur nisl vitae lectus pulvinar, et tempor risus vehicula. Mauris euismod luctus lorem sed vestibulum. Duis sit amet rhoncus nulla. Etiam ultricies sem est, elementum tempus arcu volutpat eget. Aliquam auctor, nunc sollicitudin posuere fringilla, urna ex maximus libero, ac interdum odio diam laoreet justo. Quisque vel nisi eget diam bibendum sollicitudin. In hac habitasse platea dictumst. Ut leo arcu, eleifend ut tortor vitae, scelerisque pharetra purus. Phasellus sit amet leo sodales, vehicula augue eget, pharetra purus.
+                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et ex mi. Cras eu iaculis lorem. Donec faucibus urna suscipit enim tristique efficitur. Maecenas efficitur nisl vitae lectus pulvinar, et tempor risus vehicula. Mauris euismod luctus lorem sed vestibulum. Duis sit amet rhoncus nulla. Etiam ultricies sem est, elementum tempus arcu volutpat eget. Aliquam auctor, nunc sollicitudin posuere fringilla, urna ex maximus libero, ac interdum odio diam laoreet justo. Quisque vel nisi eget diam bibendum sollicitudin. In hac habitasse platea dictumst. Ut leo arcu, eleifend ut tortor vitae, scelerisque pharetra purus. Phasellus sit amet leo sodales, vehicula augue eget, pharetra purus.
 
 Nullam sollicitudin a nibh vel malesuada. Fusce ut efficitur tellus. Etiam at est non massa dapibus commodo. Mauris interdum imperdiet ex eu eleifend. Sed eu velit sit amet odio facilisis sodales congue porta ipsum. Etiam at tellus quam. Fusce vel nibh consectetur, aliquet eros eget, blandit quam. Etiam sed turpis sit amet nibh porttitor auctor. Suspendisse mauris nisi, congue ac luctus sed, condimentum id sapien. Morbi et enim porttitor, tincidunt nulla eu, elementum nisl. Maecenas ut euismod nisl. Integer non elit metus. Maecenas vel nisl metus.
 
@@ -557,7 +565,7 @@ Suspendisse potenti. Nunc tincidunt sodales molestie. Aliquam sodales lacus sit 
 
 Fusce pellentesque placerat eros, porttitor efficitur orci cursus quis. Nullam cursus, justo a dignissim ullamcorper, tellus tortor posuere tellus, non ultricies urna magna lobortis augue. Mauris varius enim eget maximus vulputate. Vestibulum bibendum orci a risus sagittis lacinia. In hac habitasse platea dictumst. Mauris ornare lacus quis nisl consequat porttitor. Nam vitae interdum nulla, at suscipit purus. Aenean pretium interdum congue. Duis id erat at leo tincidunt lacinia a lobortis ipsum.
 
-Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra metus, quis blandit arcu. In iaculis justo in purus finibus, eget laoreet ante posuere. Suspendisse et magna libero. Sed vehicula maximus eros, id gravida lacus pulvinar eu. Vivamus cursus semper erat sed vehicula. Fusce fringilla id est vel mollis. Cras quis sapien placerat, porttitor urna vitae, fermentum mauris. Pellentesque dictum, velit sed rutrum scelerisque, quam magna mattis nisl, ac mattis nibh nunc eget urna. Etiam ut sapien tellus. Ut pharetra massa at sem auctor, et ultrices turpis gravida. Curabitur imperdiet purus lectus, ac sodales justo tempor sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</mutableString>
+Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra metus, quis blandit arcu. In iaculis justo in purus finibus, eget laoreet ante posuere. Suspendisse et magna libero. Sed vehicula maximus eros, id gravida lacus pulvinar eu. Vivamus cursus semper erat sed vehicula. Fusce fringilla id est vel mollis. Cras quis sapien placerat, porttitor urna vitae, fermentum mauris. Pellentesque dictum, velit sed rutrum scelerisque, quam magna mattis nisl, ac mattis nibh nunc eget urna. Etiam ut sapien tellus. Ut pharetra massa at sem auctor, et ultrices turpis gravida. Curabitur imperdiet purus lectus, ac sodales justo tempor sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</string>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
