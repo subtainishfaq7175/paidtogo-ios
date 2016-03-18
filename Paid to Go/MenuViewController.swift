@@ -167,10 +167,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
             
         case headerSection:
-            return 55.0
+            return 45.0
             
         case itemsSection:
-            return 55.0
+            return 45.0
             
             
         default:
