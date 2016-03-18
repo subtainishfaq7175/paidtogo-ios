@@ -84,21 +84,23 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Paid to Go/LGSideMenuController.framework"
+  install_framework "Pods-Paid to Go/REFrostedViewController.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
   install_framework "Pods-Paid to Go/SnapKit.framework"
   install_framework "Pods-Paid to Go/TPKeyboardAvoiding.framework"
   install_framework "Pods-Paid to Go/UIColor_Hex_Swift.framework"
+  install_framework "Pods-Paid to Go/XCGLogger.framework"
   install_framework "Pods-Paid to Go/YYCache.framework"
   install_framework "Pods-Paid to Go/YYImage.framework"
   install_framework "Pods-Paid to Go/YYWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Paid to Go/LGSideMenuController.framework"
+  install_framework "Pods-Paid to Go/REFrostedViewController.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
   install_framework "Pods-Paid to Go/SnapKit.framework"
   install_framework "Pods-Paid to Go/TPKeyboardAvoiding.framework"
   install_framework "Pods-Paid to Go/UIColor_Hex_Swift.framework"
+  install_framework "Pods-Paid to Go/XCGLogger.framework"
   install_framework "Pods-Paid to Go/YYCache.framework"
   install_framework "Pods-Paid to Go/YYImage.framework"
   install_framework "Pods-Paid to Go/YYWebImage.framework"

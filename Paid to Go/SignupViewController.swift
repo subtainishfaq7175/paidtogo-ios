@@ -18,7 +18,7 @@ class SignupViewController: ViewController {
         super.viewWillAppear(animated)
         setNavigationBarVisible(true)
         self.title = "Sign Up"
-
+        
     }
     
     override func viewDidLoad() {
@@ -29,6 +29,7 @@ class SignupViewController: ViewController {
     
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         initViews()
     }
     
@@ -36,7 +37,7 @@ class SignupViewController: ViewController {
         signupButtonViewContainer.round()
         registerPhotoImageView.roundWholeView()
     }
-
+    
     
     // MARK: - Selectors
     @IBAction func photoTapAction(sender: AnyObject) {

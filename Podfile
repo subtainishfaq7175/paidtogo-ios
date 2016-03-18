@@ -27,10 +27,13 @@ target 'Paid to Go' do
     # Github https://github.com/SnapKit/SnapKit
     pod 'SnapKit', '~> 0.15.0'
     
-    # iOS view controller shows left and right views on top of everything by pressing button or gesture.
-    # Github https://github.com/Friend-LGA/LGSideMenuController
-    pod 'LGSideMenuController', '~> 1.0.0'
-
+    # REFrostedViewController is a lib for creating hamburguer side menu
+    # github: https://github.com/romaonthego/REFrostedViewController
+    pod 'REFrostedViewController', '~> 2.4'
+    
+    # Logger with colors, line in which the log takes place, etc.
+    # https://github.com/DaveWoodCom/XCGLogger
+    pod 'XCGLogger', '~> 3.2'
     
 end
 

@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>LGSideMenuController.xcscheme</key>
+		<key>Pods-Paid to Go.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Paid to Go.xcscheme</key>
+		<key>REFrostedViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>XCGLogger.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YYCache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>188A5D59EE8028306F94402E2DBF53EA</key>
+		<key>05C91933C4256BF787F90202106E730C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2DAB276B81F85D4F45827821B1056C5D</key>
+		<key>0A0D227F93FFDFEB3DC0DB07BA139928</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BF4DD954DCF59B9027206B8DE2534D9</key>
+		<key>17F3FF687A0C3E6AA69692EA023547DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>74CFBA9D5124A4E1FD989580A9F42A5A</key>
+		<key>2D9A4D2F75B31C9E516B2B269CAE06FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>93575F2703BDEFD0D1349F44A57AFCE6</key>
+		<key>35CB7754928E042A2A70EFC6BB104532</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4A5897FFE40534CC0D808512F092F44</key>
+		<key>A0B0EC17A3DC5E4A611390238528DE3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9CE75B1D9F4A8F6EC05F5187E3300C7</key>
+		<key>CA378C0F5ED1B5D432DA4FE78D79EC88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD7233A9366A5F2C274052A0791CB515</key>
+		<key>CBA7542FA3F399F9385B1C88AAC4B354</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E69B92A33BF0DA69766632232536DFFD</key>
+		<key>EFC3532E79D934FA1D3B13C7E2371473</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F769E92D0D967B2A373D471CB9D339B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

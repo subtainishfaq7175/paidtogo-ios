@@ -67,7 +67,7 @@ class LoginViewController: ViewController {
     // MARK: - Functions
     
     private func presentHomeViewController(){
-        self.presentViewController(StoryboardRouter.homeMainViewController(), animated: true, completion: nil)
+        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
     }
     
     private func initConstraints(){

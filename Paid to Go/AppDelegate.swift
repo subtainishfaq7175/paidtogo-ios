@@ -7,6 +7,36 @@
 //
 
 import UIKit
+import XCGLogger
+
+let log: XCGLogger = {
+    // Setup XCGLogger
+    let log = XCGLogger.defaultInstance()
+    
+    log.setup(
+        .Debug,
+        showLogIdentifier   : false,
+        showFunctionName    : false,
+        showThreadName      : false,
+        showLogLevel        : true,
+        showFileNames       : true,
+        showLineNumbers     : true,
+        showDate            : false
+    )
+    
+    
+    log.xcodeColorsEnabled = true // Or set the XcodeColors environment variable in your scheme to YES
+    log.xcodeColors = [
+        .Verbose        : .lightGrey,
+        .Debug          : XCGLogger.XcodeColor(fg: (60, 153, 95)),
+        .Info           : XCGLogger.XcodeColor(fg: (71, 162, 201)),
+        .Warning        : XCGLogger.XcodeColor(fg: (208, 230, 85)),
+        .Error          : XCGLogger.XcodeColor(fg: (199, 20, 50)), // Optionally use a UIColor
+        .Severe         : XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
+    ]
+    
+    return log
+}()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -8,6 +8,9 @@
 
 import UIKit
 
-class HomeViewController: ViewController {
+class HomeViewController: MenuContentViewController {
     
+    @IBAction func buttonAction(sender: AnyObject) {
+        menuController?.presentMenuViewController()
+    }
 }

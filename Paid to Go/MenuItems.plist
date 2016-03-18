@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Let&apos;s Commute</string>
+		<key>identifier</key>
+		<string>HomeNavigationController</string>
+		<key>storyboard</key>
+		<string>Home</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Profile</string>
+		<key>identifier</key>
+		<string>ProfileNavigationController</string>
+		<key>storyboard</key>
+		<string>Profile</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Activity </string>
+		<key>identifier</key>
+		<string>ActivityNavigationController</string>
+		<key>storyboard</key>
+		<string>Activity</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Balance</string>
+		<key>identifier</key>
+		<string>BalanceNavigationController</string>
+		<key>storyboard</key>
+		<string>Balance</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Leaderboards</string>
+		<key>identifier</key>
+		<string>LeaderboardsNavigationController</string>
+		<key>storyboard</key>
+		<string>Leaderboards</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Stats</string>
+		<key>identifier</key>
+		<string>StatsNavigationController</string>
+		<key>storyboard</key>
+		<string>Stats</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Settings</string>
+		<key>identifier</key>
+		<string>SettingsNavigationController</string>
+		<key>storyboard</key>
+		<string>Settings</string>
+	</dict>
+</array>
+</plist>

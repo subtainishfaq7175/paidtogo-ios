@@ -24,6 +24,10 @@ class StoryboardRouter {
         return UIStoryboard(name: "Home", bundle: NSBundle.mainBundle())
     }
     
+    static func menuStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Menu", bundle: NSBundle.mainBundle())
+    }
+    
     
     
     // MARK: - View Controllers
@@ -34,6 +38,10 @@ class StoryboardRouter {
     
     static func initialMainViewController() -> UIViewController {
         return mainStoryboard().instantiateInitialViewController()!
+    }
+    
+    static func menuMainViewController() -> UIViewController {
+        return menuStoryboard().instantiateInitialViewController()!
     }
     
         
