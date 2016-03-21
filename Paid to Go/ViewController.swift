@@ -58,11 +58,29 @@ class ViewController: UIViewController {
         }
     }
     
-   
+    func setBorderToView(view: UIView, color: CGColor){
+        view.round()
+        view.layer.borderWidth = 1.2
+        view.layer.borderColor = color
+    }
     
-
+    func customizeNavigationBarWithTitleAndMenu(){
+        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "homeButtonAction:")
+        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = menuButtonItem
+        
+        
+        let titleImage = UIImage(named: "ic_navbar")
+        navigationItem.titleView = UIImageView(image: titleImage)
+    }
+    
+    
+    
+    
     
     
     
     
 }
+	
