@@ -16,7 +16,8 @@ class MenuViewController: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tableview: UITableView!
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameView: UIView!
     
     // MARK: - Variables
     typealias MenuItem = (title: String, storyboard: String, identifier: String)
@@ -39,6 +40,11 @@ class MenuViewController: UIViewController {
         tableview.reloadData()
     }
     
+    override func viewWillAppear(animated: Bool){
+        super.viewWillAppear(animated)
+        nameView.round()
+    }
+    
     
     // MARK: - Utils
     
@@ -52,7 +58,7 @@ class MenuViewController: UIViewController {
     - identifier    -> String
     
     
-    The title purpose is obvious. It defines the name with which the item 
+    The title purpose is obvious. It defines the name with which the item
     will be displayed in the menu.
     
     The icon is also obvious. It defines the asset name from xcasset with which the item
@@ -80,12 +86,12 @@ class MenuViewController: UIViewController {
         
         for item in itemsArray {
             guard   let title       = item["title"]      as? String,
-                    let storyboard  = item["storyboard"] as? String,
-                    let identifier  = item["identifier"] as? String else {
+                let storyboard  = item["storyboard"] as? String,
+                let identifier  = item["identifier"] as? String else {
                     
                     
-                log.error("there was a problem while reading MenuItems.plist , please review plist format.")
-                return [MenuItem]()
+                    log.error("there was a problem while reading MenuItems.plist , please review plist format.")
+                    return [MenuItem]()
             }
             
             menuItems.append(
@@ -102,6 +108,9 @@ class MenuViewController: UIViewController {
         return menuItems
     }
     
+    @IBAction func menuAction(sender: AnyObject) {
+        // Close menu
+    }
     
     @IBAction func logoutAction(sender: AnyObject) {
         // TODO: Logout here
@@ -128,7 +137,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return [
             headerSection,
             itemsSection
-        ].count
+            ].count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,17 +159,17 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        if indexPath.section == headerSection {
-//            return tableView.dequeueReusableCellWithIdentifier(MenuHeaderCell.identifier) as! MenuHeaderCell
-//        } else {
-            let itemCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCell.identifier) as! MenuItemCell
-            
-            let menuItem = items[indexPath.row]
-            
-            itemCell.configure(title: menuItem.title)
-            return itemCell
-            
-//        }
+        //        if indexPath.section == headerSection {
+        //            return tableView.dequeueReusableCellWithIdentifier(MenuHeaderCell.identifier) as! MenuHeaderCell
+        //        } else {
+        let itemCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCell.identifier) as! MenuItemCell
+        
+        let menuItem = items[indexPath.row]
+        
+        itemCell.configure(title: menuItem.title)
+        return itemCell
+        
+        //        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -187,7 +196,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             // Only handles action for items section. Not for header.
             let selectedItem = items[indexPath.row]
             let controller = UIStoryboard(name: selectedItem.storyboard, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(selectedItem.identifier)
-
+            
             self.delegate?.setMenuContentViewController(controller)
         }
     }
