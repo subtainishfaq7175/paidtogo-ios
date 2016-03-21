@@ -17,15 +17,11 @@ class CustomColors {
     }
     
     //Navbar tint color
-    private static func whitePinkColor() ->UIColor {
-        return UIColor(rgba: "#ffd9d3")
+    private static func grayColor() ->UIColor {
+        return UIColor(rgba: "#454544")
     }
     
-    //Photo Detail background color
-    private static func whitePinkColorf7() -> UIColor {
-        return UIColor(rgba:"#f7ded9")
-    }
-    
+
     private static func customGrayColor(value:String) -> UIColor {
         return UIColor(rgba: value)
     }
@@ -36,16 +32,9 @@ class CustomColors {
     }
     
     static func NavbarTintColor () -> UIColor {
-        return whitePinkColor()
+        return grayColor()
     }
-    
-    static func photoDetailPinkColor () -> UIColor {
-        return whitePinkColorf7()
-    }
-    
-    static func unSeenNotificationColor () -> UIColor {
-        return whitePinkColor()
-    }
+   
     
     static func userNameNotificationTextColor () -> UIColor {
         return customGrayColor("#353535")

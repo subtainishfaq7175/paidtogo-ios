@@ -187,6 +187,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             // Only handles action for items section. Not for header.
             let selectedItem = items[indexPath.row]
             let controller = UIStoryboard(name: selectedItem.storyboard, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(selectedItem.identifier)
+
             self.delegate?.setMenuContentViewController(controller)
         }
     }
