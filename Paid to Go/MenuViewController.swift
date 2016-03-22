@@ -12,12 +12,14 @@ protocol MenuViewControllerDelegate: class {
     func setMenuContentViewController(controller: UIViewController)
 }
 
-class MenuViewController: UIViewController {
+class MenuViewController: ViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
+    
+    weak var menuController: MainViewController?
     
     // MARK: - Variables
     typealias MenuItem = (title: String, storyboard: String, identifier: String)
@@ -47,6 +49,10 @@ class MenuViewController: UIViewController {
     
     
     // MARK: - Utils
+    
+    func setMainViewController(menuViewController: MainViewController){
+        self.menuController = menuViewController
+    }
     
     /**
     Generates an array of MenuItem from a plist given by param. The plist has to define
@@ -109,7 +115,8 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func menuAction(sender: AnyObject) {
-        // Close menu
+        // TODO: Close menu
+        self.menuController?.hideMenuViewController()
     }
     
     @IBAction func logoutAction(sender: AnyObject) {

@@ -44,5 +44,9 @@ class StoryboardRouter {
         return menuStoryboard().instantiateInitialViewController()!
     }
     
+    static func initialSignupViewController() -> SignupViewController {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("SignupViewController") as! SignupViewController
+    }
+    
         
 }

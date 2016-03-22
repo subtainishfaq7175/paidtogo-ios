@@ -13,6 +13,10 @@ class SignupViewController: ViewController {
     @IBOutlet weak var signupButtonViewContainer: UIView!
     @IBOutlet weak var registerPhotoImageView: UIImageView!
     @IBOutlet weak var addImageView: UIImageView!
+    @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var termsAndConditionsButton: UIButton!
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

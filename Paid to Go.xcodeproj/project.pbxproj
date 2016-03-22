@@ -24,6 +24,8 @@
 		5234D70A1C9C7D5100910765 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D7091C9C7D5100910765 /* MenuItemCell.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
+		525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525150AF1CA17D1900BEC445 /* Profile.storyboard */; };
+		525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525150B11CA17D7900BEC445 /* ProfileViewController.swift */; };
 		528822ED1C9B083400B490AD /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528822EC1C9B083400B490AD /* Menu.storyboard */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
 		52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374341C9844A900E3A4A5 /* LoginViewController.swift */; };
@@ -51,6 +53,8 @@
 		5234D7091C9C7D5100910765 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemCell.swift; path = ../../../../../Downloads/MenuItemCell.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
+		525150AF1CA17D1900BEC445 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		525150B11CA17D7900BEC445 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A374321C9844A900E3A4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		525150AE1CA17D0900BEC445 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				525150AF1CA17D1900BEC445 /* Profile.storyboard */,
+				525150B11CA17D7900BEC445 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		528822EB1C9B082300B490AD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +207,7 @@
 		52A374451C984ADA00E3A4A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				525150AE1CA17D0900BEC445 /* Profile */,
 				528822EB1C9B082300B490AD /* Menu */,
 				52258C0D1C9AEFB700E3DAC7 /* Home */,
 				52227FD01C99A109002DBBFA /* Base */,
@@ -288,6 +302,7 @@
 				5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */,
 				52A3743A1C9844A900E3A4A5 /* Assets.xcassets in Resources */,
 				52A374381C9844A900E3A4A5 /* Main.storyboard in Resources */,
+				525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */,
 				52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +368,7 @@
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5234D70A1C9C7D5100910765 /* MenuItemCell.swift in Sources */,
+				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				5234D7061C9C78C000910765 /* MainViewController.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,

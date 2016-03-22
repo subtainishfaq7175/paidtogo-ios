@@ -30,7 +30,5 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Actions
     
-    func homeButtonAction(sender: AnyObject?) {
-        menuController?.presentMenuViewController()
-    }
+   
 }
