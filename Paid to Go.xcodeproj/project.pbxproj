@@ -34,6 +34,8 @@
 		52A3743D1C9844A900E3A4A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A3743B1C9844A900E3A4A5 /* LaunchScreen.storyboard */; };
 		52B3E0D41CA2D2D2000ED657 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B3E0D31CA2D2D2000ED657 /* Settings.storyboard */; };
 		52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0D51CA2D31B000ED657 /* SettingsViewController.swift */; };
+		52B3E0D91CA2E59C000ED657 /* Balance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B3E0D81CA2E59C000ED657 /* Balance.storyboard */; };
+		52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0DA1CA2E5F3000ED657 /* BalanceViewController.swift */; };
 		C34D996C6020C73A34190709 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		52A3743E1C9844A900E3A4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B3E0D31CA2D2D2000ED657 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		52B3E0D51CA2D31B000ED657 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		52B3E0D81CA2E59C000ED657 /* Balance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Balance.storyboard; sourceTree = "<group>"; };
+		52B3E0DA1CA2E5F3000ED657 /* BalanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 		52A374451C984ADA00E3A4A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				52B3E0D71CA2E58E000ED657 /* Balance */,
 				52B3E0D21CA2D2B9000ED657 /* Settings */,
 				525150AE1CA17D0900BEC445 /* Profile */,
 				528822EB1C9B082300B490AD /* Menu */,
@@ -240,6 +245,15 @@
 				52B3E0D51CA2D31B000ED657 /* SettingsViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		52B3E0D71CA2E58E000ED657 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				52B3E0D81CA2E59C000ED657 /* Balance.storyboard */,
+				52B3E0DA1CA2E5F3000ED657 /* BalanceViewController.swift */,
+			);
+			name = Balance;
 			sourceTree = "<group>";
 		};
 		DF8DB721E9BE9F72CADCA60E /* Frameworks */ = {
@@ -312,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				528822ED1C9B083400B490AD /* Menu.storyboard in Resources */,
+				52B3E0D91CA2E59C000ED657 /* Balance.storyboard in Resources */,
 				52A3743D1C9844A900E3A4A5 /* LaunchScreen.storyboard in Resources */,
 				5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */,
 				52B3E0D41CA2D2D2000ED657 /* Settings.storyboard in Resources */,
@@ -384,6 +399,7 @@
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				5234D70A1C9C7D5100910765 /* MenuItemCell.swift in Sources */,
+				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				5234D7061C9C78C000910765 /* MainViewController.swift in Sources */,
