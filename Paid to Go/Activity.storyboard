@@ -14,21 +14,34 @@
                         <viewControllerLayoutGuide type="bottom" id="dRN-B4-MeQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="haL-LQ-GiW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-VI-mot">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XEZ-VI-mot" firstAttribute="top" secondItem="lcU-LK-YGq" secondAttribute="bottom" id="9Hm-ab-7Nc"/>
+                            <constraint firstAttribute="trailing" secondItem="XEZ-VI-mot" secondAttribute="trailing" id="Rg4-Ow-xHp"/>
+                            <constraint firstItem="dRN-B4-MeQ" firstAttribute="top" secondItem="XEZ-VI-mot" secondAttribute="bottom" id="UWV-uX-6nS"/>
+                            <constraint firstItem="XEZ-VI-mot" firstAttribute="leading" secondItem="haL-LQ-GiW" secondAttribute="leading" id="Vs8-z5-7Yg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Jh-lI-T2r"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izC-7g-rkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="409"/>
+            <point key="canvasLocation" x="1132" y="409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e5Q-4X-CNR">
             <objects>
                 <navigationController storyboardIdentifier="ActivityNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="D81-lc-sK0" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uN7-oR-n5q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
