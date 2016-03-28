@@ -19,13 +19,13 @@
 		5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */; };
 		5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5234D6FB1C9C41EE00910765 /* MenuItems.plist */; };
 		5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6FF1C9C465E00910765 /* MenuViewController.swift */; };
-		5234D7061C9C78C000910765 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D7051C9C78C000910765 /* MainViewController.swift */; };
-		5234D7081C9C7A7B00910765 /* MenuContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D7071C9C7A7B00910765 /* MenuContentViewController.swift */; };
-		5234D70A1C9C7D5100910765 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D7091C9C7D5100910765 /* MenuItemCell.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
 		525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525150AF1CA17D1900BEC445 /* Profile.storyboard */; };
 		525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525150B11CA17D7900BEC445 /* ProfileViewController.swift */; };
+		525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525523981CA9869700D92F7F /* MenuItemCell.swift */; };
+		5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239A1CA9879900D92F7F /* MainViewController.swift */; };
+		5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */; };
 		528822ED1C9B083400B490AD /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528822EC1C9B083400B490AD /* Menu.storyboard */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
 		52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374341C9844A900E3A4A5 /* LoginViewController.swift */; };
@@ -58,13 +58,13 @@
 		5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5234D6FB1C9C41EE00910765 /* MenuItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuItems.plist; sourceTree = "<group>"; };
 		5234D6FF1C9C465E00910765 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		5234D7051C9C78C000910765 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../../../../Downloads/MainViewController.swift; sourceTree = "<group>"; };
-		5234D7071C9C7A7B00910765 /* MenuContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuContentViewController.swift; path = ../../../../../Downloads/MenuContentViewController.swift; sourceTree = "<group>"; };
-		5234D7091C9C7D5100910765 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemCell.swift; path = ../../../../../Downloads/MenuItemCell.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		525150AF1CA17D1900BEC445 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		525150B11CA17D7900BEC445 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		525523981CA9869700D92F7F /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
+		5255239A1CA9879900D92F7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContentViewController.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A374321C9844A900E3A4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */,
 				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
-				5234D7071C9C7A7B00910765 /* MenuContentViewController.swift */,
+				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 			children = (
 				528822EC1C9B083400B490AD /* Menu.storyboard */,
 				5234D6FB1C9C41EE00910765 /* MenuItems.plist */,
-				5234D7091C9C7D5100910765 /* MenuItemCell.swift */,
-				5234D7051C9C78C000910765 /* MainViewController.swift */,
 				5234D6FF1C9C465E00910765 /* MenuViewController.swift */,
+				525523981CA9869700D92F7F /* MenuItemCell.swift */,
+				5255239A1CA9879900D92F7F /* MainViewController.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -438,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
+				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
@@ -446,19 +447,18 @@
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
-				5234D70A1C9C7D5100910765 /* MenuItemCell.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
-				5234D7061C9C78C000910765 /* MainViewController.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
+				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */,
+				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
-				5234D7081C9C7A7B00910765 /* MenuContentViewController.swift in Sources */,
 				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
