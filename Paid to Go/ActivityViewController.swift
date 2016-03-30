@@ -85,6 +85,14 @@ extension ActivityViewController: UITableViewDataSource {
             cell.configure(self.notifications[indexPath.row])
             
             return cell
+            
+        case 1: // DEFAULT CELL
+            let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivitySimpleCell
+            
+            cell.configure(self.notifications[indexPath.row])
+            
+            return cell
+            
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(simpleCellReuseIdentifier) as! ActivitySimpleCell
             
