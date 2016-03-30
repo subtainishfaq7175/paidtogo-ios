@@ -11,6 +11,7 @@ import UIKit
 class PoolsViewController: ViewController {
     // MARK: - Outlets
     
+    @IBOutlet weak var headerTitleLabel: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -22,9 +23,10 @@ class PoolsViewController: ViewController {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+
         switch type! {
-        case .Walk: self.title = "Walk"
+        case .Walk: self.title = "Walk/Run"
             break
         case .Bike:
             self.title = "Bike"
