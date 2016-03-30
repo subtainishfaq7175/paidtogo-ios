@@ -25,6 +25,7 @@
 		5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249118E1CAC11E600D6E763 /* DataProvider.swift */; };
 		524911911CAC123100D6E763 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911901CAC123100D6E763 /* Notification.swift */; };
 		524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911931CAC126500D6E763 /* DummyDataProvider.swift */; };
+		524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911951CAC5FFC00D6E763 /* PoolsViewController.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
 		525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525150AF1CA17D1900BEC445 /* Profile.storyboard */; };
@@ -70,6 +71,7 @@
 		5249118E1CAC11E600D6E763 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		524911901CAC123100D6E763 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		524911931CAC126500D6E763 /* DummyDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataProvider.swift; sourceTree = "<group>"; };
+		524911951CAC5FFC00D6E763 /* PoolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolsViewController.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		525150AF1CA17D1900BEC445 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */,
 				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
+				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
+				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,

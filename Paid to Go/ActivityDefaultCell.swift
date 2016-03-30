@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import YYWebImage
+import YYImage
 
 class ActivityDefaultCell: UITableViewCell {
     

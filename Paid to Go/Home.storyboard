@@ -53,6 +53,9 @@
                                         <state key="normal" title="Car Pool">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="q6E-uN-1rE" kind="show" identifier="carSegue" id="grd-B5-daT"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="thY-G4-Xrs" userLabel="Arrow Image View">
                                         <rect key="frame" x="298" y="0.0" width="10" height="60"/>
@@ -99,6 +102,9 @@
                                         <state key="normal" title="Bus/Train">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="q6E-uN-1rE" kind="show" identifier="trainSegue" id="kga-tF-poI"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="3oR-uR-56Q" userLabel="Arrow Image View">
                                         <rect key="frame" x="298" y="0.0" width="10" height="60"/>
@@ -150,6 +156,9 @@
                                         <state key="normal" title="Bike">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="q6E-uN-1rE" kind="show" identifier="bikeSegue" id="Wwl-hI-Qlu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -189,6 +198,9 @@
                                         <state key="normal" title="Walk/Run">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="q6E-uN-1rE" kind="show" identifier="walkSegue" id="4Sp-Ds-lO7"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="vQ8-ig-7oz" userLabel="Arrow Image View">
                                         <rect key="frame" x="298" y="0.0" width="10" height="60"/>
@@ -272,6 +284,24 @@
             </objects>
             <point key="canvasLocation" x="952" y="419"/>
         </scene>
+        <!--Pools View Controller-->
+        <scene sceneID="Ub1-3q-ABG">
+            <objects>
+                <viewController id="q6E-uN-1rE" customClass="PoolsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W6P-Yo-FyN"/>
+                        <viewControllerLayoutGuide type="bottom" id="fKP-5y-pyT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lq7-dV-bll">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xex-cI-bXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="429"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ilQ-bL-lrC">
             <objects>
@@ -299,4 +329,7 @@
         <image name="ic_home_button_left_dark" width="6" height="92"/>
         <image name="ic_home_button_right" width="7" height="12"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kga-tF-poI"/>
+    </inferredMetricsTieBreakers>
 </document>

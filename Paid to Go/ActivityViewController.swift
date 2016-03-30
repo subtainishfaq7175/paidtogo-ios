@@ -42,6 +42,7 @@ class ActivityViewController: MenuContentViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.title = "Activity"
         //        self.setNavigationBarTitle("Notifications_title".localize())
     }
     
@@ -87,7 +88,7 @@ extension ActivityViewController: UITableViewDataSource {
             return cell
             
         case 1: // DEFAULT CELL
-            let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivitySimpleCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivityDefaultCell
             
             cell.configure(self.notifications[indexPath.row])
             
