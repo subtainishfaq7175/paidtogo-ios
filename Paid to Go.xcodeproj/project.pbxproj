@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */; };
+		5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */; };
+		5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */; };
 		52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FCE1C999F2E002DBBFA /* ViewController.swift */; };
 		52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD11C99A115002DBBFA /* NavigationController.swift */; };
 		52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD51C99A331002DBBFA /* CustomColors.swift */; };
@@ -19,6 +22,9 @@
 		5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */; };
 		5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5234D6FB1C9C41EE00910765 /* MenuItems.plist */; };
 		5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6FF1C9C465E00910765 /* MenuViewController.swift */; };
+		5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249118E1CAC11E600D6E763 /* DataProvider.swift */; };
+		524911911CAC123100D6E763 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911901CAC123100D6E763 /* Notification.swift */; };
+		524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911931CAC126500D6E763 /* DummyDataProvider.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
 		525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525150AF1CA17D1900BEC445 /* Profile.storyboard */; };
@@ -46,6 +52,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySimpleCell.swift; sourceTree = "<group>"; };
+		5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDefaultCell.swift; sourceTree = "<group>"; };
+		5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityActionCell.swift; sourceTree = "<group>"; };
 		52227FCE1C999F2E002DBBFA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52227FD11C99A115002DBBFA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		52227FD51C99A331002DBBFA /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -58,6 +67,9 @@
 		5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5234D6FB1C9C41EE00910765 /* MenuItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuItems.plist; sourceTree = "<group>"; };
 		5234D6FF1C9C465E00910765 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5249118E1CAC11E600D6E763 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		524911901CAC123100D6E763 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		524911931CAC126500D6E763 /* DummyDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataProvider.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		525150AF1CA17D1900BEC445 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -121,6 +133,7 @@
 		52227FD31C99A321002DBBFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				524911921CAC125C00D6E763 /* Data */,
 				52258C101C9AF04100E3DAC7 /* Navigation */,
 				52227FD41C99A326002DBBFA /* Appearance */,
 			);
@@ -153,6 +166,22 @@
 			name = Navigation;
 			sourceTree = "<group>";
 		};
+		5249118D1CAC11DA00D6E763 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5249118E1CAC11E600D6E763 /* DataProvider.swift */,
+			);
+			name = DataProvider;
+			sourceTree = "<group>";
+		};
+		524911921CAC125C00D6E763 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				524911931CAC126500D6E763 /* DummyDataProvider.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		524D200B1C98923F00FCE996 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,13 +201,63 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		5255239E1CA9B20100D92F7F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				52A374451C984ADA00E3A4A5 /* ViewControllers */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		5255239F1CA9B20B00D92F7F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				525523981CA9869700D92F7F /* MenuItemCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		5282D7B51CAAF66B002713EE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5282D7B61CAAF670002713EE /* Cells */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		5282D7B61CAAF670002713EE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */,
+				5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */,
+				5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		5282D7B71CAAF67B002713EE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5255239F1CA9B20B00D92F7F /* Cells */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		5282D7B81CAAF78A002713EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				524911901CAC123100D6E763 /* Notification.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		528822EB1C9B082300B490AD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				5282D7B71CAAF67B002713EE /* Components */,
 				528822EC1C9B083400B490AD /* Menu.storyboard */,
 				5234D6FB1C9C41EE00910765 /* MenuItems.plist */,
 				5234D6FF1C9C465E00910765 /* MenuViewController.swift */,
-				525523981CA9869700D92F7F /* MenuItemCell.swift */,
 				5255239A1CA9879900D92F7F /* MainViewController.swift */,
 			);
 			name = Menu;
@@ -205,9 +284,11 @@
 		52A374311C9844A900E3A4A5 /* Paid to Go */ = {
 			isa = PBXGroup;
 			children = (
+				5249118D1CAC11DA00D6E763 /* DataProvider */,
+				5282D7B81CAAF78A002713EE /* Model */,
+				5255239E1CA9B20100D92F7F /* UI */,
 				52227FD31C99A321002DBBFA /* Utils */,
 				524D200B1C98923F00FCE996 /* Extensions */,
-				52A374451C984ADA00E3A4A5 /* ViewControllers */,
 				52A374441C984ABE00E3A4A5 /* Resources */,
 				52A374321C9844A900E3A4A5 /* AppDelegate.swift */,
 				52A3743B1C9844A900E3A4A5 /* LaunchScreen.storyboard */,
@@ -274,6 +355,7 @@
 		52B3E0DC1CA3251B000ED657 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				5282D7B51CAAF66B002713EE /* Components */,
 				52B3E0DD1CA3253F000ED657 /* ActivityViewController.swift */,
 				52B3E0DF1CA3254C000ED657 /* Activity.storyboard */,
 			);
@@ -446,17 +528,23 @@
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
+				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
+				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
+				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
+				524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
+				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
+				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
 				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
