@@ -21,7 +21,7 @@ class LeaderboardsViewController: MenuContentViewController {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        self.title = "Leaderboards"
+        self.title = "menu_leaderboards".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }

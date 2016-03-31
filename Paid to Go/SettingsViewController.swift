@@ -22,7 +22,7 @@ class SettingsViewController: MenuContentViewController {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        self.title = "Settings"
+        self.title = "menu_settings".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }

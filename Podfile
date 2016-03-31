@@ -35,5 +35,10 @@ target 'Paid to Go' do
     # https://github.com/DaveWoodCom/XCGLogger
     pod 'XCGLogger', '~> 3.2'
     
+    # View Pager for iOS
+    # https://github.com/kitasuke/PagingMenuController
+    pod 'PagingMenuController'
+
+    
 end
 

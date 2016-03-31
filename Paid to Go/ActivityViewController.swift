@@ -42,7 +42,7 @@ class ActivityViewController: MenuContentViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.title = "Activity"
+        self.title = "menu_activity".localize()
         //        self.setNavigationBarTitle("Notifications_title".localize())
     }
     

@@ -12,6 +12,9 @@ class PoolsViewController: ViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var goImageView: UIImageView!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - Variables and Constants
     
@@ -24,7 +27,7 @@ class PoolsViewController: ViewController {
         
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-
+        
         switch type! {
         case .Walk: self.title = "Walk/Run"
             break
@@ -50,10 +53,17 @@ class PoolsViewController: ViewController {
     // MARK: - Functions
     
     func initViews(){
-        
+        goImageView.roundWholeView()
     }
     
     // MARK: - Actions
     
+    @IBAction func openPoolsAction(sender: AnyObject) {
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
+    
+    @IBAction func closedPoolsAction(sender: AnyObject) {
+        scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
+    }
     
 }

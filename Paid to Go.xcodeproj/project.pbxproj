@@ -14,7 +14,6 @@
 		52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD11C99A115002DBBFA /* NavigationController.swift */; };
 		52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD51C99A331002DBBFA /* CustomColors.swift */; };
 		52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD71C99A666002DBBFA /* SignupViewController.swift */; };
-		52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD91C99F2E9002DBBFA /* String+Localize.swift */; };
 		52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C0B1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift */; };
 		52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */; };
 		52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */; };
@@ -49,6 +48,10 @@
 		52B3E0E61CA326A9000ED657 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B3E0E51CA326A9000ED657 /* Stats.storyboard */; };
 		52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */; };
 		52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E91CA326FC000ED657 /* StatsViewController.swift */; };
+		52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */; };
+		52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */; };
+		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
+		52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */; };
 		C34D996C6020C73A34190709 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +63,6 @@
 		52227FD11C99A115002DBBFA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		52227FD51C99A331002DBBFA /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		52227FD71C99A666002DBBFA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		52227FD91C99F2E9002DBBFA /* String+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
 		52258C0B1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardRouter.swift; sourceTree = "<group>"; };
@@ -97,6 +99,10 @@
 		52B3E0E51CA326A9000ED657 /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsViewController.swift; sourceTree = "<group>"; };
 		52B3E0E91CA326FC000ED657 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
+		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
 		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */,
+				52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */,
+				52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -190,7 +198,7 @@
 			children = (
 				524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */,
 				524D200E1C989CBA00FCE996 /* UIView+Round.swift */,
-				52227FD91C99F2E9002DBBFA /* String+Localize.swift */,
+				52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				52A374391C9844A900E3A4A5 /* Assets.xcassets */,
+				52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -461,6 +470,7 @@
 				52B3E0E61CA326A9000ED657 /* Stats.storyboard in Resources */,
 				52A3743A1C9844A900E3A4A5 /* Assets.xcassets in Resources */,
 				52A374381C9844A900E3A4A5 /* Main.storyboard in Resources */,
+				52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */,
 				52B3E0E01CA3254C000ED657 /* Activity.storyboard in Resources */,
 				525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */,
 				52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */,
@@ -538,12 +548,14 @@
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
+				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
-				52227FDA1C99F2E9002DBBFA /* String+Localize.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
+				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
 				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
 				524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */,
+				52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,

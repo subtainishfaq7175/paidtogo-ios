@@ -44,7 +44,7 @@ class ProfileViewController: MenuContentViewController {
         self.signupViewController.signupButton.addTarget(self, action: "submitAction:", forControlEvents: .TouchUpInside)
         
         setNavigationBarVisible(true)
-        self.title = "Profile"
+        self.title = "menu_profile".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }

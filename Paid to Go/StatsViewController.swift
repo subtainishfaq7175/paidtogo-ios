@@ -21,7 +21,7 @@ class StatsViewController: MenuContentViewController {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        self.title = "Stats"
+        self.title = "menu_stats".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }

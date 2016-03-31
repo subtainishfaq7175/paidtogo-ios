@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PagingMenuController-PagingMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PagingMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Paid to Go.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05C91933C4256BF787F90202106E730C</key>
+		<key>155D9340DA1D009E1C219177BC8D2EED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A0D227F93FFDFEB3DC0DB07BA139928</key>
+		<key>18FC4F2591D4333105DE509FC9AC9476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17F3FF687A0C3E6AA69692EA023547DC</key>
+		<key>23D4B5C9CC657B68134305BFEB076270</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2D9A4D2F75B31C9E516B2B269CAE06FE</key>
+		<key>297E825D1947C3FDA3FE4FEAC2DE6899</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35CB7754928E042A2A70EFC6BB104532</key>
+		<key>409D9B0B1C1372BCDE5E67B5E10AA020</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0B0EC17A3DC5E4A611390238528DE3D</key>
+		<key>527AE50B1031DF0918F6009D2E9008B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA378C0F5ED1B5D432DA4FE78D79EC88</key>
+		<key>52AF614C3E16DFEAF998B286FEA012BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBA7542FA3F399F9385B1C88AAC4B354</key>
+		<key>5BBB34170986C897E8931C1768FD6EE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFC3532E79D934FA1D3B13C7E2371473</key>
+		<key>65CA72A07DCA1903C8863EC1BE3B9374</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F769E92D0D967B2A373D471CB9D339B4</key>
+		<key>6AAB628731942EFBD41E9FA0F5DCFAFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4185DF057043798DCC582D8BC190EB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB9BC9C515C389035461DD5D33E33A74</key>
 		<dict>
 			<key>primary</key>
 			<true/>

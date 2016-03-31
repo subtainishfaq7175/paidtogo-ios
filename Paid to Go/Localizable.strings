@@ -1,0 +1,94 @@
+
+// -----------------------------------------
+// - Login strings
+// -----------------------------------------
+
+"facebook_register_label"       = "Connect with Facebook" ;
+"email_register_label"          = "Register with e-mail"  ;
+
+"forgot_password_label_button"  = "Forgot password?"      ;
+"new_user_label_button"         = "New user? SIGN UP"     ;
+"Password_place_holder_text"    = "Password"              ;
+"Recover_password"              = "Recover"               ;
+
+
+// -----------------------------------------
+// - Register strings
+// -----------------------------------------
+
+"name_place_holder_text"             = "Your Name"        ;
+"confirm_password_place_holder_text" = "Confirm Password" ;
+"register_button_label"              = "Register"         ;
+"Add_photo_label"                    = "Add Photo"        ;
+
+// -----------------------------------------
+// - Menu strings
+// -----------------------------------------
+
+"menu_home"                = "Let's Commute"   ;
+"menu_profile"             = "Profile" ;
+"menu_activity"            = "Activity" ;
+"menu_balance"             = "Balance" ;
+"menu_leaderboards"        = "Leaderboards" ;
+"menu_stats"               = "Stats" ;
+"menu_settings"            = "Settings" ;
+
+// -----------------------------------------
+// - Home strings
+// -----------------------------------------
+
+"app_name"                  = "Paid to Go"   ;
+"home_select_commute_type"  = "Select Commute Type" ;
+
+// -----------------------------------------
+// - General Pools strings
+// -----------------------------------------
+
+"pools_title"           = "Pools"   ;
+"app_name_copyright"    = "PaidToGo®" ;
+"pools_go"              = "GO!!"   ;
+"pools_national"        = "National";
+
+// -----------------------------------------
+// - Walk/Run strings
+// -----------------------------------------
+
+"walk_title" = "Walk/Run" ;
+
+// -----------------------------------------
+// - Bike strings
+// -----------------------------------------
+
+"bike_title" = "Bike" ;
+
+// -----------------------------------------
+// - Bus/Train strings
+// -----------------------------------------
+
+"train_title" = "Bus/Train" ;
+
+// -----------------------------------------
+// - Car strings
+// -----------------------------------------
+
+"car_title" = "Car Pool" ;
+
+// -----------------------------------------
+// - Notifications
+// -----------------------------------------
+
+"Notifications_title" = "Notifications"                       ;
+"Like_message"        = " like a memory in you labeled them " ;
+"Share_message"       = " shared your "                       ;
+"Idea_book_message"   = " an added ideabook "                 ;
+"and"                 = " and "                               ;
+"photo"               = "photo"                               ;
+"loading_label"       = "Loading"                             ;
+
+
+// -----------------------------------------
+// - Settings
+// -----------------------------------------
+
+"terms_label"        = "Terms and Conditions" ;
+"recover_pass_label" = "Recover Password" ;

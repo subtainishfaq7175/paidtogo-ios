@@ -21,7 +21,7 @@ class BalanceViewController: MenuContentViewController {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        self.title = "Balance"
+        self.title = "menu_balance".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }
