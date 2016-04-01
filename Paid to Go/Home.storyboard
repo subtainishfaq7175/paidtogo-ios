@@ -195,7 +195,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-JC-BYv" userLabel="Walk Run Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="304" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                        <state key="normal" title="asd">
+                                        <state key="normal" title="Walk/Run">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -241,7 +241,7 @@
                                     <constraint firstAttribute="width" constant="174" id="hCm-T2-LIb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="home_select_commute_type"/>
@@ -318,42 +318,42 @@
                                                     <constraint firstAttribute="height" constant="25" id="rNC-ob-e86"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-Pi-hsk" userLabel="Go View">
-                                                <rect key="frame" x="0.0" y="222" width="320" height="51"/>
+                                                <rect key="frame" x="0.0" y="225" width="320" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xS-3B-Nwm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="f0S-FV-DXp">
-                                                        <rect key="frame" x="8" y="11" width="30" height="30"/>
+                                                        <rect key="frame" x="8" y="9" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="jEo-07-1Ea"/>
                                                             <constraint firstAttribute="width" constant="30" id="zlg-nf-GQg"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GO!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1au-4b-2Ln">
-                                                        <rect key="frame" x="46" y="17" width="32" height="17"/>
+                                                        <rect key="frame" x="46" y="15" width="32" height="17"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-cC-026">
-                                                        <rect key="frame" x="80" y="17" width="54" height="17"/>
+                                                        <rect key="frame" x="80" y="15" width="54" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsA-Xm-Ra7">
-                                                        <rect key="frame" x="136" y="17" width="36" height="17"/>
+                                                        <rect key="frame" x="136" y="15" width="36" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="uSh-bH-eOq" userLabel="Arrow Image View">
-                                                        <rect key="frame" x="302" y="0.0" width="10" height="51"/>
+                                                        <rect key="frame" x="302" y="0.0" width="10" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="onJ-5n-CNX"/>
                                                         </constraints>
@@ -385,15 +385,15 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-fT-fex">
-                                                <rect key="frame" x="129" y="196" width="52" height="26"/>
+                                                <rect key="frame" x="129" y="199" width="52" height="26"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="21"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PaidToGo®" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFo-Ov-612">
-                                                <rect key="frame" x="20" y="196" width="106" height="26"/>
+                                                <rect key="frame" x="20" y="199" width="106" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -423,13 +423,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QW-8K-yWh" userLabel="Indicator View">
-                                <rect key="frame" x="0.0" y="273" width="320" height="51"/>
+                                <rect key="frame" x="0.0" y="273" width="320" height="48"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxr-6C-pWj" userLabel="Open Pools View">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-7T-2Zl" userLabel="Open Indicator Point">
-                                                <rect key="frame" x="12" y="24" width="4" height="4"/>
+                                                <rect key="frame" x="12" y="22" width="4" height="4"/>
                                                 <color key="backgroundColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="RiT-g4-ITc"/>
@@ -437,7 +437,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utN-iQ-Xeg" userLabel="Open Pools Label">
-                                                <rect key="frame" x="20" y="17" width="75" height="17"/>
+                                                <rect key="frame" x="20" y="16" width="75" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -457,10 +457,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTo-Vf-c9H" userLabel="Closed Pools View">
-                                        <rect key="frame" x="204" y="0.0" width="116" height="51"/>
+                                        <rect key="frame" x="200" y="0.0" width="120" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OY-BC-BRD" userLabel="Closed Indicator Point">
-                                                <rect key="frame" x="16" y="24" width="4" height="4"/>
+                                                <rect key="frame" x="16" y="22" width="4" height="4"/>
                                                 <color key="backgroundColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="VL3-I1-Q0A"/>
@@ -468,7 +468,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closed Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ST-ii-RfL" userLabel="Closed Pools Label">
-                                                <rect key="frame" x="24" y="17" width="84" height="17"/>
+                                                <rect key="frame" x="24" y="16" width="84" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="4ST-ii-RfL" secondAttribute="trailing" constant="8" id="DIN-hg-4HC"/>
+                                            <constraint firstAttribute="trailing" secondItem="4ST-ii-RfL" secondAttribute="trailing" constant="12" id="DIN-hg-4HC"/>
                                             <constraint firstItem="8OY-BC-BRD" firstAttribute="centerY" secondItem="iTo-Vf-c9H" secondAttribute="centerY" id="X2h-Sl-PKV"/>
                                             <constraint firstItem="4ST-ii-RfL" firstAttribute="leading" secondItem="8OY-BC-BRD" secondAttribute="trailing" constant="4" id="a8E-sV-kqB"/>
                                             <constraint firstItem="8OY-BC-BRD" firstAttribute="leading" secondItem="iTo-Vf-c9H" secondAttribute="leading" constant="16" id="hbs-wx-dVZ"/>
@@ -487,19 +487,55 @@
                                             <outletCollection property="gestureRecognizers" destination="Mav-EZ-cBt" appends="YES" id="Xon-8y-9kn"/>
                                         </connections>
                                     </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtR-jl-yJU" userLabel="Indicator Scroll View">
+                                        <rect key="frame" x="0.0" y="42" width="320" height="6"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH7-SG-gqk" userLabel="Indicator Scroll View Container">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="6"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_btn_greenblue" translatesAutoresizingMaskIntoConstraints="NO" id="1nf-Tc-GLV" userLabel="Indicator Image View">
+                                                        <rect key="frame" x="8" y="0.0" width="100" height="6"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="dO0-HL-PfA"/>
+                                                            <constraint firstAttribute="height" constant="6" id="eTi-ZK-w5r"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="1nf-Tc-GLV" firstAttribute="leading" secondItem="oH7-SG-gqk" secondAttribute="leading" constant="8" id="4bY-Zb-oV1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1nf-Tc-GLV" secondAttribute="bottom" id="6Ji-3C-hXq"/>
+                                                    <constraint firstItem="1nf-Tc-GLV" firstAttribute="top" secondItem="oH7-SG-gqk" secondAttribute="top" id="Wl0-BX-RXL"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="oH7-SG-gqk" firstAttribute="leading" secondItem="WtR-jl-yJU" secondAttribute="leading" id="Ibb-HI-Xt3"/>
+                                            <constraint firstAttribute="bottom" secondItem="oH7-SG-gqk" secondAttribute="bottom" id="d3G-2g-E17"/>
+                                            <constraint firstItem="oH7-SG-gqk" firstAttribute="height" secondItem="WtR-jl-yJU" secondAttribute="height" id="gZz-uI-Rp0"/>
+                                            <constraint firstAttribute="trailing" secondItem="oH7-SG-gqk" secondAttribute="trailing" id="hGt-WP-IhG"/>
+                                            <constraint firstItem="oH7-SG-gqk" firstAttribute="top" secondItem="WtR-jl-yJU" secondAttribute="top" id="rTz-uX-39J"/>
+                                            <constraint firstAttribute="height" constant="6" id="tRw-Kc-zcN"/>
+                                        </constraints>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="WtR-jl-yJU" secondAttribute="bottom" id="3jJ-xC-DIU"/>
                                     <constraint firstAttribute="bottom" secondItem="qxr-6C-pWj" secondAttribute="bottom" id="LQw-XP-kw6"/>
                                     <constraint firstAttribute="bottom" secondItem="iTo-Vf-c9H" secondAttribute="bottom" id="SJ1-Xq-4wt"/>
                                     <constraint firstAttribute="trailing" secondItem="iTo-Vf-c9H" secondAttribute="trailing" id="VRM-M8-9gc"/>
                                     <constraint firstItem="qxr-6C-pWj" firstAttribute="leading" secondItem="1QW-8K-yWh" secondAttribute="leading" id="aq6-Yx-yH3"/>
                                     <constraint firstItem="iTo-Vf-c9H" firstAttribute="top" secondItem="1QW-8K-yWh" secondAttribute="top" id="cu8-e7-gB0"/>
                                     <constraint firstItem="qxr-6C-pWj" firstAttribute="top" secondItem="1QW-8K-yWh" secondAttribute="top" id="fWZ-j6-B97"/>
+                                    <constraint firstAttribute="trailing" secondItem="WtR-jl-yJU" secondAttribute="trailing" id="hkK-Yy-WH1"/>
+                                    <constraint firstItem="WtR-jl-yJU" firstAttribute="leading" secondItem="1QW-8K-yWh" secondAttribute="leading" id="r4H-0k-OWZ"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXr-zw-fPC">
-                                <rect key="frame" x="0.0" y="324" width="320" height="244"/>
+                                <rect key="frame" x="0.0" y="321" width="320" height="247"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahC-Lt-FVS" userLabel="Scroll View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="640" height="243"/>
@@ -539,7 +575,7 @@
                             <constraint firstItem="ahC-Lt-FVS" firstAttribute="height" secondItem="Lq7-dV-bll" secondAttribute="height" multiplier="0.427" id="9Nm-Rd-0aM"/>
                             <constraint firstItem="fKP-5y-pyT" firstAttribute="top" secondItem="SXr-zw-fPC" secondAttribute="bottom" id="Bls-LL-lrH"/>
                             <constraint firstItem="SXr-zw-fPC" firstAttribute="top" secondItem="1QW-8K-yWh" secondAttribute="bottom" id="JSB-eB-K3Z"/>
-                            <constraint firstItem="ebu-Pi-hsk" firstAttribute="height" secondItem="Lq7-dV-bll" secondAttribute="height" multiplier="0.09" id="K2c-mJ-0xJ"/>
+                            <constraint firstItem="ebu-Pi-hsk" firstAttribute="height" secondItem="Lq7-dV-bll" secondAttribute="height" multiplier="0.085" id="K2c-mJ-0xJ"/>
                             <constraint firstItem="evt-V2-sqn" firstAttribute="height" secondItem="Lq7-dV-bll" secondAttribute="height" multiplier="0.48" id="Lfx-Pi-rH9"/>
                             <constraint firstItem="SXr-zw-fPC" firstAttribute="leading" secondItem="Lq7-dV-bll" secondAttribute="leading" id="MnX-5e-Sk6"/>
                             <constraint firstItem="1QW-8K-yWh" firstAttribute="leading" secondItem="Lq7-dV-bll" secondAttribute="leading" id="NZx-eP-1Pl"/>
@@ -550,12 +586,18 @@
                             <constraint firstAttribute="trailing" secondItem="evt-V2-sqn" secondAttribute="trailing" id="g6Q-Jk-ixp"/>
                             <constraint firstItem="vzD-Td-W99" firstAttribute="width" secondItem="Lq7-dV-bll" secondAttribute="width" id="he6-em-0fh"/>
                             <constraint firstItem="evt-V2-sqn" firstAttribute="leading" secondItem="Lq7-dV-bll" secondAttribute="leading" id="j5B-S2-JAu"/>
+                            <constraint firstItem="oH7-SG-gqk" firstAttribute="width" secondItem="Lq7-dV-bll" secondAttribute="width" id="nwF-aO-ETC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closedPoolsLabel" destination="4ST-ii-RfL" id="71W-96-JLx"/>
+                        <outlet property="closedPoolsView" destination="iTo-Vf-c9H" id="WeE-wN-pd1"/>
                         <outlet property="goImageView" destination="f0S-FV-DXp" id="W9h-dq-oNf"/>
                         <outlet property="headerImageView" destination="vqR-c8-ZDc" id="0Z9-RO-BHy"/>
                         <outlet property="headerTitleLabel" destination="bBH-Gb-9vQ" id="bZm-l8-JdR"/>
+                        <outlet property="indicatorLeadingConstraint" destination="4bY-Zb-oV1" id="9KO-V0-v5Y"/>
+                        <outlet property="indicatorWidthConstraint" destination="dO0-HL-PfA" id="2kq-Pb-tN9"/>
+                        <outlet property="openPoolsView" destination="qxr-6C-pWj" id="wGt-cr-jBt"/>
                         <outlet property="scrollView" destination="SXr-zw-fPC" id="JgN-hf-28L"/>
                     </connections>
                 </viewController>
