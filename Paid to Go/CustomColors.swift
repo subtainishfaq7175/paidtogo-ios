@@ -21,6 +21,14 @@ class CustomColors {
         return UIColor(rgba: "#454544")
     }
     
+    static func creamyWhiteColor() -> UIColor {
+        return UIColor(rgba: "#eae9e5")
+    }
+    
+    static func lightBlueColor() -> UIColor {
+        return UIColor(rgba: "#34b5fb")
+    }
+    
 
     private static func customGrayColor(value:String) -> UIColor {
         return UIColor(rgba: value)
@@ -47,4 +55,8 @@ class CustomColors {
     static func notificationActivityIndicatorTextColor () -> UIColor {
         return notificationMessageTextColor()
     }
+    
+
+    
+    
 }

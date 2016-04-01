@@ -21,6 +21,8 @@
 		5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */; };
 		5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5234D6FB1C9C41EE00910765 /* MenuItems.plist */; };
 		5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6FF1C9C465E00910765 /* MenuViewController.swift */; };
+		523977D81CAF01C000C85CAF /* PoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523977D71CAF01C000C85CAF /* PoolCell.swift */; };
+		523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523977D91CAF0FAC00C85CAF /* Pool.swift */; };
 		5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249118E1CAC11E600D6E763 /* DataProvider.swift */; };
 		524911911CAC123100D6E763 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911901CAC123100D6E763 /* Notification.swift */; };
 		524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911931CAC126500D6E763 /* DummyDataProvider.swift */; };
@@ -70,6 +72,8 @@
 		5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5234D6FB1C9C41EE00910765 /* MenuItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuItems.plist; sourceTree = "<group>"; };
 		5234D6FF1C9C465E00910765 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		523977D71CAF01C000C85CAF /* PoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolCell.swift; sourceTree = "<group>"; };
+		523977D91CAF0FAC00C85CAF /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
 		5249118E1CAC11E600D6E763 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		524911901CAC123100D6E763 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		524911931CAC126500D6E763 /* DummyDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataProvider.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		52258C0D1C9AEFB700E3DAC7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				523977D51CAF019D00C85CAF /* Components */,
 				52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */,
 				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
@@ -175,6 +180,22 @@
 				52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */,
 			);
 			name = Navigation;
+			sourceTree = "<group>";
+		};
+		523977D51CAF019D00C85CAF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				523977D61CAF01A600C85CAF /* Cells */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		523977D61CAF01A600C85CAF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				523977D71CAF01C000C85CAF /* PoolCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		5249118D1CAC11DA00D6E763 /* DataProvider */ = {
@@ -258,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				524911901CAC123100D6E763 /* Notification.swift */,
+				523977D91CAF0FAC00C85CAF /* Pool.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -547,6 +569,7 @@
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
+				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
@@ -560,6 +583,7 @@
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
+				523977D81CAF01C000C85CAF /* PoolCell.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,

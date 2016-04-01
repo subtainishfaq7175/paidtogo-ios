@@ -22,16 +22,53 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var openPoolsView: UIView!
     @IBOutlet weak var closedPoolsView: UIView!
     
+    @IBOutlet weak var openPoolsLabel: UILabel!
     @IBOutlet weak var closedPoolsLabel: UILabel!
+    @IBOutlet weak var openPoolsIndicatorView: UIView!
+    @IBOutlet weak var closedPoolsIndicatorView: UIView!
+    
+    
+    @IBOutlet weak var openPoolsTableView: UITableView!
+    @IBOutlet weak var closedPoolsTableView: UITableView!
+    
     // MARK: - Variables and Constants
     
     var type: Pools?
+    var closedPools:[Pool] = [Pool]()
+    var openPools:[Pool] = [Pool]()
     
+    let cellReuseIdentifier = "poolCell"
+    var lastContentOffset : CGFloat = 0
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        initLayout()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        initViews()
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.scrollView.delegate = self
+        
+        self.openPoolsTableView.delegate = self
+        self.openPoolsTableView.dataSource = self
+        
+        self.closedPoolsTableView.delegate = self
+        self.closedPoolsTableView.dataSource = self
+        
+        self.getPools()
+    }
+    
+    // MARK: - Functions
+    
+    private func initLayout() {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
@@ -51,45 +88,66 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
             break
         }
         
-        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
-        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16 - 6
-
+        setIndicatorOnLeft()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        initViews()
-    }
-    
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        self.scrollView.delegate = self
-    }
-    
-    
-    // MARK: - Functions
-    
-    private func initViews(){
+    private func initViews() {
         goImageView.roundWholeView()
     }
     
-    private func moveIndicatorToRight(){
-        indicatorLeadingConstraint.constant = closedPoolsView.frame.origin.x + 15
-        indicatorWidthConstraint.constant = closedPoolsView.frame.width - 16 - 8
+    private func setIndicatorOnLeft() {
+        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
+        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16
+        
+        self.closedPoolsLabel.textColor = UIColor.grayColor()
+        self.closedPoolsIndicatorView.backgroundColor = UIColor.grayColor()
+        
+        self.openPoolsLabel.textColor = UIColor.whiteColor()
+        self.openPoolsIndicatorView.backgroundColor = CustomColors.NavbarBackground()
+    }
+    
+    private func setIndicatorOnRight() {
+        indicatorLeadingConstraint.constant = closedPoolsView.frame.origin.x + 8
+        indicatorWidthConstraint.constant = closedPoolsView.frame.width - 16
+        
+        self.openPoolsLabel.textColor = UIColor.grayColor()
+        self.openPoolsIndicatorView.backgroundColor = UIColor.grayColor()
+        
+        self.closedPoolsLabel.textColor = UIColor.whiteColor()
+        self.closedPoolsIndicatorView.backgroundColor = CustomColors.lightBlueColor()
+    }
+    
+    private func moveIndicatorToRight() {
+        setIndicatorOnRight()
+        
+        
         
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
-
+        
     }
     
     private func moveIndicatorToLeft(){
-        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
-        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16 - 6
+        setIndicatorOnLeft()
         
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    private func getPools() {
+        
+        DataProvider.sharedInstance.getOpenPools { (pools) -> Void in
+            self.openPools  = pools
+            self.openPoolsTableView.reloadData()
+        }
+        
+        DataProvider.sharedInstance.getClosedPools { (pools) -> Void in
+            self.closedPools  = pools
+            self.closedPoolsTableView.reloadData()
+        }
+        
     }
     
     
@@ -107,26 +165,54 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
     
     // MARK: UIScrollViewDelegate
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.x;
+    }
+    
+    
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate == false {
             let currentPage = scrollView.currentPage
-            print("scrollViewDidEndDragging: \(currentPage)")
+//            print("scrollViewDidEndDragging: \(currentPage)")
         }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let currentPage = scrollView.currentPage
-//                print("scrollViewDidEndDecelerating: \(currentPage)")
-        switch currentPage {
-        case 1:
-            moveIndicatorToLeft()
-            break
-        case 2:
-            moveIndicatorToRight()
-            break
-        default:
-            break
+        if (self.lastContentOffset < scrollView.contentOffset.x) {
+            // moved right
+            let currentPage = scrollView.currentPage
+            print("scrollViewDidEndDragging: \(currentPage)")
+            
+            switch currentPage {
+            case 1:
+                moveIndicatorToLeft()
+                break
+            case 2:
+                moveIndicatorToRight()
+                break
+            default:
+                break
+            }
+        } else if (self.lastContentOffset > scrollView.contentOffset.x) {
+            // moved left
+            let currentPage = scrollView.currentPage
+            print("scrollViewDidEndDragging: \(currentPage)")
+            
+            switch currentPage {
+            case 1:
+                moveIndicatorToLeft()
+                break
+            case 2:
+                moveIndicatorToRight()
+                break
+            default:
+                break
+            }
+        } else {
+            
         }
+
+        
     }
     
 }
@@ -138,5 +224,71 @@ extension UIScrollView {
     
     func changeToPage(page: Int) {
         self.setContentOffset(CGPointMake(CGFloat(page) * self.frame.width, 0), animated: true)
+    }
+}
+
+extension PoolsViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count: Int?
+        switch tableView.restorationIdentifier! {
+        case "closedPoolsTableView":
+            count = closedPools.count
+            break
+        case "openPoolsTableView":
+            count = openPools.count
+            break
+        default: break
+        }
+        return count!
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
+        
+        switch tableView.restorationIdentifier! {
+        case "closedPoolsTableView":
+            cell.configure(self.closedPools[indexPath.row])
+            break
+        case "openPoolsTableView":
+            cell.configure(self.openPools[indexPath.row])
+            break
+        default: break
+        }
+        
+        
+        switch indexPath.row % 2 {
+        case 0:
+            cell.backgroundColor = UIColor.whiteColor()
+            
+        case 1:
+            cell.backgroundColor = CustomColors.creamyWhiteColor()
+            
+            
+        default:
+            break
+        }
+        
+        return cell
+        
+    }
+}
+extension PoolsViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
+        
+        //        self.notifications[indexPath.row].read = true
+        
+        //        cell.read(self.notifications[indexPath.row].read)
+        
+        tableView.reloadData()
+        
+        // TODO Notification navigation
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UIScreen.mainScreen().bounds.height * 0.085
     }
 }
