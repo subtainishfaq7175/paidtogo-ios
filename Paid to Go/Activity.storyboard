@@ -67,15 +67,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-tK-Zfs">
-                                                    <rect key="frame" x="12" y="9" width="25" height="25"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-tK-Zfs">
+                                                    <rect key="frame" x="12" y="7" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="gu4-PH-CjI"/>
-                                                        <constraint firstAttribute="width" constant="25" id="kj2-MB-f5Y"/>
+                                                        <constraint firstAttribute="height" constant="30" id="gu4-PH-CjI"/>
+                                                        <constraint firstAttribute="width" constant="30" id="kj2-MB-f5Y"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You did Carpool with Joseph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-xb-1iS">
-                                                    <rect key="frame" x="41" y="14" width="173" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="173" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                             <color key="backgroundColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="X3J-xb-1iS" firstAttribute="centerY" secondItem="9BU-hd-cid" secondAttribute="centerY" id="0TL-Vg-obS"/>
-                                                <constraint firstItem="X3J-xb-1iS" firstAttribute="leading" secondItem="UgL-tK-Zfs" secondAttribute="trailing" constant="4" id="2kb-Zc-CNi"/>
+                                                <constraint firstItem="X3J-xb-1iS" firstAttribute="leading" secondItem="UgL-tK-Zfs" secondAttribute="trailing" constant="8" id="2kb-Zc-CNi"/>
                                                 <constraint firstItem="UgL-tK-Zfs" firstAttribute="leading" secondItem="9BU-hd-cid" secondAttribute="leading" constant="12" id="9gm-tq-syu"/>
                                                 <constraint firstItem="UgL-tK-Zfs" firstAttribute="centerY" secondItem="9BU-hd-cid" secondAttribute="centerY" id="Av1-wd-uIH"/>
                                                 <constraint firstItem="E6p-Mb-TDD" firstAttribute="centerY" secondItem="9BU-hd-cid" secondAttribute="centerY" id="Q5b-cV-r2W"/>
@@ -112,7 +112,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You were invited to NY Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiS-lm-RbV">
-                                                    <rect key="frame" x="41" y="14" width="174" height="16"/>
+                                                    <rect key="frame" x="45" y="14" width="174" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -130,7 +130,7 @@
                                                 <constraint firstItem="DpF-3s-wTx" firstAttribute="leading" secondItem="706-nZ-jt3" secondAttribute="leading" constant="12" id="7pX-a0-RiQ"/>
                                                 <constraint firstItem="lxt-it-vh2" firstAttribute="centerY" secondItem="706-nZ-jt3" secondAttribute="centerY" id="7sv-qE-pUt"/>
                                                 <constraint firstAttribute="trailing" secondItem="lxt-it-vh2" secondAttribute="trailing" constant="12" id="EvQ-BM-Bo1"/>
-                                                <constraint firstItem="IiS-lm-RbV" firstAttribute="leading" secondItem="DpF-3s-wTx" secondAttribute="trailing" constant="4" id="aI5-5c-oh1"/>
+                                                <constraint firstItem="IiS-lm-RbV" firstAttribute="leading" secondItem="DpF-3s-wTx" secondAttribute="trailing" constant="8" id="aI5-5c-oh1"/>
                                                 <constraint firstItem="IiS-lm-RbV" firstAttribute="centerY" secondItem="706-nZ-jt3" secondAttribute="centerY" id="c03-Tz-R2y"/>
                                                 <constraint firstItem="DpF-3s-wTx" firstAttribute="centerY" secondItem="706-nZ-jt3" secondAttribute="centerY" id="qmh-KA-twC"/>
                                             </constraints>

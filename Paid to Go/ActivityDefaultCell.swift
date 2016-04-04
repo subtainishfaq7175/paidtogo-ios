@@ -26,6 +26,10 @@ class ActivityDefaultCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    override func layoutSubviews() {
+        notificationImageView.roundWholeView()
+    }
+    
     // MARK: - Configuration
     
     

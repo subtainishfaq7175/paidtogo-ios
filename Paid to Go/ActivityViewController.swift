@@ -120,6 +120,6 @@ extension ActivityViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.08
+        return UIScreen.mainScreen().bounds.height * 0.085
     }
 }
