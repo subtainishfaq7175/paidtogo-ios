@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  Paid to Go
 //
-//  Created by MacbookPro on 23/3/16.
+//  Created by Germán Campagno on 23/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 

@@ -38,6 +38,14 @@ target 'Paid to Go' do
     # View Pager for iOS
     # https://github.com/kitasuke/PagingMenuController
     pod 'PagingMenuController'
+    
+    # KYCircularProgress
+    # https://github.com/kentya6/KYCircularProgress
+    # pod 'KYCircularProgress'
+    
+    # KDCircularProgress
+    # https://github.com/kaandedeoglu/KDCircularProgress
+    pod 'KDCircularProgress'
 
     
 end

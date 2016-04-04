@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  Paid to Go
 //
-//  Created by German Campagno on 17/3/16.
+//  Created by Germán Campagno on 17/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 

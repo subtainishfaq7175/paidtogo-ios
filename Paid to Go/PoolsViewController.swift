@@ -2,7 +2,7 @@
 //  PoolsViewController.swift
 //  Paid to Go
 //
-//  Created by MacbookPro on 30/3/16.
+//  Created by Germán Campagno on 30/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
@@ -64,6 +64,21 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.closedPoolsTableView.dataSource = self
         
         self.getPools()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let poolViewController = segue.destinationViewController as! PoolViewController
+        
+        switch segue.identifier! {
+        case "closedPoolSegue":
+        poolViewController.type = self.type
+            break
+        case "poolSegue":
+            poolViewController.type = self.type
+            break
+        default:
+            break
+        }
     }
     
     // MARK: - Functions
@@ -173,7 +188,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate == false {
             let currentPage = scrollView.currentPage
-//            print("scrollViewDidEndDragging: \(currentPage)")
+            //            print("scrollViewDidEndDragging: \(currentPage)")
         }
     }
     
@@ -211,7 +226,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         } else {
             
         }
-
+        
         
     }
     

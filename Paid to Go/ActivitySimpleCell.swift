@@ -2,7 +2,7 @@
 //  MenuItemCell.swift
 //  Care4
 //
-//  Created by Fernando Ortiz on 2/3/16.
+//  Created by Germán Campagno on 29/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 

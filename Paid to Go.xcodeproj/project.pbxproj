@@ -50,6 +50,7 @@
 		52B3E0E61CA326A9000ED657 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B3E0E51CA326A9000ED657 /* Stats.storyboard */; };
 		52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */; };
 		52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E91CA326FC000ED657 /* StatsViewController.swift */; };
+		52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B982321CB2C42300706DCC /* PoolViewController.swift */; };
 		52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */; };
 		52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */; };
 		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
@@ -103,6 +104,7 @@
 		52B3E0E51CA326A9000ED657 /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsViewController.swift; sourceTree = "<group>"; };
 		52B3E0E91CA326FC000ED657 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		52B982321CB2C42300706DCC /* PoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolViewController.swift; sourceTree = "<group>"; };
 		52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
 				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
+				52B982321CB2C42300706DCC /* PoolViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
+				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,

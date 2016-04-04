@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>KDCircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PagingMenuController-PagingMenuController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,12 +72,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>155D9340DA1D009E1C219177BC8D2EED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>18FC4F2591D4333105DE509FC9AC9476</key>
+		<key>021A7872739C08136E888F376AEFB30D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,22 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>297E825D1947C3FDA3FE4FEAC2DE6899</key>
+		<key>287F70D93761BB68012F2676A2E3A4D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>409D9B0B1C1372BCDE5E67B5E10AA020</key>
+		<key>430D85BFDD44E39FBB88EA464F1CF2C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>527AE50B1031DF0918F6009D2E9008B5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>52AF614C3E16DFEAF998B286FEA012BC</key>
+		<key>49D6F738EEFEF582E092F6AA825068CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,22 +102,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65CA72A07DCA1903C8863EC1BE3B9374</key>
+		<key>9066A678986813840E9D45C0D09F402D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6AAB628731942EFBD41E9FA0F5DCFAFB</key>
+		<key>9558B32FB980ED0E42BF1BD3AEC626CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4185DF057043798DCC582D8BC190EB0</key>
+		<key>AF603CFC7C6A1A6484FDF769A12E0DA6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB9BC9C515C389035461DD5D33E33A74</key>
+		<key>CABEDA10FF236494A06D9CAC31F291C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3C74F5A7118537ABBD18E21CD20332B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F40CC586D9667ECAC2EA0BC4AC93B768</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFCB8C2920BBBA96E2D604B67EC05EFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
