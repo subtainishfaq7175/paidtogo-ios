@@ -764,17 +764,17 @@
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk4-hN-s7w" customClass="KDCircularProgress" customModule="KDCircularProgress">
                                 <rect key="frame" x="10" y="122" width="300" height="300"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOo-Eg-cAX">
-                                        <rect key="frame" x="115" y="109" width="72" height="84"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOo-Eg-cAX">
+                                        <rect key="frame" x="97" y="96" width="107" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifv-pb-aUp" userLabel="Miles Number Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="58"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="107" height="86"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="72"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKY-Mm-jza" userLabel="Miles Label">
-                                                <rect key="frame" x="0.0" y="58" width="72" height="26"/>
+                                                <rect key="frame" x="0.0" y="82" width="107" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -787,7 +787,7 @@
                                             <constraint firstItem="YKY-Mm-jza" firstAttribute="leading" secondItem="EOo-Eg-cAX" secondAttribute="leading" id="DqF-yJ-4xX"/>
                                             <constraint firstAttribute="trailing" secondItem="YKY-Mm-jza" secondAttribute="trailing" id="ImN-S7-Kvq"/>
                                             <constraint firstAttribute="bottom" secondItem="YKY-Mm-jza" secondAttribute="bottom" id="e1m-jB-buq"/>
-                                            <constraint firstItem="YKY-Mm-jza" firstAttribute="top" secondItem="Ifv-pb-aUp" secondAttribute="bottom" id="nig-uA-IJT"/>
+                                            <constraint firstItem="YKY-Mm-jza" firstAttribute="top" secondItem="Ifv-pb-aUp" secondAttribute="bottom" constant="-4" id="nig-uA-IJT"/>
                                             <constraint firstItem="Ifv-pb-aUp" firstAttribute="leading" secondItem="EOo-Eg-cAX" secondAttribute="leading" id="z6a-Au-Q2d"/>
                                         </constraints>
                                     </view>
@@ -826,6 +826,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
                                         <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                        <color key="value" red="0.83921568627450982" green="0.82745098039215681" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>

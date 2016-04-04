@@ -40,15 +40,7 @@ class PoolViewController: ViewController {
         if(screenSize.height == 480.0) { //iPhone 4S
             self.circularProgressCenterYConstraint.constant = 0
         }
-//        self.scrollView.delegate = self
-//        
-//        self.openPoolsTableView.delegate = self
-//        self.openPoolsTableView.dataSource = self
-//        
-//        self.closedPoolsTableView.delegate = self
-//        self.closedPoolsTableView.dataSource = self
-//        
-//        self.getPools()
+
     }
     
     // MARK: - Functions
