@@ -30,7 +30,8 @@ class MenuContentViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.df_setBackgroundColor(UIColor.clearColor())
+        clearNavigationBarcolor()
+        
         //        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //        self.navigationController?.navigationBar.titleTextAttributes = [
         //            NSForegroundColorAttributeName: UIColor.whiteColor()

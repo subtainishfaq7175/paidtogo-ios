@@ -20,6 +20,9 @@ class PoolViewController: ViewController {
     // MARK: - Variables and Constants
     
     var type: Pools?
+    
+    // MARK: -  Super
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

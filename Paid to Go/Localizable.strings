@@ -49,6 +49,14 @@
 "pools_go"              = "GO!!"   ;
 "pools_national"        = "National";
 
+
+// -----------------------------------------
+// - General Action strings
+// -----------------------------------------
+
+"action_share"    = "Share"        ;
+"action_home"     = "Back To Home" ;
+
 // -----------------------------------------
 // - Walk/Run strings
 // -----------------------------------------

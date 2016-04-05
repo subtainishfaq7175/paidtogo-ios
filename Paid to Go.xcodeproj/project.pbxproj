@@ -51,6 +51,7 @@
 		52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */; };
 		52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E0E91CA326FC000ED657 /* StatsViewController.swift */; };
 		52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B982321CB2C42300706DCC /* PoolViewController.swift */; };
+		52B982351CB3146100706DCC /* WellDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B982341CB3146100706DCC /* WellDoneViewController.swift */; };
 		52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */; };
 		52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */; };
 		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
@@ -105,6 +106,7 @@
 		52B3E0E71CA326E7000ED657 /* LeaderboardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsViewController.swift; sourceTree = "<group>"; };
 		52B3E0E91CA326FC000ED657 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		52B982321CB2C42300706DCC /* PoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolViewController.swift; sourceTree = "<group>"; };
+		52B982341CB3146100706DCC /* WellDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WellDoneViewController.swift; sourceTree = "<group>"; };
 		52D5B10F1CAD779A00E0BCE1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
 				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
 				52B982321CB2C42300706DCC /* PoolViewController.swift */,
+				52B982341CB3146100706DCC /* WellDoneViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
 				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
+				52B982351CB3146100706DCC /* WellDoneViewController.swift in Sources */,
 				524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */,
 				52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
