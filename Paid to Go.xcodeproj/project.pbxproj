@@ -18,6 +18,7 @@
 		52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */; };
 		52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */; };
 		52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52258C131C9AF10000E3DAC7 /* HomeViewController.swift */; };
+		522594FE1CB6EBE1002396A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522594FD1CB6EBE1002396A4 /* ShareViewController.swift */; };
 		5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */; };
 		5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5234D6FB1C9C41EE00910765 /* MenuItems.plist */; };
 		5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234D6FF1C9C465E00910765 /* MenuViewController.swift */; };
@@ -71,6 +72,7 @@
 		52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		52258C111C9AF04F00E3DAC7 /* StoryboardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardRouter.swift; sourceTree = "<group>"; };
 		52258C131C9AF10000E3DAC7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		522594FD1CB6EBE1002396A4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		5234D6F91C9C343400910765 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5234D6FB1C9C41EE00910765 /* MenuItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuItems.plist; sourceTree = "<group>"; };
 		5234D6FF1C9C465E00910765 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
 				52B982321CB2C42300706DCC /* PoolViewController.swift */,
 				52B982341CB3146100706DCC /* WellDoneViewController.swift */,
+				522594FD1CB6EBE1002396A4 /* ShareViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
+				522594FE1CB6EBE1002396A4 /* ShareViewController.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,

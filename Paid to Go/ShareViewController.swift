@@ -1,14 +1,14 @@
 //
-//  WellDoneViewController.swift
+//  ShareViewController.swift
 //  Paid to Go
 //
-//  Created by Germán Campagno on 4/4/16.
+//  Created by MacbookPro on 7/4/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
 import UIKit
 
-class WellDoneViewController: ViewController {
+class ShareViewController: ViewController {
     
     // MARK: - Outlets
     
@@ -18,7 +18,8 @@ class WellDoneViewController: ViewController {
     
     var type: Pools?
     
-    // MARK: -  Super
+    
+    // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,43 +36,30 @@ class WellDoneViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "shareSegue":
-            let shareViewController = segue.destinationViewController as! ShareViewController
-            shareViewController.type = self.type!
-            break
-        default:
-            break
-        }
-        
-        
-    }
+
     
     // MARK: - Functions
     
     private func initLayout() {
         setNavigationBarVisible(true)
-        clearNavigationBarcolor()
-        self.title = "menu_home".localize()
+//        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         setPoolColor(backgroundColorView, type: type!)
         
+    
     }
     
     
     private func initViews() {
+//        goImageView.roundWholeView()
     }
+
+    
+    
     
     // MARK: - Actions
+
     
-    
-    @IBAction func backToHome(sender: AnyObject) {
-        self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
     
 }

@@ -89,25 +89,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
-        switch type! {
-        case .Walk: self.title = "walk_title".localize()
-            backgroundColorView.backgroundColor = CustomColors.walkRunColor()
-            break
-        case .Bike:
-            self.title = "bike_title".localize()
-            backgroundColorView.backgroundColor = CustomColors.bikeColor()
-            break
-        case .Train:
-            self.title = "train_title".localize()
-            backgroundColorView.backgroundColor = CustomColors.busTrainColor()
-            break
-        case .Car:
-            self.title = "car_title".localize()
-            backgroundColorView.backgroundColor = CustomColors.carColor()
-            break
-        default:
-            break
-        }
+    
+        
+        setPoolColorAndTitle(backgroundColorView, type: type!)
+
         
         setIndicatorOnLeft()
     }

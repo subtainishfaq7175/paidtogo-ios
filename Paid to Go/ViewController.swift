@@ -81,14 +81,52 @@ class ViewController: UIViewController {
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
         
-    
+        
     }
     
+    func setPoolColor(view: UIView, type: Pools) {
+        switch type {
+        case .Walk:
+            view.backgroundColor = CustomColors.walkRunColor()
+            break
+        case .Bike:
+            view.backgroundColor = CustomColors.bikeColor()
+            break
+        case .Train:
+            view.backgroundColor = CustomColors.busTrainColor()
+            break
+        case .Car:
+            view.backgroundColor = CustomColors.carColor()
+            break
+        default:
+            break
+        }
+        
+    }
     
-    
-    
-    
-    
+    func setPoolColorAndTitle(view: UIView, type: Pools) {
+        switch type {
+        case .Walk:
+            self.title = "walk_title".localize()
+            view.backgroundColor = CustomColors.walkRunColor()
+            break
+        case .Bike:
+            self.title = "bike_title".localize()
+            view.backgroundColor = CustomColors.bikeColor()
+            break
+        case .Train:
+            self.title = "train_title".localize()
+            view.backgroundColor = CustomColors.busTrainColor()
+            break
+        case .Car:
+            self.title = "car_title".localize()
+            view.backgroundColor = CustomColors.carColor()
+            break
+        default:
+            break
+        }
+        
+    }
     
     
 }
