@@ -22,7 +22,7 @@ class PoolViewController: ViewController {
     var type: Pools?
     
     // MARK: -  Super
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -43,7 +43,21 @@ class PoolViewController: ViewController {
         if(screenSize.height == 480.0) { //iPhone 4S
             self.circularProgressCenterYConstraint.constant = 0
         }
-
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        switch segue.identifier! {
+        case "wellDoneSegue":
+            let wellDoneNavigationController = segue.destinationViewController as! UINavigationController
+            let wellDoneViewController = wellDoneNavigationController.viewControllers.first as! WellDoneViewController
+            
+            wellDoneViewController.type = self.type
+            break
+        default:
+            break
+        }
     }
     
     // MARK: - Functions
@@ -73,5 +87,5 @@ class PoolViewController: ViewController {
     private func initViews() {
         finishButtonView.round()
     }
-
+    
 }

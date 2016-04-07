@@ -31,6 +31,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var openPoolsTableView: UITableView!
     @IBOutlet weak var closedPoolsTableView: UITableView!
     
+    @IBOutlet weak var backgroundColorView: UIView!
+    
     // MARK: - Variables and Constants
     
     var type: Pools?
@@ -89,15 +91,19 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         switch type! {
         case .Walk: self.title = "walk_title".localize()
+            backgroundColorView.backgroundColor = CustomColors.walkRunColor()
             break
         case .Bike:
             self.title = "bike_title".localize()
+            backgroundColorView.backgroundColor = CustomColors.bikeColor()
             break
         case .Train:
             self.title = "train_title".localize()
+            backgroundColorView.backgroundColor = CustomColors.busTrainColor()
             break
         case .Car:
             self.title = "car_title".localize()
+            backgroundColorView.backgroundColor = CustomColors.carColor()
             break
         default:
             break

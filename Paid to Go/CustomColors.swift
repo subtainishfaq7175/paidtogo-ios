@@ -21,6 +21,38 @@ class CustomColors {
         return UIColor(rgba: "#454544")
     }
     
+    private static func orangeColor() -> UIColor {
+        return UIColor(rgba: "#fa9221")
+    }
+    
+    private static func redColor() -> UIColor {
+        return UIColor(rgba: "#f95452")
+    }
+    
+    private static func yellowColor() -> UIColor {
+        return UIColor(rgba: "#feec10")
+    }
+    
+    private static func cyanColor() -> UIColor {
+        return UIColor(rgba: "#41dafc")
+    }
+    
+    static func walkRunColor() -> UIColor {
+        return orangeColor()
+    }
+    
+    static func bikeColor() -> UIColor {
+        return redColor()
+    }
+
+    static func busTrainColor() -> UIColor {
+        return yellowColor()
+    }
+    
+    static func carColor() -> UIColor {
+        return cyanColor()
+    }
+    
     static func creamyWhiteColor() -> UIColor {
         return UIColor(rgba: "#eae9e5")
     }
