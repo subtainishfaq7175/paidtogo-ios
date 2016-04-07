@@ -44,7 +44,7 @@ class ShareViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
 //        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        
+        self.title = "share_title".localize()
         setPoolColor(backgroundColorView, type: type!)
         
     
