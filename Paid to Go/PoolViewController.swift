@@ -66,22 +66,8 @@ class PoolViewController: ViewController {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
-        switch type! {
-        case .Walk: self.title = "walk_title".localize()
-            break
-        case .Bike:
-            self.title = "bike_title".localize()
-            break
-        case .Train:
-            self.title = "train_title".localize()
-            break
-        case .Car:
-            self.title = "car_title".localize()
-            break
-        default:
-            break
-        }
-        
+        setPoolTitle(self.type!)
+        setPoolColor(self.finishButtonView, type: self.type!)
     }
     
     private func initViews() {

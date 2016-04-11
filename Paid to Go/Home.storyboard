@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PQP-Ci-HHk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PQP-Ci-HHk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1176,16 +1176,16 @@
         <image name="bg_og_pool_walk" width="320" height="567"/>
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_well_done_train" width="319" height="433"/>
-        <image name="ic_bike" width="63" height="55"/>
-        <image name="ic_bustrain" width="71" height="42"/>
-        <image name="ic_car" width="55" height="46"/>
+        <image name="ic_bike" width="31" height="27"/>
+        <image name="ic_bustrain" width="35" height="21"/>
+        <image name="ic_car" width="27" height="23"/>
         <image name="ic_home_btn_bluegreen" width="6" height="89"/>
         <image name="ic_home_btn_greenblue" width="6" height="91"/>
         <image name="ic_home_button_left_dark" width="6" height="92"/>
         <image name="ic_home_button_right" width="7" height="12"/>
         <image name="ic_pools_btn_greenblue" width="83" height="3"/>
         <image name="ic_profile_placeholder" width="194" height="194"/>
-        <image name="ic_walkrun" width="57" height="52"/>
+        <image name="ic_walkrun" width="28" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kga-tF-poI"/>

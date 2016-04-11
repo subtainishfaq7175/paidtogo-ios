@@ -664,6 +664,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -701,6 +702,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -711,10 +713,12 @@
 			baseConfigurationReference = 7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Paid-to-Go";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
 			};
 			name = Debug;
 		};
@@ -725,8 +729,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Paid-to-Go";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
 			};
 			name = Release;
 		};

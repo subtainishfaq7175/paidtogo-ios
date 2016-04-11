@@ -140,6 +140,32 @@ class ViewController: UIViewController {
         
     }
     
+    func setPoolTitle(type: Pools) {
+        switch type {
+        case .Walk:
+            let titleImage = UIImage(named: "ic_walkrun")
+            navigationItem.titleView = UIImageView(image: titleImage)
+            
+            break
+        case .Bike:
+            let titleImage = UIImage(named: "ic_bike")
+            navigationItem.titleView = UIImageView(image: titleImage)
+            break
+        case .Train:
+            let titleImage = UIImage(named: "ic_bustrain")
+            navigationItem.titleView = UIImageView(image: titleImage)
+            break
+        case .Car:
+            let titleImage = UIImage(named: "ic_car")
+            navigationItem.titleView = UIImageView(image: titleImage)
+            break
+        default:
+            break
+        }
+        
+    }
+
+    
     
 }
 	
