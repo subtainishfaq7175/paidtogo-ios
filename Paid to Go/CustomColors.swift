@@ -18,7 +18,8 @@ class CustomColors {
     
     //Navbar tint color
     private static func grayColor() ->UIColor {
-        return UIColor(rgba: "#454544")
+       // return UIColor(rgba: "#454544")
+        return UIColor(rgba: "#333333")
     }
     
     private static func orangeColor() -> UIColor {
