@@ -22,7 +22,7 @@ class PoolViewController: ViewController {
     var type: Pools?
     
     var hasPoolStarted = false
-
+    
     
     // MARK: -  Super
     
@@ -70,7 +70,6 @@ class PoolViewController: ViewController {
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         setPoolTitle(self.type!)
-        setPoolColor(self.actionButtonView, type: self.type!)
     }
     
     private func initViews() {
@@ -84,11 +83,12 @@ class PoolViewController: ViewController {
         if !hasPoolStarted {
             hasPoolStarted = true
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
+            setPoolColor(self.actionButtonView, type: self.type!)
         } else {
             let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
             let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
             wellDoneViewController.type = self.type
-
+            
             self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
             
         }

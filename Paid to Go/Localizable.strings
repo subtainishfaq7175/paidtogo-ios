@@ -64,7 +64,9 @@
 // - Share strings
 // -----------------------------------------
 
-"share_title" = "Share" ;
+"share_title"       = "Share"       ;
+"share_attention"   = "Attention"   ;
+"share_text"        = "In order to get paid you need to share at least once a month. Our open pools rely on individual contributions from your network of family and friends to help pay for your commute! Please share on Facebook and/or Twitter and ask them to contribute what they can to reduce greenhouse gases, traffic congestion and incentivize people to take alternative forms of transportation. The more contributions we get the more people we can pay, it's that simple!" ;
 
 // -----------------------------------------
 // - Walk/Run strings
@@ -109,3 +111,9 @@
 
 "terms_label"        = "Terms and Conditions" ;
 "recover_pass_label" = "Recover Password" ;
+
+// -----------------------------------------
+// - Lorem Ipsum
+// -----------------------------------------
+
+"lorem_ipsum" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae feugiat ipsum. Aenean scelerisque ultricies ante eleifend suscipit. Mauris scelerisque elementum dui. Sed ac sapien ac elit elementum porttitor ut nec ante. Aliquam vehicula metus id odio convallis, quis faucibus turpis efficitur. Quisque pharetra, neque non sodales rhoncus, magna mauris ultrices orci, at interdum nisl felis eu mi. Integer neque est, ullamcorper eu consectetur quis, vestibulum elementum felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nibh turpis. Pellentesque gravida ultricies lacus, eget bibendum risus suscipit viverra. Sed consequat mattis mauris, et gravida magna lacinia ut." ;
