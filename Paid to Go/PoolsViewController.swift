@@ -41,8 +41,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     let cellReuseIdentifier = "poolCell"
     var lastContentOffset : CGFloat = 0
-    // MARK: - Super
     
+    
+    // MARK: - Super
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

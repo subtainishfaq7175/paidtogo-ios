@@ -56,6 +56,9 @@
 
 "action_share"    = "Share"        ;
 "action_home"     = "Back To Home" ;
+"action_start"    = "Start" ;
+"action_finish"   = "Finish" ;
+
 
 // -----------------------------------------
 // - Share strings

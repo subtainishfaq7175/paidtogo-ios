@@ -12,14 +12,17 @@ class PoolViewController: ViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var finishButton: UIButton!
-    @IBOutlet weak var finishButtonView: UIView!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButtonView: UIView!
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var circularProgressCenterYConstraint: NSLayoutConstraint!
     
     // MARK: - Variables and Constants
     
     var type: Pools?
+    
+    var hasPoolStarted = false
+
     
     // MARK: -  Super
     
@@ -67,11 +70,28 @@ class PoolViewController: ViewController {
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         setPoolTitle(self.type!)
-        setPoolColor(self.finishButtonView, type: self.type!)
+        setPoolColor(self.actionButtonView, type: self.type!)
     }
     
     private func initViews() {
-        finishButtonView.round()
+        actionButtonView.round()
+    }
+    
+    // MARK: - Actions
+    
+    
+    @IBAction func actionButtonAction(sender: AnyObject) {
+        if !hasPoolStarted {
+            hasPoolStarted = true
+            actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
+        } else {
+            let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
+            let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
+            wellDoneViewController.type = self.type
+
+            self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+            
+        }
     }
     
 }

@@ -821,14 +821,17 @@
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEU-96-ToP" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="496" width="200" height="42"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-AK-WAy" userLabel="Finish Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-AK-WAy" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Finish">
+                                        <state key="normal" title="Start">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="action_start"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="MFB-Gf-BSG" kind="presentation" identifier="wellDoneSegue" id="rav-2B-mtn"/>
+                                            <action selector="actionButtonAction:" destination="ggG-z0-JoP" eventType="touchUpInside" id="qJm-ca-Vjn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -943,9 +946,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="Te9-AK-WAy" id="mPW-sG-LPT"/>
+                        <outlet property="actionButtonView" destination="eEU-96-ToP" id="BAO-26-g1e"/>
                         <outlet property="circularProgressCenterYConstraint" destination="OSq-pq-0nH" id="lQf-1p-OHg"/>
-                        <outlet property="finishButton" destination="Te9-AK-WAy" id="Ufi-se-gX8"/>
-                        <outlet property="finishButtonView" destination="eEU-96-ToP" id="cv3-St-r0P"/>
                         <outlet property="headerTitleLabel" destination="m9I-PG-87K" id="3oH-kg-gGK"/>
                     </connections>
                 </viewController>
@@ -956,20 +959,20 @@
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
             <objects>
-                <viewController id="6ef-Tf-Qfe" customClass="WellDoneViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wellDoneViewController" id="6ef-Tf-Qfe" customClass="WellDoneViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQk-IG-GfZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Apt-eV-y4P"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uZx-pO-9na" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nk-Av-lp8" userLabel="Back To Home View">
-                                <rect key="frame" x="0.0" y="523" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="552" width="600" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGU-j3-njh" userLabel="Back To Home Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="Back To Home">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -990,11 +993,11 @@
                                     <constraint firstAttribute="bottom" secondItem="XGU-j3-njh" secondAttribute="bottom" id="aR7-qi-tV1"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-Zy-Ayt" userLabel="Share View">
-                                <rect key="frame" x="0.0" y="478" width="320" height="45"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-Zy-Ayt" userLabel="Share View">
+                                <rect key="frame" x="0.0" y="505" width="600" height="47"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-1A-RVb" userLabel="Share Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-1A-RVb" userLabel="Share Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Share">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1015,14 +1018,14 @@
                                     <constraint firstItem="wdy-1A-RVb" firstAttribute="top" secondItem="dyV-Zy-Ayt" secondAttribute="top" id="UNe-n5-bkd"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_well_done_train" translatesAutoresizingMaskIntoConstraints="NO" id="gz9-y0-6e1" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="433"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_well_done_train" translatesAutoresizingMaskIntoConstraints="NO" id="gz9-y0-6e1" userLabel="Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="457"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kh-pU-WYv" userLabel="Leaderboards View">
-                                <rect key="frame" x="0.0" y="433" width="320" height="45"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Kh-pU-WYv" userLabel="Leaderboards View">
+                                <rect key="frame" x="0.0" y="457" width="600" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-Kx-ZWr" userLabel="Leaderboards Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Leaderboards">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1040,17 +1043,17 @@
                                     <constraint firstItem="Qeq-Kx-ZWr" firstAttribute="top" secondItem="2Kh-pU-WYv" secondAttribute="top" id="hVG-YP-tdE"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8a-l4-hGe" userLabel="Color View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="433"/>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A8a-l4-hGe" userLabel="Color View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="457"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tly-nR-k3h">
-                                        <rect key="frame" x="93" y="90" width="134" height="134"/>
+                                        <rect key="frame" x="174" y="90" width="252" height="252"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tly-nR-k3h" secondAttribute="height" multiplier="1:1" id="2Mw-WI-a4K"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3X-Be-hXa">
-                                        <rect key="frame" x="42" y="240" width="237" height="58"/>
+                                        <rect key="frame" x="182" y="358" width="237" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1108,11 +1111,11 @@
                         <viewControllerLayoutGuide type="bottom" id="B5O-3I-jZ4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bbu-I6-enr" userLabel="Main VIew">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-7L-z2i" userLabel="Background Color View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1154,7 +1157,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wGv-2c-yFQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MFB-Gf-BSG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="poolDoneNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="MFB-Gf-BSG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dnW-yN-RN9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1168,7 +1171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGf-SG-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="1822"/>
+            <point key="canvasLocation" x="186" y="1822"/>
         </scene>
     </scenes>
     <resources>
