@@ -466,6 +466,7 @@
 				TargetAttributes = {
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = EUARY92ECY;
 					};
 				};
 			};
@@ -713,12 +714,13 @@
 			baseConfigurationReference = 7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -727,11 +729,13 @@
 			baseConfigurationReference = 8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c0e5855-0df7-48b7-a64e-a38a0236ef63";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
