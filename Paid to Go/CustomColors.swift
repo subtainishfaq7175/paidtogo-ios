@@ -73,7 +73,7 @@ class CustomColors {
     }
     
     static func NavbarTintColor () -> UIColor {
-        return grayColor()
+        return UIColor.blackColor()
     }
    
     
