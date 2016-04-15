@@ -44,10 +44,12 @@
 // - General Pools strings
 // -----------------------------------------
 
-"pools_title"           = "Pools"   ;
-"app_name_copyright"    = "PaidToGo®" ;
-"pools_go"              = "GO!!"   ;
-"pools_national"        = "National";
+"pools_title"               = "Pools"       ;
+"app_name_copyright"        = "PaidToGo®"   ;
+"pools_go"                  = "GO!!"        ;
+"pools_national"            = "National"    ;
+"auth_photo_camera_option"  = "Camera"      ;
+"auth_photo_library_option" = "Carrete"     ;
 
 
 // -----------------------------------------
