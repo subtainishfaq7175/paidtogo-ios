@@ -28,6 +28,10 @@ class StoryboardRouter {
         return UIStoryboard(name: "Menu", bundle: NSBundle.mainBundle())
     }
     
+    static func leaderboardsStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Leaderboards", bundle: NSBundle.mainBundle())
+    }
+    
     
     
     // MARK: - View Controllers
@@ -46,6 +50,14 @@ class StoryboardRouter {
     
     static func initialSignupViewController() -> SignupViewController {
         return mainStoryboard().instantiateViewControllerWithIdentifier("SignupViewController") as! SignupViewController
+    }
+    
+    static func initialLeaderboardsViewController() -> LeaderboardsViewController {
+        return leaderboardsStoryboard().instantiateViewControllerWithIdentifier("LeaderboardsViewController") as! LeaderboardsViewController
+    }
+    
+    static func leaderboardsMainViewController() -> UIViewController {
+        return leaderboardsStoryboard().instantiateInitialViewController()!
     }
     
         

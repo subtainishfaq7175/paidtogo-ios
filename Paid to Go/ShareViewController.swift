@@ -71,6 +71,9 @@ class ShareViewController: ViewController {
     
     // MARK: - Actions
     
+    @IBAction func finish(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     
 }

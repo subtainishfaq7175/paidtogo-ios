@@ -1,28 +1,29 @@
 //
-//  ActivityViewController.swift
+//  WDLeaderboardsViewController.swift
 //  Paid to Go
 //
-//  Created by MacbookPro on 23/3/16.
+//  Created by German Campagno on 15/4/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
 import UIKit
 
-class LeaderboardsViewController: MenuContentViewController {
+class WDLeaderboardsViewController: ViewController {
+    
     // MARK: - Outlets
     
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
+    @IBOutlet weak var backgroundColorView: UIView!
     
     // MARK: - Variables and Constants
     
-    
+    var type: Pools?
     
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-      
         setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         initLayout()
     }
@@ -40,16 +41,13 @@ class LeaderboardsViewController: MenuContentViewController {
     
     func initLayout() {
         setNavigationBarVisible(true)
-        self.title = "menu_leaderboards".localize()
+        
+        setPoolColor(backgroundColorView, type: type!)
         clearNavigationBarcolor()
-        customizeNavigationBarWithMenu()
+        self.title = "menu_leaderboards".localize()
+        
     }
     
     // MARK: - Actions
-    
-    func dismiss(sender: UIBarButtonItem){
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     
 }
