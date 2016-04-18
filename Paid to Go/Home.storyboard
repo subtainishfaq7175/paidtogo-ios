@@ -380,6 +380,116 @@
             </objects>
             <point key="canvasLocation" x="614" y="424"/>
         </scene>
+        <!--Anti Cheat View Controller-->
+        <scene sceneID="LxA-8W-dTY">
+            <objects>
+                <viewController storyboardIdentifier="AnticheatViewController" id="qEi-hY-t2X" customClass="AntiCheatViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Dj-vR-jIQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="VBk-gd-AXs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SBE-Nw-8EY" userLabel="Main View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-ZV-bwk" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                                <rect key="frame" x="10" y="122" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cZm-ZV-bwk" secondAttribute="height" multiplier="1:1" id="JLn-Ls-UOg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="0.28183092948717947" green="0.28085404438233391" blue="0.27792338906779729" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                        <real key="value" value="0.17000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-up-bbD">
+                                <rect key="frame" x="104" y="227" width="111" height="91"/>
+                                <state key="normal" image="ic_camera"/>
+                                <connections>
+                                    <action selector="takeImage:" destination="qEi-hY-t2X" eventType="touchUpInside" id="DT9-dt-xoe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="36" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
+                                <rect key="frame" x="24" y="423" width="272" height="86"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3p-kN-CtT">
+                                <rect key="frame" x="90" y="76" width="140" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2Qb-r7-lrZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="9cZ-02-q9Y"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="idV-Gb-yc1"/>
+                                    <constraint firstAttribute="width" constant="140" id="mR4-M4-zLc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.92549019610000005" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="centerY" secondItem="SBE-Nw-8EY" secondAttribute="centerY" constant="-12" id="1Gf-NU-2yD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Chg-3y-pEC" secondAttribute="trailing" constant="8" id="3fx-eG-06E"/>
+                            <constraint firstItem="VBk-gd-AXs" firstAttribute="top" secondItem="Chg-3y-pEC" secondAttribute="bottom" constant="59" id="7aT-lA-fsx"/>
+                            <constraint firstItem="K3p-kN-CtT" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="Dks-yj-xiZ"/>
+                            <constraint firstItem="K3p-kN-CtT" firstAttribute="top" secondItem="6Dj-vR-jIQ" secondAttribute="bottom" constant="12" id="GxW-iI-jhR"/>
+                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="width" secondItem="cZm-ZV-bwk" secondAttribute="height" multiplier="1:1" id="Uni-DQ-UTJ"/>
+                            <constraint firstItem="pvc-up-bbD" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="VhC-h2-MiS"/>
+                            <constraint firstItem="Chg-3y-pEC" firstAttribute="leading" secondItem="SBE-Nw-8EY" secondAttribute="leadingMargin" constant="8" id="VyE-hk-pto"/>
+                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="bmd-Mu-b9E"/>
+                            <constraint firstAttribute="trailing" secondItem="cZm-ZV-bwk" secondAttribute="trailing" constant="10" id="nbq-WE-IIH"/>
+                            <constraint firstItem="pvc-up-bbD" firstAttribute="centerY" secondItem="SBE-Nw-8EY" secondAttribute="centerY" constant="-12" id="tyq-az-Lt7"/>
+                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="leading" secondItem="SBE-Nw-8EY" secondAttribute="leading" constant="10" id="vFu-NQ-ga7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xzm-UX-k2K"/>
+                    <connections>
+                        <outlet property="subtitleLabel" destination="K3p-kN-CtT" id="fIp-tU-KbL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ixd-Jf-2tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="F25-tk-2gh">
+                    <connections>
+                        <action selector="takeImage:" destination="qEi-hY-t2X" id="C2v-sl-aEq"/>
+                        <outlet property="delegate" destination="qEi-hY-t2X" id="K9R-vq-WNE"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="280" y="1130"/>
+        </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
             <objects>
@@ -674,7 +784,6 @@
                                                         <connections>
                                                             <outlet property="poolImageView" destination="ctG-Mq-ELm" id="2kV-Zo-FKq"/>
                                                             <outlet property="titleLabel" destination="QLp-v0-KDE" id="DVQ-Be-ajG"/>
-                                                            <segue destination="ggG-z0-JoP" kind="show" identifier="closedPoolSegue" id="6Xl-SV-4zG"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -723,7 +832,6 @@
                                                         <connections>
                                                             <outlet property="poolImageView" destination="LbY-uu-04N" id="mH6-kA-jrx"/>
                                                             <outlet property="titleLabel" destination="E1D-yL-Y6U" id="eZr-u5-3ev"/>
-                                                            <segue destination="ggG-z0-JoP" kind="show" identifier="poolSegue" id="KpL-it-fil"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -801,12 +909,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="69" y="1120"/>
+            <point key="canvasLocation" x="1166" y="1120"/>
         </scene>
         <!--Pool View Controller-->
         <scene sceneID="MYQ-l0-DcP">
             <objects>
-                <viewController id="ggG-z0-JoP" customClass="PoolViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PoolViewController" id="ggG-z0-JoP" customClass="PoolViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="46N-qr-oMG"/>
                         <viewControllerLayoutGuide type="bottom" id="Bhd-9a-gUk"/>
@@ -945,6 +1053,7 @@
                             <constraint firstItem="QxM-b8-Vu4" firstAttribute="top" secondItem="w0I-Cz-jBF" secondAttribute="top" id="xnb-6G-OgH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qfA-OU-RyI"/>
                     <connections>
                         <outlet property="actionButton" destination="Te9-AK-WAy" id="mPW-sG-LPT"/>
                         <outlet property="actionButtonView" destination="eEU-96-ToP" id="BAO-26-g1e"/>
@@ -954,7 +1063,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="1120"/>
+            <point key="canvasLocation" x="2503" y="1136"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
@@ -1694,6 +1803,44 @@
             </objects>
             <point key="canvasLocation" x="186" y="1822"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Isy-Yn-vel">
+            <objects>
+                <navigationController storyboardIdentifier="AntiCheatNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KyA-Ev-gIW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tdv-lO-ix7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qEi-hY-t2X" kind="relationship" relationship="rootViewController" id="ZFP-wN-ux4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="1130"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fi8-Ko-731">
+            <objects>
+                <navigationController storyboardIdentifier="PoolNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8u1-8V-O5y" customClass="NavigationController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cmJ-PE-SI3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ggG-z0-JoP" kind="relationship" relationship="rootViewController" id="z1q-ub-4O3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Z7-cT-kL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="1136"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg_home" width="320" height="568"/>
@@ -1703,6 +1850,7 @@
         <image name="bg_well_done_train" width="319" height="433"/>
         <image name="ic_bike" width="31" height="27"/>
         <image name="ic_bustrain" width="35" height="21"/>
+        <image name="ic_camera" width="111" height="91"/>
         <image name="ic_car" width="27" height="23"/>
         <image name="ic_co" width="27" height="27"/>
         <image name="ic_earned" width="29" height="29"/>
@@ -1722,7 +1870,6 @@
         <image name="ic_walkrun" width="28" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kga-tF-poI"/>
-        <segue reference="KpL-it-fil"/>
+        <segue reference="Wwl-hI-Qlu"/>
     </inferredMetricsTieBreakers>
 </document>

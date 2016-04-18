@@ -29,6 +29,8 @@ class PoolViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+     
+        
         initLayout()
     }
     
@@ -65,10 +67,12 @@ class PoolViewController: ViewController {
     
     // MARK: - Functions
     
+
+    
     private func initLayout() {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        
+        clearNavigationBarcolor()
         setPoolTitle(self.type!)
     }
     

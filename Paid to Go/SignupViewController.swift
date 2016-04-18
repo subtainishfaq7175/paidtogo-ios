@@ -53,24 +53,31 @@ class SignupViewController: ViewController {
     
     private func validate() -> Bool {
         if emailTextField.text! == "" {
+            showAlert("Email field is empty")
             return false
         }
         if firstNameTextField.text! == "" {
+            showAlert("First name field is empty")
             return false
         }
         if lastNameTextField.text! == "" {
+            showAlert("Last Name field is empty")
             return false
         }
         if passwordTextField.text! == "" {
+            showAlert("Password field is empty")
             return false
         }
         if passwordVerificationTextField.text! == "" {
+            showAlert("Password verification field is empty")
             return false
         }
         if bioTextField.text! == "" {
+            showAlert("Biography field is empty")
             return false
         }
         if !termsSwitch.on {
+            showAlert("The terms and conditions shall be accepted")
             return false
         }
         
@@ -95,7 +102,7 @@ class SignupViewController: ViewController {
         photoActionSheet.addAction(UIAlertAction(title: "cancel".localize(), style: .Cancel, handler: nil))
         self.presentViewController(photoActionSheet, animated: true, completion: nil)
     }
-
+    
     @IBAction func signup(sender: AnyObject) {
         if(validate()) {
             presentHomeViewController()

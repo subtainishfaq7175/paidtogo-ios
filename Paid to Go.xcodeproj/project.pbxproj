@@ -58,6 +58,7 @@
 		52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */; };
 		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
 		52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */; };
+		52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E672ED1CC550380062653C /* AntiCheatViewController.swift */; };
 		C34D996C6020C73A34190709 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		52D5B1111CAD78EB00E0BCE1 /* LocalizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
+		52E672ED1CC550380062653C /* AntiCheatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatViewController.swift; sourceTree = "<group>"; };
 		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				52B982341CB3146100706DCC /* WellDoneViewController.swift */,
 				522594FD1CB6EBE1002396A4 /* ShareViewController.swift */,
 				522994EC1CC15A4400C589C6 /* WDLeaderboardsViewController.swift */,
+				52E672ED1CC550380062653C /* AntiCheatViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,
+				52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,

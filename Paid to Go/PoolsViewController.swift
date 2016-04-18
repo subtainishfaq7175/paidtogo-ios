@@ -44,7 +44,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     
     // MARK: - Super
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -70,31 +70,41 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.getPools()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let poolViewController = segue.destinationViewController as! PoolViewController
-        
-        switch segue.identifier! {
-        case "closedPoolSegue":
-        poolViewController.type = self.type
-            break
-        case "poolSegue":
-            poolViewController.type = self.type
-            break
-        default:
-            break
-        }
-    }
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //        let poolViewController = segue.destinationViewController as! PoolViewController
+    //
+    //        switch segue.identifier! {
+    //        case "closedPoolSegue":
+    //        poolViewController.type = self.type
+    //            break
+    //        case "poolSegue":
+    //            poolViewController.type = self.type
+    //            break
+    //        default:
+    //            break
+    //        }
+    //
+    //        if self.type == .Train {
+    //            presentAntiCheatNavigationController()
+    //        }
+    //    }
     
     // MARK: - Functions
+    
+    
+    private func showAntiCheatViewController() {
+        self.showViewController(StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController"), sender: nil)
+    }
+    
     
     private func initLayout() {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
-    
+        
         
         setPoolColorAndTitle(backgroundColorView, type: type!)
-
+        
         
         setIndicatorOnLeft()
     }
@@ -286,6 +296,12 @@ extension PoolsViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
+        
+        if(self.type == .Train) {
+            showAntiCheatViewController()
+        } else {
+            presentPoolViewController(self.type!)
+        }
         
         //        self.notifications[indexPath.row].read = true
         
