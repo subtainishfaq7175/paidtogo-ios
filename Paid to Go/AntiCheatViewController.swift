@@ -31,7 +31,5 @@ class AntiCheatViewController: ViewController {
     
     // MARK: - Actions
     
-    @IBAction func takeImage(sender: AnyObject) {
-        presentPoolViewController(.Train)
-          }
+    
 }

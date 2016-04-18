@@ -437,7 +437,7 @@
                                 <rect key="frame" x="104" y="227" width="111" height="91"/>
                                 <state key="normal" image="ic_camera"/>
                                 <connections>
-                                    <action selector="takeImage:" destination="qEi-hY-t2X" eventType="touchUpInside" id="DT9-dt-xoe"/>
+                                    <segue destination="Nnh-K6-6hm" kind="show" id="1hS-bE-89k"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="36" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
@@ -488,7 +488,85 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="280" y="1130"/>
+            <point key="canvasLocation" x="-247" y="1140"/>
+        </scene>
+        <!--Anti Cheat Image View Controller-->
+        <scene sceneID="vYy-1N-r8t">
+            <objects>
+                <viewController id="Nnh-K6-6hm" customClass="AntiCheatImageViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="icS-sn-JFm"/>
+                        <viewControllerLayoutGuide type="bottom" id="vMQ-cq-zda"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Az-vr-MFd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1f-Su-6Il">
+                                <rect key="frame" x="90" y="76" width="140" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="7Cm-JC-tJ3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="ntd-6t-Z3i"/>
+                                    <constraint firstAttribute="width" constant="140" id="olk-A0-EeL"/>
+                                    <constraint firstAttribute="height" constant="25" id="tls-W3-PwW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39q-KJ-QUG" userLabel="Finish Button View">
+                                <rect key="frame" x="60" y="496" width="200" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ube-vV-kQE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Let's Start">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="action_start"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionButtonAction:" destination="ggG-z0-JoP" eventType="touchUpInside" id="7As-cg-WiM"/>
+                                            <action selector="startPool:" destination="Nnh-K6-6hm" eventType="touchUpInside" id="cNG-u3-KEb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9Sd-XR-jKx"/>
+                                    <constraint firstItem="ube-vV-kQE" firstAttribute="leading" secondItem="39q-KJ-QUG" secondAttribute="leading" id="AdF-VE-K96"/>
+                                    <constraint firstAttribute="bottom" secondItem="ube-vV-kQE" secondAttribute="bottom" id="ITM-Ys-lWA"/>
+                                    <constraint firstAttribute="trailing" secondItem="ube-vV-kQE" secondAttribute="trailing" id="Zqu-pB-tWj"/>
+                                    <constraint firstItem="ube-vV-kQE" firstAttribute="top" secondItem="39q-KJ-QUG" secondAttribute="top" id="eFa-lg-QcL"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
+                                <rect key="frame" x="0.0" y="116" width="320" height="337"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.92549019610000005" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="X1f-Su-6Il" firstAttribute="centerX" secondItem="5Az-vr-MFd" secondAttribute="centerX" id="0U0-eG-WpE"/>
+                            <constraint firstItem="X1f-Su-6Il" firstAttribute="top" secondItem="icS-sn-JFm" secondAttribute="bottom" constant="12" id="DrZ-g0-as4"/>
+                            <constraint firstItem="39q-KJ-QUG" firstAttribute="height" secondItem="5Az-vr-MFd" secondAttribute="height" multiplier="0.073" id="L73-3Q-qSR"/>
+                            <constraint firstItem="D2s-GN-c2n" firstAttribute="leading" secondItem="5Az-vr-MFd" secondAttribute="leading" id="W1P-AG-Om8"/>
+                            <constraint firstItem="D2s-GN-c2n" firstAttribute="centerY" secondItem="5Az-vr-MFd" secondAttribute="centerY" id="X3A-Zh-1Wq"/>
+                            <constraint firstItem="vMQ-cq-zda" firstAttribute="top" secondItem="39q-KJ-QUG" secondAttribute="bottom" constant="30" id="Yaw-nF-5aB"/>
+                            <constraint firstAttribute="trailing" secondItem="D2s-GN-c2n" secondAttribute="trailing" id="dq8-PE-X2H"/>
+                            <constraint firstItem="39q-KJ-QUG" firstAttribute="centerX" secondItem="5Az-vr-MFd" secondAttribute="centerX" id="n0K-PT-Z7t"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="photoImageView" destination="D2s-GN-c2n" id="VGr-OO-aQp"/>
+                        <outlet property="startButtonView" destination="39q-KJ-QUG" id="u3i-RD-KoX"/>
+                        <outlet property="subtitleLabel" destination="X1f-Su-6Il" id="9xV-on-ThA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziJ-Sb-uLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213" y="1140"/>
         </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
@@ -909,7 +987,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1166" y="1120"/>
+            <point key="canvasLocation" x="614" y="1140"/>
         </scene>
         <!--Pool View Controller-->
         <scene sceneID="MYQ-l0-DcP">
@@ -1063,7 +1141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="1136"/>
+            <point key="canvasLocation" x="1043" y="1140"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
@@ -1401,7 +1479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AP-v7-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="1822"/>
+            <point key="canvasLocation" x="614" y="1790"/>
         </scene>
         <!--Leaderboards View Controller-->
         <scene sceneID="oaK-vI-cnc">
@@ -1599,7 +1677,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dr-bD-1Dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="1822"/>
+            <point key="canvasLocation" x="1043" y="1798"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="WkC-SA-byB">
@@ -1762,7 +1840,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cab-XG-6p0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="2537"/>
+            <point key="canvasLocation" x="614" y="2489"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ilQ-bL-lrC">
@@ -1801,7 +1879,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGf-SG-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186" y="1822"/>
+            <point key="canvasLocation" x="232" y="1790"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Isy-Yn-vel">
@@ -1820,7 +1898,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="1130"/>
+            <point key="canvasLocation" x="-678" y="1140"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">
@@ -1839,12 +1917,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Z7-cT-kL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="1136"/>
+            <point key="canvasLocation" x="1043" y="424"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg_home" width="320" height="568"/>
         <image name="bg_og_pool_walk" width="320" height="567"/>
+        <image name="bg_placeholder_chart" width="318" height="337"/>
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_share" width="319" height="565"/>
         <image name="bg_well_done_train" width="319" height="433"/>
