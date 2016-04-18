@@ -66,10 +66,6 @@ class LoginViewController: ViewController {
     
     // MARK: - Functions
     
-    private func presentHomeViewController(){
-        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
-    }
-    
     private func initConstraints(){
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         

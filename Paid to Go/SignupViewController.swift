@@ -18,6 +18,15 @@ class SignupViewController: ViewController {
     @IBOutlet weak var termsAndConditionsButton: UIButton!
     
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordVerificationTextField: UITextField!
+    @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var termsSwitch: UISwitch!
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(true)
@@ -42,6 +51,33 @@ class SignupViewController: ViewController {
         registerPhotoImageView.roundWholeView()
     }
     
+    private func validate() -> Bool {
+        if emailTextField.text! == "" {
+            return false
+        }
+        if firstNameTextField.text! == "" {
+            return false
+        }
+        if lastNameTextField.text! == "" {
+            return false
+        }
+        if passwordTextField.text! == "" {
+            return false
+        }
+        if passwordVerificationTextField.text! == "" {
+            return false
+        }
+        if bioTextField.text! == "" {
+            return false
+        }
+        if !termsSwitch.on {
+            return false
+        }
+        
+        
+        return true
+    }
+    
     
     // MARK: - Selectors
     @IBAction func photoTapAction(sender: AnyObject) {
@@ -58,6 +94,12 @@ class SignupViewController: ViewController {
         }))
         photoActionSheet.addAction(UIAlertAction(title: "cancel".localize(), style: .Cancel, handler: nil))
         self.presentViewController(photoActionSheet, animated: true, completion: nil)
+    }
+
+    @IBAction func signup(sender: AnyObject) {
+        if(validate()) {
+            presentHomeViewController()
+        }
     }
 }
 

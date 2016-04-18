@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XOF-2P-5xX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XOF-2P-5xX">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -508,6 +508,9 @@ Email Line View</string>
                                                         <state key="normal" title="Sign Up">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="signup:" destination="TPs-cv-zMZ" eventType="touchUpInside" id="rE8-Pq-V56"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -632,11 +635,17 @@ Email Line View</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImageView" destination="sqK-Aj-pMv" id="4RK-W3-f4C"/>
+                        <outlet property="bioTextField" destination="5ZV-JR-1XN" id="bx7-mU-hZA"/>
+                        <outlet property="emailTextField" destination="FaN-2u-1ZV" id="yFm-Bo-nei"/>
+                        <outlet property="firstNameTextField" destination="tV8-ms-2at" id="vMq-V5-7uP"/>
+                        <outlet property="lastNameTextField" destination="20I-jD-GjQ" id="vCh-uU-ekV"/>
+                        <outlet property="passwordTextField" destination="vEa-CL-8AK" id="1FB-aL-6lg"/>
+                        <outlet property="passwordVerificationTextField" destination="q0T-bH-djN" id="5ZZ-Rl-cXE"/>
                         <outlet property="registerPhotoImageView" destination="uC9-Sn-3Dd" id="lIl-ph-bfS"/>
                         <outlet property="signupButton" destination="AJp-nq-3ZX" id="Rat-ew-CAW"/>
                         <outlet property="signupButtonViewContainer" destination="Gb6-ZQ-eYV" id="tSN-qY-KF1"/>
                         <outlet property="termsAndConditionsButton" destination="Eck-eA-07q" id="PCc-wa-ulM"/>
-                        <outlet property="termsAndConditionsSwitch" destination="CBN-lm-X6Y" id="6Qh-57-1rU"/>
+                        <outlet property="termsSwitch" destination="CBN-lm-X6Y" id="V06-Id-MQm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX0-KP-hUF" userLabel="First Responder" sceneMemberID="firstResponder"/>

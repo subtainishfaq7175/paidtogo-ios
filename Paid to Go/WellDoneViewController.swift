@@ -71,20 +71,20 @@ class WellDoneViewController: ViewController {
     
     // MARK: - Actions
     
-//    @IBAction func showLeaderboards(sender: AnyObject) {
-//        //        let leaderboardsViewController = leaderboardsNavigationController.viewControllers[0] as! LeaderboardsViewController
-//        //        let leaderboardsViewController = StoryboardRouter.leaderboardsMainViewController()
-//        
-//        let leaderboardsViewController = StoryboardRouter.leaderboardsStoryboard().instantiateViewControllerWithIdentifier("leaderboardsViewController") as! LeaderboardsViewController
-//        leaderboardsViewController.calledFromMenu = false
-//
-//        self.presentViewController(leaderboardsViewController, animated: true, completion: nil)
-//
-//    }
+    //    @IBAction func showLeaderboards(sender: AnyObject) {
+    //        //        let leaderboardsViewController = leaderboardsNavigationController.viewControllers[0] as! LeaderboardsViewController
+    //        //        let leaderboardsViewController = StoryboardRouter.leaderboardsMainViewController()
+    //
+    //        let leaderboardsViewController = StoryboardRouter.leaderboardsStoryboard().instantiateViewControllerWithIdentifier("leaderboardsViewController") as! LeaderboardsViewController
+    //        leaderboardsViewController.calledFromMenu = false
+    //
+    //        self.presentViewController(leaderboardsViewController, animated: true, completion: nil)
+    //
+    //    }
     
     @IBAction func backToHome(sender: AnyObject) {
-        self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-        
+        //logout()
+        presentHomeViewController()
     }
     
 }
