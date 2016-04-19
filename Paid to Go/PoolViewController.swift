@@ -74,14 +74,25 @@ class PoolViewController: ViewController {
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         clearNavigationBarcolor()
         setPoolTitle(self.type!)
+        
+        if self.type == .Walk {
+            let switchImage = UIImage(named: "ic_pool_switch")
+            
+            let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: "switchBetweenPools:")
+            self.navigationItem.rightBarButtonItem = rightButtonItem
+        }
     }
     
     private func initViews() {
         actionButtonView.round()
     }
     
+   
     // MARK: - Actions
     
+    @IBAction func switchBetweenPools(sender: AnyObject) {
+        
+    }
     
     @IBAction func actionButtonAction(sender: AnyObject) {
         if !hasPoolStarted {

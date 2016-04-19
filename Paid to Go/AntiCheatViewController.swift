@@ -16,7 +16,7 @@ class AntiCheatViewController: ViewController {
     // MARK: - Variables
     
     var imagePickerController: UIImagePickerController!
-
+    
     
     // MARK: - Super
     
@@ -30,30 +30,34 @@ class AntiCheatViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
         setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-//        clearNavigationBarcolor()
+        //        clearNavigationBarcolor()
         setPoolTitle(.Train)
     }
     
     // MARK: - Actions
     
     @IBAction func takePicture(sender: AnyObject) {
-        let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
-            action in
-            
-            self.takePhotoFromCamera()
-        }))
         if(Platform.isSimulator) {
-        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .Default, handler: {
-            action in
             
-            self.takePhotoFromGallery()
-        }))
+            let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
+                action in
+                
+                self.takePhotoFromCamera()
+            }))
+            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .Default, handler: {
+                action in
+                
+                self.takePhotoFromGallery()
+            }))
+            
+            photoActionSheet.addAction(UIAlertAction(title: "action_cancel".localize(), style: .Cancel, handler: nil))
+            self.presentViewController(photoActionSheet, animated: true, completion: nil)
+        } else {
+            self.takePhotoFromCamera()
         }
-        photoActionSheet.addAction(UIAlertAction(title: "action_cancel".localize(), style: .Cancel, handler: nil))
-        self.presentViewController(photoActionSheet, animated: true, completion: nil)
     }
-
+    
     
     
     

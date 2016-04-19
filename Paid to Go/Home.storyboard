@@ -488,7 +488,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-247" y="1140"/>
+            <point key="canvasLocation" x="-195" y="1140"/>
         </scene>
         <!--Anti Cheat Image View Controller-->
         <scene sceneID="vYy-1N-r8t">
@@ -541,7 +541,7 @@
                                     <constraint firstItem="ube-vV-kQE" firstAttribute="top" secondItem="39q-KJ-QUG" secondAttribute="top" id="eFa-lg-QcL"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
                                 <rect key="frame" x="0.0" y="72" width="320" height="381"/>
                             </imageView>
                         </subviews>
@@ -567,7 +567,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziJ-Sb-uLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213" y="1140"/>
+            <point key="canvasLocation" x="232" y="1140"/>
         </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
@@ -1237,7 +1237,7 @@
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8a-l4-hGe" userLabel="Color View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="433"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tly-nR-k3h" userLabel="Profile Image View">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="tly-nR-k3h" userLabel="Profile Image View">
                                         <rect key="frame" x="93" y="76" width="134" height="134"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tly-nR-k3h" secondAttribute="height" multiplier="1:1" id="2Mw-WI-a4K"/>
@@ -1899,7 +1899,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-678" y="1140"/>
+            <point key="canvasLocation" x="-195" y="424"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">
@@ -1927,6 +1927,7 @@
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_share" width="319" height="565"/>
         <image name="bg_well_done_train" width="319" height="433"/>
+        <image name="dummy_profile" width="112" height="112"/>
         <image name="ic_bike" width="31" height="27"/>
         <image name="ic_bustrain" width="35" height="21"/>
         <image name="ic_camera" width="111" height="91"/>
@@ -1940,7 +1941,6 @@
         <image name="ic_home_button_right" width="7" height="12"/>
         <image name="ic_miles" width="28" height="23"/>
         <image name="ic_pools_btn_greenblue" width="83" height="3"/>
-        <image name="ic_profile_placeholder" width="194" height="194"/>
         <image name="ic_share_facebook" width="81" height="81"/>
         <image name="ic_share_instagram" width="81" height="81"/>
         <image name="ic_share_mail" width="81" height="81"/>
