@@ -8,12 +8,7 @@
 
 import UIKit
 
-enum Pools {
-    case Walk
-    case Bike
-    case Train
-    case Car
-}
+
 
 class HomeViewController: MenuContentViewController {
     

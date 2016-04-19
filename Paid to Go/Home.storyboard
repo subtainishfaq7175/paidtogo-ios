@@ -1018,7 +1018,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="action_start"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="actionButtonAction:" destination="ggG-z0-JoP" eventType="touchUpInside" id="qJm-ca-Vjn"/>
+                                            <action selector="track:" destination="ggG-z0-JoP" eventType="touchUpInside" id="qgA-o1-hQc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1047,16 +1047,16 @@
                                 <rect key="frame" x="10" y="122" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOo-Eg-cAX">
-                                        <rect key="frame" x="97" y="96" width="107" height="108"/>
+                                        <rect key="frame" x="125" y="96" width="50" height="108"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifv-pb-aUp" userLabel="Miles Number Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="107" height="86"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifv-pb-aUp" userLabel="Miles Number Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="86"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="72"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKY-Mm-jza" userLabel="Miles Label">
-                                                <rect key="frame" x="0.0" y="82" width="107" height="26"/>
+                                                <rect key="frame" x="0.0" y="82" width="50" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1085,7 +1085,7 @@
                                         <integer key="value" value="-90"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <integer key="value" value="330"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
@@ -1114,6 +1114,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvq-bC-vBF">
+                                <rect key="frame" x="137" y="422" width="47" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggle:" destination="ggG-z0-JoP" eventType="touchUpInside" id="Egm-nc-VYs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1127,7 +1137,10 @@
                             <constraint firstItem="kk4-hN-s7w" firstAttribute="centerY" secondItem="w0I-Cz-jBF" secondAttribute="centerY" constant="-12" id="OSq-pq-0nH"/>
                             <constraint firstItem="QxM-b8-Vu4" firstAttribute="leading" secondItem="w0I-Cz-jBF" secondAttribute="leading" id="PpI-o4-uev"/>
                             <constraint firstItem="kk4-hN-s7w" firstAttribute="leading" secondItem="w0I-Cz-jBF" secondAttribute="leading" constant="10" id="eDu-xj-kBm"/>
+                            <constraint firstItem="Uvq-bC-vBF" firstAttribute="top" secondItem="kk4-hN-s7w" secondAttribute="bottom" id="gNr-hK-5fD"/>
                             <constraint firstItem="Bhd-9a-gUk" firstAttribute="top" secondItem="QxM-b8-Vu4" secondAttribute="bottom" id="huL-kc-pfF"/>
+                            <constraint firstItem="Uvq-bC-vBF" firstAttribute="centerX" secondItem="w0I-Cz-jBF" secondAttribute="centerX" id="mj8-or-vje"/>
+                            <constraint firstItem="eEU-96-ToP" firstAttribute="top" secondItem="Uvq-bC-vBF" secondAttribute="bottom" id="sYL-a2-33u"/>
                             <constraint firstItem="eEU-96-ToP" firstAttribute="height" secondItem="w0I-Cz-jBF" secondAttribute="height" multiplier="0.073" id="wkR-HD-MbG"/>
                             <constraint firstItem="QxM-b8-Vu4" firstAttribute="top" secondItem="w0I-Cz-jBF" secondAttribute="top" id="xnb-6G-OgH"/>
                         </constraints>
@@ -1137,7 +1150,10 @@
                         <outlet property="actionButton" destination="Te9-AK-WAy" id="mPW-sG-LPT"/>
                         <outlet property="actionButtonView" destination="eEU-96-ToP" id="BAO-26-g1e"/>
                         <outlet property="circularProgressCenterYConstraint" destination="OSq-pq-0nH" id="lQf-1p-OHg"/>
+                        <outlet property="circularProgressView" destination="kk4-hN-s7w" id="i5b-TS-Z4v"/>
                         <outlet property="headerTitleLabel" destination="m9I-PG-87K" id="3oH-kg-gGK"/>
+                        <outlet property="pauseButton" destination="Uvq-bC-vBF" id="hxS-TT-4Fs"/>
+                        <outlet property="progressLabel" destination="Ifv-pb-aUp" id="zfb-qE-7gf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>

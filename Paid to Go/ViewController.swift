@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         
     }
     
-    func setPoolColor(view: UIView, type: Pools) {
+    func setPoolColor(view: UIView, type: PoolType) {
         switch type {
         case .Walk:
             view.backgroundColor = CustomColors.walkRunColor()
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         
     }
     
-    func setPoolColorAndTitle(view: UIView, type: Pools) {
+    func setPoolColorAndTitle(view: UIView, type: PoolType) {
         
         switch type {
         case .Walk:
@@ -143,7 +143,7 @@ class ViewController: UIViewController {
         
     }
     
-    func setPoolTitle(type: Pools) {
+    func setPoolTitle(type: PoolType) {
         switch type {
         case .Walk:
             let titleImage = UIImage(named: "ic_walkrun")
@@ -176,7 +176,7 @@ class ViewController: UIViewController {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
     }
     
-    func presentPoolViewController(type: Pools) {
+    func presentPoolViewController(type: PoolType) {
         if let poolNavigationController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolNavigationController") as? UINavigationController {
             if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
                 poolViewController.type = type

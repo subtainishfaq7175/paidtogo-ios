@@ -19,7 +19,7 @@ class ShareViewController: ViewController {
     
     // MARK: - Variables and Constants
     
-    var type: Pools?
+    var type: PoolType?
     
     
     // MARK: - Super

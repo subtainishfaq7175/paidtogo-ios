@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import KDCircularProgress
+import Foundation
 
 class PoolViewController: ViewController {
     
@@ -16,21 +18,23 @@ class PoolViewController: ViewController {
     @IBOutlet weak var actionButtonView: UIView!
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var circularProgressCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var circularProgressView: KDCircularProgress!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var pauseButton: UIButton!
     
     // MARK: - Variables and Constants
     
-    var type: Pools?
-    
+    var type: PoolType?
     var hasPoolStarted = false
+    var isTimerTracking: Bool = false
+    var timer = NSTimer()
+    var trackNumber = 0
     
     
     // MARK: -  Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-     
-        
         initLayout()
     }
     
@@ -67,38 +71,71 @@ class PoolViewController: ViewController {
     
     // MARK: - Functions
     
-
+    
     
     private func initLayout() {
+        pauseButton.hidden = true
+
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         clearNavigationBarcolor()
         setPoolTitle(self.type!)
         
-        if self.type == .Walk {
-            let switchImage = UIImage(named: "ic_pool_switch")
-            
-            let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: "switchBetweenPools:")
-            self.navigationItem.rightBarButtonItem = rightButtonItem
-        }
+        let switchImage = UIImage(named: "ic_pool_switch")
+        
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: "switchBetweenPools:")
+        self.navigationItem.rightBarButtonItem = rightButtonItem
     }
     
     private func initViews() {
         actionButtonView.round()
     }
     
-   
+    
+    func startTracking() {
+        //        circularProgressView.animateFromAngle(0, toAngle: 360, duration: 10, relativeDuration: true, completion: nil)
+        trackNumber = trackNumber + 1
+        circularProgressView.angle = trackNumber * 360 / 100
+        progressLabel.text = "\(trackNumber )"
+        
+        if trackNumber == 100{
+            timer.invalidate()
+        }
+        isTimerTracking = true
+        
+    }
+    
+    
     // MARK: - Actions
+    
+    @IBAction func toggle(sender: AnyObject) {
+        if isTimerTracking {
+            isTimerTracking = false
+            timer.invalidate()
+            pauseButton.setTitle("Resume", forState: UIControlState.Normal)
+        } else {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(startTracking), userInfo: nil, repeats: true)
+            timer.fire()
+            isTimerTracking = true
+            pauseButton.setTitle("Pause", forState: UIControlState.Normal)
+   }
+        
+    }
     
     @IBAction func switchBetweenPools(sender: AnyObject) {
         
     }
     
-    @IBAction func actionButtonAction(sender: AnyObject) {
+    @IBAction func track(sender: AnyObject) {
         if !hasPoolStarted {
             hasPoolStarted = true
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
             setPoolColor(self.actionButtonView, type: self.type!)
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(startTracking), userInfo: nil, repeats: true)
+            timer.fire()
+            pauseButton.hidden = false
+            
         } else {
             let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
             let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController

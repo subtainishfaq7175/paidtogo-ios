@@ -41,15 +41,15 @@ target 'Paid to Go' do
     
     # KYCircularProgress
     # https://github.com/kentya6/KYCircularProgress
-    # pod 'KYCircularProgress'
-    
+#     pod 'KYCircularProgress'
+
     # KDCircularProgress
     # https://github.com/kaandedeoglu/KDCircularProgress
     pod 'KDCircularProgress'
     
     # Charts: Beautiful charts for iOS/tvOS/OSX!
     # https://github.com/danielgindi/Charts
-    pod 'Charts'
+#    pod 'Charts'
 
     
 end
