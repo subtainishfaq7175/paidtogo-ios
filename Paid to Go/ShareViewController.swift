@@ -51,10 +51,10 @@ class ShareViewController: ViewController {
         setPoolColor(backgroundColorView, type: type!)
         
         
-        if DeviceType.IS_IPHONE_4_OR_LESS { // Device is iPhone 4s, 3.5 inches
+        if Platform.DeviceType.IS_IPHONE_4_OR_LESS { // Device is iPhone 4s, 3.5 inches
             shareTextLabel.font = shareTextLabel.font.fontWithSize(12.0)
         }
-        if DeviceType.IS_IPHONE_6_OR_GREATER {
+        if Platform.DeviceType.IS_IPHONE_6_OR_GREATER {
 //            shareTextLabelBottomConstraint.constant = 36
             shareTextLabel.font = shareTextLabel.font.fontWithSize(16.0)
         }

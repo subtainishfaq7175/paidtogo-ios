@@ -13,6 +13,11 @@ class AntiCheatViewController: ViewController {
     // MARK: - Outlets
     @IBOutlet weak var subtitleLabel: UILabel!
     
+    // MARK: - Variables
+    
+    var imagePickerController: UIImagePickerController!
+
+    
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
@@ -31,5 +36,69 @@ class AntiCheatViewController: ViewController {
     
     // MARK: - Actions
     
+    @IBAction func takePicture(sender: AnyObject) {
+        let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
+            action in
+            
+            self.takePhotoFromCamera()
+        }))
+        if(Platform.isSimulator) {
+        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .Default, handler: {
+            action in
+            
+            self.takePhotoFromGallery()
+        }))
+        }
+        photoActionSheet.addAction(UIAlertAction(title: "action_cancel".localize(), style: .Cancel, handler: nil))
+        self.presentViewController(photoActionSheet, animated: true, completion: nil)
+    }
+
+    
+    
+    
+}
+
+extension AntiCheatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let antiCheatImageViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AntiCheatImageViewController") as? AntiCheatImageViewController {
+            antiCheatImageViewController.image = image
+            self.showViewController(antiCheatImageViewController, sender: nil)
+        }
+        
+    }
+    
+    func takePhotoFromCamera() {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
+            
+            let picker = UIImagePickerController();
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceType.Camera;
+            picker.allowsEditing = true;
+            
+            self.presentViewController(picker, animated: true, completion: nil);
+        }
+    }
+    
+    // DELETE
+    func takePhotoFromGallery (){
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)) {
+            
+            let picker = UIImagePickerController();
+            picker.delegate = self;
+            
+            picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            picker.allowsEditing = true;
+            
+            self.presentViewController(picker, animated: true, completion: nil);
+        }
+    }
     
 }

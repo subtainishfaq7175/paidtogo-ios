@@ -56,10 +56,11 @@
 // - General Action strings
 // -----------------------------------------
 
-"action_share"    = "Share"        ;
-"action_home"     = "Back To Home" ;
-"action_start"    = "Start" ;
-"action_finish"   = "Finish" ;
+"action_share"    = "Share"         ;
+"action_home"     = "Back To Home"  ;
+"action_start"    = "Start"         ;
+"action_finish"   = "Finish"        ;
+"action_cancel"   = "Cancel"        ;
 
 
 // -----------------------------------------

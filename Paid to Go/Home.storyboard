@@ -437,7 +437,7 @@
                                 <rect key="frame" x="104" y="227" width="111" height="91"/>
                                 <state key="normal" image="ic_camera"/>
                                 <connections>
-                                    <segue destination="Nnh-K6-6hm" kind="show" id="1hS-bE-89k"/>
+                                    <action selector="takePicture:" destination="qEi-hY-t2X" eventType="touchUpInside" id="E4I-ON-OfC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="36" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
@@ -493,7 +493,7 @@
         <!--Anti Cheat Image View Controller-->
         <scene sceneID="vYy-1N-r8t">
             <objects>
-                <viewController id="Nnh-K6-6hm" customClass="AntiCheatImageViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AntiCheatImageViewController" id="Nnh-K6-6hm" customClass="AntiCheatImageViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="icS-sn-JFm"/>
                         <viewControllerLayoutGuide type="bottom" id="vMQ-cq-zda"/>
@@ -503,7 +503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1f-Su-6Il">
-                                <rect key="frame" x="90" y="76" width="140" height="25"/>
+                                <rect key="frame" x="90" y="32" width="140" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="7Cm-JC-tJ3"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="ntd-6t-Z3i"/>
@@ -541,8 +541,8 @@
                                     <constraint firstItem="ube-vV-kQE" firstAttribute="top" secondItem="39q-KJ-QUG" secondAttribute="top" id="eFa-lg-QcL"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
-                                <rect key="frame" x="0.0" y="116" width="320" height="337"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
+                                <rect key="frame" x="0.0" y="72" width="320" height="381"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.92549019610000005" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -551,9 +551,10 @@
                             <constraint firstItem="X1f-Su-6Il" firstAttribute="top" secondItem="icS-sn-JFm" secondAttribute="bottom" constant="12" id="DrZ-g0-as4"/>
                             <constraint firstItem="39q-KJ-QUG" firstAttribute="height" secondItem="5Az-vr-MFd" secondAttribute="height" multiplier="0.073" id="L73-3Q-qSR"/>
                             <constraint firstItem="D2s-GN-c2n" firstAttribute="leading" secondItem="5Az-vr-MFd" secondAttribute="leading" id="W1P-AG-Om8"/>
-                            <constraint firstItem="D2s-GN-c2n" firstAttribute="centerY" secondItem="5Az-vr-MFd" secondAttribute="centerY" id="X3A-Zh-1Wq"/>
                             <constraint firstItem="vMQ-cq-zda" firstAttribute="top" secondItem="39q-KJ-QUG" secondAttribute="bottom" constant="30" id="Yaw-nF-5aB"/>
                             <constraint firstAttribute="trailing" secondItem="D2s-GN-c2n" secondAttribute="trailing" id="dq8-PE-X2H"/>
+                            <constraint firstItem="ube-vV-kQE" firstAttribute="top" secondItem="D2s-GN-c2n" secondAttribute="bottom" constant="43" id="jKJ-SV-bsO"/>
+                            <constraint firstItem="D2s-GN-c2n" firstAttribute="top" secondItem="X1f-Su-6Il" secondAttribute="bottom" constant="15" id="lb0-gp-vx4"/>
                             <constraint firstItem="39q-KJ-QUG" firstAttribute="centerX" secondItem="5Az-vr-MFd" secondAttribute="centerX" id="n0K-PT-Z7t"/>
                         </constraints>
                     </view>
@@ -1923,7 +1924,6 @@
     <resources>
         <image name="bg_home" width="320" height="568"/>
         <image name="bg_og_pool_walk" width="320" height="567"/>
-        <image name="bg_placeholder_chart" width="318" height="337"/>
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_share" width="319" height="565"/>
         <image name="bg_well_done_train" width="319" height="433"/>
