@@ -37,14 +37,14 @@ class WDLeaderboardsViewController: ViewController {
     
     
     func initViews(){
-    }
+}
     
     func initLayout() {
         setNavigationBarVisible(true)
-        
+        self.title = "menu_leaderboards".localize()
+
         setPoolColor(backgroundColorView, type: type!)
         clearNavigationBarcolor()
-        self.title = "menu_leaderboards".localize()
         
     }
     

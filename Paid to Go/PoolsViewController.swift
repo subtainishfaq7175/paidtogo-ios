@@ -59,7 +59,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView.delegate = self
+        setPoolColorAndTitle(backgroundColorView, type: type!)
+ self.scrollView.delegate = self
         
         self.openPoolsTableView.delegate = self
         self.openPoolsTableView.dataSource = self
@@ -103,7 +104,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         
         
-        setPoolColorAndTitle(backgroundColorView, type: type!)
         
         
         setIndicatorOnLeft()

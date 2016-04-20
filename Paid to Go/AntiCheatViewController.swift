@@ -25,12 +25,20 @@ class AntiCheatViewController: ViewController {
         initLayout()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            initViews()
+    }
+    
     // MARK: - Functions
     
     private func initLayout() {
         setNavigationBarVisible(true)
         setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         //        clearNavigationBarcolor()
+    }
+    
+    private func initViews() {
         setPoolTitle(.Train)
     }
     

@@ -18,11 +18,16 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Super
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        customizeNavigationBarWithTitleAndMenu()
+
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(true)
-        customizeNavigationBarWithTitleAndMenu()
         
         setBorderToView(elautlet, color: CustomColors.NavbarTintColor().CGColor)
     }

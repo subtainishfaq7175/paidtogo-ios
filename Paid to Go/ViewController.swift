@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.title = "" //WARNING!! This is villero. (A bypass for the Rainbow Navigation library, this is done to center the title of the next view controller).
+        self.title = "" //WARNING!! This is villero. (A bypass for the Rainbow Navigation library, this is done to center the title of the next view controller ).
     }
     
     override func viewDidLoad() {

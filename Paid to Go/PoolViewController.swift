@@ -79,7 +79,6 @@ class PoolViewController: ViewController {
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         clearNavigationBarcolor()
-        setPoolTitle(self.type!)
         
         let switchImage = UIImage(named: "ic_pool_switch")
         
@@ -89,7 +88,8 @@ class PoolViewController: ViewController {
     
     private func initViews() {
         actionButtonView.round()
-    }
+        setPoolTitle(self.type!)
+ }
     
     
     func startTracking() {

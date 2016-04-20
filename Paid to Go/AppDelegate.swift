@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func customizeNavigationBar() {
    UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
-        UINavigationBar.appearance().tintColor = UIColor.darkGrayColor()                                                // Navigation bar buttons color
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGrayColor()]   // Navigation bar title attributes
+        UINavigationBar.appearance().tintColor = CustomColors.NavbarTintColor()                                             // Navigation bar buttons color
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : CustomColors.NavbarTintColor()]       // Navigation bar title attributes
 
     }
 

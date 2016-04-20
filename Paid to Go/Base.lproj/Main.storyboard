@@ -622,14 +622,14 @@ Email Line View</string>
                         <constraints>
                             <constraint firstItem="uC9-Sn-3Dd" firstAttribute="width" secondItem="gAT-OA-had" secondAttribute="width" multiplier="0.4" id="0Vy-4y-LkH"/>
                             <constraint firstItem="Gb6-ZQ-eYV" firstAttribute="height" secondItem="gAT-OA-had" secondAttribute="height" multiplier="0.08" id="29y-Im-pML"/>
+                            <constraint firstItem="1JS-M7-Pno" firstAttribute="top" secondItem="HjI-7v-ajs" secondAttribute="bottom" id="35B-bq-cas"/>
                             <constraint firstAttribute="trailing" secondItem="HjI-7v-ajs" secondAttribute="trailing" id="Cxu-OC-2fx"/>
-                            <constraint firstItem="1JS-M7-Pno" firstAttribute="top" secondItem="HjI-7v-ajs" secondAttribute="bottom" id="N7F-cf-6NG"/>
                             <constraint firstItem="HjI-7v-ajs" firstAttribute="leading" secondItem="gAT-OA-had" secondAttribute="leading" id="WhU-Hh-tga"/>
                             <constraint firstItem="FaN-2u-1ZV" firstAttribute="height" secondItem="gAT-OA-had" secondAttribute="height" multiplier="0.052" id="cu2-wF-aBO"/>
                             <constraint firstItem="sqK-Aj-pMv" firstAttribute="width" secondItem="gAT-OA-had" secondAttribute="width" multiplier="0.096" id="iEu-ZO-fWe"/>
                             <constraint firstItem="sqK-Aj-pMv" firstAttribute="height" secondItem="gAT-OA-had" secondAttribute="height" multiplier="0.054" id="kZC-Lq-NMr"/>
                             <constraint firstItem="h4B-uU-bdA" firstAttribute="width" secondItem="gAT-OA-had" secondAttribute="width" id="rHn-pb-68P"/>
-                            <constraint firstItem="HjI-7v-ajs" firstAttribute="top" secondItem="1Qn-oR-Azc" secondAttribute="bottom" id="yLa-ny-hTO"/>
+                            <constraint firstItem="HjI-7v-ajs" firstAttribute="top" secondItem="1Qn-oR-Azc" secondAttribute="bottom" id="uys-yl-Igi"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
