@@ -221,32 +221,35 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQX-Up-0Ro" userLabel="Scroll View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="960" height="362"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="F3e-Yk-i6X">
-                                                <rect key="frame" x="320" y="0.0" width="320" height="362"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-SL-Y3b">
-                                                <rect key="frame" x="640" y="0.0" width="320" height="362"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="UvS-mt-6HO">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuP-q5-HYL" userLabel="Incomes Chart view" customClass="LineChartView" customModule="Charts">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="362"/>
-                                            </imageView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yj-CS-NGX" userLabel="Gas Chart View" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="320" y="0.0" width="320" height="362"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaG-zL-gwh" userLabel="Carbon Chart View" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="640" y="0.0" width="320" height="362"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="UvS-mt-6HO" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="6Vo-7z-cEB"/>
-                                            <constraint firstItem="Ogk-SL-Y3b" firstAttribute="leading" secondItem="F3e-Yk-i6X" secondAttribute="trailing" id="GNC-2p-Bn9"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ogk-SL-Y3b" secondAttribute="bottom" id="L8B-tb-YkQ"/>
-                                            <constraint firstItem="UvS-mt-6HO" firstAttribute="leading" secondItem="KQX-Up-0Ro" secondAttribute="leading" id="WoZ-0s-ZoW"/>
-                                            <constraint firstItem="Ogk-SL-Y3b" firstAttribute="width" secondItem="UvS-mt-6HO" secondAttribute="width" id="a9o-wL-yCY"/>
-                                            <constraint firstItem="F3e-Yk-i6X" firstAttribute="leading" secondItem="UvS-mt-6HO" secondAttribute="trailing" id="aat-Av-vsa"/>
-                                            <constraint firstAttribute="bottom" secondItem="F3e-Yk-i6X" secondAttribute="bottom" id="bPc-5x-TQi"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ogk-SL-Y3b" secondAttribute="trailing" id="eTu-Ih-Kil"/>
-                                            <constraint firstItem="F3e-Yk-i6X" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="ffN-hC-5T3"/>
-                                            <constraint firstAttribute="bottom" secondItem="UvS-mt-6HO" secondAttribute="bottom" id="lRb-v7-vsf"/>
-                                            <constraint firstItem="Ogk-SL-Y3b" firstAttribute="height" secondItem="UvS-mt-6HO" secondAttribute="height" id="pUx-Qb-1or"/>
-                                            <constraint firstItem="Ogk-SL-Y3b" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="u4O-E8-CYj"/>
-                                            <constraint firstItem="F3e-Yk-i6X" firstAttribute="height" secondItem="UvS-mt-6HO" secondAttribute="height" id="wAC-wy-hEP"/>
-                                            <constraint firstItem="F3e-Yk-i6X" firstAttribute="width" secondItem="UvS-mt-6HO" secondAttribute="width" id="wkR-mW-f0X"/>
+                                            <constraint firstItem="3Yj-CS-NGX" firstAttribute="height" secondItem="iuP-q5-HYL" secondAttribute="height" id="0lA-90-SJD"/>
+                                            <constraint firstAttribute="trailing" secondItem="iaG-zL-gwh" secondAttribute="trailing" id="1tB-MM-mjS"/>
+                                            <constraint firstItem="iuP-q5-HYL" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="8Kb-ze-qWl"/>
+                                            <constraint firstItem="iaG-zL-gwh" firstAttribute="height" secondItem="iuP-q5-HYL" secondAttribute="height" id="Me2-xc-OVY"/>
+                                            <constraint firstItem="3Yj-CS-NGX" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="SEI-EB-hBn"/>
+                                            <constraint firstItem="iaG-zL-gwh" firstAttribute="leading" secondItem="3Yj-CS-NGX" secondAttribute="trailing" id="U2I-hM-Ta3"/>
+                                            <constraint firstItem="iaG-zL-gwh" firstAttribute="top" secondItem="KQX-Up-0Ro" secondAttribute="top" id="aaR-T8-kuS"/>
+                                            <constraint firstAttribute="bottom" secondItem="iaG-zL-gwh" secondAttribute="bottom" id="b2u-R6-sQn"/>
+                                            <constraint firstItem="3Yj-CS-NGX" firstAttribute="width" secondItem="iuP-q5-HYL" secondAttribute="width" id="gXQ-Mq-yYb"/>
+                                            <constraint firstAttribute="bottom" secondItem="3Yj-CS-NGX" secondAttribute="bottom" id="iRX-jw-cxk"/>
+                                            <constraint firstItem="3Yj-CS-NGX" firstAttribute="leading" secondItem="iuP-q5-HYL" secondAttribute="trailing" id="jqB-81-rsD"/>
+                                            <constraint firstAttribute="bottom" secondItem="iuP-q5-HYL" secondAttribute="bottom" id="mBm-Dg-RiS"/>
+                                            <constraint firstItem="iuP-q5-HYL" firstAttribute="leading" secondItem="KQX-Up-0Ro" secondAttribute="leading" id="mcW-B9-Wgu"/>
+                                            <constraint firstItem="iaG-zL-gwh" firstAttribute="width" secondItem="iuP-q5-HYL" secondAttribute="width" id="s2a-6N-zqS"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -255,7 +258,7 @@
                                     <constraint firstAttribute="bottom" secondItem="KQX-Up-0Ro" secondAttribute="bottom" id="IoY-Yb-SPb"/>
                                     <constraint firstAttribute="trailing" secondItem="KQX-Up-0Ro" secondAttribute="trailing" id="VE2-ZK-yMb"/>
                                     <constraint firstItem="KQX-Up-0Ro" firstAttribute="top" secondItem="Nkf-4r-ANC" secondAttribute="top" id="VeM-iL-LuU"/>
-                                    <constraint firstItem="UvS-mt-6HO" firstAttribute="height" secondItem="Nkf-4r-ANC" secondAttribute="height" id="kfi-K9-NnW"/>
+                                    <constraint firstItem="iuP-q5-HYL" firstAttribute="height" secondItem="Nkf-4r-ANC" secondAttribute="height" id="qVt-Td-leo"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -270,20 +273,23 @@
                             <constraint firstItem="UID-nS-5us" firstAttribute="height" secondItem="lE5-Mj-Kzo" secondAttribute="height" multiplier="0.085" id="QcP-Qv-jOU"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="height" secondItem="lE5-Mj-Kzo" secondAttribute="height" multiplier="0.1" id="SA0-oq-U0j"/>
                             <constraint firstAttribute="trailing" secondItem="Nxx-8p-ihV" secondAttribute="trailing" id="Y2d-qn-LKU"/>
+                            <constraint firstItem="iuP-q5-HYL" firstAttribute="width" secondItem="lE5-Mj-Kzo" secondAttribute="width" id="a3G-CA-C3f"/>
                             <constraint firstItem="UID-nS-5us" firstAttribute="top" secondItem="Nxx-8p-ihV" secondAttribute="bottom" id="alu-f2-MmT"/>
                             <constraint firstAttribute="trailing" secondItem="hKP-8L-0ML" secondAttribute="trailing" id="cHV-cl-FUj"/>
                             <constraint firstAttribute="trailing" secondItem="UID-nS-5us" secondAttribute="trailing" id="cxQ-ou-0I6"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="leading" secondItem="lE5-Mj-Kzo" secondAttribute="leading" id="dD1-Ao-Nkn"/>
                             <constraint firstItem="Nkf-4r-ANC" firstAttribute="top" secondItem="UID-nS-5us" secondAttribute="bottom" id="dme-Zk-WwS"/>
-                            <constraint firstItem="UvS-mt-6HO" firstAttribute="width" secondItem="lE5-Mj-Kzo" secondAttribute="width" id="mzS-fE-b9L"/>
                             <constraint firstItem="Utn-BM-m6b" firstAttribute="top" secondItem="hKP-8L-0ML" secondAttribute="bottom" id="nCh-TD-koH"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="top" secondItem="Nkf-4r-ANC" secondAttribute="bottom" id="trK-2A-haZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WWR-6h-mL8"/>
                     <connections>
+                        <outlet property="carbonChartview" destination="iaG-zL-gwh" id="3ok-Yp-dvf"/>
                         <outlet property="carbonView" destination="cip-eM-VpN" id="5sR-nh-Liv"/>
+                        <outlet property="gasChartView" destination="3Yj-CS-NGX" id="Vil-tH-ASP"/>
                         <outlet property="gasView" destination="TDi-g2-7M2" id="0ft-o5-bch"/>
+                        <outlet property="incomesChartView" destination="iuP-q5-HYL" id="Nhk-nn-Ih7"/>
                         <outlet property="incomesView" destination="arR-ph-QoV" id="ciZ-g1-BE7"/>
                         <outlet property="indicatorImageView" destination="zbx-fW-LaQ" id="6Fe-jS-1Pb"/>
                         <outlet property="indicatorLeadingConstraint" destination="bfQ-aE-VQ0" id="Oxw-2u-NhC"/>
@@ -331,7 +337,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_placeholder_chart" width="318" height="337"/>
         <image name="ic_pools_btn_greenblue" width="83" height="3"/>
     </resources>
 </document>

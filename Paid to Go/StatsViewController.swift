@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - Outlets
@@ -20,6 +21,12 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     @IBOutlet weak var carbonView: UIView!
     @IBOutlet weak var gasView: UIView!
     @IBOutlet weak var incomesView: UIView!
+    
+    
+    @IBOutlet weak var incomesChartView: LineChartView!
+    @IBOutlet weak var gasChartView: LineChartView!
+    @IBOutlet weak var carbonChartview: LineChartView!
+    
     // MARK: - Variables and Constants
     
     var lastContentOffset : CGFloat = 0
@@ -44,28 +51,69 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.scrollView.delegate = self
+        self.initCharts()
     }
     
     // MARK: - Functions
+    
+    private func initCharts() {
+        initChart(incomesChartView)
+        
+        
+    }
+    
+    private func initChart(chart: LineChartView) {
+        
+        chart.userInteractionEnabled = false
+        
+        let incomesData: LineChartData?
+        var incomesDataSets: [IChartDataSet] = [IChartDataSet]()
+        var incomesDataSet: ILineChartDataSet = LineChartDataSet()
+        var incomesEntries: [ChartDataEntry] = [ChartDataEntry]()
+        var xVals: [String] = [String]()
+        
+        incomesEntries.append(ChartDataEntry(value: 10.2, xIndex: 0))
+        incomesEntries.append(ChartDataEntry(value: 8.1, xIndex: 1))
+        incomesEntries.append(ChartDataEntry(value: 10.6, xIndex: 2))
+        incomesEntries.append(ChartDataEntry(value: 9.9, xIndex: 3))
+        incomesEntries.append(ChartDataEntry(value: 5.0, xIndex: 4))
+        
+        incomesDataSet = LineChartDataSet(yVals: incomesEntries, label: "Incomes")
+        
+        incomesDataSet.lineWidth = 3.0
+        incomesDataSet.fillAlpha = 1
+    
+        
+        incomesDataSets.append(incomesDataSet)
+        
+        
+        xVals.append("Jan")
+        xVals.append("Feb")
+        xVals.append("Mar")
+        xVals.append("Apr")
+        xVals.append("May")
+        
+        incomesData = LineChartData(xVals: xVals, dataSets: incomesDataSets)
+        
+        chart.data = incomesData
+        
+    }
     
     func initViews(){
     }
     
     private func setIndicatorOnLeft() {
         indicatorLeadingConstraint.constant = incomesView.frame.origin.x + 8
-//        indicatorWidthConstraint.constant = incomesView.frame.width / 2
         
     }
     
     private func setIndicatorOnCenter() {
         indicatorLeadingConstraint.constant = gasView.frame.origin.x + 8
-//        indicatorWidthConstraint.constant = gasView.frame.width  / 2
         
     }
     
     private func setIndicatorOnRight() {
         indicatorLeadingConstraint.constant = carbonView.frame.origin.x + 8
-//        indicatorWidthConstraint.constant = carbonView.frame.width / 2 
         
         
     }
@@ -121,10 +169,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if decelerate == false {
-            let currentPage = scrollView.currentPage
-            //            print("scrollViewDidEndDragging: \(currentPage)")
-        }
+//        if decelerate == false {
+//        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
