@@ -77,7 +77,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5R-eg-W8a">
-                                                <rect key="frame" x="94" y="236" width="132" height="15"/>
+                                                <rect key="frame" x="94" y="270" width="132" height="15"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -183,7 +183,7 @@
                                             <constraint firstItem="iIy-O0-tGq" firstAttribute="leading" secondItem="cy3-H3-MhY" secondAttribute="leading" constant="10" id="BIk-N6-Bah"/>
                                             <constraint firstItem="AGj-I0-mVP" firstAttribute="leading" secondItem="cy3-H3-MhY" secondAttribute="leading" id="BUt-jS-8Us"/>
                                             <constraint firstItem="AGj-I0-mVP" firstAttribute="top" secondItem="cy3-H3-MhY" secondAttribute="top" constant="20" id="Bap-cv-CQA"/>
-                                            <constraint firstItem="T1U-IY-v3M" firstAttribute="top" secondItem="O5R-eg-W8a" secondAttribute="bottom" constant="40" id="Bid-1Z-cEX"/>
+                                            <constraint firstItem="T1U-IY-v3M" firstAttribute="top" secondItem="O5R-eg-W8a" secondAttribute="bottom" constant="6" id="Bid-1Z-cEX"/>
                                             <constraint firstAttribute="trailing" secondItem="d7F-GG-fEq" secondAttribute="trailing" constant="10" id="Cpk-8s-WA8"/>
                                             <constraint firstItem="yKn-vL-FC5" firstAttribute="top" secondItem="d7F-GG-fEq" secondAttribute="bottom" constant="15" id="Cx9-yd-hI4"/>
                                             <constraint firstAttribute="trailing" secondItem="0oS-wY-Ycg" secondAttribute="trailing" id="I8i-kw-dM0"/>
@@ -211,7 +211,7 @@
                                             <constraint firstItem="zJf-Q2-7Ww" firstAttribute="top" secondItem="0oS-wY-Ycg" secondAttribute="bottom" id="wU8-jt-mAa"/>
                                             <constraint firstItem="6oQ-1n-x5L" firstAttribute="leading" secondItem="cy3-H3-MhY" secondAttribute="leading" constant="10" id="xkG-px-gqz"/>
                                             <constraint firstItem="MEp-RW-mxh" firstAttribute="top" secondItem="iIy-O0-tGq" secondAttribute="bottom" constant="-2" id="yr2-fN-hdb"/>
-                                            <constraint firstItem="O5R-eg-W8a" firstAttribute="top" secondItem="ps5-bi-cYW" secondAttribute="bottom" constant="6" id="zmY-EQ-nvL"/>
+                                            <constraint firstItem="O5R-eg-W8a" firstAttribute="top" secondItem="ps5-bi-cYW" secondAttribute="bottom" constant="40" id="zmY-EQ-nvL"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -228,7 +228,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.50588235294117645" green="1" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AGj-I0-mVP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.04" id="P02-Uy-X64"/>
                             <constraint firstItem="2iE-kf-O4v" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QTK-8A-OXc"/>

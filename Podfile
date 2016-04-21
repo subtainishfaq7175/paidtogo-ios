@@ -49,7 +49,7 @@ target 'Paid to Go' do
     
     # Charts: Beautiful charts for iOS/tvOS/OSX!
     # https://github.com/danielgindi/Charts
-#    pod 'Charts'
+    pod 'Charts'
 
     
 end

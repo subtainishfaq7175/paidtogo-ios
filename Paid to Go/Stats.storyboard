@@ -187,7 +187,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-Z0-1HD" userLabel="Total Earned">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$D 56.43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZ9-RJ-6ol" userLabel="Amount Label">
@@ -221,14 +221,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQX-Up-0Ro" userLabel="Scroll View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="960" height="362"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="UvS-mt-6HO">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="362"/>
-                                            </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="F3e-Yk-i6X">
                                                 <rect key="frame" x="320" y="0.0" width="320" height="362"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-SL-Y3b">
                                                 <rect key="frame" x="640" y="0.0" width="320" height="362"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_placeholder_chart" translatesAutoresizingMaskIntoConstraints="NO" id="UvS-mt-6HO">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="362"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

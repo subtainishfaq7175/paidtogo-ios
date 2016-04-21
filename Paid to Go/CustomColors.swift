@@ -69,7 +69,7 @@ class CustomColors {
     
     
     static func NavbarBackground () -> UIColor {
-        return greenColor()
+        return cyanColor()
     }
     
     static func NavbarTintColor () -> UIColor {

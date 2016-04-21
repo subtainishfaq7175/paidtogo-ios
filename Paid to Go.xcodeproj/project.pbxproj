@@ -10,6 +10,7 @@
 		5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */; };
 		5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */; };
 		5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */; };
+		521C71811CC9174900A6B4C4 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521C71801CC9174900A6B4C4 /* GraphView.swift */; };
 		52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FCE1C999F2E002DBBFA /* ViewController.swift */; };
 		52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD11C99A115002DBBFA /* NavigationController.swift */; };
 		52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52227FD51C99A331002DBBFA /* CustomColors.swift */; };
@@ -69,6 +70,7 @@
 		5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySimpleCell.swift; sourceTree = "<group>"; };
 		5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDefaultCell.swift; sourceTree = "<group>"; };
 		5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityActionCell.swift; sourceTree = "<group>"; };
+		521C71801CC9174900A6B4C4 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		52227FCE1C999F2E002DBBFA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52227FD11C99A115002DBBFA /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		52227FD51C99A331002DBBFA /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				523977D61CAF01A600C85CAF /* Cells */,
+				521C71801CC9174900A6B4C4 /* GraphView.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 			files = (
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
+				521C71811CC9174900A6B4C4 /* GraphView.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
