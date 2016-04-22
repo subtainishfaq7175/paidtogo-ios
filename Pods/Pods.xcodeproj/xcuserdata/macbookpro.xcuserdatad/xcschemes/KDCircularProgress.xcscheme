@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0FF57E5803D49917D5770A99'
+               BlueprintIdentifier = '7660BBDAAD1B49074C3E344B'
                BlueprintName = 'KDCircularProgress'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'KDCircularProgress.framework'>

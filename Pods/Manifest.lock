@@ -1,8 +1,10 @@
 PODS:
+  - Alamofire (3.3.1)
   - Charts (2.2.4):
     - Charts/Core (= 2.2.4)
   - Charts/Core (2.2.4)
   - KDCircularProgress (1.3.4)
+  - ObjectMapper (1.2.0)
   - PagingMenuController (0.8.0)
   - RainbowNavigation (1.0.0)
   - REFrostedViewController (2.4.8)
@@ -19,8 +21,10 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - Alamofire (~> 3.3)
   - Charts
   - KDCircularProgress
+  - ObjectMapper (~> 1.2)
   - PagingMenuController
   - RainbowNavigation
   - REFrostedViewController (~> 2.4)
@@ -31,8 +35,10 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0)
 
 SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   KDCircularProgress: 4b29bf9bc9a915a731b8745ede6b89a55cda95ef
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
   PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
   RainbowNavigation: f22e8fa746a5c9cee7bc8ef4a02352e2f06d34e7
   REFrostedViewController: a893b4979ba1f200c547aef9ff4c3fd5a18f5923

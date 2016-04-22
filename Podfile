@@ -51,6 +51,19 @@ target 'Paid to Go' do
     # https://github.com/danielgindi/Charts
     pod 'Charts'
 
+    # Alamofire: Elegant networking in Swift
+    # https://github.com/Alamofire/Alamofire
+    pod 'Alamofire', '~> 3.3'
     
+    # AlamofireObjectMapper: An extension to Alamofire which automatically converts JSON response data into swift objetcs using ObjectMapper.
+    # https://github.com/tristanhimmelman/AlamofireObjectMapper
+    # pod 'AlamofireObjectMapper', '~> 3.0'
+
+    #ObjectMapper: A framweork to convert model objects to and from JSON
+    #https://github.com/Hearst-DD/ObjectMapper/
+    pod 'ObjectMapper', '~> 1.2'
+
+
+
 end
 

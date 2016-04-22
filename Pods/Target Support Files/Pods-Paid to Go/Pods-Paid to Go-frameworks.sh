@@ -84,8 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Paid to Go/Alamofire.framework"
   install_framework "Pods-Paid to Go/Charts.framework"
   install_framework "Pods-Paid to Go/KDCircularProgress.framework"
+  install_framework "Pods-Paid to Go/ObjectMapper.framework"
   install_framework "Pods-Paid to Go/PagingMenuController.framework"
   install_framework "Pods-Paid to Go/REFrostedViewController.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
@@ -98,8 +100,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Paid to Go/YYWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Paid to Go/Alamofire.framework"
   install_framework "Pods-Paid to Go/Charts.framework"
   install_framework "Pods-Paid to Go/KDCircularProgress.framework"
+  install_framework "Pods-Paid to Go/ObjectMapper.framework"
   install_framework "Pods-Paid to Go/PagingMenuController.framework"
   install_framework "Pods-Paid to Go/REFrostedViewController.framework"
   install_framework "Pods-Paid to Go/RainbowNavigation.framework"
