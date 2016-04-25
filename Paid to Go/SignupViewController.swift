@@ -37,6 +37,13 @@ class SignupViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.text = "test@test.test1"
+        firstNameTextField.text = "test"
+        lastNameTextField.text = "test"
+        passwordVerificationTextField.text = "test123"
+        passwordTextField.text = "test123"
+        bioTextField.text = "test"
+        
         setNavigationBarGreen()
     }
     
@@ -72,6 +79,10 @@ class SignupViewController: ViewController {
             showAlert("Password verification field is empty")
             return false
         }
+        if passwordTextField.text != passwordVerificationTextField.text {
+            showAlert("The passwords don't match")
+            return false
+        }
         if bioTextField.text! == "" {
             showAlert("Biography field is empty")
             return false
@@ -105,7 +116,26 @@ class SignupViewController: ViewController {
     
     @IBAction func signup(sender: AnyObject) {
         if(validate()) {
-            presentHomeViewController()
+            let newUser: User   = User()
+            newUser.email      = emailTextField            .text!
+            newUser.name        =  firstNameTextField                .text!
+            newUser.lastName    = lastNameTextField     .text!
+            newUser.password    = passwordTextField         .text!
+            newUser.bio         = bioTextField          .text!
+        
+            DataProvider.sharedInstance.postRegister(newUser, completion: { (user: User?, error: String?) in
+                if let error = error where error.isEmpty == false {
+                    print(error)
+                    return
+                }
+                
+                guard let user = user else {
+                    return
+                }
+                
+                print(user.name)
+            })
+//            presentHomeViewController()
         }
     }
 }

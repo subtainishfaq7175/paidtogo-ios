@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 
 class DataProvider : DataProviderService {
@@ -28,6 +29,11 @@ class DataProvider : DataProviderService {
     
     func getClosedPools(completion: ([Pool]) -> Void) {
         DummyDataProvider.sharedInstance.getClosedPools(completion)
+    }
+    
+    func postRegister(user: User, completion: (user: User?, error: String?) -> Void) {
+        let json = Mapper().toJSON(user)
+        ConnectionManager.sharedInstance.register(json, completion: completion)
     }
     
 
