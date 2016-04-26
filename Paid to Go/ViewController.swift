@@ -9,6 +9,7 @@
 
 import UIKit
 import RainbowNavigation
+import MBProgressHUD
 
 class ViewController: UIViewController {
     
@@ -188,6 +189,20 @@ class ViewController: UIViewController {
         
     }
     
+    func showProgressHud() {
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+    }
+    
+    func showProgressHud(title: String) {
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        loadingNotification.labelText = title
+    }
+    
+    func dismissProgressHud() {
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+    }
     
 }
 	

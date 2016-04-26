@@ -59,9 +59,13 @@ target 'Paid to Go' do
     # https://github.com/tristanhimmelman/AlamofireObjectMapper
     # pod 'AlamofireObjectMapper', '~> 3.0'
 
-    #ObjectMapper: A framweork to convert model objects to and from JSON
-    #https://github.com/Hearst-DD/ObjectMapper/
+    # ObjectMapper: A framweork to convert model objects to and from JSON
+    # https://github.com/Hearst-DD/ObjectMapper/
     pod 'ObjectMapper', '~> 1.2'
+    
+    # MBProgressHud
+    # https://github.com/jdg/MBProgressHUD
+    pod 'MBProgressHUD', '~> 0.9.2'
 
 
 

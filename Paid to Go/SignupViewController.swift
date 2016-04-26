@@ -26,6 +26,8 @@ class SignupViewController: ViewController {
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var termsSwitch: UISwitch!
     
+    var profileImage: UIImage?
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -91,6 +93,10 @@ class SignupViewController: ViewController {
             showAlert("The terms and conditions shall be accepted")
             return false
         }
+        if profileImage == nil {
+            showAlert("A profile image shall be upload")
+            return false
+        }
         
         
         return true
@@ -115,27 +121,50 @@ class SignupViewController: ViewController {
     }
     
     @IBAction func signup(sender: AnyObject) {
-        if(validate()) {
-            let newUser: User   = User()
-            newUser.email      = emailTextField            .text!
-            newUser.name        =  firstNameTextField                .text!
-            newUser.lastName    = lastNameTextField     .text!
-            newUser.password    = passwordTextField         .text!
-            newUser.bio         = bioTextField          .text!
+  
+        self.showProgressHud("Loading") // TODO: Fix delay 
         
+        if(self.validate()) {
+            
+            let newUser: User   = User()
+            newUser.email       = emailTextField.text!
+            newUser.name        =  firstNameTextField.text!
+            newUser.lastName    = lastNameTextField.text!
+            newUser.password    = passwordTextField.text!
+            newUser.bio         = bioTextField.text!
+            
+            let imageData = UIImagePNGRepresentation(profileImage!)
+            
+            let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+            
+            let encodedImageWithPrefix = "data:image/jpeg;base64," + base64String
+            
+            newUser.profilePicture = encodedImageWithPrefix
+            
+            
             DataProvider.sharedInstance.postRegister(newUser, completion: { (user: User?, error: String?) in
+                
+                self.dismissProgressHud()
+                
                 if let error = error where error.isEmpty == false {
-                    print(error)
+                    self.showAlert(error)
                     return
                 }
                 
-                guard let user = user else {
-                    return
+                if error == nil && user != nil {
+                    
+                    newUser.accessToken = user!.accessToken
+                    newUser.userId = user!.userId
+                    
+                    // TODO: Save newUser on a singleton instance locally stored (similar to UserManager used on Android)
+                    
+                    self.presentHomeViewController()
+                    
                 }
                 
-                print(user.name)
             })
-//            presentHomeViewController()
+        } else {
+            dismissProgressHud()
         }
     }
 }
@@ -145,6 +174,8 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        self.profileImage = image
         
         self.registerPhotoImageView.image = image
         self.addImageView.hidden = true
