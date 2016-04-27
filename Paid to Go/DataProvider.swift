@@ -52,6 +52,27 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func postLogin(user: User, completion: (user: User?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.login(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(responseValue)
+                completion(user: user, error: nil)
+                return
+                
+            } else {
+                
+                completion(user: nil, error: error)
+                return
+                
+            }
+        }
+    }
+    
     
 }
 

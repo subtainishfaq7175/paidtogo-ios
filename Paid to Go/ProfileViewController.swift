@@ -13,6 +13,7 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var addPictureImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -69,22 +70,20 @@ class ProfileViewController: MenuContentViewController {
         bioTextField.text       = currentUser.bio
       
         if let currentProfilePicture = currentUser.profilePicture {
-        
-            let base64String        = currentProfilePicture
-                .stringByReplacingOccurrencesOfString(User.imagePrefix, withString: "")
-        
-            if let imageData           = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-        
-                let profileImage        = UIImage(data: imageData)
-        
-                profileImageView.image  = profileImage
-            }
             
-        }
-
-
-
+            addPictureImageView.hidden = true
+            
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"))
         
+//            let base64String        = currentProfilePicture
+//                .stringByReplacingOccurrencesOfString(User.imagePrefix, withString: "")
+//        
+//            if let imageData           = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+//        
+//                let profileImage        = UIImage(data: imageData)
+//        
+//                profileImageView.image  = profileImage
+        }
     }
     
     

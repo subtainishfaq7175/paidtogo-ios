@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-enum RequestType: String {
+private enum RequestType: String {
     case Request    = "Request"     ;
     case Response   = "Response"    ;
 }
@@ -18,11 +18,10 @@ enum RequestType: String {
 
 class ConnectionManager {
     
-    var baseURL = "http://paid.xanthops.com/api/v1"
+    private var baseURL = "http://paid.xanthops.com/api/v1"
     
-    var registerURL: String { return "\(baseURL)/register" }
-    
-    //...
+    private var registerURL: String { return "\(baseURL)/register" }
+    private var loginURL: String { return "\(baseURL)/login" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -33,10 +32,6 @@ class ConnectionManager {
     // MARK: - Singleton
     static let sharedInstance = ConnectionManager()
     private init() {
-    }
-    
-    private func filterResponse () {
-        
     }
     
     private func printRequest(identifier: String, requestType: RequestType, requestURL: String, value: [String : AnyObject]) {
@@ -61,47 +56,77 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 
 extension ConnectionManager {
     
+    private func request(identifier: String, url: String,  response: Response<AnyObject, NSError>, apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+
+        guard let value = response.result.value as? [String: AnyObject] else {
+            apiCompletion(responseValue: nil, error: "The request has failed")
+            return
+        }
+        
+        self.printRequest(identifier,
+                          requestType: RequestType.Response,
+                          requestURL: url,
+                          value: value)
+        
+        if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
+                
+                apiCompletion(responseValue: value, error: nil)
+                return
+                
+            }  else {
+                
+                if let errorDetail = value["detail"] as? String {
+                    apiCompletion(responseValue: value, error: errorDetail)
+                }  else {
+                    apiCompletion(responseValue: value, error: "The request has failed")
+                }
+                return
+            }
+            
+        } else   if response.result.isFailure {
+            
+            apiCompletion(responseValue: value, error: "Connection problem")
+            
+            return
+        }
+    }
+    
     func register(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
         
         let identifier = "Register API - POST"
         
-        self.printRequest(identifier, requestType: RequestType.Request, requestURL: registerURL, value: params)
+        let paramsDict = dictionaryWithoutEmptyValues(params)
+        
+        self.printRequest(identifier,
+                          requestType: RequestType.Response,
+                          requestURL: registerURL,
+                          value: paramsDict)
         
         Alamofire
-            .request(Method.POST, registerURL,
-                parameters: dictionaryWithoutEmptyValues(params),
-                encoding: ParameterEncoding.JSON,
-                headers: nil)
+            .request(Method.POST, registerURL, parameters: paramsDict, encoding: ParameterEncoding.JSON, headers: nil)
             .responseJSON { (response) in
-                guard let value = response.result.value as? [String: AnyObject] else {
-                    return
-                }
                 
-                self.printRequest(identifier, requestType: RequestType.Response, requestURL: self.registerURL, value: value)
+                self.request(identifier, url: self.registerURL, response: response, apiCompletion: apiCompletion)
+        }
+    }
+    
+    func login(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Login API - POST"
+        
+        let paramsDict = dictionaryWithoutEmptyValues(params)
+        
+        self.printRequest(identifier,
+                          requestType: RequestType.Response,
+                          requestURL: loginURL,
+                          value: paramsDict)
+        
+        Alamofire
+            .request(Method.POST, loginURL, parameters: paramsDict, encoding: ParameterEncoding.JSON, headers: nil)
+            .responseJSON { (response) in
                 
-                if response.result.isSuccess {
-                    if response.response?.statusCode == 200 {
-                       
-                        apiCompletion(responseValue: value, error: nil)
-                        return
-                        
-                    }  else {
-                        
-                        if let errorDetail = value["detail"] as? String {
-                            apiCompletion(responseValue: value, error: errorDetail)
-                        }  else {
-                            apiCompletion(responseValue: value, error: "The request has failed")
-                        }
-                        return
-                    }
-                    
-                } else   if response.result.isFailure {
-                    
-                    apiCompletion(responseValue: value, error: "Connection problem")
-                    
-                    return
-                }
-                
+                self.request(identifier, url: self.loginURL, response: response, apiCompletion: apiCompletion)
         }
     }
     

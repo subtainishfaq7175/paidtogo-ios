@@ -19,7 +19,7 @@ class User: Mappable {
     var profilePicture: String?
     
     var accessToken: String?
-    var userId: Int?
+    var userId: String?
     
     
     init() {
@@ -30,7 +30,7 @@ class User: Mappable {
         self.bio = ""
         self.profilePicture = ""
         self.accessToken = ""
-        self.userId = 0
+        self.userId = ""
         
     }
     

@@ -280,6 +280,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0NW-UM-ibE"/>
                     <connections>
+                        <outlet property="addPictureImageView" destination="T9r-sD-bGP" id="ZRX-xP-fsG"/>
                         <outlet property="bioTextField" destination="q0n-32-uIa" id="cyj-us-0F9"/>
                         <outlet property="emailTextField" destination="lq7-kr-gPK" id="X7T-gc-7gY"/>
                         <outlet property="firstNameTextField" destination="c4B-yX-JmI" id="aqN-n8-fdQ"/>

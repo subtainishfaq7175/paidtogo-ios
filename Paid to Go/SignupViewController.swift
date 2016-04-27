@@ -93,10 +93,10 @@ class SignupViewController: ViewController {
             showAlert("The terms and conditions shall be accepted")
             return false
         }
-        if profileImage == nil {
-            showAlert("A profile image shall be upload")
-            return false
-        }
+//        if profileImage == nil {
+//            showAlert("A profile image shall be upload")
+//            return false
+//        }
         
         
         return true
@@ -122,9 +122,11 @@ class SignupViewController: ViewController {
     
     @IBAction func signup(sender: AnyObject) {
   
-        self.showProgressHud("Loading") // TODO: Fix delay 
         
         if(self.validate()) {
+            
+            self.showProgressHud("Loading") // TODO: Fix delay
+
             
             let newUser: User   = User()
             newUser.email       = emailTextField.text!
@@ -133,13 +135,17 @@ class SignupViewController: ViewController {
             newUser.password    = passwordTextField.text!
             newUser.bio         = bioTextField.text!
             
-            let imageData = UIImagePNGRepresentation(profileImage!)
+            if let profileImage = profileImage {
+            
+            let imageData = UIImagePNGRepresentation(profileImage)
             
             let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
             
             let encodedImageWithPrefix = User.imagePrefix + base64String
             
             newUser.profilePicture = encodedImageWithPrefix
+                
+            }
             
             
             DataProvider.sharedInstance.postRegister(newUser, completion: { (user: User?, error: String?) in
@@ -155,6 +161,7 @@ class SignupViewController: ViewController {
                     
                     newUser.accessToken = user!.accessToken
                     newUser.userId = user!.userId
+                    newUser.profilePicture = user?.profilePicture
                     
                     User.currentUser = newUser
                     
@@ -163,8 +170,6 @@ class SignupViewController: ViewController {
                 }
                 
             })
-        } else {
-            dismissProgressHud()
         }
     }
 }
