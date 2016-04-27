@@ -137,7 +137,7 @@ class SignupViewController: ViewController {
             
             let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
             
-            let encodedImageWithPrefix = "data:image/jpeg;base64," + base64String
+            let encodedImageWithPrefix = User.imagePrefix + base64String
             
             newUser.profilePicture = encodedImageWithPrefix
             
@@ -156,7 +156,7 @@ class SignupViewController: ViewController {
                     newUser.accessToken = user!.accessToken
                     newUser.userId = user!.userId
                     
-                    // TODO: Save newUser on a singleton instance locally stored (similar to UserManager used on Android)
+                    User.currentUser = newUser
                     
                     self.presentHomeViewController()
                     

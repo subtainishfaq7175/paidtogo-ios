@@ -61,15 +61,9 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 
 extension ConnectionManager {
     
-    func register(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
+    func register(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
         
         let identifier = "Register API - POST"
-        
-        //        let params = [
-        //            "name": name,
-        //            "username": username,
-        //            "password": password
-        //        ]
         
         self.printRequest(identifier, requestType: RequestType.Request, requestURL: registerURL, value: params)
         
@@ -85,21 +79,29 @@ extension ConnectionManager {
                 
                 self.printRequest(identifier, requestType: RequestType.Response, requestURL: self.registerURL, value: value)
                 
-                if response.result.isFailure {
-                    completion(user: nil, error: "Request has failed")
-                    return
-                } else
-                    
-                    if response.result.isSuccess {
-                        if let code = value["code"] as? String where code == "USER_EXISTS" {
-                            completion(user: nil, error: value["detail"] as! String)
-                            return
-                        }
-                        
-                        let user = Mapper<User>().map(value)
-                        completion(user: user, error: nil)
+                if response.result.isSuccess {
+                    if response.response?.statusCode == 200 {
+                       
+                        apiCompletion(responseValue: value, error: nil)
                         return
+                        
+                    }  else {
+                        
+                        if let errorDetail = value["detail"] as? String {
+                            apiCompletion(responseValue: value, error: errorDetail)
+                        }  else {
+                            apiCompletion(responseValue: value, error: "The request has failed")
+                        }
+                        return
+                    }
+                    
+                } else   if response.result.isFailure {
+                    
+                    apiCompletion(responseValue: value, error: "Connection problem")
+                    
+                    return
                 }
+                
         }
     }
     

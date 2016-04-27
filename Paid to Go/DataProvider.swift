@@ -32,16 +32,32 @@ class DataProvider : DataProviderService {
     }
     
     func postRegister(user: User, completion: (user: User?, error: String?) -> Void) {
+        
         let json = Mapper().toJSON(user)
-        ConnectionManager.sharedInstance.register(json, completion: completion)
+        
+        ConnectionManager.sharedInstance.register(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(responseValue)
+                completion(user: user, error: nil)
+                return
+                
+            } else {
+                
+                completion(user: nil, error: error)
+                return
+                
+            }
+        }
     }
     
-
+    
 }
 
 protocol DataProviderService {
     
-
+    
     func getNotifications(completion: ([Notification]) -> Void)
     func getOpenPools(completion: ([Pool]) -> Void)
     func getClosedPools(completion: ([Pool]) -> Void)

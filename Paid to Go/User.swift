@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 
 class User: Mappable {
+    
     var name: String?
     var lastName: String?
     var email: String?
@@ -30,7 +31,7 @@ class User: Mappable {
         self.profilePicture = ""
         self.accessToken = ""
         self.userId = 0
-
+        
     }
     
     required init?(_ map: Map) {
@@ -49,11 +50,45 @@ class User: Mappable {
         userId          <- map["user_id"]
     }
     
-/* {
- "access_token": "$2y$10$qNU.rxgqpK/xkLkl7MXdoeIyybU9LjjGMvuxQA2n2jZGeT0LzXw1S",
- "profile_picture": "",
- "user_id": 22,
- "code": "REGISTER_SUCCESS",
- "detail": "User successfully registered."
- } */
+}
+
+extension User {
+    
+    static var imagePrefix: String {
+        return "data:image/jpeg;base64,"
+    }
+    
+    private static var currentUserKey: String {
+        return "CURRENT_USER_PTG"
+    }
+    
+    static var currentUser: User? {
+        get {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            let userJSON = defaults.objectForKey(currentUserKey)
+            
+            let user = Mapper<User>().map(userJSON)
+            
+            return user
+            
+        }
+        
+        set {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            if let newUser = newValue {
+                
+                let userJSONDict = Mapper().toJSON(newUser)
+                defaults.setObject(userJSONDict, forKey: currentUserKey)
+                
+            } else {
+                
+                defaults.setObject(nil, forKey: currentUserKey)
+                
+            }
+            
+            defaults.synchronize()
+        }
+    }
 }

@@ -13,50 +13,79 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordVerificationTextField: UITextField!
+    @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var signupButtonViewContainer: UIView!
     
     // MARK: - Variables and Constants
     
-//    var signupViewController: SignupViewController!
     
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.signupViewController = StoryboardRouter.initialSignupViewController()
-//        self.addChildViewController(signupViewController)
-//        self.view.addSubview(signupViewController.view)
-//        
-//        self.signupViewController.view.snp_makeConstraints { (make) -> Void in
-//            make.top.equalTo(self.view)
-//            make.leading.equalTo(self.view)
-//            make.trailing.equalTo(self.view)
-//            make.bottom.equalTo(self.view)
-//        }
-//        
-//        self.signupViewController.signupButton.setTitle("Ok", forState: .Normal)
-        
-//        This is to remove the target that will be added on the button for submit the signup data
-//        self.signupViewController.signupButton.removeTarget(self.signupViewController, action: "signupAction:", forControlEvents: .TouchUpInside)
-        
-//        self.signupViewController.signupButton.addTarget(self, action: "submitAction:", forControlEvents: .TouchUpInside)
-        
+  
         setNavigationBarVisible(true)
         self.title = "menu_profile".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.signupViewController.termsAndConditionsSwitch.hidden = true
-//        self.signupViewController.termsAndConditionsButton.hidden = true
 
+    
+        self.populateFields()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        initViews()
+    }
+    
+
     // MARK: - Functions
     
+    private func initViews(){
+        signupButtonViewContainer.round()
+        profileImageView.roundWholeView()
+    }
+    
+    private func populateFields() {
+        
+        let currentUser         = User.currentUser!
+        
+        emailTextField.text     = currentUser.email
+        firstNameTextField.text = currentUser.name
+        lastNameTextField.text  = currentUser.lastName
+        bioTextField.text       = currentUser.bio
+      
+        if let currentProfilePicture = currentUser.profilePicture {
+        
+            let base64String        = currentProfilePicture
+                .stringByReplacingOccurrencesOfString(User.imagePrefix, withString: "")
+        
+            if let imageData           = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+        
+                let profileImage        = UIImage(data: imageData)
+        
+                profileImageView.image  = profileImage
+            }
+            
+        }
+
+
+
+        
+    }
     
     
     // MARK: - Actions

@@ -62,6 +62,7 @@
 "action_start"    = "Start"         ;
 "action_finish"   = "Finish"        ;
 "action_cancel"   = "Cancel"        ;
+"action_ok"       = "Ok"            ;
 
 
 // -----------------------------------------

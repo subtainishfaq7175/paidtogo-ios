@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEI-Kd-BTH" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-gc-tkw" userLabel="Profile Image View">
                                                 <rect key="frame" x="96" y="23" width="128" height="128"/>
@@ -142,14 +142,17 @@
                                                 </constraints>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTK-iz-ozQ" userLabel="Signup Button Container">
-                                                <rect key="frame" x="55" y="536" width="210" height="45"/>
+                                                <rect key="frame" x="55" y="513" width="210" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMW-0Q-oXF">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMW-0Q-oXF" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <state key="normal" title="Sign Up">
+                                                        <state key="normal" title="Ok">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="action_ok"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,6 +234,7 @@
                                             <constraint firstItem="T9r-sD-bGP" firstAttribute="leading" secondItem="iRE-gc-tkw" secondAttribute="trailing" constant="-45" id="l4W-VB-MWf"/>
                                             <constraint firstAttribute="trailing" secondItem="718-cZ-4DR" secondAttribute="trailing" constant="10" id="l8w-uW-8ve"/>
                                             <constraint firstItem="gmP-5C-kfz" firstAttribute="bottom" secondItem="c4B-yX-JmI" secondAttribute="bottom" id="lcj-gM-iNB"/>
+                                            <constraint firstItem="dTK-iz-ozQ" firstAttribute="top" secondItem="RQK-Zj-EDu" secondAttribute="bottom" constant="40" id="oOB-PO-NlM"/>
                                             <constraint firstItem="DMW-0Q-oXF" firstAttribute="top" secondItem="9OQ-TO-Nak" secondAttribute="bottom" constant="20" id="oVn-m1-0ve"/>
                                             <constraint firstItem="c4B-yX-JmI" firstAttribute="top" secondItem="ibL-zd-bsw" secondAttribute="bottom" constant="-2" id="psF-wh-lDi"/>
                                             <constraint firstItem="Atv-yZ-bsn" firstAttribute="height" secondItem="lq7-kr-gPK" secondAttribute="height" id="px6-Ya-Bpf"/>
@@ -244,6 +248,12 @@
                                             <constraint firstItem="Atv-yZ-bsn" firstAttribute="top" secondItem="b2b-4C-DFw" secondAttribute="bottom" constant="-2" id="xw9-R3-nav"/>
                                             <constraint firstItem="9OQ-TO-Nak" firstAttribute="leading" secondItem="F31-yf-TiL" secondAttribute="trailing" constant="10" id="zvM-1S-Duy"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="F31-yf-TiL"/>
+                                                <exclude reference="9OQ-TO-Nak"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -269,6 +279,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0NW-UM-ibE"/>
+                    <connections>
+                        <outlet property="bioTextField" destination="q0n-32-uIa" id="cyj-us-0F9"/>
+                        <outlet property="emailTextField" destination="lq7-kr-gPK" id="X7T-gc-7gY"/>
+                        <outlet property="firstNameTextField" destination="c4B-yX-JmI" id="aqN-n8-fdQ"/>
+                        <outlet property="lastNameTextField" destination="Atv-yZ-bsn" id="Nxa-kq-mw1"/>
+                        <outlet property="passwordTextField" destination="2Os-mT-hz4" id="yte-yL-FOG"/>
+                        <outlet property="passwordVerificationTextField" destination="718-cZ-4DR" id="8Fz-fJ-XzH"/>
+                        <outlet property="profileImageView" destination="iRE-gc-tkw" id="ezq-w9-jec"/>
+                        <outlet property="signupButtonViewContainer" destination="dTK-iz-ozQ" id="7Ao-Gh-3Dl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cx9-jo-6EQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
