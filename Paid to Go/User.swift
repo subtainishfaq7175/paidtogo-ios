@@ -54,6 +54,10 @@ class User: Mappable {
 
 extension User {
     
+   static func logout() {
+        User.currentUser = nil
+    }
+    
     static var imagePrefix: String {
         return "data:image/jpeg;base64,"
     }

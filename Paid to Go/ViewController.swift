@@ -169,12 +169,15 @@ class ViewController: UIViewController {
         
     }
     
-    func logout() {
+    func logoutAnimated() {
         self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func presentHomeViewController() {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
+    }
+    func presentHomeViewControllerWithoutAnimation() {
+        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
     func presentPoolViewController(type: PoolType) {

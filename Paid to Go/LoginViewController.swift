@@ -28,6 +28,8 @@ class LoginViewController: ViewController {
         // Do any additional setup after loading the view, typically from a nib.
         initConstraints()
         
+
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,9 +41,19 @@ class LoginViewController: ViewController {
         initViews()
     }
     
+
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(false)
+        
+        verifyIfThereIsCurrentUser()
+ }
+    
+    private func verifyIfThereIsCurrentUser() {
+        if let _ = User.currentUser {
+            presentHomeViewControllerWithoutAnimation()
+        }
     }
     
     // MARK: - Actions

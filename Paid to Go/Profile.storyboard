@@ -179,6 +179,13 @@
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEJ-ai-3oh">
+                                                <rect key="frame" x="264" y="8" width="48" height="30"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logout:" destination="OfH-Bf-BSA" eventType="touchUpInside" id="DSq-gA-CMk"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -231,11 +238,13 @@
                                             <constraint firstItem="2Os-mT-hz4" firstAttribute="top" secondItem="nF3-hD-Jsd" secondAttribute="bottom" constant="-2" id="d8s-Qj-qbW"/>
                                             <constraint firstItem="2pU-Gd-Red" firstAttribute="leading" secondItem="UEI-Kd-BTH" secondAttribute="leading" constant="10" id="fGU-oN-X4s"/>
                                             <constraint firstItem="SfF-Ww-Esm" firstAttribute="leading" secondItem="UEI-Kd-BTH" secondAttribute="leading" constant="10" id="gII-ii-VyM"/>
+                                            <constraint firstItem="dEJ-ai-3oh" firstAttribute="top" secondItem="UEI-Kd-BTH" secondAttribute="top" constant="8" id="kUh-c0-dRH"/>
                                             <constraint firstItem="T9r-sD-bGP" firstAttribute="leading" secondItem="iRE-gc-tkw" secondAttribute="trailing" constant="-45" id="l4W-VB-MWf"/>
                                             <constraint firstAttribute="trailing" secondItem="718-cZ-4DR" secondAttribute="trailing" constant="10" id="l8w-uW-8ve"/>
                                             <constraint firstItem="gmP-5C-kfz" firstAttribute="bottom" secondItem="c4B-yX-JmI" secondAttribute="bottom" id="lcj-gM-iNB"/>
                                             <constraint firstItem="dTK-iz-ozQ" firstAttribute="top" secondItem="RQK-Zj-EDu" secondAttribute="bottom" constant="40" id="oOB-PO-NlM"/>
                                             <constraint firstItem="DMW-0Q-oXF" firstAttribute="top" secondItem="9OQ-TO-Nak" secondAttribute="bottom" constant="20" id="oVn-m1-0ve"/>
+                                            <constraint firstAttribute="trailing" secondItem="dEJ-ai-3oh" secondAttribute="trailing" constant="8" id="osq-KM-BWm"/>
                                             <constraint firstItem="c4B-yX-JmI" firstAttribute="top" secondItem="ibL-zd-bsw" secondAttribute="bottom" constant="-2" id="psF-wh-lDi"/>
                                             <constraint firstItem="Atv-yZ-bsn" firstAttribute="height" secondItem="lq7-kr-gPK" secondAttribute="height" id="px6-Ya-Bpf"/>
                                             <constraint firstItem="7qq-MY-Ko9" firstAttribute="leading" secondItem="UEI-Kd-BTH" secondAttribute="leading" constant="10" id="q2a-9k-ip9"/>

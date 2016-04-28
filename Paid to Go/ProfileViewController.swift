@@ -89,6 +89,13 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Actions
     
+    @IBAction func logout(sender: AnyObject) {
+        
+        User.logout()
+        self.logoutAnimated()
+        
+    }
+    
     func submitAction(sender: AnyObject?){
         log.debug("Profile changes submited")
     }
