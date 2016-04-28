@@ -78,6 +78,12 @@ extension ConnectionManager {
         
     }
     
+    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Forgot PW API - POST"
+        self.postRequest(identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
+        
+    }
 }
 
 extension ConnectionManager {

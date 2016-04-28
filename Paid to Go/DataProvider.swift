@@ -25,7 +25,7 @@ class DataProvider : DataProviderService {
             return "error_wrong_email_format".localize()
             
         case "USER_NOT_FOUND":
-            return "error_user_not_found".localize()
+            return "error_user_not_existing".localize()
             
         case "USER_EXISTS":
             return "error_user_exists".localize()
