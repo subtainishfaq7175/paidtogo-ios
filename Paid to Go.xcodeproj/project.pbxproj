@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C69F81CD2531E00ACB4CC /* GenericResponse.swift */; };
 		5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */; };
 		5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */; };
 		5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		520C69F81CD2531E00ACB4CC /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySimpleCell.swift; sourceTree = "<group>"; };
 		5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDefaultCell.swift; sourceTree = "<group>"; };
 		5210C7551CAAC615002B4DF3 /* ActivityActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityActionCell.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				524911901CAC123100D6E763 /* Notification.swift */,
 				523977D91CAF0FAC00C85CAF /* Pool.swift */,
 				5218FB961CCAA30D0038E7F1 /* User.swift */,
+				520C69F81CD2531E00ACB4CC /* GenericResponse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,

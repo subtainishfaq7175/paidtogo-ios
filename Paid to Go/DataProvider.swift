@@ -18,6 +18,25 @@ class DataProvider : DataProviderService {
         
     }
     
+    func getError(error: String) -> String {
+        switch error {
+            
+        case "ERRORS":
+            return "error_wrong_email_format".localize()
+            
+        case "USER_NOT_FOUND":
+            return "error_user_not_found".localize()
+            
+        case "USER_EXISTS":
+            return "error_user_exists".localize()
+            
+        default:
+            return "error_default".localize()
+            
+        }
+
+    }
+    
     
     func getNotifications(completion: ([Notification]) -> Void) {
         DummyDataProvider.sharedInstance.getNotifications(completion)
@@ -45,7 +64,7 @@ class DataProvider : DataProviderService {
                 
             } else {
                 
-                completion(user: nil, error: error)
+                completion(user: nil, error: self.getError(error!))
                 return
                 
             }
@@ -66,7 +85,29 @@ class DataProvider : DataProviderService {
                 
             } else {
                 
-                completion(user: nil, error: error)
+                completion(user: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
+    func postRecoverPassword(user: User, completion: (genericResponse: GenericResponse?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.forgotPassword(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let genericResponse = Mapper<GenericResponse>().map(responseValue)
+                completion(genericResponse: genericResponse, error: nil)
+                return
+                
+            } else {
+                
+                completion(genericResponse: nil, error: self.getError(error!))
+                
                 return
                 
             }

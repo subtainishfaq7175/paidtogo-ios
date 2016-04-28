@@ -52,6 +52,16 @@
 "auth_photo_camera_option"  = "Camera"          ;
 "auth_photo_library_option" = "Carrete"         ;
 
+// -----------------------------------------
+// - General Errors strings
+// -----------------------------------------
+
+"error_wrong_email_format"  = "The given email has not a correct format" ;
+"error_user_not_found"      = "The user has not been found on our database" ;
+"error_user_exists"         = "The given email already exists in our database" ;
+
+"error_default"             = "Internal error" ;
+
 
 // -----------------------------------------
 // - General Action strings
@@ -122,6 +132,14 @@
 
 "terms_label"        = "Terms and Conditions" ;
 "recover_pass_label" = "Recover Password" ;
+
+// -----------------------------------------
+// - Recover Password
+// -----------------------------------------
+
+"password_recovered"        = "Password recovered successfully. An email will be sent to the specified address";
+"password_recover_title"    = "Password Recovery" ;
+
 
 // -----------------------------------------
 // - Lorem Ipsum

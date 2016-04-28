@@ -300,6 +300,7 @@ Email Line View</string>
                                                         </state>
                                                         <connections>
                                                             <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbf-Wq-7Gw"/>
+                                                            <action selector="recoverPassword:" destination="sGa-0V-qky" eventType="touchUpInside" id="ckU-Ik-qIQ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

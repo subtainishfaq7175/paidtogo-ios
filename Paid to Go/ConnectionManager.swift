@@ -22,6 +22,7 @@ class ConnectionManager {
     
     private var registerURL: String { return "\(baseURL)/register" }
     private var loginURL: String { return "\(baseURL)/login" }
+    private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -76,7 +77,7 @@ extension ConnectionManager {
                 
             }  else {
                 
-                if let errorDetail = value["detail"] as? String {
+                if let errorDetail = value["code"] as? String {
                     apiCompletion(responseValue: value, error: errorDetail)
                 }  else {
                     apiCompletion(responseValue: value, error: "The request has failed")
@@ -127,6 +128,25 @@ extension ConnectionManager {
             .responseJSON { (response) in
                 
                 self.request(identifier, url: self.loginURL, response: response, apiCompletion: apiCompletion)
+        }
+    }
+    
+    func forgotPassword(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Forgot PW API - POST"
+        
+        let paramsDict = dictionaryWithoutEmptyValues(params)
+        
+        self.printRequest(identifier,
+                          requestType: RequestType.Response,
+                          requestURL: forgotPasswordURL,
+                          value: paramsDict)
+        
+        Alamofire
+            .request(Method.POST, forgotPasswordURL, parameters: paramsDict, encoding: ParameterEncoding.JSON, headers: nil)
+            .responseJSON { (response) in
+                
+                self.request(identifier, url: self.forgotPasswordURL, response: response, apiCompletion: apiCompletion)
         }
     }
     

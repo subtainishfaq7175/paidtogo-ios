@@ -16,7 +16,7 @@ class ForgotPasswordViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(true)
-        self.title = "Password Recovery"
+        self.title = "password_recover_title".localize()
         
     }
     
@@ -34,6 +34,44 @@ class ForgotPasswordViewController: ViewController {
     private func initViews(){
         submitButtonViewContainer.round()
     
+    }
+    
+    private func validate() -> Bool {
+        if emailTextField.text == "" {
+            showAlert("An email address shall be specified")
+            return false
+        }
+        
+        return true
+    }
+    
+    @IBAction func recoverPassword(sender: AnyObject) {
+        
+        if validate() {
+            
+            self.showProgressHud()
+            
+            let user = User()
+            user.email = emailTextField.text
+            
+            DataProvider.sharedInstance.postRecoverPassword(user, completion: { (genericResponse, error) in
+                self.dismissProgressHud()
+                
+                if let error = error where error.isEmpty == false {
+                    self.showAlert(error)
+                    return
+                }
+                
+                if error == nil && genericResponse != nil {
+                    
+                    if genericResponse?.code == "PASSWORD_RECOVERED" {
+                        self.showAlert("password_recovered".localize())
+                    }
+                    
+                }
+            })
+        }
+        
     }
     
   
