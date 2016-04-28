@@ -17,6 +17,7 @@ class User: Mappable {
     var password: String?
     var bio: String?
     var profilePicture: String?
+    var paypalAccount: String?
     
     var accessToken: String?
     var userId: String?
@@ -31,7 +32,7 @@ class User: Mappable {
         self.profilePicture = ""
         self.accessToken = ""
         self.userId = ""
-        
+        self.paypalAccount = ""
     }
     
     required init?(_ map: Map) {
@@ -48,6 +49,7 @@ class User: Mappable {
         profilePicture  <- map["profile_picture"]
         accessToken     <- map["access_token"]
         userId          <- map["user_id"]
+        paypalAccount   <- map["paypal_account"]
     }
     
 }

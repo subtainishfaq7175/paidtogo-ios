@@ -61,6 +61,7 @@
 "error_user_exists"         = "The given email already exists in our database" ;
 
 "error_default"             = "Internal error" ;
+"error_connection"          = "There is a problem with the connection, please try again later";
 
 
 // -----------------------------------------
