@@ -194,9 +194,6 @@ class ProfileViewController: MenuContentViewController {
                     
                     self.showAlert("profile_changes_submited".localize())
                     
-                    
-                    //  Son necesarios ciertos cambios de la API, en un futuro va a retornar un objeto User el cual guardaré como current user local, y será necesario hacer un load image forzando el refresh para que no quede cacheada la anterior (ya que usan el mismo URL).
-                    
                     self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
                     
                     User.currentUser = user
@@ -207,12 +204,8 @@ class ProfileViewController: MenuContentViewController {
                     
                 }
                 
-                
-                
             }
         }
-        
-        
     }
     
 }
