@@ -18,8 +18,8 @@ class ProfileViewController: MenuContentViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-        @IBOutlet weak var passwordTextField: UITextField!
-        @IBOutlet weak var passwordVerificationTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordVerificationTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var signupButtonViewContainer: UIView!
     
@@ -78,7 +78,7 @@ class ProfileViewController: MenuContentViewController {
             addPictureImageView.hidden = true
             
             profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"))
-//            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
+            //            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
             
             //            let base64String        = currentProfilePicture
             //                .stringByReplacingOccurrencesOfString(User.imagePrefix, withString: "")
@@ -160,7 +160,7 @@ class ProfileViewController: MenuContentViewController {
         
     }
     
-   @IBAction func submitAction(sender: AnyObject?){
+    @IBAction func submitAction(sender: AnyObject?){
         
         if validate() {
             
@@ -192,13 +192,14 @@ class ProfileViewController: MenuContentViewController {
                 
                 if let user = user { //success
                     
-                    self.showAlert("The profile changes were submited successfully")
+                    self.showAlert("profile_changes_submited".localize())
                     
                     
                     //  Son necesarios ciertos cambios de la API, en un futuro va a retornar un objeto User el cual guardaré como current user local, y será necesario hacer un load image forzando el refresh para que no quede cacheada la anterior (ya que usan el mismo URL).
-                                self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
-
-                    //                    User.currentUser = user
+                    
+                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
+                    
+                    User.currentUser = user
                     
                 } else if let error = error {
                     

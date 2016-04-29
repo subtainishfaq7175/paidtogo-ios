@@ -131,8 +131,9 @@
 // - Settings
 // -----------------------------------------
 
-"terms_label"        = "Terms and Conditions" ;
-"recover_pass_label" = "Recover Password" ;
+"terms_label"               = "Terms and Conditions" ;
+"recover_pass_label"        = "Recover Password" ;
+"profile_changes_submited"  = "The profile changes were updated successfully";
 
 // -----------------------------------------
 // - Recover Password

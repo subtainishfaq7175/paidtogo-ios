@@ -117,7 +117,7 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func postUpdateProfile(user: User, completion: (user: GenericResponse?, error: String?) -> Void) {
+    func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
         
         let json = Mapper().toJSON(user)
         
@@ -125,7 +125,7 @@ class DataProvider : DataProviderService {
             
             if (error == nil) {
                 
-                let user = Mapper<GenericResponse>().map(responseValue)
+                let user = Mapper<User>().map(responseValue)
                 completion(user: user, error: nil)
                 return
                 
