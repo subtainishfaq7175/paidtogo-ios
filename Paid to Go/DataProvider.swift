@@ -29,6 +29,9 @@ class DataProvider : DataProviderService {
             
         case "USER_EXISTS":
             return "error_user_exists".localize()
+        
+        case "error_connection":
+                return "error_connection".localize()
             
         default:
             return "error_default".localize() + ": " + error
@@ -114,7 +117,7 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
+    func postUpdateProfile(user: User, completion: (user: GenericResponse?, error: String?) -> Void) {
         
         let json = Mapper().toJSON(user)
         
@@ -122,7 +125,7 @@ class DataProvider : DataProviderService {
             
             if (error == nil) {
                 
-                let user = Mapper<User>().map(responseValue)
+                let user = Mapper<GenericResponse>().map(responseValue)
                 completion(user: user, error: nil)
                 return
                 
