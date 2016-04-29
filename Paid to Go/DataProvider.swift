@@ -25,13 +25,13 @@ class DataProvider : DataProviderService {
             return "error_wrong_email_format".localize()
             
         case "USER_NOT_FOUND":
-            return "error_user_not_existing".localize()
+            return "error_user_not_found".localize()
             
         case "USER_EXISTS":
             return "error_user_exists".localize()
             
         default:
-            return "error_default".localize()
+            return "error_default".localize() + ": " + error
             
         }
 
@@ -113,6 +113,28 @@ class DataProvider : DataProviderService {
             }
         }
     }
+    
+    func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(responseValue)
+                completion(user: user, error: nil)
+                return
+                
+            } else {
+                
+                completion(user: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+
     
     
 }
