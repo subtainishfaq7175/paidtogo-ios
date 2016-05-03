@@ -91,7 +91,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="facebookButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fGx-fC-JgV"/>
+                                                            <action selector="facebookButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wlY-Fl-ZRS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -244,6 +244,7 @@
                     <navigationItem key="navigationItem" id="5E1-zX-kJi"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="facebookLoginButton" destination="zJf-Q2-7Ww" id="j1n-Ij-dlv"/>
                         <outlet property="facebookViewContainer" destination="Okt-bh-ket" id="Owv-c3-nj7"/>
                         <outlet property="forgotPasswordBottomConstraint" destination="jfx-v7-7kC" id="0p3-fQ-Jtz"/>
                         <outlet property="loginViewContainer" destination="yKn-vL-FC5" id="phE-Td-png"/>

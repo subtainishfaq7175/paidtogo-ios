@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: ViewController {
     
@@ -21,6 +22,9 @@ class LoginViewController: ViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    
+    @IBOutlet weak var facebookLoginButton: UIButton!
+    
     
     // MARK: - Super
     override func viewDidLoad() {
@@ -88,7 +92,40 @@ class LoginViewController: ViewController {
     }
     
     @IBAction func facebookButtonAction(sender: AnyObject) {
-                presentHomeViewController()
+        
+        let loginManager = FBSDKLoginManager.init()
+        
+        let loginPermissions = ["public_profile", "email"]
+        loginManager.logInWithReadPermissions(loginPermissions, fromViewController: self) { (result, error) in
+            if let error = error {
+                print("Facebook Login Error: ",  error)
+            } else {
+                
+                let tokenString = result.token.tokenString
+                
+                let params = ["social_token" : tokenString]
+                
+                self.showProgressHud()
+                
+                DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
+                    self.dismissProgressHud()
+                    
+                    if let error = error where error.isEmpty == false {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    if error == nil && user != nil {
+                        
+                        User.currentUser = user
+                        
+                        self.presentHomeViewController()
+                        
+                    }
+                })
+                
+            }
+        }
     }
     
     // MARK: - Functions
@@ -127,6 +164,8 @@ class LoginViewController: ViewController {
         loginViewContainer.round()
         facebookViewContainer.round()
         signupViewContainer.round()
+    
+        
     }
     
     

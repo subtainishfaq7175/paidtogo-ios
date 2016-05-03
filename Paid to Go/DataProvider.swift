@@ -137,7 +137,27 @@ class DataProvider : DataProviderService {
             }
         }
     }
-
+    
+    func postFacebookLogin(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
+        
+        
+        ConnectionManager.sharedInstance.facebookLogin(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(responseValue)
+                completion(user: user, error: nil)
+                return
+                
+            } else {
+                
+                completion(user: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
     
     
 }

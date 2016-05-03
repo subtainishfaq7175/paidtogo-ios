@@ -80,8 +80,15 @@ extension ConnectionManager {
     
     func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
         
-        let identifier = "Forgot PW API - POST"
+        let identifier = "Update Profile API - POST"
         self.postRequest(identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Facebook Login API - POST"
+        self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
         
     }
 }
