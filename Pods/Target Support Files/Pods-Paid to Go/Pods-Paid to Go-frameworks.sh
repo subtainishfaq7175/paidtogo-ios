@@ -85,7 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Paid to Go/Alamofire.framework"
+  install_framework "Pods-Paid to Go/Bolts.framework"
   install_framework "Pods-Paid to Go/Charts.framework"
+  install_framework "Pods-Paid to Go/FBSDKCoreKit.framework"
+  install_framework "Pods-Paid to Go/FBSDKLoginKit.framework"
+  install_framework "Pods-Paid to Go/FBSDKShareKit.framework"
   install_framework "Pods-Paid to Go/KDCircularProgress.framework"
   install_framework "Pods-Paid to Go/MBProgressHUD.framework"
   install_framework "Pods-Paid to Go/ObjectMapper.framework"
@@ -102,7 +106,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Paid to Go/Alamofire.framework"
+  install_framework "Pods-Paid to Go/Bolts.framework"
   install_framework "Pods-Paid to Go/Charts.framework"
+  install_framework "Pods-Paid to Go/FBSDKCoreKit.framework"
+  install_framework "Pods-Paid to Go/FBSDKLoginKit.framework"
+  install_framework "Pods-Paid to Go/FBSDKShareKit.framework"
   install_framework "Pods-Paid to Go/KDCircularProgress.framework"
   install_framework "Pods-Paid to Go/MBProgressHUD.framework"
   install_framework "Pods-Paid to Go/ObjectMapper.framework"

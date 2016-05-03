@@ -41,8 +41,8 @@ target 'Paid to Go' do
     
     # KYCircularProgress
     # https://github.com/kentya6/KYCircularProgress
-#     pod 'KYCircularProgress'
-
+    #     pod 'KYCircularProgress'
+    
     # KDCircularProgress
     # https://github.com/kaandedeoglu/KDCircularProgress
     pod 'KDCircularProgress'
@@ -50,7 +50,7 @@ target 'Paid to Go' do
     # Charts: Beautiful charts for iOS/tvOS/OSX!
     # https://github.com/danielgindi/Charts
     pod 'Charts'
-
+    
     # Alamofire: Elegant networking in Swift
     # https://github.com/Alamofire/Alamofire
     pod 'Alamofire', '~> 3.3'
@@ -58,7 +58,7 @@ target 'Paid to Go' do
     # AlamofireObjectMapper: An extension to Alamofire which automatically converts JSON response data into swift objetcs using ObjectMapper.
     # https://github.com/tristanhimmelman/AlamofireObjectMapper
     # pod 'AlamofireObjectMapper', '~> 3.0'
-
+    
     # ObjectMapper: A framweork to convert model objects to and from JSON
     # https://github.com/Hearst-DD/ObjectMapper/
     pod 'ObjectMapper', '~> 1.2'
@@ -66,8 +66,12 @@ target 'Paid to Go' do
     # MBProgressHud
     # https://github.com/jdg/MBProgressHUD
     pod 'MBProgressHUD', '~> 0.9.2'
-
-
-
+    
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
+    
+    
+    
 end
 
