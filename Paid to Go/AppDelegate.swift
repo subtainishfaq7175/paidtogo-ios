@@ -63,8 +63,13 @@
     
     private func customizeNavigationBar() {
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
-        UINavigationBar.appearance().tintColor = CustomColors.NavbarTintColor()                                                     // Navigation bar buttons color
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : CustomColors.NavbarTintColor()]        // Navigation bar title attributes
+        UINavigationBar.appearance().tintColor = CustomColors.NavbarTintColor()   // Navigation bar buttons color
+        UINavigationBar.appearance().titleTextAttributes = [
+            
+                NSForegroundColorAttributeName : CustomColors.NavbarTintColor(),
+                NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 18)!
+            
+        ]
         
     }
     
