@@ -32,7 +32,7 @@ class LoginViewController: ViewController {
         // Do any additional setup after loading the view, typically from a nib.
         initConstraints()
         
-
+        
         
     }
     
@@ -45,14 +45,14 @@ class LoginViewController: ViewController {
         initViews()
     }
     
-
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(false)
         
         verifyIfThereIsCurrentUser()
- }
+    }
     
     private func verifyIfThereIsCurrentUser() {
         if let _ = User.currentUser {
@@ -96,34 +96,38 @@ class LoginViewController: ViewController {
         let loginManager = FBSDKLoginManager.init()
         
         let loginPermissions = ["public_profile", "email"]
+        
         loginManager.logInWithReadPermissions(loginPermissions, fromViewController: self) { (result, error) in
             if let error = error {
                 print("Facebook Login Error: ",  error)
             } else {
                 
-                let tokenString = result.token.tokenString
-                
-                let params = ["social_token" : tokenString]
-                
-                self.showProgressHud()
-                
-                DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
-                    self.dismissProgressHud()
+                if let result = result {
                     
-                    if let error = error where error.isEmpty == false {
-                        self.showAlert(error)
-                        return
-                    }
+                    let tokenString = result.token.tokenString
                     
-                    if error == nil && user != nil {
+                    let params = ["social_token" : tokenString]
+                    
+                    self.showProgressHud()
+                    
+                    DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
+                        self.dismissProgressHud()
                         
-                        User.currentUser = user
+                        if let error = error where error.isEmpty == false {
+                            self.showAlert(error)
+                            return
+                        }
                         
-                        self.presentHomeViewController()
-                        
-                    }
-                })
-                
+                        if error == nil && user != nil {
+                            
+                            User.currentUser = user
+                            
+                            self.presentHomeViewController()
+                            
+                        }
+                    })
+                    
+                }
             }
         }
     }
@@ -164,7 +168,7 @@ class LoginViewController: ViewController {
         loginViewContainer.round()
         facebookViewContainer.round()
         signupViewContainer.round()
-    
+        
         
     }
     
