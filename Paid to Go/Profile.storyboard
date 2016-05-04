@@ -6,6 +6,22 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Profile View Controller-->
         <scene sceneID="P7r-bE-Wx2">
@@ -23,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEI-Kd-BTH" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="482"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-gc-tkw" userLabel="Profile Image View">
                                                 <rect key="frame" x="96" y="23" width="128" height="128"/>
@@ -36,49 +52,49 @@
                                                 </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prj-rr-RpW" userLabel="Username Label">
-                                                <rect key="frame" x="10" y="189" width="34" height="12"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                                                <rect key="frame" x="10" y="189" width="30" height="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1L-Uf-agk" userLabel="Username Line View">
-                                                <rect key="frame" x="10" y="227" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="229" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Roz-hs-H61"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4B-yX-JmI" userLabel="First Name Text Field">
-                                                <rect key="frame" x="10" y="248" width="300" height="29"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                <rect key="frame" x="10" y="252" width="300" height="29"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibL-zd-bsw" userLabel="First Name Label">
-                                                <rect key="frame" x="10" y="238" width="64" height="12"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                                                <rect key="frame" x="10" y="240" width="55" height="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmP-5C-kfz" userLabel="First Name  Line View">
-                                                <rect key="frame" x="10" y="276" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="280" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="C5B-RS-iGZ"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Atv-yZ-bsn" userLabel="Last Name Text Field">
-                                                <rect key="frame" x="10" y="297" width="300" height="29"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                <rect key="frame" x="10" y="303" width="300" height="29"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2b-4C-DFw" userLabel="Last Name Label">
-                                                <rect key="frame" x="10" y="287" width="61" height="12"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                                                <rect key="frame" x="10" y="291" width="52" height="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pU-Gd-Red" userLabel="Last Name Line View">
-                                                <rect key="frame" x="10" y="325" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="331" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="iZd-9Z-BHk"/>
@@ -121,12 +137,12 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0n-32-uIa" userLabel="Bio Text Field">
-                                                <rect key="frame" x="10" y="346" width="300" height="29"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                <rect key="frame" x="10" y="354" width="300" height="29"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQK-Zj-EDu" userLabel="Bio Line View">
-                                                <rect key="frame" x="10" y="374" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="382" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="j38-na-oZd"/>
@@ -139,11 +155,11 @@
                                                 </constraints>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTK-iz-ozQ" userLabel="Signup Button Container">
-                                                <rect key="frame" x="55" y="415" width="210" height="45"/>
+                                                <rect key="frame" x="55" y="423" width="210" height="45"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMW-0Q-oXF" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                         <state key="normal" title="Ok">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -175,20 +191,21 @@
                                                 </state>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lq7-kr-gPK" userLabel="Username Text Field">
-                                                <rect key="frame" x="10" y="199" width="300" height="29"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                <rect key="frame" x="10" y="201" width="300" height="29"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEJ-ai-3oh">
-                                                <rect key="frame" x="264" y="8" width="48" height="30"/>
+                                                <rect key="frame" x="263" y="8" width="49" height="33"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
                                                     <action selector="logout:" destination="OfH-Bf-BSA" eventType="touchUpInside" id="DSq-gA-CMk"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKR-n7-eTx" userLabel="Bio Label">
-                                                <rect key="frame" x="10" y="336" width="21" height="12"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                                                <rect key="frame" x="10" y="342" width="19" height="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

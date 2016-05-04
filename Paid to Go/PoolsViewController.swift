@@ -60,7 +60,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setPoolColorAndTitle(backgroundColorView, type: type!)
- self.scrollView.delegate = self
+        self.scrollView.delegate = self
         
         self.openPoolsTableView.delegate = self
         self.openPoolsTableView.dataSource = self
@@ -71,25 +71,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.getPools()
     }
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        let poolViewController = segue.destinationViewController as! PoolViewController
-    //
-    //        switch segue.identifier! {
-    //        case "closedPoolSegue":
-    //        poolViewController.type = self.type
-    //            break
-    //        case "poolSegue":
-    //            poolViewController.type = self.type
-    //            break
-    //        default:
-    //            break
-    //        }
-    //
-    //        if self.type == .Train {
-    //            presentAntiCheatNavigationController()
-    //        }
-    //    }
-    
+
     // MARK: - Functions
     
     
@@ -100,18 +82,16 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func initLayout() {
         setNavigationBarVisible(true)
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
-        
-        
-        
+ 
         
         setIndicatorOnLeft()
     }
     
     private func initViews() {
         goImageView.roundWholeView()
-    }
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+  }
     
     private func setIndicatorOnLeft() {
         indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8

@@ -102,9 +102,9 @@ class LoginViewController: ViewController {
                 print("Facebook Login Error: ",  error)
             } else {
                 
-                if let result = result {
+                if let token = result.token {
                     
-                    let tokenString = result.token.tokenString
+                    let tokenString = token.tokenString
                     
                     let params = ["social_token" : tokenString]
                     
