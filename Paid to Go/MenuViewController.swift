@@ -18,6 +18,7 @@ class MenuViewController: ViewController {
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     weak var menuController: MainViewController?
     
@@ -40,10 +41,23 @@ class MenuViewController: ViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.reloadData()
+        
+        let currentUser = User.currentUser!
+        
+        nameLabel.text = currentUser.fullName()
+       
+        if let currentProfilePicture = currentUser.profilePicture {
+            
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
+            
+        }
+    
+
     }
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
+        profileImageView.roundWholeView()
         nameView.round()
     }
     

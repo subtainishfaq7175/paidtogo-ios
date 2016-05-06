@@ -138,11 +138,11 @@ class LoginViewController: ViewController {
     
     private func validate() -> Bool {
         if usernameTextField.text == "" {
-            showAlert("Username field is empty")
+            showAlert("alert_username_empty".localize())
             return false
         }
         if passwordTextField.text == "" {
-            showAlert("Password field is empty")
+            showAlert("alert_password_empty".localize())
             return false
         }
         

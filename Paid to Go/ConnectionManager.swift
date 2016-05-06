@@ -2,7 +2,7 @@
 //  ConnectionManager.swift
 //  Paid to Go
 //
-//  Created by MacbookPro on 22/4/16.
+//  Created by Germán Campagno on 22/4/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
@@ -15,11 +15,6 @@ private enum RequestType: String {
     case Response   = "Response"    ;
 }
 
-//public enum Method: String {
-//    case OPTIONS, GET, HEAD, POST, PUT, PATCH, DELETE, TRACE, CONNECT
-//}
-
-
 class ConnectionManager {
     
     private var baseURL = "http://paid.xanthops.com/api/v1"
@@ -28,6 +23,7 @@ class ConnectionManager {
     private var loginURL: String { return "\(baseURL)/login" }
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
+    private var balanceURL : String { return "\(baseURL)/balance" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -89,6 +85,13 @@ extension ConnectionManager {
         
         let identifier = "Facebook Login API - POST"
         self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    func balance(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Balance API - POST"
+        self.postRequest(identifier, url: self.balanceURL, params: params, apiCompletion: apiCompletion)
         
     }
 }

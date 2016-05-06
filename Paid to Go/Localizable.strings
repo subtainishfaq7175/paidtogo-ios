@@ -3,13 +3,15 @@
 // - Login strings
 // -----------------------------------------
 
-"facebook_register_label"       = "Connect with Facebook" ;
-"email_register_label"          = "Register with e-mail"  ;
+"facebook_register_label"       = "Connect with Facebook"   ;
+"email_register_label"          = "Register with e-mail"    ;
 
-"forgot_password_label_button"  = "Forgot password?"      ;
-"new_user_label_button"         = "New user? SIGN UP"     ;
-"Password_place_holder_text"    = "Password"              ;
-"Recover_password"              = "Recover"               ;
+"forgot_password_label_button"  = "Forgot password?"        ;
+"new_user_label_button"         = "New user? SIGN UP"       ;
+"Password_place_holder_text"    = "Password"                ;
+"Recover_password"              = "Recover"                 ;
+"alert_username_empty"          = "Username field is empty" ;
+"alert_password_empty"          = "Password field is empty" ;
 
 
 // -----------------------------------------

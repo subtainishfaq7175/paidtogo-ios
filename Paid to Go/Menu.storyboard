@@ -171,6 +171,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="EFI-8N-8bL" id="NIC-KR-r8g"/>
                         <outlet property="nameView" destination="izE-L2-CU3" id="QZJ-x6-8u3"/>
+                        <outlet property="profileImageView" destination="6am-0n-Xhm" id="wTy-AY-rBv"/>
                         <outlet property="tableview" destination="dvF-4E-hwz" id="rBY-5w-OxY"/>
                     </connections>
                 </viewController>

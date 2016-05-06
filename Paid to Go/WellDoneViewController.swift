@@ -12,6 +12,7 @@ class WellDoneViewController: ViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var backgroundColorView: UIView!
     
     // MARK: - Variables and Constants
@@ -35,22 +36,29 @@ class WellDoneViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentUser = User.currentUser!
         
+        
+        if let currentProfilePicture = currentUser.profilePicture {
+            
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
+            
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "shareSegue":
-            let shareViewController = segue.destinationViewController as! ShareViewController
-            shareViewController.type = self.type!
-            break
-        case "leaderboardsSegue":
-            let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
-            wdLeaderboardsViewController.type = self.type!
-        default:
-            break
-        }
         
+        switch segue.identifier! {
+            case "shareSegue":
+                let shareViewController = segue.destinationViewController as! ShareViewController
+                shareViewController.type = self.type!
+                break
+            case "leaderboardsSegue":
+                let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
+                wdLeaderboardsViewController.type = self.type!
+            default:
+                break
+        }
         
     }
     
@@ -59,6 +67,8 @@ class WellDoneViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
+  
+        
         self.title = "menu_home".localize()
         
         setPoolColor(backgroundColorView, type: type!)
@@ -67,24 +77,14 @@ class WellDoneViewController: ViewController {
     
     
     private func initViews() {
+        profileImageView.roundWholeView()
     }
     
     // MARK: - Actions
     
-    //    @IBAction func showLeaderboards(sender: AnyObject) {
-    //        //        let leaderboardsViewController = leaderboardsNavigationController.viewControllers[0] as! LeaderboardsViewController
-    //        //        let leaderboardsViewController = StoryboardRouter.leaderboardsMainViewController()
-    //
-    //        let leaderboardsViewController = StoryboardRouter.leaderboardsStoryboard().instantiateViewControllerWithIdentifier("leaderboardsViewController") as! LeaderboardsViewController
-    //        leaderboardsViewController.calledFromMenu = false
-    //
-    //        self.presentViewController(leaderboardsViewController, animated: true, completion: nil)
-    //
-    //    }
     
     @IBAction func backToHome(sender: AnyObject) {
-        //logout()
-        presentHomeViewController()
+        self.presentHomeViewController()
     }
     
 }

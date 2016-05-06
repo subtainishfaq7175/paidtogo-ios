@@ -39,6 +39,10 @@ class User: Mappable {
         
     }
     
+    func fullName() -> String {
+        return name! + " " + lastName!
+    }
+    
     // Mappable
     func mapping(map: Map) {
         email           <- map["email"]

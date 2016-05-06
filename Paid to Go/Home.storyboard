@@ -1573,6 +1573,7 @@
                     <navigationItem key="navigationItem" id="9Zn-bY-t1W"/>
                     <connections>
                         <outlet property="backgroundColorView" destination="A8a-l4-hGe" id="jQM-mK-MQ4"/>
+                        <outlet property="profileImageView" destination="tly-nR-k3h" id="NpR-wL-KnU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AP-v7-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>

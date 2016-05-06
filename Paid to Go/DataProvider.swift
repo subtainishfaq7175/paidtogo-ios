@@ -2,7 +2,7 @@
 //  DataProvider.swift
 //  Celebrastic
 //
-//  Created by Admin on 2/3/16.
+//  Created by Germán Campagno on 2/3/16.
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
