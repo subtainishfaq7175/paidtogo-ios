@@ -13,6 +13,7 @@ class BalanceViewController: MenuContentViewController {
     
     @IBOutlet weak var redemedLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
+    @IBOutlet weak var accountMoneyLabel: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -63,6 +64,8 @@ class BalanceViewController: MenuContentViewController {
                 
                 self.redemedLabel.text = "- U$D \(balance.redemed!)"
                 self.earnedLabel.text = "U$D \(balance.earned!)"
+                
+                self.accountMoneyLabel.text = "U$D \(balance.redemed!)"
                 
                 
             } else if let error = error {
