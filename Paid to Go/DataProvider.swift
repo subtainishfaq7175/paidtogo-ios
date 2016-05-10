@@ -158,6 +158,28 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func postBalance(user: User, completion: (balance: Balance?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.balance(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let balance = Mapper<Balance>().map(responseValue)
+                completion(balance: balance, error: nil)
+                return
+                
+            } else {
+                
+                completion(balance: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+
+    
     
     
 }

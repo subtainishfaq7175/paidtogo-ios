@@ -9,16 +9,16 @@
 import Foundation
 import ObjectMapper
 
-class GenericResponse: Mappable {
+class Balance: Mappable {
     
-    var detail: String?
-    var code: String?
+    var balance: Int?
+    var transactions: [Transaction]?
     
     
     
     init() {
-        self.detail = ""
-        self.code = ""
+        self.balance = 0
+        //        self.transactions = ""
         
     }
     
@@ -28,8 +28,10 @@ class GenericResponse: Mappable {
     
     // Mappable
     func mapping(map: Map) {
-        detail          <- map["detail"]
-        code            <- map["code"]
+        balance             <- map["balance"]
+        transactions        <- map["transactions"]
     }
+    
+    
     
 }

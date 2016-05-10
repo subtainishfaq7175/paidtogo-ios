@@ -51,7 +51,7 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 }
 
 extension ConnectionManager {
-
+    
     
     func register(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
         
@@ -120,6 +120,7 @@ extension ConnectionManager {
                     apiCompletion(responseValue: nil, error: "error_connection")
                     return
                 }
+                
                 
                 self.printRequest(identifier,
                     requestType: RequestType.Response,
