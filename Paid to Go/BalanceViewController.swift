@@ -11,6 +11,8 @@ import UIKit
 class BalanceViewController: MenuContentViewController {
     // MARK: - Outlets
     
+    @IBOutlet weak var redemedLabel: UILabel!
+    @IBOutlet weak var earnedLabel: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -59,6 +61,8 @@ class BalanceViewController: MenuContentViewController {
             if let balance = balance {
                 // ... success
                 
+                self.redemedLabel.text = "- U$D \(balance.redemed!)"
+                self.earnedLabel.text = "U$D \(balance.earned!)"
                 
                 
             } else if let error = error {

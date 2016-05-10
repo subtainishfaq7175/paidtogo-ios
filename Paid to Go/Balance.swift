@@ -13,12 +13,13 @@ class Balance: Mappable {
     
     var balance: Int?
     var transactions: [Transaction]?
+    var earned: String?
+    var redemed: String?
     
     
     
     init() {
         self.balance = 0
-        //        self.transactions = ""
         
     }
     
@@ -30,6 +31,8 @@ class Balance: Mappable {
     func mapping(map: Map) {
         balance             <- map["balance"]
         transactions        <- map["transactions"]
+        earned              <- map["earned"]
+        redemed             <- map["redemed"]
     }
     
     
