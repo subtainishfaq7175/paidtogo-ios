@@ -69,7 +69,7 @@ class BalanceViewController: MenuContentViewController {
                 
                 
             } else if let error = error {
-                
+                // ... error
                 self.showAlert(error)
                 
             }
