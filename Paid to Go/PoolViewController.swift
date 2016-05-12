@@ -9,6 +9,7 @@
 import UIKit
 import KDCircularProgress
 import Foundation
+import CoreLocation
 
 class PoolViewController: ViewController {
     
@@ -29,6 +30,8 @@ class PoolViewController: ViewController {
     var isTimerTracking: Bool = false
     var timer = NSTimer()
     var trackNumber = 0
+    var locationManager: CLLocationManager!
+    var activity: Activity!
     
     
     // MARK: -  Super
@@ -36,6 +39,7 @@ class PoolViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         initLayout()
+        initLocationManager()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,13 +73,14 @@ class PoolViewController: ViewController {
         }
     }
     
+    
     // MARK: - Functions
     
     
     
     private func initLayout() {
         pauseButton.hidden = true
-
+        
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         clearNavigationBarcolor()
@@ -106,8 +111,32 @@ class PoolViewController: ViewController {
         
     }
     
+    private func endTracking() {
+        print(activity.startLatitude)
+        print(activity.startLongitude)
+        
+        print(activity.endLatitude)
+        print(activity.endLongitude)
+        
+        let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
+        let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
+        wellDoneViewController.type = self.type
+        
+        self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+        
+    }
+    
     
     // MARK: - Actions
+    
+    private func initLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.requestAlwaysAuthorization()
+        
+    }
     
     @IBAction func toggle(sender: AnyObject) {
         if isTimerTracking {
@@ -119,7 +148,7 @@ class PoolViewController: ViewController {
             timer.fire()
             isTimerTracking = true
             pauseButton.setTitle("Pause", forState: UIControlState.Normal)
-   }
+        }
         
     }
     
@@ -128,7 +157,11 @@ class PoolViewController: ViewController {
     }
     
     @IBAction func track(sender: AnyObject) {
+        
         if !hasPoolStarted {
+            
+            activity = Activity()
+            
             hasPoolStarted = true
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
             setPoolColor(self.actionButtonView, type: self.type!)
@@ -137,13 +170,36 @@ class PoolViewController: ViewController {
             timer.fire()
             pauseButton.hidden = false
             
+            
+        }
+        
+        locationManager?.startUpdatingLocation()
+        
+        
+    }
+    
+}
+
+extension PoolViewController: CLLocationManagerDelegate {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locationArray = locations as NSArray
+        let locationObj = locationArray.lastObject as! CLLocation
+        let coord = locationObj.coordinate
+        
+        locationManager?.stopUpdatingLocation()
+
+        
+        if activity.startLatitude == nil {
+            activity.startLatitude = coord.latitude
+            activity.startLongitude = coord.longitude
         } else {
-            let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
-            let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
-            wellDoneViewController.type = self.type
+            activity.endLatitude = coord.latitude
+            activity.endLongitude = coord.longitude
             
-            self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+
             
+            endTracking()
         }
     }
     
