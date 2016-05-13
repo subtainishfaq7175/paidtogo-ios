@@ -115,7 +115,7 @@ extension ConnectionManager {
             break
         }
         
-        self.postRequest(identifier, url: url!, params: params, apiCompletion: apiCompletion)
+        self.getRequest(identifier, url: url!, apiCompletion: apiCompletion)
         
     }
     
@@ -128,7 +128,12 @@ extension ConnectionManager {
         print(value)
     }
     
+    private func printRequest(identifier: String, requestType: RequestType, requestURL: String) {
+        print(identifier + " - " + requestType.rawValue + " - " + requestURL)
+    }
+    
     private func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
         
         let paramsDict = dictionaryWithoutEmptyValues(params)
         
@@ -176,4 +181,54 @@ extension ConnectionManager {
                 }
         }
     }
+    
+    
+    private func getRequest(identifier: String, url: String, apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        
+        
+        self.printRequest(identifier,
+                          requestType: RequestType.Request,
+                          requestURL: url)
+        
+        Alamofire
+            .request(Method.GET, url,  encoding: ParameterEncoding.JSON, headers: nil)
+            .responseJSON { (response) in
+                
+                guard let value = response.result.value as? [String: AnyObject] else {
+                    apiCompletion(responseValue: nil, error: "error_connection")
+                    return
+                }
+                
+                
+                self.printRequest(identifier,
+                    requestType: RequestType.Response,
+                    requestURL: url,
+                    value: value)
+                
+                if response.result.isSuccess {
+                    if response.response?.statusCode == 200 {
+                        
+                        apiCompletion(responseValue: value, error: nil)
+                        return
+                        
+                    }  else {
+                        
+                        if let errorDetail = value["code"] as? String {
+                            apiCompletion(responseValue: value, error: errorDetail)
+                        }  else {
+                            apiCompletion(responseValue: value, error: "error_default")
+                        }
+                        return
+                    }
+                    
+                } else   if response.result.isFailure {
+                    
+                    apiCompletion(responseValue: value, error: "error_connection")
+                    
+                    return
+                }
+        }
+    }
+    
 }

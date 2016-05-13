@@ -186,13 +186,13 @@ class DataProvider : DataProviderService {
             
             if (error == nil) {
                 
-                let balance = Mapper<Balance>().map(responseValue)
-                completion(balance: balance, error: nil)
+                let poolType = Mapper<PoolType>().map(responseValue)
+                completion(poolType: poolType, error: nil)
                 return
                 
             } else {
                 
-                completion(balance: nil, error: self.getError(error!))
+                completion(poolType: nil, error: self.getError(error!))
                 return
                 
             }

@@ -21,7 +21,7 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeNavigationBarWithTitleAndMenu()
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,7 +37,12 @@ class HomeViewController: MenuContentViewController {
         
         switch segue.identifier! {
         case "walkSegue":
-            destinationViewController.type = .Walk
+            
+            DataProvider.sharedInstance.getPoolType(.Walk, completion: { (poolType, error) in
+                destinationViewController.poolType = poolType
+            })
+            
+            //            destinationViewController.type = .Walk
             break
         case "bikeSegue":
             destinationViewController.type = .Bike
@@ -59,5 +64,96 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Actions
     
+    @IBAction func showPoolsViewController(sender: AnyObject) {
+        
+        self.showProgressHud()
+        
+        if let button = sender as? UIButton {
+            
+            let destinationViewController =
+                StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolsViewController") as! PoolsViewController
+            
+            switch button.restorationIdentifier! {
+            case "button_walk":
+                DataProvider.sharedInstance.getPoolType(.Walk, completion: { (poolType, error) in
+                    
+                    self.dismissProgressHud()
+                    
+                    if let error = error {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    destinationViewController.poolType = poolType
+                    destinationViewController.type = .Walk
+                    
+                    self.showViewController(destinationViewController, sender: sender)
+                    
+                })
+                break
+            case "button_bike":
+                self.dismissProgressHud()
+                DataProvider.sharedInstance.getPoolType(.Bike, completion: { (poolType, error) in
+                    
+                    self.dismissProgressHud()
+                    
+                    if let error = error {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    destinationViewController.poolType = poolType
+                    destinationViewController.type = .Bike
+                    
+                    self.showViewController(destinationViewController, sender: sender)
+                    
+                })
+
+                break
+            case "button_train":
+                self.dismissProgressHud()
+                DataProvider.sharedInstance.getPoolType(.Train, completion: { (poolType, error) in
+                    
+                    self.dismissProgressHud()
+                    
+                    if let error = error {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    destinationViewController.poolType = poolType
+                    destinationViewController.type = .Train
+                    
+                    self.showViewController(destinationViewController, sender: sender)
+                    
+                })
+
+                break
+            case "button_car":
+                self.dismissProgressHud()
+                DataProvider.sharedInstance.getPoolType(.Car, completion: { (poolType, error) in
+                    
+                    self.dismissProgressHud()
+                    
+                    if let error = error {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    destinationViewController.poolType = poolType
+                    destinationViewController.type = .Car
+                    
+                    self.showViewController(destinationViewController, sender: sender)
+                    
+                })
+
+                break
+                
+            default: break
+                
+            }
+            
+        }
+    }
     
 }

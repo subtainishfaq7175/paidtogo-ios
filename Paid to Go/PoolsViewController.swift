@@ -10,6 +10,7 @@ import UIKit
 
 
 class PoolsViewController: ViewController, UIScrollViewDelegate {
+    
     // MARK: - Outlets
     
     @IBOutlet weak var headerTitleLabel: UILabel!
@@ -37,6 +38,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
+    var poolType: PoolType?
     var closedPools:[Pool] = [Pool]()
     var openPools:[Pool] = [Pool]()
     
@@ -60,7 +62,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPoolColorAndTitle(backgroundColorView, type: type!)
+        setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
+        
         self.scrollView.delegate = self
         
         self.openPoolsTableView.delegate = self

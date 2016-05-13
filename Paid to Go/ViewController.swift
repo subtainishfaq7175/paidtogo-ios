@@ -106,22 +106,22 @@ class ViewController: UIViewController {
         
     }
     
-    func setPoolColorAndTitle(view: UIView, type: PoolTypeEnum) {
+    func setPoolColorAndTitle(view: UIView, typeEnum: PoolTypeEnum, type: PoolType) {
         
-        switch type {
+        switch typeEnum {
         case .Walk:
             //            self.title = "walk_title".localize()
             let titleImage = UIImage(named: "ic_walkrun")
             navigationItem.titleView = UIImageView(image: titleImage)
+        
             
-            view.backgroundColor = CustomColors.walkRunColor()
             break
         case .Bike:
             //            self.title = "bike_title".localize()
             let titleImage = UIImage(named: "ic_bike")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-            view.backgroundColor = CustomColors.bikeColor()
+//            view.backgroundColor = CustomColors.bikeColor()
             break
         case .Train:
             //            self.title = "train_title".localize()
@@ -129,18 +129,21 @@ class ViewController: UIViewController {
             let titleImage = UIImage(named: "ic_bustrain")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-            view.backgroundColor = CustomColors.busTrainColor()
+//            view.backgroundColor = CustomColors.busTrainColor()
             break
         case .Car:
             //            self.title = "car_title".localize()
             let titleImage = UIImage(named: "ic_car")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-            view.backgroundColor = CustomColors.carColor()
+//            view.backgroundColor = CustomColors.carColor()
             break
         default:
             break
         }
+        
+        view.backgroundColor = UIColor(rgba: type.color!)
+
         
     }
     
