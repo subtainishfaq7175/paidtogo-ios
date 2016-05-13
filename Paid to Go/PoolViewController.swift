@@ -25,7 +25,7 @@ class PoolViewController: ViewController {
     
     // MARK: - Variables and Constants
     
-    var type: PoolType?
+    var type: PoolTypeEnum?
     var hasPoolStarted = false
     var isTimerTracking: Bool = false
     var timer = NSTimer()
@@ -191,13 +191,13 @@ extension PoolViewController: CLLocationManagerDelegate {
 
         
         if activity.startLatitude == nil {
+            
             activity.startLatitude = coord.latitude
             activity.startLongitude = coord.longitude
+            
         } else {
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
-            
-
             
             endTracking()
         }

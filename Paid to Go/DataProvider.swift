@@ -178,7 +178,27 @@ class DataProvider : DataProviderService {
             }
         }
     }
-
+    
+    func getPoolType(poolTypeEnum: PoolTypeEnum, completion: (poolType: PoolType?, error: String?) -> Void) {
+        
+        
+        ConnectionManager.sharedInstance.getPoolType(poolTypeEnum) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let balance = Mapper<Balance>().map(responseValue)
+                completion(balance: balance, error: nil)
+                return
+                
+            } else {
+                
+                completion(balance: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
     
     
     

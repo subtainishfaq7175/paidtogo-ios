@@ -24,6 +24,7 @@ class ConnectionManager {
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
+    private var poolTypesURL : String { return "\(baseURL)/pool_types" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -94,6 +95,30 @@ extension ConnectionManager {
         self.postRequest(identifier, url: self.balanceURL, params: params, apiCompletion: apiCompletion)
         
     }
+    
+    func getPoolType(params: PoolTypeEnum, apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Pool Types API - GET"
+        var url: String?
+        switch params {
+        case .Walk:
+            url = self.poolTypesURL + "?id=1"
+            break
+        case.Bike:
+            url = self.poolTypesURL + "?id=2"
+            break
+        case.Train:
+            url = self.poolTypesURL + "?id=3"
+            break
+        case.Car:
+            url = self.poolTypesURL + "?id=4"
+            break
+        }
+        
+        self.postRequest(identifier, url: url!, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
 }
 
 extension ConnectionManager {

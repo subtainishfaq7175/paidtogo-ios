@@ -17,7 +17,7 @@ class WDLeaderboardsViewController: ViewController {
     
     // MARK: - Variables and Constants
     
-    var type: PoolType?
+    var type: PoolTypeEnum?
     
     // MARK: - Super
     

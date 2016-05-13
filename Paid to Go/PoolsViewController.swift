@@ -36,7 +36,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     // MARK: - Variables and Constants
     
-    var type: PoolType?
+    var type: PoolTypeEnum?
     var closedPools:[Pool] = [Pool]()
     var openPools:[Pool] = [Pool]()
     
