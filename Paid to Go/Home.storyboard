@@ -662,7 +662,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evt-V2-sqn" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-c8-ZDc" userLabel="Header Image View">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-c8-ZDc" userLabel="Header Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                     </imageView>
                                     <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiv-QE-02T" userLabel="Green View">
@@ -1042,6 +1042,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundColorView" destination="Eiv-QE-02T" id="Kc2-En-FeI"/>
+                        <outlet property="backgroundImageView" destination="vqR-c8-ZDc" id="cLZ-gE-L1w"/>
                         <outlet property="closedPoolsIndicatorView" destination="8OY-BC-BRD" id="95A-Qp-FF5"/>
                         <outlet property="closedPoolsLabel" destination="4ST-ii-RfL" id="71W-96-JLx"/>
                         <outlet property="closedPoolsTableView" destination="snq-jS-B2m" id="RbH-8P-Kqo"/>

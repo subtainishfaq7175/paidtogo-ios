@@ -34,6 +34,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var closedPoolsTableView: UITableView!
     
     @IBOutlet weak var backgroundColorView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     // MARK: - Variables and Constants
     
@@ -64,6 +65,9 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
         
+        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+
+        
         self.scrollView.delegate = self
         
         self.openPoolsTableView.delegate = self
@@ -86,15 +90,16 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func initLayout() {
         setNavigationBarVisible(true)
-        
- 
-        
+
         setIndicatorOnLeft()
+        
+
     }
     
     private func initViews() {
-        goImageView.roundWholeView()
+        self.goImageView.roundWholeView()
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        
   }
     
     private func setIndicatorOnLeft() {
