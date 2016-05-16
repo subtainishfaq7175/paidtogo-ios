@@ -665,7 +665,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-c8-ZDc" userLabel="Header Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                     </imageView>
-                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiv-QE-02T" userLabel="Green View">
+                                    <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiv-QE-02T" userLabel="Color View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-Pi-hsk" userLabel="Go View">
