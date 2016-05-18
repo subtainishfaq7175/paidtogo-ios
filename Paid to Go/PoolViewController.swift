@@ -10,6 +10,7 @@ import UIKit
 import KDCircularProgress
 import Foundation
 import CoreLocation
+import CoreMotion
 
 class PoolViewController: ViewController {
     
@@ -22,6 +23,7 @@ class PoolViewController: ViewController {
     @IBOutlet weak var circularProgressView: KDCircularProgress!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var stepCountLabel: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -32,6 +34,16 @@ class PoolViewController: ViewController {
     var trackNumber = 0
     var locationManager: CLLocationManager!
     var activity: Activity!
+    
+    var stepCount = 0
+    
+    let activityManager = CMMotionActivityManager()
+    let pedoMeter = CMPedometer()
+    
+    var startDateToTrack: NSDate?
+    
+    var activityShouldEnd = false
+    var initialLocation: CLLocation?
     
     
     // MARK: -  Super
@@ -101,7 +113,7 @@ class PoolViewController: ViewController {
         //        circularProgressView.animateFromAngle(0, toAngle: 360, duration: 10, relativeDuration: true, completion: nil)
         trackNumber = trackNumber + 1
         circularProgressView.angle = trackNumber * 360 / 100
-        progressLabel.text = "\(trackNumber )"
+//        progressLabel.text = "\(trackNumber )"
         
         if trackNumber == 100{
             self.pauseButton.hidden = true
@@ -109,6 +121,24 @@ class PoolViewController: ViewController {
         }
         isTimerTracking = true
         
+        updatePedometer()
+        
+       
+    }
+    
+    private func updatePedometer() {
+        if CMPedometer.isStepCountingAvailable() {
+                pedoMeter.queryPedometerDataFromDate(self.startDateToTrack!, toDate: NSDate()) { (data, error) in
+                    if let data = data{
+                        self.stepCount = data.numberOfSteps.integerValue
+                        self.stepCountLabel.text = String(self.stepCount)
+                        if CMPedometer.isDistanceAvailable() {
+                            
+                            
+                        }
+                    }
+            }
+        }
     }
     
     private func endTracking() {
@@ -117,6 +147,7 @@ class PoolViewController: ViewController {
         
         print(activity.endLatitude)
         print(activity.endLongitude)
+        
         
         let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
         let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
@@ -162,6 +193,8 @@ class PoolViewController: ViewController {
             
             activity = Activity()
             
+            self.startDateToTrack = NSDate()
+            
             hasPoolStarted = true
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
             setPoolColor(self.actionButtonView, type: self.type!)
@@ -170,10 +203,24 @@ class PoolViewController: ViewController {
             timer.fire()
             pauseButton.hidden = false
             
+            locationManager?.startUpdatingLocation()
+
+        } else {
             
+            activityShouldEnd = true
+            
+            locationManager?.startUpdatingLocation()
+            
+            while self.activity.endLatitude == nil {
+                
+            }
+            
+            endTracking()
+
         }
         
-        locationManager?.startUpdatingLocation()
+        
+      
         
         
     }
@@ -187,19 +234,25 @@ extension PoolViewController: CLLocationManagerDelegate {
         let locationObj = locationArray.lastObject as! CLLocation
         let coord = locationObj.coordinate
         
-        locationManager?.stopUpdatingLocation()
 
         
-        if activity.startLatitude == nil {
+        if activity.startLongitude == nil {
             
             activity.startLatitude = coord.latitude
             activity.startLongitude = coord.longitude
             
+            self.initialLocation = locationObj
+            
         } else {
+            
+            let distanceFromLocation = locationObj.distanceFromLocation(self.initialLocation!)
+            self.progressLabel.text = String(format: "%.2f", distanceFromLocation * 0.000621371)
+            
+            if self.activityShouldEnd {
+            
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
-            
-            endTracking()
+            }
         }
     }
     
