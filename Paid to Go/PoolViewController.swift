@@ -66,8 +66,10 @@ class PoolViewController: ViewController {
         }
         
         self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
-
         
+        if type == .Walk {
+            self.stepCountLabel.hidden = false
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -106,12 +108,8 @@ class PoolViewController: ViewController {
     
     
     func startTracking() {
-
         isTimerTracking = true
-        
         updatePedometer()
-        
-       
     }
     
     
@@ -197,11 +195,6 @@ class PoolViewController: ViewController {
             endTracking()
 
         }
-        
-        
-      
-        
-        
     }
     
 }
@@ -213,8 +206,6 @@ extension PoolViewController: CLLocationManagerDelegate {
         let locationObj = locationArray.lastObject as! CLLocation
         let coord = locationObj.coordinate
         
-
-        
         if activity.startLongitude == nil {
             
             activity.startLatitude = coord.latitude
@@ -225,14 +216,10 @@ extension PoolViewController: CLLocationManagerDelegate {
         } else {
             
             let distanceFromLocation = locationObj.distanceFromLocation(self.initialLocation!)
-            self.progressLabel.text = String(format: "%.2f", distanceFromLocation * 0.000621371)
-            
-            
+            self.progressLabel.text = String(format: "%.2f", distanceFromLocation * 0.000621371)            
             
             trackNumber = distanceFromLocation / 1600
             circularProgressView.angle = trackNumber * 360
-            
-            
             
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
