@@ -179,6 +179,27 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func postRegisterActivity(activity: Activity, completion: (activityResponse: ActivityResponse?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(activity)
+        
+        ConnectionManager.sharedInstance.registerActivity(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let activityResponse = Mapper<ActivityResponse>().map(responseValue)
+                completion(activityResponse: activityResponse, error: nil)
+                return
+                
+            } else {
+                
+                completion(activityResponse: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
     func getPoolType(poolTypeEnum: PoolTypeEnum, completion: (poolType: PoolType?, error: String?) -> Void) {
         
         

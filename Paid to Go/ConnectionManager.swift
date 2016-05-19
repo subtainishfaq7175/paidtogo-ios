@@ -25,6 +25,7 @@ class ConnectionManager {
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
+    private var registerActivityURL : String { return "\(baseURL)/register_activity" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -93,6 +94,13 @@ extension ConnectionManager {
         
         let identifier = "Balance API - POST"
         self.postRequest(identifier, url: self.balanceURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    func registerActivity(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+        
+        let identifier = "Register Activity API - POST"
+        self.postRequest(identifier, url: self.registerActivityURL, params: params, apiCompletion: apiCompletion)
         
     }
     

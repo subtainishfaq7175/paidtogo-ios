@@ -7,20 +7,41 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Activity {
+class Activity: Mappable {
     
     var startLatitude: Double?
     var startLongitude: Double?
     var endLatitude: Double?
     var endLongitude: Double?
-    
-    // ... completar campos
+    var poolId: String?
+    var startDateTime: String?
+    var milesTraveled: String?
+    var photography: String?
+    var accessToken: String?
     
     init() {
         
     }
     
-    // ... implementar object mapper
+    required init?(_ map: Map) {
+        
+    }
+    
+    // Mappable
+    func mapping(map: Map) {
+        
+        startLatitude       <-  map["start_latitude"]
+        startLongitude      <-  map["start_longitude"]
+        endLatitude         <-  map["end_latitude"]
+        endLongitude        <-  map["end_longitude"]
+        poolId              <-  map["pool_id"]
+        startDateTime       <-  map["start_date_time"]
+        milesTraveled       <-  map["miles_traveled"]
+        photography         <-  map["photo"]
+        accessToken         <-  map["access_token"]
+        
+    }
     
 }

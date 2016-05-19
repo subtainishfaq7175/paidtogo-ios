@@ -180,7 +180,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate == false {
             let currentPage = scrollView.currentPage
-            //            print("scrollViewDidEndDragging: \(currentPage)")
         }
     }
     

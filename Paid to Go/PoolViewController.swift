@@ -40,6 +40,7 @@ class PoolViewController: ViewController {
     let pedoMeter = CMPedometer()
     var startDateToTrack: NSDate?
     var initialLocation: CLLocation?
+    var milesTraveled = "0.0"
     
     
     // MARK: -  Super
@@ -120,12 +121,33 @@ class PoolViewController: ViewController {
         print(activity.endLatitude)
         print(activity.endLongitude)
         
+        activity.milesTraveled = self.milesTraveled
+        activity.startDateTime = String(self.startDateToTrack)
+        activity.poolId = "1"
+        activity.accessToken = User.currentUser?.accessToken
         
-        let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
-        let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
-        wellDoneViewController.type = self.type
+        self.showProgressHud()
         
-        self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+        DataProvider.sharedInstance.postRegisterActivity(self.activity) { (activityResponse, error) in
+            
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                return
+            }
+            
+            if let response = activityResponse {
+                
+                let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
+                let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
+                wellDoneViewController.type = self.type
+                wellDoneViewController.activityResponse = response
+                
+                self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+            }
+            
+        }
         
     }
     
@@ -215,10 +237,13 @@ extension PoolViewController: CLLocationManagerDelegate {
             
         } else {
             
-            let distanceFromLocation = locationObj.distanceFromLocation(self.initialLocation!)
-            self.progressLabel.text = String(format: "%.2f", distanceFromLocation * 0.000621371)            
+            let metersFromLocation = locationObj.distanceFromLocation(self.initialLocation!)
             
-            trackNumber = distanceFromLocation / 1600
+            self.milesTraveled = String(format: "%.2f", metersFromLocation * 0.000621371)
+            
+            self.progressLabel.text = milesTraveled
+            
+            trackNumber = metersFromLocation / 1600
             circularProgressView.angle = trackNumber * 360
             
             activity.endLatitude = coord.latitude

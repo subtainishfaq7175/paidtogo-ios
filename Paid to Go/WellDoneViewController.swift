@@ -18,6 +18,7 @@ class WellDoneViewController: ViewController {
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
+    var activityResponse: ActivityResponse?
     
     // MARK: -  Super
     

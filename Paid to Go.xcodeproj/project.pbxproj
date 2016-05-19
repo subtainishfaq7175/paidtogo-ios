@@ -49,6 +49,7 @@
 		525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525523981CA9869700D92F7F /* MenuItemCell.swift */; };
 		5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239A1CA9879900D92F7F /* MainViewController.swift */; };
 		5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */; };
+		5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526020291CEE591E00C6604E /* ActivityResponse.swift */; };
 		528822ED1C9B083400B490AD /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528822EC1C9B083400B490AD /* Menu.storyboard */; };
 		529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
@@ -126,6 +127,7 @@
 		525523981CA9869700D92F7F /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		5255239A1CA9879900D92F7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContentViewController.swift; sourceTree = "<group>"; };
+		526020291CEE591E00C6604E /* ActivityResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityResponse.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		528CD0751CECBEC6002090A6 /* Paid to Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Paid to Go.entitlements"; sourceTree = "<group>"; };
 		529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatImageViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				7C039DAB1CE21BCD00C7DED4 /* Transaction.swift */,
 				7C8E737E1CE518F1006B4271 /* Activity.swift */,
 				7C872D0D1CE62AC200A1083E /* PoolType.swift */,
+				526020291CEE591E00C6604E /* ActivityResponse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
+				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
