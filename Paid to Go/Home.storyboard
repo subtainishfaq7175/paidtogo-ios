@@ -1197,8 +1197,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvq-bC-vBF">
-                                <rect key="frame" x="137" y="422" width="48" height="74"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvq-bC-vBF">
+                                <rect key="frame" x="136" y="422" width="48" height="74"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Pause">
                                     <color key="titleColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1207,10 +1207,17 @@
                                     <action selector="toggle:" destination="ggG-z0-JoP" eventType="touchUpInside" id="Egm-nc-VYs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ9-qU-V3N">
+                                <rect key="frame" x="218" y="448" width="42" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="m9I-PG-87K" firstAttribute="centerX" secondItem="w0I-Cz-jBF" secondAttribute="centerX" id="0IM-Im-xzb"/>
+                            <constraint firstItem="GQ9-qU-V3N" firstAttribute="leading" secondItem="Uvq-bC-vBF" secondAttribute="trailing" constant="34" id="34U-KD-2ZX"/>
                             <constraint firstItem="eEU-96-ToP" firstAttribute="centerX" secondItem="w0I-Cz-jBF" secondAttribute="centerX" id="4LJ-iv-051"/>
                             <constraint firstItem="Bhd-9a-gUk" firstAttribute="top" secondItem="eEU-96-ToP" secondAttribute="bottom" constant="30" id="5sf-4J-4pF"/>
                             <constraint firstItem="kk4-hN-s7w" firstAttribute="centerX" secondItem="w0I-Cz-jBF" secondAttribute="centerX" id="7Aa-Bj-xAT"/>
@@ -1220,6 +1227,7 @@
                             <constraint firstItem="kk4-hN-s7w" firstAttribute="centerY" secondItem="w0I-Cz-jBF" secondAttribute="centerY" constant="-12" id="OSq-pq-0nH"/>
                             <constraint firstItem="QxM-b8-Vu4" firstAttribute="leading" secondItem="w0I-Cz-jBF" secondAttribute="leading" id="PpI-o4-uev"/>
                             <constraint firstItem="kk4-hN-s7w" firstAttribute="leading" secondItem="w0I-Cz-jBF" secondAttribute="leading" constant="10" id="eDu-xj-kBm"/>
+                            <constraint firstItem="GQ9-qU-V3N" firstAttribute="centerY" secondItem="Uvq-bC-vBF" secondAttribute="centerY" id="fM9-1g-ex0"/>
                             <constraint firstItem="Uvq-bC-vBF" firstAttribute="top" secondItem="kk4-hN-s7w" secondAttribute="bottom" id="gNr-hK-5fD"/>
                             <constraint firstItem="Bhd-9a-gUk" firstAttribute="top" secondItem="QxM-b8-Vu4" secondAttribute="bottom" id="huL-kc-pfF"/>
                             <constraint firstItem="Uvq-bC-vBF" firstAttribute="centerX" secondItem="w0I-Cz-jBF" secondAttribute="centerX" id="mj8-or-vje"/>
@@ -1237,6 +1245,7 @@
                         <outlet property="headerTitleLabel" destination="m9I-PG-87K" id="3oH-kg-gGK"/>
                         <outlet property="pauseButton" destination="Uvq-bC-vBF" id="hxS-TT-4Fs"/>
                         <outlet property="progressLabel" destination="Ifv-pb-aUp" id="zfb-qE-7gf"/>
+                        <outlet property="stepCountLabel" destination="GQ9-qU-V3N" id="i8n-0N-qKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -71,6 +71,8 @@ target 'Paid to Go' do
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
     
+    pod 'SwiftDate'
+    
     
     
 end

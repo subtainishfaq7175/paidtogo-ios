@@ -22,6 +22,7 @@ PODS:
   - RainbowNavigation (1.0.0)
   - REFrostedViewController (2.4.8)
   - SnapKit (0.15.0)
+  - SwiftDate (3.0.8)
   - TPKeyboardAvoiding (1.2.11)
   - UIColor_Hex_Swift (1.9)
   - XCGLogger (3.2)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - RainbowNavigation
   - REFrostedViewController (~> 2.4)
   - SnapKit (~> 0.15.0)
+  - SwiftDate
   - TPKeyboardAvoiding (~> 1.2)
   - UIColor_Hex_Swift (~> 1.9)
   - XCGLogger (~> 3.2)
@@ -65,6 +67,7 @@ SPEC CHECKSUMS:
   RainbowNavigation: f22e8fa746a5c9cee7bc8ef4a02352e2f06d34e7
   REFrostedViewController: a893b4979ba1f200c547aef9ff4c3fd5a18f5923
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
   TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
   UIColor_Hex_Swift: 2ee747c0fed8b72b2135ef474b80a6921e489daa
   XCGLogger: da1f341f4bb8979db6e1df64232f04d9698402d4

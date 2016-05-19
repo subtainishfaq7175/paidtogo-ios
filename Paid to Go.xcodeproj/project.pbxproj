@@ -74,6 +74,7 @@
 		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
 		52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */; };
 		52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E672ED1CC550380062653C /* AntiCheatViewController.swift */; };
+		52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */; };
 		52FC35061CC66C5600E094DA /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FC35051CC66C5600E094DA /* Platform.swift */; };
 		7C039DAA1CE216C100C7DED4 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C039DA91CE216C100C7DED4 /* Balance.swift */; };
 		7C039DAC1CE21BCD00C7DED4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C039DAB1CE21BCD00C7DED4 /* Transaction.swift */; };
@@ -126,6 +127,7 @@
 		5255239A1CA9879900D92F7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContentViewController.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		528CD0751CECBEC6002090A6 /* Paid to Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Paid to Go.entitlements"; sourceTree = "<group>"; };
 		529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatImageViewController.swift; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A374321C9844A900E3A4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
 		52E672ED1CC550380062653C /* AntiCheatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatViewController.swift; sourceTree = "<group>"; };
+		52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		52FC35051CC66C5600E094DA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		7C039DA91CE216C100C7DED4 /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				524911921CAC125C00D6E763 /* Data */,
 				52258C101C9AF04100E3DAC7 /* Navigation */,
 				52227FD41C99A326002DBBFA /* Appearance */,
+				52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -398,6 +402,7 @@
 		52A374311C9844A900E3A4A5 /* Paid to Go */ = {
 			isa = PBXGroup;
 			children = (
+				528CD0751CECBEC6002090A6 /* Paid to Go.entitlements */,
 				52444B651CDA6EE900934656 /* Fonts */,
 				52A374451C984ADA00E3A4A5 /* ViewControllers */,
 				5218FB931CCAA2B80038E7F1 /* Network */,
@@ -549,6 +554,11 @@
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EUARY92ECY;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -688,6 +698,7 @@
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
+				52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */,
 				7C039DAA1CE216C100C7DED4 /* Balance.swift in Sources */,
 				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
 				52B982351CB3146100706DCC /* WellDoneViewController.swift in Sources */,
