@@ -1085,7 +1085,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_og_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-b8-Vu4" userLabel="Background Image View">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_og_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-b8-Vu4" userLabel="Background Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEU-96-ToP" userLabel="Finish Button View">
@@ -1240,6 +1240,7 @@
                     <connections>
                         <outlet property="actionButton" destination="Te9-AK-WAy" id="mPW-sG-LPT"/>
                         <outlet property="actionButtonView" destination="eEU-96-ToP" id="BAO-26-g1e"/>
+                        <outlet property="backgroundImageView" destination="QxM-b8-Vu4" id="PMY-gk-XMn"/>
                         <outlet property="circularProgressCenterYConstraint" destination="OSq-pq-0nH" id="lQf-1p-OHg"/>
                         <outlet property="circularProgressView" destination="kk4-hN-s7w" id="i5b-TS-Z4v"/>
                         <outlet property="headerTitleLabel" destination="m9I-PG-87K" id="3oH-kg-gGK"/>

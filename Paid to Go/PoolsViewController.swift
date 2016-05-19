@@ -289,7 +289,7 @@ extension PoolsViewController: UITableViewDelegate {
         if(self.type == .Train) {
             showAntiCheatViewController()
         } else {
-            presentPoolViewController(self.type!)
+            presentPoolViewController(self.type!, poolType: self.poolType!)
         }
         
         //        self.notifications[indexPath.row].read = true

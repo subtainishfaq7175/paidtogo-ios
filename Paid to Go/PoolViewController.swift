@@ -24,25 +24,21 @@ class PoolViewController: ViewController {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stepCountLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     // MARK: - Variables and Constants
     
+    var poolType: PoolType?
     var type: PoolTypeEnum?
     var hasPoolStarted = false
     var isTimerTracking: Bool = false
     var timer = NSTimer()
-    var trackNumber = 0
+    var trackNumber = 0.0
     var locationManager: CLLocationManager!
     var activity: Activity!
-    
     var stepCount = 0
-    
-    let activityManager = CMMotionActivityManager()
     let pedoMeter = CMPedometer()
-    
     var startDateToTrack: NSDate?
-    
-    var activityShouldEnd = false
     var initialLocation: CLLocation?
     
     
@@ -69,6 +65,9 @@ class PoolViewController: ViewController {
             self.circularProgressCenterYConstraint.constant = 0
         }
         
+        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -85,10 +84,7 @@ class PoolViewController: ViewController {
         }
     }
     
-    
     // MARK: - Functions
-    
-    
     
     private func initLayout() {
         pauseButton.hidden = true
@@ -110,15 +106,7 @@ class PoolViewController: ViewController {
     
     
     func startTracking() {
-        //        circularProgressView.animateFromAngle(0, toAngle: 360, duration: 10, relativeDuration: true, completion: nil)
-        trackNumber = trackNumber + 1
-        circularProgressView.angle = trackNumber * 360 / 100
-//        progressLabel.text = "\(trackNumber )"
-        
-        if trackNumber == 100{
-            self.pauseButton.hidden = true
-            timer.invalidate()
-        }
+
         isTimerTracking = true
         
         updatePedometer()
@@ -126,20 +114,6 @@ class PoolViewController: ViewController {
        
     }
     
-    private func updatePedometer() {
-        if CMPedometer.isStepCountingAvailable() {
-                pedoMeter.queryPedometerDataFromDate(self.startDateToTrack!, toDate: NSDate()) { (data, error) in
-                    if let data = data{
-                        self.stepCount = data.numberOfSteps.integerValue
-                        self.stepCountLabel.text = String(self.stepCount)
-                        if CMPedometer.isDistanceAvailable() {
-                            
-                            
-                        }
-                    }
-            }
-        }
-    }
     
     private func endTracking() {
         print(activity.startLatitude)
@@ -157,8 +131,20 @@ class PoolViewController: ViewController {
         
     }
     
-    
-    // MARK: - Actions
+    private func updatePedometer() {
+        if CMPedometer.isStepCountingAvailable() {
+            pedoMeter.queryPedometerDataFromDate(self.startDateToTrack!, toDate: NSDate()) { (data, error) in
+                if let data = data{
+                    self.stepCount = data.numberOfSteps.integerValue
+                    
+                    if self.type == .Walk {
+                        self.stepCountLabel.text = "Steps: \(self.stepCount)"
+                    }
+                    
+                }
+            }
+        }
+    }
     
     private func initLocationManager() {
         locationManager = CLLocationManager()
@@ -169,14 +155,16 @@ class PoolViewController: ViewController {
         
     }
     
+    // MARK: - Actions
+    
+  
+    
     @IBAction func toggle(sender: AnyObject) {
         if isTimerTracking {
             isTimerTracking = false
-            timer.invalidate()
             pauseButton.setTitle("Resume", forState: UIControlState.Normal)
         } else {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(startTracking), userInfo: nil, repeats: true)
-            timer.fire()
+            startTracking()
             isTimerTracking = true
             pauseButton.setTitle("Pause", forState: UIControlState.Normal)
         }
@@ -199,21 +187,12 @@ class PoolViewController: ViewController {
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
             setPoolColor(self.actionButtonView, type: self.type!)
             
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(startTracking), userInfo: nil, repeats: true)
-            timer.fire()
+            startTracking()
             pauseButton.hidden = false
             
             locationManager?.startUpdatingLocation()
 
         } else {
-            
-            activityShouldEnd = true
-            
-            locationManager?.startUpdatingLocation()
-            
-            while self.activity.endLatitude == nil {
-                
-            }
             
             endTracking()
 
@@ -248,11 +227,16 @@ extension PoolViewController: CLLocationManagerDelegate {
             let distanceFromLocation = locationObj.distanceFromLocation(self.initialLocation!)
             self.progressLabel.text = String(format: "%.2f", distanceFromLocation * 0.000621371)
             
-            if self.activityShouldEnd {
+            
+            
+            trackNumber = distanceFromLocation / 1600
+            circularProgressView.angle = trackNumber * 360
+            
+            
             
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
-            }
+                
         }
     }
     

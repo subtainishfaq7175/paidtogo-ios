@@ -183,10 +183,11 @@ class ViewController: UIViewController {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
-    func presentPoolViewController(type: PoolTypeEnum) {
+    func presentPoolViewController(type: PoolTypeEnum, poolType: PoolType) {
         if let poolNavigationController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolNavigationController") as? UINavigationController {
             if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
                 poolViewController.type = type
+                poolViewController.poolType = poolType
                 
                 self.presentViewController(poolNavigationController, animated: true, completion: nil)
             }

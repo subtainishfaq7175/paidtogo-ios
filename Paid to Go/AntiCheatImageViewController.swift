@@ -25,6 +25,23 @@ class AntiCheatImageViewController: ViewController {
     }
     
     @IBAction func startPool(sender: AnyObject) {
-        presentPoolViewController(.Train)
+        
+        self.showProgressHud()
+        
+        DataProvider.sharedInstance.getPoolType(.Train) { (poolType, error) in
+            
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                return
+            }
+            
+            if let poolType = poolType {
+                self.presentPoolViewController(.Train, poolType: poolType)
+            }
+            
+        }
+        
     }
 }
