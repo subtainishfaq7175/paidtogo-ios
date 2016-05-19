@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NPj-GG-C3g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NPj-GG-C3g">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,7 +7,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
         </mutableArray>
@@ -25,29 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUJ-BJ-DJi" userLabel="Notifications View">
-                                <rect key="frame" x="0.0" y="76" width="320" height="46"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEN-Gp-aa3">
-                                        <rect key="frame" x="14" y="13" width="89" height="21"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zN-pj-xRA">
-                                        <rect key="frame" x="257" y="8" width="51" height="31"/>
-                                    </switch>
-                                </subviews>
-                                <color key="backgroundColor" red="0.91764705882352937" green="0.9137254901960784" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="1zN-pj-xRA" firstAttribute="centerY" secondItem="oUJ-BJ-DJi" secondAttribute="centerY" id="Mrt-ZD-HLt"/>
-                                    <constraint firstAttribute="trailing" secondItem="1zN-pj-xRA" secondAttribute="trailing" constant="14" id="OWG-kK-0f5"/>
-                                    <constraint firstItem="HEN-Gp-aa3" firstAttribute="centerY" secondItem="oUJ-BJ-DJi" secondAttribute="centerY" id="bwr-Vh-1K5"/>
-                                    <constraint firstItem="HEN-Gp-aa3" firstAttribute="leading" secondItem="oUJ-BJ-DJi" secondAttribute="leading" constant="14" id="zUG-QH-JN8"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEx-zB-tfz" userLabel="Geolocation View">
-                                <rect key="frame" x="0.0" y="134" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="76" width="320" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geolocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK7-qh-gCc">
                                         <rect key="frame" x="14" y="13" width="85" height="21"/>
@@ -90,17 +68,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oUJ-BJ-DJi" firstAttribute="height" secondItem="06a-nP-daI" secondAttribute="height" multiplier="0.08" id="0yS-P1-jkT"/>
                             <constraint firstAttribute="trailing" secondItem="zEx-zB-tfz" secondAttribute="trailing" id="8mY-qk-mZL"/>
+                            <constraint firstItem="zEx-zB-tfz" firstAttribute="height" secondItem="06a-nP-daI" secondAttribute="height" multiplier="0.08" id="D3o-Sa-LrW"/>
                             <constraint firstItem="5wE-4p-ock" firstAttribute="centerX" secondItem="06a-nP-daI" secondAttribute="centerX" id="GIB-Pa-2oD"/>
-                            <constraint firstItem="zEx-zB-tfz" firstAttribute="height" secondItem="oUJ-BJ-DJi" secondAttribute="height" id="MQa-ga-91P"/>
-                            <constraint firstItem="oUJ-BJ-DJi" firstAttribute="top" secondItem="VVi-EA-2j3" secondAttribute="bottom" constant="12" id="WJa-ZO-JmQ"/>
+                            <constraint firstItem="zEx-zB-tfz" firstAttribute="top" secondItem="VVi-EA-2j3" secondAttribute="bottom" constant="12" id="Swx-SS-CFP"/>
                             <constraint firstItem="zEx-zB-tfz" firstAttribute="leading" secondItem="06a-nP-daI" secondAttribute="leading" id="WT3-aG-MZ6"/>
-                            <constraint firstItem="oUJ-BJ-DJi" firstAttribute="leading" secondItem="06a-nP-daI" secondAttribute="leading" id="ZAA-c4-ysv"/>
                             <constraint firstItem="ZIH-XJ-wQP" firstAttribute="top" secondItem="5wE-4p-ock" secondAttribute="bottom" constant="30" id="bAJ-DZ-Wj2"/>
                             <constraint firstItem="5wE-4p-ock" firstAttribute="height" secondItem="06a-nP-daI" secondAttribute="height" multiplier="0.073" id="gYu-v2-NAt"/>
-                            <constraint firstAttribute="trailing" secondItem="oUJ-BJ-DJi" secondAttribute="trailing" id="jab-Oo-Ku3"/>
-                            <constraint firstItem="zEx-zB-tfz" firstAttribute="top" secondItem="oUJ-BJ-DJi" secondAttribute="bottom" constant="12" id="xiI-aF-gBF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hji-9A-lfR"/>
