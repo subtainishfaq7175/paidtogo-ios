@@ -123,7 +123,7 @@ class PoolViewController: ViewController {
         
         activity.milesTraveled = self.milesTraveled
         activity.startDateTime = String(self.startDateToTrack)
-        activity.poolId = "1"
+        activity.poolId = poolType?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
         
         self.showProgressHud()

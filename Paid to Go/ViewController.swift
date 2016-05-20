@@ -13,7 +13,7 @@ import MBProgressHUD
 
 class ViewController: UIViewController {
     
-        
+    
     // MARK: - Super
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
             //            self.title = "walk_title".localize()
             let titleImage = UIImage(named: "ic_walkrun")
             navigationItem.titleView = UIImageView(image: titleImage)
-        
+            
             
             break
         case .Bike:
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             let titleImage = UIImage(named: "ic_bike")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-//            view.backgroundColor = CustomColors.bikeColor()
+            //            view.backgroundColor = CustomColors.bikeColor()
             break
         case .Train:
             //            self.title = "train_title".localize()
@@ -129,21 +129,21 @@ class ViewController: UIViewController {
             let titleImage = UIImage(named: "ic_bustrain")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-//            view.backgroundColor = CustomColors.busTrainColor()
+            //            view.backgroundColor = CustomColors.busTrainColor()
             break
         case .Car:
             //            self.title = "car_title".localize()
             let titleImage = UIImage(named: "ic_car")
             navigationItem.titleView = UIImageView(image: titleImage)
             
-//            view.backgroundColor = CustomColors.carColor()
+            //            view.backgroundColor = CustomColors.carColor()
             break
         default:
             break
         }
         
         view.backgroundColor = UIColor(rgba: type.color!)
-
+        
         
     }
     
@@ -183,33 +183,54 @@ class ViewController: UIViewController {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
-    func presentPoolViewController(type: PoolTypeEnum, poolType: PoolType) {
-        if let poolNavigationController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolNavigationController") as? UINavigationController {
-            if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
+    
+    
+    func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, sender: AnyObject?) {
+        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
                 poolViewController.type = type
                 poolViewController.poolType = poolType
-                
-                self.presentViewController(poolNavigationController, animated: true, completion: nil)
-            }
+            
+                self.showViewController(poolViewController, sender: sender)
         }
         
+//            if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
+//                poolViewController.type = type
+//                poolViewController.poolType = poolType
+//                
+////                self.showViewController(poolNavigationController, sender: sender)
+//            }
+//        }
+    }
+    
+        
+        func presentPoolViewController(type: PoolTypeEnum, poolType: PoolType) {
+            if let poolNavigationController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolNavigationController") as? UINavigationController {
+                if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
+                    poolViewController.type = type
+                    poolViewController.poolType = poolType
+                    
+                    self.presentViewController(poolNavigationController, animated: true, completion: nil)
+                }
+            }
+            
+            
+        }
+        
+        func showProgressHud() {
+            let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        }
+        
+        func showProgressHud(title: String) {
+            let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loadingNotification.mode = MBProgressHUDMode.Indeterminate
+            loadingNotification.labelText = title
+        }
+        
+        func dismissProgressHud() {
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        }
         
     }
-    
-    func showProgressHud() {
-        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loadingNotification.mode = MBProgressHUDMode.Indeterminate
-    }
-    
-    func showProgressHud(title: String) {
-        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loadingNotification.mode = MBProgressHUDMode.Indeterminate
-        loadingNotification.labelText = title
-    }
-    
-    func dismissProgressHud() {
-        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-    }
-    
-}
+
 	

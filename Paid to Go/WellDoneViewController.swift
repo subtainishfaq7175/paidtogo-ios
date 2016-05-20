@@ -85,7 +85,14 @@ class WellDoneViewController: ViewController {
     
     
     @IBAction func backToHome(sender: AnyObject) {
-        self.presentHomeViewController()
+        if let mainVC = self.presentingViewController as? MainViewController {
+            if let navVc = mainVC.contentViewController as? UINavigationController {
+                navVc.popToRootViewControllerAnimated(true)
+            }
+        }
+        
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+//        self.presentHomeViewController()
     }
     
 }

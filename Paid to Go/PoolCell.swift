@@ -33,12 +33,13 @@ class PoolCell: UITableViewCell {
     
     
     func configure(pool: Pool) {
-        self.titleLabel.text = pool.text
+        self.titleLabel.text = pool.name
         
-        self.poolImageView.yy_setImageWithURL(
-            NSURL( string: pool.imageUrl),
-            options: .ProgressiveBlur )
-        
+        if let imageURL = pool.iconPhoto {
+            self.poolImageView.yy_setImageWithURL(
+                NSURL( string: imageURL),
+                options: .ProgressiveBlur )
+        }
     }
     
 }

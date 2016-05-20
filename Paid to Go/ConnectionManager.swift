@@ -26,6 +26,7 @@ class ConnectionManager {
     private var balanceURL : String { return "\(baseURL)/balance" }
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
     private var registerActivityURL : String { return "\(baseURL)/register_activity" }
+    private var poolsURL : String { return "\(baseURL)/pools" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -55,56 +56,63 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 extension ConnectionManager {
     
     
-    func register(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func register(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Register API - POST"
         self.postRequest(identifier, url: self.registerURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func login(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func login(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Login API - POST"
         self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func forgotPassword(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func forgotPassword(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Forgot PW API - POST"
         self.postRequest(identifier, url: self.forgotPasswordURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Update Profile API - POST"
         self.postRequest(identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Facebook Login API - POST"
         self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func balance(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func balance(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Balance API - POST"
         self.postRequest(identifier, url: self.balanceURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func registerActivity(params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func registerActivity(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Register Activity API - POST"
         self.postRequest(identifier, url: self.registerActivityURL, params: params, apiCompletion: apiCompletion)
         
     }
     
-    func getPoolType(params: PoolTypeEnum, apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    func getPools(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Pools API - POST"
+        self.postRequest(identifier, url: self.poolsURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    func getPoolType(params: PoolTypeEnum, apiCompletion: (responseValue:  AnyObject?, error: String?) -> Void) {
         
         let identifier = "Pool Types API - GET"
         var url: String?
@@ -131,7 +139,7 @@ extension ConnectionManager {
 
 extension ConnectionManager {
     
-    private func printRequest(identifier: String, requestType: RequestType, requestURL: String, value: [String : AnyObject]) {
+    private func printRequest(identifier: String, requestType: RequestType, requestURL: String, value: AnyObject) {
         print(identifier + " - " + requestType.rawValue + " - " + requestURL + " : ")
         print(value)
     }
@@ -140,7 +148,7 @@ extension ConnectionManager {
         print(identifier + " - " + requestType.rawValue + " - " + requestURL)
     }
     
-    private func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    private func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         
         let paramsDict = dictionaryWithoutEmptyValues(params)
@@ -154,7 +162,7 @@ extension ConnectionManager {
             .request(Method.POST, url, parameters: paramsDict, encoding: ParameterEncoding.JSON, headers: nil)
             .responseJSON { (response) in
                 
-                guard let value = response.result.value as? [String: AnyObject] else {
+                guard let value = response.result.value else {
                     apiCompletion(responseValue: nil, error: "error_connection")
                     return
                 }
@@ -191,7 +199,7 @@ extension ConnectionManager {
     }
     
     
-    private func getRequest(identifier: String, url: String, apiCompletion: (responseValue: [String: AnyObject]?, error: String?) -> Void) {
+    private func getRequest(identifier: String, url: String, apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         
         
@@ -203,7 +211,7 @@ extension ConnectionManager {
             .request(Method.GET, url,  encoding: ParameterEncoding.JSON, headers: nil)
             .responseJSON { (response) in
                 
-                guard let value = response.result.value as? [String: AnyObject] else {
+                guard let value = response.result.value else {
                     apiCompletion(responseValue: nil, error: "error_connection")
                     return
                 }

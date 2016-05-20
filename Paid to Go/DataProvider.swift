@@ -45,12 +45,12 @@ class DataProvider : DataProviderService {
         DummyDataProvider.sharedInstance.getNotifications(completion)
     }
     
-    func getOpenPools(completion: ([Pool]) -> Void) {
-        DummyDataProvider.sharedInstance.getOpenPools(completion)
+    func getOpenPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        getPools(poolTypeId, open: "1", completion: completion)
     }
     
-    func getClosedPools(completion: ([Pool]) -> Void) {
-        DummyDataProvider.sharedInstance.getClosedPools(completion)
+    func getClosedPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        getPools(poolTypeId, open: "0", completion: completion)
     }
     
     func postRegister(user: User, completion: (user: User?, error: String?) -> Void) {
@@ -220,6 +220,33 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        
+        
+        let params = [
+            
+            "pool_type_id" : poolTypeId,
+            "open"         : open
+            
+        ]
+        
+        ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let pools = Mapper<Pool>().mapArray(responseValue)
+                completion(pools: pools, error: nil)
+                return
+                
+            } else {
+                
+                completion(pools: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
     
     
     
@@ -229,7 +256,7 @@ protocol DataProviderService {
     
     
     func getNotifications(completion: ([Notification]) -> Void)
-    func getOpenPools(completion: ([Pool]) -> Void)
-    func getClosedPools(completion: ([Pool]) -> Void)
+//    func getOpenPools(completion: ([Pool]) -> Void)
+//    func getClosedPools(completion: ([Pool]) -> Void)
     
 }

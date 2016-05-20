@@ -33,31 +33,31 @@ class DummyDataProvider: DataProviderService {
         completion(notificationArray)
     }
     
-    func getOpenPools(completion: ([Pool]) -> Void) {
-        var poolsArray = [Pool]()
-        
-        for var i in 1 ... 4 {
-            let pool: Pool = Pool(text: "Hardcoded Pool", imageUrl: "https://marketingloserastu.files.wordpress.com/2015/03/correr.jpg")
-            
-            
-            poolsArray.append(pool)
-        }
-        
-        completion(poolsArray)
-    }
-    
-    func getClosedPools(completion: ([Pool]) -> Void) {
-        var poolsArray = [Pool]()
-        
-        for var i in 1 ... 4 {
-            let pool: Pool = Pool(text: "Hardcoded Pool", imageUrl: "https://marketingloserastu.files.wordpress.com/2015/03/correr.jpg")
-            
-            
-            poolsArray.append(pool)
-        }
-        
-        completion(poolsArray)
-    }
+//    func getOpenPools(completion: ([Pool]) -> Void) {
+//        var poolsArray = [Pool]()
+//        
+//        for var i in 1 ... 4 {
+//            let pool: Pool = Pool(text: "Hardcoded Pool", imageUrl: "https://marketingloserastu.files.wordpress.com/2015/03/correr.jpg")
+//            
+//            
+//            poolsArray.append(pool)
+//        }
+//        
+//        completion(poolsArray)
+//    }
+//    
+//    func getClosedPools(completion: ([Pool]) -> Void) {
+//        var poolsArray = [Pool]()
+//        
+//        for var i in 1 ... 4 {
+//            let pool: Pool = Pool(text: "Hardcoded Pool", imageUrl: "https://marketingloserastu.files.wordpress.com/2015/03/correr.jpg")
+//            
+//            
+//            poolsArray.append(pool)
+//        }
+//        
+//        completion(poolsArray)
+//    }
     
     
 }

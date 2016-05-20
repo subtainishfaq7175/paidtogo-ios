@@ -145,14 +145,42 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func getPools() {
         
-        DataProvider.sharedInstance.getOpenPools { (pools) -> Void in
+        self.showProgressHud()
+        
+        DataProvider.sharedInstance.getOpenPools((poolType?.internalIdentifier)!) { (pools, error) in
+            
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                return
+            }
+            
+            if let pools = pools {
+            
             self.openPools  = pools
             self.openPoolsTableView.reloadData()
+                
+            }
         }
         
-        DataProvider.sharedInstance.getClosedPools { (pools) -> Void in
-            self.closedPools  = pools
-            self.closedPoolsTableView.reloadData()
+        self.showProgressHud()
+        
+        DataProvider.sharedInstance.getClosedPools((poolType?.internalIdentifier)!) { (pools, error) in
+            
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                return
+            }
+            
+            if let pools = pools {
+                
+                self.closedPools  = pools
+                self.closedPoolsTableView.reloadData()
+                
+            }
         }
         
     }
@@ -288,7 +316,7 @@ extension PoolsViewController: UITableViewDelegate {
         if(self.type == .Train) {
             showAntiCheatViewController()
         } else {
-            presentPoolViewController(self.type!, poolType: self.poolType!)
+            showPoolViewController(self.type!, poolType: self.poolType!, sender: nil)
         }
         
         //        self.notifications[indexPath.row].read = true
