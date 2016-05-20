@@ -29,15 +29,15 @@ class DataProvider : DataProviderService {
             
         case "USER_EXISTS":
             return "error_user_exists".localize()
-        
+            
         case "error_connection":
-                return "error_connection".localize()
+            return "error_connection".localize()
             
         default:
             return "error_default".localize() + ": " + error
             
         }
-
+        
     }
     
     
@@ -239,9 +239,13 @@ class DataProvider : DataProviderService {
                 return
                 
             } else {
-                
-                completion(pools: nil, error: self.getError(error!))
-                return
+                if error == "POOL_UNSUCCESSFUL"{
+                    completion(pools: nil, error: nil)
+                    return
+                } else {
+                    completion(pools: nil, error: self.getError(error!))
+                    return
+                }
                 
             }
         }
@@ -256,7 +260,7 @@ protocol DataProviderService {
     
     
     func getNotifications(completion: ([Notification]) -> Void)
-//    func getOpenPools(completion: ([Pool]) -> Void)
-//    func getClosedPools(completion: ([Pool]) -> Void)
+    //    func getOpenPools(completion: ([Pool]) -> Void)
+    //    func getClosedPools(completion: ([Pool]) -> Void)
     
 }

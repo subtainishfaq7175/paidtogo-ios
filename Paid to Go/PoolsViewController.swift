@@ -155,6 +155,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 self.showAlert(error)
                 return
             }
+
             
             if let pools = pools {
             
