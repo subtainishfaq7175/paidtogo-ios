@@ -126,6 +126,8 @@ class PoolViewController: ViewController {
         activity.poolId = poolType?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
         
+        self.locationManager.stopUpdatingLocation()
+        
         self.showProgressHud()
         
         DataProvider.sharedInstance.postRegisterActivity(self.activity) { (activityResponse, error) in

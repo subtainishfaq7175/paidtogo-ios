@@ -38,7 +38,7 @@ class AntiCheatImageViewController: ViewController {
             }
             
             if let poolType = poolType {
-                self.presentPoolViewController(.Train, poolType: poolType)
+                self.showPoolViewController(.Train, poolType: poolType, sender: nil)
             }
             
         }
