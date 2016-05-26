@@ -52,6 +52,8 @@
 		5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */; };
 		5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526020291CEE591E00C6604E /* ActivityResponse.swift */; };
 		528822ED1C9B083400B490AD /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528822EC1C9B083400B490AD /* Menu.storyboard */; };
+		528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */; };
+		528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F54CF1CF79D72008E015C /* Leaderboard.swift */; };
 		529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */; };
 		52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374321C9844A900E3A4A5 /* AppDelegate.swift */; };
 		52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A374341C9844A900E3A4A5 /* LoginViewController.swift */; };
@@ -132,6 +134,8 @@
 		526020291CEE591E00C6604E /* ActivityResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityResponse.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		528CD0751CECBEC6002090A6 /* Paid to Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Paid to Go.entitlements"; sourceTree = "<group>"; };
+		528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsResponse.swift; sourceTree = "<group>"; };
+		528F54CF1CF79D72008E015C /* Leaderboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatImageViewController.swift; sourceTree = "<group>"; };
 		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A374321C9844A900E3A4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 		5282D7B81CAAF78A002713EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */,
+				528F54CF1CF79D72008E015C /* Leaderboard.swift */,
 				52B2C9081CC6A29B00504E49 /* Enums */,
 				524911901CAC123100D6E763 /* Notification.swift */,
 				523977D91CAF0FAC00C85CAF /* Pool.swift */,
@@ -679,6 +685,7 @@
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
+				528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
 				522994ED1CC15A4400C589C6 /* WDLeaderboardsViewController.swift in Sources */,
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
@@ -691,6 +698,7 @@
 				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
+				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,

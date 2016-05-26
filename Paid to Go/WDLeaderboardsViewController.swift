@@ -12,6 +12,7 @@ class WDLeaderboardsViewController: ViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
     @IBOutlet weak var backgroundColorView: UIView!
     

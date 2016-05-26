@@ -1832,18 +1832,26 @@
                                     <constraint firstItem="uEa-6Q-gmu" firstAttribute="top" secondItem="SU5-TM-kIN" secondAttribute="top" id="vr4-HA-GLY"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jx7-JI-9fx">
+                                <rect key="frame" x="0.0" y="322" width="320" height="246"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OpK-TL-saK" firstAttribute="top" secondItem="Jx7-JI-9fx" secondAttribute="bottom" id="1k3-6t-HNz"/>
                             <constraint firstItem="SU5-TM-kIN" firstAttribute="top" secondItem="EZo-j8-zPq" secondAttribute="bottom" id="BGY-Q7-iJw"/>
                             <constraint firstItem="EZo-j8-zPq" firstAttribute="top" secondItem="z1t-Bm-mcy" secondAttribute="top" id="EXw-0h-fLs"/>
                             <constraint firstItem="gt5-R4-tXL" firstAttribute="height" secondItem="z1t-Bm-mcy" secondAttribute="height" multiplier="0.085" id="Gr2-s5-Q4A"/>
                             <constraint firstItem="YOL-OJ-Ro1" firstAttribute="width" secondItem="z1t-Bm-mcy" secondAttribute="width" multiplier="0.5" id="Siy-fc-598"/>
+                            <constraint firstItem="Jx7-JI-9fx" firstAttribute="top" secondItem="SU5-TM-kIN" secondAttribute="bottom" id="U4p-e2-XgC"/>
                             <constraint firstItem="EZo-j8-zPq" firstAttribute="height" secondItem="z1t-Bm-mcy" secondAttribute="height" multiplier="0.48" id="ddb-s2-69v"/>
+                            <constraint firstItem="Jx7-JI-9fx" firstAttribute="leading" secondItem="z1t-Bm-mcy" secondAttribute="leading" id="eQZ-S2-83T"/>
                             <constraint firstItem="EZo-j8-zPq" firstAttribute="leading" secondItem="z1t-Bm-mcy" secondAttribute="leading" id="kb8-DT-mTG"/>
                             <constraint firstAttribute="trailing" secondItem="SU5-TM-kIN" secondAttribute="trailing" id="lF2-Wz-bKL"/>
                             <constraint firstAttribute="trailing" secondItem="EZo-j8-zPq" secondAttribute="trailing" id="nfl-QW-Q8f"/>
                             <constraint firstItem="SU5-TM-kIN" firstAttribute="leading" secondItem="z1t-Bm-mcy" secondAttribute="leading" id="o1M-br-ak4"/>
+                            <constraint firstAttribute="trailing" secondItem="Jx7-JI-9fx" secondAttribute="trailing" id="olu-Ii-yKg"/>
                             <constraint firstItem="SU5-TM-kIN" firstAttribute="height" secondItem="gt5-R4-tXL" secondAttribute="height" id="y9A-kP-ew7"/>
                             <constraint firstItem="MTE-TK-nel" firstAttribute="top" secondItem="eg0-me-4QE" secondAttribute="bottom" constant="20" id="zoE-9b-AuT"/>
                         </constraints>
@@ -1851,6 +1859,7 @@
                     <connections>
                         <outlet property="backgroundColorView" destination="0Hi-tO-qAL" id="jPD-jB-BO1"/>
                         <outlet property="subtitleLabel" destination="MTE-TK-nel" id="hD0-fW-tMi"/>
+                        <outlet property="tableView" destination="Jx7-JI-9fx" id="Bhx-Mw-yaf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dr-bD-1Dr" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -251,6 +251,38 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func getLeaderboards(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
+        
+        let userId = User.currentUser?.userId
+        
+        let params = [
+            
+            "user_id" : userId,
+            "pool_id" : poolId
+            
+        ]
+        
+        ConnectionManager.sharedInstance.getLeaderboards(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let leaderboard = Mapper<LeaderboardsResponse>().map(responseValue)
+                completion(poleaderboardols: leaderboard, error: nil)
+                return
+                
+            } else {
+                if error == "LEADERBOARDS_UNSUCCESSFUL"{
+                    completion(pools: nil, error: nil)
+                    return
+                } else {
+                    completion(pools: nil, error: self.getError(error!))
+                    return
+                }
+                
+            }
+        }
+    }
+    
     
     
     

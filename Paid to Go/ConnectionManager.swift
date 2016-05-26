@@ -27,6 +27,7 @@ class ConnectionManager {
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
     private var registerActivityURL : String { return "\(baseURL)/register_activity" }
     private var poolsURL : String { return "\(baseURL)/pools" }
+    private var leaderboardsURL : String { return "\(baseURL)/leaderboards" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -109,6 +110,13 @@ extension ConnectionManager {
         
         let identifier = "Pools API - POST"
         self.postRequest(identifier, url: self.poolsURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    func getLeaderboards(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Leaderboards API - POST"
+        self.postRequest(identifier, url: self.leaderboardsURL, params: params, apiCompletion: apiCompletion)
         
     }
     
