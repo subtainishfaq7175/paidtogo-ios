@@ -39,12 +39,12 @@ class SignupViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.text = "test@test.test1"
-        firstNameTextField.text = "test"
-        lastNameTextField.text = "test"
-        passwordVerificationTextField.text = "test123"
-        passwordTextField.text = "test123"
-        bioTextField.text = "test"
+//        emailTextField.text = "test@test.test1"
+//        firstNameTextField.text = "test"
+//        lastNameTextField.text = "test"
+//        passwordVerificationTextField.text = "test123"
+//        passwordTextField.text = "test123"
+//        bioTextField.text = "test"
         
         setNavigationBarGreen()
     }

@@ -10,6 +10,7 @@
 import UIKit
 import RainbowNavigation
 import MBProgressHUD
+import UIColor_Hex_Swift
 
 class ViewController: UIViewController {
     
@@ -59,7 +60,13 @@ class ViewController: UIViewController {
             navController.navigationBar.df_setBackgroundColor(CustomColors.NavbarBackground())
         }
     }
-    
+
+    func setNavigationBarColor(color: UIColor){
+        if let navController = navigationController {
+            navController.navigationBar.df_setBackgroundColor(color)
+        }
+    }
+
     func setBorderToView(view: UIView, color: CGColor){
         view.round()
         view.layer.borderWidth = 1.2

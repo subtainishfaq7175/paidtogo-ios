@@ -668,39 +668,42 @@
                                     <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiv-QE-02T" userLabel="Color View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-Pi-hsk" userLabel="Go View">
-                                                <rect key="frame" x="0.0" y="238" width="320" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-Pi-hsk" userLabel="Go View">
+                                                <rect key="frame" x="0.0" y="224" width="320" height="48"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xS-3B-Nwm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xS-3B-Nwm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                                        <connections>
+                                                            <segue destination="gOS-9t-347" kind="show" identifier="segue_nationalpools" id="CQ8-0O-0y8"/>
+                                                        </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="f0S-FV-DXp">
-                                                        <rect key="frame" x="8" y="10" width="30" height="30"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="f0S-FV-DXp">
+                                                        <rect key="frame" x="8" y="9" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="jEo-07-1Ea"/>
                                                             <constraint firstAttribute="width" constant="30" id="zlg-nf-GQg"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GO!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1au-4b-2Ln">
-                                                        <rect key="frame" x="46" y="15" width="28" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GO!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1au-4b-2Ln">
+                                                        <rect key="frame" x="46" y="14" width="28" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-SemiboldItalic" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="National" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-cC-026">
-                                                        <rect key="frame" x="76" y="15" width="56" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-cC-026">
+                                                        <rect key="frame" x="76" y="14" width="56" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsA-Xm-Ra7">
-                                                        <rect key="frame" x="134" y="15" width="34" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsA-Xm-Ra7">
+                                                        <rect key="frame" x="134" y="14" width="34" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="uSh-bH-eOq" userLabel="Arrow Image View">
-                                                        <rect key="frame" x="302" y="0.0" width="10" height="50"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="uSh-bH-eOq" userLabel="Arrow Image View">
+                                                        <rect key="frame" x="302" y="0.0" width="10" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="onJ-5n-CNX"/>
                                                         </constraints>
@@ -731,20 +734,20 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-fT-fex" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                                <rect key="frame" x="116" y="209" width="49" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-fT-fex" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                                <rect key="frame" x="116" y="195" width="49" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFo-Ov-612" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="209" width="93" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFo-Ov-612" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="195" width="93" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-Gb-9vQ" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                                <rect key="frame" x="111" y="76" width="100" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-Gb-9vQ" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                                <rect key="frame" x="110" y="32" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Rs6-O7-4Vb"/>
                                                     <constraint firstAttribute="height" constant="25" id="rNC-ob-e86"/>
@@ -782,13 +785,13 @@
                                     <constraint firstAttribute="trailing" secondItem="vqR-c8-ZDc" secondAttribute="trailing" id="uDu-2X-X7D"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1QW-8K-yWh" userLabel="Indicator View">
-                                <rect key="frame" x="0.0" y="272" width="320" height="49"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QW-8K-yWh" userLabel="Indicator View">
+                                <rect key="frame" x="0.0" y="272" width="320" height="48"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxr-6C-pWj" userLabel="Open Pools View">
-                                        <rect key="frame" x="0.0" y="0.0" width="108" height="49"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxr-6C-pWj" userLabel="Open Pools View">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="48"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-7T-2Zl" userLabel="Open Indicator Point">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-7T-2Zl" userLabel="Open Indicator Point">
                                                 <rect key="frame" x="12" y="23" width="4" height="4"/>
                                                 <color key="backgroundColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -816,10 +819,10 @@
                                             <outletCollection property="gestureRecognizers" destination="HDB-9V-UdZ" appends="YES" id="bIa-pb-XMI"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTo-Vf-c9H" userLabel="Closed Pools View">
-                                        <rect key="frame" x="205" y="0.0" width="115" height="49"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTo-Vf-c9H" userLabel="Closed Pools View">
+                                        <rect key="frame" x="205" y="0.0" width="115" height="48"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OY-BC-BRD" userLabel="Closed Indicator Point">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8OY-BC-BRD" userLabel="Closed Indicator Point">
                                                 <rect key="frame" x="16" y="23" width="4" height="4"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -847,8 +850,8 @@
                                             <outletCollection property="gestureRecognizers" destination="Mav-EZ-cBt" appends="YES" id="Xon-8y-9kn"/>
                                         </connections>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtR-jl-yJU" userLabel="Indicator Scroll View">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="5"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtR-jl-yJU" userLabel="Indicator Scroll View">
+                                        <rect key="frame" x="0.0" y="43" width="320" height="5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH7-SG-gqk" userLabel="Indicator Scroll View Container">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
@@ -894,14 +897,14 @@
                                     <constraint firstItem="WtR-jl-yJU" firstAttribute="leading" secondItem="1QW-8K-yWh" secondAttribute="leading" id="r4H-0k-OWZ"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXr-zw-fPC" userLabel="Pools Scroll View">
-                                <rect key="frame" x="0.0" y="321" width="320" height="247"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXr-zw-fPC" userLabel="Pools Scroll View">
+                                <rect key="frame" x="0.0" y="320" width="320" height="248"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahC-Lt-FVS" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="640" height="241"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahC-Lt-FVS" userLabel="Scroll View Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="640" height="243"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="closedPoolsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snq-jS-B2m" userLabel="Closed Pools Table View">
-                                                <rect key="frame" x="320" y="0.0" width="320" height="241"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="closedPoolsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snq-jS-B2m" userLabel="Closed Pools Table View">
+                                                <rect key="frame" x="320" y="0.0" width="320" height="243"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="dMK-YN-bhz" customClass="PoolCell" customModule="Paid_to_Go" customModuleProvider="target">
@@ -948,8 +951,8 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="openPoolsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Re-0F3" userLabel="Open Pools Table View">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="241"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="openPoolsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Re-0F3" userLabel="Open Pools Table View">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="243"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="BtR-Dg-43n" customClass="PoolCell" customModule="Paid_to_Go" customModuleProvider="target">
@@ -1252,6 +1255,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1043" y="1140"/>
+        </scene>
+        <!--National Pools View Controller-->
+        <scene sceneID="o2z-wW-mkt">
+            <objects>
+                <viewController id="gOS-9t-347" customClass="NationalPoolsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kvi-nm-i5h"/>
+                        <viewControllerLayoutGuide type="bottom" id="nYL-JA-dxt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FZV-Ij-ivd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-Gm-Eww">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dgp-Gm-Eww" firstAttribute="leading" secondItem="FZV-Ij-ivd" secondAttribute="leading" id="6YC-mt-p0f"/>
+                            <constraint firstItem="dgp-Gm-Eww" firstAttribute="top" secondItem="Kvi-nm-i5h" secondAttribute="bottom" id="Wzk-pk-nt6"/>
+                            <constraint firstAttribute="trailing" secondItem="dgp-Gm-Eww" secondAttribute="trailing" id="pDm-Nn-Nul"/>
+                            <constraint firstItem="nYL-JA-dxt" firstAttribute="top" secondItem="dgp-Gm-Eww" secondAttribute="bottom" id="ycN-ab-zLc"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMX-uz-kMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520.5" y="1189.5"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
@@ -1585,7 +1619,12 @@
                     <navigationItem key="navigationItem" id="9Zn-bY-t1W"/>
                     <connections>
                         <outlet property="backgroundColorView" destination="A8a-l4-hGe" id="jQM-mK-MQ4"/>
+                        <outlet property="co2Label" destination="R3q-75-RdF" id="t5V-8i-3f2"/>
+                        <outlet property="earnedLabel" destination="qgs-n5-XZG" id="WOE-cF-ayX"/>
+                        <outlet property="gasLabel" destination="KfH-kb-Do1" id="03A-KV-b6T"/>
+                        <outlet property="milesLabel" destination="iAk-hD-a3Z" id="Bg4-1F-iIN"/>
                         <outlet property="profileImageView" destination="tly-nR-k3h" id="NpR-wL-KnU"/>
+                        <outlet property="trafficLabel" destination="sKC-wt-3gF" id="uqn-pl-U7h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AP-v7-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1846,6 +1885,9 @@
                                             <constraint firstAttribute="width" secondItem="AvC-7L-Xbu" secondAttribute="height" multiplier="1:1" id="HKB-Gx-7B4"/>
                                         </constraints>
                                         <state key="normal" image="ic_share_twitter"/>
+                                        <connections>
+                                            <action selector="twitter:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="LIB-Rm-UbB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-BK-axP" userLabel="Mail Button">
                                         <rect key="frame" x="85" y="85" width="85" height="85"/>
@@ -1853,6 +1895,9 @@
                                             <constraint firstAttribute="width" secondItem="uPd-BK-axP" secondAttribute="height" multiplier="1:1" id="D6M-uv-J6T"/>
                                         </constraints>
                                         <state key="normal" image="ic_share_mail"/>
+                                        <connections>
+                                            <action selector="email:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="Kjm-l4-bLf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-X4-TFW" userLabel="Instagram Button">
                                         <rect key="frame" x="85" y="0.0" width="85" height="85"/>
@@ -1860,6 +1905,9 @@
                                             <constraint firstAttribute="width" secondItem="a6F-X4-TFW" secondAttribute="height" multiplier="1:1" id="vSM-DM-FYR"/>
                                         </constraints>
                                         <state key="normal" image="ic_share_instagram"/>
+                                        <connections>
+                                            <action selector="instagram:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="oP2-cZ-GKL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW0-fJ-s5L" userLabel="Facebook Button">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -1867,6 +1915,9 @@
                                             <constraint firstAttribute="width" secondItem="wW0-fJ-s5L" secondAttribute="height" multiplier="1:1" id="9cT-2J-9uB"/>
                                         </constraints>
                                         <state key="normal" image="ic_share_facebook"/>
+                                        <connections>
+                                            <action selector="facebook:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="UgX-D4-tRH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

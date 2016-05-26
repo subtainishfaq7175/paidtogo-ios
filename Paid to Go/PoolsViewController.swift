@@ -79,6 +79,17 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.getPools()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if segue.identifier == "segue_nationalpools" {
+            if let destinationVC = segue.destinationViewController as? NationalPoolsViewController {
+                destinationVC.typeEnum = self.type
+                destinationVC.poolType = self.poolType
+            }
+        }
+    }
+    
 
     // MARK: - Functions
     
@@ -90,7 +101,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func initLayout() {
         setNavigationBarVisible(true)
-
+        clearNavigationBarcolor()
         setIndicatorOnLeft()
         
 

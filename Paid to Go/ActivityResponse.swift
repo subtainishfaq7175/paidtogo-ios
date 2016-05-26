@@ -12,7 +12,7 @@ import ObjectMapper
 class ActivityResponse: Mappable {
     
     var savedCalories: String?
-    var earnedMoney: String?
+    var earnedMoney: Double?
     var savedGas: String?
     var savedCo2: String?
     

@@ -144,7 +144,9 @@ class PoolViewController: ViewController {
                 let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
                 let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
                 wellDoneViewController.type = self.type
+                wellDoneViewController.poolType = self.poolType
                 wellDoneViewController.activityResponse = response
+                wellDoneViewController.activity = self.activity
                 
                 self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
             }

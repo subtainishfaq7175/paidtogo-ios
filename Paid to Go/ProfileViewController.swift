@@ -44,7 +44,10 @@ class ProfileViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        emailTextField.delegate = self
+        lastNameTextField.delegate = self
+        firstNameTextField.delegate = self
+        bioTextField.delegate = self
         
         self.populateFields()
     }
@@ -210,7 +213,7 @@ class ProfileViewController: MenuContentViewController {
     
 }
 
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -249,4 +252,18 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if string == "\n" {
+//            textField.resignFirstResponder()
+//        }
+//        
+//        return true
+//    }
 }

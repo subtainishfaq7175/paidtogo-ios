@@ -44,6 +44,7 @@
 		524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524911951CAC5FFC00D6E763 /* PoolsViewController.swift */; };
 		524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */; };
 		524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D200E1C989CBA00FCE996 /* UIView+Round.swift */; };
+		52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52502AE81CF73C4C008E3E3D /* NationalPoolsViewController.swift */; };
 		525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525150AF1CA17D1900BEC445 /* Profile.storyboard */; };
 		525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525150B11CA17D7900BEC445 /* ProfileViewController.swift */; };
 		525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525523981CA9869700D92F7F /* MenuItemCell.swift */; };
@@ -122,6 +123,7 @@
 		524911951CAC5FFC00D6E763 /* PoolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolsViewController.swift; sourceTree = "<group>"; };
 		524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		524D200E1C989CBA00FCE996 /* UIView+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
+		52502AE81CF73C4C008E3E3D /* NationalPoolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NationalPoolsViewController.swift; sourceTree = "<group>"; };
 		525150AF1CA17D1900BEC445 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		525150B11CA17D7900BEC445 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		525523981CA9869700D92F7F /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				522994EC1CC15A4400C589C6 /* WDLeaderboardsViewController.swift */,
 				52E672ED1CC550380062653C /* AntiCheatViewController.swift */,
 				529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */,
+				52502AE81CF73C4C008E3E3D /* NationalPoolsViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
+				52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */,
 				52FC35061CC66C5600E094DA /* Platform.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
