@@ -61,6 +61,7 @@ class WellDoneViewController: ViewController {
             case "leaderboardsSegue":
                 let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
                 wdLeaderboardsViewController.type = self.type!
+                wdLeaderboardsViewController.poolId = self.activity?.poolId
             default:
                 break
         }

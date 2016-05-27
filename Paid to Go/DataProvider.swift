@@ -262,20 +262,20 @@ class DataProvider : DataProviderService {
             
         ]
         
-        ConnectionManager.sharedInstance.getLeaderboards(params) { (responseValue, error) in
+        ConnectionManager.sharedInstance.getLeaderboards(params as! [String : String]) { (responseValue, error) in
             
             if (error == nil) {
                 
                 let leaderboard = Mapper<LeaderboardsResponse>().map(responseValue)
-                completion(poleaderboardols: leaderboard, error: nil)
+                completion(leaderboard: leaderboard, error: nil)
                 return
                 
             } else {
                 if error == "LEADERBOARDS_UNSUCCESSFUL"{
-                    completion(pools: nil, error: nil)
+                    completion(leaderboard: nil, error: nil)
                     return
                 } else {
-                    completion(pools: nil, error: self.getError(error!))
+                    completion(leaderboard: nil, error: self.getError(error!))
                     return
                 }
                 

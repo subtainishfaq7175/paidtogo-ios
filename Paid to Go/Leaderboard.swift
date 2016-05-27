@@ -32,7 +32,7 @@ public class Leaderboard: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required init?(_ map: Map){
+    required public init?(_ map: Map){
 
     }
 
@@ -40,7 +40,7 @@ public class Leaderboard: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
 		userId <- map[kLeaderboardUserIdKey]
 		lastName <- map[kLeaderboardLastNameKey]
 		profilePicture <- map[kLeaderboardProfilePictureKey]

@@ -51,6 +51,7 @@
 		5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239A1CA9879900D92F7F /* MainViewController.swift */; };
 		5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */; };
 		5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526020291CEE591E00C6604E /* ActivityResponse.swift */; };
+		5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5276DE1F1CF8883A009B2CBE /* LeaderboardCell.swift */; };
 		528822ED1C9B083400B490AD /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528822EC1C9B083400B490AD /* Menu.storyboard */; };
 		528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */; };
 		528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F54CF1CF79D72008E015C /* Leaderboard.swift */; };
@@ -132,6 +133,7 @@
 		5255239A1CA9879900D92F7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContentViewController.swift; sourceTree = "<group>"; };
 		526020291CEE591E00C6604E /* ActivityResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityResponse.swift; sourceTree = "<group>"; };
+		5276DE1F1CF8883A009B2CBE /* LeaderboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		528822EC1C9B083400B490AD /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		528CD0751CECBEC6002090A6 /* Paid to Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Paid to Go.entitlements"; sourceTree = "<group>"; };
 		528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsResponse.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				523977D71CAF01C000C85CAF /* PoolCell.swift */,
+				5276DE1F1CF8883A009B2CBE /* LeaderboardCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
 				52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */,
+				5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */,
 				7C039DAA1CE216C100C7DED4 /* Balance.swift in Sources */,
 				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
 				52B982351CB3146100706DCC /* WellDoneViewController.swift in Sources */,
