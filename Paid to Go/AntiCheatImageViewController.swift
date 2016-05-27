@@ -14,6 +14,7 @@ class AntiCheatImageViewController: ViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     
     var image: UIImage?
+    var pool: Pool?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +39,7 @@ class AntiCheatImageViewController: ViewController {
             }
             
             if let poolType = poolType {
-                self.showPoolViewController(.Train, poolType: poolType, sender: nil)
+                self.showPoolViewController(.Train, poolType: poolType, pool: self.pool!, sender: nil)
             }
             
         }

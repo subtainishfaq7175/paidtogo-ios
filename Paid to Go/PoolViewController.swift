@@ -28,6 +28,7 @@ class PoolViewController: ViewController {
     
     // MARK: - Variables and Constants
     
+    var pool: Pool?
     var poolType: PoolType?
     var type: PoolTypeEnum?
     var hasPoolStarted = false
@@ -123,7 +124,7 @@ class PoolViewController: ViewController {
         
         activity.milesTraveled = self.milesTraveled
         activity.startDateTime = String(self.startDateToTrack)
-        activity.poolId = poolType?.internalIdentifier
+        activity.poolId = pool?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
         
         self.locationManager.stopUpdatingLocation()
@@ -147,6 +148,7 @@ class PoolViewController: ViewController {
                 wellDoneViewController.poolType = self.poolType
                 wellDoneViewController.activityResponse = response
                 wellDoneViewController.activity = self.activity
+                wellDoneViewController.pool = self.pool
                 
                 self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
             }

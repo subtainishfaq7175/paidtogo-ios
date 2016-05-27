@@ -1647,7 +1647,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZo-j8-zPq" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="273"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="dWy-qR-xU4" userLabel="Header Image View">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="dWy-qR-xU4" userLabel="Header Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="273"/>
                                     </imageView>
                                     <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Hi-tO-qAL" userLabel="Green View">
@@ -1700,7 +1700,7 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQt-6o-0ft">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQt-6o-0ft">
                                                 <rect key="frame" x="98" y="125" width="42" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1894,8 +1894,15 @@
                     </view>
                     <connections>
                         <outlet property="backgroundColorView" destination="0Hi-tO-qAL" id="jPD-jB-BO1"/>
+                        <outlet property="backgroundImageView" destination="dWy-qR-xU4" id="qom-BV-B8F"/>
+                        <outlet property="detailLabel" destination="YOL-OJ-Ro1" id="1tg-x5-bKJ"/>
+                        <outlet property="endDateLabel" destination="kXK-b5-Zqo" id="gXI-o6-0pg"/>
+                        <outlet property="leaderboardImageView" destination="uj1-cZ-9cp" id="RbQ-by-74S"/>
+                        <outlet property="locationLabel" destination="pwu-vS-HSa" id="0ja-9N-z3r"/>
+                        <outlet property="placeLabel" destination="fwG-GW-LRD" id="ixb-ZU-69c"/>
                         <outlet property="subtitleLabel" destination="MTE-TK-nel" id="hD0-fW-tMi"/>
                         <outlet property="tableView" destination="Jx7-JI-9fx" id="Bhx-Mw-yaf"/>
+                        <outlet property="typeLabel" destination="cx2-dc-3xi" id="0y3-Es-p9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dr-bD-1Dr" userLabel="First Responder" sceneMemberID="firstResponder"/>

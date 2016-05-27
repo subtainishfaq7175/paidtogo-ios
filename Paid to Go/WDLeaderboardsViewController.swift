@@ -16,12 +16,24 @@ class WDLeaderboardsViewController: ViewController {
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
     @IBOutlet weak var backgroundColorView: UIView!
     
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var leaderboardImageView: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+
+    
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
     var leaderboard: LeaderboardsResponse?
-    var poolId: String?
     let cellReuseIdentifier = "leaderboardCell"
+    
+    var poolType: PoolType?
+    var activity: Activity?
+    var pool: Pool?
     
     // MARK: - Super
     
@@ -50,7 +62,7 @@ class WDLeaderboardsViewController: ViewController {
     private func getData() {
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getLeaderboards(self.poolId!) { (leaderboard, error) in
+        DataProvider.sharedInstance.getLeaderboards(self.activity!.poolId!) { (leaderboard, error) in
             
             self.dismissProgressHud()
             
@@ -60,6 +72,9 @@ class WDLeaderboardsViewController: ViewController {
             }
             
             if let leaderboard = leaderboard {
+                
+                self.backgroundImageView.yy_setImageWithURL(NSURL(string: (leaderboard.iconPhoto)!), options: .ShowNetworkActivity)
+                self.placeLabel.text = "1st"
                 
                 self.tableView.dataSource = self
 
@@ -73,6 +88,16 @@ class WDLeaderboardsViewController: ViewController {
     
     
     func initViews(){
+        
+        self.leaderboardImageView.roundWholeView()
+        
+        self.typeLabel.text = poolType!.name
+        self.locationLabel.text = "Location"
+        self.detailLabel.text = "This is where the pool's details will be written"
+        self.endDateLabel.text =  self.pool!.endDateTime // split by space " ", use only the first
+
+        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType!.backgroundPicture)!), options: .ShowNetworkActivity)
+        
     }
     
     func initLayout() {

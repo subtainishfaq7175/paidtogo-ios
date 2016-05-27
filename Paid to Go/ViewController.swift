@@ -192,36 +192,19 @@ class ViewController: UIViewController {
     
     
     
-    func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, sender: AnyObject?) {
+    func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, pool: Pool, sender: AnyObject?) {
         if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
                 poolViewController.type = type
                 poolViewController.poolType = poolType
+                poolViewController.pool = pool
             
                 self.showViewController(poolViewController, sender: sender)
         }
         
-//            if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
-//                poolViewController.type = type
-//                poolViewController.poolType = poolType
-//                
-////                self.showViewController(poolNavigationController, sender: sender)
-//            }
-//        }
     }
     
         
-        func presentPoolViewController(type: PoolTypeEnum, poolType: PoolType) {
-            if let poolNavigationController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolNavigationController") as? UINavigationController {
-                if let poolViewController = poolNavigationController.viewControllers[0] as? PoolViewController {
-                    poolViewController.type = type
-                    poolViewController.poolType = poolType
-                    
-                    self.presentViewController(poolNavigationController, animated: true, completion: nil)
-                }
-            }
-            
-            
-        }
+    
         
         func showProgressHud() {
             let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

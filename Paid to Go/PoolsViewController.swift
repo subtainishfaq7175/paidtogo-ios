@@ -94,8 +94,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     // MARK: - Functions
     
     
-    private func showAntiCheatViewController() {
-        self.showViewController(StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController"), sender: nil)
+    private func showAntiCheatViewController(pool: Pool) {
+        let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
+        vc.pool = pool
+        self.showViewController(vc, sender: nil)
     }
     
     
@@ -325,19 +327,32 @@ extension PoolsViewController: UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
         
-        if(self.type == .Train) {
-            showAntiCheatViewController()
-        } else {
-            showPoolViewController(self.type!, poolType: self.poolType!, sender: nil)
+        switch tableView.restorationIdentifier! {
+        case "closedPoolsTableView":
+            let pool = self.closedPools[indexPath.row]
+            if(self.type == .Train) {
+                showAntiCheatViewController(pool)
+            } else {
+                showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
+            }
+            break
+        case "openPoolsTableView":
+            let pool = self.openPools[indexPath.row]
+            if(self.type == .Train) {
+                showAntiCheatViewController(pool)
+            } else {
+                showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
+            }
+            break
+        default: break
         }
         
-        //        self.notifications[indexPath.row].read = true
+      
         
-        //        cell.read(self.notifications[indexPath.row].read)
-        
+
         tableView.reloadData()
         
-        // TODO Notification navigation
+
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

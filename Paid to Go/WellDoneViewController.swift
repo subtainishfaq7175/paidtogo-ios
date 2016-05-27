@@ -28,6 +28,7 @@ class WellDoneViewController: ViewController {
     var poolType: PoolType?
     var activityResponse: ActivityResponse?
     var activity: Activity?
+    var pool: Pool?
     
     // MARK: -  Super
     
@@ -61,7 +62,9 @@ class WellDoneViewController: ViewController {
             case "leaderboardsSegue":
                 let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
                 wdLeaderboardsViewController.type = self.type!
-                wdLeaderboardsViewController.poolId = self.activity?.poolId
+                wdLeaderboardsViewController.activity = self.activity!
+                wdLeaderboardsViewController.poolType = self.poolType!
+                wdLeaderboardsViewController.pool = self.pool!
             default:
                 break
         }

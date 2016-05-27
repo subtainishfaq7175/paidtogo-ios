@@ -16,7 +16,7 @@ class AntiCheatViewController: ViewController {
     // MARK: - Variables
     
     var imagePickerController: UIImagePickerController!
-    
+    var pool: Pool?
     
     // MARK: - Super
     
@@ -82,6 +82,7 @@ extension AntiCheatViewController: UIImagePickerControllerDelegate, UINavigation
         
         if let antiCheatImageViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AntiCheatImageViewController") as? AntiCheatImageViewController {
             antiCheatImageViewController.image = image
+            antiCheatImageViewController.pool = self.pool!
             self.showViewController(antiCheatImageViewController, sender: nil)
         }
         
