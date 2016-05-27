@@ -251,6 +251,34 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func getActivities(completion: (activityNotifications: [ActivityNotification]?, error: String?) -> Void) {
+        
+        
+        let userId = User.currentUser?.userId
+        
+        let params: [String: AnyObject] = [
+            
+            "user_id" : userId!
+        ]
+        
+        ConnectionManager.sharedInstance.getActivities(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let activityNotifications = Mapper<ActivityNotification>().mapArray(responseValue)
+                completion(activityNotifications: activityNotifications, error: nil)
+                return
+                
+            } else {
+                
+                completion(activityNotifications: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+
+    
     func getLeaderboards(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
         
         let userId = User.currentUser?.userId

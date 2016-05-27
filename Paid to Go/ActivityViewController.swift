@@ -19,7 +19,7 @@ class ActivityViewController: MenuContentViewController {
     let defaultCellReuseIdentifier = "activityDefaultCell"
     let actionCellReuseIdentifier = "activityActionCell"
     
-    var notifications:[Notification] = [Notification]()
+    var notifications:[ActivityNotification] = [ActivityNotification]()
     
     
     // MARK: - Super
@@ -43,7 +43,7 @@ class ActivityViewController: MenuContentViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.title = "menu_activity".localize()
-        //        self.setNavigationBarTitle("Notifications_title".localize())
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,14 +61,29 @@ class ActivityViewController: MenuContentViewController {
         
     }
     
+    
     private func getNotifications () {
         
-        DataProvider.sharedInstance.getNotifications { (notifications) -> Void in
+        self.showProgressHud()
+        
+        DataProvider.sharedInstance.getActivities { (activityNotifications, error) in
             
-            self.notifications = notifications
-            self.notificationsTableView.reloadData()
-            //            self.refreshControl.endRefreshing()
+            if let error = error {
+                self.dismissProgressHud()
+                
+                self.showAlert(error)
+                return
+            }
+            
+            if let activityNotifications = activityNotifications {
+                self.dismissProgressHud()
+
+                self.notifications = activityNotifications
+                self.notificationsTableView.reloadData()
+            }
         }
+        
+       
     }
 }
 extension ActivityViewController: UITableViewDataSource {
@@ -78,32 +93,17 @@ extension ActivityViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        switch self.notifications[indexPath.row].type {
-        case 0: // SIMPLE CELL
-            let cell = tableView.dequeueReusableCellWithIdentifier(simpleCellReuseIdentifier) as! ActivitySimpleCell
-            
-            cell.configure(self.notifications[indexPath.row])
-            
-            return cell
-            
-        case 1: // DEFAULT CELL
+
             let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivityDefaultCell
             
             cell.configure(self.notifications[indexPath.row])
             
             return cell
             
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(simpleCellReuseIdentifier) as! ActivitySimpleCell
-            
-            cell.configure(self.notifications[indexPath.row])
-            
-            return cell
-        }
         
     }
 }
+
 extension ActivityViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

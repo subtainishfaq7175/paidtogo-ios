@@ -9,29 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Paid to Go/ConnectionManager.swift"
-            timestampString = "485460156.15671"
+            filePath = "Paid to Go/ProfileViewController.swift"
+            timestampString = "485986963.211776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "postRequest(_:url:params:apiCompletion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Paid to Go/ConnectionManager.swift"
-            timestampString = "485460223.042466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "postRequest(_:url:params:apiCompletion:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "populateFields()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Paid to Go/ProfileViewController.swift"
-            timestampString = "485986963.211776"
+            filePath = "Paid to Go/ConnectionManager.swift"
+            timestampString = "486068436.80399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "populateFields()"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "postRequest(_:url:params:apiCompletion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -94,8 +94,8 @@ class WDLeaderboardsViewController: ViewController {
         self.typeLabel.text = poolType!.name
         self.locationLabel.text = "Location"
         self.detailLabel.text = "This is where the pool's details will be written"
-        self.endDateLabel.text =  self.pool!.endDateTime // split by space " ", use only the first
-
+        self.endDateLabel.text =  self.pool!.endDateTime!.characters.split{$0 == " "}.map(String.init)[0]
+ 
         self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType!.backgroundPicture)!), options: .ShowNetworkActivity)
         
     }

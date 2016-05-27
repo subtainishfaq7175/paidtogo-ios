@@ -33,12 +33,12 @@ class ActivityDefaultCell: UITableViewCell {
     // MARK: - Configuration
     
     
-    func configure(notification: Notification) {
-        self.titleLabel.text = notification.text
-        self.detailLabel.text = notification.detail
+    func configure(notification: ActivityNotification) {
+        self.titleLabel.text = notification.name
+        self.detailLabel.text = notification.earnedMoney
         
         self.notificationImageView.yy_setImageWithURL(
-            NSURL( string: notification.imageUrl),
+            NSURL( string: notification.iconPhoto!),
             options: .ProgressiveBlur )
         
     }

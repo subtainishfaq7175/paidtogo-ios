@@ -62,8 +62,8 @@ class BalanceViewController: MenuContentViewController {
             if let balance = balance {
                 // ... success
                 
-                self.redemedLabel.text = "- U$D \(balance.redemed!)"
-                self.earnedLabel.text = "U$D \(balance.earned!)"
+                self.redemedLabel   .text = "- U$D \(balance.redemed!)"
+                self.earnedLabel    .text = "U$D \(balance.earned!)"
                 
                 self.accountMoneyLabel.text = "U$D \(balance.redemed!)"
                 
