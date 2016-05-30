@@ -31,6 +31,16 @@ class CarPoolInviteCell: UITableViewCell {
     // MARK: - Configuration
     
     
+    
+    func selectCell() {
+        
+        if self.selected {
+            selectedView.hidden = true
+        } else {
+            selectedView.hidden = false
+        }
+    }
+    
     func configure(user: User) {
         self.nameLabel.text = user.fullName()
         
