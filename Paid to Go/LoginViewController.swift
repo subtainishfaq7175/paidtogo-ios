@@ -134,6 +134,18 @@ class LoginViewController: ViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if segue.identifier == "segue_signup" {
+            if let destinationNC = segue.destinationViewController as? NavigationController {
+                if let destinationVC = destinationNC.viewControllers[0] as? SignupViewController {
+                    destinationVC.delegate = self
+                }
+            }
+        }
+    }
+    
     // MARK: - Functions
     
     private func validate() -> Bool {
@@ -181,8 +193,11 @@ class LoginViewController: ViewController {
         forgotPasswordBottomConstraint.constant = forgotPasswordBottomConstraint.constant + forgotPasswordBottomConstraint.constant * multiplier
     }
     
-    
-    
-    
+}
+
+extension LoginViewController: SignupDelegate {
+    func goToHome() {
+        self.presentHomeViewController()
+    }
 }
 

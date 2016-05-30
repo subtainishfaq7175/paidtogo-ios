@@ -180,7 +180,9 @@ class ViewController: UIViewController {
     }
     
     func logoutAnimated() {
-        self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+        if let window = self.view.window {
+            window.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func presentHomeViewController() {

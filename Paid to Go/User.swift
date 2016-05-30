@@ -40,7 +40,16 @@ class User: Mappable {
     }
     
     func fullName() -> String {
-        return name! + " " + lastName!
+        if let name = name {
+            if let lastName = lastName {
+                return name + " " + lastName
+            }
+            else {
+                return name
+            }
+        } else {
+            return ""
+        }
     }
     
     // Mappable
@@ -60,7 +69,7 @@ class User: Mappable {
 
 extension User {
     
-   static func logout() {
+    static func logout() {
         User.currentUser = nil
     }
     

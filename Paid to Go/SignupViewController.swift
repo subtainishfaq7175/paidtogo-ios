@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Foundation
+
+protocol SignupDelegate {
+    func goToHome()
+}
 
 class SignupViewController: ViewController {
     
@@ -28,6 +33,7 @@ class SignupViewController: ViewController {
     
     var profileImage: UIImage?
     
+    var delegate: SignupDelegate?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,14 +45,21 @@ class SignupViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        emailTextField.text = "test@test.test1"
-//        firstNameTextField.text = "test"
-//        lastNameTextField.text = "test"
-//        passwordVerificationTextField.text = "test123"
-//        passwordTextField.text = "test123"
-//        bioTextField.text = "test"
-        
+        //        emailTextField.text = "test@test.test1"
+        //        firstNameTextField.text = "test"
+        //        lastNameTextField.text = "test"
+        //        passwordVerificationTextField.text = "test123"
+        //        passwordTextField.text = "test123"
+        //        bioTextField.text = "test"
+      
         setNavigationBarGreen()
+        
+        let closeImage = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: "closeButtonAction:")
+        closeButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = closeButtonItem
+
+        
     }
     
     
@@ -93,10 +106,10 @@ class SignupViewController: ViewController {
             showAlert("The terms and conditions shall be accepted")
             return false
         }
-//        if profileImage == nil {
-//            showAlert("A profile image shall be upload")
-//            return false
-//        }
+        //        if profileImage == nil {
+        //            showAlert("A profile image shall be upload")
+        //            return false
+        //        }
         
         
         return true
@@ -120,13 +133,17 @@ class SignupViewController: ViewController {
         self.presentViewController(photoActionSheet, animated: true, completion: nil)
     }
     
+    @IBAction func closeButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func signup(sender: AnyObject) {
-  
+        
         
         if(self.validate()) {
             
             self.showProgressHud("Loading") // TODO: Fix delay
-
+            
             
             let newUser: User   = User()
             newUser.email       = emailTextField.text!
@@ -136,14 +153,14 @@ class SignupViewController: ViewController {
             newUser.bio         = bioTextField.text!
             
             if let profileImage = profileImage {
-            
-            let imageData = UIImagePNGRepresentation(profileImage)
-            
-            let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-            
-            let encodedImageWithPrefix = User.imagePrefix + base64String
-            
-            newUser.profilePicture = encodedImageWithPrefix
+                
+                let imageData = UIImagePNGRepresentation(profileImage)
+                
+                let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                
+                let encodedImageWithPrefix = User.imagePrefix + base64String
+                
+                newUser.profilePicture = encodedImageWithPrefix
                 
             }
             
@@ -165,8 +182,10 @@ class SignupViewController: ViewController {
                     
                     User.currentUser = newUser
                     
-                    self.presentHomeViewController()
                     
+                    self.dismissViewControllerAnimated(true, completion: {
+                        self.delegate?.goToHome()
+                    })
                 }
                 
             })

@@ -151,7 +151,7 @@
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="TPs-cv-zMZ" kind="show" identifier="SignupViewController" id="LFt-u5-LGC"/>
+                                                            <segue destination="tC6-jh-zqZ" kind="presentation" identifier="segue_signup" id="Gt2-uV-kBd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -673,6 +673,7 @@ Email Line View</string>
                             <constraint firstItem="HjI-7v-ajs" firstAttribute="top" secondItem="1Qn-oR-Azc" secondAttribute="bottom" id="uys-yl-Igi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sbh-GD-naR"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImageView" destination="sqK-Aj-pMv" id="4RK-W3-f4C"/>
@@ -696,7 +697,7 @@ Email Line View</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1127" y="311"/>
+            <point key="canvasLocation" x="1949" y="954"/>
         </scene>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="ybf-Ac-nBd">
@@ -784,6 +785,25 @@ Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra met
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37r-wT-Du1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="279" y="311"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gsc-1F-8OL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tC6-jh-zqZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjJ-Lt-gDq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TPs-cv-zMZ" kind="relationship" relationship="rootViewController" id="JXe-qV-gCC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMd-wn-YPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="581"/>
         </scene>
     </scenes>
     <resources>
