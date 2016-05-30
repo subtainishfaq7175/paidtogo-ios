@@ -121,10 +121,11 @@ extension ConnectionManager {
         
     }
     
-    func getActivities(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+    func getActivities(userId: String, apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
-        let identifier = "Activity API - POST"
-        self.postRequest(identifier, url: self.activityURL, params: params, apiCompletion: apiCompletion)
+        let identifier = "Activity API - GET"
+        let url = "\(self.activityURL)?user_id=\(userId)"
+        self.getRequest(identifier, url: url, apiCompletion: apiCompletion)
         
     }
     
@@ -215,63 +216,7 @@ extension ConnectionManager {
         }
     }
     
-    private func postRequestSimpleJSON(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
-        
-        
-        let paramsDict = dictionaryWithoutEmptyValues(params)
-        
-        self.printRequest(identifier,
-                          requestType: RequestType.Request,
-                          requestURL: url,
-                          value: paramsDict)
-        
-        let userId = User.currentUser?.userId
-        //"\"user_id\": \"\(userId)\""
-        
-        Alamofire
-            .request(.POST, url, parameters: [:], encoding: .Custom({
-            (convertible, params) in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = "\"user_id\": \"\(userId)\"".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            return (mutableRequest, nil)
-        }))
-            .responseJSON { (response) in
-                
-                guard let value = response.result.value else {
-                    apiCompletion(responseValue: nil, error: "error_connection")
-                    return
-                }
-                
-                
-                self.printRequest(identifier,
-                    requestType: RequestType.Response,
-                    requestURL: url,
-                    value: value)
-                
-                if response.result.isSuccess {
-                    if response.response?.statusCode == 200 {
-                        
-                        apiCompletion(responseValue: value, error: nil)
-                        return
-                        
-                    }  else {
-                        
-                        if let errorDetail = value["code"] as? String {
-                            apiCompletion(responseValue: value, error: errorDetail)
-                        }  else {
-                            apiCompletion(responseValue: value, error: "error_default")
-                        }
-                        return
-                    }
-                    
-                } else   if response.result.isFailure {
-                    
-                    apiCompletion(responseValue: value, error: "error_connection")
-                    
-                    return
-                }
-        }
-    }
+    
 
     
     

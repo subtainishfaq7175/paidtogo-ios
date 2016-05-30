@@ -256,12 +256,9 @@ class DataProvider : DataProviderService {
         
         let userId = User.currentUser?.userId
         
-        let params: [String: AnyObject] = [
-            
-            "user_id" : userId!
-        ]
+
         
-        ConnectionManager.sharedInstance.getActivities(params) { (responseValue, error) in
+        ConnectionManager.sharedInstance.getActivities(userId!) { (responseValue, error) in
             
             if (error == nil) {
                 

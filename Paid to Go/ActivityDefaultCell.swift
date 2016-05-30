@@ -37,10 +37,12 @@ class ActivityDefaultCell: UITableViewCell {
         self.titleLabel.text = notification.name
         self.detailLabel.text = notification.earnedMoney
         
-        self.notificationImageView.yy_setImageWithURL(
-            NSURL( string: notification.iconPhoto!),
-            options: .ProgressiveBlur )
+        if let imageURL = notification.iconPhoto {
         
+        self.notificationImageView.yy_setImageWithURL(
+            NSURL(string: imageURL),
+            options: .ProgressiveBlur )
+        }
     }
     
 }
