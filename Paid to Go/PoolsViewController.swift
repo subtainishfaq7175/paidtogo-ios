@@ -66,7 +66,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
         
         self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
-
+        
         
         self.scrollView.delegate = self
         
@@ -90,7 +90,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         }
     }
     
-
+    
     // MARK: - Functions
     
     
@@ -106,14 +106,14 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         clearNavigationBarcolor()
         setIndicatorOnLeft()
         
-
+        
     }
     
     private func initViews() {
         self.goImageView.roundWholeView()
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
-  }
+    }
     
     private func setIndicatorOnLeft() {
         indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
@@ -168,12 +168,12 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 self.showAlert(error)
                 return
             }
-
+            
             
             if let pools = pools {
-            
-            self.openPools  = pools
-            self.openPoolsTableView.reloadData()
+                
+                self.openPools  = pools
+                self.openPoolsTableView.reloadData()
                 
             }
         }
@@ -330,29 +330,51 @@ extension PoolsViewController: UITableViewDelegate {
         switch tableView.restorationIdentifier! {
         case "closedPoolsTableView":
             let pool = self.closedPools[indexPath.row]
-            if(self.type == .Train) {
+            switch self.type! {
+            case .Train:
                 showAntiCheatViewController(pool)
-            } else {
+                break
+            case .Car:
+                
+                let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
+                carViewController!.poolType = self.poolType
+                self.showViewController(carViewController!, sender: nil)
+                
+                break
+            default:
                 showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
+                break
             }
+            
             break
         case "openPoolsTableView":
             let pool = self.openPools[indexPath.row]
-            if(self.type == .Train) {
+          
+            switch self.type! {
+            case .Train:
                 showAntiCheatViewController(pool)
-            } else {
+                break
+            case .Car:
+                let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
+                    carViewController!.poolType = self.poolType
+                self.showViewController(carViewController!, sender: nil)
+                
+                break
+            default:
                 showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
+                break
             }
+            
             break
         default: break
         }
         
-      
         
-
+        
+        
         tableView.reloadData()
         
-
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

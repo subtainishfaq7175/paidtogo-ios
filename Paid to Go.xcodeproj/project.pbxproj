@@ -80,6 +80,8 @@
 		52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */; };
 		52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */; };
 		52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E672ED1CC550380062653C /* AntiCheatViewController.swift */; };
+		52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EBFBB91CFCC2CB00FE829E /* CarPoolInviteViewController.swift */; };
+		52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EBFBBB1CFCD06E00FE829E /* CarPoolInviteCell.swift */; };
 		52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */; };
 		52FC35061CC66C5600E094DA /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FC35051CC66C5600E094DA /* Platform.swift */; };
 		7C039DAA1CE216C100C7DED4 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C039DA91CE216C100C7DED4 /* Balance.swift */; };
@@ -166,6 +168,8 @@
 		52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		52D5B1151CAD7A7E00E0BCE1 /* LocalizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
 		52E672ED1CC550380062653C /* AntiCheatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatViewController.swift; sourceTree = "<group>"; };
+		52EBFBB91CFCC2CB00FE829E /* CarPoolInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPoolInviteViewController.swift; sourceTree = "<group>"; };
+		52EBFBBB1CFCD06E00FE829E /* CarPoolInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPoolInviteCell.swift; sourceTree = "<group>"; };
 		52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		52FC35051CC66C5600E094DA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				52E672ED1CC550380062653C /* AntiCheatViewController.swift */,
 				529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */,
 				52502AE81CF73C4C008E3E3D /* NationalPoolsViewController.swift */,
+				52EBFBB91CFCC2CB00FE829E /* CarPoolInviteViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			children = (
 				523977D71CAF01C000C85CAF /* PoolCell.swift */,
 				5276DE1F1CF8883A009B2CBE /* LeaderboardCell.swift */,
+				52EBFBBB1CFCD06E00FE829E /* CarPoolInviteCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -705,7 +711,9 @@
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
+				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
+				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
