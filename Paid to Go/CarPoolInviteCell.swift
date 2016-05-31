@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UIColor_Hex_Swift
 
 class CarPoolInviteCell: UITableViewCell {
     
@@ -16,7 +17,7 @@ class CarPoolInviteCell: UITableViewCell {
     @IBOutlet weak var selectedView: UIView!
     
     // MARK: - Constants
-    static let identifier = "carPoolInviteCell"
+    static let identifier = "CarPoolInviteCell"
     
     // MARK: - Override
     override func awakeFromNib() {
@@ -34,11 +35,11 @@ class CarPoolInviteCell: UITableViewCell {
     
     func selectCell() {
         
-        if self.selected {
-            selectedView.hidden = true
-        } else {
-            selectedView.hidden = false
-        }
+//        if self.selected {
+//            selectedView.backgroundColor = CustomColors.carColor()
+//        } else {
+//            selectedView.backgroundColor = CustomColors.walkRunColor()
+//        }
     }
     
     func configure(user: User) {
