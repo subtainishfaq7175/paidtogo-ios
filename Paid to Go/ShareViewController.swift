@@ -8,8 +8,9 @@
 
 import UIKit
 import Social
+import MessageUI
 
-class ShareViewController: ViewController {
+class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate {
     
     // MARK: - Outlets
     
@@ -23,6 +24,8 @@ class ShareViewController: ViewController {
     var type: PoolTypeEnum?
     var docController = UIDocumentInteractionController()
 
+    var shareInstagram : CMDocumentShare?
+    var documentInteractor : UIDocumentInteractionController?
     
     // MARK: - Super
     
@@ -75,7 +78,63 @@ class ShareViewController: ViewController {
     // MARK: - Actions
     
     @IBAction func email(sender: AnyObject) {
+        
+        if !MFMailComposeViewController.canSendMail() {
+            let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        } else {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            
+            // Configure the fields of the interface.
+            //composeVC.setToRecipients(["address@example.com"])
+            composeVC.setSubject("Share by Mail")
+            let stringURL = NSURL(string: "www.paidtogo.com")
+            composeVC.setMessageBody((stringURL?.absoluteString)!, isHTML: false)
+            
+            // Present the view controller modally.
+            self.presentViewController(composeVC, animated: true, completion: nil)
+        }
+        
+        /*
+         [SAShareManager shareWithMailWithInitialText:[NSString stringWithFormat:kSAShareMessage, self.quote.quoteAuthor.name] withURL:[NSURL URLWithString:@"http://apple.co/1DiLcO5"] withImage:screenShot andTo:nil andViewController:self subject:kSAShareSubject];
+         */
+        
+        /*
+         if ([MFMailComposeViewController canSendMail])
+         {
+         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+         
+         sharedInstance = [[SAShareManager alloc]init];
+         sharedInstance.viewController = viewController;
+         mailer.mailComposeDelegate = sharedInstance;
+         
+         [mailer setSubject:subject];
+         
+         NSArray *toRecipients = [NSArray arrayWithObjects:to, nil];
+         [mailer setToRecipients:toRecipients];
+         
+         NSString *emailBody = [text stringByAppendingString:[NSString stringWithFormat:@" %@",url.absoluteString]];
+         [mailer setMessageBody:emailBody isHTML:NO];
+         
+         UIImage *myImage = image;
+         if( myImage != nil )
+         {
+         NSData *imageData = UIImagePNGRepresentation(myImage);
+         [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"image"];
+         }
+         [viewController presentViewController:mailer animated:YES completion:nil];
+         [[UINavigationBar appearance] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+         }
+         else{
+         [SACustomAlertView generateAlertViewWithMessage:@"No existe una cuenta de correo configurada"];
+         }
+
+         */
     }
+    
     @IBAction func twitter(sender: AnyObject) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
@@ -90,6 +149,17 @@ class ShareViewController: ViewController {
         }
     }
     @IBAction func instagram(sender: AnyObject) {
+        
+        if self.shareInstagram == nil {
+            self.shareInstagram = CMDocumentShare()
+        }
+        
+        guard let screenshot = self.screenShotMethod() as UIImage? else {
+            print("NO SE PUDO SACAR EL SCREENSHOT")
+            return
+        }
+        self.shareInstagramImage(screenshot)
+        
 //        
 //        let instagramURL = NSURL(string: "instagram://app")
 //        
@@ -130,5 +200,55 @@ class ShareViewController: ViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    // MARK: MFMailComposeViewControllerDelegate Method
     
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func shareInstagramImage(image : UIImage) {
+        print("SHARE ON INSTAGRAM")
+        
+        let homeDirectory = NSHomeDirectory()
+        let savePath = homeDirectory.stringByAppendingPathComponent("Documents/StudAppPic.igo")
+        
+        print("savePath -> \(savePath)")
+        
+        let imgData = UIImageJPEGRepresentation(image, 1)
+        
+        do {
+            try imgData?.writeToFile(savePath, options: NSDataWritingOptions.AtomicWrite)
+        } catch {
+            print("Something went wrong!")
+        }
+        
+        let theFileURL = NSURL(fileURLWithPath: savePath)
+        
+        self.documentInteractor = UIDocumentInteractionController(URL: theFileURL)
+        self.documentInteractor?.delegate = self
+        self.documentInteractor?.name = "PaidToGo"
+        self.documentInteractor?.annotation = ["InstagramCaption":"My statistics!!"]
+        self.documentInteractor?.UTI = "com.instagram.exclusivegram"
+        
+        let presented = self.documentInteractor?.presentOpenInMenuFromRect(self.view.frame, inView: self.view, animated: true)
+        
+        if presented == false {
+            print("SIN INSTAGRAM EN EL DISPOSITIVO")
+        }
+    }
+    
+    func screenShotMethod() -> UIImage? {
+        let layer = UIApplication.sharedApplication().keyWindow!.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        
+        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return screenshot
+    }
 }
+
+
+

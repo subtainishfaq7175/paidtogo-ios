@@ -26,4 +26,11 @@ extension String {
     init(key: String) {
         self = NSLocalizedString(key, comment: "")
     }
+    
+    func stringByAppendingPathComponent(path: String) -> String {
+        
+        let nsSt = self as NSString
+        
+        return nsSt.stringByAppendingPathComponent(path)
+    }
 }
