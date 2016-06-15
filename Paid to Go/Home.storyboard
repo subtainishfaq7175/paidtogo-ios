@@ -1091,7 +1091,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_og_pool_walk" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-b8-Vu4" userLabel="Background Image View">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-b8-Vu4" userLabel="Background Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEU-96-ToP" userLabel="Finish Button View">
@@ -1246,7 +1246,7 @@
                     <connections>
                         <outlet property="actionButton" destination="Te9-AK-WAy" id="mPW-sG-LPT"/>
                         <outlet property="actionButtonView" destination="eEU-96-ToP" id="BAO-26-g1e"/>
-                        <outlet property="backgroundImageView" destination="QxM-b8-Vu4" id="PMY-gk-XMn"/>
+                        <outlet property="backgroundImageView" destination="QxM-b8-Vu4" id="8Fy-8o-KFg"/>
                         <outlet property="circularProgressCenterYConstraint" destination="OSq-pq-0nH" id="lQf-1p-OHg"/>
                         <outlet property="circularProgressView" destination="kk4-hN-s7w" id="i5b-TS-Z4v"/>
                         <outlet property="headerTitleLabel" destination="m9I-PG-87K" id="3oH-kg-gGK"/>
@@ -1849,7 +1849,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Leaderboard Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEU-o1-zAJ">
                                                     <rect key="frame" x="46" y="13" width="107" height="18"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-Pf-gUc">
@@ -2058,10 +2058,10 @@
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.56470588239999997" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcJ-1o-X3g" userLabel="Icons View Container">
-                                <rect key="frame" x="75" y="70" width="170" height="170"/>
+                                <rect key="frame" x="98" y="70" width="125" height="125"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvC-7L-Xbu" userLabel="Twitter Button">
-                                        <rect key="frame" x="0.0" y="85" width="85" height="85"/>
+                                        <rect key="frame" x="0.0" y="62" width="63" height="63"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="AvC-7L-Xbu" secondAttribute="height" multiplier="1:1" id="HKB-Gx-7B4"/>
                                         </constraints>
@@ -2071,7 +2071,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-BK-axP" userLabel="Mail Button">
-                                        <rect key="frame" x="85" y="85" width="85" height="85"/>
+                                        <rect key="frame" x="63" y="63" width="62" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uPd-BK-axP" secondAttribute="height" multiplier="1:1" id="D6M-uv-J6T"/>
                                         </constraints>
@@ -2081,7 +2081,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-X4-TFW" userLabel="Instagram Button">
-                                        <rect key="frame" x="85" y="0.0" width="85" height="85"/>
+                                        <rect key="frame" x="62" y="0.0" width="63" height="63"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a6F-X4-TFW" secondAttribute="height" multiplier="1:1" id="vSM-DM-FYR"/>
                                         </constraints>
@@ -2091,7 +2091,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW0-fJ-s5L" userLabel="Facebook Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wW0-fJ-s5L" secondAttribute="height" multiplier="1:1" id="9cT-2J-9uB"/>
                                         </constraints>
@@ -2123,10 +2123,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQh-OR-47i">
-                                <rect key="frame" x="20" y="240" width="280" height="257"/>
+                                <rect key="frame" x="20" y="195" width="280" height="302"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="103" y="9" width="74" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="104" y="16" width="72" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2134,8 +2134,8 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="share_attention"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="37" width="280" height="184"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="47" width="280" height="229"/>
                                         <string key="text">In order to get paid you need to share at least once a month. Our open pools rely on individual contributions from your network of family and friends to help pay for your commute! Please share on Facebook and/or Twitter and ask them to contribute what they can to reduce greenhouse gases, traffic congestion and incentivize people to take alternative forms of transportation. The more contributions we get the more people we can pay, it's that simple!</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2150,7 +2150,7 @@
                                     <constraint firstItem="Psj-dA-2Lo" firstAttribute="top" secondItem="NBU-ml-NfG" secondAttribute="bottom" constant="6" id="LNY-mJ-UcJ"/>
                                     <constraint firstItem="Psj-dA-2Lo" firstAttribute="leading" secondItem="oQh-OR-47i" secondAttribute="leading" id="OSf-vo-27a"/>
                                     <constraint firstAttribute="trailing" secondItem="Psj-dA-2Lo" secondAttribute="trailing" id="h26-Cc-vtJ"/>
-                                    <constraint firstItem="Psj-dA-2Lo" firstAttribute="centerY" secondItem="oQh-OR-47i" secondAttribute="centerY" id="zMR-DT-EIE"/>
+                                    <constraint firstItem="Psj-dA-2Lo" firstAttribute="centerY" secondItem="oQh-OR-47i" secondAttribute="centerY" constant="10" id="zMR-DT-EIE"/>
                                     <constraint firstItem="NBU-ml-NfG" firstAttribute="centerX" secondItem="oQh-OR-47i" secondAttribute="centerX" id="zvn-0d-2ge"/>
                                 </constraints>
                             </view>
@@ -2183,7 +2183,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JcJ-1o-X3g" firstAttribute="height" secondItem="Bbu-I6-enr" secondAttribute="height" multiplier="0.3" id="07e-zR-aMi"/>
+                            <constraint firstItem="JcJ-1o-X3g" firstAttribute="height" secondItem="Bbu-I6-enr" secondAttribute="height" multiplier="0.22" id="07e-zR-aMi"/>
                             <constraint firstItem="f1v-Et-6hn" firstAttribute="height" secondItem="Bbu-I6-enr" secondAttribute="height" multiplier="0.073" id="4kK-Ah-Bbs"/>
                             <constraint firstItem="B5O-3I-jZ4" firstAttribute="top" secondItem="f1v-Et-6hn" secondAttribute="bottom" constant="30" id="5sy-sF-SY9"/>
                             <constraint firstItem="m3G-7L-z2i" firstAttribute="top" secondItem="Bbu-I6-enr" secondAttribute="top" id="6FY-2H-g2D"/>
@@ -2205,6 +2205,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundColorView" destination="m3G-7L-z2i" id="RBZ-Mh-0FI"/>
+                        <outlet property="constraintBtnsViewAspect" destination="I6O-sv-1ey" id="bVY-H4-xCt"/>
                         <outlet property="finishButtonView" destination="f1v-Et-6hn" id="O81-PK-b7W"/>
                         <outlet property="shareTextLabel" destination="Psj-dA-2Lo" id="J2a-er-IHN"/>
                     </connections>
@@ -2294,7 +2295,6 @@
     <resources>
         <image name="bg_alphawhite" width="294" height="138"/>
         <image name="bg_home" width="320" height="568"/>
-        <image name="bg_og_pool_walk" width="320" height="567"/>
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_share" width="319" height="565"/>
         <image name="bg_well_done_train" width="319" height="433"/>

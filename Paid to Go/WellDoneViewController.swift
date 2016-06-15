@@ -20,8 +20,6 @@ class WellDoneViewController: ViewController {
     @IBOutlet weak var trafficLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
     
-    
-    
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
@@ -29,6 +27,8 @@ class WellDoneViewController: ViewController {
     var activityResponse: ActivityResponse?
     var activity: Activity?
     var pool: Pool?
+    
+    var screenshot : UIImage?
     
     // MARK: -  Super
     
@@ -58,6 +58,9 @@ class WellDoneViewController: ViewController {
             case "shareSegue":
                 let shareViewController = segue.destinationViewController as! ShareViewController
                 shareViewController.type = self.type!
+                
+                shareViewController.screenshot = self.screenshot
+                
                 break
             case "leaderboardsSegue":
                 let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
@@ -80,7 +83,18 @@ class WellDoneViewController: ViewController {
         
         if let currentProfilePicture = currentUser.profilePicture {
             
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
+            //profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: nil, options: .RefreshImageCache, completion: { (img, url, type, stage, error) in
+                
+                // Once the user picture was loaded, we take a screenshot for share
+                guard let screenshot = self.screenShotMethod() as UIImage? else {
+                    print("NO SE PUDO SACAR EL SCREENSHOT")
+                    return
+                }
+                
+                self.screenshot = screenshot
+                
+            })
             
         }
         
@@ -146,6 +160,21 @@ class WellDoneViewController: ViewController {
         
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 //        self.presentHomeViewController()
+    }
+    
+    // MARK:- Helpers
+    
+    func screenShotMethod() -> UIImage? {
+        //let layer = UIApplication.sharedApplication().keyWindow!.layer
+        let layer = self.backgroundColorView.layer
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        
+        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return screenshot
     }
     
 }

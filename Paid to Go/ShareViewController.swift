@@ -19,6 +19,8 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
     @IBOutlet weak var shareTextLabel: LocalizableLabel!
     @IBOutlet weak var shareTextLabelBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintBtnsViewAspect: NSLayoutConstraint!
+    
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
@@ -26,6 +28,8 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
 
     var shareInstagram : CMDocumentShare?
     var documentInteractor : UIDocumentInteractionController?
+    
+    var screenshot : UIImage?
     
     // MARK: - Super
     
@@ -97,42 +101,6 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
             // Present the view controller modally.
             self.presentViewController(composeVC, animated: true, completion: nil)
         }
-        
-        /*
-         [SAShareManager shareWithMailWithInitialText:[NSString stringWithFormat:kSAShareMessage, self.quote.quoteAuthor.name] withURL:[NSURL URLWithString:@"http://apple.co/1DiLcO5"] withImage:screenShot andTo:nil andViewController:self subject:kSAShareSubject];
-         */
-        
-        /*
-         if ([MFMailComposeViewController canSendMail])
-         {
-         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-         
-         sharedInstance = [[SAShareManager alloc]init];
-         sharedInstance.viewController = viewController;
-         mailer.mailComposeDelegate = sharedInstance;
-         
-         [mailer setSubject:subject];
-         
-         NSArray *toRecipients = [NSArray arrayWithObjects:to, nil];
-         [mailer setToRecipients:toRecipients];
-         
-         NSString *emailBody = [text stringByAppendingString:[NSString stringWithFormat:@" %@",url.absoluteString]];
-         [mailer setMessageBody:emailBody isHTML:NO];
-         
-         UIImage *myImage = image;
-         if( myImage != nil )
-         {
-         NSData *imageData = UIImagePNGRepresentation(myImage);
-         [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"image"];
-         }
-         [viewController presentViewController:mailer animated:YES completion:nil];
-         [[UINavigationBar appearance] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-         }
-         else{
-         [SACustomAlertView generateAlertViewWithMessage:@"No existe una cuenta de correo configurada"];
-         }
-
-         */
     }
     
     @IBAction func twitter(sender: AnyObject) {
@@ -148,17 +116,30 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
+    
     @IBAction func instagram(sender: AnyObject) {
+        
+        let instagramURL = NSURL(string: "instagram://app")
+        if !UIApplication.sharedApplication().canOpenURL(instagramURL!) {
+            print("SIN INSTAGRAM")
+            
+            let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            return
+        }
         
         if self.shareInstagram == nil {
             self.shareInstagram = CMDocumentShare()
         }
         
-        guard let screenshot = self.screenShotMethod() as UIImage? else {
-            print("NO SE PUDO SACAR EL SCREENSHOT")
-            return
-        }
-        self.shareInstagramImage(screenshot)
+//        guard let screenshot = self.screenShotMethod() as UIImage? else {
+//            print("NO SE PUDO SACAR EL SCREENSHOT")
+//            return
+//        }
+        
+        self.shareInstagramImage(self.screenshot!)
         
 //        
 //        let instagramURL = NSURL(string: "instagram://app")

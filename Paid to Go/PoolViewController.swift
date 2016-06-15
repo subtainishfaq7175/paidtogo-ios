@@ -14,6 +14,9 @@ import CoreMotion
 
 class PoolViewController: ViewController {
     
+    internal let kWalkBackgroundImage = "bg_og_pool_walk"
+    internal let kRunBackgroundImage = "bg_pool_walk"
+    
     // MARK: - Outlets
     
     @IBOutlet weak var actionButton: UIButton!
@@ -24,7 +27,8 @@ class PoolViewController: ViewController {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stepCountLabel: UILabel!
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    //@IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet var backgroundImageView: UIImageView!
     
     // MARK: - Variables and Constants
     
@@ -43,6 +47,7 @@ class PoolViewController: ViewController {
     var initialLocation: CLLocation?
     var milesTraveled = "0.0"
     
+    var screenshot : UIImage?
     
     // MARK: -  Super
     
@@ -67,7 +72,7 @@ class PoolViewController: ViewController {
             self.circularProgressCenterYConstraint.constant = 0
         }
         
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+        //self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         if type == .Walk {
             self.stepCountLabel.hidden = false
@@ -100,8 +105,25 @@ class PoolViewController: ViewController {
         
         let switchImage = UIImage(named: "ic_pool_switch")
         
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: "switchBetweenPools:")
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchBetweenPools(_:)))
         self.navigationItem.rightBarButtonItem = rightButtonItem
+        
+        /*
+        let backImage = UIImage(named: "ic_back35x35")
+        
+        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.btnBack(_:)))
+        
+         self.negativeSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+         self.negativeSeparator.width = -10;
+ 
+        
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+        */
+    }
+    
+    func btnBack(sender: AnyObject) {
+        print("BACK")
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     private func initViews() {
@@ -199,6 +221,60 @@ class PoolViewController: ViewController {
     
     @IBAction func switchBetweenPools(sender: AnyObject) {
         
+        print("SWITCH POOL")
+        return
+        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PoolViewController") as! PoolViewController
+         
+        UIView.beginAnimations("transition", context: nil)
+         
+        UIView.setAnimationDuration(1.0)
+        UIView.setAnimationTransition(UIViewAnimationTransition.FlipFromLeft, forView: (self.navigationController?.view)!, cache: false)
+        
+        var viewControllersArray = self.navigationController?.viewControllers
+        
+        // If the viewController is not on the navigationController stack, we add it. If it already is, we replace it
+        
+        var poolIsOnStack = false
+        var index = 0
+        for viewController in viewControllersArray! {
+            if viewController.isKindOfClass(PoolViewController) {
+                print("POOL YA ESTA EN STACK")
+                poolIsOnStack = true
+                index = (viewControllersArray?.indexOf(viewController))!
+            }
+        }
+        
+        if poolIsOnStack == true {
+            viewControllersArray?.removeAtIndex(index)
+        }
+        
+        self.navigationController?.viewControllers.append(vc)
+        
+        //self.navigationController?.setViewControllers([vc], animated: false)
+        
+        // If it was a walk pool, we switch it to bike pool, and viceversa
+        if type == PoolTypeEnum.Walk {
+            vc.type = PoolTypeEnum.Bike
+            
+//            let imgBack = UIImageView(frame: self.view.bounds)
+//            vc.view.addSubview(imgBack)
+//            imgBack.image = UIImage(named: kWalkBackgroundImage)
+//            vc.view.sendSubviewToBack(imgBack)
+            
+        } else {
+            vc.type = PoolTypeEnum.Walk
+            
+//            let imgBack = UIImageView(frame: self.view.bounds)
+//            vc.view.addSubview(imgBack)
+//            imgBack.image = UIImage(named: kRunBackgroundImage)
+//            vc.view.sendSubviewToBack(imgBack)
+            
+        }
+        
+        //setPoolTitle(type!)
+        
+        UIView.commitAnimations()
     }
     
     @IBAction func track(sender: AnyObject) {
