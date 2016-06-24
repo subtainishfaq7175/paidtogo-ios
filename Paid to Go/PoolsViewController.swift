@@ -177,7 +177,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 
             }
         }
-        
+ 
         self.showProgressHud()
         
         DataProvider.sharedInstance.getClosedPools((poolType?.internalIdentifier)!) { (pools, error) in
@@ -196,10 +196,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 
             }
         }
-        
     }
-    
-    
     
     // MARK: - Actions
     

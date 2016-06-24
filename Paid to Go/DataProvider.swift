@@ -140,7 +140,6 @@ class DataProvider : DataProviderService {
     
     func postFacebookLogin(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
         
-        
         ConnectionManager.sharedInstance.facebookLogin(params) { (responseValue, error) in
             
             if (error == nil) {
@@ -222,13 +221,19 @@ class DataProvider : DataProviderService {
     
     func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         
+        guard let userID = User.currentUser?.userId else {
+            print("USER ID NOT FOUND")
+            return
+        }
         
         let params = [
             
+            "open"         : open,
             "pool_type_id" : poolTypeId,
-            "open"         : open
-            
+            "user_id"      : userID
         ]
+ 
+        print("Pools API - POST - Parameters: \(params)")
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
             

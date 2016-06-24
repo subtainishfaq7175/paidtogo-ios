@@ -39,6 +39,7 @@ class ConnectionManager {
     // MARK: - Singleton
     static let sharedInstance = ConnectionManager()
     private init() {
+        
     }
     
 }
@@ -168,23 +169,22 @@ extension ConnectionManager {
     
     private func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
-        
         let paramsDict = dictionaryWithoutEmptyValues(params)
         
         self.printRequest(identifier,
                           requestType: RequestType.Request,
                           requestURL: url,
                           value: paramsDict)
-        
+
         Alamofire
             .request(Method.POST, url, parameters: paramsDict, encoding: ParameterEncoding.JSON, headers: nil)
             .responseJSON { (response) in
                 
                 guard let value = response.result.value else {
+                    print("CONNECTION ERROR: \(response)")
                     apiCompletion(responseValue: nil, error: "error_connection")
                     return
                 }
-                
                 
                 self.printRequest(identifier,
                     requestType: RequestType.Response,
