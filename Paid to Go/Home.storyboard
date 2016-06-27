@@ -1953,7 +1953,7 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0T-NZ-owO">
                                                     <rect key="frame" x="287" y="10" width="25" height="25"/>
-                                                    <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="uVI-4M-3MY"/>
                                                         <constraint firstAttribute="width" constant="25" id="vSa-c8-waL"/>
@@ -1972,7 +1972,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="dNS-0m-y17" id="5sE-K1-kwL"/>
                                             <outlet property="profileImageView" destination="qrc-Hb-FNB" id="7eY-N8-Rho"/>
-                                            <outlet property="selectedView" destination="Q0T-NZ-owO" id="8bf-Nx-CQi"/>
+                                            <outlet property="selectedView" destination="Q0T-NZ-owO" id="By7-Vr-fKu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1980,17 +1980,17 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-fb-V5f" userLabel="Alpha Footer View">
                                 <rect key="frame" x="0.0" y="398" width="320" height="170"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_alphawhite" translatesAutoresizingMaskIntoConstraints="NO" id="YEX-3M-tgz" userLabel="Alpha footer">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_pool_alpha_background" translatesAutoresizingMaskIntoConstraints="NO" id="YEX-3M-tgz" userLabel="Alpha footer">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="YEX-3M-tgz" firstAttribute="leading" secondItem="0Uo-fb-V5f" secondAttribute="leading" id="5YF-du-Wl8"/>
+                                    <constraint firstItem="YEX-3M-tgz" firstAttribute="height" secondItem="0Uo-fb-V5f" secondAttribute="height" id="D54-LX-sgi"/>
                                     <constraint firstAttribute="height" constant="170" id="QZo-Sh-qSy"/>
                                     <constraint firstAttribute="trailing" secondItem="YEX-3M-tgz" secondAttribute="trailing" id="cSs-pI-Rvt"/>
-                                    <constraint firstItem="YEX-3M-tgz" firstAttribute="top" secondItem="0Uo-fb-V5f" secondAttribute="top" id="ksQ-WM-8ej"/>
-                                    <constraint firstAttribute="bottom" secondItem="YEX-3M-tgz" secondAttribute="bottom" id="q6R-xY-va4"/>
+                                    <constraint firstAttribute="bottom" secondItem="YEX-3M-tgz" secondAttribute="bottom" id="uza-SF-49q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UI-Y4-zhg" userLabel="Finish Button View">
@@ -2040,7 +2040,7 @@
                     <navigationItem key="navigationItem" id="ETp-Bj-EJU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="constraintAlphaFooterHeight" destination="QZo-Sh-qSy" id="UH9-ZQ-kDS"/>
+                        <outlet property="constraintAlphaFooterImgBottom" destination="uza-SF-49q" id="pQr-6q-bqA"/>
                         <outlet property="constraintBtnSendBottom" destination="ghh-7V-gtu" id="TOd-Rv-JMr"/>
                         <outlet property="constraintBtnSendHeight" destination="dCL-WK-gVy" id="5CP-TK-m2y"/>
                         <outlet property="imgAlphaFooter" destination="YEX-3M-tgz" id="gsU-y4-mDP"/>
@@ -2308,11 +2308,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_alphawhite" width="294" height="138"/>
         <image name="bg_home" width="320" height="568"/>
         <image name="bg_pool_walk" width="320" height="282"/>
         <image name="bg_share" width="319" height="565"/>
         <image name="bg_well_done_train" width="319" height="433"/>
+        <image name="car_pool_alpha_background" width="641" height="359"/>
         <image name="ic_bike" width="31" height="27"/>
         <image name="ic_bustrain" width="35" height="21"/>
         <image name="ic_camera" width="111" height="91"/>

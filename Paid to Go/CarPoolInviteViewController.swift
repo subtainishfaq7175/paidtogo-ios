@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let kConstraintBtnSendHeight : CGFloat = 33.0
-let kConstraintImageAlphaFooterHeight : CGFloat = 170.0 //UIApplication.sharedApplication().keyWindow!.bounds.size.height * 0.33
+let kConstraintImageAlphaFooterHeight : CGFloat = 180.0 //UIApplication.sharedApplication().keyWindow!.bounds.size.height * 0.33
 
 class CarPoolInviteViewController: ViewController {
     
@@ -20,13 +20,20 @@ class CarPoolInviteViewController: ViewController {
     
     @IBOutlet weak var imgAlphaFooter: UIImageView!
     
-    @IBOutlet weak var constraintAlphaFooterHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintAlphaFooterImgBottom: NSLayoutConstraint!
     @IBOutlet weak var constraintBtnSendHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintBtnSendBottom: NSLayoutConstraint!
     
     var users: [User] = [User]()
+    var selectedUsers : [User] = [User]()
+    
     let cellReuseIdentifier = "CarPoolInviteCell"
     var poolType: PoolType?
+    
+    var footerHidden = false
+    
+    // Handle multiple selection properly http://stackoverflow.com/questions/28360919/my-table-view-reuse-the-selected-cells-when-scroll-in-swift
+    var selectedIndexPaths = NSMutableSet()
     
     // MARK:- View Lifecycle
     
@@ -56,9 +63,20 @@ class CarPoolInviteViewController: ViewController {
         self.setPoolTitle(.Car)
     }
     
+    // MARK:- IBActions
+    
     @IBAction func sendButtonAction(sender: AnyObject) {
+        if !footerHidden {
+            hideAlphaFooter()
+            footerHidden=true
+        } else {
+            showAlphaFooter()
+            footerHidden=false
+        }
         
     }
+    
+    // MARK:- Private methods
     
     private func getUsers(completion: (users: [User]?) -> Void) {
         
@@ -66,6 +84,7 @@ class CarPoolInviteViewController: ViewController {
         
         for var i in 1 ... 20 {
             let user: User = User()
+            user.userId = "\(i)"
             user.name = "Test"
             user.lastName = "User"
             user.profilePicture = "http://www.farandula.ws/wp-content/uploads/2012/02/house-md_0001.jpg"
@@ -78,7 +97,7 @@ class CarPoolInviteViewController: ViewController {
     
     private func hideAlphaFooter() {
         
-        self.constraintAlphaFooterHeight.constant = 0
+        self.constraintAlphaFooterImgBottom.constant = -kConstraintImageAlphaFooterHeight
         self.constraintBtnSendBottom.constant = -kConstraintBtnSendHeight
         
         UIView.animateWithDuration(0.4) { 
@@ -88,7 +107,7 @@ class CarPoolInviteViewController: ViewController {
     
     private func showAlphaFooter() {
     
-        self.constraintAlphaFooterHeight.constant = kConstraintImageAlphaFooterHeight
+        self.constraintAlphaFooterImgBottom.constant = CGFloat(0)
         self.constraintBtnSendBottom.constant = kConstraintBtnSendHeight
         
         UIView.animateWithDuration(0.4) {
@@ -98,6 +117,7 @@ class CarPoolInviteViewController: ViewController {
 }
 
 extension CarPoolInviteViewController: UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int?
         
@@ -119,13 +139,18 @@ extension CarPoolInviteViewController: UITableViewDataSource {
         case 1:
             cell.backgroundColor = CustomColors.creamyWhiteColor()
             
-            
         default:
             break
         }
         
-        return cell
+        if selectedIndexPaths.containsObject(indexPath) {
+            cell.selectCell()
+        }
+        else {
+            cell.deselectCell()
+        }
         
+        return cell
     }
 }
 
@@ -137,9 +162,36 @@ extension CarPoolInviteViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CarPoolInviteCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CarPoolInviteCell
+        let userToAppend = self.users[indexPath.row]
+        self.selectedUsers.append(userToAppend)
+        
+        selectedIndexPaths.addObject(indexPath)
         
         cell.selectCell()
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CarPoolInviteCell
+        let userToRemove = self.users[indexPath.row]
+
+        var indexOfUserToRemove = 0
+        for user in self.selectedUsers {
+            if user.userId == userToRemove.userId {
+                break
+            } else {
+                indexOfUserToRemove = indexOfUserToRemove+1
+            }
+        }
+        
+        self.selectedUsers.removeAtIndex(indexOfUserToRemove)
+ 
+        if selectedIndexPaths.containsObject(indexPath) {
+            selectedIndexPaths.removeObject(indexPath)
+        }
+        
+        cell.deselectCell()
     }
 }
 
@@ -147,13 +199,12 @@ extension CarPoolInviteViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if targetContentOffset.memory.y < scrollView.contentOffset.y {
-            print("UP!")
+            // UP
             showAlphaFooter()
             
         } else {
-            print("DOWN!")
+            // DOWN
             hideAlphaFooter()
-            
         }
     }
 }

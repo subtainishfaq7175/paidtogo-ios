@@ -41,7 +41,6 @@ class ConnectionManager {
     private init() {
         
     }
-    
 }
 
 func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObject] {
@@ -91,7 +90,6 @@ extension ConnectionManager {
         
         let identifier = "Facebook Login API - POST"
         self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
-        
     }
     
     func balance(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {

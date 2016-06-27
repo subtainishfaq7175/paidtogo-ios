@@ -64,7 +64,6 @@ class User: Mappable {
         userId          <- map["user_id"]
         paypalAccount   <- map["paypal_account"]
     }
-    
 }
 
 extension User {

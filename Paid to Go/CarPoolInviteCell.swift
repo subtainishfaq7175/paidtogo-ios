@@ -19,8 +19,6 @@ class CarPoolInviteCell: UITableViewCell {
     // MARK: - Constants
     static let identifier = "CarPoolInviteCell"
     
-    var userSelected = false
-    
     // MARK: - Override
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,16 +32,11 @@ class CarPoolInviteCell: UITableViewCell {
     // MARK: - Configuration
     
     func selectCell() {
-        
-        if self.selected {
-            self.userSelected = false
-            self.selectedView.backgroundColor = CustomColors.carColor()
-            self.nameLabel.text = "false"
-        } else {
-            self.userSelected = true
-            self.selectedView.backgroundColor = CustomColors.walkRunColor()
-            self.nameLabel.text = "true"
-        }
+        self.selectedView.backgroundColor = CustomColors.carColor()
+    }
+    
+    func deselectCell() {
+        self.selectedView.backgroundColor = UIColor.lightGrayColor()
     }
     
     func configure(user: User) {
@@ -54,9 +47,8 @@ class CarPoolInviteCell: UITableViewCell {
         
         if let imageURL = user.profilePicture {
             self.profileImageView.yy_setImageWithURL(
-                NSURL( string: imageURL),
+                NSURL( string: imageURL ),
                 options: .ProgressiveBlur )
         }
     }
-
 }
