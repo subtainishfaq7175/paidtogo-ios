@@ -41,7 +41,32 @@ class Activity: Mappable {
         milesTraveled       <-  map["miles_traveled"]
         photography         <-  map["photo"]
         accessToken         <-  map["access_token"]
-        
+    }
+    
+    func toString() -> String {
+    
+        return "startLatitude: \(startLatitude)\n" +
+                "startLongitude: \(startLongitude)\n" +
+                "endLatitude: \(endLatitude)\n" +
+                "endLongitude: \(endLongitude)\n" +
+                "poolId: \(poolId)\n" +
+                "startDateTime: \(startDateTime)\n" +
+                "milesTraveled: \(milesTraveled)\n" +
+                "photography: \(photography)\n" +
+                "accessToken: \(accessToken)\n"
     }
     
 }
+
+/*
+ "StartLatitude \(startLatitude)
+ startLongitude
+ endLatitude
+ endLongitude
+ poolId
+ startDateTime
+ milesTraveled
+ photography
+ accessToken
+ "
+ */

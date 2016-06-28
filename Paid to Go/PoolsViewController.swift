@@ -140,8 +140,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     private func moveIndicatorToRight() {
         setIndicatorOnRight()
         
-        
-        
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
@@ -325,8 +323,13 @@ extension PoolsViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
         
         switch tableView.restorationIdentifier! {
+            
         case "closedPoolsTableView":
             let pool = self.closedPools[indexPath.row]
+            /*test*/
+            ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
+            ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
+            
             switch self.type! {
             case .Train:
                 showAntiCheatViewController(pool)
@@ -346,7 +349,10 @@ extension PoolsViewController: UITableViewDelegate {
             break
         case "openPoolsTableView":
             let pool = self.openPools[indexPath.row]
-          
+            /*test*/
+            ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
+            ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
+            
             switch self.type! {
             case .Train:
                 showAntiCheatViewController(pool)

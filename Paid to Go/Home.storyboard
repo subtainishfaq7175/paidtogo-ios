@@ -1977,6 +1977,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcf-zX-rg4" userLabel="Alpha Footer Button Up">
+                                <rect key="frame" x="130" y="526" width="60" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="sDB-qS-NfV"/>
+                                    <constraint firstAttribute="height" constant="32" id="wIo-RY-6Ls"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_up"/>
+                                <connections>
+                                    <action selector="btnAlphaFooterPressed:" destination="8XP-qr-ovD" eventType="touchUpInside" id="Udm-qZ-epX"/>
+                                </connections>
+                            </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-fb-V5f" userLabel="Alpha Footer View">
                                 <rect key="frame" x="0.0" y="398" width="320" height="170"/>
                                 <subviews>
@@ -1993,6 +2004,17 @@
                                     <constraint firstAttribute="bottom" secondItem="YEX-3M-tgz" secondAttribute="bottom" id="uza-SF-49q"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92a-LT-SCr" userLabel="Alpha Footer Button Down">
+                                <rect key="frame" x="130" y="536" width="60" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="e9M-x4-9ek"/>
+                                    <constraint firstAttribute="height" constant="32" id="ouK-AS-GM6"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_down"/>
+                                <connections>
+                                    <action selector="btnAlphaFooterDown:" destination="8XP-qr-ovD" eventType="touchUpInside" id="VJz-fd-W18"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UI-Y4-zhg" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="502" width="200" height="33"/>
                                 <subviews>
@@ -2024,22 +2046,27 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FBl-bb-FcN" firstAttribute="leading" secondItem="gsc-Da-3Bm" secondAttribute="leading" id="19I-7s-Njf"/>
+                            <constraint firstItem="Fcf-zX-rg4" firstAttribute="centerX" secondItem="gsc-Da-3Bm" secondAttribute="centerX" id="3Kg-B1-1OK"/>
                             <constraint firstItem="8UI-Y4-zhg" firstAttribute="centerX" secondItem="gsc-Da-3Bm" secondAttribute="centerX" id="48f-Ep-b8R"/>
                             <constraint firstItem="KCU-cc-tAm" firstAttribute="top" secondItem="SS1-ih-c1i" secondAttribute="bottom" id="9ca-kq-5h6"/>
                             <constraint firstItem="KCU-cc-tAm" firstAttribute="top" secondItem="0Uo-fb-V5f" secondAttribute="bottom" id="HXG-hu-qzP"/>
                             <constraint firstItem="SS1-ih-c1i" firstAttribute="top" secondItem="FBl-bb-FcN" secondAttribute="bottom" id="NkA-Yo-uVK"/>
                             <constraint firstAttribute="trailing" secondItem="FBl-bb-FcN" secondAttribute="trailing" id="O9G-YA-Mnt"/>
                             <constraint firstItem="SS1-ih-c1i" firstAttribute="leading" secondItem="gsc-Da-3Bm" secondAttribute="leading" id="URJ-L7-fsV"/>
+                            <constraint firstItem="92a-LT-SCr" firstAttribute="bottom" secondItem="YEX-3M-tgz" secondAttribute="bottom" id="WVW-NH-l8d"/>
                             <constraint firstAttribute="trailing" secondItem="0Uo-fb-V5f" secondAttribute="trailing" id="aSi-la-ags"/>
+                            <constraint firstItem="92a-LT-SCr" firstAttribute="centerX" secondItem="gsc-Da-3Bm" secondAttribute="centerX" id="abp-wK-SGx"/>
                             <constraint firstItem="KCU-cc-tAm" firstAttribute="top" secondItem="8UI-Y4-zhg" secondAttribute="bottom" constant="33" id="ghh-7V-gtu"/>
                             <constraint firstItem="0Uo-fb-V5f" firstAttribute="leading" secondItem="gsc-Da-3Bm" secondAttribute="leading" id="nOg-h7-4mJ"/>
                             <constraint firstAttribute="trailing" secondItem="SS1-ih-c1i" secondAttribute="trailing" id="x2z-xn-m4y"/>
                             <constraint firstItem="FBl-bb-FcN" firstAttribute="top" secondItem="TQJ-bL-P4J" secondAttribute="bottom" id="yab-6c-sut"/>
+                            <constraint firstItem="KCU-cc-tAm" firstAttribute="top" secondItem="Fcf-zX-rg4" secondAttribute="bottom" constant="10" id="z6Y-4f-y23"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ETp-Bj-EJU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnAlphaFooter" destination="Fcf-zX-rg4" id="dnb-qm-v1d"/>
                         <outlet property="constraintAlphaFooterImgBottom" destination="uza-SF-49q" id="pQr-6q-bqA"/>
                         <outlet property="constraintBtnSendBottom" destination="ghh-7V-gtu" id="TOd-Rv-JMr"/>
                         <outlet property="constraintBtnSendHeight" destination="dCL-WK-gVy" id="5CP-TK-m2y"/>
@@ -2318,6 +2345,7 @@
         <image name="ic_camera" width="111" height="91"/>
         <image name="ic_car" width="27" height="23"/>
         <image name="ic_co" width="27" height="27"/>
+        <image name="ic_down" width="128" height="128"/>
         <image name="ic_earned" width="29" height="29"/>
         <image name="ic_gas" width="24" height="29"/>
         <image name="ic_home_btn_bluegreen" width="6" height="89"/>
@@ -2331,6 +2359,7 @@
         <image name="ic_share_mail" width="81" height="81"/>
         <image name="ic_share_twitter" width="81" height="81"/>
         <image name="ic_traffic" width="22" height="32"/>
+        <image name="ic_up" width="128" height="128"/>
         <image name="ic_walkrun" width="28" height="26"/>
         <image name="pool_background_walk" width="800" height="533"/>
     </resources>

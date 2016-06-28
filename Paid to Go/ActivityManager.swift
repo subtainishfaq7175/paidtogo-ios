@@ -16,6 +16,12 @@ class ActivityManager: NSObject {
     var activity : Activity = Activity()
     var milesCounter : Double = 0.0
     
+    var endLatitude: Double = 0.0
+    var endLongitude: Double = 0.0
+    
+    var startLatitude : Double = -34.648191
+    var startLongitude : Double = -58.623418
+    
     /**
      *  Singleton
      */
@@ -40,4 +46,26 @@ class ActivityManager: NSObject {
     func setTrackNumber() {
         trackNumber += 0.05
     }
+    
+    func resetActivity() {
+        trackNumber = 0.0
+        activity = Activity()
+        milesCounter = 0.0
+    }
+    
+    /*
+    func setDestinationLatAndLon(lat: String, lon:String) {
+        destinationLatitude = lat
+        destinationLongitude = lon
+    }
+    
+    func getDestinationLatAndLon() -> (lat: String, lon:String) {
+        return (destinationLatitude, destinationLongitude)
+    }
+    
+    func resetLatAndLon() {
+        destinationLatitude = ""
+        destinationLongitude = ""
+    }
+     */
 }

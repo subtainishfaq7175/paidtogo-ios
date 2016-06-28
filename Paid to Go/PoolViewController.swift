@@ -94,9 +94,12 @@ class PoolViewController: ViewController {
         if self.type == PoolTypeEnum.Walk {
             print("TIMER INTERVAL -> 4 Secs")
             timerInterval = 4.0
-        } else {
+        } else if self.type == PoolTypeEnum.Bike {
             print("TIMER INTERVAL -> 2 Secs")
             timerInterval = 2.0
+        } else {
+            print("TIMER INTERVAL -> 0.5 Secs")
+            timerInterval = 0.5
         }
         
         timerTest = Timer(interval: timerInterval, delegate: self)
@@ -177,16 +180,25 @@ class PoolViewController: ViewController {
     }
     
     private func endTracking() {
+        
+        
         print(activity.startLatitude)
         print(activity.startLongitude)
-        
         print(activity.endLatitude)
         print(activity.endLongitude)
+        
+        // MOCK DATA
+        activity.startLatitude = ActivityManager.sharedInstance.startLatitude
+        activity.startLongitude = ActivityManager.sharedInstance.startLongitude
+        activity.endLatitude = ActivityManager.sharedInstance.endLatitude
+        activity.endLongitude = ActivityManager.sharedInstance.endLongitude
         
         activity.milesTraveled = self.milesTraveled
         activity.startDateTime = String(self.startDateToTrack)
         activity.poolId = pool?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
+        
+        print(activity.toString())
         
         self.locationManager.stopUpdatingLocation()
         self.pedoMeter.stopPedometerUpdates()
@@ -194,7 +206,7 @@ class PoolViewController: ViewController {
         self.showProgressHud()
         
         DataProvider.sharedInstance.postRegisterActivity(self.activity) { (activityResponse, error) in
-            
+        
             self.dismissProgressHud()
             
             if let error = error {
@@ -211,6 +223,8 @@ class PoolViewController: ViewController {
                 wellDoneViewController.activityResponse = response
                 wellDoneViewController.activity = self.activity
                 wellDoneViewController.pool = self.pool
+                
+                ActivityManager.sharedInstance.resetActivity()
                 
                 self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
             }
@@ -263,6 +277,7 @@ class PoolViewController: ViewController {
         ActivityManager.sharedInstance.setMilesCounter()
         let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
         self.progressLabel.text = String(format: "%.2f", milesCounter)
+        self.milesTraveled = String(format: "%.2f", milesCounter)
     }
     
     private func updatePedometer() {

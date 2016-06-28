@@ -24,6 +24,8 @@ class CarPoolInviteViewController: ViewController {
     @IBOutlet weak var constraintBtnSendHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintBtnSendBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var btnAlphaFooter: UIButton!
+    
     var users: [User] = [User]()
     var selectedUsers : [User] = [User]()
     
@@ -75,6 +77,16 @@ class CarPoolInviteViewController: ViewController {
         }
     }
     
+    @IBAction func btnAlphaFooterPressed(sender: AnyObject) {
+    
+        self.showAlphaFooter()
+    }
+    
+    @IBAction func btnAlphaFooterDown(sender: AnyObject) {
+    
+        self.hideAlphaFooter()
+    }
+    
     // MARK:- Private methods
     
     private func getUsers(completion: (users: [User]?) -> Void) {
@@ -101,6 +113,7 @@ class CarPoolInviteViewController: ViewController {
         
         UIView.animateWithDuration(0.4) { 
             self.view.layoutIfNeeded()
+            self.btnAlphaFooter.alpha = CGFloat(1)
         }
     }
     
@@ -111,6 +124,7 @@ class CarPoolInviteViewController: ViewController {
         
         UIView.animateWithDuration(0.4) {
             self.view.layoutIfNeeded()
+            self.btnAlphaFooter.alpha = CGFloat(0)
         }
     }
 }
