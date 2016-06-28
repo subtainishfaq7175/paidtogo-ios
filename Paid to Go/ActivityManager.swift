@@ -8,12 +8,13 @@
 
 import UIKit
 
- /// Handles the whole activity process, and the necessary information to update the progress circle
+/// Handles the whole activity process, and the necessary information to update the progress circle
 
 class ActivityManager: NSObject {
 
-    var angle : Double = 0.0
+    var trackNumber : Double = 0.0
     var activity : Activity = Activity()
+    var milesCounter : Double = 0.0
     
     /**
      *  Singleton
@@ -24,5 +25,19 @@ class ActivityManager: NSObject {
         
     }
     
+    func getMilesCounter() -> Double {
+        return milesCounter
+    }
     
+    func setMilesCounter() {
+        milesCounter += 1
+    }
+    
+    func getTrackNumber() -> Double {
+        return trackNumber
+    }
+    
+    func setTrackNumber() {
+        trackNumber += 0.05
+    }
 }

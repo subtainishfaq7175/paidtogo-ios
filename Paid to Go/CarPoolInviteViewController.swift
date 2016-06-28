@@ -73,7 +73,6 @@ class CarPoolInviteViewController: ViewController {
             showAlphaFooter()
             footerHidden=false
         }
-        
     }
     
     // MARK:- Private methods

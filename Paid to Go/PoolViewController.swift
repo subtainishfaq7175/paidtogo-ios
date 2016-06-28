@@ -32,12 +32,18 @@ class PoolViewController: ViewController {
     
     // MARK: - Variables and Constants
     
+    let kBikeTimeUpdateSpeed = 2.0
+    let kWalkTimeUpdateSpeed = 5.0
+    
     var pool: Pool?
     var poolType: PoolType?
     var type: PoolTypeEnum?
     var hasPoolStarted = false
     var isTimerTracking: Bool = false
-    var timer = NSTimer()
+    var timer : NSTimer?
+    
+    var timerTest : Timer!
+    
     var trackNumber = 0.0
     var locationManager: CLLocationManager!
     var activity: Activity!
@@ -82,6 +88,29 @@ class PoolViewController: ViewController {
         if type == .Walk && CMPedometer.isStepCountingAvailable() {
                 self.stepCountLabel.hidden = false
         }
+        
+        var timerInterval = 0.0
+        
+        if self.type == PoolTypeEnum.Walk {
+            print("TIMER INTERVAL -> 4 Secs")
+            timerInterval = 4.0
+        } else {
+            print("TIMER INTERVAL -> 2 Secs")
+            timerInterval = 2.0
+        }
+        
+        timerTest = Timer(interval: timerInterval, delegate: self)
+        
+        // CONFIGURE VIEW WITH INITIAL ACTIVITY VALUES
+        let trackNumber = ActivityManager.sharedInstance.getTrackNumber()
+        
+        let circularProgressAngle = trackNumber * 360
+        print("CIRCULAR PROGRESS ANGLE: \(circularProgressAngle)")
+        
+        self.circularProgressView.angle = circularProgressAngle
+        
+        let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
+        self.progressLabel.text = String(format: "%.2f", milesCounter)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -112,17 +141,6 @@ class PoolViewController: ViewController {
         
         let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchBetweenPools(_:)))
         self.navigationItem.rightBarButtonItem = rightButtonItem
-        
-        /*
-        let backImage = UIImage(named: "ic_back35x35")
-        
-        let leftButtonItem: UIBarButtonItem = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.btnBack(_:)))
-        
-         self.negativeSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-         self.negativeSeparator.width = -10;
- 
-        self.navigationItem.leftBarButtonItem = leftButtonItem
-        */
     }
     
     func btnBack(sender: AnyObject) {
@@ -134,23 +152,23 @@ class PoolViewController: ViewController {
         actionButtonView.round()
     }
     
-    
     func startTracking() {
         isTimerTracking = true
         countingSteps = true
-        updatePedometer()
+//        updatePedometer()
     }
     
     func pauseTracking() {
         if isTimerTracking {
             print("PAUSE")
-            timer.invalidate()
+//            timer!.invalidate()
             isTimerTracking = false
             pauseButton.setTitle("Resume", forState: UIControlState.Normal)
             countingSteps = false
         } else {
             print("RESUME")
-            startQueriedPedometerUpdates()
+//            startQueriedPedometerUpdates()
+            resumePedometerUpdates()
             hasPausedAndResumedActivity = true
             startTracking()
             isTimerTracking = true
@@ -200,18 +218,23 @@ class PoolViewController: ViewController {
         
     }
     
-    @objc private func testCircularProgress() {
+    @objc func testCircularProgress() {
         
+        print("testCircularProgress\n____________________")
+        
+        /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             //Do background work
             print("BACKGROUND")
+            //self.trackNumber += 0.1
             
             dispatch_async(dispatch_get_main_queue(), {
                 //Update
                 print("MAIN")
-                self.trackNumber += 0.05
+                self.trackNumber = self.trackNumber + 0.1
+                
                 print("TRACK NUMBER: \(self.trackNumber)")
-                self.circularProgressView.angle = 359//self.trackNumber * 360
+                self.circularProgressView.angle = self.trackNumber * 360
                 
                 if self.trackNumber > 1 {
                     print("INVALIDATE TIMER")
@@ -219,6 +242,27 @@ class PoolViewController: ViewController {
                 }
             })
         }
+        */
+        
+        ActivityManager.sharedInstance.setTrackNumber()
+        let trackNumber = ActivityManager.sharedInstance.getTrackNumber()
+        
+        let circularProgressAngle = trackNumber * 360
+        print("CIRCULAR PROGRESS ANGLE: \(circularProgressAngle)")
+        
+        self.circularProgressView.angle = circularProgressAngle
+        
+        if circularProgressAngle > 360.0 {
+            print("INVALIDATE TIMER")
+            self.timerTest.stop()
+            self.pauseButton.hidden = true
+            
+            self.circularProgressView.angle = 359.0
+        }
+        
+        ActivityManager.sharedInstance.setMilesCounter()
+        let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
+        self.progressLabel.text = String(format: "%.2f", milesCounter)
     }
     
     private func updatePedometer() {
@@ -283,16 +327,20 @@ class PoolViewController: ViewController {
      *  Called the first time, when the user begins the activity
      */
     private func beginPedometerUpdates() {
+        print("beginPedometerUpdates")
+        startQueriedPedometerUpdates()
         
+        /*
         if CMPedometer.isStepCountingAvailable() {
             print("BEGIN PEDOMETER")
 
             startQueriedPedometerUpdates()
             
         } else {
-            showAlert("Su dispositivo no cuenta con el hardware adecuado para contar los pasos")
+            // showAlert("Su dispositivo no cuenta con el hardware adecuado para contar los pasos")
             self.stepCountLabel.hidden = true
         }
+        */
     }
     
     /**
@@ -308,7 +356,10 @@ class PoolViewController: ViewController {
         }
         */
         
-        /*test*/timer.invalidate()
+//        /*test*/self.timer!.invalidate()
+        
+        timerTest.pause()
+        print("TIEMPO DE TIMER TEST: \(timerTest.difference.description)")
     }
     
     /**
@@ -333,15 +384,24 @@ class PoolViewController: ViewController {
         }
         */
         
-        /*test*/startQueriedPedometerUpdates()
+//        /*test*/startQueriedPedometerUpdates()
+        
+        timerTest.resume()
     }
     
-    private func startQueriedPedometerUpdates() {
+    func startQueriedPedometerUpdates() {
         print("startQueriedPedometerUpdates")
-        timer.invalidate() // just in case this button is tapped multiple times
+        /*
+        if let timer = self.timer as NSTimer? {
+            self.timer!.invalidate()
+            self.timer = nil
+        }
+        
         
         //timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(queryPedometerUpdates), userInfo: nil, repeats: true)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(testCircularProgress), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(testCircularProgress), userInfo: nil, repeats: true)
+        */
+        timerTest.start(timerTest.timer)
     }
     
     /**
@@ -389,6 +449,8 @@ class PoolViewController: ViewController {
     
     @IBAction func switchBetweenPools(sender: AnyObject) {
         
+        self.timerTest.pause()
+        self.pauseTracking()
         self.showPoolSwitchAlert("Switch Pool")
     }
     
@@ -407,7 +469,7 @@ class PoolViewController: ViewController {
             startTracking()
             pauseButton.hidden = false
             
-            locationManager?.startUpdatingLocation()
+//            locationManager?.startUpdatingLocation()
             
             /*test*/startQueriedPedometerUpdates()/*test*/
 
@@ -419,25 +481,13 @@ class PoolViewController: ViewController {
         }
     }
     
-    // MARK:- Helper methods
-    func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
-            if(background != nil){ background!(); }
-            
-            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-            dispatch_after(popTime, dispatch_get_main_queue()) {
-                if(completion != nil){ completion!(); }
-            }
-        }
-    }
-    
     func showPoolSwitchAlert(text: String){
         let alertController = UIAlertController(title: "Paid to Go", message:
             text, preferredStyle: UIAlertControllerStyle.ActionSheet)
         alertController.addAction(UIAlertAction(title: "Walk/Run", style: UIAlertActionStyle.Default,handler: poolSwitchWalkRunSelected))
         alertController.addAction(UIAlertAction(title: "Bike", style: UIAlertActionStyle.Default,handler: poolSwitchBikeSelected))
         alertController.addAction(UIAlertAction(title: "Train/Bus", style: UIAlertActionStyle.Default,handler: poolSwitchTrainBusSelected))
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel,handler: poolSwitchResume))
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -453,6 +503,9 @@ class PoolViewController: ViewController {
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
+                    self.timerTest = Timer(interval: self.kWalkTimeUpdateSpeed, delegate: self)
+                    self.timerTest.start(self.timerTest.timer)
+                    self.pauseTracking()
             })
         }
     }
@@ -468,6 +521,9 @@ class PoolViewController: ViewController {
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
+                    self.timerTest = Timer(interval: self.kBikeTimeUpdateSpeed, delegate: self)
+                    self.timerTest.start(self.timerTest.timer)
+                    self.pauseTracking()
             })
         }
     }
@@ -481,6 +537,11 @@ class PoolViewController: ViewController {
             vc.pool = pool
             self.showViewController(vc, sender: nil)
         }
+    }
+    
+    func poolSwitchResume(alert: UIAlertAction!) {
+        self.timerTest.pause()
+        self.pauseTracking()
     }
 }
 
@@ -512,5 +573,33 @@ extension PoolViewController: CLLocationManagerDelegate {
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
         }
+    }
+}
+
+extension PoolViewController: TimerDelegate {
+    
+    func timerWillStart(timer : Timer) {
+        print("timerWillStart")
+        
+    }
+    
+    func timerDidFire(timer : Timer) {
+        print("timerDidFire")
+        
+        testCircularProgress()
+    }
+    
+    func timerDidPause(timer : Timer) {
+        print("timerDidPause")
+        
+    }
+    
+    func timerWillResume(timer : Timer) {
+        print("timerWillResume")
+        
+    }
+    
+    func timerDidStop(timer : Timer) {
+        print("timerDidStop")
     }
 }
