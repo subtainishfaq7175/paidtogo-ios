@@ -29,6 +29,7 @@ class ConnectionManager {
     private var poolsURL : String { return "\(baseURL)/pools" }
     private var leaderboardsURL : String { return "\(baseURL)/leaderboards" }
     private var activityURL : String { return "\(baseURL)/activity" }
+    private var userURL : String { return "\(baseURL)/users" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -149,7 +150,12 @@ extension ConnectionManager {
         }
         
         self.getRequest(identifier, url: url!, apiCompletion: apiCompletion)
-        
+    }
+    
+    func searchUsersByName(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+
+        let identifier = "User API - POST"
+        self.postRequest(identifier, url: self.userURL, params: params, apiCompletion: apiCompletion)
     }
     
 }

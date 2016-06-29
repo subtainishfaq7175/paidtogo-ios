@@ -32,6 +32,9 @@ class DataProvider : DataProviderService {
             
         case "error_connection":
             return "error_connection".localize()
+        
+        case "USERS_UNSUCCESSFUL":
+            return "error"
             
         default:
             return "error_default".localize() + ": " + error
@@ -261,8 +264,6 @@ class DataProvider : DataProviderService {
         
         let userId = User.currentUser?.userId
         
-
-        
         ConnectionManager.sharedInstance.getActivities(userId!) { (responseValue, error) in
             
             if (error == nil) {
@@ -313,8 +314,30 @@ class DataProvider : DataProviderService {
         }
     }
     
-    
-    
+    func searchUsersByName(username: String, completion: (users: [User]?, error: String?) -> Void) {
+
+        let params = [
+            
+            "name" : username,
+            
+        ]
+        
+        ConnectionManager.sharedInstance.searchUsersByName(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let users = Mapper<User>().mapArray(responseValue)
+                completion(users: users, error: nil)
+                return
+                
+            } else {
+                
+                completion(users: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
     
 }
 

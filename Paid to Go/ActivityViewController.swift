@@ -82,8 +82,6 @@ class ActivityViewController: MenuContentViewController {
                 self.notificationsTableView.reloadData()
             }
         }
-        
-       
     }
 }
 extension ActivityViewController: UITableViewDataSource {

@@ -26,12 +26,19 @@ class CarPoolInviteViewController: ViewController {
     
     @IBOutlet weak var btnAlphaFooter: UIButton!
     
-    var users: [User] = [User]()
-    var selectedUsers : [User] = [User]()
+    @IBOutlet weak var lblEmptyResults: UILabel!
     
     let cellReuseIdentifier = "CarPoolInviteCell"
-    var poolType: PoolType?
+    let kDefaultSearchBarText = "a"
     
+    var users: [User] = [User]() {
+        didSet {
+            print("SET ARRAY") // To do: handle empty label according to users.count
+        }
+    }
+    
+    var selectedUsers : [User] = [User]()
+    var poolType: PoolType?
     var footerHidden = false
     
     // Handle multiple selection properly http://stackoverflow.com/questions/28360919/my-table-view-reuse-the-selected-cells-when-scroll-in-swift
@@ -49,20 +56,32 @@ class CarPoolInviteViewController: ViewController {
         super.viewDidLoad()
         
         tableView.delegate = self
-
-        self.getUsers { (users) in
-            self.users = users!
-            self.tableView.dataSource = self
-        }
+        tableView.dataSource = self
+        searchBar.delegate = self
         
         sendButtonView.roundVeryLittleForHeight(kConstraintBtnSendHeight)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CarPoolInviteViewController.handleTap(_:)))
+        self.view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
         
         self.setPoolTitle(.Car)
+        self.searchUsersWithText(kDefaultSearchBarText)
+    }
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        
+        if searchBar.isFirstResponder() {
+            self.view.endEditing(true)
+            self.searchBar.resignFirstResponder()
+            self.searchBar.endEditing(true)
+        }
     }
     
     // MARK:- IBActions
@@ -86,9 +105,14 @@ class CarPoolInviteViewController: ViewController {
     
         self.hideAlphaFooter()
     }
+
+    @IBAction func searchBarSelected(sender: AnyObject) {
+        // PRESENT THE KEYBOARD WHEN THE USER PRESSES ON THE SEARCH BAR
+    }
     
     // MARK:- Private methods
     
+    /*
     private func getUsers(completion: (users: [User]?) -> Void) {
         
         var users: [User] = [User]()
@@ -105,6 +129,7 @@ class CarPoolInviteViewController: ViewController {
         
         completion(users: users)
     }
+    */
     
     private func hideAlphaFooter() {
         
@@ -125,6 +150,44 @@ class CarPoolInviteViewController: ViewController {
         UIView.animateWithDuration(0.4) {
             self.view.layoutIfNeeded()
             self.btnAlphaFooter.alpha = CGFloat(0)
+        }
+    }
+    
+    // MARK:- API Calls
+
+    private func searchUsersWithText(text: String) {
+
+        self.showProgressHud("Searching...")
+        
+        DataProvider.sharedInstance.searchUsersByName(text) { (users, error) in
+            
+            if let error = error {
+                self.dismissProgressHud()
+                
+                self.users.removeAll()
+                self.tableView.reloadData()
+                
+                if self.users.count == 0 {
+                    self.lblEmptyResults.hidden = false
+                } else {
+                    self.lblEmptyResults.hidden = true
+                }
+                
+                return
+            }
+            
+            if let users = users {
+                self.dismissProgressHud()
+                
+                self.users = users
+                self.tableView.reloadData()
+                
+                if self.users.count == 0 {
+                    self.lblEmptyResults.hidden = false
+                } else {
+                    self.lblEmptyResults.hidden = true
+                }
+            }
         }
     }
 }
@@ -221,3 +284,24 @@ extension CarPoolInviteViewController: UIScrollViewDelegate {
         }
     }
 }
+
+extension CarPoolInviteViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        
+        guard let text = searchBar.text else {
+            return
+        }
+        
+        self.searchUsersWithText(text)
+    }
+    
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+}
+

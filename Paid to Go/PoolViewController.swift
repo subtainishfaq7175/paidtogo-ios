@@ -11,6 +11,7 @@ import KDCircularProgress
 import Foundation
 import CoreLocation
 import CoreMotion
+import AVFoundation
 
 class PoolViewController: ViewController {
     
@@ -51,6 +52,7 @@ class PoolViewController: ViewController {
     let pedoMeter = CMPedometer()
     var startDateToTrack: NSDate?
     var initialLocation: CLLocation?
+    var finalLocation: CLLocation = CLLocation(latitude: ActivityManager.sharedInstance.endLatitude, longitude: ActivityManager.sharedInstance.endLongitude)
     var milesTraveled = "0.0"
     
     var screenshot : UIImage?
@@ -59,6 +61,10 @@ class PoolViewController: ViewController {
     var hasPausedAndResumedActivity = false
     
     var metersFromLocation = 1600.0
+    
+    var player: AVAudioPlayer = AVAudioPlayer()
+    
+    var distanceToFinalDestination: Double = 0.0
     
     // MARK: -  Super
     
@@ -452,7 +458,6 @@ class PoolViewController: ViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         locationManager.requestAlwaysAuthorization()
-        
     }
     
     // MARK: - Actions
@@ -484,10 +489,9 @@ class PoolViewController: ViewController {
             startTracking()
             pauseButton.hidden = false
             
-//            locationManager?.startUpdatingLocation()
+            locationManager?.startUpdatingLocation()
             
-            /*test*/startQueriedPedometerUpdates()/*test*/
-
+//            startQueriedPedometerUpdates()
         } else {
             
             countingSteps = false
@@ -567,6 +571,8 @@ extension PoolViewController: CLLocationManagerDelegate {
         let locationObj = locationArray.lastObject as! CLLocation
         let coord = locationObj.coordinate
         
+        AudioServicesPlaySystemSound(1016)
+        
         if activity.startLongitude == nil {
             
             activity.startLatitude = coord.latitude
@@ -576,13 +582,17 @@ extension PoolViewController: CLLocationManagerDelegate {
             
         } else {
             
-            let metersFromStartLocation = locationObj.distanceFromLocation(self.initialLocation!)
+            let metersFromStartLocation = locationObj.distanceFromLocation(self.initialLocation!) // d1
+            let metersToFinalLocation = locationObj.distanceFromLocation(self.finalLocation) // d
+            
+            print("DISTANCIA AL PTO DE PARTIDA: \(metersFromStartLocation)")
+            print("DISTANCIA AL PTO DE PARTIDA: \(metersToFinalLocation)")
             
             self.milesTraveled = String(format: "%.2f", metersFromStartLocation * 0.000621371)
-            
             self.progressLabel.text = milesTraveled
             
-            trackNumber = metersFromStartLocation / 1600
+//            trackNumber = metersFromStartLocation / 1600
+            trackNumber = metersFromStartLocation / metersToFinalLocation
             circularProgressView.angle = trackNumber * 360
             
             activity.endLatitude = coord.latitude
@@ -601,7 +611,9 @@ extension PoolViewController: TimerDelegate {
     func timerDidFire(timer : Timer) {
         print("timerDidFire")
         
-        testCircularProgress()
+//        AudioServicesPlaySystemSound(1016)
+//        locationManager.startUpdatingHeading()
+//        testCircularProgress()
     }
     
     func timerDidPause(timer : Timer) {
