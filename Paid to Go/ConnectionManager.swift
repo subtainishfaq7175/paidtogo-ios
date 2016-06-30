@@ -31,6 +31,7 @@ class ConnectionManager {
     private var activityURL : String { return "\(baseURL)/activity" }
     private var userURL : String { return "\(baseURL)/users" }
     private var usersInviteURL : String { return "\(baseURL)/invite_users" }
+    private var statsURL : String { return "\(baseURL)/mystatus" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -163,6 +164,12 @@ extension ConnectionManager {
         
         let identifier = "Invite Users API - POST"
         self.postRequest(identifier, url: self.usersInviteURL, params: params, apiCompletion: apiCompletion)
+    }
+    
+    func getMyStatus(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Stats API - GET"
+        self.getRequest(identifier, url: self.statsURL, apiCompletion: apiCompletion)
     }
 }
 

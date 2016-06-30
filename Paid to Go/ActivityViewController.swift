@@ -71,7 +71,7 @@ class ActivityViewController: MenuContentViewController {
             if let error = error {
                 self.dismissProgressHud()
                 
-                self.showAlert(error)
+                self.showAlert("No recent activity")
                 return
             }
             

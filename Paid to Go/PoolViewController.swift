@@ -31,6 +31,13 @@ class PoolViewController: ViewController {
     //@IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet var backgroundImageView: UIImageView!
     
+    // MARK: - Test Outlets
+    
+    @IBOutlet weak var D: UILabel!
+    @IBOutlet weak var d1: UILabel!
+    @IBOutlet weak var angle: UILabel!
+    
+    
     // MARK: - Variables and Constants
     
     let kBikeTimeUpdateSpeed = 2.0
@@ -92,7 +99,7 @@ class PoolViewController: ViewController {
         self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         if type == .Walk && CMPedometer.isStepCountingAvailable() {
-                self.stepCountLabel.hidden = false
+            self.stepCountLabel.hidden = false
         }
         
         var timerInterval = 0.0
@@ -146,10 +153,12 @@ class PoolViewController: ViewController {
         clearNavigationBarcolor()
         setPoolTitle(self.type!)
         
-        let switchImage = UIImage(named: "ic_pool_switch")
+        if type != PoolTypeEnum.Car {
         
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchBetweenPools(_:)))
-        self.navigationItem.rightBarButtonItem = rightButtonItem
+            let switchImage = UIImage(named: "ic_pool_switch")
+            let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchBetweenPools(_:)))
+            self.navigationItem.rightBarButtonItem = rightButtonItem
+        }
     }
     
     func btnBack(sender: AnyObject) {
@@ -164,19 +173,17 @@ class PoolViewController: ViewController {
     func startTracking() {
         isTimerTracking = true
         countingSteps = true
-//        updatePedometer()
+        updatePedometer()
     }
     
     func pauseTracking() {
         if isTimerTracking {
-            print("PAUSE")
-//            timer!.invalidate()
+            // PAUSE
             isTimerTracking = false
             pauseButton.setTitle("Resume", forState: UIControlState.Normal)
             countingSteps = false
         } else {
-            print("RESUME")
-//            startQueriedPedometerUpdates()
+            // RESUME
             resumePedometerUpdates()
             hasPausedAndResumedActivity = true
             startTracking()
@@ -293,101 +300,40 @@ class PoolViewController: ViewController {
         } else {
             resumePedometerUpdates()
         }
-        
-        /*
-        if CMPedometer.isStepCountingAvailable() {
-
-            pedoMeter.startPedometerUpdatesFromDate(NSDate(), withHandler: { (data, error) in
-                if let dataUpdated = data {
-                    self.stepCount = dataUpdated.numberOfSteps.integerValue
-                }
-                
-                if self.type == .Walk {
-                    self.stepCountLabel.text = "Steps: \(self.stepCount)"
-                }
-            })
-            
-        } else {
-            showAlert("Su dispositivo no cuenta con el hardware adecuado para contar los pasos")
-            self.stepCountLabel.hidden = true
-        }
-        */
-        
-        /*
-        self.stepCountLabel.hidden = false
-
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        countingSteps = true
-            print("EMPIEZO CONTEO DE PASOS")
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                // do some task
-                while self.countingSteps == true {
-                    self.stepCount = self.stepCount + 1
-                    
-                    self.milesTraveled = String(format: "%.2f", Double(self.stepCount) * 0.06)
-                    self.trackNumber = Double(self.stepCount) / 160
-                    self.circularProgressView.angle = self.trackNumber * 36
-                    
-                    print("\(self.stepCount) PASOS")
-                    print("ESPERO 1 SEGUNDO")
-                    sleep(1)
-                    
-                    print("ACTUALIZO UI")
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        // update some UI
-                        self.stepCountLabel.text = "Steps: \(self.stepCount)"
-                        self.progressLabel.text = self.milesTraveled
-                    }
-                }
-            }
-        */
     }
     
     /**
      *  Called the first time, when the user begins the activity
      */
     private func beginPedometerUpdates() {
-        print("beginPedometerUpdates")
-        startQueriedPedometerUpdates()
-        
-        /*
-        if CMPedometer.isStepCountingAvailable() {
-            print("BEGIN PEDOMETER")
 
-            startQueriedPedometerUpdates()
+        if CMPedometer.isStepCountingAvailable() {
+            // PEDOMETER AVALIABLE
+            queryPedometerUpdates()
             
         } else {
-            // showAlert("Su dispositivo no cuenta con el hardware adecuado para contar los pasos")
+            // PEDOMETER NOT AVALIABLE FOR DEVICE
             self.stepCountLabel.hidden = true
         }
-        */
     }
     
     /**
      *  Called when the user pauses the activity
      */
     private func pausePedometerUpdates() {
-        print("PAUSE PEDOMETER")
-        /*
+
         pedoMeter.stopPedometerUpdates()
         
         if self.type == .Walk {
             self.stepCountLabel.text = "Steps: \(self.stepCount)"
         }
-        */
-        
-//        /*test*/self.timer!.invalidate()
-        
-        timerTest.pause()
-        print("TIEMPO DE TIMER TEST: \(timerTest.difference.description)")
     }
     
     /**
      *  Called after the user pauses the activity and resumes it
      */
     private func resumePedometerUpdates() {
-        /*
+        
         if CMPedometer.isStepCountingAvailable() {
             print("RESUME PEDOMETER")
             pedoMeter.startPedometerUpdatesFromDate(NSDate(), withHandler: { (data, error) in
@@ -400,28 +346,14 @@ class PoolViewController: ViewController {
             })
             
         } else {
-            showAlert("Su dispositivo no cuenta con el hardware adecuado para contar los pasos")
             self.stepCountLabel.hidden = true
         }
-        */
         
-//        /*test*/startQueriedPedometerUpdates()
-        
-        timerTest.resume()
     }
     
     func startQueriedPedometerUpdates() {
         print("startQueriedPedometerUpdates")
-        /*
-        if let timer = self.timer as NSTimer? {
-            self.timer!.invalidate()
-            self.timer = nil
-        }
-        
-        
-        //timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(queryPedometerUpdates), userInfo: nil, repeats: true)
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(testCircularProgress), userInfo: nil, repeats: true)
-        */
+
         timerTest.start(timerTest.timer)
     }
     
@@ -519,6 +451,7 @@ class PoolViewController: ViewController {
             type = PoolTypeEnum.Walk
             setPoolTitle(self.type!)
             self.backgroundImageView.image = UIImage(named: kWalkBackgroundImage)
+            self.stepCountLabel.hidden = false
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
@@ -537,6 +470,7 @@ class PoolViewController: ViewController {
             type = PoolTypeEnum.Bike
             setPoolTitle(self.type!)
             self.backgroundImageView.image = UIImage(named: kRunBackgroundImage)
+            self.stepCountLabel.hidden = true
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
@@ -603,6 +537,10 @@ extension PoolViewController: CLLocationManagerDelegate {
             
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude
+            
+            self.D.text = "D - DESTINO FINAL: \(distanceToFinalDestination)"
+            self.d1.text = "d1 - DIST AL ORIGEN: \(metersFromStartLocation)"
+            self.angle.text = "angle - ANGULO: \(angle)"
         }
     }
 }

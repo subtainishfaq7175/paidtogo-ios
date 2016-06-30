@@ -375,6 +375,8 @@ class DataProvider : DataProviderService {
             }
         }
     }
+    
+    func getStatus() {}
 }
 
 protocol DataProviderService {

@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 /// Handles the whole activity process, and the necessary information to update the progress circle
 
 class ActivityManager: NSObject {
-
+    
     var trackNumber : Double = 0.0
     var activity : Activity = Activity()
     var milesCounter : Double = 0.0
@@ -22,8 +23,14 @@ class ActivityManager: NSObject {
     var startLatitude : Double = 0.0
     var startLongitude : Double = 0.0
     
+    var initialLocation : CLLocation = CLLocation()
+    var endLocation : CLLocation = CLLocation()
+    
     /**
      *  Singleton
+     *
+     *  We use a Singleton to allow a quick switch between the different Pool Types (Walk/Run, Bike and Bus/Train)
+     *
      */
     static let sharedInstance = ActivityManager()
     
@@ -55,20 +62,4 @@ class ActivityManager: NSObject {
         startLatitude = 0.0
         startLongitude = 0.0
     }
-    
-    /*
-    func setDestinationLatAndLon(lat: String, lon:String) {
-        destinationLatitude = lat
-        destinationLongitude = lon
-    }
-    
-    func getDestinationLatAndLon() -> (lat: String, lon:String) {
-        return (destinationLatitude, destinationLongitude)
-    }
-    
-    func resetLatAndLon() {
-        destinationLatitude = ""
-        destinationLongitude = ""
-    }
-     */
 }

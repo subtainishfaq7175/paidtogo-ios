@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let kConstraintBtnSendHeight : CGFloat = 33.0
+let kConstraintBtnSendHeight : CGFloat = 50.0
 let kConstraintImageAlphaFooterHeight : CGFloat = 180.0 //UIApplication.sharedApplication().keyWindow!.bounds.size.height * 0.33
 
 class CarPoolInviteViewController: ViewController {

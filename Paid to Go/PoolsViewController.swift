@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 
 class PoolsViewController: ViewController, UIScrollViewDelegate {
     
@@ -326,9 +326,11 @@ extension PoolsViewController: UITableViewDelegate {
             
         case "closedPoolsTableView":
             let pool = self.closedPools[indexPath.row]
+            
             /*test*/
             ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
             ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
+            ActivityManager.sharedInstance.endLocation = CLLocation(latitude: Double(pool.destinationLatitude!)!, longitude: Double(pool.destinationLongitude!)!)
             
             switch self.type! {
             case .Train:
@@ -349,9 +351,11 @@ extension PoolsViewController: UITableViewDelegate {
             break
         case "openPoolsTableView":
             let pool = self.openPools[indexPath.row]
+            
             /*test*/
             ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
             ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
+            ActivityManager.sharedInstance.endLocation = CLLocation(latitude: Double(pool.destinationLatitude!)!, longitude: Double(pool.destinationLongitude!)!)
             
             switch self.type! {
             case .Train:
