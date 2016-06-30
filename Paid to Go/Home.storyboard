@@ -460,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-Mb-Unc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="424"/>
+            <point key="canvasLocation" x="137" y="1120"/>
         </scene>
         <!--Anti Cheat View Controller-->
         <scene sceneID="LxA-8W-dTY">
@@ -570,7 +570,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-269" y="1140"/>
+            <point key="canvasLocation" x="-551" y="1974"/>
         </scene>
         <!--Anti Cheat Image View Controller-->
         <scene sceneID="vYy-1N-r8t">
@@ -649,7 +649,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziJ-Sb-uLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="1140"/>
+            <point key="canvasLocation" x="-551" y="2674"/>
         </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
@@ -2039,9 +2039,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="actionButtonAction:" destination="ggG-z0-JoP" eventType="touchUpInside" id="CTu-xc-4YY"/>
-                                            <action selector="sendButtonAction:" destination="8XP-qr-ovD" eventType="touchUpInside" id="prh-ZG-WRJ"/>
-                                            <action selector="startPool:" destination="Nnh-K6-6hm" eventType="touchUpInside" id="184-iH-gRn"/>
+                                            <action selector="btnSendInvitationEmailPressed:" destination="8XP-qr-ovD" eventType="touchUpInside" id="S6h-pg-nDA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2095,7 +2093,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KE4-M0-24f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="3205"/>
+            <point key="canvasLocation" x="-115" y="2653"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="WkC-SA-byB">
@@ -2290,7 +2288,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NU5-pW-d5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="424"/>
+            <point key="canvasLocation" x="137" y="418"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGv-2c-yFQ">
@@ -2329,7 +2327,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-269" y="424"/>
+            <point key="canvasLocation" x="-551" y="1258"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">

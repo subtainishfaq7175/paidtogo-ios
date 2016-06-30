@@ -339,6 +339,42 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func sendEmailToUsers(users: [String], completion: (result: Bool?, error: String?) -> Void) {
+        
+        let accessToken = User.currentUser?.accessToken
+        
+        var userIDString = "["
+        for userID in users {
+            userIDString += userID
+            userIDString += ","
+        }
+        userIDString = String(userIDString.characters.dropLast())
+        userIDString += "]"
+ 
+        let params = [
+            
+            "access_token" : accessToken,
+            "pool_id" : "4",
+            "users_id_array" : userIDString
+        ]
+        
+        print("UserIDs : \(userIDString)")
+        
+        ConnectionManager.sharedInstance.postInviteUsers(params as! [String : String]) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                completion(result: nil, error: nil)
+                return
+                
+            } else {
+                
+                completion(result: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
 }
 
 protocol DataProviderService {

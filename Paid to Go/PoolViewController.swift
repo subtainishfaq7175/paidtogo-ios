@@ -522,8 +522,8 @@ class PoolViewController: ViewController {
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
-                    self.timerTest = Timer(interval: self.kWalkTimeUpdateSpeed, delegate: self)
-                    self.timerTest.start(self.timerTest.timer)
+//                    self.timerTest = Timer(interval: self.kWalkTimeUpdateSpeed, delegate: self)
+//                    self.timerTest.start(self.timerTest.timer)
                     self.pauseTracking()
             })
         }
@@ -540,8 +540,8 @@ class PoolViewController: ViewController {
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
-                    self.timerTest = Timer(interval: self.kBikeTimeUpdateSpeed, delegate: self)
-                    self.timerTest.start(self.timerTest.timer)
+//                    self.timerTest = Timer(interval: self.kBikeTimeUpdateSpeed, delegate: self)
+//                    self.timerTest.start(self.timerTest.timer)
                     self.pauseTracking()
             })
         }
@@ -573,27 +573,33 @@ extension PoolViewController: CLLocationManagerDelegate {
         
         AudioServicesPlaySystemSound(1016)
         
-        if activity.startLongitude == nil {
+        if ActivityManager.sharedInstance.startLongitude == 0.0 {
             
-            activity.startLatitude = coord.latitude
-            activity.startLongitude = coord.longitude
+            ActivityManager.sharedInstance.startLatitude = coord.latitude
+            ActivityManager.sharedInstance.startLongitude = coord.longitude
             
             self.initialLocation = locationObj
+            
+            distanceToFinalDestination = locationObj.distanceFromLocation(self.finalLocation) // d
             
         } else {
             
             let metersFromStartLocation = locationObj.distanceFromLocation(self.initialLocation!) // d1
-            let metersToFinalLocation = locationObj.distanceFromLocation(self.finalLocation) // d
             
             print("DISTANCIA AL PTO DE PARTIDA: \(metersFromStartLocation)")
-            print("DISTANCIA AL PTO DE PARTIDA: \(metersToFinalLocation)")
+            print("DISTANCIA AL PTO DE LLEGADA: \(distanceToFinalDestination)")
             
             self.milesTraveled = String(format: "%.2f", metersFromStartLocation * 0.000621371)
             self.progressLabel.text = milesTraveled
             
+            ActivityManager.sharedInstance.milesCounter += (metersFromStartLocation * 0.000621371)
+            
 //            trackNumber = metersFromStartLocation / 1600
-            trackNumber = metersFromStartLocation / metersToFinalLocation
-            circularProgressView.angle = trackNumber * 360
+            ActivityManager.sharedInstance.trackNumber = metersFromStartLocation / distanceToFinalDestination
+            
+            let angle = ActivityManager.sharedInstance.trackNumber * 360
+            print("ANGULO DEL GRAFICO: \(angle)")
+            circularProgressView.angle = angle
             
             activity.endLatitude = coord.latitude
             activity.endLongitude = coord.longitude

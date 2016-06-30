@@ -359,7 +359,9 @@ extension PoolsViewController: UITableViewDelegate {
                 break
             case .Car:
                 let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
+                    carViewController!.type = self.type
                     carViewController!.poolType = self.poolType
+                    carViewController!.pool = pool
                 self.showViewController(carViewController!, sender: nil)
                 
                 break
@@ -371,9 +373,6 @@ extension PoolsViewController: UITableViewDelegate {
             break
         default: break
         }
-        
-        
-        
         
         tableView.reloadData()
         

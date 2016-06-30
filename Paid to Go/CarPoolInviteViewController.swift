@@ -38,7 +38,9 @@ class CarPoolInviteViewController: ViewController {
     }
     
     var selectedUsers : [User] = [User]()
+    var type : PoolTypeEnum?
     var poolType: PoolType?
+    var pool: Pool?
     var footerHidden = false
     
     // Handle multiple selection properly http://stackoverflow.com/questions/28360919/my-table-view-reuse-the-selected-cells-when-scroll-in-swift
@@ -78,9 +80,9 @@ class CarPoolInviteViewController: ViewController {
     func handleTap(recognizer: UITapGestureRecognizer) {
         
         if searchBar.isFirstResponder() {
-            self.view.endEditing(true)
+//            self.view.endEditing(true)
             self.searchBar.resignFirstResponder()
-            self.searchBar.endEditing(true)
+//            self.searchBar.endEditing(true)
         }
     }
     
@@ -105,31 +107,13 @@ class CarPoolInviteViewController: ViewController {
     
         self.hideAlphaFooter()
     }
-
-    @IBAction func searchBarSelected(sender: AnyObject) {
-        // PRESENT THE KEYBOARD WHEN THE USER PRESSES ON THE SEARCH BAR
+    
+    @IBAction func btnSendInvitationEmailPressed(sender: AnyObject) {
+    
+        self.sendEmailToUsers()
     }
     
     // MARK:- Private methods
-    
-    /*
-    private func getUsers(completion: (users: [User]?) -> Void) {
-        
-        var users: [User] = [User]()
-        
-        for var i in 1 ... 20 {
-            let user: User = User()
-            user.userId = "\(i)"
-            user.name = "Test"
-            user.lastName = "User"
-            user.profilePicture = "http://www.farandula.ws/wp-content/uploads/2012/02/house-md_0001.jpg"
-            
-            users.append(user)
-        }
-        
-        completion(users: users)
-    }
-    */
     
     private func hideAlphaFooter() {
         
@@ -188,6 +172,54 @@ class CarPoolInviteViewController: ViewController {
                     self.lblEmptyResults.hidden = true
                 }
             }
+        }
+    }
+    
+    private func sendEmailToUsers() {
+        
+        if selectedUsers.count == 0 {
+            self.showAlert("Please select one or more users to send the invitations to!")
+
+            return
+        }
+        
+        self.showProgressHud("Sending email...")
+        
+        var selectedUserIDs = Array <String> ()
+        for user in selectedUsers {
+            guard let userID = user.userId else { return }
+            selectedUserIDs.append(userID)
+        }
+        
+        DataProvider.sharedInstance.sendEmailToUsers(selectedUserIDs) { (result, error) in
+            
+            self.dismissProgressHud()
+            
+            guard let err = error else {
+                
+                DataProvider.sharedInstance.getPoolType(.Car) { (poolType, error) in
+                    
+                    if let error = error {
+                        self.showAlert(error)
+                        return
+                    }
+                    
+                    if let poolType = poolType {
+                        
+                        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
+                            poolViewController.type = self.type
+                            poolViewController.poolType = poolType
+                            poolViewController.pool = self.pool!
+                            
+                            self.navigationController?.pushViewController(poolViewController, animated: true)
+                        }
+                    }
+                }
+                
+                return
+            }
+            
+            self.showAlert("Unable to send invitations")
         }
     }
 }

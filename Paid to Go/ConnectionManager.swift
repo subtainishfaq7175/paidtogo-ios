@@ -30,6 +30,7 @@ class ConnectionManager {
     private var leaderboardsURL : String { return "\(baseURL)/leaderboards" }
     private var activityURL : String { return "\(baseURL)/activity" }
     private var userURL : String { return "\(baseURL)/users" }
+    private var usersInviteURL : String { return "\(baseURL)/invite_users" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -158,6 +159,11 @@ extension ConnectionManager {
         self.postRequest(identifier, url: self.userURL, params: params, apiCompletion: apiCompletion)
     }
     
+    func postInviteUsers(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Invite Users API - POST"
+        self.postRequest(identifier, url: self.usersInviteURL, params: params, apiCompletion: apiCompletion)
+    }
 }
 
 extension ConnectionManager {

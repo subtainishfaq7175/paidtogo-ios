@@ -19,8 +19,8 @@ class ActivityManager: NSObject {
     var endLatitude: Double = 0.0
     var endLongitude: Double = 0.0
     
-    var startLatitude : Double = -34.648191
-    var startLongitude : Double = -58.623418
+    var startLatitude : Double = 0.0
+    var startLongitude : Double = 0.0
     
     /**
      *  Singleton
@@ -51,6 +51,9 @@ class ActivityManager: NSObject {
         trackNumber = 0.0
         activity = Activity()
         milesCounter = 0.0
+        
+        startLatitude = 0.0
+        startLongitude = 0.0
     }
     
     /*
