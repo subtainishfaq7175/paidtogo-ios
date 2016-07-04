@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
+		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
+		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
+		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
+		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
+		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
+		4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */; };
 		520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C69F81CD2531E00ACB4CC /* GenericResponse.swift */; };
 		5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */; };
 		5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */; };
@@ -92,6 +99,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailShareHelper.swift; sourceTree = "<group>"; };
+		4D2CEE2F1D1058A400009843 /* Paid to Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Paid to Go-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D2CEE301D1058A500009843 /* CMDocumentShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDocumentShare.h; sourceTree = "<group>"; };
+		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
+		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Extensions.swift"; sourceTree = "<group>"; };
 		520C69F81CD2531E00ACB4CC /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		5210C7511CAAC450002B4DF3 /* ActivitySimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySimpleCell.swift; sourceTree = "<group>"; };
 		5210C7531CAAC606002B4DF3 /* ActivityDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDefaultCell.swift; sourceTree = "<group>"; };
@@ -202,6 +218,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4D2CEE2E1D10588600009843 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				4D76979F1D21A458002D5E63 /* Timer.swift */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		5218FB931CCAA2B80038E7F1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +250,7 @@
 				52258C101C9AF04100E3DAC7 /* Navigation */,
 				52227FD41C99A326002DBBFA /* Appearance */,
 				52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */,
+				4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -326,6 +351,8 @@
 				524D200C1C98925000FCE996 /* UIDevice+ModelName.swift */,
 				524D200E1C989CBA00FCE996 /* UIView+Round.swift */,
 				52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */,
+				4DCD352C1D21624500A21739 /* Array+Extensions.swift */,
+				4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -389,6 +416,8 @@
 				7C8E737E1CE518F1006B4271 /* Activity.swift */,
 				7C872D0D1CE62AC200A1083E /* PoolType.swift */,
 				526020291CEE591E00C6604E /* ActivityResponse.swift */,
+				4DDA86921D1C46E800247168 /* ActivityManager.swift */,
+				4D936E581D25BEB600A0CB3A /* Status.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -435,9 +464,13 @@
 				52227FD31C99A321002DBBFA /* Utils */,
 				524D200B1C98923F00FCE996 /* Extensions */,
 				52A374441C984ABE00E3A4A5 /* Resources */,
+				4D2CEE2E1D10588600009843 /* External */,
 				52A374321C9844A900E3A4A5 /* AppDelegate.swift */,
+				4D2CEE301D1058A500009843 /* CMDocumentShare.h */,
+				4D2CEE311D1058A500009843 /* CMDocumentShare.m */,
 				52A3743B1C9844A900E3A4A5 /* LaunchScreen.storyboard */,
 				52A3743E1C9844A900E3A4A5 /* Info.plist */,
+				4D2CEE2F1D1058A400009843 /* Paid to Go-Bridging-Header.h */,
 			);
 			path = "Paid to Go";
 			sourceTree = "<group>";
@@ -454,14 +487,14 @@
 		52A374451C984ADA00E3A4A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				52B3E0E21CA32696000ED657 /* Stats */,
-				52B3E0E11CA32690000ED657 /* Leaderboards */,
-				52B3E0DC1CA3251B000ED657 /* Activity */,
-				52B3E0D71CA2E58E000ED657 /* Balance */,
-				52B3E0D21CA2D2B9000ED657 /* Settings */,
-				525150AE1CA17D0900BEC445 /* Profile */,
 				528822EB1C9B082300B490AD /* Menu */,
 				52258C0D1C9AEFB700E3DAC7 /* Home */,
+				525150AE1CA17D0900BEC445 /* Profile */,
+				52B3E0DC1CA3251B000ED657 /* Activity */,
+				52B3E0D71CA2E58E000ED657 /* Balance */,
+				52B3E0E11CA32690000ED657 /* Leaderboards */,
+				52B3E0E21CA32696000ED657 /* Stats */,
+				52B3E0D21CA2D2B9000ED657 /* Settings */,
 				52227FD01C99A109002DBBFA /* Base */,
 				52A374461C984B0400E3A4A5 /* Main */,
 			);
@@ -571,7 +604,7 @@
 		52A374271C9844A900E3A4A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Infinixsoft;
 				TargetAttributes = {
@@ -697,8 +730,10 @@
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
+				4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */,
 				528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
+				4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */,
 				522994ED1CC15A4400C589C6 /* WDLeaderboardsViewController.swift in Sources */,
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
@@ -708,6 +743,7 @@
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
 				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
+				4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
@@ -717,6 +753,7 @@
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
+				4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */,
 				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,
 				52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */,
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
@@ -738,6 +775,7 @@
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
+				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,
 				52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */,
 				52FC35061CC66C5600E094DA /* Platform.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
@@ -746,8 +784,10 @@
 				52B2C90A1CC6A2A400504E49 /* PoolTypeEnum.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
+				4D936E591D25BEB600A0CB3A /* Status.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
 				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
+				4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +901,7 @@
 			baseConfigurationReference = 7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
@@ -868,6 +909,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -876,6 +919,7 @@
 			baseConfigurationReference = 8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
@@ -883,6 +927,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 			};
 			name = Release;
 		};
