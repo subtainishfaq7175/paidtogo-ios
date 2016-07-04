@@ -11,6 +11,8 @@
 		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
+		4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2151D2A959100EF35F7 /* StatusType.swift */; };
+		4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
 		4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */; };
@@ -105,6 +107,8 @@
 		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		4D97C2151D2A959100EF35F7 /* StatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
+		4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedUnit.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -418,6 +422,8 @@
 				526020291CEE591E00C6604E /* ActivityResponse.swift */,
 				4DDA86921D1C46E800247168 /* ActivityManager.swift */,
 				4D936E581D25BEB600A0CB3A /* Status.swift */,
+				4D97C2151D2A959100EF35F7 /* StatusType.swift */,
+				4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -738,6 +744,7 @@
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,
+				4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
@@ -747,6 +754,7 @@
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
+				4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */,
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,

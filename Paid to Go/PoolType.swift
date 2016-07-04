@@ -71,67 +71,67 @@ public class PoolType: NSObject, Mappable, NSCoding {
     public func dictionaryRepresentation() -> [String : AnyObject ] {
         
         var dictionary: [String : AnyObject ] = [ : ]
-        if detail != nil {
-            dictionary.updateValue(detail!, forKey: kPoolTypeDetailKey)
-        }
-        if backgroundPicture != nil {
-            dictionary.updateValue(backgroundPicture!, forKey: kPoolTypeBackgroundPictureKey)
-        }
-        if internalIdentifier != nil {
-            dictionary.updateValue(internalIdentifier!, forKey: kPoolTypeInternalIdentifierKey)
-        }
-        if color != nil {
-            dictionary.updateValue(color!, forKey: kPoolTypeColorKey)
-        }
-        if maxSpeed != nil {
-            dictionary.updateValue(maxSpeed!, forKey: kPoolTypeMaxSpeedKey)
-        }
-        if minSpeed != nil {
-            dictionary.updateValue(minSpeed!, forKey: kPoolTypeMinSpeedKey)
-        }
-        if code != nil {
-            dictionary.updateValue(code!, forKey: kPoolTypeCodeKey)
-        }
-        if gpsTrackingRequired != nil {
-            dictionary.updateValue(gpsTrackingRequired!, forKey: kPoolTypeGpsTrackingRequiredKey)
-        }
-        if photoVerificationRequired != nil {
-            dictionary.updateValue(photoVerificationRequired!, forKey: kPoolTypePhotoVerificationRequiredKey)
-        }
-        if name != nil {
-            dictionary.updateValue(name!, forKey: kPoolTypeNameKey)
-        }
+        
+//        if detail != nil {
+//            dictionary.updateValue(detail!, forKey: kPoolTypeDetailKey)
+//        }
+//        if backgroundPicture != nil {
+//            dictionary.updateValue(backgroundPicture!, forKey: kPoolTypeBackgroundPictureKey)
+//        }
+//        if internalIdentifier != nil {
+//            dictionary.updateValue(internalIdentifier!, forKey: kPoolTypeInternalIdentifierKey)
+//        }
+//        if color != nil {
+//            dictionary.updateValue(color!, forKey: kPoolTypeColorKey)
+//        }
+//        if maxSpeed != nil {
+//            dictionary.updateValue(maxSpeed!, forKey: kPoolTypeMaxSpeedKey)
+//        }
+//        if minSpeed != nil {
+//            dictionary.updateValue(minSpeed!, forKey: kPoolTypeMinSpeedKey)
+//        }
+//        if code != nil {
+//            dictionary.updateValue(code!, forKey: kPoolTypeCodeKey)
+//        }
+//        if gpsTrackingRequired != nil {
+//            dictionary.updateValue(gpsTrackingRequired!, forKey: kPoolTypeGpsTrackingRequiredKey)
+//        }
+//        if photoVerificationRequired != nil {
+//            dictionary.updateValue(photoVerificationRequired!, forKey: kPoolTypePhotoVerificationRequiredKey)
+//        }
+//        if name != nil {
+//            dictionary.updateValue(name!, forKey: kPoolTypeNameKey)
+//        }
         
         return dictionary
     }
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-        self.detail = aDecoder.decodeObjectForKey(kPoolTypeDetailKey) as? String
-        self.backgroundPicture = aDecoder.decodeObjectForKey(kPoolTypeBackgroundPictureKey) as? String
-        self.internalIdentifier = aDecoder.decodeObjectForKey(kPoolTypeInternalIdentifierKey) as? String
-        self.color = aDecoder.decodeObjectForKey(kPoolTypeColorKey) as? String
-        self.maxSpeed = aDecoder.decodeObjectForKey(kPoolTypeMaxSpeedKey) as? String
-        self.minSpeed = aDecoder.decodeObjectForKey(kPoolTypeMinSpeedKey) as? String
-        self.code = aDecoder.decodeObjectForKey(kPoolTypeCodeKey) as? String
-        self.gpsTrackingRequired = aDecoder.decodeObjectForKey(kPoolTypeGpsTrackingRequiredKey) as? String
-        self.photoVerificationRequired = aDecoder.decodeObjectForKey(kPoolTypePhotoVerificationRequiredKey) as? String
-        self.name = aDecoder.decodeObjectForKey(kPoolTypeNameKey) as? String
+//        self.detail = aDecoder.decodeObjectForKey(kPoolTypeDetailKey) as? String
+//        self.backgroundPicture = aDecoder.decodeObjectForKey(kPoolTypeBackgroundPictureKey) as? String
+//        self.internalIdentifier = aDecoder.decodeObjectForKey(kPoolTypeInternalIdentifierKey) as? String
+//        self.color = aDecoder.decodeObjectForKey(kPoolTypeColorKey) as? String
+//        self.maxSpeed = aDecoder.decodeObjectForKey(kPoolTypeMaxSpeedKey) as? String
+//        self.minSpeed = aDecoder.decodeObjectForKey(kPoolTypeMinSpeedKey) as? String
+//        self.code = aDecoder.decodeObjectForKey(kPoolTypeCodeKey) as? String
+//        self.gpsTrackingRequired = aDecoder.decodeObjectForKey(kPoolTypeGpsTrackingRequiredKey) as? String
+//        self.photoVerificationRequired = aDecoder.decodeObjectForKey(kPoolTypePhotoVerificationRequiredKey) as? String
+//        self.name = aDecoder.decodeObjectForKey(kPoolTypeNameKey) as? String
         
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(detail, forKey: kPoolTypeDetailKey)
-        aCoder.encodeObject(backgroundPicture, forKey: kPoolTypeBackgroundPictureKey)
-        aCoder.encodeObject(internalIdentifier, forKey: kPoolTypeInternalIdentifierKey)
-        aCoder.encodeObject(color, forKey: kPoolTypeColorKey)
-        aCoder.encodeObject(maxSpeed, forKey: kPoolTypeMaxSpeedKey)
-        aCoder.encodeObject(minSpeed, forKey: kPoolTypeMinSpeedKey)
-        aCoder.encodeObject(code, forKey: kPoolTypeCodeKey)
-        aCoder.encodeObject(gpsTrackingRequired, forKey: kPoolTypeGpsTrackingRequiredKey)
-        aCoder.encodeObject(photoVerificationRequired, forKey: kPoolTypePhotoVerificationRequiredKey)
-        aCoder.encodeObject(name, forKey: kPoolTypeNameKey)
-        
+//        aCoder.encodeObject(detail, forKey: kPoolTypeDetailKey)
+//        aCoder.encodeObject(backgroundPicture, forKey: kPoolTypeBackgroundPictureKey)
+//        aCoder.encodeObject(internalIdentifier, forKey: kPoolTypeInternalIdentifierKey)
+//        aCoder.encodeObject(color, forKey: kPoolTypeColorKey)
+//        aCoder.encodeObject(maxSpeed, forKey: kPoolTypeMaxSpeedKey)
+//        aCoder.encodeObject(minSpeed, forKey: kPoolTypeMinSpeedKey)
+//        aCoder.encodeObject(code, forKey: kPoolTypeCodeKey)
+//        aCoder.encodeObject(gpsTrackingRequired, forKey: kPoolTypeGpsTrackingRequiredKey)
+//        aCoder.encodeObject(photoVerificationRequired, forKey: kPoolTypePhotoVerificationRequiredKey)
+//        aCoder.encodeObject(name, forKey: kPoolTypeNameKey)
     }
     
 }

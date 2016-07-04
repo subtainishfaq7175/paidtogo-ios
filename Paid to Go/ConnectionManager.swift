@@ -31,7 +31,7 @@ class ConnectionManager {
     private var activityURL : String { return "\(baseURL)/activity" }
     private var userURL : String { return "\(baseURL)/users" }
     private var usersInviteURL : String { return "\(baseURL)/invite_users" }
-    private var statsURL : String { return "\(baseURL)/mystatus" }
+    private var mystatusURL : String { return "\(baseURL)/mystatus" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -60,6 +60,8 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 
 extension ConnectionManager {
     
+    
+    // MARK:- Login/Register
     
     func register(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
@@ -169,7 +171,7 @@ extension ConnectionManager {
     func getMyStatus(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Stats API - GET"
-        self.getRequest(identifier, url: self.statsURL, apiCompletion: apiCompletion)
+        self.postRequest(identifier, url: self.mystatusURL, params: params, apiCompletion: apiCompletion)
     }
 }
 

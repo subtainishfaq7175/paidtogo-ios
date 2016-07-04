@@ -81,6 +81,7 @@ public class Pool: Mappable {
     public func dictionaryRepresentation() -> [String : AnyObject ] {
         
         var dictionary: [String : AnyObject ] = [ : ]
+        
         if quantMembers != nil {
             dictionary.updateValue(quantMembers!, forKey: kPoolQuantMembersKey)
         }
@@ -122,5 +123,5 @@ public class Pool: Mappable {
         }
         
         return dictionary
-}
+    }
 }

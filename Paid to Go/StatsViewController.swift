@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SwiftDate
 
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - Outlets
@@ -22,6 +23,11 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     @IBOutlet weak var gasView: UIView!
     @IBOutlet weak var incomesView: UIView!
     
+    @IBOutlet weak var lblFromdate: LocalizableLabel!
+    @IBOutlet weak var lblTodate: LocalizableLabel!
+    
+    @IBOutlet weak var lblTotalEarned: UILabel!
+    @IBOutlet weak var lblAmountEarned: UILabel!
     
     @IBOutlet weak var incomesChartView: LineChartView!
     @IBOutlet weak var gasChartView: LineChartView!
@@ -30,6 +36,26 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - Variables and Constants
     
     var lastContentOffset : CGFloat = 0
+    var status = Status()
+    
+//    var dictTotalIncomeByMonth : Dictionary<String,Double> = Dictionary<String,Double>()
+    
+    var arrTotalIncomeByMonth = [
+    
+        0.0, // "Jan"
+        0.0, // "Feb"
+        0.0, // "Mar"
+        0.0, // "Apr"
+        0.0, // "May"
+        0.0, // "Jun"
+        0.0, // "Jul"
+        0.0, // "Aug"
+        0.0, // "Sep"
+        0.0, // "Oct"
+        0.0, // "Nov"
+        0.0, // "Dic"
+        
+    ]
     
     // MARK: - Super
     
@@ -40,6 +66,22 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.title = "menu_stats".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
+        customizeHeaderView()
+        
+        self.showProgressHud("Loading status...")
+        DataProvider.sharedInstance.getStatus { (result, error) in
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                self.navigationController?.popViewControllerAnimated(true)
+            } else {
+                
+                self.status = result!
+                self.initCharts()
+                self.updateViewsWithStatus()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,10 +93,26 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.scrollView.delegate = self
-        self.initCharts()
+//        self.initCharts()
     }
     
     // MARK: - Functions
+    
+    private func customizeHeaderView() {
+        
+        let today = NSDate()
+        let todayString = today.toString(DateFormat.Custom("dd/MM/yyyy"))
+        self.lblTodate.text = todayString
+        
+        // Get the date that was 1hr before now
+        let todayThreeMonthsBack = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Month,
+            value: -3,
+            toDate: NSDate(),
+            options: [])
+        let todayThreeMonthsBackString = todayThreeMonthsBack!.toString(DateFormat.Custom("dd/MM/yyyy"))
+        self.lblFromdate.text = todayThreeMonthsBackString
+    }
     
     private func initCharts() {
         initChart(incomesChartView)
@@ -66,40 +124,58 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         chart.userInteractionEnabled = false
         
+        loadStatusData()
+        
         let incomesData: LineChartData?
         var incomesDataSets: [IChartDataSet] = [IChartDataSet]()
         var incomesDataSet: ILineChartDataSet = LineChartDataSet()
         var incomesEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
         
-        incomesEntries.append(ChartDataEntry(value: 10.2, xIndex: 0))
-        incomesEntries.append(ChartDataEntry(value: 8.1, xIndex: 1))
-        incomesEntries.append(ChartDataEntry(value: 10.6, xIndex: 2))
-        incomesEntries.append(ChartDataEntry(value: 9.9, xIndex: 3))
-        incomesEntries.append(ChartDataEntry(value: 5.0, xIndex: 4))
+        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[4], xIndex: 0))
+        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[5], xIndex: 1))
+        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[6], xIndex: 2))
         
         incomesDataSet = LineChartDataSet(yVals: incomesEntries, label: "Incomes")
         
         incomesDataSet.lineWidth = 3.0
         incomesDataSet.fillAlpha = 1
-    
         
         incomesDataSets.append(incomesDataSet)
         
-        
-        xVals.append("Jan")
-        xVals.append("Feb")
-        xVals.append("Mar")
-        xVals.append("Apr")
         xVals.append("May")
+        xVals.append("Jun")
+        xVals.append("Jul")
         
         incomesData = LineChartData(xVals: xVals, dataSets: incomesDataSets)
         
         chart.data = incomesData
-        
     }
     
-    func initViews(){
+    private func loadStatusData() {
+        
+        guard let incomes = self.status.incomes as StatusType? else {
+            print("NO SE HALLO INCOMES")
+            return
+        }
+        
+        for incomeCalculatedUnit in incomes.calculatedUnits! {
+            
+            if let date = incomeCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
+                print("MES: \(date.month)")
+                
+                self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
+                
+            }
+        }
+    }
+    
+    func initViews() {
+    
+    }
+    
+    func updateViewsWithStatus() {
+        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (self.status.incomes?.balance)!)
     }
     
     private func setIndicatorOnLeft() {

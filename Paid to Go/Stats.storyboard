@@ -38,15 +38,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UID-nS-5us" userLabel="Indicator View">
                                 <rect key="frame" x="0.0" y="101" width="320" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_pools_btn_greenblue" translatesAutoresizingMaskIntoConstraints="NO" id="zbx-fW-LaQ" userLabel="Indicator Image View">
-                                        <rect key="frame" x="0.0" y="43" width="91" height="5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pools_btn_greenblue" translatesAutoresizingMaskIntoConstraints="NO" id="zbx-fW-LaQ" userLabel="Indicator Image View">
+                                        <rect key="frame" x="0.0" y="43" width="92" height="5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="wSN-ke-NL7"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arR-ph-QoV" userLabel="Incomes View">
-                                        <rect key="frame" x="0.0" y="0.0" width="91" height="48"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arR-ph-QoV" userLabel="Incomes View">
+                                        <rect key="frame" x="0.0" y="0.0" width="92" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GnF-R7-JwZ" userLabel="Open Indicator Point">
                                                 <rect key="frame" x="12" y="22" width="4" height="4"/>
@@ -57,7 +57,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Incomes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYV-WO-9dk" userLabel="Open Pools Label">
-                                                <rect key="frame" x="20" y="16" width="55" height="17"/>
+                                                <rect key="frame" x="20" y="15" width="56" height="20"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -76,8 +76,8 @@
                                             <outletCollection property="gestureRecognizers" destination="STG-8i-FUB" appends="YES" id="4uW-aG-s8j"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDi-g2-7M2" userLabel="Gas View">
-                                        <rect key="frame" x="107" y="0.0" width="105" height="48"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDi-g2-7M2" userLabel="Gas View">
+                                        <rect key="frame" x="108" y="0.0" width="104" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctn-2C-8Gv" userLabel="Open Indicator Point">
                                                 <rect key="frame" x="12" y="22" width="4" height="4"/>
@@ -88,7 +88,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Saved Gas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A97-bG-iZv" userLabel="Open Pools Label">
-                                                <rect key="frame" x="20" y="16" width="69" height="17"/>
+                                                <rect key="frame" x="20" y="15" width="68" height="20"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -107,8 +107,8 @@
                                             <outletCollection property="gestureRecognizers" destination="eq7-VS-Rjc" appends="YES" id="KnE-e9-oK2"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cip-eM-VpN" userLabel="Carbon View">
-                                        <rect key="frame" x="215" y="0.0" width="105" height="48"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cip-eM-VpN" userLabel="Carbon View">
+                                        <rect key="frame" x="214" y="0.0" width="106" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waq-IG-0Qc" userLabel="Open Indicator Point">
                                                 <rect key="frame" x="12" y="22" width="4" height="4"/>
@@ -119,7 +119,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Carbon off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wns-0X-BKL" userLabel="Open Pools Label">
-                                                <rect key="frame" x="20" y="16" width="69" height="17"/>
+                                                <rect key="frame" x="20" y="15" width="70" height="20"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -158,26 +158,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxx-8p-ihV" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01/01/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-SI-CTB" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="11" width="68" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-SI-CTB" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="46" y="10" width="67" height="18"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01/02/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F01-ar-gLr" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="245" y="11" width="69" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/02/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F01-ar-gLr" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="247" y="10" width="67" height="18"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-JR-See" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="222" y="11" width="19" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-JR-See" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="225" y="10" width="18" height="18"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgz-lu-jad" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="6" y="11" width="35" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgz-lu-jad" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="10" width="36" height="18"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -198,17 +198,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKP-8L-0ML" userLabel="Footer View">
                                 <rect key="frame" x="0.0" y="511" width="320" height="57"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-9H-dId">
-                                        <rect key="frame" x="118" y="11" width="85" height="36"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-9H-dId">
+                                        <rect key="frame" x="121" y="9" width="79" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total Earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-Z0-1HD" userLabel="Total Earned">
-                                                <rect key="frame" x="0.0" y="0.0" width="85" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-Z0-1HD" userLabel="Total Earned">
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="18"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="U$D 56.43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZ9-RJ-6ol" userLabel="Amount Label">
-                                                <rect key="frame" x="0.0" y="16" width="85" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$D 56.43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZ9-RJ-6ol" userLabel="Amount Label">
+                                                <rect key="frame" x="0.0" y="18" width="79" height="22"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                 <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -311,6 +311,10 @@
                         <outlet property="indicatorImageView" destination="zbx-fW-LaQ" id="6Fe-jS-1Pb"/>
                         <outlet property="indicatorLeadingConstraint" destination="bfQ-aE-VQ0" id="Oxw-2u-NhC"/>
                         <outlet property="indicatorWidthConstraint" destination="Sck-xn-LLA" id="Cto-mz-dGR"/>
+                        <outlet property="lblAmountEarned" destination="IZ9-RJ-6ol" id="S8Y-sS-WtC"/>
+                        <outlet property="lblFromdate" destination="DYU-SI-CTB" id="NSy-lz-GII"/>
+                        <outlet property="lblTodate" destination="F01-ar-gLr" id="IwT-Pi-zXP"/>
+                        <outlet property="lblTotalEarned" destination="d6c-Z0-1HD" id="vCU-9L-3Eg"/>
                         <outlet property="scrollView" destination="Nkf-4r-ANC" id="mq3-xB-CdA"/>
                     </connections>
                 </viewController>

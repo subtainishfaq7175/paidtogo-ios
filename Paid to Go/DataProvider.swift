@@ -35,6 +35,9 @@ class DataProvider : DataProviderService {
         
         case "USERS_UNSUCCESSFUL":
             return "error"
+
+        case "MYSTATUS_UNSUCCESSFUL":
+            return "error_status".localize()
             
         default:
             return "error_default".localize() + ": " + error
@@ -309,7 +312,6 @@ class DataProvider : DataProviderService {
                     completion(leaderboard: nil, error: self.getError(error!))
                     return
                 }
-                
             }
         }
     }
@@ -376,7 +378,37 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func getStatus() {}
+    func getStatus(completion: (result: Status?, error: String?) -> Void) {
+        
+        guard let accessToken = User.currentUser?.accessToken else {
+            return
+        }
+        
+        print("ACCESS TOKEN: \(accessToken)")
+        
+        let params = [
+        
+            "access_token" : accessToken
+            
+        ]
+        
+        ConnectionManager.sharedInstance.getMyStatus(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                                
+                let status = Mapper<Status>().map(responseValue)
+                
+                completion(result: status, error: nil)
+                return
+                
+            } else {
+                
+                completion(result: nil, error: self.getError(error!))
+                return
+            }
+
+        }
+    }
 }
 
 protocol DataProviderService {
