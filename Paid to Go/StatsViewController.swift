@@ -11,6 +11,7 @@ import Charts
 import SwiftDate
 
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
+    
     // MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -57,6 +58,40 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
     ]
     
+    var arrTotalSavedGasByMonth = [
+        
+        0.0, // "Jan"
+        0.0, // "Feb"
+        0.0, // "Mar"
+        0.0, // "Apr"
+        0.0, // "May"
+        0.0, // "Jun"
+        0.0, // "Jul"
+        0.0, // "Aug"
+        0.0, // "Sep"
+        0.0, // "Oct"
+        0.0, // "Nov"
+        0.0, // "Dic"
+        
+    ]
+    
+    var arrTotalCarbonOffByMonth = [
+        
+        0.0, // "Jan"
+        0.0, // "Feb"
+        0.0, // "Mar"
+        0.0, // "Apr"
+        0.0, // "May"
+        0.0, // "Jun"
+        0.0, // "Jul"
+        0.0, // "Aug"
+        0.0, // "Sep"
+        0.0, // "Oct"
+        0.0, // "Nov"
+        0.0, // "Dic"
+        
+    ]
+    
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
@@ -86,7 +121,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        initViews()
     }
     
     override func viewDidLoad() {
@@ -115,16 +149,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
     private func initCharts() {
-        initChart(incomesChartView)
+        loadStatusIncomesData()
+        loadStatusSavedGasData()
+        loadStatusCarbonOffData()
         
-        
+        initChartIncomes(incomesChartView)
+        initChartSavedGas(gasChartView)
+        initChartCarbonOff(carbonChartview)
     }
     
-    private func initChart(chart: LineChartView) {
+    private func initChartIncomes(chart: LineChartView) {
         
         chart.userInteractionEnabled = false
-        
-        loadStatusData()
         
         let incomesData: LineChartData?
         var incomesDataSets: [IChartDataSet] = [IChartDataSet]()
@@ -152,26 +188,103 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         chart.data = incomesData
     }
     
-    private func loadStatusData() {
+    private func initChartSavedGas(chart: LineChartView) {
+        
+        chart.userInteractionEnabled = false
+        
+        let gasData: LineChartData?
+        var gasDataSets: [IChartDataSet] = [IChartDataSet]()
+        var gasDataSet: ILineChartDataSet = LineChartDataSet()
+        var gasEntries: [ChartDataEntry] = [ChartDataEntry]()
+        var xVals: [String] = [String]()
+        
+        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[4], xIndex: 0))
+        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[5], xIndex: 1))
+        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[6], xIndex: 2))
+        
+        gasDataSet = LineChartDataSet(yVals: gasEntries, label: "Saved Gas")
+        
+        gasDataSet.lineWidth = 3.0
+        gasDataSet.fillAlpha = 1
+        
+        gasDataSets.append(gasDataSet)
+        
+        xVals.append("May")
+        xVals.append("Jun")
+        xVals.append("Jul")
+        
+        gasData = LineChartData(xVals: xVals, dataSets: gasDataSets)
+        
+        chart.data = gasData
+    }
+    
+    private func initChartCarbonOff(chart: LineChartView) {
+        
+        chart.userInteractionEnabled = false
+        
+        let carbonData: LineChartData?
+        var carbonDataSets: [IChartDataSet] = [IChartDataSet]()
+        var carbonDataSet: ILineChartDataSet = LineChartDataSet()
+        var carbonEntries: [ChartDataEntry] = [ChartDataEntry]()
+        var xVals: [String] = [String]()
+        
+        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[4], xIndex: 0))
+        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[5], xIndex: 1))
+        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[6], xIndex: 2))
+        
+        carbonDataSet = LineChartDataSet(yVals: carbonEntries, label: "Carbon Off")
+        
+        carbonDataSet.lineWidth = 3.0
+        carbonDataSet.fillAlpha = 1
+        
+        carbonDataSets.append(carbonDataSet)
+        
+        xVals.append("May")
+        xVals.append("Jun")
+        xVals.append("Jul")
+        
+        carbonData = LineChartData(xVals: xVals, dataSets: carbonDataSets)
+        
+        chart.data = carbonData
+    }
+    
+    private func loadStatusIncomesData() {
         
         guard let incomes = self.status.incomes as StatusType? else {
-            print("NO SE HALLO INCOMES")
             return
         }
         
         for incomeCalculatedUnit in incomes.calculatedUnits! {
-            
             if let date = incomeCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
-                print("MES: \(date.month)")
-                
                 self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
-                
             }
         }
     }
     
-    func initViews() {
+    private func loadStatusSavedGasData() {
+        
+        guard let savedGas = self.status.savedGas as StatusType? else {
+            return
+        }
+        
+        for savedGasCalculatedUnit in savedGas.calculatedUnits! {
+            if let date = savedGasCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
+                self.arrTotalIncomeByMonth[date.month-1] += savedGasCalculatedUnit.value!
+            }
+        }
+    }
     
+    private func loadStatusCarbonOffData() {
+        
+        guard let carbonOff = self.status.carbonOff as StatusType? else {
+            return
+        }
+        
+        for carbonOffCalculatedUnit in carbonOff.calculatedUnits! {
+            if let date = carbonOffCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
+                self.arrTotalIncomeByMonth[date.month-1] += carbonOffCalculatedUnit.value!
+            }
+        }
     }
     
     func updateViewsWithStatus() {
@@ -219,21 +332,38 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
+    private func updateFooterViewForIncomes() {
+        self.lblTotalEarned.text = "Total Earned"
+        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (self.status.incomes?.balance)!)
+    }
+    
+    private func updateFooterViewForGas() {
+        self.lblTotalEarned.text = "Saved Gas"
+        self.lblAmountEarned.text = "GAL " + String(format: "%.2f", (self.status.savedGas?.balance)!)
+    }
+    
+    private func updateFooterViewForCarbon() {
+        self.lblTotalEarned.text = "Total Carbon Off"
+        self.lblAmountEarned.text = String(format: "%.2f", (self.status.carbonOff?.balance)!)
+    }
     
     // MARK: - Actions
     
     @IBAction func incomesAction(sender: AnyObject) {
         moveIndicatorToLeft()
+        updateFooterViewForIncomes()
         self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     @IBAction func gasAction(sender: AnyObject) {
         moveIndicatorToCenter()
+        updateFooterViewForGas()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
     }
     
     @IBAction func carbonAction(sender: AnyObject) {
         moveIndicatorToRight()
+        updateFooterViewForCarbon()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
     }
     
