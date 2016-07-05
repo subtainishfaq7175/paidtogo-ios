@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VJb-EX-L8A" customClass="CustomDatePickerView" customModule="Paid_to_Go" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTL-rh-5x9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="E6m-WM-P8g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                    <color key="textColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBW-Lq-a5y" userLabel="Close">
+                    <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="o5L-Xu-FOR"/>
+                    </constraints>
+                    <state key="normal" image="ic_close"/>
+                    <connections>
+                        <action selector="btnCancelPressed:" destination="VJb-EX-L8A" eventType="touchUpInside" id="rOC-V3-ZTi"/>
+                    </connections>
+                </button>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pNx-pz-Snl">
+                    <rect key="frame" x="0.0" y="44" width="320" height="192"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <date key="date" timeIntervalSinceReferenceDate="489354948.49903202">
+                        <!--2016-07-04 19:55:48 +0000-->
+                    </date>
+                    <locale key="locale" localeIdentifier="en_US"/>
+                </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQC-QT-ghm">
+                    <rect key="frame" x="0.0" y="236" width="320" height="44"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="gyA-6S-erb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                    <state key="normal" title="Ok">
+                        <color key="titleColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnFilterPressed:" destination="VJb-EX-L8A" eventType="touchUpInside" id="j2j-we-DT4"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pNx-pz-Snl" firstAttribute="top" secondItem="JBW-Lq-a5y" secondAttribute="bottom" id="03N-CR-0q9"/>
+                <constraint firstAttribute="trailing" secondItem="RQC-QT-ghm" secondAttribute="trailing" id="147-I0-cdO"/>
+                <constraint firstAttribute="trailing" secondItem="PTL-rh-5x9" secondAttribute="trailing" id="9cX-hR-Uhx"/>
+                <constraint firstAttribute="trailing" secondItem="pNx-pz-Snl" secondAttribute="trailing" id="HLp-Yz-c6D"/>
+                <constraint firstItem="PTL-rh-5x9" firstAttribute="top" secondItem="VJb-EX-L8A" secondAttribute="top" id="Hbt-99-cSd"/>
+                <constraint firstItem="pNx-pz-Snl" firstAttribute="leading" secondItem="VJb-EX-L8A" secondAttribute="leading" id="JZZ-Zt-tuL"/>
+                <constraint firstItem="RQC-QT-ghm" firstAttribute="top" secondItem="pNx-pz-Snl" secondAttribute="bottom" id="Lgr-vx-zVY"/>
+                <constraint firstItem="pNx-pz-Snl" firstAttribute="top" secondItem="PTL-rh-5x9" secondAttribute="bottom" id="O14-mJ-XJd"/>
+                <constraint firstAttribute="trailing" secondItem="JBW-Lq-a5y" secondAttribute="trailing" id="Yes-OY-kUU"/>
+                <constraint firstItem="JBW-Lq-a5y" firstAttribute="top" secondItem="VJb-EX-L8A" secondAttribute="top" id="f7E-3p-tvy"/>
+                <constraint firstItem="RQC-QT-ghm" firstAttribute="leading" secondItem="VJb-EX-L8A" secondAttribute="leading" id="g45-E0-va2"/>
+                <constraint firstAttribute="bottom" secondItem="RQC-QT-ghm" secondAttribute="bottom" id="i7p-il-PM1"/>
+                <constraint firstItem="PTL-rh-5x9" firstAttribute="leading" secondItem="VJb-EX-L8A" secondAttribute="leading" id="mzm-4o-TU0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnClose" destination="JBW-Lq-a5y" id="BsG-SU-FRf"/>
+                <outlet property="lblTitle" destination="PTL-rh-5x9" id="ojq-Yz-E7K"/>
+            </connections>
+            <point key="canvasLocation" x="315" y="107"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_close" width="19" height="19"/>
+    </resources>
+</document>

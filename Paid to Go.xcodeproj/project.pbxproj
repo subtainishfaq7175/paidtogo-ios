@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
 		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
+		4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */; };
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
 		4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2151D2A959100EF35F7 /* StatusType.swift */; };
 		4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */; };
+		4D97C21A1D2AF55000EF35F7 /* CustomDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */; };
+		4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
 		4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */; };
@@ -105,10 +108,13 @@
 		4D2CEE2F1D1058A400009843 /* Paid to Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Paid to Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D2CEE301D1058A500009843 /* CMDocumentShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDocumentShare.h; sourceTree = "<group>"; };
 		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
+		4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFilterViewController.swift; sourceTree = "<group>"; };
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4D97C2151D2A959100EF35F7 /* StatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
 		4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedUnit.swift; sourceTree = "<group>"; };
+		4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDatePicker.xib; sourceTree = "<group>"; };
+		4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePickerView.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -569,6 +575,9 @@
 			children = (
 				52B3E0E51CA326A9000ED657 /* Stats.storyboard */,
 				52B3E0E91CA326FC000ED657 /* StatsViewController.swift */,
+				4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */,
+				4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */,
+				4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */,
 			);
 			name = Stats;
 			sourceTree = "<group>";
@@ -652,6 +661,7 @@
 				52444B731CDA6EF900934656 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				52B3E0D91CA2E59C000ED657 /* Balance.storyboard in Resources */,
 				52444B751CDA6EF900934656 /* OpenSans-Light.ttf in Resources */,
+				4D97C21A1D2AF55000EF35F7 /* CustomDatePicker.xib in Resources */,
 				52A3743D1C9844A900E3A4A5 /* LaunchScreen.storyboard in Resources */,
 				5234D6FC1C9C41EE00910765 /* MenuItems.plist in Resources */,
 				52B3E0D41CA2D2D2000ED657 /* Settings.storyboard in Resources */,
@@ -736,6 +746,7 @@
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
+				4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */,
 				4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */,
 				528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
@@ -743,6 +754,7 @@
 				522994ED1CC15A4400C589C6 /* WDLeaderboardsViewController.swift in Sources */,
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
+				4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */,
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,
 				4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,

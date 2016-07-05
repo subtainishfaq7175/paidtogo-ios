@@ -27,6 +27,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     @IBOutlet weak var lblFromdate: LocalizableLabel!
     @IBOutlet weak var lblTodate: LocalizableLabel!
     
+    @IBOutlet weak var textFieldFromDate: UITextField!
+    
     @IBOutlet weak var lblTotalEarned: UILabel!
     @IBOutlet weak var lblAmountEarned: UILabel!
     
@@ -36,10 +38,12 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     // MARK: - Variables and Constants
     
+    let kDateFilterSegueIdentifier = "dateFilterSegue"
+    
+//    var datePickerView : CustomDatePickerView?
+    
     var lastContentOffset : CGFloat = 0
     var status = Status()
-    
-//    var dictTotalIncomeByMonth : Dictionary<String,Double> = Dictionary<String,Double>()
     
     var arrTotalIncomeByMonth = [
     
@@ -101,6 +105,11 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.title = "menu_stats".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
+        
+        let filterImage = UIImage(named: "ic_filter")
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+        
         customizeHeaderView()
         
         self.showProgressHud("Loading status...")
@@ -127,7 +136,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.scrollView.delegate = self
-//        self.initCharts()
     }
     
     // MARK: - Functions
@@ -146,6 +154,10 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             options: [])
         let todayThreeMonthsBackString = todayThreeMonthsBack!.toString(DateFormat.Custom("dd/MM/yyyy"))
         self.lblFromdate.text = todayThreeMonthsBackString
+        
+//        self.datePickerView = CustomDatePickerView.instanceFromNib()
+//        self.datePickerView?.delegate = self
+//        self.textFieldFromDate.inputView = self.datePickerView
     }
     
     private func initCharts() {
@@ -367,6 +379,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
     }
     
+    @objc private func btnFilterSelected() {
+        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
+    }
     
     // MARK: UIScrollViewDelegate
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
@@ -424,6 +439,17 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
 }
+
+//extension StatsViewController : CustomDatePickerViewDelegate {
+//    
+//    func userDidPressBtnCancel() {
+//        self.textFieldFromDate.resignFirstResponder()
+//    }
+//    
+//    func userDidPressBtnFilter() {
+//        self.textFieldFromDate.resignFirstResponder()
+//    }
+//}
 
 //extension UIScrollView {
 //    var currentPage: Int {
