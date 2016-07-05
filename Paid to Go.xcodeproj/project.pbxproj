@@ -10,6 +10,7 @@
 		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
 		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
 		4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */; };
+		4D63E17F1D2C3B9300E066D7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */; };
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
 		4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2151D2A959100EF35F7 /* StatusType.swift */; };
@@ -109,6 +110,7 @@
 		4D2CEE301D1058A500009843 /* CMDocumentShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDocumentShare.h; sourceTree = "<group>"; };
 		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
 		4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFilterViewController.swift; sourceTree = "<group>"; };
+		4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4D97C2151D2A959100EF35F7 /* StatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				52D5B1131CAD798100E0BCE1 /* String+Localizable.swift */,
 				4DCD352C1D21624500A21739 /* Array+Extensions.swift */,
 				4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */,
+				4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */,
 				7C039DAA1CE216C100C7DED4 /* Balance.swift in Sources */,
 				5210C7561CAAC615002B4DF3 /* ActivityActionCell.swift in Sources */,
+				4D63E17F1D2C3B9300E066D7 /* String+Extensions.swift in Sources */,
 				52B982351CB3146100706DCC /* WellDoneViewController.swift in Sources */,
 				524911941CAC126500D6E763 /* DummyDataProvider.swift in Sources */,
 				52D5B1141CAD798100E0BCE1 /* String+Localizable.swift in Sources */,

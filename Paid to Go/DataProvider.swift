@@ -8,7 +8,7 @@
 
 import Foundation
 import ObjectMapper
-
+import SwiftDate
 
 class DataProvider : DataProviderService {
     
@@ -355,9 +355,9 @@ class DataProvider : DataProviderService {
  
         let params = [
             
-            "access_token" : accessToken,
-            "pool_id" : "4",
-            "users_id_array" : userIDString
+            "access_token"  : accessToken,
+            "pool_id"       : "4",
+            "users_id_array": userIDString
         ]
         
         print("UserIDs : \(userIDString)")
@@ -407,6 +407,41 @@ class DataProvider : DataProviderService {
                 return
             }
 
+        }
+    }
+    
+    func getStatusWithTimeInterval(fromDate:NSDate, toDate:NSDate, completion: (result: Status?, error: String?) -> Void) {
+        
+        guard let accessToken = User.currentUser?.accessToken else {
+            return
+        }
+        
+        guard let fromDateString = fromDate.toString(DateFormat.Custom("yyyy-MM-dd")) else { return }
+        guard let toDateString = toDate.toString(DateFormat.Custom("yyyy-MM-dd")) else { return }
+                
+        let params = [
+            
+            "access_token"      : accessToken,
+            "start_date_time"   : fromDateString,
+            "end_date_time"     : toDateString
+            
+        ]
+        
+        ConnectionManager.sharedInstance.getMyStatus(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let status = Mapper<Status>().map(responseValue)
+                
+                completion(result: status, error: nil)
+                return
+                
+            } else {
+                
+                completion(result: nil, error: self.getError(error!))
+                return
+            }
+            
         }
     }
 }

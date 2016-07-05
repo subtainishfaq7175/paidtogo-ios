@@ -44,6 +44,9 @@
                         <!--2016-07-04 19:55:48 +0000-->
                     </date>
                     <locale key="locale" localeIdentifier="en_US"/>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="VJb-EX-L8A" eventType="valueChanged" id="vPe-e3-uBG"/>
+                    </connections>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQC-QT-ghm">
                     <rect key="frame" x="0.0" y="236" width="320" height="44"/>
@@ -80,6 +83,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btnClose" destination="JBW-Lq-a5y" id="BsG-SU-FRf"/>
+                <outlet property="datePicker" destination="pNx-pz-Snl" id="0aK-lv-ZWX"/>
                 <outlet property="lblTitle" destination="PTL-rh-5x9" id="ojq-Yz-E7K"/>
             </connections>
             <point key="canvasLocation" x="315" y="107"/>

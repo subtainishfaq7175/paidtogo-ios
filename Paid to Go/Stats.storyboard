@@ -167,13 +167,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxx-8p-ihV" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01/01/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-SI-CTB" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-SI-CTB" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="44" y="11" width="67" height="16"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01/02/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F01-ar-gLr" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F01-ar-gLr" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="247" y="11" width="67" height="16"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,24 +191,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqY-a2-bik" userLabel="Txt Fromdate">
-                                        <rect key="frame" x="44" y="9" width="67" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="lis-Gu-UgI"/>
-                                            <constraint firstAttribute="width" constant="67" id="maQ-0n-axT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="F01-ar-gLr" firstAttribute="leading" secondItem="Hrf-JR-See" secondAttribute="trailing" constant="4" id="1W6-FZ-lCb"/>
-                                    <constraint firstItem="lqY-a2-bik" firstAttribute="leading" secondItem="xgz-lu-jad" secondAttribute="trailing" constant="4" id="1bC-1P-93P"/>
                                     <constraint firstItem="xgz-lu-jad" firstAttribute="leading" secondItem="Nxx-8p-ihV" secondAttribute="leading" constant="6" id="4HZ-NP-6f1"/>
                                     <constraint firstItem="DYU-SI-CTB" firstAttribute="leading" secondItem="xgz-lu-jad" secondAttribute="trailing" constant="4" id="9dy-oF-dli"/>
                                     <constraint firstAttribute="trailing" secondItem="F01-ar-gLr" secondAttribute="trailing" constant="6" id="Ccq-Pe-v6d"/>
-                                    <constraint firstItem="lqY-a2-bik" firstAttribute="centerY" secondItem="Nxx-8p-ihV" secondAttribute="centerY" id="J7W-zY-kUa"/>
                                     <constraint firstItem="DYU-SI-CTB" firstAttribute="centerY" secondItem="Nxx-8p-ihV" secondAttribute="centerY" id="V1c-yM-E2L"/>
                                     <constraint firstItem="F01-ar-gLr" firstAttribute="centerY" secondItem="Nxx-8p-ihV" secondAttribute="centerY" id="XCY-uc-2Jl"/>
                                     <constraint firstItem="Hrf-JR-See" firstAttribute="centerY" secondItem="Nxx-8p-ihV" secondAttribute="centerY" id="hQP-3d-Gjn"/>
@@ -336,7 +325,6 @@
                         <outlet property="lblTodate" destination="F01-ar-gLr" id="IwT-Pi-zXP"/>
                         <outlet property="lblTotalEarned" destination="d6c-Z0-1HD" id="vCU-9L-3Eg"/>
                         <outlet property="scrollView" destination="Nkf-4r-ANC" id="mq3-xB-CdA"/>
-                        <outlet property="textFieldFromDate" destination="lqY-a2-bik" id="dA7-iZ-9Vb"/>
                         <segue destination="Yqa-D1-r0D" kind="presentation" identifier="dateFilterSegue" id="Hpm-S7-XlT"/>
                     </connections>
                 </viewController>

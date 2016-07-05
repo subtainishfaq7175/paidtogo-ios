@@ -10,6 +10,46 @@ import UIKit
 import Charts
 import SwiftDate
 
+enum Notifications {
+    static let DatesUpdated = "notification_user_updated_dates"
+}
+
+enum Stats {
+    case Incomes
+    case SavedGas
+    case CarbonOff
+}
+
+enum Month : Int {
+    case Jan = 0
+    case Feb
+    case Mar
+    case Apr
+    case May
+    case Jun
+    case Jul
+    case Aug
+    case Sep
+    case Oct
+    case Nov
+    case Dic
+}
+
+enum MonthNames : String {
+    case Jan = "Jan"
+    case Feb = "Feb"
+    case Mar = "Mar"
+    case Apr = "Apr"
+    case May = "May"
+    case Jun = "Jun"
+    case Jul = "Jul"
+    case Aug = "Aug"
+    case Sep = "Sep"
+    case Oct = "Oct"
+    case Nov = "Nov"
+    case Dic = "Dic"
+}
+
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     // MARK: - Outlets
@@ -40,91 +80,28 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     let kDateFilterSegueIdentifier = "dateFilterSegue"
     
-//    var datePickerView : CustomDatePickerView?
-    
     var lastContentOffset : CGFloat = 0
     var status = Status()
     
-    var arrTotalIncomeByMonth = [
+    // We use this boolean to verify if the user selected custom dates in DateFilterViewController, and we must reload the stats via API call.
+    var shouldReloadStats = false
     
-        0.0, // "Jan"
-        0.0, // "Feb"
-        0.0, // "Mar"
-        0.0, // "Apr"
-        0.0, // "May"
-        0.0, // "Jun"
-        0.0, // "Jul"
-        0.0, // "Aug"
-        0.0, // "Sep"
-        0.0, // "Oct"
-        0.0, // "Nov"
-        0.0, // "Dic"
-        
-    ]
+    var newFromDate : NSDate?
+    var newToDate : NSDate?
     
-    var arrTotalSavedGasByMonth = [
-        
-        0.0, // "Jan"
-        0.0, // "Feb"
-        0.0, // "Mar"
-        0.0, // "Apr"
-        0.0, // "May"
-        0.0, // "Jun"
-        0.0, // "Jul"
-        0.0, // "Aug"
-        0.0, // "Sep"
-        0.0, // "Oct"
-        0.0, // "Nov"
-        0.0, // "Dic"
-        
-    ]
-    
-    var arrTotalCarbonOffByMonth = [
-        
-        0.0, // "Jan"
-        0.0, // "Feb"
-        0.0, // "Mar"
-        0.0, // "Apr"
-        0.0, // "May"
-        0.0, // "Jun"
-        0.0, // "Jul"
-        0.0, // "Aug"
-        0.0, // "Sep"
-        0.0, // "Oct"
-        0.0, // "Nov"
-        0.0, // "Dic"
-        
-    ]
+    var arrTotalIncomeByMonth = [Double](count: 11, repeatedValue: 0.0)
+    var arrTotalSavedGasByMonth = [Double](count: 11, repeatedValue: 0.0)
+    var arrTotalCarbonOffByMonth = [Double](count: 11, repeatedValue: 0.0)
     
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarVisible(true)
-        self.title = "menu_stats".localize()
-        setNavigationBarGreen()
-        customizeNavigationBarWithMenu()
+        self.customizeNavigationBar()
         
-        let filterImage = UIImage(named: "ic_filter")
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
-        self.navigationItem.rightBarButtonItem = rightButtonItem
-        
-        customizeHeaderView()
-        
-        self.showProgressHud("Loading status...")
-        DataProvider.sharedInstance.getStatus { (result, error) in
-            self.dismissProgressHud()
-            
-            if let error = error {
-                self.showAlert(error)
-                self.navigationController?.popViewControllerAnimated(true)
-            } else {
-                
-                self.status = result!
-                self.initCharts()
-                self.updateViewsWithStatus()
-            }
+        if shouldReloadStats {
+            self.reloadStatsWithCustomDates()
         }
     }
     
@@ -136,9 +113,43 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.scrollView.delegate = self
+        self.loadStatsWithDefaultData()
+        self.registerForNotifications()
+    }
+    
+    // MARK: - Notifications
+    
+    private func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificationDatesUpdated), name: Notifications.DatesUpdated, object: nil)
+    }
+    
+    @objc private func notificationDatesUpdated(notification:NSNotification) {
+        
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        
+        guard let fromDate = userInfo["fromDate"] as? NSDate, toDate = userInfo["toDate"] as? NSDate else {
+            return
+        }
+        
+        shouldReloadStats = true
+        newFromDate = fromDate
+        newToDate = toDate
     }
     
     // MARK: - Functions
+    
+    private func customizeNavigationBar() {
+        setNavigationBarVisible(true)
+        self.title = "menu_stats".localize()
+        setNavigationBarGreen()
+        customizeNavigationBarWithMenu()
+        
+        let filterImage = UIImage(named: "ic_filter")
+        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+    }
     
     private func customizeHeaderView() {
         
@@ -149,115 +160,69 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         // Get the date that was 1hr before now
         let todayThreeMonthsBack = NSCalendar.currentCalendar().dateByAddingUnit(
             .Month,
-            value: -3,
+            value: -6,
             toDate: NSDate(),
             options: [])
         let todayThreeMonthsBackString = todayThreeMonthsBack!.toString(DateFormat.Custom("dd/MM/yyyy"))
         self.lblFromdate.text = todayThreeMonthsBackString
-        
-//        self.datePickerView = CustomDatePickerView.instanceFromNib()
-//        self.datePickerView?.delegate = self
-//        self.textFieldFromDate.inputView = self.datePickerView
     }
+    
+    // MARK: - Chart Configuration
     
     private func initCharts() {
         loadStatusIncomesData()
         loadStatusSavedGasData()
         loadStatusCarbonOffData()
         
-        initChartIncomes(incomesChartView)
-        initChartSavedGas(gasChartView)
-        initChartCarbonOff(carbonChartview)
+        initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes)
+        initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas)
+        initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff)
     }
     
-    private func initChartIncomes(chart: LineChartView) {
+    private func initChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats) {
         
         chart.userInteractionEnabled = false
         
-        let incomesData: LineChartData?
-        var incomesDataSets: [IChartDataSet] = [IChartDataSet]()
-        var incomesDataSet: ILineChartDataSet = LineChartDataSet()
-        var incomesEntries: [ChartDataEntry] = [ChartDataEntry]()
+        let chartData: LineChartData?
+        var chartDataSets: [IChartDataSet] = [IChartDataSet]()
+        var chartDataSet: ILineChartDataSet = LineChartDataSet()
+        var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
         
-        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[4], xIndex: 0))
-        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[5], xIndex: 1))
-        incomesEntries.append(ChartDataEntry(value: self.arrTotalIncomeByMonth[6], xIndex: 2))
+        // Default: 6 months info
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Feb.rawValue], xIndex: 0))
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Mar.rawValue], xIndex: 1))
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Apr.rawValue], xIndex: 2))
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.May.rawValue], xIndex: 3))
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Jun.rawValue], xIndex: 4))
+        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Jul.rawValue], xIndex: 5))
         
-        incomesDataSet = LineChartDataSet(yVals: incomesEntries, label: "Incomes")
+        switch stats {
+        case Stats.Incomes:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Incomes")
+            break
+        case Stats.SavedGas:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Saved Gas")
+            break
+        default:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Carbon Off")
+            break
+        }
         
-        incomesDataSet.lineWidth = 3.0
-        incomesDataSet.fillAlpha = 1
+        chartDataSet.lineWidth = 3.0
+        chartDataSet.fillAlpha = 1.0
+        chartDataSets.append(chartDataSet)
         
-        incomesDataSets.append(incomesDataSet)
+        xVals.append(MonthNames.Feb.rawValue)
+        xVals.append(MonthNames.Mar.rawValue)
+        xVals.append(MonthNames.Apr.rawValue)
+        xVals.append(MonthNames.May.rawValue)
+        xVals.append(MonthNames.Jun.rawValue)
+        xVals.append(MonthNames.Jul.rawValue)
         
-        xVals.append("May")
-        xVals.append("Jun")
-        xVals.append("Jul")
+        chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
         
-        incomesData = LineChartData(xVals: xVals, dataSets: incomesDataSets)
-        
-        chart.data = incomesData
-    }
-    
-    private func initChartSavedGas(chart: LineChartView) {
-        
-        chart.userInteractionEnabled = false
-        
-        let gasData: LineChartData?
-        var gasDataSets: [IChartDataSet] = [IChartDataSet]()
-        var gasDataSet: ILineChartDataSet = LineChartDataSet()
-        var gasEntries: [ChartDataEntry] = [ChartDataEntry]()
-        var xVals: [String] = [String]()
-        
-        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[4], xIndex: 0))
-        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[5], xIndex: 1))
-        gasEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[6], xIndex: 2))
-        
-        gasDataSet = LineChartDataSet(yVals: gasEntries, label: "Saved Gas")
-        
-        gasDataSet.lineWidth = 3.0
-        gasDataSet.fillAlpha = 1
-        
-        gasDataSets.append(gasDataSet)
-        
-        xVals.append("May")
-        xVals.append("Jun")
-        xVals.append("Jul")
-        
-        gasData = LineChartData(xVals: xVals, dataSets: gasDataSets)
-        
-        chart.data = gasData
-    }
-    
-    private func initChartCarbonOff(chart: LineChartView) {
-        
-        chart.userInteractionEnabled = false
-        
-        let carbonData: LineChartData?
-        var carbonDataSets: [IChartDataSet] = [IChartDataSet]()
-        var carbonDataSet: ILineChartDataSet = LineChartDataSet()
-        var carbonEntries: [ChartDataEntry] = [ChartDataEntry]()
-        var xVals: [String] = [String]()
-        
-        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[4], xIndex: 0))
-        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[5], xIndex: 1))
-        carbonEntries.append(ChartDataEntry(value: self.arrTotalSavedGasByMonth[6], xIndex: 2))
-        
-        carbonDataSet = LineChartDataSet(yVals: carbonEntries, label: "Carbon Off")
-        
-        carbonDataSet.lineWidth = 3.0
-        carbonDataSet.fillAlpha = 1
-        
-        carbonDataSets.append(carbonDataSet)
-        
-        xVals.append("May")
-        xVals.append("Jun")
-        xVals.append("Jul")
-        
-        carbonData = LineChartData(xVals: xVals, dataSets: carbonDataSets)
-        
-        chart.data = carbonData
+        chart.data = chartData
     }
     
     private func loadStatusIncomesData() {
@@ -267,9 +232,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
         
         for incomeCalculatedUnit in incomes.calculatedUnits! {
-            if let date = incomeCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
-                self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
+            
+            guard let dateString = incomeCalculatedUnit.date else {
+                continue
             }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
         }
     }
     
@@ -280,9 +254,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
         
         for savedGasCalculatedUnit in savedGas.calculatedUnits! {
-            if let date = savedGasCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
-                self.arrTotalIncomeByMonth[date.month-1] += savedGasCalculatedUnit.value!
+
+            guard let dateString = savedGasCalculatedUnit.date else {
+                continue
             }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            self.arrTotalSavedGasByMonth[date.month-1] += savedGasCalculatedUnit.value!
         }
     }
     
@@ -293,15 +276,29 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
         
         for carbonOffCalculatedUnit in carbonOff.calculatedUnits! {
-            if let date = carbonOffCalculatedUnit.date?.toDate(DateFormat.Custom("yyyy/MM/dd HH:mm:ss")) as NSDate? {
-                self.arrTotalIncomeByMonth[date.month-1] += carbonOffCalculatedUnit.value!
+            
+            guard let dateString = carbonOffCalculatedUnit.date else {
+                continue
             }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            self.arrTotalCarbonOffByMonth[date.month-1] += carbonOffCalculatedUnit.value!
         }
     }
     
-    func updateViewsWithStatus() {
-        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (self.status.incomes?.balance)!)
+    private func resetDataArrays() {
+        
+        self.arrTotalIncomeByMonth = [Double](count: self.arrTotalIncomeByMonth.count, repeatedValue: 0.0)
+        self.arrTotalSavedGasByMonth = [Double](count: self.arrTotalSavedGasByMonth.count, repeatedValue: 0.0)
+        self.arrTotalCarbonOffByMonth = [Double](count: self.arrTotalCarbonOffByMonth.count, repeatedValue: 0.0)
     }
+    
+    // MARK: - Screen Updates
     
     private func setIndicatorOnLeft() {
         indicatorLeadingConstraint.constant = incomesView.frame.origin.x + 8
@@ -316,7 +313,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     private func setIndicatorOnRight() {
         indicatorLeadingConstraint.constant = carbonView.frame.origin.x + 8
         
-        
     }
     
     private func moveIndicatorToRight() {
@@ -325,7 +321,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
-        
     }
     
     private func moveIndicatorToCenter(){
@@ -344,22 +339,82 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
+    private func updateHeaderViewWithNewDates() {
+        self.lblFromdate.text = newFromDate?.toString(DateFormat.Custom("dd/MM/yyyy"))
+        self.lblTodate.text = newToDate?.toString(DateFormat.Custom("dd/MM/yyyy"))
+    }
+    
     private func updateFooterViewForIncomes() {
         self.lblTotalEarned.text = "Total Earned"
-        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (self.status.incomes?.balance)!)
+        guard let balance = self.status.incomes?.balance else {
+            return
+        }
+        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (balance))
     }
     
     private func updateFooterViewForGas() {
         self.lblTotalEarned.text = "Saved Gas"
-        self.lblAmountEarned.text = "GAL " + String(format: "%.2f", (self.status.savedGas?.balance)!)
+        guard let balance = self.status.savedGas?.balance else {
+            return
+        }
+        self.lblAmountEarned.text = "GAL " + String(format: "%.2f", (balance))
     }
     
     private func updateFooterViewForCarbon() {
         self.lblTotalEarned.text = "Total Carbon Off"
-        self.lblAmountEarned.text = String(format: "%.2f", (self.status.carbonOff?.balance)!)
+        guard let balance = self.status.carbonOff?.balance else {
+            return
+        }
+        self.lblAmountEarned.text = String(format: "%.2f", (balance))
+    }
+    
+    // MARK: - API Calls
+    
+    private func loadStatsWithDefaultData() {
+        
+        self.showProgressHud("Loading status...")
+        DataProvider.sharedInstance.getStatus { (result, error) in
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                self.navigationController?.popViewControllerAnimated(true)
+                
+            } else {
+                self.status = result!
+                self.initCharts()
+                self.updateFooterViewForIncomes()
+                self.customizeHeaderView()
+            }
+        }
+    }
+    
+    private func reloadStatsWithCustomDates() {
+        
+        self.showProgressHud("Reloading status...")
+        DataProvider.sharedInstance.getStatusWithTimeInterval(newFromDate!, toDate: newToDate!) { (result, error) in
+            self.dismissProgressHud()
+            
+            if let error = error {
+                self.showAlert(error)
+                self.navigationController?.popViewControllerAnimated(true)
+            } else {
+                
+                self.status = result!
+                self.resetDataArrays()
+                self.initCharts()
+                self.updateHeaderViewWithNewDates()
+                self.updateFooterViewForIncomes()
+                self.shouldReloadStats = false
+            }
+        }
     }
     
     // MARK: - Actions
+    
+    @objc private func btnFilterSelected() {
+        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
+    }
     
     @IBAction func incomesAction(sender: AnyObject) {
         moveIndicatorToLeft()
@@ -379,19 +434,10 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
     }
     
-    @objc private func btnFilterSelected() {
-        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
-    }
+    // MARK: - UIScrollViewDelegate
     
-    // MARK: UIScrollViewDelegate
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.x;
-    }
-    
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if decelerate == false {
-//        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -434,29 +480,5 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         } else {
             
         }
-        
-        
     }
-    
 }
-
-//extension StatsViewController : CustomDatePickerViewDelegate {
-//    
-//    func userDidPressBtnCancel() {
-//        self.textFieldFromDate.resignFirstResponder()
-//    }
-//    
-//    func userDidPressBtnFilter() {
-//        self.textFieldFromDate.resignFirstResponder()
-//    }
-//}
-
-//extension UIScrollView {
-//    var currentPage: Int {
-//        return Int((self.contentOffset.x + (0.5*self.frame.size.width))/self.frame.width)+1
-//    }
-//
-//    func changeToPage(page: Int) {
-//        self.setContentOffset(CGPointMake(CGFloat(page) * self.frame.width, 0), animated: true)
-//    }
-//}
