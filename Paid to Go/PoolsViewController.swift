@@ -156,6 +156,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func getPools() {
         
+        print("PoolsViewController - getPools")
+        
         self.showProgressHud()
         
         DataProvider.sharedInstance.getOpenPools((poolType?.internalIdentifier)!) { (pools, error) in

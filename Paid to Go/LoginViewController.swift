@@ -45,8 +45,6 @@ class LoginViewController: ViewController {
         initViews()
     }
     
-    
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(false)
@@ -55,7 +53,14 @@ class LoginViewController: ViewController {
     }
     
     private func verifyIfThereIsCurrentUser() {
-        if let _ = User.currentUser {
+        if let user = User.currentUser {
+            guard let userID = user.userId else {
+                print("LoginViewController - USER ID NOT FOUND")
+                return
+            }
+
+            print("LoginViewController - El userID es: \(userID)")
+
             presentHomeViewControllerWithoutAnimation()
         }
     }

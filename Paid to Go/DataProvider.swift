@@ -151,6 +151,13 @@ class DataProvider : DataProviderService {
             if (error == nil) {
                 
                 let user = Mapper<User>().map(responseValue)
+                
+                guard let userID = user?.userId else {
+                    print("EL USERID VINO VACIO!!!")
+                    completion(user: nil, error: "Login with Facebook failed.")
+                    return
+                }
+                
                 completion(user: user, error: nil)
                 return
                 
@@ -228,7 +235,7 @@ class DataProvider : DataProviderService {
     func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         
         guard let userID = User.currentUser?.userId else {
-            print("USER ID NOT FOUND")
+            
             return
         }
         
