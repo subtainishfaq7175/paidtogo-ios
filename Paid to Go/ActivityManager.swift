@@ -13,8 +13,13 @@ import CoreLocation
 
 class ActivityManager: NSObject {
     
-    var trackNumber : Double = 0.0
     var activity : Activity = Activity()
+    
+    var poolId : String = ""
+    
+    var startDateToTrack : NSDate = NSDate()
+    
+    var trackNumber : Double = 0.0
     var milesCounter : Double = 0.0
     
     var endLatitude: Double = 0.0
@@ -25,6 +30,9 @@ class ActivityManager: NSObject {
     
     var initialLocation : CLLocation = CLLocation()
     var endLocation : CLLocation = CLLocation()
+    
+    var metersFromStartLocation : Double = 0.0
+    var distanceToFinalDestination : Double = 0.0
     
     /**
      *  Singleton
@@ -42,16 +50,8 @@ class ActivityManager: NSObject {
         return milesCounter
     }
     
-    func setMilesCounter() {
-        milesCounter += 1
-    }
-    
     func getTrackNumber() -> Double {
         return trackNumber
-    }
-    
-    func setTrackNumber() {
-        trackNumber += 0.05
     }
     
     func resetActivity() {
@@ -61,5 +61,12 @@ class ActivityManager: NSObject {
         
         startLatitude = 0.0
         startLongitude = 0.0
+        endLatitude = 0.0
+        endLongitude = 0.0
+        
+        metersFromStartLocation = 0.0
+        distanceToFinalDestination = 0.0
+        
+        poolId = ""
     }
 }

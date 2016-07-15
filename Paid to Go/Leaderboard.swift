@@ -46,7 +46,6 @@ public class Leaderboard: Mappable {
 		profilePicture <- map[kLeaderboardProfilePictureKey]
 		firstName <- map[kLeaderboardFirstNameKey]
 		place <- map[kLeaderboardPlaceKey]
-
     }
 
     /**

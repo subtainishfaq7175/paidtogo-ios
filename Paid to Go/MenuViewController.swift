@@ -46,13 +46,45 @@ class MenuViewController: ViewController {
         
         nameLabel.text = currentUser.fullName()
        
-        if let currentProfilePicture = currentUser.profilePicture {
+        if let currentProfilePicture = currentUser.profilePicture where currentUser.profilePicture?.characters.count > 0 {
             
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
-            
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .ShowNetworkActivity, completion: { (image, url, type, stage, error) in
+                
+                guard let img = image else {
+                    self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
+                    return
+                }
+                
+                self.profileImageView.image = img
+            })
+        } else {
+            self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userProfileUpdated), name: NotificationsHelper.UserProfileUpdated.rawValue, object: nil)
+    }
     
-
+    @objc private func userProfileUpdated() {
+        
+        let currentUser = User.currentUser!
+        
+        nameLabel.text = currentUser.fullName()
+        
+        if let currentProfilePicture = currentUser.profilePicture where currentUser.profilePicture?.characters.count > 0 {
+            
+            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .ShowNetworkActivity, completion: { (image, url, type, stage, error) in
+                
+                guard let img = image else {
+                    self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
+                    return
+                }
+                
+                self.profileImageView.image = img
+            })
+        } else {
+            self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool){
@@ -184,6 +216,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         //            return tableView.dequeueReusableCellWithIdentifier(MenuHeaderCell.identifier) as! MenuHeaderCell
         //        } else {
         let itemCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCell.identifier) as! MenuItemCell
+        
+//        let itemCell = MenuItemCell.deque(from: tableView)
         
         let menuItem = items[indexPath.row]
         

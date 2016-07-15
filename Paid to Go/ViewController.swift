@@ -159,7 +159,6 @@ class ViewController: UIViewController {
         case .Walk:
             let titleImage = UIImage(named: "ic_walkrun")
             navigationItem.titleView = UIImageView(image: titleImage)
-            
             break
         case .Bike:
             let titleImage = UIImage(named: "ic_bike")
@@ -176,7 +175,6 @@ class ViewController: UIViewController {
         default:
             break
         }
-        
     }
     
     func logoutAnimated() {
@@ -202,7 +200,6 @@ class ViewController: UIViewController {
             
                 self.showViewController(poolViewController, sender: sender)
         }
-        
     }
     
         

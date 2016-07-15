@@ -226,7 +226,7 @@ extension ConnectionManager {
                         return
                     }
                     
-                } else   if response.result.isFailure {
+                } else if response.result.isFailure {
                     
                     apiCompletion(responseValue: value, error: "error_connection")
                     

@@ -17,6 +17,8 @@ class PoolViewController: ViewController {
     
     internal let kWalkBackgroundImage = "pool_background_walk"
     internal let kRunBackgroundImage = "pool_background_bike"
+    internal let kTrainBackgroundImage = "pool_background_train"
+    internal let kCarPoolBackgroundImage = "pool_background_carpool"
     
     // MARK: - Outlets
     
@@ -36,7 +38,6 @@ class PoolViewController: ViewController {
     @IBOutlet weak var D: UILabel!
     @IBOutlet weak var d1: UILabel!
     @IBOutlet weak var angle: UILabel!
-    
     
     // MARK: - Variables and Constants
     
@@ -96,10 +97,12 @@ class PoolViewController: ViewController {
             self.circularProgressCenterYConstraint.constant = 0
         }
         
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+//        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         if type == .Walk && CMPedometer.isStepCountingAvailable() {
             self.stepCountLabel.hidden = false
+        } else {
+            self.stepCountLabel.hidden = true
         }
         
         var timerInterval = 0.0
@@ -153,6 +156,8 @@ class PoolViewController: ViewController {
         clearNavigationBarcolor()
         setPoolTitle(self.type!)
         
+        setPoolBackgroundImage(self.type!)
+        
         if type != PoolTypeEnum.Car {
         
             let switchImage = UIImage(named: "ic_pool_switch")
@@ -168,6 +173,29 @@ class PoolViewController: ViewController {
     
     private func initViews() {
         actionButtonView.round()
+    }
+    
+    private func setPoolBackgroundImage(type: PoolTypeEnum) {
+        switch type {
+        case .Walk:
+            let titleImage = UIImage(named: kWalkBackgroundImage)
+            self.backgroundImageView.image = titleImage
+            break
+        case .Bike:
+            let titleImage = UIImage(named: kRunBackgroundImage)
+            self.backgroundImageView.image = titleImage
+            break
+        case .Train:
+            let titleImage = UIImage(named: kTrainBackgroundImage)
+            self.backgroundImageView.image = titleImage
+            break
+        case .Car:
+            let titleImage = UIImage(named: kCarPoolBackgroundImage)
+            self.backgroundImageView.image = titleImage
+            break
+        default:
+            break
+        }
     }
     
     func startTracking() {
@@ -194,21 +222,19 @@ class PoolViewController: ViewController {
     
     private func endTracking() {
         
-        
         print(activity.startLatitude)
         print(activity.startLongitude)
         print(activity.endLatitude)
         print(activity.endLongitude)
         
-        // MOCK DATA
         activity.startLatitude = ActivityManager.sharedInstance.startLatitude
         activity.startLongitude = ActivityManager.sharedInstance.startLongitude
         activity.endLatitude = ActivityManager.sharedInstance.endLatitude
         activity.endLongitude = ActivityManager.sharedInstance.endLongitude
         
-        activity.milesTraveled = self.milesTraveled
-        activity.startDateTime = String(self.startDateToTrack)
-        activity.poolId = pool?.internalIdentifier
+        activity.milesTraveled = String(format: "%.2f", ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371) //self.milesTraveled
+        activity.startDateTime = String(ActivityManager.sharedInstance.startDateToTrack) //String(self.startDateToTrack)
+        activity.poolId = ActivityManager.sharedInstance.poolId //pool?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
         
         print(activity.toString())
@@ -246,9 +272,6 @@ class PoolViewController: ViewController {
     }
     
     @objc func testCircularProgress() {
-        
-        print("testCircularProgress\n____________________")
-        
         /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             //Do background work
@@ -270,27 +293,6 @@ class PoolViewController: ViewController {
             })
         }
         */
-        
-        ActivityManager.sharedInstance.setTrackNumber()
-        let trackNumber = ActivityManager.sharedInstance.getTrackNumber()
-        
-        let circularProgressAngle = trackNumber * 360
-        print("CIRCULAR PROGRESS ANGLE: \(circularProgressAngle)")
-        
-        self.circularProgressView.angle = circularProgressAngle
-        
-        if circularProgressAngle > 360.0 {
-            print("INVALIDATE TIMER")
-            self.timerTest.stop()
-            self.pauseButton.hidden = true
-            
-            self.circularProgressView.angle = 359.0
-        }
-        
-        ActivityManager.sharedInstance.setMilesCounter()
-        let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
-        self.progressLabel.text = String(format: "%.2f", milesCounter)
-        self.milesTraveled = String(format: "%.2f", milesCounter)
     }
     
     private func updatePedometer() {
@@ -352,8 +354,6 @@ class PoolViewController: ViewController {
     }
     
     func startQueriedPedometerUpdates() {
-        print("startQueriedPedometerUpdates")
-
         timerTest.start(timerTest.timer)
     }
     
@@ -450,13 +450,12 @@ class PoolViewController: ViewController {
         } else {
             type = PoolTypeEnum.Walk
             setPoolTitle(self.type!)
+            setPoolBackgroundImage(self.type!)
             self.backgroundImageView.image = UIImage(named: kWalkBackgroundImage)
             self.stepCountLabel.hidden = false
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
-//                    self.timerTest = Timer(interval: self.kWalkTimeUpdateSpeed, delegate: self)
-//                    self.timerTest.start(self.timerTest.timer)
                     self.pauseTracking()
             })
         }
@@ -469,13 +468,12 @@ class PoolViewController: ViewController {
         } else {
             type = PoolTypeEnum.Bike
             setPoolTitle(self.type!)
+            setPoolBackgroundImage(self.type!)
             self.backgroundImageView.image = UIImage(named: kRunBackgroundImage)
             self.stepCountLabel.hidden = true
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
-//                    self.timerTest = Timer(interval: self.kBikeTimeUpdateSpeed, delegate: self)
-//                    self.timerTest.start(self.timerTest.timer)
                     self.pauseTracking()
             })
         }
@@ -512,34 +510,32 @@ extension PoolViewController: CLLocationManagerDelegate {
             ActivityManager.sharedInstance.startLatitude = coord.latitude
             ActivityManager.sharedInstance.startLongitude = coord.longitude
             
-            self.initialLocation = locationObj
+            // INITIAL LOCATION
+            ActivityManager.sharedInstance.initialLocation = locationObj
             
-            distanceToFinalDestination = locationObj.distanceFromLocation(self.finalLocation) // d
+            // FINAL LOCATION
+            ActivityManager.sharedInstance.endLocation = CLLocation(latitude: ActivityManager.sharedInstance.endLatitude, longitude: ActivityManager.sharedInstance.endLongitude)
+            
+            ActivityManager.sharedInstance.distanceToFinalDestination = (ActivityManager.sharedInstance.initialLocation.distanceFromLocation(ActivityManager.sharedInstance.endLocation))
             
         } else {
             
-            let metersFromStartLocation = locationObj.distanceFromLocation(self.initialLocation!) // d1
+            ActivityManager.sharedInstance.metersFromStartLocation = locationObj.distanceFromLocation(ActivityManager.sharedInstance.initialLocation) // d1
             
-            print("DISTANCIA AL PTO DE PARTIDA: \(metersFromStartLocation)")
-            print("DISTANCIA AL PTO DE LLEGADA: \(distanceToFinalDestination)")
-            
-            self.milesTraveled = String(format: "%.2f", metersFromStartLocation * 0.000621371)
+            self.milesTraveled = String(format: "%.2f", ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
             self.progressLabel.text = milesTraveled
             
-            ActivityManager.sharedInstance.milesCounter += (metersFromStartLocation * 0.000621371)
-            
-//            trackNumber = metersFromStartLocation / 1600
-            ActivityManager.sharedInstance.trackNumber = metersFromStartLocation / distanceToFinalDestination
+            ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
+            ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / distanceToFinalDestination
             
             let angle = ActivityManager.sharedInstance.trackNumber * 360
-            print("ANGULO DEL GRAFICO: \(angle)")
             circularProgressView.angle = angle
             
-            activity.endLatitude = coord.latitude
-            activity.endLongitude = coord.longitude
+            ActivityManager.sharedInstance.endLatitude = coord.latitude
+            ActivityManager.sharedInstance.endLongitude = coord.longitude
             
             self.D.text = "D - DESTINO FINAL: \(distanceToFinalDestination)"
-            self.d1.text = "d1 - DIST AL ORIGEN: \(metersFromStartLocation)"
+            self.d1.text = "d1 - DIST AL ORIGEN: \(ActivityManager.sharedInstance.metersFromStartLocation)"
             self.angle.text = "angle - ANGULO: \(angle)"
         }
     }

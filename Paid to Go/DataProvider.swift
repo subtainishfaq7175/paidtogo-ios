@@ -245,8 +245,6 @@ class DataProvider : DataProviderService {
             "pool_type_id" : poolTypeId,
             "user_id"      : userID
         ]
- 
-        print("Pools API - POST - Parameters: \(params)")
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
             
@@ -292,7 +290,7 @@ class DataProvider : DataProviderService {
     }
 
     
-    func getLeaderboards(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
+    func getLeaderboardsForPool(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
         
         let userId = User.currentUser?.userId
         
@@ -309,6 +307,38 @@ class DataProvider : DataProviderService {
                 
                 let leaderboard = Mapper<LeaderboardsResponse>().map(responseValue)
                 completion(leaderboard: leaderboard, error: nil)
+                return
+                
+            } else {
+                if error == "LEADERBOARDS_UNSUCCESSFUL"{
+                    completion(leaderboard: nil, error: nil)
+                    return
+                } else {
+                    completion(leaderboard: nil, error: self.getError(error!))
+                    return
+                }
+            }
+        }
+    }
+    
+    func getLeaderboards(completion: (leaderboard: [LeaderboardsResponse]?, error: String?) -> Void) {
+        
+        let userId = User.currentUser?.userId
+        
+        let params = [
+            
+            "user_id" : userId,
+            
+        ]
+        
+        ConnectionManager.sharedInstance.getLeaderboards(params as! [String : String]) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                var leaderboardsResponse = Mapper<LeaderboardsResponse>().mapArray(responseValue)
+                leaderboardsResponse?.removeLast() // The last object holds the response call, it's not an object from the model
+                
+                completion(leaderboard: leaderboardsResponse, error: nil)
                 return
                 
             } else {

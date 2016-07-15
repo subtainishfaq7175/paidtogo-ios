@@ -12,7 +12,6 @@ import YYImage
 
 class PoolCell: UITableViewCell {
     
-    
     // MARK: - IBOutletm
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var poolImageView: UIImageView!
@@ -30,7 +29,6 @@ class PoolCell: UITableViewCell {
     }
     
     // MARK: - Configuration
-    
     
     func configure(pool: Pool) {
         self.titleLabel.text = pool.name

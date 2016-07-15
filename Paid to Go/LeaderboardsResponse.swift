@@ -41,6 +41,7 @@ public class LeaderboardsResponse: Mappable {
     - parameter map: A mapping from ObjectMapper
     */
     public func mapping(map: Map) {
+        
 		leaderboard <- map[kLeaderboardsResponseLeaderboardKey]
 		poolId <- map[kLeaderboardsResponsePoolIdKey]
 		iconPhotoDescription <- map[kLeaderboardsResponseIconPhotoDescriptionKey]

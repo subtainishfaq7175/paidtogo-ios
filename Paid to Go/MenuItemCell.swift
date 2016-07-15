@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuItemCell: UITableViewCell {
+class MenuItemCell: UITableViewCell /*, Reusable*/ {
     
     // MARK: - IBOutlet
     @IBOutlet weak var menuTitleLabel: UILabel!

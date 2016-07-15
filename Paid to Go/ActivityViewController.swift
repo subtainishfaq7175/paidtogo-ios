@@ -12,6 +12,7 @@ class ActivityViewController: MenuContentViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var notificationsTableView: UITableView!
+    @IBOutlet weak var lblEmptyTableView: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -19,8 +20,19 @@ class ActivityViewController: MenuContentViewController {
     let defaultCellReuseIdentifier = "activityDefaultCell"
     let actionCellReuseIdentifier = "activityActionCell"
     
-    var notifications:[ActivityNotification] = [ActivityNotification]()
-    
+    var notifications:[ActivityNotification] = [ActivityNotification]() {
+        didSet {
+            if notifications.count == 0 {
+                print("No recent activity...")
+                self.notificationsTableView.hidden = true
+                self.lblEmptyTableView.hidden = false
+            } else {
+                print("Recent activity")
+                self.notificationsTableView.hidden = false
+                self.lblEmptyTableView.hidden = true
+            }
+        }
+    }
     
     // MARK: - Super
     
@@ -64,14 +76,14 @@ class ActivityViewController: MenuContentViewController {
     
     private func getNotifications () {
         
-        self.showProgressHud()
+        self.showProgressHud("Loading recent activity")
         
         DataProvider.sharedInstance.getActivities { (activityNotifications, error) in
             
             if let error = error {
                 self.dismissProgressHud()
                 
-                self.showAlert("No recent activity")
+//                self.showAlert("No recent activity")
                 return
             }
             

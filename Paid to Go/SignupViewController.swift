@@ -154,7 +154,9 @@ class SignupViewController: ViewController {
             
             if let profileImage = profileImage {
                 
-                let imageData = UIImagePNGRepresentation(profileImage)
+//                let imageData = UIImagePNGRepresentation(profileImage)
+                
+                let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
                 
                 let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
                 
@@ -179,9 +181,12 @@ class SignupViewController: ViewController {
                     newUser.accessToken = user!.accessToken
                     newUser.userId = user!.userId
                     newUser.profilePicture = user?.profilePicture
+                    newUser.email = user!.email
+                    newUser.name = user?.name
+                    newUser.lastName = user?.lastName
+                    newUser.bio = user?.bio
                     
                     User.currentUser = newUser
-                    
                     
                     self.dismissViewControllerAnimated(true, completion: {
                         self.delegate?.goToHome()

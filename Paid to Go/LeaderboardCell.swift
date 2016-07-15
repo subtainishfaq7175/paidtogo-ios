@@ -10,7 +10,7 @@ import UIKit
 import YYWebImage
 import YYImage
 
-class LeaderboardCell: UITableViewCell {
+class LeaderboardCell: UITableViewCell /*, Reusable */{
     
     
     // MARK: - IBOutlet

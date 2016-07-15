@@ -81,6 +81,7 @@ class ProfileViewController: MenuContentViewController {
             addPictureImageView.hidden = true
             
             profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"))
+            
             //            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
             
             //            let base64String        = currentProfilePicture
@@ -179,7 +180,9 @@ class ProfileViewController: MenuContentViewController {
             
             if let profileImage = profileImage {
                 
-                let imageData = UIImagePNGRepresentation(profileImage)
+//                let imageData = UIImagePNGRepresentation(profileImage)
+                
+                let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
                 
                 let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
                 
@@ -201,12 +204,14 @@ class ProfileViewController: MenuContentViewController {
                     
                     User.currentUser = user
                     
+                    let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
+                    
                 } else if let error = error {
                     
                     self.showAlert(error)
                     
                 }
-                
             }
         }
     }

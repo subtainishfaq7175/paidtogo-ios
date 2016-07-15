@@ -199,13 +199,13 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         switch stats {
         case Stats.Incomes:
-            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Incomes")
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "$")
             break
         case Stats.SavedGas:
-            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Saved Gas")
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Miles Offset")
             break
         default:
-            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Carbon Off")
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "CO2 MT’s")
             break
         }
         

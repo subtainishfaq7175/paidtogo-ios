@@ -71,7 +71,6 @@ public class Pool: Mappable {
         destinationLongitude <- map[kPoolDestinationLongitudeKey]
         photoIconDescription <- map[kPoolPhotoIconDescriptionKey]
         endDateTime <- map[kPoolEndDateTimeKey]
-        
     }
     
     /**

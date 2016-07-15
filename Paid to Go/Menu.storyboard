@@ -51,7 +51,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yaw-Ks-OkI" userLabel="Profile View">
                                         <rect key="frame" x="0.0" y="22" width="320" height="157"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="6am-0n-Xhm" userLabel="Profile Image View">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="6am-0n-Xhm" userLabel="Profile Image View">
                                                 <rect key="frame" x="100" y="0.0" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="6E6-mQ-Xav"/>
@@ -181,7 +181,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dummy_profile" width="112" height="112"/>
         <image name="ic_menu_green" width="22" height="12"/>
+        <image name="ic_profile_placeholder" width="194" height="194"/>
     </resources>
 </document>

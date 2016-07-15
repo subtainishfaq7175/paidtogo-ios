@@ -57,6 +57,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -475,11 +476,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-ZV-bwk" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                <rect key="frame" x="10" y="122" width="300" height="300"/>
+                                <rect key="frame" x="18" y="130" width="284" height="284"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="cZm-ZV-bwk" secondAttribute="height" multiplier="1:1" id="JLn-Ls-UOg"/>
+                                    <constraint firstAttribute="width" secondItem="cZm-ZV-bwk" secondAttribute="height" multiplier="1:1" id="1gW-EY-GpE"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
@@ -522,9 +523,9 @@
                                     <action selector="takePicture:" destination="qEi-hY-t2X" eventType="touchUpInside" id="E4I-ON-OfC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="36" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
-                                <rect key="frame" x="24" y="370" width="272" height="148"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
+                                <rect key="frame" x="24" y="434" width="272" height="88"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -545,16 +546,14 @@
                         <constraints>
                             <constraint firstItem="cZm-ZV-bwk" firstAttribute="centerY" secondItem="SBE-Nw-8EY" secondAttribute="centerY" constant="-12" id="1Gf-NU-2yD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Chg-3y-pEC" secondAttribute="trailing" constant="8" id="3fx-eG-06E"/>
-                            <constraint firstItem="VBk-gd-AXs" firstAttribute="top" secondItem="Chg-3y-pEC" secondAttribute="bottom" constant="50" id="7aT-lA-fsx"/>
                             <constraint firstItem="K3p-kN-CtT" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="Dks-yj-xiZ"/>
                             <constraint firstItem="K3p-kN-CtT" firstAttribute="top" secondItem="6Dj-vR-jIQ" secondAttribute="bottom" constant="12" id="GxW-iI-jhR"/>
-                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="width" secondItem="cZm-ZV-bwk" secondAttribute="height" multiplier="1:1" id="Uni-DQ-UTJ"/>
+                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="height" secondItem="SBE-Nw-8EY" secondAttribute="height" multiplier="0.5" id="IdV-Af-aJ6"/>
+                            <constraint firstItem="Chg-3y-pEC" firstAttribute="top" secondItem="cZm-ZV-bwk" secondAttribute="bottom" constant="20" id="Uld-YR-9dC"/>
                             <constraint firstItem="pvc-up-bbD" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="VhC-h2-MiS"/>
                             <constraint firstItem="Chg-3y-pEC" firstAttribute="leading" secondItem="SBE-Nw-8EY" secondAttribute="leadingMargin" constant="8" id="VyE-hk-pto"/>
                             <constraint firstItem="cZm-ZV-bwk" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="bmd-Mu-b9E"/>
-                            <constraint firstAttribute="trailing" secondItem="cZm-ZV-bwk" secondAttribute="trailing" constant="10" id="nbq-WE-IIH"/>
                             <constraint firstItem="pvc-up-bbD" firstAttribute="centerY" secondItem="SBE-Nw-8EY" secondAttribute="centerY" constant="-12" id="tyq-az-Lt7"/>
-                            <constraint firstItem="cZm-ZV-bwk" firstAttribute="leading" secondItem="SBE-Nw-8EY" secondAttribute="leading" constant="10" id="vFu-NQ-ga7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xzm-UX-k2K"/>
@@ -649,7 +648,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziJ-Sb-uLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551" y="2674"/>
+            <point key="canvasLocation" x="-551" y="2653"/>
         </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
@@ -1323,7 +1322,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-Gm-Eww">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No National pools available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-Iv-su6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-Gm-Eww">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -1331,8 +1336,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dgp-Gm-Eww" firstAttribute="leading" secondItem="FZV-Ij-ivd" secondAttribute="leading" id="6YC-mt-p0f"/>
+                            <constraint firstItem="TLh-Iv-su6" firstAttribute="trailing" secondItem="dgp-Gm-Eww" secondAttribute="trailing" id="94G-q2-gQt"/>
+                            <constraint firstItem="TLh-Iv-su6" firstAttribute="top" secondItem="dgp-Gm-Eww" secondAttribute="top" id="Jsj-xP-79H"/>
                             <constraint firstItem="dgp-Gm-Eww" firstAttribute="top" secondItem="Kvi-nm-i5h" secondAttribute="bottom" id="Wzk-pk-nt6"/>
+                            <constraint firstItem="TLh-Iv-su6" firstAttribute="leading" secondItem="dgp-Gm-Eww" secondAttribute="leading" id="o7z-OF-4yd"/>
                             <constraint firstAttribute="trailing" secondItem="dgp-Gm-Eww" secondAttribute="trailing" id="pDm-Nn-Nul"/>
+                            <constraint firstItem="TLh-Iv-su6" firstAttribute="bottom" secondItem="dgp-Gm-Eww" secondAttribute="bottom" id="x8k-Mg-Mlc"/>
                             <constraint firstItem="nYL-JA-dxt" firstAttribute="top" secondItem="dgp-Gm-Eww" secondAttribute="bottom" id="ycN-ab-zLc"/>
                         </constraints>
                     </view>

@@ -8,23 +8,26 @@
 
 import UIKit
 
-class LeaderboardsViewController: MenuContentViewController {
+class LeaderboardsViewController: ViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
     
     // MARK: - Variables and Constants
-    
-    
+    var leaderboard : Leaderboard?
     
     // MARK: - Super
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-      
         setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         initLayout()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,7 +37,6 @@ class LeaderboardsViewController: MenuContentViewController {
     
     // MARK: - Functions
     
-    
     func initViews(){
     }
     
@@ -42,7 +44,6 @@ class LeaderboardsViewController: MenuContentViewController {
         setNavigationBarVisible(true)
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
-        customizeNavigationBarWithMenu()
     }
     
     // MARK: - Actions

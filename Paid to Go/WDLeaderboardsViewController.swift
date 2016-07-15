@@ -62,7 +62,7 @@ class WDLeaderboardsViewController: ViewController {
     private func getData() {
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getLeaderboards(self.activity!.poolId!) { (leaderboard, error) in
+        DataProvider.sharedInstance.getLeaderboardsForPool(self.activity!.poolId!) { (leaderboard, error) in
             
             self.dismissProgressHud()
             
@@ -71,17 +71,17 @@ class WDLeaderboardsViewController: ViewController {
                 return
             }
             
-            if let leaderboard = leaderboard {
-                
-                self.backgroundImageView.yy_setImageWithURL(NSURL(string: (leaderboard.iconPhoto)!), options: .ShowNetworkActivity)
-                self.placeLabel.text = "1st"
-                
-                self.tableView.dataSource = self
-
-                self.leaderboard  = leaderboard
-                self.tableView.reloadData()
-                
-            }
+//            if let leaderboard = leaderboard {
+//                
+//                self.backgroundImageView.yy_setImageWithURL(NSURL(string: (leaderboard.iconPhoto)!), options: .ShowNetworkActivity)
+//                self.placeLabel.text = "1st"
+//                
+//                self.tableView.dataSource = self
+//
+//                self.leaderboard  = leaderboard
+//                self.tableView.reloadData()
+//                
+//            }
         }
         
     }
@@ -122,8 +122,10 @@ extension WDLeaderboardsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! LeaderboardCell
         
+//        let cell = LeaderboardCell.deque(from: tableView)
         
         cell.configure((self.leaderboard?.leaderboard![indexPath.row])!)
         
