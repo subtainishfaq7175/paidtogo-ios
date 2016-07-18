@@ -24,7 +24,7 @@ extension Int {
             if 10 < (self % 100) && (self % 100) < 20 {
                 suffix = "th"
             }
-            return String(self) + suffix
+            return suffix
         }
     }
 }
