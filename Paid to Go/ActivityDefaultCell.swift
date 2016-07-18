@@ -12,10 +12,10 @@ import YYImage
 
 class ActivityDefaultCell: UITableViewCell {
     
-    
     // MARK: - IBOutlet
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var notificationImageView: UIImageView!
     
     // MARK: - Constants
@@ -24,6 +24,8 @@ class ActivityDefaultCell: UITableViewCell {
     // MARK: - Override
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .None
     }
     
     override func layoutSubviews() {
@@ -32,9 +34,10 @@ class ActivityDefaultCell: UITableViewCell {
     
     // MARK: - Configuration
     
-    
     func configure(notification: ActivityNotification) {
+        
         self.titleLabel.text = notification.name
+        self.dateLabel.text = notification.startDateTime?.substringToIndex(11)
         self.detailLabel.text = notification.earnedMoney
         
         if let imageURL = notification.iconPhoto {

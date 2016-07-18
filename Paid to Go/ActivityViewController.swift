@@ -38,9 +38,8 @@ class ActivityViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.notificationsTableView.delegate = self
-        self.notificationsTableView.dataSource = self
         
+        self.configureTableView()
         self.getNotifications()
     }
     
@@ -65,7 +64,12 @@ class ActivityViewController: MenuContentViewController {
     
     // MARK: - Functions
     
-    
+    func configureTableView() {
+        self.notificationsTableView.delegate = self
+        self.notificationsTableView.dataSource = self
+        
+        self.notificationsTableView.separatorStyle = .None
+    }
     
     func refreshData (sender:AnyObject?) {
         
@@ -104,13 +108,11 @@ extension ActivityViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-            let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivityDefaultCell
-            
-            cell.configure(self.notifications[indexPath.row])
-            
-            return cell
-            
+        let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivityDefaultCell
         
+        cell.configure(self.notifications[indexPath.row])
+        
+        return cell
     }
 }
 
@@ -124,12 +126,11 @@ extension ActivityViewController: UITableViewDelegate {
         
         //        cell.read(self.notifications[indexPath.row].read)
         
-        tableView.reloadData()
-        
         // TODO Notification navigation
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
+//        return UIScreen.mainScreen().bounds.height * 0.085
+        return 75.0
     }
 }

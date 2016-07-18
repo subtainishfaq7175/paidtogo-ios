@@ -80,9 +80,9 @@ final class LeaderboardsListViewController: MenuContentViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc = segue.destinationViewController as! LeaderboardsViewController
-        let leaderboard = sender as! Leaderboard
+//        let leaderboard = sender as! Leaderboard
         
-        vc.leaderboard = leaderboard
+        vc.leaderboardResponse = sender as LeaderboardsResponse!
     }
     
     // MARK: - Actions
@@ -114,6 +114,7 @@ extension LeaderboardsListViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        /*
         guard let leaderboards = self.leaderboards[indexPath.row].leaderboard as [Leaderboard]?,
             leaderboard = leaderboards.first as Leaderboard? else {
             
@@ -121,5 +122,8 @@ extension LeaderboardsListViewController: UITableViewDataSource, UITableViewDele
         }
         
         self.performSegueWithIdentifier("leaderboardsSegue", sender: leaderboard)
+         */
+        
+        self.performSegueWithIdentifier("leaderboardsSegue", sender: self.leaderboards[indexPath.row])
     }
 }

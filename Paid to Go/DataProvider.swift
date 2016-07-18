@@ -276,7 +276,9 @@ class DataProvider : DataProviderService {
             
             if (error == nil) {
                 
-                let activityNotifications = Mapper<ActivityNotification>().mapArray(responseValue)
+                var activityNotifications = Mapper<ActivityNotification>().mapArray(responseValue)
+                activityNotifications?.removeLast() // The last object holds the response call, it's not an object from the model
+                
                 completion(activityNotifications: activityNotifications, error: nil)
                 return
                 

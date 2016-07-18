@@ -13,8 +13,10 @@ class LeaderboardsViewController: ViewController {
     
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
     
+    @IBOutlet weak var endDateLabel: UILabel!
+    
     // MARK: - Variables and Constants
-    var leaderboard : Leaderboard?
+    var leaderboardsResponse : LeaderboardsResponse?
     
     // MARK: - Super
     
@@ -37,13 +39,24 @@ class LeaderboardsViewController: ViewController {
     
     // MARK: - Functions
     
-    func initViews(){
+    func initViews() {
+    
     }
     
     func initLayout() {
+        
+        configureNavigationBar()
+        configureView()
+    }
+    
+    func configureNavigationBar() {
         setNavigationBarVisible(true)
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
+    }
+    
+    func configureView() {
+//        self.endDateLabel.text = self.leaderboardsResponse.date
     }
     
     // MARK: - Actions

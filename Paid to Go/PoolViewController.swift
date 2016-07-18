@@ -74,6 +74,14 @@ class PoolViewController: ViewController {
     
     var distanceToFinalDestination: Double = 0.0
     
+    /*  This value regulates the speed in which the circular progress circle completes a whole round.
+     *
+     *  For Walk/Run and Bike pools, the circle completes a whole round after 1 mile.
+     *  For Bus/Train and CarPools, the circle completes a whole round after 10 miles.
+     *
+     */
+    var circularProgressRoundOffset : Double = 0.0
+    
     // MARK: -  Super
     
     override func viewWillAppear(animated: Bool) {
@@ -110,12 +118,13 @@ class PoolViewController: ViewController {
         if self.type == PoolTypeEnum.Walk {
             print("TIMER INTERVAL -> 4 Secs")
             timerInterval = 4.0
+            self.circularProgressRoundOffset = 1600.0
         } else if self.type == PoolTypeEnum.Bike {
             print("TIMER INTERVAL -> 2 Secs")
-            timerInterval = 2.0
+            self.circularProgressRoundOffset = 1600.0
         } else {
             print("TIMER INTERVAL -> 0.5 Secs")
-            timerInterval = 0.5
+            self.circularProgressRoundOffset = 8000.0
         }
         
         timerTest = Timer(interval: timerInterval, delegate: self)
@@ -503,7 +512,7 @@ extension PoolViewController: CLLocationManagerDelegate {
         let locationObj = locationArray.lastObject as! CLLocation
         let coord = locationObj.coordinate
         
-        AudioServicesPlaySystemSound(1016)
+//        AudioServicesPlaySystemSound(1016)
         
         if ActivityManager.sharedInstance.startLongitude == 0.0 {
             
@@ -533,6 +542,8 @@ extension PoolViewController: CLLocationManagerDelegate {
             
             ActivityManager.sharedInstance.endLatitude = coord.latitude
             ActivityManager.sharedInstance.endLongitude = coord.longitude
+            
+            
             
             self.D.text = "D - DESTINO FINAL: \(distanceToFinalDestination)"
             self.d1.text = "d1 - DIST AL ORIGEN: \(ActivityManager.sharedInstance.metersFromStartLocation)"
