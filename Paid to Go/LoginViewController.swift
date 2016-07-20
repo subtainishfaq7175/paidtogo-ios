@@ -55,11 +55,8 @@ class LoginViewController: ViewController {
     private func verifyIfThereIsCurrentUser() {
         if let user = User.currentUser {
             guard let userID = user.userId else {
-                print("LoginViewController - USER ID NOT FOUND")
                 return
             }
-
-            print("LoginViewController - El userID es: \(userID)")
 
             presentHomeViewControllerWithoutAnimation()
         }

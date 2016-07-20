@@ -23,6 +23,8 @@
 		4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */; };
 		4D97C21A1D2AF55000EF35F7 /* CustomDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */; };
 		4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */; };
+		4DB22D3C1D3FA498006D3FA6 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */; };
+		4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
 		4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */; };
@@ -129,6 +131,8 @@
 		4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedUnit.swift; sourceTree = "<group>"; };
 		4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDatePicker.xib; sourceTree = "<group>"; };
 		4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePickerView.swift; sourceTree = "<group>"; };
+		4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
+		4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolDetailViewController.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */,
 				52502AE81CF73C4C008E3E3D /* NationalPoolsViewController.swift */,
 				52EBFBB91CFCC2CB00FE829E /* CarPoolInviteViewController.swift */,
+				4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */,
 				4D66E77A1D37CD6B00E8AE09 /* ProtocolReusable.swift */,
 				4D258AE81D381624000C24D9 /* Int+Extensions.swift */,
+				4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -834,8 +840,10 @@
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				4D936E591D25BEB600A0CB3A /* Status.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
+				4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */,
 				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
 				4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */,
+				4DB22D3C1D3FA498006D3FA6 /* UIScrollView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

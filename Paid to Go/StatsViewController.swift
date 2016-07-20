@@ -440,6 +440,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.lastContentOffset = scrollView.contentOffset.x;
     }
     
+    // Handles manual dragging by swiping on the screen
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if (self.lastContentOffset < scrollView.contentOffset.x) {
             // moved right
@@ -449,12 +450,15 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             switch currentPage {
             case 1:
                 moveIndicatorToLeft()
+                updateFooterViewForIncomes()
                 break
             case 2:
                 moveIndicatorToCenter()
+                updateFooterViewForGas()
                 break
             case 3:
                 moveIndicatorToRight()
+                updateFooterViewForCarbon()
                 break
             default:
                 break
@@ -467,12 +471,15 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             switch currentPage {
             case 1:
                 moveIndicatorToLeft()
+                updateFooterViewForIncomes()
                 break
             case 2:
                 moveIndicatorToCenter()
+                updateFooterViewForGas()
                 break
             case 3:
                 moveIndicatorToRight()
+                updateFooterViewForCarbon()
                 break
             default:
                 break

@@ -44,7 +44,6 @@ class LeaderboardsListTableViewCell: UITableViewCell {
             if let leaderboard = leaderboards.first as Leaderboard? {
                 if let place = leaderboard.place as Int? {
                     self.lblPosition.text = String(place)
-                    print("\(place.ordinal)")
                     self.lblSuffix.text = place.ordinal
                 }
             }

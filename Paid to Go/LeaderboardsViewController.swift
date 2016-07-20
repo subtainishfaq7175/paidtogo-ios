@@ -57,6 +57,19 @@ class LeaderboardsViewController: ViewController {
     
     func configureView() {
 //        self.endDateLabel.text = self.leaderboardsResponse.date
+        
+        /*
+        guard let dateString = leaderboardsResponse.date else {
+            continue
+        }
+        
+        let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+        
+        guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+            continue
+        }
+         */
+
     }
     
     // MARK: - Actions

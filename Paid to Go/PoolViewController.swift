@@ -124,7 +124,7 @@ class PoolViewController: ViewController {
             self.circularProgressRoundOffset = 1600.0
         } else {
             print("TIMER INTERVAL -> 0.5 Secs")
-            self.circularProgressRoundOffset = 8000.0
+            self.circularProgressRoundOffset = 16000.0
         }
         
         timerTest = Timer(interval: timerInterval, delegate: self)
@@ -527,27 +527,51 @@ extension PoolViewController: CLLocationManagerDelegate {
             
             ActivityManager.sharedInstance.distanceToFinalDestination = (ActivityManager.sharedInstance.initialLocation.distanceFromLocation(ActivityManager.sharedInstance.endLocation))
             
+            print("Pool View Controller - Distance to final destination: \(ActivityManager.sharedInstance.distanceToFinalDestination)")
+            
         } else {
             
             ActivityManager.sharedInstance.metersFromStartLocation = locationObj.distanceFromLocation(ActivityManager.sharedInstance.initialLocation) // d1
             
             self.milesTraveled = String(format: "%.2f", ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
             self.progressLabel.text = milesTraveled
+            print("Pool View Controller - Miles travelled: \(self.milesTraveled)")
             
-            ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
-            ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / distanceToFinalDestination
+            let metersTravelledDouble = ActivityManager.sharedInstance.metersFromStartLocation
             
-            let angle = ActivityManager.sharedInstance.trackNumber * 360
-            circularProgressView.angle = angle
+            var angle : Double? = metersTravelledDouble / self.circularProgressRoundOffset
+            print("Circular Progress View - Angle: \(angle)")
+            if angle == nil {
+                angle = 0.0
+            }
+            
+            circularProgressView.angle = angle!
             
             ActivityManager.sharedInstance.endLatitude = coord.latitude
             ActivityManager.sharedInstance.endLongitude = coord.longitude
             
+            ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
+            ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / ActivityManager.sharedInstance.distanceToFinalDestination
             
+            /*
+            ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
+            ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / ActivityManager.sharedInstance.distanceToFinalDestination
+            
+            var angle : Double? = ActivityManager.sharedInstance.trackNumber * 360
+            print("Circular Progress View - Angle: \(angle)")
+            if angle == nil {
+                angle = 0.0
+            }
+            
+            circularProgressView.angle = angle!
+            
+            ActivityManager.sharedInstance.endLatitude = coord.latitude
+            ActivityManager.sharedInstance.endLongitude = coord.longitude
             
             self.D.text = "D - DESTINO FINAL: \(distanceToFinalDestination)"
             self.d1.text = "d1 - DIST AL ORIGEN: \(ActivityManager.sharedInstance.metersFromStartLocation)"
             self.angle.text = "angle - ANGULO: \(angle)"
+            */
         }
     }
 }

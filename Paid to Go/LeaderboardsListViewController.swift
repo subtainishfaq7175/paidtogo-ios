@@ -82,7 +82,7 @@ final class LeaderboardsListViewController: MenuContentViewController {
         let vc = segue.destinationViewController as! LeaderboardsViewController
 //        let leaderboard = sender as! Leaderboard
         
-        vc.leaderboardResponse = sender as LeaderboardsResponse!
+        vc.leaderboardsResponse = sender as! LeaderboardsResponse
     }
     
     // MARK: - Actions

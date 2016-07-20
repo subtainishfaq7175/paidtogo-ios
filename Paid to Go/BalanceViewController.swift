@@ -52,31 +52,26 @@ class BalanceViewController: MenuContentViewController {
         user = User()
         
         user.accessToken = User.currentUser?.accessToken
-
-        
     
         DataProvider.sharedInstance.postBalance(user) { (balance, error) in
             
             self.dismissProgressHud()
             
             if let balance = balance {
-                // ... success
                 
                 self.redemedLabel   .text = "- U$D \(balance.redemed!)"
                 self.earnedLabel    .text = "U$D \(balance.earned!)"
                 
-                self.accountMoneyLabel.text = "U$D \(balance.redemed!)"
+                guard let earned = Double(balance.earned!) , redemed = Double(balance.redemed!) else {
+                    return
+                }
                 
+                self.accountMoneyLabel.text = "U$D \(earned - redemed)"
                 
             } else if let error = error {
-                // ... error
                 self.showAlert(error)
-                
             }
-            
         }
-    
-
     }
 
     // MARK: - Actions

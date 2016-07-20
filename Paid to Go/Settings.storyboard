@@ -45,7 +45,7 @@
                                     <constraint firstItem="cK7-qh-gCc" firstAttribute="leading" secondItem="zEx-zB-tfz" secondAttribute="leading" constant="14" id="xuk-4w-mAY"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wE-4p-ock" userLabel="Ok Button View">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wE-4p-ock" userLabel="Ok Button View">
                                 <rect key="frame" x="60" y="496" width="200" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u63-gZ-IdC">

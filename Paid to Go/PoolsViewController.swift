@@ -15,7 +15,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var goImageView: UIImageView!
-    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
@@ -38,14 +37,15 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     // MARK: - Variables and Constants
     
+    let cellReuseIdentifier = "poolCell"
+    let kPoolDetailSegue = "poolDetailSegue"
+    
     var type: PoolTypeEnum?
     var poolType: PoolType?
     var closedPools:[Pool] = [Pool]()
     var openPools:[Pool] = [Pool]()
-    
-    let cellReuseIdentifier = "poolCell"
+
     var lastContentOffset : CGFloat = 0
-    
     
     // MARK: - Super
     
@@ -67,7 +67,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
-        
         self.scrollView.delegate = self
         
         self.openPoolsTableView.delegate = self
@@ -88,11 +87,19 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 destinationVC.poolType = self.poolType
             }
         }
+        
+        if segue.identifier == "poolDetailSegue" {
+            if let destinationVC = segue.destinationViewController as? PoolDetailViewController {
+                if let pool = sender as? Pool {
+                    destinationVC.pool = pool
+                    destinationVC.typeEnum = self.type
+                    destinationVC.poolType = self.poolType
+                }
+            }
+        }
     }
     
-    
     // MARK: - Functions
-    
     
     private func showAntiCheatViewController(pool: Pool) {
         let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
@@ -100,19 +107,15 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.showViewController(vc, sender: nil)
     }
     
-    
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
         setIndicatorOnLeft()
-        
-        
     }
     
     private func initViews() {
         self.goImageView.roundWholeView()
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        
     }
     
     private func setIndicatorOnLeft() {
@@ -143,7 +146,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
-        
     }
     
     private func moveIndicatorToLeft(){
@@ -155,8 +157,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
     
     private func getPools() {
-        
-        print("PoolsViewController - getPools")
         
         self.showProgressHud()
         
@@ -210,7 +210,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
     }
     
-    // MARK: UIScrollViewDelegate
+    // MARK: - UIScrollViewDelegate
+    
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.x;
     }
@@ -256,19 +257,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         } else {
             
         }
-        
-        
-    }
-    
-}
-
-extension UIScrollView {
-    var currentPage: Int {
-        return Int((self.contentOffset.x + (0.5*self.frame.size.width))/self.frame.width)+1
-    }
-    
-    func changeToPage(page: Int) {
-        self.setContentOffset(CGPointMake(CGFloat(page) * self.frame.width, 0), animated: true)
     }
 }
 
@@ -318,10 +306,15 @@ extension PoolsViewController: UITableViewDataSource {
         
     }
 }
+
 extension PoolsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+
+        let pool = self.openPools[indexPath.row]
+        self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
+ 
+        /*
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
         
         switch tableView.restorationIdentifier! {
@@ -379,10 +372,9 @@ extension PoolsViewController: UITableViewDelegate {
             break
         default: break
         }
+        */
         
-        tableView.reloadData()
-        
-        
+//        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
