@@ -209,7 +209,7 @@ class CarPoolInviteViewController: ViewController {
                         if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
                             poolViewController.type = self.type
                             poolViewController.poolType = poolType
-                            poolViewController.pool = self.pool!
+                            poolViewController.pool = self.pool
                             
                             self.navigationController?.pushViewController(poolViewController, animated: true)
                         }

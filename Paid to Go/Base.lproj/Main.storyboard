@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XOF-2P-5xX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XOF-2P-5xX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -702,7 +702,7 @@ Email Line View</string>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="ybf-Ac-nBd">
             <objects>
-                <viewController id="iM9-5Y-2pU" customClass="TermsAndConditionsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsAndConditions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iM9-5Y-2pU" customClass="TermsAndConditionsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O72-9F-cLm"/>
                         <viewControllerLayoutGuide type="bottom" id="Xjf-E4-sfK"/>

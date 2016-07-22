@@ -30,14 +30,7 @@ class PoolViewController: ViewController {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stepCountLabel: UILabel!
-    //@IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet var backgroundImageView: UIImageView!
-    
-    // MARK: - Test Outlets
-    
-    @IBOutlet weak var D: UILabel!
-    @IBOutlet weak var d1: UILabel!
-    @IBOutlet weak var angle: UILabel!
     
     // MARK: - Variables and Constants
     
@@ -49,8 +42,8 @@ class PoolViewController: ViewController {
     var type: PoolTypeEnum?
     var hasPoolStarted = false
     var isTimerTracking: Bool = false
-    var timer : NSTimer?
     
+    var timer : NSTimer?
     var timerTest : Timer!
     
     var trackNumber = 0.0
@@ -105,35 +98,16 @@ class PoolViewController: ViewController {
             self.circularProgressCenterYConstraint.constant = 0
         }
         
-//        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
-        
         if type == .Walk && CMPedometer.isStepCountingAvailable() {
             self.stepCountLabel.hidden = false
         } else {
             self.stepCountLabel.hidden = true
         }
         
-        var timerInterval = 0.0
-        
-        if self.type == PoolTypeEnum.Walk {
-            print("TIMER INTERVAL -> 4 Secs")
-            timerInterval = 4.0
-            self.circularProgressRoundOffset = 1600.0
-        } else if self.type == PoolTypeEnum.Bike {
-            print("TIMER INTERVAL -> 2 Secs")
-            self.circularProgressRoundOffset = 1600.0
-        } else {
-            print("TIMER INTERVAL -> 0.5 Secs")
-            self.circularProgressRoundOffset = 16000.0
-        }
-        
-        timerTest = Timer(interval: timerInterval, delegate: self)
-        
-        // CONFIGURE VIEW WITH INITIAL ACTIVITY VALUES
+        // Configure view with initial activity values
         let trackNumber = ActivityManager.sharedInstance.getTrackNumber()
         
         let circularProgressAngle = trackNumber * 360
-        print("CIRCULAR PROGRESS ANGLE: \(circularProgressAngle)")
         
         self.circularProgressView.angle = circularProgressAngle
         
@@ -175,11 +149,6 @@ class PoolViewController: ViewController {
         }
     }
     
-    func btnBack(sender: AnyObject) {
-        print("BACK")
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
     private func initViews() {
         actionButtonView.round()
     }
@@ -198,11 +167,9 @@ class PoolViewController: ViewController {
             let titleImage = UIImage(named: kTrainBackgroundImage)
             self.backgroundImageView.image = titleImage
             break
-        case .Car:
+        default:
             let titleImage = UIImage(named: kCarPoolBackgroundImage)
             self.backgroundImageView.image = titleImage
-            break
-        default:
             break
         }
     }
@@ -215,12 +182,12 @@ class PoolViewController: ViewController {
     
     func pauseTracking() {
         if isTimerTracking {
-            // PAUSE
+            // Pause
             isTimerTracking = false
             pauseButton.setTitle("Resume", forState: UIControlState.Normal)
             countingSteps = false
         } else {
-            // RESUME
+            // Resume
             resumePedometerUpdates()
             hasPausedAndResumedActivity = true
             startTracking()
@@ -266,6 +233,7 @@ class PoolViewController: ViewController {
                 
                 let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
                 let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
+                
                 wellDoneViewController.type = self.type
                 wellDoneViewController.poolType = self.poolType
                 wellDoneViewController.activityResponse = response
@@ -277,31 +245,6 @@ class PoolViewController: ViewController {
                 self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
             }
         }
-        
-    }
-    
-    @objc func testCircularProgress() {
-        /*
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            //Do background work
-            print("BACKGROUND")
-            //self.trackNumber += 0.1
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                //Update
-                print("MAIN")
-                self.trackNumber = self.trackNumber + 0.1
-                
-                print("TRACK NUMBER: \(self.trackNumber)")
-                self.circularProgressView.angle = self.trackNumber * 360
-                
-                if self.trackNumber > 1 {
-                    print("INVALIDATE TIMER")
-                    self.timer.invalidate()
-                }
-            })
-        }
-        */
     }
     
     private func updatePedometer() {
@@ -346,7 +289,7 @@ class PoolViewController: ViewController {
     private func resumePedometerUpdates() {
         
         if CMPedometer.isStepCountingAvailable() {
-            print("RESUME PEDOMETER")
+
             pedoMeter.startPedometerUpdatesFromDate(NSDate(), withHandler: { (data, error) in
                 if let dataUpdated = data {
                     self.stepCount = dataUpdated.numberOfSteps.integerValue
@@ -370,23 +313,19 @@ class PoolViewController: ViewController {
      *  Called after constants periods of time to check for pedometer updates
      */
     @objc private func queryPedometerUpdates() {
-        print("QUERY PEDOMETER")
         
         guard let startDate = self.startDateToTrack else {
             return
         }
         self.pedoMeter.queryPedometerDataFromDate(startDate, toDate: NSDate()) { (data, error) in
-            print("QUERY PEDOMETER FOR UPDATE DATA")
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                //Do background work
-                print("BACKGROUND")
+                // Background
                 if let dataUpdated = data {
                     self.stepCount = dataUpdated.numberOfSteps.integerValue
                 }
                 dispatch_async(dispatch_get_main_queue(), {
-                    //Update
-                    print("MAIN")
+                    // Main
                     self.stepCountLabel.text = "Steps: \(self.stepCount)"
                 })
             }
@@ -399,6 +338,12 @@ class PoolViewController: ViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         locationManager.requestAlwaysAuthorization()
+    }
+    
+    // MARK: - Navigation
+    
+    func btnBack(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - Actions
@@ -519,28 +464,25 @@ extension PoolViewController: CLLocationManagerDelegate {
             ActivityManager.sharedInstance.startLatitude = coord.latitude
             ActivityManager.sharedInstance.startLongitude = coord.longitude
             
-            // INITIAL LOCATION
+            // Initial location
             ActivityManager.sharedInstance.initialLocation = locationObj
             
-            // FINAL LOCATION
+            // Final location
             ActivityManager.sharedInstance.endLocation = CLLocation(latitude: ActivityManager.sharedInstance.endLatitude, longitude: ActivityManager.sharedInstance.endLongitude)
             
+            // Distance between initial and final destination
             ActivityManager.sharedInstance.distanceToFinalDestination = (ActivityManager.sharedInstance.initialLocation.distanceFromLocation(ActivityManager.sharedInstance.endLocation))
-            
-            print("Pool View Controller - Distance to final destination: \(ActivityManager.sharedInstance.distanceToFinalDestination)")
             
         } else {
             
-            ActivityManager.sharedInstance.metersFromStartLocation = locationObj.distanceFromLocation(ActivityManager.sharedInstance.initialLocation) // d1
+            ActivityManager.sharedInstance.metersFromStartLocation = locationObj.distanceFromLocation(ActivityManager.sharedInstance.initialLocation)
             
             self.milesTraveled = String(format: "%.2f", ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
             self.progressLabel.text = milesTraveled
-            print("Pool View Controller - Miles travelled: \(self.milesTraveled)")
             
             let metersTravelledDouble = ActivityManager.sharedInstance.metersFromStartLocation
             
             var angle : Double? = metersTravelledDouble / self.circularProgressRoundOffset
-            print("Circular Progress View - Angle: \(angle)")
             if angle == nil {
                 angle = 0.0
             }
@@ -552,26 +494,6 @@ extension PoolViewController: CLLocationManagerDelegate {
             
             ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
             ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / ActivityManager.sharedInstance.distanceToFinalDestination
-            
-            /*
-            ActivityManager.sharedInstance.milesCounter += (ActivityManager.sharedInstance.metersFromStartLocation * 0.000621371)
-            ActivityManager.sharedInstance.trackNumber = ActivityManager.sharedInstance.metersFromStartLocation / ActivityManager.sharedInstance.distanceToFinalDestination
-            
-            var angle : Double? = ActivityManager.sharedInstance.trackNumber * 360
-            print("Circular Progress View - Angle: \(angle)")
-            if angle == nil {
-                angle = 0.0
-            }
-            
-            circularProgressView.angle = angle!
-            
-            ActivityManager.sharedInstance.endLatitude = coord.latitude
-            ActivityManager.sharedInstance.endLongitude = coord.longitude
-            
-            self.D.text = "D - DESTINO FINAL: \(distanceToFinalDestination)"
-            self.d1.text = "d1 - DIST AL ORIGEN: \(ActivityManager.sharedInstance.metersFromStartLocation)"
-            self.angle.text = "angle - ANGULO: \(angle)"
-            */
         }
     }
 }

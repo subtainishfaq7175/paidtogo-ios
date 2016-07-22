@@ -60,5 +60,8 @@ class StoryboardRouter {
         return leaderboardsStoryboard().instantiateInitialViewController()!
     }
     
+    static func termsAndConditionsViewController() -> TermsAndConditionsViewController {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("TermsAndConditions") as! TermsAndConditionsViewController
+    }
         
 }
