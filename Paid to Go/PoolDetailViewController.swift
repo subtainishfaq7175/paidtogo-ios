@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftDate
 
 class PoolDetailViewController: ViewController {
 
@@ -16,12 +17,23 @@ class PoolDetailViewController: ViewController {
     @IBOutlet weak var enterPoolButton: LocalizableButton!
     
     @IBOutlet weak var headerTitleLabel: LocalizableLabel!    
-    @IBOutlet weak var earnedMoneyLabel: UILabel!
+        
+    @IBOutlet weak var poolTitleLabel: UILabel!
+    @IBOutlet weak var earnedMoneyPerMileLabel: UILabel!
+    @IBOutlet weak var limitPerDayLabel: UILabel!
+    @IBOutlet weak var limitPerMonthLabel: UILabel!
+    
+    @IBOutlet weak var dateTitleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var backgroundColorView: UIView!
     @IBOutlet weak var backgroundContentView: UIView!
     
+    @IBOutlet weak var bannerBottomBorderView: UIView!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var poolIconImageView: UIImageView!
     
     // MARK: - Variables and constants
     
@@ -55,13 +67,73 @@ class PoolDetailViewController: ViewController {
         clearNavigationBarcolor()
     }
     
-    func configureView() {
+    private func configureView() {
         setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
-        enterPoolButton.roundVeryLittleForHeight(50.0)
+        backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
+        
+        bannerBottomBorderView.backgroundColor = UIColor(rgba: poolType!.color!)
+//        bannerImageView.layer.borderWidth = CGFloat(1.2)
+//        bannerImageView.layer.borderColor = UIColor(rgba: poolType!.color!).CGColor
+        
+        configureContinueButton()
+        
+        guard let earnedMoneyPerMile = pool?.earnedMoneyPerMile,
+            limitPerDay = pool?.limitPerDay,
+            limitPerMonth = pool?.limitPerMonth,
+            endDate = pool?.endDateTime,
+            poolTitle = pool?.name else {
+            return
+        }
+        poolTitleLabel.text = poolTitle
+        earnedMoneyPerMileLabel.text = earnedMoneyPerMileLabel.text! + "$" + earnedMoneyPerMile
+        limitPerDayLabel.text = limitPerDayLabel.text! + "$" + limitPerDay
+        limitPerMonthLabel.text = limitPerMonthLabel.text! + "$" + limitPerMonth
+        dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(endDate)
+        
+        if let iconImage = pool?.iconPhoto as String? {
+            if !iconImage.isEmpty {
+                poolIconImageView.yy_setImageWithURL(NSURL(string: (iconImage)), options: .ShowNetworkActivity)
+            }
+        }
+        
+        if let bannerImage = pool?.banner as String? {
+            if !bannerImage.isEmpty {
+                bannerImageView.yy_setImageWithURL(NSURL(string: (bannerImage)), options: .ShowNetworkActivity)
+            }
+        }
+    }
+    
+    private func configureContinueButton() {
+        enterPoolButton.roundVeryLittleForHeight(50.0)
+        
+        guard let poolStartDateString = pool?.startDateTime else {
+            return
+        }
+        
+        let poolStartDate = NSDate.getDateWithFormatddMMyyyy(poolStartDateString)
+        
+        if !poolStartDate.isDatePreviousToCurrentDate() {
+            // The pool hasn't started yet
+            enterPoolButton.setTitle("Coming soon...", forState: UIControlState.Normal)
+            enterPoolButton.alpha = CGFloat(0.3)
+            enterPoolButton.enabled = false
+            
+            dateTitleLabel.text = "Begins on:"
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(poolStartDateString)
+            
+        } else {
+            // The pool has started
+            enterPoolButton.setTitle("Continue", forState: UIControlState.Normal)
+            enterPoolButton.alpha = CGFloat(1)
+            enterPoolButton.enabled = true
+            
+            dateTitleLabel.text = "Ends on:"
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy((pool?.endDateTime)!)
+        }
     }
     
     private func showAntiCheatViewController(pool: Pool) {

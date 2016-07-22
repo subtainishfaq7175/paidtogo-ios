@@ -16,6 +16,7 @@
 		4D66E7771D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E7761D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib */; };
 		4D66E7791D37C10B00E8AE09 /* LeaderboardsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D66E7781D37C10B00E8AE09 /* LeaderboardsListTableViewCell.swift */; };
 		4D66E77B1D37CD6B00E8AE09 /* ProtocolReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D66E77A1D37CD6B00E8AE09 /* ProtocolReusable.swift */; };
+		4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */; };
 		4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73F56B1D369571001B05C4 /* Notifications.swift */; };
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
@@ -124,6 +125,7 @@
 		4D66E7761D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeaderboardsListTableViewCell.xib; sourceTree = "<group>"; };
 		4D66E7781D37C10B00E8AE09 /* LeaderboardsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsListTableViewCell.swift; sourceTree = "<group>"; };
 		4D66E77A1D37CD6B00E8AE09 /* ProtocolReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolReusable.swift; sourceTree = "<group>"; };
+		4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extensions.swift"; sourceTree = "<group>"; };
 		4D73F56B1D369571001B05C4 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				4D66E77A1D37CD6B00E8AE09 /* ProtocolReusable.swift */,
 				4D258AE81D381624000C24D9 /* Int+Extensions.swift */,
 				4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */,
+				4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */,
+				4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */,
 				4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */,
 				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,
 				52E672EE1CC550380062653C /* AntiCheatViewController.swift in Sources */,

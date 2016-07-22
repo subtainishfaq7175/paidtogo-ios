@@ -73,6 +73,12 @@ class ViewController: UIViewController {
         view.layer.borderColor = color
     }
     
+    func setBorderToViewAndRoundVeryLittle(view: UIView, color: CGColor){
+        view.roundVeryLittle()
+        view.layer.borderWidth = 1.2
+        view.layer.borderColor = color
+    }
+    
     func customizeNavigationBarWithTitleAndMenu(){
         let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
         let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "homeButtonAction:")

@@ -104,6 +104,12 @@ class PoolViewController: ViewController {
             self.stepCountLabel.hidden = true
         }
         
+        if type == PoolTypeEnum.Walk || type == PoolTypeEnum.Bike {
+            circularProgressRoundOffset = 1600.0
+        } else {
+            circularProgressRoundOffset = 16000.0
+        }
+        
         // Configure view with initial activity values
         let trackNumber = ActivityManager.sharedInstance.getTrackNumber()
         
@@ -355,7 +361,7 @@ class PoolViewController: ViewController {
     
     @IBAction func switchBetweenPools(sender: AnyObject) {
         
-        self.timerTest.pause()
+//        self.timerTest.pause()
         self.pauseTracking()
         self.showPoolSwitchAlert("Switch Pool")
     }
@@ -482,12 +488,9 @@ extension PoolViewController: CLLocationManagerDelegate {
             
             let metersTravelledDouble = ActivityManager.sharedInstance.metersFromStartLocation
             
-            var angle : Double? = metersTravelledDouble / self.circularProgressRoundOffset
-            if angle == nil {
-                angle = 0.0
-            }
+            let angle = metersTravelledDouble / self.circularProgressRoundOffset
             
-            circularProgressView.angle = angle!
+            circularProgressView.angle = angle
             
             ActivityManager.sharedInstance.endLatitude = coord.latitude
             ActivityManager.sharedInstance.endLongitude = coord.longitude

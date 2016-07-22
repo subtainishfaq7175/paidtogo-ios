@@ -19,6 +19,11 @@ extension UIView {
         self.clipsToBounds = true
     }
     
+    func roundVeryLittle(){
+        self.layer.cornerRadius = self.frame.size.width * 0.1
+        self.clipsToBounds = true
+    }
+    
     func roundVeryLittleForHeight(height : CGFloat) {
         self.layer.cornerRadius = height / 2
         self.layer.masksToBounds = true

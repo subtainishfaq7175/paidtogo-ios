@@ -24,8 +24,10 @@ public class Pool: Mappable {
     internal let kPoolOpenKey: String = "open"
     internal let kPoolDestinationLongitudeKey: String = "destination_longitude"
     internal let kPoolPhotoIconDescriptionKey: String = "photo_icon_description"
+    internal let kPoolStartDateKey: String = "start_date"
     internal let kPoolEndDateTimeKey: String = "end_date_time"
-    
+    internal let kPoolLimitPerDayKey: String = "limit_per_day"
+    internal let kPoolLimitPerMonthKey: String = "limit_per_month"
     
     // MARK: Properties
     public var quantMembers: Int?
@@ -40,9 +42,10 @@ public class Pool: Mappable {
     public var open: String?
     public var destinationLongitude: String?
     public var photoIconDescription: String?
+    public var startDateTime: String?
     public var endDateTime: String?
-    
-    
+    public var limitPerDay: String?
+    public var limitPerMonth: String?
     
     // MARK: ObjectMapper Initalizers
     /**
@@ -70,7 +73,10 @@ public class Pool: Mappable {
         open <- map[kPoolOpenKey]
         destinationLongitude <- map[kPoolDestinationLongitudeKey]
         photoIconDescription <- map[kPoolPhotoIconDescriptionKey]
+        startDateTime <- map[kPoolStartDateKey]
         endDateTime <- map[kPoolEndDateTimeKey]
+        limitPerDay <- map[kPoolLimitPerDayKey]
+        limitPerMonth <- map[kPoolLimitPerMonthKey]
     }
     
     /**
