@@ -15,24 +15,29 @@ import AVFoundation
 
 class PoolViewController: ViewController {
     
-    internal let kWalkBackgroundImage = "pool_background_walk"
-    internal let kRunBackgroundImage = "pool_background_bike"
-    internal let kTrainBackgroundImage = "pool_background_train"
-    internal let kCarPoolBackgroundImage = "pool_background_carpool"
-    
     // MARK: - Outlets
     
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var actionButtonView: UIView!
     @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var circularProgressCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var circularProgressView: KDCircularProgress!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stepCountLabel: UILabel!
+    
     @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet weak var bannerImageView: UIImageView!
     
     // MARK: - Variables and Constants
+    
+    internal let kWalkBackgroundImage = "pool_background_walk"
+    internal let kRunBackgroundImage = "pool_background_bike"
+    internal let kTrainBackgroundImage = "pool_background_train"
+    internal let kCarPoolBackgroundImage = "pool_background_carpool"
+    
+    internal let kMapSegueIdentifier = "mapSegue"
     
     let kBikeTimeUpdateSpeed = 2.0
     let kWalkTimeUpdateSpeed = 5.0
@@ -48,12 +53,12 @@ class PoolViewController: ViewController {
     
     var trackNumber = 0.0
     var locationManager: CLLocationManager!
+    var locationdCoordinate: CLLocationCoordinate2D?
     var activity: Activity!
     var stepCount = 0
     let pedoMeter = CMPedometer()
     var startDateToTrack: NSDate?
     var initialLocation: CLLocation?
-    var finalLocation: CLLocation = CLLocation(latitude: ActivityManager.sharedInstance.endLatitude, longitude: ActivityManager.sharedInstance.endLongitude)
     var milesTraveled = "0.0"
     
     var screenshot : UIImage?
@@ -131,6 +136,10 @@ class PoolViewController: ViewController {
             wellDoneViewController.type = self.type
             break
         default:
+            let mapViewController = segue.destinationViewController as! MapViewController
+            mapViewController.locationManager = self.locationManager
+            mapViewController.locationCoordinate = self.locationdCoordinate
+            
             break
         }
     }
@@ -142,6 +151,8 @@ class PoolViewController: ViewController {
         
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        bannerImageView.yy_setImageWithURL(NSURL(string: (pool?.banner)!), options: .ShowNetworkActivity)
+        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
         clearNavigationBarcolor()
         setPoolTitle(self.type!)
         
@@ -392,6 +403,10 @@ class PoolViewController: ViewController {
         }
     }
     
+    @IBAction func showMap(sender: AnyObject) {        
+        self.performSegueWithIdentifier(kMapSegueIdentifier, sender: nil)
+    }
+    
     func showPoolSwitchAlert(text: String){
         let alertController = UIAlertController(title: "Paid to Go", message:
             text, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -412,7 +427,7 @@ class PoolViewController: ViewController {
             setPoolTitle(self.type!)
             setPoolBackgroundImage(self.type!)
             self.backgroundImageView.image = UIImage(named: kWalkBackgroundImage)
-            self.stepCountLabel.hidden = false
+            self.stepCountLabel.hidden = true
             
             UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
                 }, completion: { (result) in
@@ -451,17 +466,23 @@ class PoolViewController: ViewController {
     }
     
     func poolSwitchResume(alert: UIAlertAction!) {
-        self.timerTest.pause()
+//        self.timerTest.pause()
         self.pauseTracking()
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension PoolViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
         let coord = locationObj.coordinate
+        locationdCoordinate = locationObj.coordinate
+        
+        mapButton.hidden = false
         
 //        AudioServicesPlaySystemSound(1016)
         

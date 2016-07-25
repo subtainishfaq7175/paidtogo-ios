@@ -12,7 +12,7 @@ import UIColor_Hex_Swift
 class CustomColors {
     
     //Navbar background color
-    private static func greenColor() -> UIColor{
+    static func greenColor() -> UIColor{
         return UIColor(rgba: "#6eff93")
     }
     

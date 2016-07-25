@@ -11,7 +11,7 @@ import SwiftDate
 
 extension NSDate {
     
-    // Input:2016-09-28 00:00:00 - Output:22/01/2016 (String)
+    // Input:yyyy-MM-dd 00:00:00 - Output:dd/MM/Input:yyyy (String)
     static func getDateStringWithFormatddMMyyyy(dateString:String) -> String {
         
         let dateFormatter = NSDateFormatter()
@@ -26,7 +26,7 @@ extension NSDate {
         return dateStringUpdated
     }
     
-    // Input:2016-09-28 00:00:00 - Output:22/01/2016 (NSDate)
+    // Input:Input:yyyy-MM-dd 00:00:00 - Output:dd/MM/Input:yyyy (NSDate)
     static func getDateWithFormatddMMyyyy(dateString:String) -> NSDate {
         
         let dateFormatter = NSDateFormatter()
@@ -43,8 +43,6 @@ extension NSDate {
         let currentDate = NSDate()
         
         let comparisonResult = self.compare(currentDate)
-        
-        print("Comparison Result : \(comparisonResult)")
         
         if comparisonResult.rawValue <= 0 {
             // Pool date is previous to current date
