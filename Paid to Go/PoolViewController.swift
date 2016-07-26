@@ -84,6 +84,7 @@ class PoolViewController: ViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         initLayout()
         initLocationManager()
     }
@@ -126,29 +127,9 @@ class PoolViewController: ViewController {
         self.progressLabel.text = String(format: "%.2f", milesCounter)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        switch segue.identifier! {
-        case "wellDoneSegue":
-            let wellDoneNavigationController = segue.destinationViewController as! UINavigationController
-            let wellDoneViewController = wellDoneNavigationController.viewControllers.first as! WellDoneViewController
-            
-            wellDoneViewController.type = self.type
-            break
-        default:
-            let mapViewController = segue.destinationViewController as! MapViewController
-            mapViewController.locationManager = self.locationManager
-            mapViewController.locationCoordinate = self.locationdCoordinate
-            
-            break
-        }
-    }
-    
     // MARK: - Functions
     
     private func initLayout() {
-        pauseButton.hidden = true
-        
         setNavigationBarVisible(true)
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         bannerImageView.yy_setImageWithURL(NSURL(string: (pool?.banner)!), options: .ShowNetworkActivity)
@@ -163,6 +144,14 @@ class PoolViewController: ViewController {
             let switchImage = UIImage(named: "ic_pool_switch")
             let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchBetweenPools(_:)))
             self.navigationItem.rightBarButtonItem = rightButtonItem
+        }
+        
+        if hasPausedAndResumedActivity {
+            print("PAUSE BUTTON ON")
+            pauseButton.hidden = false
+        } else {
+            print("PAUSE BUTTON OFF")
+            pauseButton.hidden = true
         }
     }
     
@@ -359,9 +348,27 @@ class PoolViewController: ViewController {
     
     // MARK: - Navigation
     
-    func btnBack(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        switch segue.identifier! {
+        case "wellDoneSegue":
+            let wellDoneNavigationController = segue.destinationViewController as! UINavigationController
+            let wellDoneViewController = wellDoneNavigationController.viewControllers.first as! WellDoneViewController
+            
+            wellDoneViewController.type = self.type
+            break
+        default:
+            let mapViewController = segue.destinationViewController as! MapViewController
+            mapViewController.locationManager = self.locationManager
+            mapViewController.locationCoordinate = self.locationdCoordinate
+            
+            break
+        }
     }
+    
+//    func btnBack(sender: AnyObject) {
+//        self.navigationController?.popViewControllerAnimated(true)
+//    }
     
     // MARK: - Actions
     

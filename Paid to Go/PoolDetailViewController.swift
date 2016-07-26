@@ -41,10 +41,14 @@ class PoolDetailViewController: ViewController {
     var typeEnum : PoolTypeEnum?
     var poolType : PoolType?
     
+    // MARK: - View Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
+        
+        ActivityManager.sharedInstance.resetActivity()
     }
     
     override func viewDidLoad() {

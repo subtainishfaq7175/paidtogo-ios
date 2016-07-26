@@ -20,8 +20,14 @@ class MapViewController: ViewController {
     internal let kMapAnnotationIdentifier = "locationPoint"
     internal let metersPerMile = 1609.344
     
+    let geocoder = CLGeocoder()
+    
     var locationManager : CLLocationManager!
     var locationCoordinate : CLLocationCoordinate2D!
+    
+    var route : MKRoute!
+    var source : MKMapItem!
+    var destination : MKMapItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,7 @@ class MapViewController: ViewController {
         configureMapPin()
         configureMapRegion()
         addAnnotationsToMap()
+        addRouteToMap()
     }
     
     /**
@@ -54,15 +61,96 @@ class MapViewController: ViewController {
     }
     
     private func configureMapRegion() {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(locationCoordinate, 0.1 * metersPerMile, 0.1 * metersPerMile)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 0.5 * metersPerMile, 0.5 * metersPerMile)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
     private func addAnnotationsToMap() {
-
         let mapAnnotation = MapAnnotation(coordinate: ActivityManager.sharedInstance.endLocation.coordinate, title: "Final Location", subtitle: "")
         mapView.addAnnotation(mapAnnotation)
         mapView.reloadInputViews()
+    }
+    
+    private func addRouteToMap() {
+        
+        /* - Draws one line on the map between two points - */
+        
+        /*var coordinates = [
+            (locationManager.location?.coordinate)!,
+            ActivityManager.sharedInstance.endLocation.coordinate
+        ]
+        
+        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        
+        mapView.addOverlay(polyline, level: .AboveRoads)*/
+        
+        self.showProgressHud("Loading map...")
+        
+        let initialLocation = locationManager.location!
+        let endLocation = ActivityManager.sharedInstance.endLocation
+        
+        // Initial location
+        geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
+            if placemarks?.count > 0 {
+                if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+                    self.source =  MKMapItem(placemark: initialmkPlacemark)
+                    
+                    // Final location
+                    self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
+                        if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+                            self.destination =  MKMapItem(placemark: finalmkPlacemark)
+                            
+                            // Route between locations
+                            self.fetchRoute()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func getMKPlacemarkFromCLPlacemark(clPlacemark:CLPlacemark) -> MKPlacemark? {
+        if let addressDict = clPlacemark.addressDictionary as! [String:AnyObject]? {
+            if let location = clPlacemark.location as CLLocation? {
+                
+                let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
+                return mkPlacemark
+            }
+        }
+        
+        return nil
+    }
+    
+    private func fetchRoute() {
+        let request:MKDirectionsRequest = MKDirectionsRequest()
+        
+        // Source and destination are the relevant MKMapItems
+        request.source = source
+        request.destination = destination
+        
+        // Specify the transportation type
+        request.transportType = MKDirectionsTransportType.Automobile;
+        
+        // If you're open to getting more than one route,
+        // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculateDirectionsWithCompletionHandler ({
+            (response: MKDirectionsResponse?, error: NSError?) in
+            
+            self.dismissProgressHud()
+            
+            if error == nil {
+                let directionsResponse = response
+                // Get whichever currentRoute you'd like, ex. 0
+                self.route = directionsResponse!.routes[0] as MKRoute
+                
+                // Add route to map
+                self.mapView.addOverlay(self.route.polyline, level: MKOverlayLevel.AboveRoads)
+            }
+        })
     }
     
     // MARK: - IBActions
@@ -88,10 +176,9 @@ extension MapViewController : MKMapViewDelegate {
             
             mapAnnotationView.enabled = true
             mapAnnotationView.canShowCallout = true
-            mapAnnotationView.calloutOffset = CGPointMake(-5.0, -5.0)
+//            mapAnnotationView.calloutOffset = CGPointMake(-5.0, -5.0)
             
             mapAnnotationView.image = configureMapPin()
-            
             
             return mapAnnotationView
             
@@ -100,11 +187,13 @@ extension MapViewController : MKMapViewDelegate {
         }
     }
     
-//    func mapView(mapView: MKMapView, viewForOverlay overlay: MKOverlay) -> MKOverlayView {
-//        
-//         MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
-//         polylineView.strokeColor = [UIColor redColor];
-//         polylineView.lineWidth = 1.0;
-//         return polylineView;
-//    }
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if let polylineOverlay = overlay as? MKPolyline {
+            let render = MKPolylineRenderer(polyline: polylineOverlay)
+            render.strokeColor = UIColor.blueColor()
+            return render
+        }
+        return nil
+    }
+    
 }
