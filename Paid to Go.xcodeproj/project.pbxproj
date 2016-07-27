@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1A9AC81D4940D300A85640 /* PoolViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */; };
 		4D258AE91D381624000C24D9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D258AE81D381624000C24D9 /* Int+Extensions.swift */; };
 		4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */; };
 		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
@@ -117,6 +118,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoolViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4D258AE81D381624000C24D9 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsListViewController.swift; sourceTree = "<group>"; };
 		4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailShareHelper.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
 				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
 				52B982321CB2C42300706DCC /* PoolViewController.swift */,
+				4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */,
 				52B982341CB3146100706DCC /* WellDoneViewController.swift */,
 				522594FD1CB6EBE1002396A4 /* ShareViewController.swift */,
 				522994EC1CC15A4400C589C6 /* WDLeaderboardsViewController.swift */,
@@ -803,6 +806,7 @@
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
 				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
 				4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */,
+				4D1A9AC81D4940D300A85640 /* PoolViewController+Extensions.swift in Sources */,
 				4DF0005F1D46971C001394E3 /* UIImage+Extensions.swift in Sources */,
 				4D66E7791D37C10B00E8AE09 /* LeaderboardsListTableViewCell.swift in Sources */,
 				52B3E0D61CA2D31B000ED657 /* SettingsViewController.swift in Sources */,
@@ -974,13 +978,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b6e3b9dc-f2f7-4357-9453-8dfe83185e0e";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -992,13 +996,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b6e3b9dc-f2f7-4357-9453-8dfe83185e0e";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 			};
 			name = Release;

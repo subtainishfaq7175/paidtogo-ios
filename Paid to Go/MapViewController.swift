@@ -18,6 +18,7 @@ class MapViewController: ViewController {
     // MARK: - Variables and constants
     
     internal let kMapAnnotationIdentifier = "locationPoint"
+    internal let kDistanceBetweenLocationsOffset = 25.0
     internal let metersPerMile = 1609.344
     
     let geocoder = CLGeocoder()
@@ -28,6 +29,15 @@ class MapViewController: ViewController {
     var route : MKRoute!
     var source : MKMapItem!
     var destination : MKMapItem!
+    
+    var previousLocation : CLLocation?
+    var currentLocation : CLLocation?
+    
+    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var testLabelRejected: UILabel!
+    
+    var testCounter = 0
+    var testCounterRejected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +58,14 @@ class MapViewController: ViewController {
         
         configureMapPin()
         configureMapRegion()
-        addAnnotationsToMap()
-        addRouteToMap()
+        
+//        addAnnotationsToMap()
+//        addRouteToMap()
+        
+        previousLocation = locationManager.location
+        
+        testLabel.hidden = true
+        testLabelRejected.hidden = true
     }
     
     /**
@@ -72,41 +88,45 @@ class MapViewController: ViewController {
     }
     
     private func addRouteToMap() {
+//        self.showProgressHud("Loading map...")
+        
+        
         
         /* - Draws one line on the map between two points - */
         
-        /*var coordinates = [
-            (locationManager.location?.coordinate)!,
-            ActivityManager.sharedInstance.endLocation.coordinate
-        ]
+            /*var coordinates = [
+                (locationManager.location?.coordinate)!,
+                ActivityManager.sharedInstance.endLocation.coordinate
+            ]
+            
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            
+            mapView.addOverlay(polyline, level: .AboveRoads)*/
         
-        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
         
-        mapView.addOverlay(polyline, level: .AboveRoads)*/
+        /* - Draws one road on the map from the user's current location to the final destination - */
         
-        self.showProgressHud("Loading map...")
-        
-        let initialLocation = locationManager.location!
-        let endLocation = ActivityManager.sharedInstance.endLocation
-        
-        // Initial location
-        geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
-            if placemarks?.count > 0 {
-                if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
-                    self.source =  MKMapItem(placemark: initialmkPlacemark)
-                    
-                    // Final location
-                    self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
-                        if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
-                            self.destination =  MKMapItem(placemark: finalmkPlacemark)
-                            
-                            // Route between locations
-                            self.fetchRoute()
+            /*let initialLocation = locationManager.location!
+            let endLocation = ActivityManager.sharedInstance.endLocation
+            
+            // Initial location
+            geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
+                if placemarks?.count > 0 {
+                    if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+                        self.source =  MKMapItem(placemark: initialmkPlacemark)
+                        
+                        // Final location
+                        self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
+                            if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+                                self.destination =  MKMapItem(placemark: finalmkPlacemark)
+                                
+                                // Route between locations
+                                self.fetchRoute()
+                            }
                         }
                     }
                 }
-            }
-        }
+            }*/
     }
     
     private func getMKPlacemarkFromCLPlacemark(clPlacemark:CLPlacemark) -> MKPlacemark? {
@@ -153,6 +173,31 @@ class MapViewController: ViewController {
         })
     }
     
+    func addTravelSectionToMap(currentLocation:CLLocation) {
+        
+        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(previousLocation!, locB: currentLocation)
+        
+        if distanceBetweenLocations > kDistanceBetweenLocationsOffset {
+            var coordinates = [
+                previousLocation!.coordinate,
+                currentLocation.coordinate
+            ]
+            
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            
+            mapView.addOverlay(polyline, level: .AboveRoads)
+            
+            previousLocation = currentLocation
+            
+            testCounter = testCounter+1
+            testLabel.text = String(testCounter)
+            
+        } else {
+            testCounterRejected = testCounterRejected+1
+            testLabelRejected.text = String(testCounterRejected)
+        }
+    }
+    
     // MARK: - IBActions
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
@@ -190,7 +235,7 @@ extension MapViewController : MKMapViewDelegate {
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if let polylineOverlay = overlay as? MKPolyline {
             let render = MKPolylineRenderer(polyline: polylineOverlay)
-            render.strokeColor = UIColor.blueColor()
+            render.strokeColor = CustomColors.greenColor()
             return render
         }
         return nil

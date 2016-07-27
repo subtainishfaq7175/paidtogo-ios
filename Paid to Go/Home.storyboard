@@ -1115,13 +1115,37 @@
                                     <action selector="closeButtonPressed:" destination="cwD-YC-yQK" eventType="touchUpInside" id="lLi-lj-vvX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-Em-zxJ" userLabel="Route Trace OK">
+                                <rect key="frame" x="124" y="28" width="72" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="qTT-Kn-XSB"/>
+                                    <constraint firstAttribute="width" constant="72" id="t76-jS-iw1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-TK-f8b" userLabel="Route Trace REJECTED">
+                                <rect key="frame" x="124" y="82" width="72" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="jOv-bz-8ZH"/>
+                                    <constraint firstAttribute="height" constant="34" id="oNE-Nh-Z11"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="0.87450980389999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tjh-TK-f8b" firstAttribute="top" secondItem="LOo-Em-zxJ" secondAttribute="bottom" constant="20" id="5Fw-XM-5Mw"/>
                             <constraint firstAttribute="trailing" secondItem="LNd-Pe-9QV" secondAttribute="trailing" id="DfJ-wB-fLe"/>
                             <constraint firstItem="LNd-Pe-9QV" firstAttribute="leading" secondItem="k2U-TW-eqv" secondAttribute="leading" id="GNf-YJ-2xW"/>
                             <constraint firstItem="1wf-jf-B67" firstAttribute="leading" secondItem="k2U-TW-eqv" secondAttribute="leading" constant="2" id="I7k-SQ-FBm"/>
+                            <constraint firstItem="LOo-Em-zxJ" firstAttribute="centerX" secondItem="k2U-TW-eqv" secondAttribute="centerX" id="KdF-aP-3FV"/>
+                            <constraint firstItem="LOo-Em-zxJ" firstAttribute="top" secondItem="0eT-Ot-CIO" secondAttribute="bottom" constant="8" id="TIb-CN-Gol"/>
                             <constraint firstItem="ErR-HH-eDX" firstAttribute="top" secondItem="LNd-Pe-9QV" secondAttribute="bottom" id="lqh-5U-ht4"/>
+                            <constraint firstItem="Tjh-TK-f8b" firstAttribute="centerX" secondItem="k2U-TW-eqv" secondAttribute="centerX" id="mDp-XC-qz2"/>
                             <constraint firstItem="LNd-Pe-9QV" firstAttribute="top" secondItem="k2U-TW-eqv" secondAttribute="top" id="pJ5-vx-Jae"/>
                             <constraint firstItem="1wf-jf-B67" firstAttribute="top" secondItem="0eT-Ot-CIO" secondAttribute="bottom" constant="8" id="yVo-35-bW3"/>
                         </constraints>
@@ -1129,6 +1153,8 @@
                     <navigationItem key="navigationItem" title="Map" id="MXm-GE-790"/>
                     <connections>
                         <outlet property="mapView" destination="LNd-Pe-9QV" id="MhR-fj-BKL"/>
+                        <outlet property="testLabel" destination="LOo-Em-zxJ" id="MBs-WH-PGt"/>
+                        <outlet property="testLabelRejected" destination="Tjh-TK-f8b" id="1a4-r7-ZCA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2l-4H-uO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1162,9 +1188,6 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="action_start"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="track:" destination="ggG-z0-JoP" eventType="touchUpInside" id="qgA-o1-hQc"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -1266,9 +1289,6 @@
                                 <state key="normal" title="Pause">
                                     <color key="titleColor" red="0.50588235290000005" green="1" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="pause:" destination="ggG-z0-JoP" eventType="touchUpInside" id="hUD-Py-IVc"/>
-                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ9-qU-V3N">
                                 <rect key="frame" x="218" y="442" width="60" height="20"/>
