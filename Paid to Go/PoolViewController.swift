@@ -14,23 +14,43 @@ import CoreMotion
 import AVFoundation
 
 /**
- *  Handles the step counting process
- */
-protocol PedometerDelegate {
-    func beginPedometerUpdates()
-    func pausePedometerUpdates()
-    func resumePedometerUpdates()
-    func updatePedometer()
-    func queryPedometerUpdates()
-}
-
-/**
  *  Handles the whole activity tracking process
  */
 protocol TrackDelegate {
     func startTracking()
     func pauseTracking()
     func endTracking()
+}
+
+/**
+ *  Handles the step counting process
+ */
+protocol PedometerDelegate {
+    
+    /**
+     *  Called the first time, when the user begins the activity
+     */
+    func beginPedometerUpdates()
+    
+    /**
+     *  Called every time the user pauses the activity
+     */
+    func pausePedometerUpdates()
+    
+    /**
+     *  Called every time the user resumes the activity
+     */
+    func resumePedometerUpdates()
+    
+    /**
+     *  Called when the user starts tracking the activity, it calls begin or resume pedometer updates
+     */
+    func updatePedometer()
+    
+    /**
+     *  Called between constants periods of time to check for pedometer updates
+     */
+    func queryPedometerUpdates()
 }
 
 /**
@@ -42,6 +62,12 @@ protocol SwitchDelegate {
     func poolSwitchBikeSelected(alert: UIAlertAction!)
     func poolSwitchTrainBusSelected(alert: UIAlertAction!)
     func poolSwitchResume(alert: UIAlertAction!)
+}
+
+protocol ActivityLocationManagerDelegate : CLLocationManagerDelegate {
+    func initLocationManager()
+    func startLocationUpdates()
+    func pauseLocationUpdates()
 }
 
 class PoolViewController : ViewController {
@@ -70,38 +96,44 @@ class PoolViewController : ViewController {
     
     internal let kMapSegueIdentifier = "mapSegue"
     
-    let kBikeTimeUpdateSpeed = 2.0
-    let kWalkTimeUpdateSpeed = 5.0
+//    var player: AVAudioPlayer = AVAudioPlayer()
     
     var pool: Pool?
     var poolType: PoolType?
     var type: PoolTypeEnum?
+    
+    /**
+     *  Indicates if the pool has already started
+     */
     var hasPoolStarted = false
-    var isTimerTracking: Bool = false
     
-    var timer : NSTimer?
-    var timerTest : Timer!
-    
-    var trackNumber = 0.0
-    var locationManager: CLLocationManager!
-    var locationdCoordinate: CLLocationCoordinate2D?
-    var activity: Activity!
-    var stepCount = 0
-    let pedoMeter = CMPedometer()
-    var startDateToTrack: NSDate?
-    var initialLocation: CLLocation?
-    var milesTraveled = "0.0"
-    
-    var screenshot : UIImage?
-    
-    var countingSteps : Bool?
+    /**
+     *  Indicates if the pool has been paused
+     */
     var hasPausedAndResumedActivity = false
     
-    var metersFromLocation = 1600.0
+    /**
+     *  Indicates the state of the activity in progress (Pause / Resume)
+     */
+    var isTimerTracking: Bool = false
     
-    var player: AVAudioPlayer = AVAudioPlayer()
+    /**
+     *  Handles all the location features
+     */
+    var locationManager: CLLocationManager!
     
-    var distanceToFinalDestination: Double = 0.0
+    /**
+     *  Collects all the information from the pool that must be sent to the API
+     */
+    var activity: Activity!
+    
+    /**
+     *  Handles the whole step counting process (Walk pool only)
+     */
+    let pedoMeter = CMPedometer()
+    var stepCount = 0
+    var startDateToTrack: NSDate?
+    var countingSteps : Bool?
     
     /*  
      *  This value regulates the speed in which the circular progress circle completes a whole round.
@@ -115,6 +147,5 @@ class PoolViewController : ViewController {
      *  We keep a reference to the MapViewController, so that every time the user's location is updated, the new travel section is added to the map
      */
     var mapViewController : MapViewController?
-    
 }
 

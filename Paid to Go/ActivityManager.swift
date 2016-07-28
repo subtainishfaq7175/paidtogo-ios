@@ -8,10 +8,29 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
-/// Handles the whole activity process, and the necessary information to update the progress circle
+protocol ActivityTest {
+    
+    var testCounter : Int { get set }
+    var testCounterRejected : Int { get set }
+    
+    static func getTestCounter() -> Int
+    static func setTestCounter()
+    static func getTestCounterRejected() -> Int
+    static func setTestCounterRejected()
+}
 
-class ActivityManager: NSObject {
+/* 
+ *  Handles the whole activity process, and the necessary information to update the progress circle
+ */
+class ActivityManager: NSObject, ActivityTest {
+    
+    // - Test - //
+    var testCounter = 0
+    var testCounterRejected = 0
+    
+    internal static let metersToMiles = 0.000621371
     
     var activity : Activity = Activity()
     
@@ -19,7 +38,7 @@ class ActivityManager: NSObject {
     
     var startDateToTrack : NSDate = NSDate()
     
-    var trackNumber : Double = 0.0
+//    var trackNumber : Double = 0.0
     var milesCounter : Double = 0.0
     
     var endLatitude: Double = 0.0
@@ -31,8 +50,15 @@ class ActivityManager: NSObject {
     var initialLocation : CLLocation = CLLocation()
     var endLocation : CLLocation = CLLocation()
     
-    var metersFromStartLocation : Double = 0.0
-    var distanceToFinalDestination : Double = 0.0
+//    var metersFromStartLocation : Double = 0.0
+//    var distanceToFinalDestination : Double = 0.0
+    
+    //--//
+    var lastLocation : CLLocation = CLLocation()
+    var lastSubrouteInitialLocation : CLLocation = CLLocation()
+    
+    var subroutes = [MKPolyline]()
+    var mapIsMainScreen : Bool = false
     
     /**
      *  Singleton
@@ -50,12 +76,8 @@ class ActivityManager: NSObject {
         return milesCounter
     }
     
-    func getTrackNumber() -> Double {
-        return trackNumber
-    }
-    
     func resetActivity() {
-        trackNumber = 0.0
+//        trackNumber = 0.0
         activity = Activity()
         milesCounter = 0.0
         
@@ -64,9 +86,81 @@ class ActivityManager: NSObject {
         endLatitude = 0.0
         endLongitude = 0.0
         
-        metersFromStartLocation = 0.0
-        distanceToFinalDestination = 0.0
+//        metersFromStartLocation = 0.0
+//        distanceToFinalDestination = 0.0
         
         poolId = ""
+    }
+    
+    //--//
+    
+//    static func getTrackNumber() -> Double {
+//        return sharedInstance.trackNumber
+//    }
+    
+    static func setMilesCounter(milesTravelled:Double) {
+        sharedInstance.milesCounter += milesTravelled
+    }
+    
+    static func updateMilesCounter(currentLocation:CLLocation) {
+        let metersTravelled = sharedInstance.lastLocation.distanceFromLocation(currentLocation) as Double!
+        setMilesCounter(metersTravelled*metersToMiles)
+    }
+    
+    static func getMilesCounter() -> Double {
+        return sharedInstance.milesCounter
+    }
+    
+    static func getLastLocation() -> CLLocation {
+        return sharedInstance.lastLocation
+    }
+    
+    static func setLastLocation(lastLocation:CLLocation) {
+        sharedInstance.lastLocation = lastLocation
+    }
+    
+    static func getLastSubrouteInitialLocation() -> CLLocation {
+        return sharedInstance.lastSubrouteInitialLocation
+    }
+    
+    static func setLastSubrouteInitialLocation(lastLocation:CLLocation) {
+        sharedInstance.lastSubrouteInitialLocation = lastLocation
+    }
+    
+    static func getCircularProgressAngle() -> Double {
+        return sharedInstance.milesCounter * 360
+    }
+    
+    static func isMapMainScreen() -> Bool {
+        return sharedInstance.mapIsMainScreen
+    }
+    
+    static func setMapIsMainScreen(mapIsMainScreen:Bool) {
+        sharedInstance.mapIsMainScreen = mapIsMainScreen
+    }
+    
+    static func addSubroute(subroute:MKPolyline) {
+        sharedInstance.subroutes.append(subroute)
+    }
+    
+    static func getSubroutes() -> [MKPolyline] {
+        return sharedInstance.subroutes
+    }
+    
+    // - ActivityTestMethods - //
+    static func getTestCounter() -> Int {
+        return sharedInstance.testCounter
+    }
+    
+    static func setTestCounter() {
+        sharedInstance.testCounter += 1
+    }
+    
+    static func getTestCounterRejected() -> Int {
+        return sharedInstance.testCounterRejected
+    }
+    
+    static func setTestCounterRejected() {
+        sharedInstance.testCounterRejected += 1
     }
 }

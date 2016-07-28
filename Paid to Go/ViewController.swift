@@ -116,7 +116,6 @@ class ViewController: UIViewController {
         default:
             break
         }
-        
     }
     
     func setPoolColorAndTitle(view: UIView, typeEnum: PoolTypeEnum, type: PoolType) {

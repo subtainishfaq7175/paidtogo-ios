@@ -15,6 +15,10 @@ class MapViewController: ViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var testLabelRejected: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     // MARK: - Variables and constants
     
     internal let kMapAnnotationIdentifier = "locationPoint"
@@ -30,11 +34,11 @@ class MapViewController: ViewController {
     var source : MKMapItem!
     var destination : MKMapItem!
     
+//    var subroutes = [MKPolyline]()
+//    var mapIsMainScreen = false
+    
     var previousLocation : CLLocation?
     var currentLocation : CLLocation?
-    
-    @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var testLabelRejected: UILabel!
     
     var testCounter = 0
     var testCounterRejected = 0
@@ -44,6 +48,12 @@ class MapViewController: ViewController {
 
         // Do any additional setup after loading the view.
         configureMap()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        ActivityManager.setMapIsMainScreen(false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,20 +66,21 @@ class MapViewController: ViewController {
     private func configureMap() {
         mapView.delegate = self
         
-        configureMapPin()
+//        configureMapPin()
         configureMapRegion()
+        addSubroutesToMap()
         
 //        addAnnotationsToMap()
 //        addRouteToMap()
         
-        previousLocation = locationManager.location
+//        previousLocation = locationManager.location
         
-        testLabel.hidden = true
-        testLabelRejected.hidden = true
+//        testLabel.hidden = true
+//        testLabelRejected.hidden = true
     }
     
     /**
-     Configures the map's pin with the app's main color
+     *  Configures the map's pin with the app's main color
      */
     private func configureMapPin() -> UIImage {
         let mapPin = UIImage(named: "ic_map")?.imageWithRenderingMode(.AlwaysTemplate)
@@ -81,6 +92,17 @@ class MapViewController: ViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    private func addSubroutesToMap() {
+        
+        let subroutes = ActivityManager.getSubroutes()
+        
+        if subroutes.count > 0 {
+            for subroute in subroutes {
+                mapView.addOverlay(subroute, level: .AboveRoads)
+            }
+        }
+    }
+    
     private func addAnnotationsToMap() {
         let mapAnnotation = MapAnnotation(coordinate: ActivityManager.sharedInstance.endLocation.coordinate, title: "Final Location", subtitle: "")
         mapView.addAnnotation(mapAnnotation)
@@ -89,8 +111,6 @@ class MapViewController: ViewController {
     
     private func addRouteToMap() {
 //        self.showProgressHud("Loading map...")
-        
-        
         
         /* - Draws one line on the map between two points - */
         
@@ -175,26 +195,35 @@ class MapViewController: ViewController {
     
     func addTravelSectionToMap(currentLocation:CLLocation) {
         
-        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(previousLocation!, locB: currentLocation)
+        let previousLocation = ActivityManager.getLastSubrouteInitialLocation()
+        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(previousLocation, locB: currentLocation)
+        
+        if ActivityManager.isMapMainScreen() {
+            distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
+        }
         
         if distanceBetweenLocations > kDistanceBetweenLocationsOffset {
             var coordinates = [
-                previousLocation!.coordinate,
+                previousLocation.coordinate,
                 currentLocation.coordinate
             ]
             
             let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
             
-            mapView.addOverlay(polyline, level: .AboveRoads)
+            ActivityManager.addSubroute(polyline)
+            ActivityManager.setLastSubrouteInitialLocation(currentLocation)
+            ActivityManager.setTestCounter()
             
-            previousLocation = currentLocation
-            
-            testCounter = testCounter+1
-            testLabel.text = String(testCounter)
+            if ActivityManager.isMapMainScreen() {
+                mapView.addOverlay(polyline, level: .AboveRoads)
+                testLabel.text = String(ActivityManager.getTestCounter())
+            }
             
         } else {
-            testCounterRejected = testCounterRejected+1
-            testLabelRejected.text = String(testCounterRejected)
+            ActivityManager.setTestCounterRejected()
+            if ActivityManager.isMapMainScreen() {
+                testLabelRejected.text = String(ActivityManager.getTestCounterRejected())
+            }
         }
     }
     
