@@ -13,12 +13,35 @@ import CoreLocation
 import CoreMotion
 import AVFoundation
 
+// MARK: - Protocols
+
 /**
  *  Handles the whole activity tracking process
  */
 protocol TrackDelegate {
+    
+    /**
+     *  Determines if the activity should be paused or resumed
+     */
+    func pauseResumeTracking()
+    
+    /**
+     *  Begins tracking the activity:
+     *
+     *  -   Starts Pedometer (Walk/Run)
+     *  -   Starts Geolocation updates
+     */
     func startTracking()
+    
+    /**
+     *  Pauses the tracking of the activity.
+     */
     func pauseTracking()
+    
+    /**
+     *  Finishes the activity tracking
+     *  Prepares the activity info to be sent to the API
+     */
     func endTracking()
 }
 
@@ -48,6 +71,11 @@ protocol PedometerDelegate {
     func updatePedometer()
     
     /**
+     *  Called when the user finishes tracking the activity
+     */
+    func stopPedometer()
+    
+    /**
      *  Called between constants periods of time to check for pedometer updates
      */
     func queryPedometerUpdates()
@@ -64,11 +92,16 @@ protocol SwitchDelegate {
     func poolSwitchResume(alert: UIAlertAction!)
 }
 
+/**
+ *  Handles the whole process of geolocation
+ */
 protocol ActivityLocationManagerDelegate : CLLocationManagerDelegate {
     func initLocationManager()
     func startLocationUpdates()
     func pauseLocationUpdates()
 }
+
+// MARK: - Class
 
 class PoolViewController : ViewController {
     
@@ -108,7 +141,7 @@ class PoolViewController : ViewController {
     var hasPoolStarted = false
     
     /**
-     *  Indicates if the pool has been paused
+     *  Indicates if the pool has been paused at least once
      */
     var hasPausedAndResumedActivity = false
     

@@ -58,7 +58,18 @@ class ActivityManager: NSObject, ActivityTest {
     var lastSubrouteInitialLocation : CLLocation = CLLocation()
     
     var subroutes = [MKPolyline]()
+    var subroutesPosta = [Subroute]()
     var mapIsMainScreen : Bool = false
+    
+    /**
+     *  Indicates if the pool has been paused at least once
+     */
+    var pausedAndResumedActivity = false
+    
+    /**
+     *  Indicates if the subroute is the first subroute to be drawn after pausing and resuming the activity. The first subroute must not be visible
+     */
+    var firstSubrouteAfterPausingAndResumingActivity = false
     
     /**
      *  Singleton
@@ -90,6 +101,16 @@ class ActivityManager: NSObject, ActivityTest {
 //        distanceToFinalDestination = 0.0
         
         poolId = ""
+        
+        lastLocation = CLLocation()
+        lastSubrouteInitialLocation = CLLocation()
+        
+        subroutes = [MKPolyline]()
+        subroutesPosta = [Subroute]()
+        mapIsMainScreen = false
+        
+        pausedAndResumedActivity = false
+        firstSubrouteAfterPausingAndResumingActivity = false
     }
     
     //--//
@@ -143,6 +164,14 @@ class ActivityManager: NSObject, ActivityTest {
         sharedInstance.subroutes.append(subroute)
     }
     
+    static func getSubroutesPosta() -> [Subroute] {
+        return sharedInstance.subroutesPosta
+    }
+    
+    static func addSubroutePosta(subroute:Subroute) {
+        sharedInstance.subroutesPosta.append(subroute)
+    }
+    
     static func getSubroutes() -> [MKPolyline] {
         return sharedInstance.subroutes
     }
@@ -162,5 +191,21 @@ class ActivityManager: NSObject, ActivityTest {
     
     static func setTestCounterRejected() {
         sharedInstance.testCounterRejected += 1
+    }
+    
+    static func hasPausedAndResumedActivity() -> Bool {
+        return sharedInstance.pausedAndResumedActivity
+    }
+    
+    static func setPausedAndResumedActivity() {
+        sharedInstance.pausedAndResumedActivity = true
+    }
+    
+    static func isFirstSubrouteAfterPausingAndResumingActivity() -> Bool {
+        return sharedInstance.firstSubrouteAfterPausingAndResumingActivity
+    }
+    
+    static func setFirstSubrouteAfterPausingAndResumingActivity(value:Bool) {
+        sharedInstance.firstSubrouteAfterPausingAndResumingActivity = value
     }
 }

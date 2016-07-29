@@ -191,6 +191,7 @@ class ViewController: UIViewController {
     func presentHomeViewController() {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
     }
+    
     func presentHomeViewControllerWithoutAnimation() {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
@@ -203,7 +204,9 @@ class ViewController: UIViewController {
                 poolViewController.poolType = poolType
                 poolViewController.pool = pool
             
-                self.showViewController(poolViewController, sender: sender)
+//                self.showViewController(poolViewController, sender: sender)
+//            self.presentViewController(poolViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(poolViewController, animated: true)
         }
     }
     

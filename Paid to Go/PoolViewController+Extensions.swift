@@ -16,11 +16,6 @@ extension PoolViewController {
     
     // MARK: -  View Lifecycle
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -62,8 +57,11 @@ extension PoolViewController {
     // MARK: - Private Methods
     
     private func initLayout() {
-        setNavigationBarVisible(true)
-        clearNavigationBarcolor()
+        super.setNavigationBarVisible(true)
+        super.clearNavigationBarcolor()
+        
+        setCustomNavigationBackButton()
+        
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
         bannerImageView.yy_setImageWithURL(NSURL(string: (pool?.banner)!), options: .ShowNetworkActivity)
@@ -79,10 +77,8 @@ extension PoolViewController {
         }
         
         if hasPausedAndResumedActivity {
-//            print("PAUSE BUTTON ON")
             pauseButton.hidden = false
         } else {
-//            print("PAUSE BUTTON OFF")
             pauseButton.hidden = true
         }
     }
@@ -97,13 +93,25 @@ extension PoolViewController {
         mapButton.addTarget(self, action: #selector(PoolViewController.mapButtonPressed), forControlEvents: .TouchUpInside)
     }
     
-//    func initLocationManager() {
-//        locationManager = CLLocationManager()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        
-//        locationManager.requestAlwaysAuthorization()
-//    }
+    private func setCustomNavigationBackButton() {
+        // Disable the swipe to make sure you get your chance to save
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
+        
+        // Add an invisible bar button so that the back button is closer to the left border of the screen
+        let negativeSeparator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSeparator.width = -20;
+        
+        // Replace the default back button
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        let backButton = UIBarButtonItem(image: UIImage(named: "ic_back35x35"), style: .Plain, target: self, action: #selector(PoolViewController.customBackViewController))
+        
+        let leftBarButtonItems = [
+            negativeSeparator,
+            backButton
+        ]
+        
+        self.navigationItem.leftBarButtonItems = leftBarButtonItems
+    }
     
     private func setPoolBackgroundImage(type: PoolTypeEnum) {
         switch type {
@@ -136,12 +144,12 @@ extension PoolViewController {
             
             self.startDateToTrack = NSDate()
             
+            startTracking()
+            
             hasPoolStarted = true
             
             actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
             setPoolColor(self.actionButtonView, type: self.type!)
-            
-            startTracking()
             
             pauseButton.hidden = false
             
@@ -164,11 +172,33 @@ extension PoolViewController {
     }
     
     func switchButtonPressed() {
-        self.pauseTracking()
+        self.pauseResumeTracking()
         self.showPoolSwitchAlert("Switch Pool")
     }
-
+    
     // MARK: - Navigation
+    
+    func customBackViewController() {
+        if hasPoolStarted {
+            
+            let alertController = UIAlertController(title: "Paid to Go", message:
+                "Wait!! If you leave now, all your progress will be lost. Are you sure that you want to leave?", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: backViewController))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: poolSwitchResume))
+            
+            self.presentViewController(alertController, animated: true, completion: {
+                self.pauseResumeTracking()
+            })
+            
+        } else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
+    func backViewController(alert: UIAlertAction!) {
+        ActivityManager.sharedInstance.resetActivity()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -194,15 +224,34 @@ extension PoolViewController {
 
 extension PoolViewController: TrackDelegate {
     
+    func pauseResumeTracking() {
+        // Paused
+        if isTimerTracking {
+            
+            
+            
+            //pausePedometerUpdates()
+            pauseTracking()
+            pauseLocationUpdates()
+            
+        // Resumed
+        } else {
+            
+            hasPausedAndResumedActivity = true
+            ActivityManager.setPausedAndResumedActivity()
+            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(true)
+            
+            //resumePedometerUpdates()
+            startTracking()
+            startLocationUpdates()
+        }
+    }
+    
     func startTracking() {
-        
-        hasPausedAndResumedActivity = true
         
         pauseButton.setTitle("Pause", forState: UIControlState.Normal)
         isTimerTracking = true
         countingSteps = true
-        
-//        updatePedometer()
     }
     
     func pauseTracking() {
@@ -211,44 +260,21 @@ extension PoolViewController: TrackDelegate {
         countingSteps = false
     }
     
-    func pauseResumeTracking() {
-        // Paused
-        if isTimerTracking {
-            
-//            pausePedometerUpdates()
-            pauseTracking()
-            pauseLocationUpdates()
-            
-        // Resumed
-        } else {
-            
-//            resumePedometerUpdates()
-            startTracking()
-            startLocationUpdates()
-        }
-    }
-    
     func endTracking() {
-        
-        print(activity.startLatitude)
-        print(activity.startLongitude)
-        print(activity.endLatitude)
-        print(activity.endLongitude)
-        
         activity.startLatitude = ActivityManager.sharedInstance.startLatitude
         activity.startLongitude = ActivityManager.sharedInstance.startLongitude
         activity.endLatitude = ActivityManager.sharedInstance.endLatitude
         activity.endLongitude = ActivityManager.sharedInstance.endLongitude
         
-        activity.milesTraveled = String(format: "%.2f", ActivityManager.getMilesCounter()) //self.milesTraveled
-        activity.startDateTime = String(ActivityManager.sharedInstance.startDateToTrack) //String(self.startDateToTrack)
-        activity.poolId = ActivityManager.sharedInstance.poolId //pool?.internalIdentifier
+        activity.milesTraveled = String(format: "%.2f", ActivityManager.getMilesCounter())
+        activity.startDateTime = String(ActivityManager.sharedInstance.startDateToTrack)
+        activity.poolId = ActivityManager.sharedInstance.poolId
         activity.accessToken = User.currentUser?.accessToken
         
         print(activity.toString())
         
-        self.locationManager.stopUpdatingLocation()
-        self.pedoMeter.stopPedometerUpdates()
+        pauseLocationUpdates()
+        stopPedometer()
         
         self.showProgressHud()
         
@@ -400,6 +426,10 @@ extension PoolViewController: PedometerDelegate {
         }
     }
     
+    func stopPedometer() {
+        self.pedoMeter.stopPedometerUpdates()
+    }
+    
     @objc func queryPedometerUpdates() {
         
         guard let startDate = self.startDateToTrack else {
@@ -468,7 +498,6 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         ActivityManager.updateMilesCounter(location)
         
         let angle = ActivityManager.getCircularProgressAngle()
-        print("Angle - \(angle.description)")
         circularProgressView.angle = angle / circularProgressRoundOffset
         
         ActivityManager.setLastLocation(location)

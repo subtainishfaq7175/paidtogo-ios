@@ -202,7 +202,7 @@ class MapViewController: ViewController {
             distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
         }
         
-        if distanceBetweenLocations > kDistanceBetweenLocationsOffset {
+        if distanceBetweenLocations > 10.0 {
             var coordinates = [
                 previousLocation.coordinate,
                 currentLocation.coordinate
@@ -210,12 +210,33 @@ class MapViewController: ViewController {
             
             let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
             
+            polyline.title = ""
+            if ActivityManager.hasPausedAndResumedActivity() == true && ActivityManager.isFirstSubrouteAfterPausingAndResumingActivity() == true {
+                polyline.title = "invisible"
+                ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
+            }
+            
             ActivityManager.addSubroute(polyline)
             ActivityManager.setLastSubrouteInitialLocation(currentLocation)
             ActivityManager.setTestCounter()
             
+            /*
+            var invisible = false
+            if ActivityManager.hasPausedAndResumedActivity() == true && ActivityManager.isFirstSubrouteAfterPausingAndResumingActivity() == true {
+                invisible = true
+                ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
+            }
+            
+            let subroute = Subroute(invisible: invisible, coordinates: &coordinates, count: coordinates.count)
+            ActivityManager.addSubroutePosta(subroute)
+            
+            ActivityManager.setLastSubrouteInitialLocation(currentLocation)
+            ActivityManager.setTestCounter()
+            */
+            
             if ActivityManager.isMapMainScreen() {
                 mapView.addOverlay(polyline, level: .AboveRoads)
+//                mapView.addOverlay(subroute, level: .AboveRoads)
                 testLabel.text = String(ActivityManager.getTestCounter())
             }
             
@@ -262,12 +283,40 @@ extension MapViewController : MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
         if let polylineOverlay = overlay as? MKPolyline {
+            let invisible = polylineOverlay.title
             let render = MKPolylineRenderer(polyline: polylineOverlay)
-            render.strokeColor = CustomColors.greenColor()
+            
+            if invisible?.characters.count == 0 {
+                render.strokeColor = CustomColors.greenColor()
+            } else {
+                render.strokeColor = UIColor.clearColor()
+            }
+            
             return render
         }
         return nil
+        
+        /*
+        if let polylineOverlay = overlay as? Subroute {
+            
+            let invisble = polylineOverlay.invisible
+            
+            let render = MKPolylineRenderer(polyline: polylineOverlay)
+            
+            if invisble == true {
+                print("Invisible")
+                render.strokeColor = UIColor.clearColor()
+            } else {
+                print("OK")
+                render.strokeColor = CustomColors.greenColor()
+            }
+            
+            return render
+        }
+        return nil
+         */
     }
     
 }

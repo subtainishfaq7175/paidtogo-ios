@@ -236,7 +236,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         case itemsSection:
             return 45.0
             
-            
         default:
             log.error("Unhandled section")
             return 0.0

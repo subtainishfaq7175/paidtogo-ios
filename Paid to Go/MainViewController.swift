@@ -22,7 +22,6 @@ class MainViewController: REFrostedViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
         // menu configuration
         self.panGestureEnabled = true
         

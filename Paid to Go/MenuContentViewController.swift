@@ -26,7 +26,6 @@ class MenuContentViewController: ViewController {
         
     }
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,8 +37,6 @@ class MenuContentViewController: ViewController {
         //        ]
     }
     
-    
-    
     func addMenuButton() {
         
         let menuButtonImage = UIImage(named: "ic_add_green")?.imageWithRenderingMode(.AlwaysTemplate)
@@ -48,7 +45,7 @@ class MenuContentViewController: ViewController {
             image: menuButtonImage,
             style: .Done,
             target: self,
-            action: "menuButtonAction:"
+            action: #selector(MenuContentViewController.homeButtonAction(_:)) // "menuButtonAction:"
         )
         
         menuButton.tintColor = UIColor.whiteColor()
@@ -60,7 +57,4 @@ class MenuContentViewController: ViewController {
     func homeButtonAction(sender: AnyObject?) {
         menuController?.presentMenuViewController()
     }
-    
-    
-    
 }
