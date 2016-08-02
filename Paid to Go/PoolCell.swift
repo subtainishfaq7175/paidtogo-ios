@@ -12,16 +12,22 @@ import YYImage
 
 class PoolCell: UITableViewCell {
     
-    // MARK: - IBOutletm
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ratePerMileLabel: UILabel!
     @IBOutlet weak var poolImageView: UIImageView!
     
     // MARK: - Constants
+    
     static let identifier = "poolCell"
     
     // MARK: - Override
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .None
     }
     
     override func layoutSubviews() {
@@ -32,6 +38,7 @@ class PoolCell: UITableViewCell {
     
     func configure(pool: Pool) {
         self.titleLabel.text = pool.name
+        self.ratePerMileLabel.text = pool.earnedMoneyPerMile
         
         if let imageURL = pool.iconPhoto {
             self.poolImageView.yy_setImageWithURL(
@@ -39,5 +46,4 @@ class PoolCell: UITableViewCell {
                 options: .ProgressiveBlur )
         }
     }
-    
 }

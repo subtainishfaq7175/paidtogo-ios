@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D068EE91D510F68007FE30A /* TableViewHeader.swift */; };
+		4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */; };
 		4D1A9AC81D4940D300A85640 /* PoolViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */; };
 		4D258AE91D381624000C24D9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D258AE81D381624000C24D9 /* Int+Extensions.swift */; };
 		4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */; };
@@ -119,6 +121,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D068EE91D510F68007FE30A /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
 		4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoolViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4D258AE81D381624000C24D9 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsListViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +262,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4D068EE81D510F3C007FE30A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D068EE91D510F68007FE30A /* TableViewHeader.swift */,
+				4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
 		4D2CEE2E1D10588600009843 /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +354,7 @@
 		523977D51CAF019D00C85CAF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4D068EE81D510F3C007FE30A /* Custom Views */,
 				523977D61CAF01A600C85CAF /* Cells */,
 			);
 			name = Components;
@@ -726,6 +740,7 @@
 				52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */,
 				52B3E0E01CA3254C000ED657 /* Activity.storyboard in Resources */,
 				525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */,
+				4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */,
 				52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,6 +848,7 @@
 				52258C121C9AF04F00E3DAC7 /* StoryboardRouter.swift in Sources */,
 				5218FB971CCAA30D0038E7F1 /* User.swift in Sources */,
 				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
+				4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
 				522594FE1CB6EBE1002396A4 /* ShareViewController.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,

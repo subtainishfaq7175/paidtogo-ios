@@ -88,8 +88,5 @@ class CustomColors {
     static func notificationActivityIndicatorTextColor () -> UIColor {
         return notificationMessageTextColor()
     }
-    
 
-    
-    
 }

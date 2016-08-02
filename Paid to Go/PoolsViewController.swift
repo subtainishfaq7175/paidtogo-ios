@@ -28,6 +28,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var openPoolsIndicatorView: UIView!
     @IBOutlet weak var closedPoolsIndicatorView: UIView!
     
+    @IBOutlet weak var tableHeaderView: TableViewHeader!
     
     @IBOutlet weak var openPoolsTableView: UITableView!
     @IBOutlet weak var closedPoolsTableView: UITableView!
@@ -60,7 +61,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         initViews()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
@@ -71,9 +71,11 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         self.openPoolsTableView.delegate = self
         self.openPoolsTableView.dataSource = self
+        self.openPoolsTableView.estimatedRowHeight = UITableViewAutomaticDimension
         
         self.closedPoolsTableView.delegate = self
         self.closedPoolsTableView.dataSource = self
+        self.closedPoolsTableView.estimatedRowHeight = UITableViewAutomaticDimension
         
         self.getPools()
     }
@@ -111,11 +113,13 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
         setIndicatorOnLeft()
+        self.tableHeaderView.configureForPools((self.poolType?.color)!)
     }
     
     private func initViews() {
         self.goImageView.roundWholeView()
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        
     }
     
     private func setIndicatorOnLeft() {
@@ -260,6 +264,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource and Delegate
+
 extension PoolsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -377,7 +383,13 @@ extension PoolsViewController: UITableViewDelegate {
 //        tableView.reloadData()
     }
     
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UIScreen.mainScreen().bounds.height * 0.085
+    }
+    
+    /*
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UIScreen.mainScreen().bounds.height * 0.085
     }
+     */
 }
