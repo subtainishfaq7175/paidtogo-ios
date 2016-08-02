@@ -67,7 +67,6 @@ public class ActivityNotification: Mappable {
 		earnedMoney <- map[kActivityNotificationEarnedMoneyKey]
 		user <- map[kActivityNotificationUserKey]
 		name <- map[kActivityNotificationNameKey]
-
     }
 
     /**

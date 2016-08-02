@@ -26,6 +26,14 @@ protocol ActivityTest {
  */
 class ActivityManager: NSObject, ActivityTest {
     
+    /**
+     *  Singleton
+     *
+     *  We use a Singleton to allow a quick switch between the different Pool Types (Walk/Run, Bike and Bus/Train)
+     *
+     */
+    static let sharedInstance = ActivityManager()
+    
     // - Test - //
     var testCounter = 0
     var testCounterRejected = 0
@@ -70,14 +78,6 @@ class ActivityManager: NSObject, ActivityTest {
      *  Indicates if the subroute is the first subroute to be drawn after pausing and resuming the activity. The first subroute must not be visible
      */
     var firstSubrouteAfterPausingAndResumingActivity = false
-    
-    /**
-     *  Singleton
-     *
-     *  We use a Singleton to allow a quick switch between the different Pool Types (Walk/Run, Bike and Bus/Train)
-     *
-     */
-    static let sharedInstance = ActivityManager()
     
     private override init() {
         

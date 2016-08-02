@@ -23,11 +23,11 @@ class ActivityViewController: MenuContentViewController {
     var notifications:[ActivityNotification] = [ActivityNotification]() {
         didSet {
             if notifications.count == 0 {
-                print("No recent activity...")
+                // No recent activity
                 self.notificationsTableView.hidden = true
                 self.lblEmptyTableView.hidden = false
             } else {
-                print("Recent activity")
+                // Recent activity
                 self.notificationsTableView.hidden = false
                 self.lblEmptyTableView.hidden = true
             }
@@ -72,11 +72,30 @@ class ActivityViewController: MenuContentViewController {
     }
     
     func refreshData (sender:AnyObject?) {
-        
         self.getNotifications()
-        
     }
     
+    func sortActivitiesByDate() {
+        
+        notifications.sortInPlace { (activityOne, activityTwo) -> Bool in
+            
+            let dateOne = NSDate.getDateWithFormatddMMyyyy(activityOne.startDateTime!)
+            let dateTwo = NSDate.getDateWithFormatddMMyyyy(activityTwo.startDateTime!)
+            
+            return dateOne.compare(dateTwo) == .OrderedDescending
+        }
+    }
+    
+    func filterActivitiesWithoutDate() {
+        
+        let filteredActivities = notifications.filter { (activity) -> Bool in
+            
+            return activity.startDateTime != "0000-00-00 00:00:00"
+            
+        }
+        
+        notifications = filteredActivities
+    }
     
     private func getNotifications () {
         
@@ -87,7 +106,6 @@ class ActivityViewController: MenuContentViewController {
             if let error = error {
                 self.dismissProgressHud()
                 
-//                self.showAlert("No recent activity")
                 return
             }
             
@@ -95,6 +113,8 @@ class ActivityViewController: MenuContentViewController {
                 self.dismissProgressHud()
 
                 self.notifications = activityNotifications
+                self.filterActivitiesWithoutDate()
+                self.sortActivitiesByDate()
                 self.notificationsTableView.reloadData()
             }
         }

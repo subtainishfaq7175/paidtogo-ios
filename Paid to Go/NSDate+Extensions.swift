@@ -11,7 +11,7 @@ import SwiftDate
 
 extension NSDate {
     
-    // Input:yyyy-MM-dd 00:00:00 - Output:dd/MM/Input:yyyy (String)
+    // Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy (String)
     static func getDateStringWithFormatddMMyyyy(dateString:String) -> String {
         
         let dateFormatter = NSDateFormatter()
@@ -26,7 +26,7 @@ extension NSDate {
         return dateStringUpdated
     }
     
-    // Input:Input:yyyy-MM-dd 00:00:00 - Output:dd/MM/Input:yyyy (NSDate)
+    // Input:Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy HH:mm:ss (NSDate)
     static func getDateWithFormatddMMyyyy(dateString:String) -> NSDate {
         
         let dateFormatter = NSDateFormatter()

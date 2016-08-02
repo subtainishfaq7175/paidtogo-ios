@@ -111,7 +111,6 @@ class LoginViewController: ViewController {
                     loginManager.logOut()
                     
                     let params = ["social_token" : tokenString]
-                    print("SOCIAL TOKEN : \(tokenString)")
                     
                     self.showProgressHud()
                     
