@@ -24,6 +24,7 @@
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D9051631D4652210043A250 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9051621D4652210043A250 /* MapViewController.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
+		4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */; };
 		4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2151D2A959100EF35F7 /* StatusType.swift */; };
 		4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */; };
 		4D97C21A1D2AF55000EF35F7 /* CustomDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */; };
@@ -140,6 +141,7 @@
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D9051621D4652210043A250 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		4D97C2151D2A959100EF35F7 /* StatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
 		4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedUnit.swift; sourceTree = "<group>"; };
 		4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDatePicker.xib; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				5282D7B51CAAF66B002713EE /* Components */,
 				52B3E0DD1CA3253F000ED657 /* ActivityViewController.swift */,
 				52B3E0DF1CA3254C000ED657 /* Activity.storyboard */,
+				4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
+				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,

@@ -65,8 +65,10 @@ class ActivityViewController: MenuContentViewController {
     // MARK: - Functions
     
     func configureTableView() {
+        
         self.notificationsTableView.delegate = self
         self.notificationsTableView.dataSource = self
+        self.notificationsTableView.rowHeight = UITableViewAutomaticDimension
         
         self.notificationsTableView.separatorStyle = .None
     }
@@ -139,18 +141,11 @@ extension ActivityViewController: UITableViewDataSource {
 extension ActivityViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(simpleCellReuseIdentifier) as! ActivitySimpleCell
-        
-        //        self.notifications[indexPath.row].read = true
-        
-        //        cell.read(self.notifications[indexPath.row].read)
-        
-        // TODO Notification navigation
+        self.performSegueWithIdentifier("activityDetailSegue", sender: nil)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UIScreen.mainScreen().bounds.height * 0.085
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 75.0
     }
+    
 }

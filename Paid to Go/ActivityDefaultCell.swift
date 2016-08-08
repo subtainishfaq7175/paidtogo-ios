@@ -38,7 +38,7 @@ class ActivityDefaultCell: UITableViewCell {
         
         self.titleLabel.text = notification.name
         self.dateLabel.text = notification.startDateTime?.substringToIndex(11)
-        self.detailLabel.text = notification.earnedMoney
+        self.detailLabel.text = notification.milesTraveled! + " mi."
         
         if let imageURL = notification.iconPhoto {
         
