@@ -136,21 +136,6 @@ class PoolViewController : ViewController {
     var type: PoolTypeEnum?
     
     /**
-     *  Indicates if the pool has already started
-     */
-    var hasPoolStarted = false
-    
-    /**
-     *  Indicates if the pool has been paused at least once
-     */
-    var hasPausedAndResumedActivity = false
-    
-    /**
-     *  Indicates the state of the activity in progress (Pause / Resume)
-     */
-    var isTimerTracking: Bool = false
-    
-    /**
      *  Handles all the location features
      */
     var locationManager: CLLocationManager!
@@ -180,5 +165,20 @@ class PoolViewController : ViewController {
      *  We keep a reference to the MapViewController, so that every time the user's location is updated, the new travel section is added to the map
      */
     var mapViewController : MapViewController?
+    
+    /**
+     *  Indicates if the pool has already started
+     */
+    var hasPoolStarted = false
+    
+    /**
+     *  Indicates if the pool has been paused at least once
+     */
+    var hasPausedAndResumedActivity = false
+    
+    /**
+     *  Indicates the state of the activity in progress (Pause / Resume)
+     */
+    var isTimerTracking: Bool = false
 }
 

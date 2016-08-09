@@ -75,7 +75,7 @@ class ActivityManager: NSObject, ActivityTest {
     var pausedAndResumedActivity = false
     
     /**
-     *  Indicates if the subroute is the first subroute to be drawn after pausing and resuming the activity. The first subroute must not be visible
+     *  Indicates if the subroute is the first subroute to be drawn after pausing and resuming the activity. In that case, the subroute must not be visible
      */
     var firstSubrouteAfterPausingAndResumingActivity = false
     
@@ -174,6 +174,59 @@ class ActivityManager: NSObject, ActivityTest {
     
     static func getSubroutes() -> [MKPolyline] {
         return sharedInstance.subroutes
+    }
+    
+    static func getActivityRouteString() -> String {
+        
+        let subroutes = sharedInstance.subroutes
+        var activityRouteString = "["
+        
+        for polyline in subroutes {
+            
+            let lat = String(polyline.coordinate.latitude)
+            let lon = String(polyline.coordinate.longitude)
+            let invisible = String(polyline.title)
+            
+            activityRouteString = activityRouteString + "{'latitude':" + lat + ","
+                                                      + "'longitude':" + lon + ","
+                                                      + "'invisible':" + invisible + "},"
+        }
+        
+        print("Activity Route: \(activityRouteString)")
+        
+        var finalString = activityRouteString.substringToIndex(activityRouteString.characters.count-1)
+        finalString = finalString + "]"
+        
+        print("Activity Route Final: \(activityRouteString)")
+        
+        return activityRouteString
+    }
+    
+    static func getActivityRouteJSON() -> [String:AnyObject] {
+        
+        let subroutes = sharedInstance.subroutes
+        var jsonArrayRoute = [NSDictionary]()
+        
+        for polyline in subroutes {
+            
+            let lat = String(polyline.coordinate.latitude)
+            let lon = String(polyline.coordinate.longitude)
+            let invisible = String(polyline.title)
+            
+            let subroute = [
+                "'latitude'":lat,
+                "'longitude'":lon,
+                "'invisible'":invisible
+            ]
+            
+            jsonArrayRoute.append(subroute)
+        }
+        
+        let activityRouteJSON = [
+            "activity_route":jsonArrayRoute
+        ]
+        
+        return activityRouteJSON
     }
     
     // - ActivityTestMethods - //

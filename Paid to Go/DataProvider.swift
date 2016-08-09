@@ -12,11 +12,13 @@ import SwiftDate
 
 class DataProvider : DataProviderService {
     
+    // MARK: - Singleton -
+    
     static let sharedInstance = DataProvider()
     
-    private init () {
-        
-    }
+    private init () {}
+    
+    // MARK: - Errors -
     
     func getError(error: String) -> String {
         switch error {
@@ -46,18 +48,7 @@ class DataProvider : DataProviderService {
         
     }
     
-    
-    func getNotifications(completion: ([Notification]) -> Void) {
-        DummyDataProvider.sharedInstance.getNotifications(completion)
-    }
-    
-    func getOpenPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
-        getPools(poolTypeId, open: "1", completion: completion)
-    }
-    
-    func getClosedPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
-        getPools(poolTypeId, open: "0", completion: completion)
-    }
+    // MARK: - Auth -
     
     func postRegister(user: User, completion: (user: User?, error: String?) -> Void) {
         
@@ -123,27 +114,6 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
-        
-        let json = Mapper().toJSON(user)
-        
-        ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
-            
-            if (error == nil) {
-                
-                let user = Mapper<User>().map(responseValue)
-                completion(user: user, error: nil)
-                return
-                
-            } else {
-                
-                completion(user: nil, error: self.getError(error!))
-                return
-                
-            }
-        }
-    }
-    
     func postFacebookLogin(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
         
         ConnectionManager.sharedInstance.facebookLogin(params) { (responseValue, error) in
@@ -170,46 +140,20 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func postBalance(user: User, completion: (balance: Balance?, error: String?) -> Void) {
-        
-        let json = Mapper().toJSON(user)
-        
-        ConnectionManager.sharedInstance.balance(json) { (responseValue, error) in
-            
-            if (error == nil) {
-                
-                let balance = Mapper<Balance>().map(responseValue)
-                completion(balance: balance, error: nil)
-                return
-                
-            } else {
-                
-                completion(balance: nil, error: self.getError(error!))
-                return
-                
-            }
-        }
+    // MARK: - Notifications -
+    
+    func getNotifications(completion: ([Notification]) -> Void) {
+        DummyDataProvider.sharedInstance.getNotifications(completion)
     }
     
-    func postRegisterActivity(activity: Activity, completion: (activityResponse: ActivityResponse?, error: String?) -> Void) {
-        
-        let json = Mapper().toJSON(activity)
-        
-        ConnectionManager.sharedInstance.registerActivity(json) { (responseValue, error) in
-            
-            if (error == nil) {
-                
-                let activityResponse = Mapper<ActivityResponse>().map(responseValue)
-                completion(activityResponse: activityResponse, error: nil)
-                return
-                
-            } else {
-                
-                completion(activityResponse: nil, error: self.getError(error!))
-                return
-                
-            }
-        }
+    // MARK: - Pools -
+    
+    func getOpenPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        getPools(poolTypeId, open: "1", completion: completion)
+    }
+    
+    func getClosedPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        getPools(poolTypeId, open: "0", completion: completion)
     }
     
     func getPoolType(poolTypeEnum: PoolTypeEnum, completion: (poolType: PoolType?, error: String?) -> Void) {
@@ -267,6 +211,88 @@ class DataProvider : DataProviderService {
         }
     }
     
+    // MARK: - Profile -
+    
+    func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(responseValue)
+                completion(user: user, error: nil)
+                return
+                
+            } else {
+                
+                completion(user: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
+    // MARK: - Balance -
+    
+    func postBalance(user: User, completion: (balance: Balance?, error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.balance(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let balance = Mapper<Balance>().map(responseValue)
+                completion(balance: balance, error: nil)
+                return
+                
+            } else {
+                
+                completion(balance: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
+    // MARK: - Activity -
+    
+    func postRegisterActivity(activity: Activity, completion: (activityResponse: ActivityResponse?, error: String?) -> Void) {
+        
+        var json = Mapper().toJSON(activity)
+        
+        // Add the subroute to the API call
+        
+        /*
+        let activityRouteJSON = ActivityManager.getActivityRouteJSON()
+        print("Activity Route: \(activityRouteJSON)")
+        json.updateValue(activityRouteJSON["activity_route"]!, forKey: "activity_route")
+        print("JSON: \(json)")
+        */
+        
+        let jsonRoute = ActivityManager.getActivityRouteString()
+        json.updateValue(jsonRoute, forKey: "activity_route")
+        print("JSON: \(json)")
+        
+        ConnectionManager.sharedInstance.registerActivity(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let activityResponse = Mapper<ActivityResponse>().map(responseValue)
+                completion(activityResponse: activityResponse, error: nil)
+                return
+                
+            } else {
+                
+                completion(activityResponse: nil, error: self.getError(error!))
+                return
+                
+            }
+        }
+    }
+    
     func getActivities(completion: (activityNotifications: [ActivityNotification]?, error: String?) -> Void) {
         
         
@@ -291,6 +317,7 @@ class DataProvider : DataProviderService {
         }
     }
 
+    // MARK: - Leaderboards -
     
     func getLeaderboardsForPool(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
         
@@ -355,6 +382,8 @@ class DataProvider : DataProviderService {
         }
     }
     
+    // MARK: - Search -
+    
     func searchUsersByName(username: String, completion: (users: [User]?, error: String?) -> Void) {
 
         let params = [
@@ -379,6 +408,8 @@ class DataProvider : DataProviderService {
             }
         }
     }
+    
+    // MARK: - Send Email -
     
     func sendEmailToUsers(users: [String], completion: (result: Bool?, error: String?) -> Void) {
         
@@ -416,6 +447,8 @@ class DataProvider : DataProviderService {
             }
         }
     }
+    
+    // MARK: - Stats -
     
     func getStatus(completion: (result: Status?, error: String?) -> Void) {
         

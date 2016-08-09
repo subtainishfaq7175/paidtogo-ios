@@ -66,17 +66,8 @@ class MapViewController: ViewController {
     private func configureMap() {
         mapView.delegate = self
         
-//        configureMapPin()
         configureMapRegion()
         addSubroutesToMap()
-        
-//        addAnnotationsToMap()
-//        addRouteToMap()
-        
-//        previousLocation = locationManager.location
-        
-//        testLabel.hidden = true
-//        testLabelRejected.hidden = true
     }
     
     /**
@@ -109,90 +100,6 @@ class MapViewController: ViewController {
         mapView.reloadInputViews()
     }
     
-    private func addRouteToMap() {
-//        self.showProgressHud("Loading map...")
-        
-        /* - Draws one line on the map between two points - */
-        
-            /*var coordinates = [
-                (locationManager.location?.coordinate)!,
-                ActivityManager.sharedInstance.endLocation.coordinate
-            ]
-            
-            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-            
-            mapView.addOverlay(polyline, level: .AboveRoads)*/
-        
-        
-        /* - Draws one road on the map from the user's current location to the final destination - */
-        
-            /*let initialLocation = locationManager.location!
-            let endLocation = ActivityManager.sharedInstance.endLocation
-            
-            // Initial location
-            geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
-                if placemarks?.count > 0 {
-                    if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
-                        self.source =  MKMapItem(placemark: initialmkPlacemark)
-                        
-                        // Final location
-                        self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
-                            if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
-                                self.destination =  MKMapItem(placemark: finalmkPlacemark)
-                                
-                                // Route between locations
-                                self.fetchRoute()
-                            }
-                        }
-                    }
-                }
-            }*/
-    }
-    
-    private func getMKPlacemarkFromCLPlacemark(clPlacemark:CLPlacemark) -> MKPlacemark? {
-        if let addressDict = clPlacemark.addressDictionary as! [String:AnyObject]? {
-            if let location = clPlacemark.location as CLLocation? {
-                
-                let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
-                return mkPlacemark
-            }
-        }
-        
-        return nil
-    }
-    
-    private func fetchRoute() {
-        let request:MKDirectionsRequest = MKDirectionsRequest()
-        
-        // Source and destination are the relevant MKMapItems
-        request.source = source
-        request.destination = destination
-        
-        // Specify the transportation type
-        request.transportType = MKDirectionsTransportType.Automobile;
-        
-        // If you're open to getting more than one route,
-        // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
-        request.requestsAlternateRoutes = true
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculateDirectionsWithCompletionHandler ({
-            (response: MKDirectionsResponse?, error: NSError?) in
-            
-            self.dismissProgressHud()
-            
-            if error == nil {
-                let directionsResponse = response
-                // Get whichever currentRoute you'd like, ex. 0
-                self.route = directionsResponse!.routes[0] as MKRoute
-                
-                // Add route to map
-                self.mapView.addOverlay(self.route.polyline, level: MKOverlayLevel.AboveRoads)
-            }
-        })
-    }
-    
     func addTravelSectionToMap(currentLocation:CLLocation) {
         
         let previousLocation = ActivityManager.getLastSubrouteInitialLocation()
@@ -202,7 +109,7 @@ class MapViewController: ViewController {
             distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
         }
         
-        if distanceBetweenLocations > 10.0 {
+        if distanceBetweenLocations > 1.0 {
             var coordinates = [
                 previousLocation.coordinate,
                 currentLocation.coordinate
@@ -210,9 +117,9 @@ class MapViewController: ViewController {
             
             let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
             
-            polyline.title = ""
+            polyline.title = "0"
             if ActivityManager.hasPausedAndResumedActivity() == true && ActivityManager.isFirstSubrouteAfterPausingAndResumingActivity() == true {
-                polyline.title = "invisible"
+                polyline.title = "1"
                 ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
             }
             
@@ -220,23 +127,8 @@ class MapViewController: ViewController {
             ActivityManager.setLastSubrouteInitialLocation(currentLocation)
             ActivityManager.setTestCounter()
             
-            /*
-            var invisible = false
-            if ActivityManager.hasPausedAndResumedActivity() == true && ActivityManager.isFirstSubrouteAfterPausingAndResumingActivity() == true {
-                invisible = true
-                ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
-            }
-            
-            let subroute = Subroute(invisible: invisible, coordinates: &coordinates, count: coordinates.count)
-            ActivityManager.addSubroutePosta(subroute)
-            
-            ActivityManager.setLastSubrouteInitialLocation(currentLocation)
-            ActivityManager.setTestCounter()
-            */
-            
             if ActivityManager.isMapMainScreen() {
                 mapView.addOverlay(polyline, level: .AboveRoads)
-//                mapView.addOverlay(subroute, level: .AboveRoads)
                 testLabel.text = String(ActivityManager.getTestCounter())
             }
             
@@ -271,7 +163,6 @@ extension MapViewController : MKMapViewDelegate {
             
             mapAnnotationView.enabled = true
             mapAnnotationView.canShowCallout = true
-//            mapAnnotationView.calloutOffset = CGPointMake(-5.0, -5.0)
             
             mapAnnotationView.image = configureMapPin()
             
@@ -288,7 +179,7 @@ extension MapViewController : MKMapViewDelegate {
             let invisible = polylineOverlay.title
             let render = MKPolylineRenderer(polyline: polylineOverlay)
             
-            if invisible?.characters.count == 0 {
+            if invisible! == "0" {
                 render.strokeColor = CustomColors.greenColor()
             } else {
                 render.strokeColor = UIColor.clearColor()
@@ -297,26 +188,97 @@ extension MapViewController : MKMapViewDelegate {
             return render
         }
         return nil
-        
-        /*
-        if let polylineOverlay = overlay as? Subroute {
-            
-            let invisble = polylineOverlay.invisible
-            
-            let render = MKPolylineRenderer(polyline: polylineOverlay)
-            
-            if invisble == true {
-                print("Invisible")
-                render.strokeColor = UIColor.clearColor()
-            } else {
-                print("OK")
-                render.strokeColor = CustomColors.greenColor()
-            }
-            
-            return render
-        }
-        return nil
-         */
+
     }
     
 }
+
+/*
+ private func addRouteToMap() {
+ //        self.showProgressHud("Loading map...")
+ 
+ //  - Draws one line on the map between two points -
+ 
+ /*var coordinates = [
+ (locationManager.location?.coordinate)!,
+ ActivityManager.sharedInstance.endLocation.coordinate
+ ]
+ 
+ let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+ 
+ mapView.addOverlay(polyline, level: .AboveRoads)*/
+ 
+ 
+ //  - Draws one road on the map from the user's current location to the final destination -
+ 
+ let initialLocation = locationManager.location!
+ let endLocation = ActivityManager.sharedInstance.endLocation
+ 
+ // Initial location
+ geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
+ if placemarks?.count > 0 {
+ if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+ self.source =  MKMapItem(placemark: initialmkPlacemark)
+ 
+ // Final location
+ self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
+ if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
+ self.destination =  MKMapItem(placemark: finalmkPlacemark)
+ 
+ // Route between locations
+ self.fetchRoute()
+ }
+ }
+ }
+ }
+ }
+ }
+ */
+
+/*
+ private func getMKPlacemarkFromCLPlacemark(clPlacemark:CLPlacemark) -> MKPlacemark? {
+ if let addressDict = clPlacemark.addressDictionary as! [String:AnyObject]? {
+ if let location = clPlacemark.location as CLLocation? {
+ 
+ let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
+ return mkPlacemark
+ }
+ }
+ 
+ return nil
+ }
+ */
+
+/*
+ private func fetchRoute() {
+ let request:MKDirectionsRequest = MKDirectionsRequest()
+ 
+ // Source and destination are the relevant MKMapItems
+ request.source = source
+ request.destination = destination
+ 
+ // Specify the transportation type
+ request.transportType = MKDirectionsTransportType.Automobile;
+ 
+ // If you're open to getting more than one route,
+ // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
+ request.requestsAlternateRoutes = true
+ 
+ let directions = MKDirections(request: request)
+ 
+ directions.calculateDirectionsWithCompletionHandler ({
+ (response: MKDirectionsResponse?, error: NSError?) in
+ 
+ self.dismissProgressHud()
+ 
+ if error == nil {
+ let directionsResponse = response
+ // Get whichever currentRoute you'd like, ex. 0
+ self.route = directionsResponse!.routes[0] as MKRoute
+ 
+ // Add route to map
+ self.mapView.addOverlay(self.route.polyline, level: MKOverlayLevel.AboveRoads)
+ }
+ })
+ }
+ */

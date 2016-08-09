@@ -43,5 +43,4 @@ class ActivityDetailViewController: ViewController {
         self.statsView.backgroundColor = CustomColors.carColor()
     }
     
-    
 }

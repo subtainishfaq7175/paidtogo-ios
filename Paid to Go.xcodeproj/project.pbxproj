@@ -22,6 +22,8 @@
 		4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */; };
 		4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73F56B1D369571001B05C4 /* Notifications.swift */; };
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
+		4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */; };
+		4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */; };
 		4D9051631D4652210043A250 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9051621D4652210043A250 /* MapViewController.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
 		4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */; };
@@ -139,6 +141,8 @@
 		4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extensions.swift"; sourceTree = "<group>"; };
 		4D73F56B1D369571001B05C4 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRoute.swift; sourceTree = "<group>"; };
+		4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySubroute.swift; sourceTree = "<group>"; };
 		4D9051621D4652210043A250 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
@@ -488,6 +492,8 @@
 				4D97C2171D2AAF9100EF35F7 /* CalculatedUnit.swift */,
 				4DF0005C1D469094001394E3 /* MapAnnotation.swift */,
 				4DA07A4A1D4B94170090B076 /* Subroute.swift */,
+				4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */,
+				4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -804,6 +810,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C039DAC1CE21BCD00C7DED4 /* Transaction.swift in Sources */,
+				4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */,
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
@@ -821,6 +828,7 @@
 				4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */,
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,
 				4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */,
+				4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
