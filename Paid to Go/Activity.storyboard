@@ -23,6 +23,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -124,7 +128,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="18 / 7 / 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="lwJ-UZ-ebb" userLabel="Date Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 / 7 / 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="lwJ-UZ-ebb" userLabel="Date Label">
                                                     <rect key="frame" x="54" y="49" width="72" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="ENB-QS-Y1I"/>
@@ -248,147 +252,205 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rGj-ls-VI0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUA-VA-hyh">
-                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="341" width="320" height="227"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-Hu-56g" userLabel="Details View">
-                                        <rect key="frame" x="60" y="82" width="200" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_miles" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-HH-jjd" userLabel="Miles Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UQ-vJ-7sP" userLabel="Activity Stats">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_miles" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-HH-jjd" userLabel="Miles Image View">
+                                                        <rect key="frame" x="55" y="29" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="25p-zQ-KUu"/>
+                                                            <constraint firstAttribute="height" constant="20" id="g57-ke-g9R"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Miles traveled:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rz-q8-iG2" userLabel="Miles Indicator">
+                                                        <rect key="frame" x="83" y="29" width="95" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.4 gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-n1-Gtw" userLabel="Gas Label">
+                                                        <rect key="frame" x="155" y="51" width="44" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas saved:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF6-QK-bBa" userLabel="Gas Indicator">
+                                                        <rect key="frame" x="83" y="51" width="70" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gas" translatesAutoresizingMaskIntoConstraints="NO" id="p1p-fR-mdg" userLabel="Gas Image View">
+                                                        <rect key="frame" x="55" y="51" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="Fg1-EV-AKL"/>
+                                                            <constraint firstAttribute="height" constant="20" id="SfC-HG-B1i"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25 Metric tons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-M3-G5v" userLabel="CO2 Label">
+                                                        <rect key="frame" x="161" y="73" width="109" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CO2 Offset:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pT-vm-NxW" userLabel="CO2 Indicator">
+                                                        <rect key="frame" x="83" y="73" width="75" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_co" translatesAutoresizingMaskIntoConstraints="NO" id="6OZ-pw-3Sb" userLabel="CO2 Image View">
+                                                        <rect key="frame" x="55" y="73" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="1o2-VW-hCb"/>
+                                                            <constraint firstAttribute="height" constant="20" id="gRJ-IX-etd"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.2 Car-miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGK-S3-gV3" userLabel="Traffic Label">
+                                                        <rect key="frame" x="177" y="95" width="88" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_traffic" translatesAutoresizingMaskIntoConstraints="NO" id="6rW-cM-4vw" userLabel="Traffic Image View">
+                                                        <rect key="frame" x="55" y="95" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="YJJ-Z2-aL5"/>
+                                                            <constraint firstAttribute="height" constant="20" id="o3Y-41-U5o"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traffic Offset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qks-Cn-LFM" userLabel="Traffic Indicator">
+                                                        <rect key="frame" x="83" y="95" width="91" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_earned" translatesAutoresizingMaskIntoConstraints="NO" id="DaE-eZ-0ue" userLabel="Earned Image View">
+                                                        <rect key="frame" x="55" y="117" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="IbT-ZV-ZnR"/>
+                                                            <constraint firstAttribute="width" constant="20" id="wKt-YY-7cr"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.2 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z41-Zm-idd" userLabel="Miles Label">
+                                                        <rect key="frame" x="180" y="29" width="60" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You earned: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCT-eQ-qZ1" userLabel="Earned Indicator">
+                                                        <rect key="frame" x="83" y="117" width="82" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.25*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-ku-dRf" userLabel="Earned Label">
+                                                        <rect key="frame" x="168" y="117" width="44" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="3Dr-NR-aM1"/>
-                                                    <constraint firstAttribute="width" constant="20" id="utQ-M6-nJB"/>
+                                                    <constraint firstItem="IF6-QK-bBa" firstAttribute="top" secondItem="3rz-q8-iG2" secondAttribute="bottom" constant="2" id="0SZ-EY-76n"/>
+                                                    <constraint firstItem="DaE-eZ-0ue" firstAttribute="centerY" secondItem="dCT-eQ-qZ1" secondAttribute="centerY" id="1es-Nd-DV4"/>
+                                                    <constraint firstItem="6QA-n1-Gtw" firstAttribute="leading" secondItem="IF6-QK-bBa" secondAttribute="trailing" constant="2" id="5TD-kg-P2I"/>
+                                                    <constraint firstItem="z41-Zm-idd" firstAttribute="centerY" secondItem="3rz-q8-iG2" secondAttribute="centerY" id="Axg-Ce-U9r"/>
+                                                    <constraint firstItem="Z3U-M3-G5v" firstAttribute="leading" secondItem="1pT-vm-NxW" secondAttribute="trailing" constant="3" id="CYF-u5-2g7"/>
+                                                    <constraint firstItem="Mwa-ku-dRf" firstAttribute="leading" secondItem="dCT-eQ-qZ1" secondAttribute="trailing" constant="3" id="Cjm-S6-ILS"/>
+                                                    <constraint firstItem="6rW-cM-4vw" firstAttribute="centerY" secondItem="Qks-Cn-LFM" secondAttribute="centerY" id="ExT-pl-HiA"/>
+                                                    <constraint firstItem="1pT-vm-NxW" firstAttribute="top" secondItem="IF6-QK-bBa" secondAttribute="bottom" constant="2" id="FBd-sl-1K1"/>
+                                                    <constraint firstItem="Qks-Cn-LFM" firstAttribute="top" secondItem="1pT-vm-NxW" secondAttribute="bottom" constant="2" id="HCB-oj-Tyg"/>
+                                                    <constraint firstItem="p1p-fR-mdg" firstAttribute="centerY" secondItem="IF6-QK-bBa" secondAttribute="centerY" id="HJV-U8-5Lu"/>
+                                                    <constraint firstItem="1pT-vm-NxW" firstAttribute="centerX" secondItem="6UQ-vJ-7sP" secondAttribute="centerX" constant="-40" id="IdM-vK-d4Y"/>
+                                                    <constraint firstItem="1pT-vm-NxW" firstAttribute="centerY" secondItem="6UQ-vJ-7sP" secondAttribute="centerY" constant="5" id="KET-tS-TBL"/>
+                                                    <constraint firstItem="3rz-q8-iG2" firstAttribute="leading" secondItem="6V0-HH-jjd" secondAttribute="trailing" constant="8" id="OYP-Sw-O8Z"/>
+                                                    <constraint firstItem="Qks-Cn-LFM" firstAttribute="leading" secondItem="6rW-cM-4vw" secondAttribute="trailing" constant="8" id="PYY-A5-dYU"/>
+                                                    <constraint firstItem="6OZ-pw-3Sb" firstAttribute="centerY" secondItem="1pT-vm-NxW" secondAttribute="centerY" id="RYF-Y9-Xmg"/>
+                                                    <constraint firstItem="dCT-eQ-qZ1" firstAttribute="top" secondItem="Qks-Cn-LFM" secondAttribute="bottom" constant="2" id="S6B-HS-P3B"/>
+                                                    <constraint firstItem="lGK-S3-gV3" firstAttribute="leading" secondItem="Qks-Cn-LFM" secondAttribute="trailing" constant="3" id="U8o-ch-UTP"/>
+                                                    <constraint firstItem="3rz-q8-iG2" firstAttribute="leading" secondItem="IF6-QK-bBa" secondAttribute="leading" id="VzM-ba-ATv"/>
+                                                    <constraint firstItem="6V0-HH-jjd" firstAttribute="centerY" secondItem="3rz-q8-iG2" secondAttribute="centerY" id="WIf-Tn-PDS"/>
+                                                    <constraint firstItem="dCT-eQ-qZ1" firstAttribute="leading" secondItem="DaE-eZ-0ue" secondAttribute="trailing" constant="8" id="aXU-cu-Tvc"/>
+                                                    <constraint firstItem="dCT-eQ-qZ1" firstAttribute="leading" secondItem="Qks-Cn-LFM" secondAttribute="leading" id="bOd-2E-MMT"/>
+                                                    <constraint firstItem="Z3U-M3-G5v" firstAttribute="centerY" secondItem="1pT-vm-NxW" secondAttribute="centerY" id="cXg-JJ-pW8"/>
+                                                    <constraint firstItem="Qks-Cn-LFM" firstAttribute="leading" secondItem="1pT-vm-NxW" secondAttribute="leading" id="gTU-j9-REr"/>
+                                                    <constraint firstItem="Mwa-ku-dRf" firstAttribute="centerY" secondItem="dCT-eQ-qZ1" secondAttribute="centerY" id="ihB-dR-nCv"/>
+                                                    <constraint firstItem="z41-Zm-idd" firstAttribute="leading" secondItem="3rz-q8-iG2" secondAttribute="trailing" constant="2" id="kWc-YJ-NdK"/>
+                                                    <constraint firstItem="IF6-QK-bBa" firstAttribute="leading" secondItem="p1p-fR-mdg" secondAttribute="trailing" constant="8" id="lIT-Uq-JD6"/>
+                                                    <constraint firstItem="1pT-vm-NxW" firstAttribute="leading" secondItem="6OZ-pw-3Sb" secondAttribute="trailing" constant="8" id="pEA-5M-kRy"/>
+                                                    <constraint firstItem="lGK-S3-gV3" firstAttribute="centerY" secondItem="Qks-Cn-LFM" secondAttribute="centerY" id="pGW-f1-IEe"/>
+                                                    <constraint firstItem="IF6-QK-bBa" firstAttribute="leading" secondItem="1pT-vm-NxW" secondAttribute="leading" id="umk-1k-8ki"/>
+                                                    <constraint firstItem="6QA-n1-Gtw" firstAttribute="centerY" secondItem="IF6-QK-bBa" secondAttribute="centerY" id="wHF-1k-DJz"/>
                                                 </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Miles traveled:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rz-q8-iG2" userLabel="Miles Indicator">
-                                                <rect key="frame" x="28" y="1" width="111" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.4 gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-n1-Gtw" userLabel="Gas Label">
-                                                <rect key="frame" x="118" y="21" width="43" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas saved:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF6-QK-bBa" userLabel="Gas Indicator">
-                                                <rect key="frame" x="28" y="21" width="86" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gas" translatesAutoresizingMaskIntoConstraints="NO" id="p1p-fR-mdg" userLabel="Gas Image View">
-                                                <rect key="frame" x="0.0" y="20" width="20" height="20"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25 Metric tons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-M3-G5v" userLabel="CO2 Label">
-                                                <rect key="frame" x="106" y="41" width="102" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CO2 Offset:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pT-vm-NxW" userLabel="CO2 Indicator">
-                                                <rect key="frame" x="28" y="41" width="74" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_co" translatesAutoresizingMaskIntoConstraints="NO" id="6OZ-pw-3Sb" userLabel="CO2 Image View">
-                                                <rect key="frame" x="0.0" y="40" width="20" height="20"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.2 Car-miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGK-S3-gV3" userLabel="Traffic Label">
-                                                <rect key="frame" x="119" y="61" width="83" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_traffic" translatesAutoresizingMaskIntoConstraints="NO" id="6rW-cM-4vw" userLabel="Traffic Image View">
-                                                <rect key="frame" x="0.0" y="60" width="20" height="20"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traffic Offset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qks-Cn-LFM" userLabel="Traffic Indicator">
-                                                <rect key="frame" x="28" y="61" width="87" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.25*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-ku-dRf" userLabel="Earned Label">
-                                                <rect key="frame" x="111" y="108" width="40" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_earned" translatesAutoresizingMaskIntoConstraints="NO" id="DaE-eZ-0ue" userLabel="Earned Image View">
-                                                <rect key="frame" x="0.0" y="80" width="20" height="20"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You earned: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCT-eQ-qZ1" userLabel="Earned Indicator">
-                                                <rect key="frame" x="28" y="54" width="79" height="71"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="965-W2-U1N" userLabel="Activity Dates">
+                                                <rect key="frame" x="0.0" y="155" width="320" height="72"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNe-qa-3Th" userLabel="Start Date Indicator">
+                                                        <rect key="frame" x="87" y="18" width="72" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/8/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfA-wg-mAN" userLabel="Start Date Label">
+                                                        <rect key="frame" x="166" y="18" width="59" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sk8-Xr-zax" userLabel="End Date Indicator">
+                                                        <rect key="frame" x="93" y="40" width="66" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/9/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-if-rbJ" userLabel="End Date Label">
+                                                        <rect key="frame" x="166" y="40" width="59" height="20"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="71" id="4UN-6r-D3g"/>
+                                                    <constraint firstItem="YNe-qa-3Th" firstAttribute="centerY" secondItem="965-W2-U1N" secondAttribute="centerY" constant="-8" id="4Tg-cP-YoM"/>
+                                                    <constraint firstItem="hfA-wg-mAN" firstAttribute="centerY" secondItem="YNe-qa-3Th" secondAttribute="centerY" id="8UD-4W-Goz"/>
+                                                    <constraint firstItem="Sk8-Xr-zax" firstAttribute="trailing" secondItem="YNe-qa-3Th" secondAttribute="trailing" id="O2T-Cc-inx"/>
+                                                    <constraint firstItem="hfA-wg-mAN" firstAttribute="leading" secondItem="YNe-qa-3Th" secondAttribute="trailing" constant="7" id="We9-tN-Rcn"/>
+                                                    <constraint firstItem="eWq-if-rbJ" firstAttribute="leading" secondItem="Sk8-Xr-zax" secondAttribute="trailing" constant="7" id="bgF-hk-qDK"/>
+                                                    <constraint firstItem="YNe-qa-3Th" firstAttribute="centerX" secondItem="965-W2-U1N" secondAttribute="centerX" constant="-37.5" id="gJV-4P-O28"/>
+                                                    <constraint firstItem="eWq-if-rbJ" firstAttribute="centerY" secondItem="Sk8-Xr-zax" secondAttribute="centerY" id="vUV-li-EuC"/>
+                                                    <constraint firstItem="Sk8-Xr-zax" firstAttribute="top" secondItem="YNe-qa-3Th" secondAttribute="bottom" constant="2" id="zbg-yL-tif"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.2 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z41-Zm-idd" userLabel="Miles Label">
-                                                <rect key="frame" x="143" y="1" width="57" height="17"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Mwa-ku-dRf" firstAttribute="leading" secondItem="dCT-eQ-qZ1" secondAttribute="trailing" constant="4" id="1Bi-MX-XtY"/>
-                                            <constraint firstItem="6QA-n1-Gtw" firstAttribute="baseline" secondItem="IF6-QK-bBa" secondAttribute="baseline" id="2f1-C6-A3v"/>
-                                            <constraint firstAttribute="trailing" secondItem="z41-Zm-idd" secondAttribute="trailing" id="5Cg-mA-8Ea"/>
-                                            <constraint firstItem="DaE-eZ-0ue" firstAttribute="height" secondItem="6V0-HH-jjd" secondAttribute="height" id="7GL-79-eUk"/>
-                                            <constraint firstItem="Qks-Cn-LFM" firstAttribute="leading" secondItem="6rW-cM-4vw" secondAttribute="trailing" constant="8" id="7vi-je-S4b"/>
-                                            <constraint firstItem="6OZ-pw-3Sb" firstAttribute="height" secondItem="6V0-HH-jjd" secondAttribute="height" id="Aw5-u6-N9F"/>
-                                            <constraint firstItem="z41-Zm-idd" firstAttribute="baseline" secondItem="3rz-q8-iG2" secondAttribute="baseline" id="BpS-al-7bM"/>
-                                            <constraint firstItem="3rz-q8-iG2" firstAttribute="centerY" secondItem="6V0-HH-jjd" secondAttribute="centerY" id="CVW-hG-DYj"/>
-                                            <constraint firstItem="p1p-fR-mdg" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="D67-R2-Kei"/>
-                                            <constraint firstItem="Z3U-M3-G5v" firstAttribute="baseline" secondItem="1pT-vm-NxW" secondAttribute="baseline" id="Dx2-kD-7Qo"/>
-                                            <constraint firstAttribute="height" constant="120" id="EsG-cc-G3j"/>
-                                            <constraint firstItem="6V0-HH-jjd" firstAttribute="top" secondItem="6mQ-Hu-56g" secondAttribute="top" id="FS8-dD-Ocm"/>
-                                            <constraint firstItem="DaE-eZ-0ue" firstAttribute="width" secondItem="6V0-HH-jjd" secondAttribute="width" id="FZy-eq-uJh"/>
-                                            <constraint firstAttribute="width" constant="200" id="Me2-2s-MNp"/>
-                                            <constraint firstItem="Qks-Cn-LFM" firstAttribute="centerY" secondItem="6rW-cM-4vw" secondAttribute="centerY" id="Stm-zM-rl0"/>
-                                            <constraint firstItem="DaE-eZ-0ue" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="Tfe-U2-xqV"/>
-                                            <constraint firstItem="lGK-S3-gV3" firstAttribute="baseline" secondItem="Qks-Cn-LFM" secondAttribute="baseline" id="Tyi-gk-Bcs"/>
-                                            <constraint firstItem="6rW-cM-4vw" firstAttribute="width" secondItem="6V0-HH-jjd" secondAttribute="width" id="U59-fS-BHZ"/>
-                                            <constraint firstItem="dCT-eQ-qZ1" firstAttribute="leading" secondItem="DaE-eZ-0ue" secondAttribute="trailing" constant="8" id="Vfe-XE-zqh"/>
-                                            <constraint firstItem="6rW-cM-4vw" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="Vq1-8o-Pl1"/>
-                                            <constraint firstItem="6QA-n1-Gtw" firstAttribute="leading" secondItem="IF6-QK-bBa" secondAttribute="trailing" constant="4" id="Wyv-3u-755"/>
-                                            <constraint firstItem="1pT-vm-NxW" firstAttribute="centerY" secondItem="6OZ-pw-3Sb" secondAttribute="centerY" id="Xh3-8o-pQV"/>
-                                            <constraint firstItem="Z3U-M3-G5v" firstAttribute="leading" secondItem="1pT-vm-NxW" secondAttribute="trailing" constant="4" id="YPg-NI-Ers"/>
-                                            <constraint firstItem="6rW-cM-4vw" firstAttribute="height" secondItem="6V0-HH-jjd" secondAttribute="height" id="Z0G-Ku-QaF"/>
-                                            <constraint firstItem="lGK-S3-gV3" firstAttribute="leading" secondItem="Qks-Cn-LFM" secondAttribute="trailing" constant="4" id="aUd-rn-9iz"/>
-                                            <constraint firstItem="p1p-fR-mdg" firstAttribute="width" secondItem="6V0-HH-jjd" secondAttribute="width" id="bKT-k8-psf"/>
-                                            <constraint firstItem="z41-Zm-idd" firstAttribute="leading" secondItem="3rz-q8-iG2" secondAttribute="trailing" constant="4" id="d1R-8x-CY3"/>
-                                            <constraint firstItem="6OZ-pw-3Sb" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="dq4-ZG-Bep"/>
-                                            <constraint firstItem="IF6-QK-bBa" firstAttribute="leading" secondItem="p1p-fR-mdg" secondAttribute="trailing" constant="8" id="h2B-jF-28Q"/>
-                                            <constraint firstItem="6rW-cM-4vw" firstAttribute="top" secondItem="6OZ-pw-3Sb" secondAttribute="bottom" id="hEO-Bt-fM6"/>
-                                            <constraint firstItem="dCT-eQ-qZ1" firstAttribute="centerY" secondItem="DaE-eZ-0ue" secondAttribute="centerY" id="haU-A6-apI"/>
-                                            <constraint firstItem="p1p-fR-mdg" firstAttribute="height" secondItem="6V0-HH-jjd" secondAttribute="height" id="hcT-sc-PvY"/>
-                                            <constraint firstItem="1pT-vm-NxW" firstAttribute="leading" secondItem="6OZ-pw-3Sb" secondAttribute="trailing" constant="8" id="jak-fk-bR6"/>
-                                            <constraint firstItem="6QA-n1-Gtw" firstAttribute="leading" secondItem="6rW-cM-4vw" secondAttribute="trailing" constant="98" id="maY-qX-SmD"/>
-                                            <constraint firstItem="6OZ-pw-3Sb" firstAttribute="top" secondItem="p1p-fR-mdg" secondAttribute="bottom" id="oRm-Op-M7M"/>
-                                            <constraint firstItem="6OZ-pw-3Sb" firstAttribute="width" secondItem="6V0-HH-jjd" secondAttribute="width" id="qEH-0x-L1w"/>
-                                            <constraint firstItem="DaE-eZ-0ue" firstAttribute="top" secondItem="6rW-cM-4vw" secondAttribute="bottom" id="r9L-3h-Xst"/>
-                                            <constraint firstAttribute="bottom" secondItem="dCT-eQ-qZ1" secondAttribute="bottom" constant="-5" id="sCn-ya-X0b"/>
-                                            <constraint firstItem="6V0-HH-jjd" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="t96-RX-q9H"/>
-                                            <constraint firstItem="IF6-QK-bBa" firstAttribute="centerY" secondItem="p1p-fR-mdg" secondAttribute="centerY" id="wWd-8r-z0z"/>
-                                            <constraint firstItem="3rz-q8-iG2" firstAttribute="leading" secondItem="6V0-HH-jjd" secondAttribute="trailing" constant="8" id="x7T-8z-aVH"/>
-                                            <constraint firstItem="Mwa-ku-dRf" firstAttribute="baseline" secondItem="dCT-eQ-qZ1" secondAttribute="baseline" id="zCp-PW-ocO"/>
-                                            <constraint firstItem="p1p-fR-mdg" firstAttribute="top" secondItem="6V0-HH-jjd" secondAttribute="bottom" id="zqD-1G-qqX"/>
+                                            <constraint firstItem="965-W2-U1N" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="5NL-do-w1z"/>
+                                            <constraint firstItem="6UQ-vJ-7sP" firstAttribute="height" secondItem="6mQ-Hu-56g" secondAttribute="height" multiplier="0.68" id="E0G-rq-ROc"/>
+                                            <constraint firstItem="965-W2-U1N" firstAttribute="top" secondItem="6UQ-vJ-7sP" secondAttribute="bottom" id="HgN-io-zvS"/>
+                                            <constraint firstAttribute="trailing" secondItem="965-W2-U1N" secondAttribute="trailing" id="Qdu-Cc-yFQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="965-W2-U1N" secondAttribute="bottom" id="Qna-mg-Hen"/>
+                                            <constraint firstItem="6UQ-vJ-7sP" firstAttribute="leading" secondItem="6mQ-Hu-56g" secondAttribute="leading" id="TrC-4l-jf3"/>
+                                            <constraint firstAttribute="trailing" secondItem="6UQ-vJ-7sP" secondAttribute="trailing" id="VtF-zU-PeU"/>
+                                            <constraint firstItem="6UQ-vJ-7sP" firstAttribute="top" secondItem="6mQ-Hu-56g" secondAttribute="top" id="YcP-vg-Vn9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="6mQ-Hu-56g" firstAttribute="width" secondItem="VUA-VA-hyh" secondAttribute="width" id="Hzr-44-jVK"/>
+                                    <constraint firstItem="6mQ-Hu-56g" firstAttribute="height" secondItem="VUA-VA-hyh" secondAttribute="height" id="aZf-G1-2mc"/>
                                     <constraint firstItem="6mQ-Hu-56g" firstAttribute="centerY" secondItem="VUA-VA-hyh" secondAttribute="centerY" id="eMF-ED-9vO"/>
                                     <constraint firstItem="6mQ-Hu-56g" firstAttribute="centerX" secondItem="VUA-VA-hyh" secondAttribute="centerX" id="f3W-FF-rSj"/>
                                 </constraints>
@@ -398,7 +460,7 @@
                         <constraints>
                             <constraint firstItem="VUA-VA-hyh" firstAttribute="top" secondItem="rGj-ls-VI0" secondAttribute="bottom" id="Mo5-kU-3Zm"/>
                             <constraint firstItem="VUA-VA-hyh" firstAttribute="leading" secondItem="4kz-tj-BlP" secondAttribute="leading" id="SbO-vI-T27"/>
-                            <constraint firstItem="VUA-VA-hyh" firstAttribute="height" secondItem="4kz-tj-BlP" secondAttribute="height" multiplier="0.5" id="YZE-DZ-Jaq"/>
+                            <constraint firstItem="VUA-VA-hyh" firstAttribute="height" secondItem="4kz-tj-BlP" secondAttribute="height" multiplier="0.4" id="YZE-DZ-Jaq"/>
                             <constraint firstItem="8aN-8o-A0D" firstAttribute="top" secondItem="VUA-VA-hyh" secondAttribute="bottom" id="ZOG-Cp-z4V"/>
                             <constraint firstAttribute="trailing" secondItem="VUA-VA-hyh" secondAttribute="trailing" id="dbI-WM-NUn"/>
                             <constraint firstItem="rGj-ls-VI0" firstAttribute="leading" secondItem="4kz-tj-BlP" secondAttribute="leading" id="hSl-NU-6ct"/>
@@ -406,6 +468,7 @@
                             <constraint firstAttribute="trailing" secondItem="rGj-ls-VI0" secondAttribute="trailing" id="xL0-pr-mua"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapView" destination="rGj-ls-VI0" id="cib-Gm-olK"/>
                         <outlet property="statsView" destination="VUA-VA-hyh" id="liJ-uR-BRX"/>

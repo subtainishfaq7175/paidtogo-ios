@@ -22,6 +22,7 @@ class ActivityDetailViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.title = "Activity Detail"
     }
     
     override func viewDidLoad() {
