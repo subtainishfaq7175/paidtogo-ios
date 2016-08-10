@@ -45,7 +45,18 @@ extension TableViewHeader: TableViewHeaderConfiguration {
     }
     
     func configureForActivities() {
-        self.titleLabel.text = "activities"
+        self.titleLabel.text = "Pool Name"
+        self.attributeLabel.text = "Miles Travelled"
+        self.titleLabel.textColor = UIColor.whiteColor()
+        self.attributeLabel.textColor = UIColor.whiteColor()
+        self.backgroundColor = CustomColors.headerColor()
     }
     
+    func configureForLeaderboards() {
+        self.titleLabel.text = "Pool Name"
+        self.attributeLabel.text = "Position"
+        self.titleLabel.textColor = UIColor.whiteColor()
+        self.attributeLabel.textColor = UIColor.whiteColor()
+        self.backgroundColor = CustomColors.headerColor()
+    }
 }

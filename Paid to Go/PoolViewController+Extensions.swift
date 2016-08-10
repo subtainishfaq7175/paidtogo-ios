@@ -497,6 +497,9 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     private func locationUpdatedSuccessiveTimes(location:CLLocation) {
         ActivityManager.updateMilesCounter(location)
         
+        let milesTravelled = ActivityManager.getMilesCounter()
+        self.progressLabel.text = String(format: "%.2f", milesTravelled)
+        
         let angle = ActivityManager.getCircularProgressAngle()
         circularProgressView.angle = angle / circularProgressRoundOffset
         

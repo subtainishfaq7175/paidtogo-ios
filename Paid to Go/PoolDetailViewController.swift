@@ -80,23 +80,8 @@ class PoolDetailViewController: ViewController {
         setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
         
         bannerBottomBorderView.backgroundColor = UIColor(rgba: poolType!.color!)
-//        bannerImageView.layer.borderWidth = CGFloat(1.2)
-//        bannerImageView.layer.borderColor = UIColor(rgba: poolType!.color!).CGColor
         
         configureContinueButton()
-        
-        guard let earnedMoneyPerMile = pool?.earnedMoneyPerMile,
-            limitPerDay = pool?.limitPerDay,
-            limitPerMonth = pool?.limitPerMonth,
-            endDate = pool?.endDateTime,
-            poolTitle = pool?.name else {
-            return
-        }
-        poolTitleLabel.text = poolTitle
-        earnedMoneyPerMileLabel.text = earnedMoneyPerMileLabel.text! + "$" + earnedMoneyPerMile
-        limitPerDayLabel.text = limitPerDayLabel.text! + "$" + limitPerDay
-        limitPerMonthLabel.text = limitPerMonthLabel.text! + "$" + limitPerMonth
-        dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(endDate)
         
         if let iconImage = pool?.iconPhoto as String? {
             if !iconImage.isEmpty {
@@ -108,6 +93,26 @@ class PoolDetailViewController: ViewController {
             if !bannerImage.isEmpty {
                 bannerImageView.yy_setImageWithURL(NSURL(string: (bannerImage)), options: .ShowNetworkActivity)
             }
+        }
+        
+        if let earnedMoneyPerMile = pool?.earnedMoneyPerMile {
+            earnedMoneyPerMileLabel.text = earnedMoneyPerMileLabel.text! + "$" + earnedMoneyPerMile
+        }
+        
+        if let limitPerDay = pool?.limitPerDay {
+            limitPerDayLabel.text = limitPerDayLabel.text! + "$" + limitPerDay
+        }
+        
+        if let limitPerMonth = pool?.limitPerMonth {
+            limitPerMonthLabel.text = limitPerMonthLabel.text! + "$" + limitPerMonth
+        }
+        
+        if let endDate = pool?.endDateTime {
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(endDate)
+        }
+        
+        if let poolTitle = pool?.name {
+            poolTitleLabel.text = poolTitle
         }
     }
     

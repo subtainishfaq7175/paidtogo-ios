@@ -82,14 +82,36 @@ class ActivityDetailViewController: ViewController {
         
         var previousCoordinate = CLLocationCoordinate2D()
         var nextCoordinate = CLLocationCoordinate2D()
+        var invisible : String
         
         if subroutes.count > 0 {
+            
+            if subroutes.count == 1 {
+                
+                let subroute = self.activityRoute!.first
+                previousCoordinate = subroute!.getCoordinates()
+                nextCoordinate = previousCoordinate
+                invisible = subroute!.invisible!
+                
+                var coordinates = [
+                    previousCoordinate,
+                    nextCoordinate
+                ]
+                
+                let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+                polyline.title = "0"
+                mapView.addOverlay(polyline, level: .AboveRoads)
+                
+                return
+            }
+            
             for index in 0..<((self.activityRoute?.count)!-1) {
                 
                 let subroute = self.activityRoute![index]
                 
                 if index == 0 {
                     previousCoordinate = subroute.getCoordinates()
+                    invisible = subroute.invisible!
                 } else {
                     nextCoordinate = subroute.getCoordinates()
                     
@@ -99,6 +121,7 @@ class ActivityDetailViewController: ViewController {
                     ]
                     
                     let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+                    polyline.title = subroute.invisible
                     mapView.addOverlay(polyline, level: .AboveRoads)
                     
                     previousCoordinate = nextCoordinate
@@ -115,20 +138,20 @@ extension ActivityDetailViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         
         if let polylineOverlay = overlay as? MKPolyline {
-//            let invisible = polylineOverlay.title
+            let invisible = polylineOverlay.title
             let render = MKPolylineRenderer(polyline: polylineOverlay)
             
             render.strokeColor = CustomColors.greenColor()
             
-//            if invisible! == "0" {
-//                render.strokeColor = CustomColors.greenColor()
-//            } else {
-//                render.strokeColor = UIColor.clearColor()
-//            }
+            if invisible! == "0" {
+                render.strokeColor = CustomColors.greenColor()
+            } else {
+                render.strokeColor = UIColor.clearColor()
+            }
             
             return render
         }
         return nil
-        
     }
+    
 }

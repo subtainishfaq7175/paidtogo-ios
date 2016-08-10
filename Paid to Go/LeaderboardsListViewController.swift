@@ -8,11 +8,11 @@
 
 import UIKit
 
-
-
 final class LeaderboardsListViewController: MenuContentViewController {
 
     // MARK: - IBOutlets
+    
+    @IBOutlet weak var tableHeaderView: TableViewHeader!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblEmptyTable: UILabel!
@@ -74,6 +74,7 @@ final class LeaderboardsListViewController: MenuContentViewController {
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
         customizeNavigationBarWithMenu()
+        self.tableHeaderView.configureForLeaderboards()
     }
     
     // MARK: - Navigation
@@ -113,17 +114,6 @@ extension LeaderboardsListViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        /*
-        guard let leaderboards = self.leaderboards[indexPath.row].leaderboard as [Leaderboard]?,
-            leaderboard = leaderboards.first as Leaderboard? else {
-            
-                return
-        }
-        
-        self.performSegueWithIdentifier("leaderboardsSegue", sender: leaderboard)
-         */
-        
         self.performSegueWithIdentifier("leaderboardsSegue", sender: self.leaderboards[indexPath.row])
     }
 }

@@ -316,10 +316,15 @@ extension PoolsViewController: UITableViewDataSource {
 extension PoolsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-        let pool = self.openPools[indexPath.row]
-        self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
- 
+        
+        if tableView == openPoolsTableView {
+            let pool = self.openPools[indexPath.row]
+            self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
+        } else {
+            let pool = self.closedPools[indexPath.row]
+            self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
+        }
+        
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

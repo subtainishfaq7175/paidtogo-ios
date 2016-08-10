@@ -50,13 +50,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No recent activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtM-Pp-81E" userLabel="Empty Table Label">
-                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                                <rect key="frame" x="0.0" y="101" width="320" height="467"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKG-HG-BGS" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paid_to_Go" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zgC-i4-pbr"/>
+                                </constraints>
+                            </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-VI-mot">
-                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                                <rect key="frame" x="0.0" y="101" width="320" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activitySimpleCell" id="ole-iW-HXf" customClass="ActivitySimpleCell" customModule="Paid_to_Go" customModuleProvider="target">
@@ -219,11 +226,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TtM-Pp-81E" firstAttribute="top" secondItem="XEZ-VI-mot" secondAttribute="top" id="5Me-nZ-fVp"/>
-                            <constraint firstItem="XEZ-VI-mot" firstAttribute="top" secondItem="lcU-LK-YGq" secondAttribute="bottom" constant="7" id="9Hm-ab-7Nc"/>
                             <constraint firstItem="TtM-Pp-81E" firstAttribute="bottom" secondItem="XEZ-VI-mot" secondAttribute="bottom" id="Ljz-Py-7aY"/>
+                            <constraint firstAttribute="trailing" secondItem="gKG-HG-BGS" secondAttribute="trailing" id="Oto-dj-4m3"/>
                             <constraint firstAttribute="trailing" secondItem="XEZ-VI-mot" secondAttribute="trailing" id="Rg4-Ow-xHp"/>
+                            <constraint firstItem="XEZ-VI-mot" firstAttribute="top" secondItem="gKG-HG-BGS" secondAttribute="bottom" constant="7" id="SgG-SQ-k7i"/>
                             <constraint firstItem="dRN-B4-MeQ" firstAttribute="top" secondItem="XEZ-VI-mot" secondAttribute="bottom" id="UWV-uX-6nS"/>
                             <constraint firstItem="XEZ-VI-mot" firstAttribute="leading" secondItem="haL-LQ-GiW" secondAttribute="leading" id="Vs8-z5-7Yg"/>
+                            <constraint firstItem="gKG-HG-BGS" firstAttribute="top" secondItem="lcU-LK-YGq" secondAttribute="bottom" id="cRo-6h-zWT"/>
+                            <constraint firstItem="gKG-HG-BGS" firstAttribute="leading" secondItem="haL-LQ-GiW" secondAttribute="leading" id="msO-gC-X03"/>
                             <constraint firstItem="TtM-Pp-81E" firstAttribute="leading" secondItem="XEZ-VI-mot" secondAttribute="leading" id="wy6-c8-9Pb"/>
                             <constraint firstItem="TtM-Pp-81E" firstAttribute="trailing" secondItem="XEZ-VI-mot" secondAttribute="trailing" id="yUC-J8-D7Y"/>
                         </constraints>
@@ -232,6 +242,7 @@
                     <connections>
                         <outlet property="lblEmptyTableView" destination="TtM-Pp-81E" id="PwH-Qa-dWB"/>
                         <outlet property="notificationsTableView" destination="XEZ-VI-mot" id="aan-K5-Atb"/>
+                        <outlet property="tableViewHeader" destination="gKG-HG-BGS" id="XlJ-dw-5Ye"/>
                         <segue destination="ZE2-sT-B73" kind="show" identifier="activityDetailSegue" id="mCH-Aq-T8B"/>
                     </connections>
                 </viewController>

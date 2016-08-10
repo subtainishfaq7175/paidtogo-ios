@@ -11,6 +11,8 @@ import UIKit
 class ActivityViewController: MenuContentViewController {
     // MARK: - Outlets
     
+    @IBOutlet weak var tableViewHeader: TableViewHeader!
+    
     @IBOutlet weak var notificationsTableView: UITableView!
     @IBOutlet weak var lblEmptyTableView: UILabel!
     
@@ -41,6 +43,7 @@ class ActivityViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableViewHeader.configureForActivities()
         self.configureTableView()
         self.getNotifications()
     }
@@ -138,6 +141,7 @@ class ActivityViewController: MenuContentViewController {
         }
     }
 }
+
 extension ActivityViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,5 +179,4 @@ extension ActivityViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 75.0
     }
-    
 }

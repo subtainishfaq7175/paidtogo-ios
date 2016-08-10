@@ -38,7 +38,12 @@ class PoolCell: UITableViewCell {
     
     func configure(pool: Pool) {
         self.titleLabel.text = pool.name
-        self.ratePerMileLabel.text = pool.earnedMoneyPerMile
+        
+        if let earnedMoney = pool.earnedMoneyPerMile {
+            self.ratePerMileLabel.text = "$" + earnedMoney
+        } else {
+            self.ratePerMileLabel.text = "$0"
+        }
         
         if let imageURL = pool.iconPhoto {
             self.poolImageView.yy_setImageWithURL(

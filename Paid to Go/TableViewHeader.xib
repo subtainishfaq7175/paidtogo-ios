@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlg-9L-gll" userLabel="Title">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="211" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u44-OU-GsX">
                             <rect key="frame" x="45" y="8" width="31" height="15"/>
@@ -39,26 +39,26 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE7-26-U2k" userLabel="Separator">
-                    <rect key="frame" x="240" y="0.0" width="1" height="30"/>
+                    <rect key="frame" x="211" y="0.0" width="1" height="30"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="psd-bn-y1u"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73Z-gr-viQ" userLabel="Attribute">
-                    <rect key="frame" x="241" y="0.0" width="79" height="30"/>
+                    <rect key="frame" x="212" y="0.0" width="108" height="30"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Per Mile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1c-es-0hB">
-                            <rect key="frame" x="7" y="8" width="65" height="14"/>
-                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Per Mile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1c-es-0hB">
+                            <rect key="frame" x="3" y="8" width="102" height="15"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="o1c-es-0hB" firstAttribute="leading" secondItem="73Z-gr-viQ" secondAttribute="leading" constant="7" id="vjn-9s-BeS"/>
+                        <constraint firstItem="o1c-es-0hB" firstAttribute="leading" secondItem="73Z-gr-viQ" secondAttribute="leading" constant="3" id="vjn-9s-BeS"/>
                         <constraint firstItem="o1c-es-0hB" firstAttribute="centerY" secondItem="73Z-gr-viQ" secondAttribute="centerY" id="wMO-D6-xJ9"/>
-                        <constraint firstAttribute="trailing" secondItem="o1c-es-0hB" secondAttribute="trailing" constant="7" id="xxW-Wg-6kd"/>
+                        <constraint firstAttribute="trailing" secondItem="o1c-es-0hB" secondAttribute="trailing" constant="3" id="xxW-Wg-6kd"/>
                     </constraints>
                 </view>
             </subviews>
@@ -72,7 +72,7 @@
                 <constraint firstAttribute="bottom" secondItem="rE7-26-U2k" secondAttribute="bottom" id="Tyh-9z-H5B"/>
                 <constraint firstItem="73Z-gr-viQ" firstAttribute="leading" secondItem="rE7-26-U2k" secondAttribute="trailing" id="Uac-0c-xUY"/>
                 <constraint firstAttribute="bottom" secondItem="qlg-9L-gll" secondAttribute="bottom" id="lea-22-dxy"/>
-                <constraint firstItem="qlg-9L-gll" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.75" id="pBO-fA-K8V"/>
+                <constraint firstItem="qlg-9L-gll" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.66" id="pBO-fA-K8V"/>
                 <constraint firstItem="rE7-26-U2k" firstAttribute="leading" secondItem="qlg-9L-gll" secondAttribute="trailing" id="t4W-2A-k1d"/>
                 <constraint firstItem="rE7-26-U2k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ziQ-Ef-S1E"/>
             </constraints>
