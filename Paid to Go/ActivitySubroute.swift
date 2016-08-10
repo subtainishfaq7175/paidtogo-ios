@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import MapKit
 
 class ActivitySubroute: Mappable {
 
@@ -25,8 +26,18 @@ class ActivitySubroute: Mappable {
     
     func mapping(map: Map) {
         
-        latitude <- map["'latitude'"]
-        longitude <- map["'longitude'"]
-        invisible <- map["'invisible'"]
+        latitude <- map["latitude"]
+        longitude <- map["longitude"]
+        invisible <- map["invisible"]
+    }
+    
+    func getCoordinates() -> CLLocationCoordinate2D {
+        
+        let initialLatitude = Double((latitude)!)
+        let initialLongitude = Double((longitude)!)
+        
+        let coordinate = CLLocationCoordinate2DMake(initialLatitude!, initialLongitude!)
+        
+        return coordinate
     }
 }

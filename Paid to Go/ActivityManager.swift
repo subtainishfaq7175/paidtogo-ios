@@ -185,21 +185,20 @@ class ActivityManager: NSObject, ActivityTest {
             
             let lat = String(polyline.coordinate.latitude)
             let lon = String(polyline.coordinate.longitude)
-            let invisible = String(polyline.title)
-            
+            let invisible = polyline.title!
             activityRouteString = activityRouteString + "{'latitude':" + lat + ","
-                                                      + "'longitude':" + lon + ","
-                                                      + "'invisible':" + invisible + "},"
+                + "'longitude':" + lon + ","
+                + "'invisible':" + invisible + "},"
         }
         
-        print("Activity Route: \(activityRouteString)")
+        print("Activity Route:\n \(activityRouteString)")
         
         var finalString = activityRouteString.substringToIndex(activityRouteString.characters.count-1)
         finalString = finalString + "]"
         
-        print("Activity Route Final: \(activityRouteString)")
+        print("Activity Route Final:\n \(finalString)")
         
-        return activityRouteString
+        return finalString
     }
     
     static func getActivityRouteJSON() -> [String:AnyObject] {

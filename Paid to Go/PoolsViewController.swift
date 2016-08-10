@@ -320,76 +320,10 @@ extension PoolsViewController: UITableViewDelegate {
         let pool = self.openPools[indexPath.row]
         self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
  
-        /*
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
-        
-        switch tableView.restorationIdentifier! {
-            
-        case "closedPoolsTableView":
-            let pool = self.closedPools[indexPath.row]
-            
-            ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
-            ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
-            ActivityManager.sharedInstance.endLocation = CLLocation(latitude: Double(pool.destinationLatitude!)!, longitude: Double(pool.destinationLongitude!)!)
-            ActivityManager.sharedInstance.poolId = pool.internalIdentifier!
-            
-            switch self.type! {
-            case .Train:
-                showAntiCheatViewController(pool)
-                break
-            case .Car:
-                
-                let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
-                carViewController!.poolType = self.poolType
-                self.showViewController(carViewController!, sender: nil)
-                
-                break
-            default:
-                showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
-                break
-            }
-            
-            break
-        case "openPoolsTableView":
-            let pool = self.openPools[indexPath.row]
-            
-            ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
-            ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
-            ActivityManager.sharedInstance.endLocation = CLLocation(latitude: Double(pool.destinationLatitude!)!, longitude: Double(pool.destinationLongitude!)!)
-            ActivityManager.sharedInstance.poolId = pool.internalIdentifier!
-            
-            switch self.type! {
-            case .Train:
-                showAntiCheatViewController(pool)
-                break
-            case .Car:
-                let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
-                    carViewController!.type = self.type
-                    carViewController!.poolType = self.poolType
-                    carViewController!.pool = pool
-                self.showViewController(carViewController!, sender: nil)
-                
-                break
-            default:
-                showPoolViewController(self.type!, poolType: self.poolType!, pool: pool, sender: nil)
-                break
-            }
-            
-            break
-        default: break
-        }
-        */
-        
-//        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UIScreen.mainScreen().bounds.height * 0.085
     }
     
-    /*
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
-    }
-     */
 }

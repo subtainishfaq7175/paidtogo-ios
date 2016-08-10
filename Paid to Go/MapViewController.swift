@@ -109,7 +109,8 @@ class MapViewController: ViewController {
             distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
         }
         
-        if distanceBetweenLocations > 1.0 {
+        if distanceBetweenLocations > 10.0 {
+            
             var coordinates = [
                 previousLocation.coordinate,
                 currentLocation.coordinate

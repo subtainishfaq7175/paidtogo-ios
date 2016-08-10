@@ -23,7 +23,7 @@ public class ActivityNotification: Mappable {
 	internal let kActivityNotificationEarnedMoneyKey: String = "earned_money"
 	internal let kActivityNotificationUserKey: String = "user"
 	internal let kActivityNotificationNameKey: String = "name"
-
+    internal let kActivityNotificationInternalIdentifierKey : String = "activity_id"
 
     // MARK: Properties
 	public var savedCo2: String?
@@ -38,7 +38,7 @@ public class ActivityNotification: Mappable {
 	public var earnedMoney: String?
 	 var user: User?
 	public var name: String?
-
+    public var internalIdentifier: String?
 
 
     // MARK: ObjectMapper Initalizers
@@ -67,6 +67,7 @@ public class ActivityNotification: Mappable {
 		earnedMoney <- map[kActivityNotificationEarnedMoneyKey]
 		user <- map[kActivityNotificationUserKey]
 		name <- map[kActivityNotificationNameKey]
+        internalIdentifier <- map[kActivityNotificationInternalIdentifierKey]
     }
 
     /**

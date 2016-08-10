@@ -47,4 +47,5 @@ extension TableViewHeader: TableViewHeaderConfiguration {
     func configureForActivities() {
         self.titleLabel.text = "activities"
     }
+    
 }

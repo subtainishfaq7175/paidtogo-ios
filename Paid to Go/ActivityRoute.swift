@@ -11,7 +11,7 @@ import ObjectMapper
 
 class ActivityRoute: Mappable {
 
-    var activityRoute : [Pool]?
+    var activityRoute : [ActivitySubroute]?
     
     init() {
     

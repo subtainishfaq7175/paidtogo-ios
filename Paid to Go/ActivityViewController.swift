@@ -16,6 +16,8 @@ class ActivityViewController: MenuContentViewController {
     
     // MARK: - Variables and Constants
     
+    internal let kActivityDetailSegueIdentifier = "activityDetailSegue"
+    
     let simpleCellReuseIdentifier = "activitySimpleCell"
     let defaultCellReuseIdentifier = "activityDefaultCell"
     let actionCellReuseIdentifier = "activityActionCell"
@@ -62,7 +64,21 @@ class ActivityViewController: MenuContentViewController {
         //        initViews()
     }
     
-    // MARK: - Functions
+    // MARK: - Navigation -
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == kActivityDetailSegueIdentifier {
+            guard let activityRoute = sender as? [ActivitySubroute] else {
+                return
+            }
+            guard let vc = segue.destinationViewController as? ActivityDetailViewController else {
+                return
+            }
+            vc.activityRoute = activityRoute
+        }
+    }
+    
+    // MARK: - Functions -
     
     func configureTableView() {
         
@@ -141,7 +157,19 @@ extension ActivityViewController: UITableViewDataSource {
 extension ActivityViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("activityDetailSegue", sender: nil)
+        
+        let activityNotification = notifications[indexPath.row]
+        let activityId = activityNotification.internalIdentifier
+        
+        self.showProgressHud()
+        DataProvider.sharedInstance.getActivityRoute(activityId!) { (activityRoute, error) in
+            self.dismissProgressHud()
+            if error == nil {
+                self.performSegueWithIdentifier(self.kActivityDetailSegueIdentifier, sender: activityRoute)
+            } else {
+                self.performSegueWithIdentifier(self.kActivityDetailSegueIdentifier, sender: nil)
+            }
+        }
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -40,6 +40,9 @@ class DataProvider : DataProviderService {
 
         case "MYSTATUS_UNSUCCESSFUL":
             return "error_status".localize()
+        
+        case "ACTIVITY_ROUTE_UNSUCCESSFUL":
+            return "The activities route was not tracked"
             
         default:
             return "error_default".localize() + ": " + error
@@ -265,16 +268,8 @@ class DataProvider : DataProviderService {
         
         // Add the subroute to the API call
         
-        /*
-        let activityRouteJSON = ActivityManager.getActivityRouteJSON()
-        print("Activity Route: \(activityRouteJSON)")
-        json.updateValue(activityRouteJSON["activity_route"]!, forKey: "activity_route")
-        print("JSON: \(json)")
-        */
-        
         let jsonRoute = ActivityManager.getActivityRouteString()
         json.updateValue(jsonRoute, forKey: "activity_route")
-        print("JSON: \(json)")
         
         ConnectionManager.sharedInstance.registerActivity(json) { (responseValue, error) in
             
@@ -316,6 +311,28 @@ class DataProvider : DataProviderService {
             }
         }
     }
+    
+    func getActivityRoute(activityId: String, completion: (activityRoute: [ActivitySubroute]?, error: String?) -> Void) {
+        
+        let params = [
+            "activity_id":activityId
+        ]
+        
+        ConnectionManager.sharedInstance.getActivityRoute(params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let activitySubroutes = Mapper<ActivitySubroute>().mapArray(responseValue!["route"])
+                
+                completion(activityRoute: activitySubroutes, error: nil)
+                
+            } else {
+                
+                completion(activityRoute: nil, error: self.getError(error!))
+                
+            }
+        }
+    }
 
     // MARK: - Leaderboards -
     
@@ -324,10 +341,8 @@ class DataProvider : DataProviderService {
         let userId = User.currentUser?.userId
         
         let params = [
-            
             "user_id" : userId,
             "pool_id" : poolId
-            
         ]
         
         ConnectionManager.sharedInstance.getLeaderboards(params as! [String : String]) { (responseValue, error) in

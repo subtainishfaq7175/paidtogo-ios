@@ -32,6 +32,7 @@ class ConnectionManager {
     private var userURL : String { return "\(baseURL)/users" }
     private var usersInviteURL : String { return "\(baseURL)/invite_users" }
     private var mystatusURL : String { return "\(baseURL)/mystatus" }
+    private var activityRouteURL : String { return "\(baseURL)/activity_route" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -131,6 +132,12 @@ extension ConnectionManager {
         let url = "\(self.activityURL)?user_id=\(userId)"
         self.getRequest(identifier, url: url, apiCompletion: apiCompletion)
         
+    }
+    
+    func getActivityRoute(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Activity Route API - GET"
+        self.postRequest(identifier, url: self.activityRouteURL, params: params, apiCompletion: apiCompletion)
     }
     
     func getPoolType(params: PoolTypeEnum, apiCompletion: (responseValue:  AnyObject?, error: String?) -> Void) {
