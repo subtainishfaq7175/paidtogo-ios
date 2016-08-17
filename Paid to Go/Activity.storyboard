@@ -481,8 +481,15 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="co2Label" destination="Z3U-M3-G5v" id="St2-FG-pVy"/>
+                        <outlet property="earnedLabel" destination="Mwa-ku-dRf" id="31f-T7-aZS"/>
+                        <outlet property="endDateLabel" destination="eWq-if-rbJ" id="dNe-4K-CXZ"/>
+                        <outlet property="gasLabel" destination="6QA-n1-Gtw" id="N3F-X5-Un6"/>
                         <outlet property="mapView" destination="rGj-ls-VI0" id="cib-Gm-olK"/>
+                        <outlet property="milesLabel" destination="z41-Zm-idd" id="piF-jg-bWj"/>
+                        <outlet property="startDateLabel" destination="hfA-wg-mAN" id="Sui-Sm-92c"/>
                         <outlet property="statsView" destination="VUA-VA-hyh" id="liJ-uR-BRX"/>
+                        <outlet property="trafficLabel" destination="lGK-S3-gV3" id="HVa-Vw-OEY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqV-ga-oiG" userLabel="First Responder" sceneMemberID="firstResponder"/>

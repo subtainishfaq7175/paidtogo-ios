@@ -9,16 +9,19 @@
 import UIKit
 
 class BalanceViewController: MenuContentViewController {
-    // MARK: - Outlets
+    
+    // MARK: - Outlets -
+    
+    @IBOutlet weak var requestButtonContainerView: UIView!
     
     @IBOutlet weak var redemedLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
     @IBOutlet weak var accountMoneyLabel: UILabel!
     
-    // MARK: - Variables and Constants
+    // MARK: - Variables and Constants -
     
     
-    // MARK: - Super
+    // MARK: - Super -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +34,7 @@ class BalanceViewController: MenuContentViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         initViews()
     }
     
@@ -40,9 +44,10 @@ class BalanceViewController: MenuContentViewController {
         getData()
     }
     
-    // MARK: - Functions
+    // MARK: - Functions -
     
-    func initViews(){
+    func initViews() {
+        self.requestButtonContainerView.round()
     }
     
     private func getData() {
@@ -74,7 +79,7 @@ class BalanceViewController: MenuContentViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Actions -
 
 
 }

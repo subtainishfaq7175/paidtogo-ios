@@ -24,6 +24,8 @@ class ActivityViewController: MenuContentViewController {
     let defaultCellReuseIdentifier = "activityDefaultCell"
     let actionCellReuseIdentifier = "activityActionCell"
     
+    var activity : ActivityNotification?
+    
     var notifications:[ActivityNotification] = [ActivityNotification]() {
         didSet {
             if notifications.count == 0 {
@@ -78,6 +80,7 @@ class ActivityViewController: MenuContentViewController {
                 return
             }
             vc.activityRoute = activityRoute
+            vc.activity = self.activity
         }
     }
     
@@ -162,8 +165,8 @@ extension ActivityViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let activityNotification = notifications[indexPath.row]
-        let activityId = activityNotification.internalIdentifier
+        self.activity = notifications[indexPath.row]
+        let activityId = self.activity!.internalIdentifier
         
         self.showProgressHud()
         DataProvider.sharedInstance.getActivityRoute(activityId!) { (activityRoute, error) in

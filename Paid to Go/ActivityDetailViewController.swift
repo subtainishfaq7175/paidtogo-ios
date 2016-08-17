@@ -11,17 +11,26 @@ import MapKit
 
 class ActivityDetailViewController: ViewController {
 
-    // MARK: - IBOutlets
+    // MARK: - IBOutlets -
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var statsView: UIView!
     
-    // MARK: - Variables and constants
+    @IBOutlet weak var milesLabel: UILabel!
+    @IBOutlet weak var gasLabel: UILabel!
+    @IBOutlet weak var co2Label: UILabel!
+    @IBOutlet weak var trafficLabel: UILabel!
+    @IBOutlet weak var earnedLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    
+    // MARK: - Variables and constants -
     
     internal let metersPerMile = 1609.344
     
     var activityRoute : [ActivitySubroute]?
+    var activity : ActivityNotification?
     
-    // MARK: - View life cycle
+    // MARK: - View life cycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,10 +53,49 @@ class ActivityDetailViewController: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Configure UI
+    // MARK: - Configure UI -
     
     func initLayout() {
         self.statsView.backgroundColor = CustomColors.carColor()
+        
+        if var miles = activity?.milesTraveled {
+            if miles == "" {
+                miles = "0"
+            }
+            
+            milesLabel.text = "\(miles) miles"
+        }
+        
+        if var gas = activity?.savedGas {
+            if gas == "" {
+                gas = "0"
+            }
+            
+            gasLabel.text = "\(gas) gal"
+        }
+        
+        if var co2 = activity?.savedCo2 {
+            if co2 == "" {
+                co2 = "0"
+            }
+            
+            co2Label.text = "\(co2) Metric tons"
+        }
+        
+        if let earnedMoney = activity?.earnedMoney {
+            earnedLabel.text = "$\(earnedMoney)"
+        } else {
+            earnedLabel.text = "$0"
+        }
+        
+        if let startDate = activity?.startDateTime {
+            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(startDate))"
+        }
+        
+        if let endDate = activity?.endDateTime {
+            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(endDate))"
+        }
+
     }
     
     func configureMap() {
