@@ -25,7 +25,6 @@ class BalanceViewController: MenuContentViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         setNavigationBarVisible(true)
         self.title = "menu_balance".localize()
         setNavigationBarGreen()
@@ -79,7 +78,30 @@ class BalanceViewController: MenuContentViewController {
         }
     }
 
+    func addPayPalAccountButtonPressed(alert: UIAlertAction!) {
+        
+    }
+    
+    func createPayPalAccountButtonPressed(alert: UIAlertAction!) {
+        let url : NSURL = NSURL(string: "https://www.paypal.com")!
+        
+        if UIApplication.sharedApplication().canOpenURL(url) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     // MARK: - Actions -
-
-
+    
+    @IBAction func buttonRequestPressed(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title: "PaidToGo", message: "You need to have a PayPal account associated to your PaidToGo user in order to redeem money", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let addPayPalAccountButton = UIAlertAction(title: "Enter PayPal account number", style: UIAlertActionStyle.Default, handler: addPayPalAccountButtonPressed)
+        let createPayPalAccountButton = UIAlertAction(title: "Create PayPal account", style: UIAlertActionStyle.Default, handler: createPayPalAccountButtonPressed)
+        alertController.addAction(addPayPalAccountButton)
+        alertController.addAction(createPayPalAccountButton)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
 }

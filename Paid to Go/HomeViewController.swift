@@ -12,17 +12,11 @@ import UIKit
 
 class HomeViewController: MenuContentViewController {
     
-    // MARK: - Outlets
+    // MARK: - Outlets -
     
     @IBOutlet weak var elautlet: UILabel! // title label
     
-    // MARK: - Super
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        customizeNavigationBarWithTitleAndMenu()
-        
-    }
+    // MARK: - View life cycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,6 +24,14 @@ class HomeViewController: MenuContentViewController {
         setNavigationBarVisible(true)
         
         setBorderToView(elautlet, color: CustomColors.NavbarTintColor().CGColor)
+        
+        GeolocationManager.initLocationManager()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        customizeNavigationBarWithTitleAndMenu()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -92,7 +94,6 @@ class HomeViewController: MenuContentViewController {
                 })
                 break
             case "button_bike":
-                self.dismissProgressHud()
                 DataProvider.sharedInstance.getPoolType(.Bike, completion: { (poolType, error) in
                     
                     self.dismissProgressHud()
@@ -111,7 +112,6 @@ class HomeViewController: MenuContentViewController {
 
                 break
             case "button_train":
-                self.dismissProgressHud()
                 DataProvider.sharedInstance.getPoolType(.Train, completion: { (poolType, error) in
                     
                     self.dismissProgressHud()
@@ -130,7 +130,6 @@ class HomeViewController: MenuContentViewController {
 
                 break
             case "button_car":
-                self.dismissProgressHud()
                 DataProvider.sharedInstance.getPoolType(.Car, completion: { (poolType, error) in
                     
                     self.dismissProgressHud()

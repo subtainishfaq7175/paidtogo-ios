@@ -228,8 +228,6 @@ extension PoolViewController: TrackDelegate {
         // Paused
         if isTimerTracking {
             
-            
-            
             //pausePedometerUpdates()
             pauseTracking()
             pauseLocationUpdates()
@@ -487,6 +485,8 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     private func locationUpdatedFirstTime(location:CLLocation) {
         ActivityManager.sharedInstance.startLatitude = location.coordinate.latitude
         ActivityManager.sharedInstance.startLongitude = location.coordinate.longitude
+        ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
+        ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
         
         ActivityManager.setLastLocation(location)
         ActivityManager.setLastSubrouteInitialLocation(location)
@@ -496,6 +496,8 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     
     private func locationUpdatedSuccessiveTimes(location:CLLocation) {
         ActivityManager.updateMilesCounter(location)
+        ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
+        ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
         
         let milesTravelled = ActivityManager.getMilesCounter()
         self.progressLabel.text = String(format: "%.2f", milesTravelled)

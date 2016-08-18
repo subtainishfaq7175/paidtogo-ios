@@ -34,6 +34,10 @@ class ActivityManager: NSObject, ActivityTest {
      */
     static let sharedInstance = ActivityManager()
     
+    private override init() {
+        
+    }
+    
     // - Test - //
     var testCounter = 0
     var testCounterRejected = 0
@@ -46,9 +50,7 @@ class ActivityManager: NSObject, ActivityTest {
     
     var startDateToTrack : NSDate = NSDate()
     
-//    var trackNumber : Double = 0.0
     var milesCounter : Double = 0.0
-    
     var endLatitude: Double = 0.0
     var endLongitude: Double = 0.0
     
@@ -56,7 +58,7 @@ class ActivityManager: NSObject, ActivityTest {
     var startLongitude : Double = 0.0
     
     var initialLocation : CLLocation = CLLocation()
-    var endLocation : CLLocation = CLLocation()
+    
     
 //    var metersFromStartLocation : Double = 0.0
 //    var distanceToFinalDestination : Double = 0.0
@@ -79,16 +81,11 @@ class ActivityManager: NSObject, ActivityTest {
      */
     var firstSubrouteAfterPausingAndResumingActivity = false
     
-    private override init() {
-        
-    }
-    
     func getMilesCounter() -> Double {
         return milesCounter
     }
     
     func resetActivity() {
-//        trackNumber = 0.0
         activity = Activity()
         milesCounter = 0.0
         
@@ -96,9 +93,6 @@ class ActivityManager: NSObject, ActivityTest {
         startLongitude = 0.0
         endLatitude = 0.0
         endLongitude = 0.0
-        
-//        metersFromStartLocation = 0.0
-//        distanceToFinalDestination = 0.0
         
         poolId = ""
         
@@ -179,6 +173,11 @@ class ActivityManager: NSObject, ActivityTest {
     static func getActivityRouteString() -> String {
         
         let subroutes = sharedInstance.subroutes
+        
+        if subroutes.count == 0 {
+            return ""
+        }
+        
         var activityRouteString = "["
         
         for polyline in subroutes {

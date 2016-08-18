@@ -95,9 +95,11 @@ class MapViewController: ViewController {
     }
     
     private func addAnnotationsToMap() {
+        /*
         let mapAnnotation = MapAnnotation(coordinate: ActivityManager.sharedInstance.endLocation.coordinate, title: "Final Location", subtitle: "")
         mapView.addAnnotation(mapAnnotation)
         mapView.reloadInputViews()
+         */
     }
     
     func addTravelSectionToMap(currentLocation:CLLocation) {

@@ -13,7 +13,9 @@ import CoreLocation
 import CoreMotion
 import AVFoundation
 
-// MARK: - Protocols
+// MARK: - Protocols -
+
+// MARK: - TrackDelegate
 
 /**
  *  Handles the whole activity tracking process
@@ -44,6 +46,8 @@ protocol TrackDelegate {
      */
     func endTracking()
 }
+
+// MARK: - PedometerDelegate
 
 /**
  *  Handles the step counting process
@@ -81,6 +85,8 @@ protocol PedometerDelegate {
     func queryPedometerUpdates()
 }
 
+// MARK: - SwitchDelegate
+
 /**
  *  Handles the whole process of switching between different pool types during the activity (Walk/Run - Bike - Bus/Train)
  */
@@ -92,6 +98,8 @@ protocol SwitchDelegate {
     func poolSwitchResume(alert: UIAlertAction!)
 }
 
+// MARK: - ActivityLocationManagerDelegate
+
 /**
  *  Handles the whole process of geolocation
  */
@@ -101,11 +109,11 @@ protocol ActivityLocationManagerDelegate : CLLocationManagerDelegate {
     func pauseLocationUpdates()
 }
 
-// MARK: - Class
+// MARK: - Class -
 
 class PoolViewController : ViewController {
     
-    // MARK: - IBOutlets
+    // MARK: - IBOutlets -
     
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var actionButtonView: UIView!
@@ -120,7 +128,7 @@ class PoolViewController : ViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet weak var bannerImageView: UIImageView!
     
-    // MARK: - Variables and Constants
+    // MARK: - Variables and Constants -
     
     internal let kWalkBackgroundImage = "pool_background_walk"
     internal let kRunBackgroundImage = "pool_background_bike"

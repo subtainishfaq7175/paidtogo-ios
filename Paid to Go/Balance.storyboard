@@ -183,6 +183,9 @@
                                                         <state key="normal" title="Request">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="buttonRequestPressed:" destination="les-9x-ol5" eventType="touchUpInside" id="PKU-ny-dPE"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>

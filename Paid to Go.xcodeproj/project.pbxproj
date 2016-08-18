@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D068EE91D510F68007FE30A /* TableViewHeader.swift */; };
 		4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */; };
+		4D190E411D66217E00BF65FA /* GeolocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D190E401D66217E00BF65FA /* GeolocationManager.swift */; };
 		4D1A9AC81D4940D300A85640 /* PoolViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */; };
 		4D258AE91D381624000C24D9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D258AE81D381624000C24D9 /* Int+Extensions.swift */; };
 		4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */; };
@@ -126,6 +127,7 @@
 /* Begin PBXFileReference section */
 		4D068EE91D510F68007FE30A /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		4D190E401D66217E00BF65FA /* GeolocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationManager.swift; sourceTree = "<group>"; };
 		4D1A9AC71D4940D300A85640 /* PoolViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoolViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4D258AE81D381624000C24D9 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsListViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */,
 				4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */,
 				4D73F56B1D369571001B05C4 /* Notifications.swift */,
+				4D190E401D66217E00BF65FA /* GeolocationManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -819,6 +822,7 @@
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
 				4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */,
 				4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */,
+				4D190E411D66217E00BF65FA /* GeolocationManager.swift in Sources */,
 				528F54D01CF79D72008E015C /* Leaderboard.swift in Sources */,
 				52227FD81C99A666002DBBFA /* SignupViewController.swift in Sources */,
 				4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */,

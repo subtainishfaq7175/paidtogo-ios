@@ -158,10 +158,6 @@ class PoolDetailViewController: ViewController {
             return
         }
         
-        ActivityManager.sharedInstance.endLatitude = Double(pool.destinationLatitude!)!
-        ActivityManager.sharedInstance.endLongitude = Double(pool.destinationLongitude!)!
-        ActivityManager.sharedInstance.milesCounter = 0.0
-        ActivityManager.sharedInstance.endLocation = CLLocation(latitude: Double(pool.destinationLatitude!)!, longitude: Double(pool.destinationLongitude!)!)
         ActivityManager.sharedInstance.poolId = pool.internalIdentifier!
         
         switch self.typeEnum! {
