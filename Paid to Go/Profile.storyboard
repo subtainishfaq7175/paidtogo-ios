@@ -54,7 +54,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mav-5K-7U0">
-                                                <rect key="frame" x="240" y="139" width="50" height="50"/>
+                                                <rect key="frame" x="230" y="129" width="60" height="60"/>
                                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="mav-5K-7U0" secondAttribute="height" multiplier="1:1" id="e4F-gO-yFK"/>
@@ -267,7 +267,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Atv-yZ-bsn" secondAttribute="trailing" constant="10" id="03O-nS-f53"/>
                                             <constraint firstItem="jER-2q-ECl" firstAttribute="top" secondItem="iRE-gc-tkw" secondAttribute="top" id="03u-XM-oF8"/>
                                             <constraint firstItem="718-cZ-4DR" firstAttribute="leading" secondItem="UEI-Kd-BTH" secondAttribute="leading" constant="10" id="07j-Co-enJ"/>
-                                            <constraint firstItem="mav-5K-7U0" firstAttribute="height" secondItem="iRE-gc-tkw" secondAttribute="height" multiplier="0.3" id="0Eh-y1-eWC"/>
+                                            <constraint firstItem="mav-5K-7U0" firstAttribute="height" secondItem="iRE-gc-tkw" secondAttribute="height" multiplier="0.36" id="0Eh-y1-eWC"/>
                                             <constraint firstAttribute="trailing" secondItem="RQK-Zj-EDu" secondAttribute="trailing" constant="10" id="0RQ-bH-Ha6"/>
                                             <constraint firstItem="koe-8o-do1" firstAttribute="bottom" secondItem="gWW-oK-F4C" secondAttribute="bottom" id="2Aw-Z3-gAJ"/>
                                             <constraint firstItem="718-cZ-4DR" firstAttribute="height" secondItem="lq7-kr-gPK" secondAttribute="height" id="2OB-Sd-tNI"/>

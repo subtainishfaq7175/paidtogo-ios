@@ -51,6 +51,8 @@ class ProfileViewController: MenuContentViewController {
         }
         
         proUserLabel.round()
+        
+        configureViewForProUser()
     }
     
     override func viewDidLoad() {
@@ -204,7 +206,6 @@ class ProfileViewController: MenuContentViewController {
                 userToSend.profilePicture = encodedImageWithPrefix
             }
             
-            
             DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
                 
                 self.dismissProgressHud()
@@ -222,6 +223,12 @@ class ProfileViewController: MenuContentViewController {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
                     
                     self.signUpButtonShouldChange(false)
+                    
+                    if self.paypalTextField.text?.characters.count > 0 {
+                        let user = User.currentUser
+                        user!.paypalAccount = self.paypalTextField.text
+                        User.currentUser = user
+                    }
                     
                 } else if let error = error {
                     
@@ -281,12 +288,14 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
+        /*
         if textField == paypalTextField && textField.text?.characters.count > 0 {
             
             let user = User.currentUser
             user!.paypalAccount = textField.text
             User.currentUser = user
         }
+         */
         
         return true
     }
