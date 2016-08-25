@@ -22,6 +22,7 @@ class User: Mappable {
     var accessToken: String?
     var userId: String?
     
+    var type: String?
     
     init() {
         self.name = ""
@@ -33,6 +34,7 @@ class User: Mappable {
         self.accessToken = ""
         self.userId = ""
         self.paypalAccount = ""
+        self.type = ""
     }
     
     required init?(_ map: Map) {
@@ -63,6 +65,7 @@ class User: Mappable {
         accessToken     <- map["access_token"]
         userId          <- map["user_id"]
         paypalAccount   <- map["paypal_account"]
+        type            <- map["user_type"]
     }
 }
 

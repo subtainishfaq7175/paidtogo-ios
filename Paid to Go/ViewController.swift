@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     func customizeNavigationBarWithTitleAndMenu(){
         let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "homeButtonAction:")
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action:#selector(MenuContentViewController.homeButtonAction(_:)) ) //"homeButtonAction:"
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
         
@@ -92,10 +92,9 @@ class ViewController: UIViewController {
     
     func customizeNavigationBarWithMenu(){
         let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: "homeButtonAction:")
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(_:))) //
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
-        
         
     }
     

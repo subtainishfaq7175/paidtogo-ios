@@ -37,8 +37,6 @@ class MainViewController: REFrostedViewController {
         
         
     }
-    
-    
 }
 
 // MARK: - MenuViewControllerDelegate
@@ -53,4 +51,6 @@ extension MainViewController: MenuViewControllerDelegate {
         }
         self.hideMenuViewController()
     }
+    
+    
 }

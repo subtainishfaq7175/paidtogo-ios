@@ -32,7 +32,9 @@ class StoryboardRouter {
         return UIStoryboard(name: "Leaderboards", bundle: NSBundle.mainBundle())
     }
     
-    
+    static func profileStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Profile", bundle: NSBundle.mainBundle())
+    }
     
     // MARK: - View Controllers
     
@@ -50,6 +52,10 @@ class StoryboardRouter {
     
     static func initialSignupViewController() -> SignupViewController {
         return mainStoryboard().instantiateViewControllerWithIdentifier("SignupViewController") as! SignupViewController
+    }
+    
+    static func initialProfileViewController() -> ProfileViewController {
+        return profileStoryboard().instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
     }
     
     static func initialLeaderboardsViewController() -> LeaderboardsViewController {

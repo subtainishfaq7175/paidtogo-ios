@@ -14,11 +14,17 @@ protocol MenuViewControllerDelegate: class {
 
 class MenuViewController: ViewController {
     
-    // MARK: - IBOutlet
+    // MARK: - IBOutlet -
+    
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var goProButton: UIButton!
+    @IBOutlet weak var goProButtonView: UIView!
+    
+    @IBOutlet weak var proUserLabel: UILabel!
     
     weak var menuController: MainViewController?
     
@@ -31,6 +37,9 @@ class MenuViewController: ViewController {
     var items = [MenuItem]()
     weak var delegate: MenuViewControllerDelegate?
     
+    // MARK: - Test
+    
+    var userIsPro = false
     
     // MARK: - Override
     override func viewDidLoad() {
@@ -91,8 +100,29 @@ class MenuViewController: ViewController {
         super.viewWillAppear(animated)
         profileImageView.roundWholeView()
         nameView.round()
+        proUserLabel.round()
+        configureViewForProUser()
     }
     
+    func configureViewForProUser() {
+        
+        let user = User.currentUser!
+        
+        if let userType = user.type {
+            
+            if userType.characters.count > 0 && userType == "1" {
+                // Pro User
+                proUserLabel.hidden = false
+                goProButtonView.hidden = true
+            } else {
+                proUserLabel.hidden = true
+                goProButtonView.hidden = false
+            }
+        } else {
+            proUserLabel.hidden = true
+            goProButtonView.hidden = false
+        }
+    }
     
     // MARK: - Utils
     
@@ -160,14 +190,31 @@ class MenuViewController: ViewController {
         return menuItems
     }
     
+    // MARK: - IBActions -
+    
     @IBAction func menuAction(sender: AnyObject) {
-        // TODO: Close menu
         self.menuController?.hideMenuViewController()
     }
     
+    @IBAction func profileAction(sender: AnyObject) {
+        /*
+        let selectedItem = items[indexPath.row]
+        let controller = UIStoryboard(name: selectedItem.storyboard, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(selectedItem.identifier)
+        self.delegate?.setMenuContentViewController(controller)
+         */
+    }
+    
     @IBAction func logoutAction(sender: AnyObject) {
-        // TODO: Logout here
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func goProAction(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Become a Premium User!", message:
+            "Do you want to buy a one year subscription for $29.99?\n\n[premium users duplicate earnings per mile in every pool]", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default,handler: goPro))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
@@ -253,5 +300,27 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.delegate?.setMenuContentViewController(controller)
         }
+    }
+    
+    func goPro(alert: UIAlertAction!) {
+        print("Go Pro")
+        
+        self.showProgressHud()
+        ProUser.store.requestProducts { (success, products) in
+            self.dismissProgressHud()
+            if success {
+                print("Product: \(products)")
+                self.userIsPro = true
+                
+                let user = User.currentUser
+                user?.type = "1"
+                User.currentUser = user
+                
+                self.configureViewForProUser()
+            } else {
+                print("Error")
+            }
+        }
+        
     }
 }

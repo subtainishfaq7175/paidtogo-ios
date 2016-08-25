@@ -13,32 +13,44 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var addPictureImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordVerificationTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var paypalTextField: UITextField!
+    
     @IBOutlet weak var signupButtonViewContainer: UIView!
     
-    // MARK: - Variables and Constants
+    @IBOutlet weak var proUserLabel: UILabel!
+    
+    // MARK: - Variables and Constants -
     
     var profileImage: UIImage?
+    var shouldEnterPayPalAccount = false
     
+    // MARK: - Test
     
-    // MARK: - Super
+    var userIsPro = false
+    
+    // MARK: - Super -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         setNavigationBarVisible(true)
         self.title = "menu_profile".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
         
+        if shouldEnterPayPalAccount {
+            self.paypalTextField.becomeFirstResponder()
+        }
+        
+        proUserLabel.round()
     }
     
     override func viewDidLoad() {
@@ -48,8 +60,11 @@ class ProfileViewController: MenuContentViewController {
         lastNameTextField.delegate = self
         firstNameTextField.delegate = self
         bioTextField.delegate = self
+        paypalTextField.delegate = self
         
         self.populateFields()
+        
+        self.signUpButtonShouldChange(false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,7 +73,23 @@ class ProfileViewController: MenuContentViewController {
     }
     
     
-    // MARK: - Functions
+    // MARK: - Functions -
+    
+    func configureViewForProUser() {
+        let user = User.currentUser!
+        
+        if let userType = user.type {
+            
+            if userType.characters.count > 0 && userType == "1" {
+                // Pro User
+                proUserLabel.hidden = false
+            } else {
+                proUserLabel.hidden = true
+            }
+        } else {
+            proUserLabel.hidden = true
+        }
+    }
     
     private func initViews(){
         signupButtonViewContainer.round()
@@ -78,24 +109,12 @@ class ProfileViewController: MenuContentViewController {
             
             print(currentProfilePicture)
             
-            addPictureImageView.hidden = true
-            
             profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"))
-            
-            //            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
-            
-            //            let base64String        = currentProfilePicture
-            //                .stringByReplacingOccurrencesOfString(User.imagePrefix, withString: "")
-            //
-            //            if let imageData           = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-            //
-            //                let profileImage        = UIImage(data: imageData)
-            //
-            //                profileImageView.image  = profileImage
         }
     }
     
     private func validate() -> Bool {
+        
         if emailTextField.text! == "" {
             showAlert("Email field is empty")
             return false
@@ -109,38 +128,36 @@ class ProfileViewController: MenuContentViewController {
             return false
         }
         
-        //        if passwordTextField.text! == "" {
-        //            showAlert("Password field is empty")
-        //            return false
-        //        }
-        //        if passwordVerificationTextField.text! == "" {
-        //            showAlert("Password verification field is empty")
-        //            return false
-        //        }
-        //        if passwordTextField.text != passwordVerificationTextField.text {
-        //            showAlert("The passwords don't match")
-        //            return false
-        //        }
-        
         if bioTextField.text! == "" {
             showAlert("Biography field is empty")
             return false
         }
         
-        //        if profileImage == nil {
-        //            showAlert("A profile image shall be upload")
-        //            return false
-        //        }
-        
-        
         return true
     }
     
+    func signUpButtonShouldChange(value: Bool) {
+        if value == true {
+            enableSignUpButton()
+        } else {
+            disableSignUpButton()
+        }
+    }
     
+    func enableSignUpButton() {
+        signupButtonViewContainer.alpha = CGFloat(1.0)
+        signupButtonViewContainer.userInteractionEnabled = true
+    }
     
-    // MARK: - Selectors
+    func disableSignUpButton() {
+        signupButtonViewContainer.alpha = CGFloat(0.3)
+        signupButtonViewContainer.userInteractionEnabled = false
+    }
+    
+    // MARK: - Selectors -
     
     @IBAction func photoTapAction(sender: AnyObject) {
+        
         let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
             action in
@@ -180,12 +197,8 @@ class ProfileViewController: MenuContentViewController {
             
             if let profileImage = profileImage {
                 
-//                let imageData = UIImagePNGRepresentation(profileImage)
-                
                 let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
-                
                 let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                
                 let encodedImageWithPrefix = User.imagePrefix + base64String
                 
                 userToSend.profilePicture = encodedImageWithPrefix
@@ -200,12 +213,15 @@ class ProfileViewController: MenuContentViewController {
                     
                     self.showAlert("profile_changes_submited".localize())
                     
-                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
+//                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
+                    self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
                     
                     User.currentUser = user
                     
                     let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
+                    
+                    self.signUpButtonShouldChange(false)
                     
                 } else if let error = error {
                     
@@ -230,6 +246,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         picker.dismissViewControllerAnimated(true, completion: nil);
         
+        self.signUpButtonShouldChange(true)
     }
     
     func takePhotoFromCamera() {
@@ -256,19 +273,21 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.presentViewController(picker, animated: true, completion: nil);
         }
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        return true
+
+    @IBAction func textFieldEditingChanged(sender: AnyObject) {
+        self.signUpButtonShouldChange(true)
     }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if string == "\n" {
-//            textField.resignFirstResponder()
-//        }
-//        
-//        return true
-//    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == paypalTextField && textField.text?.characters.count > 0 {
+            
+            let user = User.currentUser
+            user!.paypalAccount = textField.text
+            User.currentUser = user
+        }
+        
+        return true
+    }
 }
