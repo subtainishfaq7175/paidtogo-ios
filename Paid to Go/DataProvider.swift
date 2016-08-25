@@ -241,7 +241,20 @@ class DataProvider : DataProviderService {
     
     func postBalance(user: User, completion: (balance: Balance?, error: String?) -> Void) {
         
-        let json = Mapper().toJSON(user)
+//        let json = Mapper().toJSON(user)
+        
+        guard let accessToken = User.currentUser?.accessToken else {
+            return
+        }
+        
+        guard let userId = User.currentUser?.userId else {
+            return
+        }
+        
+        let json = [
+            "access_token" : accessToken,
+            "user_id" : userId
+        ]
         
         ConnectionManager.sharedInstance.balance(json) { (responseValue, error) in
             

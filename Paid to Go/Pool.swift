@@ -28,6 +28,7 @@ public class Pool: Mappable {
     internal let kPoolEndDateTimeKey: String = "end_date_time"
     internal let kPoolLimitPerDayKey: String = "limit_per_day"
     internal let kPoolLimitPerMonthKey: String = "limit_per_month"
+    internal let kPoolSponsorLink: String = "link"
     
     // MARK: Properties
     public var quantMembers: Int?
@@ -46,6 +47,7 @@ public class Pool: Mappable {
     public var endDateTime: String?
     public var limitPerDay: String?
     public var limitPerMonth: String?
+    public var sponsorLink: String?
     
     // MARK: ObjectMapper Initalizers
     /**
@@ -77,6 +79,7 @@ public class Pool: Mappable {
         endDateTime <- map[kPoolEndDateTimeKey]
         limitPerDay <- map[kPoolLimitPerDayKey]
         limitPerMonth <- map[kPoolLimitPerMonthKey]
+        sponsorLink <- map[kPoolSponsorLink]
     }
     
     /**

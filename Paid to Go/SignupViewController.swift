@@ -111,7 +111,6 @@ class SignupViewController: ViewController {
         //            return false
         //        }
         
-        
         return true
     }
     
@@ -142,8 +141,7 @@ class SignupViewController: ViewController {
         
         if(self.validate()) {
             
-            self.showProgressHud("Loading") // TODO: Fix delay
-            
+            self.showProgressHud("Loading")
             
             let newUser: User   = User()
             newUser.email       = emailTextField.text!

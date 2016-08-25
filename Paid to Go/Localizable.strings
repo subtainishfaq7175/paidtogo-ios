@@ -52,7 +52,7 @@
 "pools_go"                  = "GO!!"            ;
 "pools_national"            = "National"        ;
 "auth_photo_camera_option"  = "Camera"          ;
-"auth_photo_library_option" = "Carrete"         ;
+"auth_photo_library_option" = "Gallery"         ;
 
 // -----------------------------------------
 // - General Errors strings

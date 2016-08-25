@@ -153,6 +153,17 @@ class PoolDetailViewController: ViewController {
     
     // MARK: - IBActions
     
+    @IBAction func btnSponsorPressed(sender: AnyObject) {
+        
+        if let sponsorURL = pool?.sponsorLink {
+            let url : NSURL = NSURL(string: sponsorURL)!
+            
+            if UIApplication.sharedApplication().canOpenURL(url) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+    }
+    
     @IBAction func btnContinuePressed(sender: AnyObject) {
         guard let pool = self.pool else {
             return

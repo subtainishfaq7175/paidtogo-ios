@@ -292,15 +292,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        /*
-        if textField == paypalTextField && textField.text?.characters.count > 0 {
-            
-            let user = User.currentUser
-            user!.paypalAccount = textField.text
-            User.currentUser = user
-        }
-         */
-        
         return true
     }
 }
