@@ -216,6 +216,11 @@ class ProfileViewController: MenuContentViewController {
 //                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
                     self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
                     
+                    let currentUser = User.currentUser
+                    if let currentUserType = currentUser?.type where currentUser?.type?.characters.count > 0 {
+                        user.type = currentUser?.type
+                    }
+                    
                     User.currentUser = user
                     
                     let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
