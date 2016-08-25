@@ -317,6 +317,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 User.currentUser = user
                 
                 self.configureViewForProUser()
+                
+                self.showAlert("Congratulations!! You became a Pro User")
+                
             } else {
                 print("Error")
             }

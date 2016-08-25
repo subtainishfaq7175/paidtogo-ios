@@ -125,12 +125,10 @@ class BalanceViewController: MenuContentViewController {
         delay(3.0) {
             self.dismissProgressHud()
             self.showAlert("Redeemed Successfuly!!")
-            self.pendingLabel.text = "U$D" + self.amountTextField.text!
+            self.pendingLabel.text = "U$D " + self.amountTextField.text!
             self.amountTextField.text = ""
             self.amountTextField.resignFirstResponder()
-        }
-        
-        
+        }        
     }
     
     func delay(delay: NSTimeInterval, closure: () -> ()) {

@@ -50,8 +50,6 @@ class ProfileViewController: MenuContentViewController {
             self.paypalTextField.becomeFirstResponder()
         }
         
-        proUserLabel.round()
-        
         configureViewForProUser()
     }
     
@@ -95,6 +93,7 @@ class ProfileViewController: MenuContentViewController {
     
     private func initViews(){
         signupButtonViewContainer.round()
+        proUserLabel.round()
         profileImageView.roundWholeView()
     }
     
