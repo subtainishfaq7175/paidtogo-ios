@@ -85,6 +85,8 @@ extension PoolViewController {
     
     private func initViews() {
         actionButtonView.round()
+        mapButton.round()
+        pauseButton.round()
     }
     
     private func initButtons() {

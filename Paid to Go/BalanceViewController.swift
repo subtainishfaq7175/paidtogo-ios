@@ -23,6 +23,7 @@ class BalanceViewController: MenuContentViewController {
     
     // MARK: - Variables and Constants -
     
+    var balance : Balance?
     
     // MARK: - Super -
     
@@ -65,6 +66,8 @@ class BalanceViewController: MenuContentViewController {
             self.dismissProgressHud()
             
             if let balance = balance {
+                
+                self.balance = balance
                 
                 guard let earned = Double(balance.earned!),
                             redemed = Double(balance.redemed!),
@@ -124,17 +127,29 @@ class BalanceViewController: MenuContentViewController {
         }
         
         self.showProgressHud()
-        delay(3.0) {
+        
+        DataProvider.sharedInstance.postPayment(amountTextField.text!, type: "Pending") { (error) in
+            
             self.dismissProgressHud()
-            self.showAlert("Redeemed Successfuly!!")
-            self.pendingLabel.text = "U$D " + self.amountTextField.text!
-            self.amountTextField.text = ""
-            self.amountTextField.resignFirstResponder()
-        }        
+            
+            if error == nil {
+                self.showAlert("Redeemed Successfuly!!")
+                
+                guard let pending = Double(self.balance!.pending!), amount = Double(self.amountTextField.text!) else {
+                    return
+                }
+                
+                let pendingUpdated = amount + pending
+                self.balance?.pending = String(format: "%.2f", pendingUpdated)
+                
+                self.pendingLabel.text = "U$D " + (self.balance?.pending)!
+                
+                self.amountTextField.text = ""
+                self.amountTextField.resignFirstResponder()
+            } else {
+                self.showAlert("Transaction unsuccessful. There was a problem with the server, please try again later")
+            }
+        }
     }
-    
-    func delay(delay: NSTimeInterval, closure: () -> ()) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
-    }
-    
+
 }

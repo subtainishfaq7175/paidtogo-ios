@@ -241,8 +241,6 @@ class DataProvider : DataProviderService {
     
     func postBalance(user: User, completion: (balance: Balance?, error: String?) -> Void) {
         
-//        let json = Mapper().toJSON(user)
-        
         guard let accessToken = User.currentUser?.accessToken else {
             return
         }
@@ -271,6 +269,35 @@ class DataProvider : DataProviderService {
                 
             }
         }
+    }
+    
+    // MARK: - Payment -
+    
+    func postPayment(amount: String, type: String, completion: (error : String?) -> Void ) {
+        
+        guard let accessToken = User.currentUser?.accessToken else {
+            return
+        }
+        
+        let json = [
+            "access_token" : accessToken,
+            "amount" : amount,
+            "description_text" : "Balance operation",
+            "type" : type
+        ]
+        
+        ConnectionManager.sharedInstance.payment(json) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                completion(error: nil)
+                
+            } else {
+                
+                completion(error: self.getError(error!))
+            }
+        }
+        
     }
     
     // MARK: - Activity -

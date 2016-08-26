@@ -24,6 +24,7 @@ class ConnectionManager {
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
+    private var paymentURL : String { return "\(baseURL)/payment" }
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
     private var registerActivityURL : String { return "\(baseURL)/register_activity" }
     private var poolsURL : String { return "\(baseURL)/pools" }
@@ -103,6 +104,12 @@ extension ConnectionManager {
         let identifier = "Balance API - POST"
         self.postRequest(identifier, url: self.balanceURL, params: params, apiCompletion: apiCompletion)
         
+    }
+    
+    func payment(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+    
+        let identifier = "Payment API - POST"
+        self.postRequest(identifier, url: self.paymentURL, params: params, apiCompletion: apiCompletion)
     }
     
     func registerActivity(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
