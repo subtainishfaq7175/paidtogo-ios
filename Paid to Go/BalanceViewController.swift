@@ -12,14 +12,23 @@ class BalanceViewController: MenuContentViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var requestButtonContainerView: UIView!
+    @IBOutlet weak var requestButtonContainerView: UIView! {
+        didSet {
+             requestButtonContainerView.alpha = CGFloat(0.3)
+             requestButtonContainerView.userInteractionEnabled = false
+        }
+    }
     
     @IBOutlet weak var redemedLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
     @IBOutlet weak var pendingLabel: UILabel!    
     @IBOutlet weak var accountMoneyLabel: UILabel!
     
-    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var amountTextField: UITextField! {
+        didSet {
+            amountTextField.keyboardType = UIKeyboardType.DecimalPad
+        }
+    }
     
     // MARK: - Variables and Constants -
     
@@ -74,15 +83,42 @@ class BalanceViewController: MenuContentViewController {
                                 pending = Double(balance.pending!) else {
                     return
                 }
-                
-                self.redemedLabel.text = "- U$D \(redemed)"
-                self.earnedLabel.text = "U$D \(earned)"
-                self.pendingLabel.text = "U$D \(pending)"
-                self.accountMoneyLabel.text = "U$D \(earned - redemed)"
+
+                self.redemedLabel.text = "- U$D \(String(format: "%.2f", redemed))"
+                self.earnedLabel.text = "U$D \(String(format: "%.2f", earned))"
+                self.pendingLabel.text = "U$D \(String(format: "%.2f", pending))"
+                self.accountMoneyLabel.text = "U$D \(String(format: "%.2f", earned - redemed - pending))"
                 
             } else if let error = error {
                 self.showAlert(error)
             }
+        }
+    }
+    
+    func validateAmount() -> Bool {
+        
+        if let amountString = amountTextField.text where amountTextField.text?.characters.count > 0 {
+            if let amount = Double(amountString) {
+                if let balance = self.balance?.balance {
+                    let accountMoney = Double(balance)
+                    
+                    if amount > accountMoney {
+                        self.showAlert("You don't have enough money in your account to redeem that amount")
+                        return false
+                    }
+                    
+                    return true
+                }
+                
+                return false
+                
+            } else {
+                self.showAlert("Please enter a valid amount")
+                return false
+            }
+        } else {
+            self.showAlert("Please enter a valid amount")
+            return false
         }
     }
 
@@ -106,9 +142,13 @@ class BalanceViewController: MenuContentViewController {
     
     @IBAction func buttonRequestPressed(sender: AnyObject) {
         
+        if !self.validateAmount() {
+            return
+        }
+        
         let user = User.currentUser
         
-        guard let paypalAccount = user?.paypalAccount where user?.paypalAccount?.characters.count > 0 else {
+        guard let _ = user?.paypalAccount where user?.paypalAccount?.characters.count > 0 else {
             
             amountTextField.resignFirstResponder()
             
@@ -151,5 +191,17 @@ class BalanceViewController: MenuContentViewController {
             }
         }
     }
-
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        if let textField = sender as? UITextField {
+            if textField.text?.characters.count > 0 {
+                requestButtonContainerView.alpha = CGFloat(1)
+                requestButtonContainerView.userInteractionEnabled = true
+            } else {
+                requestButtonContainerView.alpha = CGFloat(0.3)
+                requestButtonContainerView.userInteractionEnabled = false
+            }
+        }
+    }
+    
 }
