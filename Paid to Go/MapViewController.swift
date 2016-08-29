@@ -113,6 +113,9 @@ class MapViewController: ViewController {
         
         if distanceBetweenLocations > 10.0 {
             
+//            ActivityManager.updateMilesCounter(currentLocation)
+            ActivityManager.updateMilesCounterWithMeters(distanceBetweenLocations)
+            
             var coordinates = [
                 previousLocation.coordinate,
                 currentLocation.coordinate

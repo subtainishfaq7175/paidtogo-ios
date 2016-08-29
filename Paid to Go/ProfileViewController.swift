@@ -196,6 +196,10 @@ class ProfileViewController: MenuContentViewController {
             userToSend.lastName = lastNameTextField.text
             userToSend.bio = bioTextField.text
             
+            if let paypalAcount = self.paypalTextField.text where self.paypalTextField.text?.characters.count > 0 {
+                userToSend.paypalAccount = paypalAcount
+            }
+            
             if let profileImage = profileImage {
                 
                 let imageData = UIImageJPEGRepresentation(profileImage, 0.1)

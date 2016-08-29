@@ -122,6 +122,10 @@ class ActivityManager: NSObject, ActivityTest {
         setMilesCounter(metersTravelled*metersToMiles)
     }
     
+    static func updateMilesCounterWithMeters(meters:Double) {
+        setMilesCounter(meters*metersToMiles)
+    }
+    
     static func getMilesCounter() -> Double {
         return sharedInstance.milesCounter
     }
