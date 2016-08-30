@@ -40,7 +40,7 @@ class PoolCell: UITableViewCell {
         self.titleLabel.text = pool.name
         
         if let earnedMoney = pool.earnedMoneyPerMile {
-            self.ratePerMileLabel.text = "$" + earnedMoney
+            self.ratePerMileLabel.text = "$" + String(format: "%.2f", earnedMoney)
         } else {
             self.ratePerMileLabel.text = "$0"
         }

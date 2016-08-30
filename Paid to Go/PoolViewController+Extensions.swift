@@ -470,9 +470,12 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         self.mapButton.hidden = false
     }
     private func locationUpdatedSuccessiveTimes(location:CLLocation) {
+        
 //        ActivityManager.updateMilesCounter(location)
+        
         ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
         ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
+        
         /*
         let milesTravelled = ActivityManager.getMilesCounter()
         self.progressLabel.text = String(format: "%.2f", milesTravelled)
@@ -480,6 +483,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         let angle = ActivityManager.getCircularProgressAngle()
         circularProgressView.angle = angle / circularProgressRoundOffset
         */
+        
         ActivityManager.setLastLocation(location)
         
         if let mapVC = mapViewController as MapViewController? {

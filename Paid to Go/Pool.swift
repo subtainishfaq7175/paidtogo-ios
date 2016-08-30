@@ -32,7 +32,7 @@ public class Pool: Mappable {
     
     // MARK: Properties
     public var quantMembers: Int?
-    public var earnedMoneyPerMile: String?
+    public var earnedMoneyPerMile: Double?
     public var poolType: PoolType?
     public var banner: String?
     public var destinationLatitude: String?
@@ -64,7 +64,9 @@ public class Pool: Mappable {
      */
     public func mapping(map: Map) {
         quantMembers <- map[kPoolQuantMembersKey]
-        earnedMoneyPerMile <- map[kPoolEarnedMoneyPerMileKey]
+        var earnedMoney = ""
+        earnedMoney <- map[kPoolEarnedMoneyPerMileKey]
+        earnedMoneyPerMile = Double(earnedMoney)
         poolType <- map[kPoolPoolTypeKey]
         banner <- map[kPoolBannerKey]
         destinationLatitude <- map[kPoolDestinationLatitudeKey]

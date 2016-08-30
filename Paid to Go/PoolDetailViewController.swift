@@ -96,7 +96,7 @@ class PoolDetailViewController: ViewController {
         }
         
         if let earnedMoneyPerMile = pool?.earnedMoneyPerMile {
-            earnedMoneyPerMileLabel.text = earnedMoneyPerMileLabel.text! + "$" + earnedMoneyPerMile
+            earnedMoneyPerMileLabel.text = earnedMoneyPerMileLabel.text! + "$" + String(format: "%.2f", earnedMoneyPerMile)
         }
         
         if let limitPerDay = pool?.limitPerDay {

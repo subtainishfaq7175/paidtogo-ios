@@ -48,7 +48,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
 
     var lastContentOffset : CGFloat = 0
     
-    // MARK: - Super
+    // MARK: - Super -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,6 +80,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.getPools()
     }
     
+    // MARK: - Navigation -
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
@@ -101,7 +103,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: - Functions
+    // MARK: - Functions -
     
     private func showAntiCheatViewController(pool: Pool) {
         let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
