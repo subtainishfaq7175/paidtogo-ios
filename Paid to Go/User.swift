@@ -9,6 +9,11 @@
 import Foundation
 import ObjectMapper
 
+enum UserType : String {
+    case Normal = "0",
+            Pro = "2";
+}
+
 class User: Mappable {
     
     var name: String?
@@ -52,6 +57,18 @@ class User: Mappable {
         } else {
             return ""
         }
+    }
+    
+    func isPro() -> Bool {
+        if self.type == UserType.Pro.rawValue {
+            return true
+        }
+        
+        return false
+    }
+    
+    static func setProUser() {
+        currentUser!.type = UserType.Pro.rawValue
     }
     
     // Mappable

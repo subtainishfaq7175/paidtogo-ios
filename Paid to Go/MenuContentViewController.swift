@@ -30,11 +30,6 @@ class MenuContentViewController: ViewController {
         super.viewWillAppear(animated)
         
         clearNavigationBarcolor()
-        
-        //        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        //        self.navigationController?.navigationBar.titleTextAttributes = [
-        //            NSForegroundColorAttributeName: UIColor.whiteColor()
-        //        ]
     }
     
     func addMenuButton() {

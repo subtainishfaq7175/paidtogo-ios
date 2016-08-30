@@ -218,8 +218,8 @@ class DataProvider : DataProviderService {
     
     func postUpdateProfile(user: User, completion: (user: User?, error: String?) -> Void) {
         
-        let json = Mapper().toJSON(user)
-        
+        var json = Mapper().toJSON(user)
+                
         ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
             
             if (error == nil) {

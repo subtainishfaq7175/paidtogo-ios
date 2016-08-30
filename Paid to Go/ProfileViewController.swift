@@ -56,12 +56,6 @@ class ProfileViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.delegate = self
-        lastNameTextField.delegate = self
-        firstNameTextField.delegate = self
-        bioTextField.delegate = self
-        paypalTextField.delegate = self
-        
         self.populateFields()
         
         self.signUpButtonShouldChange(false)
@@ -76,19 +70,16 @@ class ProfileViewController: MenuContentViewController {
     // MARK: - Functions -
     
     func configureViewForProUser() {
+        
         let user = User.currentUser!
         
-        if let userType = user.type {
-            
-            if userType.characters.count > 0 && userType == "1" {
-                // Pro User
-                proUserLabel.hidden = false
-            } else {
-                proUserLabel.hidden = true
-            }
+        if user.isPro() {
+            // Pro User
+            proUserLabel.hidden = false
         } else {
             proUserLabel.hidden = true
         }
+        
     }
     
     private func initViews(){
@@ -105,6 +96,7 @@ class ProfileViewController: MenuContentViewController {
         firstNameTextField.text = currentUser.name
         lastNameTextField.text  = currentUser.lastName
         bioTextField.text       = currentUser.bio
+        paypalTextField.text    = currentUser.paypalAccount
         
         if let currentProfilePicture = currentUser.profilePicture {
             
@@ -220,11 +212,6 @@ class ProfileViewController: MenuContentViewController {
 //                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
                     self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
                     
-                    let currentUser = User.currentUser
-                    if let currentUserType = currentUser?.type where currentUser?.type?.characters.count > 0 {
-                        user.type = currentUser?.type
-                    }
-                    
                     User.currentUser = user
                     
                     let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
@@ -232,11 +219,7 @@ class ProfileViewController: MenuContentViewController {
                     
                     self.signUpButtonShouldChange(false)
                     
-                    if self.paypalTextField.text?.characters.count > 0 {
-                        let user = User.currentUser
-                        user!.paypalAccount = self.paypalTextField.text
-                        User.currentUser = user
-                    }
+                    self.view.endEditing(true)
                     
                 } else if let error = error {
                     
@@ -288,14 +271,15 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.presentViewController(picker, animated: true, completion: nil);
         }
     }
-
-    @IBAction func textFieldEditingChanged(sender: AnyObject) {
-        self.signUpButtonShouldChange(true)
-    }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
+    @IBAction func editingChanged(sender: AnyObject) {
+        if let textField = sender as? UITextField {
+            if textField.text?.characters.count > 0 {
+                self.signUpButtonShouldChange(true)
+            } else {
+                self.signUpButtonShouldChange(false)
+            }
+        }
     }
+
 }

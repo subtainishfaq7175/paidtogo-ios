@@ -37,10 +37,6 @@ class MenuViewController: ViewController {
     var items = [MenuItem]()
     weak var delegate: MenuViewControllerDelegate?
     
-    // MARK: - Test
-    
-    var userIsPro = false
-    
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,20 +104,15 @@ class MenuViewController: ViewController {
         
         let user = User.currentUser!
         
-        if let userType = user.type {
-            
-            if userType.characters.count > 0 && userType == "1" {
-                // Pro User
-                proUserLabel.hidden = false
-                goProButtonView.hidden = true
-            } else {
-                proUserLabel.hidden = true
-                goProButtonView.hidden = false
-            }
+        if user.isPro() {
+            // Pro User
+            proUserLabel.hidden = false
+            goProButtonView.hidden = true
         } else {
             proUserLabel.hidden = true
             goProButtonView.hidden = false
         }
+        
     }
     
     // MARK: - Utils
@@ -307,21 +298,31 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.showProgressHud()
         ProUser.store.requestProducts { (success, products) in
-            self.dismissProgressHud()
             if success {
                 print("Product: \(products)")
-                self.userIsPro = true
                 
-                let user = User.currentUser
-                user?.type = "1"
-                User.currentUser = user
+                let userToSend = User()
+                userToSend.accessToken = User.currentUser?.accessToken
+                userToSend.type = UserType.Pro.rawValue
                 
-                self.configureViewForProUser()
-                
-                self.showAlert("Congratulations!! You became a Pro User")
+                DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
+                    self.dismissProgressHud()
+                    
+                    if let user = user { //success
+                        
+                        User.currentUser = user
+                        self.configureViewForProUser()
+                        self.showAlert("Congratulations!! You became a Pro User")
+                        
+                        
+                    } else if let error = error {
+                        
+                        self.showAlert(error)
+                    }
+                }
                 
             } else {
-                print("Error")
+                print("Error - IAP Failed to get autorenewable subscription")
             }
         }
         

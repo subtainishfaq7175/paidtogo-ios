@@ -87,7 +87,7 @@
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldEditingChanged:" destination="OfH-Bf-BSA" eventType="editingDidEnd" id="nzf-4I-QIH"/>
+                                                    <action selector="editingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="8mN-SK-EMX"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibL-zd-bsw" userLabel="First Name Label">
@@ -108,7 +108,7 @@
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldEditingChanged:" destination="OfH-Bf-BSA" eventType="editingDidEnd" id="VY2-Wy-m5L"/>
+                                                    <action selector="editingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="zty-81-JMM"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2b-4C-DFw" userLabel="Last Name Label">
@@ -198,7 +198,7 @@
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldEditingChanged:" destination="OfH-Bf-BSA" eventType="editingDidEnd" id="s2w-5D-8Nw"/>
+                                                    <action selector="editingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="V0o-sj-Pqy"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEJ-ai-3oh">
@@ -220,7 +220,7 @@
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldEditingChanged:" destination="OfH-Bf-BSA" eventType="editingDidEnd" id="M1i-I0-W3r"/>
+                                                    <action selector="editingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="lnj-5s-OwO"/>
                                                 </connections>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQK-Zj-EDu" userLabel="Bio Line View">
@@ -250,7 +250,7 @@
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldEditingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="sc0-XP-OxF"/>
+                                                    <action selector="editingChanged:" destination="OfH-Bf-BSA" eventType="editingChanged" id="gUA-wy-kQS"/>
                                                 </connections>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koe-8o-do1" userLabel="Paypal Line View">
