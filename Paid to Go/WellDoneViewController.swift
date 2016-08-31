@@ -14,11 +14,17 @@ class WellDoneViewController: ViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var backgroundColorView: UIView!
+    
+    @IBOutlet weak var wellDoneLabel: UILabel!
+    
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var gasLabel: UILabel!
     @IBOutlet weak var co2Label: UILabel!
     @IBOutlet weak var trafficLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
+    
+    @IBOutlet weak var profileImageProportionalConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Variables and Constants
     
@@ -40,6 +46,7 @@ class WellDoneViewController: ViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         initViews()
     }
     
@@ -146,6 +153,30 @@ class WellDoneViewController: ViewController {
     
     private func initViews() {
         profileImageView.roundWholeView()
+        
+        let screenHeight = UIScreen.mainScreen().bounds.size.height
+        
+        if screenHeight == 480.0 {
+            if let font = UIFont(name: "OpenSans-Semibold", size: 24.0) {
+                wellDoneLabel.font = font
+                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.3)
+            }
+        } else if screenHeight == 568.0 {
+            if let font = UIFont(name: "OpenSans-Semibold", size: 36.0) {
+                wellDoneLabel.font = font
+                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.38)
+            }
+        } else if screenHeight == 667.0 {
+            if let font = UIFont(name: "OpenSans-Semibold", size: 40.0) {
+                wellDoneLabel.font = font
+                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.44)
+            }
+        } else {
+            if let font = UIFont(name: "OpenSans-Semibold", size: 44.0) {
+                wellDoneLabel.font = font
+                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.48)
+            }
+        }
     }
     
     // MARK: - Actions
@@ -177,4 +208,24 @@ class WellDoneViewController: ViewController {
         return screenshot
     }
     
+}
+
+struct MyConstraint {
+    static func changeMultiplier(constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
+        let newConstraint = NSLayoutConstraint(
+            item: constraint.firstItem,
+            attribute: constraint.firstAttribute,
+            relatedBy: constraint.relation,
+            toItem: constraint.secondItem,
+            attribute: constraint.secondAttribute,
+            multiplier: multiplier,
+            constant: constraint.constant)
+        
+        newConstraint.priority = constraint.priority
+        
+        NSLayoutConstraint.deactivateConstraints([constraint])
+        NSLayoutConstraint.activateConstraints([newConstraint])
+        
+        return newConstraint
+    }
 }

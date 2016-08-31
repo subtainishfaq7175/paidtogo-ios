@@ -85,7 +85,7 @@
 
 "share_title"       = "Share"       ;
 "share_attention"   = "Attention"   ;
-"share_text"        = "In order to get paid you need to share on social media at least once per month. Our open pools rely on contributions from your network of family and friends to help pay for your commute. Contributions go directly to commuters like you to help reduce greenhouse gases, traffic congestion and to help improve public health. The more contributions we receive the more people we can pay to take alternative forms of transportation, it’s that simple!"                        ;
+"share_text"        = "Our open pools rely in part on contributions and carbon offsets from your network of family and friends to fund your alternative commute. Please share your commute stats on social media and ask your network to contribute to the pool(s) you are participating in. All contributors are given a verified offset certificate that shows the amount of carbon, traffic and/or calories have been offset. The more contributions we get, the more commuters we can pay not to drive!";
 
 // -----------------------------------------
 // - Walk/Run strings
