@@ -164,6 +164,13 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
+            // Activity view controller: No anda...
+//            if let image = self.screenshot {
+//                if let url = NSURL(string: "fbauth2://") {
+//                    self.socialShare("Test Paid to Go Share", sharingImage: image, sharingURL: url)
+//                }
+//            }
+            
             // Image with no text
             let content = FBSDKSharePhotoContent()
             
@@ -175,27 +182,41 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
                 FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
             }
             
+            /// Problema con FBSDKShareDialog()
+            /// cuando le asigno mi content (FBSDKShareLinkContent) a la property dialog.shareContent (protocol FBSDKSharingContent), pierdo los campos contentTitle y contentDescription.
+            /// Bah, en realidad come el contentDescription y deja el contentTitle
             
-            /*
-            let content = FBSDKShareLinkContent()
-            if let url = NSURL(string: "https://www.paidtogo.com") {
-                content.contentURL = url
-            }
+//            let content = FBSDKShareLinkContent()
+//            
+//            if let url = NSURL(string: "https://www.paidtogo.com") { //https://www.paidtogo.com
+//                if UIApplication.sharedApplication().canOpenURL(url) {
+//                    content.contentURL = url
+//                }
+//            }
             
-            content.contentTitle = "Paid to Go"
-            content.contentDescription = "\nHey! I just completed a pool, check out my stats"
+//            content.contentTitle = "Paid to Go"
+//            content.contentDescription = "Hey! I just completed a pool, check out my stats"
             
-            let dialog = FBSDKShareDialog()
-            if UIApplication.sharedApplication().canOpenURL(NSURL(string: "fbauth2://")!) {
-                dialog.mode = FBSDKShareDialogMode.Native
-            } else {
-                dialog.mode = FBSDKShareDialogMode.Browser
-            }
-            dialog.shareContent = content
-            dialog.delegate = self
-            dialog.fromViewController = self
-            dialog.show()
-            */
+//            content.contentTitle = "Hey! I just completed a pool on Paid to Go, check out my stats"
+//            
+//            let dialog = FBSDKShareDialog()
+//            
+//            if let url = NSURL(string: "fbauth2://") {
+//                if UIApplication.sharedApplication().canOpenURL(url) {
+//                    dialog.mode = FBSDKShareDialogMode.Native
+//                } else {
+//                    dialog.mode = FBSDKShareDialogMode.Browser
+//                }
+//            } else {
+//                print("Error with Facebook app")
+//                return
+//            }
+//            
+//            
+//            dialog.shareContent = content
+//            dialog.delegate = self
+//            dialog.fromViewController = self
+//            dialog.show()
             
             // Share image 1: no funca
 //            let homeDirectory = NSHomeDirectory()
@@ -287,24 +308,29 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
         }
     }
     
-//    func screenShotMethod() -> UIImage? {
-//        let layer = UIApplication.sharedApplication().keyWindow!.layer
-//        let scale = UIScreen.mainScreen().scale
-//        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-//        
-//        layer.renderInContext(UIGraphicsGetCurrentContext()!)
-//        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return screenshot
-//    }
-    
     func documentsPathForFileName(name: String) -> String {
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         return documentsPath.stringByAppendingString(name)
     }
     
+    func socialShare(sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
+        var sharingItems = [AnyObject]()
+        
+        if let text = sharingText {
+            sharingItems.append(text)
+        }
+        if let image = sharingImage {
+            sharingItems.append(image)
+        }
+        if let url = sharingURL {
+            sharingItems.append(url)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivityTypeCopyToPasteboard,UIActivityTypeAirDrop,UIActivityTypeAddToReadingList,UIActivityTypeAssignToContact,UIActivityTypePostToTencentWeibo,UIActivityTypePostToVimeo,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToWeibo]
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Facebook Share Dialog Delegate -
