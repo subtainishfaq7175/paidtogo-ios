@@ -11,9 +11,19 @@ import Social
 import MessageUI
 import FBSDKShareKit
 
-class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate {
+protocol SocialShareDelegate : MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate {
     
-    // MARK: - Outlets
+    var twitterShareText : String { get }
+    
+    func facebookShare()
+    func instagramShare()
+    func twitterShare()
+    func mailShare()
+}
+
+class ShareViewController: ViewController {
+    
+    // MARK: - IBOutlets -
     
     @IBOutlet weak var finishButtonView: UIView!
     @IBOutlet weak var backgroundColorView: UIView!
@@ -22,7 +32,7 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
     
     @IBOutlet weak var constraintBtnsViewAspect: NSLayoutConstraint!
     
-    // MARK: - Variables and Constants
+    // MARK: - Variables and Constants -
     
     var type: PoolTypeEnum?
     var docController = UIDocumentInteractionController()
@@ -33,7 +43,7 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
     var screenshot : UIImage?
     var screenshotData : NSData?
     
-    // MARK: - Super
+    // MARK: - View life cycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,14 +56,12 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
         initViews()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    
-    // MARK: - Functions
+    // MARK: - Functions -
     
     private func initLayout() {
         setNavigationBarVisible(true)
@@ -70,98 +78,64 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
         }
     }
     
-    
     private func initViews() {
         //        goImageView.roundWholeView()
         self.title = "share_title".localize()
         finishButtonView.round()
     }
     
-    
- 
-    
-    
-    // MARK: - Actions
+    // MARK: - IBActions -
     
     @IBAction func email(sender: AnyObject) {
-        
-        if !MFMailComposeViewController.canSendMail() {
-            let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return
-        } else {
-            let composeVC = MFMailComposeViewController()
-            composeVC.mailComposeDelegate = self
-            
-            // Configure the fields of the interface.
-            //composeVC.setToRecipients(["address@example.com"])
-            composeVC.setSubject("Share by Mail")
-            let stringURL = NSURL(string: "www.paidtogo.com")
-            composeVC.setMessageBody((stringURL?.absoluteString)!, isHTML: false)
-            
-            // Present the view controller modally.
-            self.presentViewController(composeVC, animated: true, completion: nil)
-        }
+        self.mailShare()
     }
     
     @IBAction func twitter(sender: AnyObject) {
-        
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText("Share on Twitter")
-            twitterSheet.addURL(NSURL(string: "www.paidtogo.com"))
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
+        self.twitterShare()
     }
     
     @IBAction func instagram(sender: AnyObject) {
-        
-        let instagramURL = NSURL(string: "instagram://app")
-        if !UIApplication.sharedApplication().canOpenURL(instagramURL!) {
-            print("SIN INSTAGRAM")
-            
-            let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-            return
-        }
-        
-        if self.shareInstagram == nil {
-            self.shareInstagram = CMDocumentShare()
-        }
-        
-        self.shareInstagramImage(self.screenshot!)
-        
-//        
-//        let instagramURL = NSURL(string: "instagram://app")
-//        
-//        if(UIApplication.sharedApplication().canOpenURL(instagramURL!)) {
-//            let imagePost = UIImage(named: "posteo-01")
-//            
-//            let documentsFolderPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
-//
-//            let fullPath = documentsFolderPath.URLByAppendingPathComponent("insta.igo")
-//            let imageData = UIImagePNGRepresentation(imagePost!)!.writeToFile(fullPath, atomically: true)
-//            let rect = CGRectMake(0, 0, 0, 0)
-//            self.docController.UTI = "com.instagram.exclusivegram"
-//            let igImageHookFile = NSURL(string: "file://\(fullPath)")
-//            self.docController = UIDocumentInteractionController(URL: igImageHookFile!)
-//            self.docController.annotation = ["InstagramCaption":"Text"]
-//            self.docController.presentOpenInMenuFromRect(rect, inView: self.view, animated: true)
-//            
-//        } else {
-//            print("no instagram found")
-//        }
+        self.instagramShare()
     }
     
     @IBAction func facebook(sender: AnyObject) {
+        self.facebookShare()
+    }
+    
+    @IBAction func finish(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func documentsPathForFileName(name: String) -> String {
         
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        return documentsPath.stringByAppendingString(name)
+    }
+    
+    func socialShare(sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
+        var sharingItems = [AnyObject]()
+        
+        if let text = sharingText {
+            sharingItems.append(text)
+        }
+        if let image = sharingImage {
+            sharingItems.append(image)
+        }
+        if let url = sharingURL {
+            sharingItems.append(url)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivityTypeCopyToPasteboard,UIActivityTypeAirDrop,UIActivityTypeAddToReadingList,UIActivityTypeAssignToContact,UIActivityTypePostToTencentWeibo,UIActivityTypePostToVimeo,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToWeibo]
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension ShareViewController: SocialShareDelegate {
+    
+    var twitterShareText : String { return "Hey, i just completed a pool! Check out my stats and download the app at" }
+    
+    func facebookShare() {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
             // Activity view controller: No anda...
@@ -187,20 +161,20 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
             /// Bah, en realidad come el contentDescription y deja el contentTitle
             
 //            let content = FBSDKShareLinkContent()
-//            
+//
 //            if let url = NSURL(string: "https://www.paidtogo.com") { //https://www.paidtogo.com
 //                if UIApplication.sharedApplication().canOpenURL(url) {
 //                    content.contentURL = url
 //                }
 //            }
-            
+
 //            content.contentTitle = "Paid to Go"
 //            content.contentDescription = "Hey! I just completed a pool, check out my stats"
-            
+
 //            content.contentTitle = "Hey! I just completed a pool on Paid to Go, check out my stats"
-//            
+//
 //            let dialog = FBSDKShareDialog()
-//            
+//
 //            if let url = NSURL(string: "fbauth2://") {
 //                if UIApplication.sharedApplication().canOpenURL(url) {
 //                    dialog.mode = FBSDKShareDialogMode.Native
@@ -211,8 +185,8 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
 //                print("Error with Facebook app")
 //                return
 //            }
-//            
-//            
+//
+//
 //            dialog.shareContent = content
 //            dialog.delegate = self
 //            dialog.fromViewController = self
@@ -221,9 +195,9 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
             // Share image 1: no funca
 //            let homeDirectory = NSHomeDirectory()
 //            let savePath = homeDirectory.stringByAppendingPathComponent("Documents/image.igo")
-//            
+//
 //            print("savePath -> \(savePath)")
-//            
+//
 //            if let image = self.screenshot {
 //                if let imgData = UIImageJPEGRepresentation(image, 0.1) {
 //                    do {
@@ -231,9 +205,9 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
 //                    } catch {
 //                        print("Something went wrong!")
 //                    }
-//                    
+//
 //                    let theFileURL = NSURL(fileURLWithPath: savePath)
-//                    
+//
 //                    content.imageURL = theFileURL
 //                }
 //            }
@@ -242,12 +216,12 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
 //            if let screenshot = self.screenshot {
 //                if let data = UIImageJPEGRepresentation(screenshot, 0.1) {
 //                    let filePath = self.documentsPathForFileName("/image.jpg")
-//                    
+//
 //                    do {
-//                        
+//
 //                        let result = try Bool(data.writeToFile(filePath, options: NSDataWritingOptions.DataWritingAtomic))
 //                        print("result: \(result)")
-//                        
+//
 //                        let filePathURL = NSURL(fileURLWithPath: filePath)
 //                        
 //                        content.imageURL = filePathURL
@@ -267,14 +241,44 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
         }
     }
     
-    @IBAction func finish(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
-    
-    // MARK: MFMailComposeViewControllerDelegate Method
-    
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func instagramShare() {
+        let instagramURL = NSURL(string: "instagram://app")
+        if !UIApplication.sharedApplication().canOpenURL(instagramURL!) {
+            print("SIN INSTAGRAM")
+            
+            let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        if self.shareInstagram == nil {
+            self.shareInstagram = CMDocumentShare()
+        }
+        
+        self.shareInstagramImage(self.screenshot!)
+        
+//
+//        let instagramURL = NSURL(string: "instagram://app")
+//
+//        if(UIApplication.sharedApplication().canOpenURL(instagramURL!)) {
+//            let imagePost = UIImage(named: "posteo-01")
+//
+//            let documentsFolderPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+//
+//            let fullPath = documentsFolderPath.URLByAppendingPathComponent("insta.igo")
+//            let imageData = UIImagePNGRepresentation(imagePost!)!.writeToFile(fullPath, atomically: true)
+//            let rect = CGRectMake(0, 0, 0, 0)
+//            self.docController.UTI = "com.instagram.exclusivegram"
+//            let igImageHookFile = NSURL(string: "file://\(fullPath)")
+//            self.docController = UIDocumentInteractionController(URL: igImageHookFile!)
+//            self.docController.annotation = ["InstagramCaption":"Text"]
+//            self.docController.presentOpenInMenuFromRect(rect, inView: self.view, animated: true)
+//            
+//        } else {
+//            print("no instagram found")
+//        }
     }
     
     func shareInstagramImage(image : UIImage) {
@@ -307,29 +311,123 @@ class ShareViewController: ViewController, MFMailComposeViewControllerDelegate, 
             print("SIN INSTAGRAM EN EL DISPOSITIVO")
         }
     }
+
     
-    func documentsPathForFileName(name: String) -> String {
-        
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        return documentsPath.stringByAppendingString(name)
+    func twitterShare() {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            
+            print("- Twitter Share -")
+            
+            let initialTextSet = twitterSheet.setInitialText(twitterShareText)
+            
+            if initialTextSet {
+                print("Initial Text OK")
+            } else {
+                print("Initial Text FAILED")
+            }
+            
+            if let url = NSURL(string: "www.paidtogo.com") {
+                if UIApplication.sharedApplication().canOpenURL(url) {
+                    let urlAdded = twitterSheet.addURL(url)
+                    
+                    if urlAdded {
+                        print("URL OK")
+                    } else {
+                        print("URL FAILED")
+                    }
+                } else {
+                    
+                    let urlAdded = twitterSheet.addURL(NSURL(string: "www.paidtogo.com"))
+                    
+                    if urlAdded {
+                        print("URL OK")
+                    } else {
+                        print("URL FAILED")
+                    }
+                }
+            }
+            
+            if let image = self.screenshot {
+                let imageAdded = twitterSheet.addImage(image)
+                
+                if imageAdded {
+                    print("Image OK")
+                } else {
+                    print("Image FAILED")
+                }
+            }
+            
+            twitterSheet.completionHandler = {
+                result -> Void in
+                
+                let getResult = result as SLComposeViewControllerResult;
+                
+                let title = ""
+                
+                switch(getResult.rawValue) {
+                    
+                    case SLComposeViewControllerResult.Cancelled.rawValue:
+                        print("Cancelled")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    break
+                    
+                    case SLComposeViewControllerResult.Done.rawValue:
+                        print("It's Work!")
+                        self.dismissViewControllerAnimated(true, completion: {
+                            let alert = UIAlertController(title: title, message: "Twitter share successfull!!", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        })
+                    break
+                    
+                default:
+                    print("Error!")
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    break
+                }
+            }
+            
+            self.showProgressHud()
+            self.presentViewController(twitterSheet, animated: true, completion: {
+                self.dismissProgressHud()
+            })
+            
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
-    func socialShare(sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
-        var sharingItems = [AnyObject]()
-        
-        if let text = sharingText {
-            sharingItems.append(text)
+    
+    
+    func mailShare() {
+        if !MFMailComposeViewController.canSendMail() {
+            let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        } else {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            
+            // Configure the fields of the interface.
+            //composeVC.setToRecipients(["address@example.com"])
+            composeVC.setSubject("Share by Mail")
+            let stringURL = NSURL(string: "www.paidtogo.com")
+            composeVC.setMessageBody((stringURL?.absoluteString)!, isHTML: false)
+            
+            // Present the view controller modally.
+            self.presentViewController(composeVC, animated: true, completion: nil)
         }
-        if let image = sharingImage {
-            sharingItems.append(image)
-        }
-        if let url = sharingURL {
-            sharingItems.append(url)
-        }
-        
-        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivityTypeCopyToPasteboard,UIActivityTypeAirDrop,UIActivityTypeAddToReadingList,UIActivityTypeAssignToContact,UIActivityTypePostToTencentWeibo,UIActivityTypePostToVimeo,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToWeibo]
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
@@ -350,6 +448,5 @@ extension ShareViewController: FBSDKSharingDelegate {
         print("sharerDidCancel")
     }
 }
-
 
 
