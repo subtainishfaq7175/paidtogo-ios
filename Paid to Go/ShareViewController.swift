@@ -13,7 +13,7 @@ import FBSDKShareKit
 
 protocol SocialShareDelegate : MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate {
     
-    var twitterShareText : String { get }
+    var shareText : String { get }
     
     func facebookShare()
     func instagramShare()
@@ -133,10 +133,11 @@ class ShareViewController: ViewController {
 
 extension ShareViewController: SocialShareDelegate {
     
-    var twitterShareText : String { return "Hey, i just completed a pool! Check out my stats and download the app at" }
+    var shareText : String { return "Hey, i just completed a pool! Check out my stats and download the app at" }
     
     func facebookShare() {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+            print("- Facebook Share -")
             
             // Activity view controller: No anda...
 //            if let image = self.screenshot {
@@ -235,9 +236,7 @@ extension ShareViewController: SocialShareDelegate {
 //            }
             
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.showAlert("Please login to a Facebook account to share.")
         }
     }
     
@@ -245,6 +244,8 @@ extension ShareViewController: SocialShareDelegate {
         let instagramURL = NSURL(string: "instagram://app")
         if !UIApplication.sharedApplication().canOpenURL(instagramURL!) {
             print("SIN INSTAGRAM")
+            
+            self.showAlert("Please login to an Instagram account to share.")
             
             let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -315,13 +316,11 @@ extension ShareViewController: SocialShareDelegate {
     
     func twitterShare() {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            print("- Twitter Share -")
             
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             
-            print("- Twitter Share -")
-            
-            let initialTextSet = twitterSheet.setInitialText(twitterShareText)
-            
+            let initialTextSet = twitterSheet.setInitialText(shareText)
             if initialTextSet {
                 print("Initial Text OK")
             } else {
@@ -338,7 +337,6 @@ extension ShareViewController: SocialShareDelegate {
                         print("URL FAILED")
                     }
                 } else {
-                    
                     let urlAdded = twitterSheet.addURL(NSURL(string: "www.paidtogo.com"))
                     
                     if urlAdded {
@@ -364,26 +362,22 @@ extension ShareViewController: SocialShareDelegate {
                 
                 let getResult = result as SLComposeViewControllerResult;
                 
-                let title = ""
-                
                 switch(getResult.rawValue) {
                     
                     case SLComposeViewControllerResult.Cancelled.rawValue:
-                        print("Cancelled")
+                        print("- Twitter Share Cancelled -")
                         self.dismissViewControllerAnimated(true, completion: nil)
                     break
                     
                     case SLComposeViewControllerResult.Done.rawValue:
-                        print("It's Work!")
+                        print("- Twitter Share Ok -")
                         self.dismissViewControllerAnimated(true, completion: {
-                            let alert = UIAlertController(title: title, message: "Twitter share successfull!!", preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.showAlert("Twitter share successfull!!")
                         })
                     break
                     
                 default:
-                    print("Error!")
+                    print("- Twitter Share Error -")
                     self.dismissViewControllerAnimated(true, completion: nil)
                     break
                 }
@@ -395,9 +389,7 @@ extension ShareViewController: SocialShareDelegate {
             })
             
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.showAlert("Please login to a Twitter account to share.")
         }
     }
     
@@ -405,21 +397,30 @@ extension ShareViewController: SocialShareDelegate {
     
     func mailShare() {
         if !MFMailComposeViewController.canSendMail() {
-            let alert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            
+            self.showAlert("Unable to share by mail. There's no email account configured")
             return
+            
         } else {
+            print("- Mail Share -")
+            
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
             
-            // Configure the fields of the interface.
-            //composeVC.setToRecipients(["address@example.com"])
-            composeVC.setSubject("Share by Mail")
-            let stringURL = NSURL(string: "www.paidtogo.com")
-            composeVC.setMessageBody((stringURL?.absoluteString)!, isHTML: false)
+            composeVC.setSubject("Paid to Go")
             
-            // Present the view controller modally.
+            if let image = self.screenshot {
+                 composeVC.addAttachmentData(UIImageJPEGRepresentation(image, CGFloat(0.1))!, mimeType: "image/jpeg", fileName:  "test.jpeg")
+            }
+            
+            var htmlString = "<html><body><p>\(shareText)</p></body></html>"
+            composeVC.setMessageBody(htmlString, isHTML: true)
+            
+            if let url = NSURL(string: "www.paidtogo.com") {
+                htmlString = "<html><body><p>\(shareText)</p><a href=\(url)>www.paidtogo.com</a></body></html>"
+                composeVC.setMessageBody(htmlString, isHTML: true)
+            }
+            
             self.presentViewController(composeVC, animated: true, completion: nil)
         }
     }
@@ -427,7 +428,16 @@ extension ShareViewController: SocialShareDelegate {
     // MARK: MFMailComposeViewControllerDelegate Method
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        if let error = error {
+            print("- Mail Share Error -\n\(error.description))")
+            controller.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            print("- Mail Share Ok -")
+            controller.dismissViewControllerAnimated(true, completion: {
+                self.showAlert("Email sent successfully!!")
+            })
+        }
+        
     }
 }
 
@@ -436,11 +446,13 @@ extension ShareViewController: SocialShareDelegate {
 extension ShareViewController: FBSDKSharingDelegate {
     
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject: AnyObject]) {
-        print(results)
+        print("- Facebook Share Ok -")
+        
+//        self.showAlert("Facebook share successfull!!")
     }
     
     func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
-        print("sharer NSError")
+        print("- Facebook Share Error -")
         print(error.description)
     }
     

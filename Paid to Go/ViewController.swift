@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     // MARK: - Functions
     
-    func showAlert(text: String){
+    func showAlert(text: String) {
         let alertController = UIAlertController(title: "Paid to Go", message:
             text, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
