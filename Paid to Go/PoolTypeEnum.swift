@@ -6,8 +6,8 @@
 //  Copyright © 2016 Infinixsoft. All rights reserved.
 //
 
-enum PoolTypeEnum {
-    case Walk
+enum PoolTypeEnum: Int {
+    case Walk = 1
     case Bike
     case Train
     case Car

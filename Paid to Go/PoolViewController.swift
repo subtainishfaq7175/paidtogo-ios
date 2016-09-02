@@ -187,6 +187,16 @@ class PoolViewController : ViewController {
     /**
      *  Indicates the state of the activity in progress (Pause / Resume)
      */
-    var isTimerTracking: Bool = false
+    var isTimerTracking = false
+    
+    /**
+     *  Indicates if the user has chosen a quickswitch between pools
+     */
+    var quickSwitchBetweenPools = false
+    
+    /**
+     *  The PoolType of the quickswitch
+     */
+    var quickSwitchPoolType: PoolTypeEnum?
 }
 

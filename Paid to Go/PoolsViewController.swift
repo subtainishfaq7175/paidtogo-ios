@@ -48,24 +48,26 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
 
     var lastContentOffset : CGFloat = 0
     
+    var quickSwitchPool = false
+    
     // MARK: - Super -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
+        
+        self.getPools()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         initViews()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
-        
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         self.scrollView.delegate = self
         
@@ -77,7 +79,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.closedPoolsTableView.dataSource = self
         self.closedPoolsTableView.estimatedRowHeight = UITableViewAutomaticDimension
         
-        self.getPools()
+        setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
+//        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+        
+//        self.getPools()
     }
     
     // MARK: - Navigation -
@@ -116,6 +121,13 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         clearNavigationBarcolor()
         setIndicatorOnLeft()
         self.tableHeaderView.configureForPools((self.poolType?.color)!)
+        
+        if quickSwitchPool {
+            setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
+            quickSwitchPool = false
+        }
+        
+        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
     }
     
     private func initViews() {
@@ -166,7 +178,13 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getOpenPools((poolType?.internalIdentifier)!) { (pools, error) in
+        guard let type = self.type?.rawValue else {
+            return
+        }
+        
+        let poolTypeString = String(type)
+        
+        DataProvider.sharedInstance.getOpenPools(poolTypeString) { (pools, error) in
             
             self.dismissProgressHud()
             
@@ -174,7 +192,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 self.showAlert(error)
                 return
             }
-            
             
             if let pools = pools {
                 
@@ -186,7 +203,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
  
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getClosedPools((poolType?.internalIdentifier)!) { (pools, error) in
+        DataProvider.sharedInstance.getClosedPools(poolTypeString) { (pools, error) in
             
             self.dismissProgressHud()
             

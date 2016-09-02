@@ -29,6 +29,7 @@
 		4D8880921D6CBC84008E514A /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8880911D6CBC84008E514A /* IAPHelper.swift */; };
 		4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8880931D6CC7D4008E514A /* ProUserSubscription.swift */; };
 		4D9051631D4652210043A250 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9051621D4652210043A250 /* MapViewController.swift */; };
+		4D9141BB1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */; };
 		4D936E591D25BEB600A0CB3A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D936E581D25BEB600A0CB3A /* Status.swift */; };
 		4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */; };
 		4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97C2151D2A959100EF35F7 /* StatusType.swift */; };
@@ -152,6 +153,7 @@
 		4D8880911D6CBC84008E514A /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		4D8880931D6CC7D4008E514A /* ProUserSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProUserSubscription.swift; sourceTree = "<group>"; };
 		4D9051621D4652210043A250 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		4D936E581D25BEB600A0CB3A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		4D97C2151D2A959100EF35F7 /* StatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusType.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */,
 				4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */,
 				4DF0005E1D46971C001394E3 /* UIImage+Extensions.swift */,
+				4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
 				4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */,
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
+				4D9141BB1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,

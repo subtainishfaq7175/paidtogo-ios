@@ -84,10 +84,10 @@ class BalanceViewController: MenuContentViewController {
                     return
                 }
 
-                self.redemedLabel.text = "- U$D \(String(format: "%.2f", redemed))"
-                self.earnedLabel.text = "U$D \(String(format: "%.2f", earned))"
-                self.pendingLabel.text = "U$D \(String(format: "%.2f", pending))"
-                self.accountMoneyLabel.text = "U$D \(String(format: "%.2f", earned - redemed - pending))"
+                self.redemedLabel.text = "- US$ \(String(format: "%.2f", redemed))"
+                self.earnedLabel.text = "US$ \(String(format: "%.2f", earned))"
+                self.pendingLabel.text = "US$ \(String(format: "%.2f", pending))"
+                self.accountMoneyLabel.text = "US$ \(String(format: "%.2f", earned - redemed))"
                 
             } else if let error = error {
                 self.showAlert(error)
@@ -182,7 +182,7 @@ class BalanceViewController: MenuContentViewController {
                 let pendingUpdated = amount + pending
                 self.balance?.pending = String(format: "%.2f", pendingUpdated)
                 
-                self.pendingLabel.text = "U$D " + (self.balance?.pending)!
+                self.pendingLabel.text = "US$ " + (self.balance?.pending)!
                 
                 self.amountTextField.text = ""
                 self.amountTextField.resignFirstResponder()

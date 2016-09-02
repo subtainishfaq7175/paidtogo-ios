@@ -448,7 +448,6 @@ extension ShareViewController: FBSDKSharingDelegate {
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject: AnyObject]) {
         print("- Facebook Share Ok -")
         
-//        self.showAlert("Facebook share successfull!!")
     }
     
     func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {

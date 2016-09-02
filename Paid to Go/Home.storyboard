@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PQP-Ci-HHk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PQP-Ci-HHk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2051,6 +2051,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9Zn-bY-t1W"/>
                     <connections>
+                        <outlet property="backToHomebutton" destination="XGU-j3-njh" id="J9y-0B-8p2"/>
                         <outlet property="backgroundColorView" destination="A8a-l4-hGe" id="jQM-mK-MQ4"/>
                         <outlet property="co2Label" destination="R3q-75-RdF" id="t5V-8i-3f2"/>
                         <outlet property="earnedLabel" destination="qgs-n5-XZG" id="WOE-cF-ayX"/>

@@ -161,7 +161,6 @@ class DataProvider : DataProviderService {
     
     func getPoolType(poolTypeEnum: PoolTypeEnum, completion: (poolType: PoolType?, error: String?) -> Void) {
         
-        
         ConnectionManager.sharedInstance.getPoolType(poolTypeEnum) { (responseValue, error) in
             
             if (error == nil) {

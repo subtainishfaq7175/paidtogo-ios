@@ -23,8 +23,9 @@ class WellDoneViewController: ViewController {
     @IBOutlet weak var trafficLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
     
-    @IBOutlet weak var profileImageProportionalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backToHomebutton: UIButton!
     
+    @IBOutlet weak var profileImageProportionalConstraint: NSLayoutConstraint!
     
     // MARK: - Variables and Constants
     
@@ -35,6 +36,9 @@ class WellDoneViewController: ViewController {
     var pool: Pool?
     
     var screenshot : UIImage?
+    
+    // Quick Switch between Pools: if this var is not nil, it means the user hasn't pressed the "Finish" button but the "Switch Pool" button, on the right corner of the navigation of the previous screen
+    var switchPoolType : PoolTypeEnum?
     
     // MARK: -  Super
     
@@ -54,10 +58,8 @@ class WellDoneViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.populateFields()
-        
-        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -87,7 +89,6 @@ class WellDoneViewController: ViewController {
         
         let currentUser = User.currentUser!
 
-        
         if let currentProfilePicture = currentUser.profilePicture {
             
             //profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
@@ -135,21 +136,20 @@ class WellDoneViewController: ViewController {
             earnedLabel.text = "$0*"
         }
         
-        
-        
     }
     
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
   
-        
         self.title = "menu_home".localize()
         
         setPoolColor(backgroundColorView, type: type!)
         
+        if let switchPoolType = self.switchPoolType {
+            self.backToHomebutton.setTitle("Choose next Pool!", forState: UIControlState.Normal)
+        }
     }
-    
     
     private func initViews() {
         profileImageView.roundWholeView()
@@ -159,22 +159,22 @@ class WellDoneViewController: ViewController {
         if screenHeight == 480.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 24.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.3)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.3)
             }
         } else if screenHeight == 568.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 36.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.38)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.38)
             }
         } else if screenHeight == 667.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 40.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.44)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.44)
             }
         } else {
             if let font = UIFont(name: "OpenSans-Semibold", size: 44.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = MyConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.48)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.48)
             }
         }
     }
@@ -185,11 +185,27 @@ class WellDoneViewController: ViewController {
     @IBAction func backToHome(sender: AnyObject) {
         if let mainVC = self.presentingViewController as? MainViewController {
             if let navVc = mainVC.contentViewController as? UINavigationController {
-                navVc.popToRootViewControllerAnimated(true)
+                if let switchPoolType = self.switchPoolType {
+                    if let poolsVc = navVc.viewControllers[1] as? PoolsViewController {
+                        
+                        DataProvider.sharedInstance.getPoolType(switchPoolType, completion: { (poolType, error) in
+                            poolsVc.poolType = poolType
+                            poolsVc.type = switchPoolType
+                            poolsVc.openPools = [Pool]()
+                            poolsVc.closedPools = [Pool]()
+                            poolsVc.quickSwitchPool = true
+//                            poolsVc.openPoolsTableView.reloadData()
+                            navVc.popToViewController(poolsVc, animated: true)
+                            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                        })
+                        
+                    }
+                } else {
+                    navVc.popToRootViewControllerAnimated(true)
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                }
             }
         }
-        
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 //        self.presentHomeViewController()
     }
     
@@ -208,24 +224,4 @@ class WellDoneViewController: ViewController {
         return screenshot
     }
     
-}
-
-struct MyConstraint {
-    static func changeMultiplier(constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
-        let newConstraint = NSLayoutConstraint(
-            item: constraint.firstItem,
-            attribute: constraint.firstAttribute,
-            relatedBy: constraint.relation,
-            toItem: constraint.secondItem,
-            attribute: constraint.secondAttribute,
-            multiplier: multiplier,
-            constant: constraint.constant)
-        
-        newConstraint.priority = constraint.priority
-        
-        NSLayoutConstraint.deactivateConstraints([constraint])
-        NSLayoutConstraint.activateConstraints([newConstraint])
-        
-        return newConstraint
-    }
 }

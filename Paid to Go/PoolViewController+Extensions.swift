@@ -285,6 +285,10 @@ extension PoolViewController: TrackDelegate {
                 wellDoneViewController.activity = self.activity
                 wellDoneViewController.pool = self.pool
                 
+                if self.quickSwitchBetweenPools {
+                    wellDoneViewController.switchPoolType = self.quickSwitchPoolType
+                }
+                
                 ActivityManager.sharedInstance.resetActivity()
                 
                 self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
@@ -309,47 +313,29 @@ extension PoolViewController: SwitchDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     func poolSwitchWalkRunSelected(alert: UIAlertAction!) {
-        print("Walk/Run")
-        if type == PoolTypeEnum.Walk {
-            return
-        } else {
-            type = PoolTypeEnum.Walk
-            setPoolTitle(self.type!)
-            self.backgroundImageView.image = UIImage(named: kWalkBackgroundImage)
-            self.stepCountLabel.hidden = true
-            
-            UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
-                }, completion: { (result) in
-                    self.pauseResumeTracking()
-            })
-        }
+        print("Switch - Walk/Run -")
+        
+        quickSwitchBetweenPools = true
+        quickSwitchPoolType = PoolTypeEnum.Walk
+        endTracking()
     }
+    
     func poolSwitchBikeSelected(alert: UIAlertAction!) {
-        print("Bike")
-        if type == PoolTypeEnum.Bike {
-            return
-        } else {
-            type = PoolTypeEnum.Bike
-            setPoolTitle(self.type!)
-            self.backgroundImageView.image = UIImage(named: kRunBackgroundImage)
-            self.stepCountLabel.hidden = true
-            
-            UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
-                }, completion: { (result) in
-                    self.pauseResumeTracking()
-            })
-        }
+        print("Switch - Bike -")
+        
+        quickSwitchBetweenPools = true
+        quickSwitchPoolType = PoolTypeEnum.Bike
+        endTracking()
     }
+    
     func poolSwitchTrainBusSelected(alert: UIAlertAction!) {
-        print("Train/Bus")
-        if type == PoolTypeEnum.Train {
-            return
-        } else {
-            let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
-            vc.pool = pool
-            self.showViewController(vc, sender: nil)
-        }
+        print("Switch - Train/Bus -")
+        
+        quickSwitchBetweenPools = true
+        quickSwitchPoolType = PoolTypeEnum.Train
+        endTracking()
     }
+    
     func poolSwitchResume(alert: UIAlertAction!) {
         self.pauseResumeTracking()
     }
