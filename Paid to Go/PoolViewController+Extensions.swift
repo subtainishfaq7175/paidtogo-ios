@@ -303,6 +303,13 @@ extension PoolViewController: TrackDelegate {
 extension PoolViewController: SwitchDelegate {
     
     func showPoolSwitchAlert(text: String){
+        
+        if !hasPoolStarted {
+            self.showAlert("The pool hasn't started, you can't switch to another pool!!")
+            
+            return
+        }
+        
         let alertController = UIAlertController(title: "Paid to Go", message:
             text, preferredStyle: UIAlertControllerStyle.ActionSheet)
         alertController.addAction(UIAlertAction(title: "Walk/Run", style: UIAlertActionStyle.Default,handler: poolSwitchWalkRunSelected))
