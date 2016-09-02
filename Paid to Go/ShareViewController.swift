@@ -433,9 +433,14 @@ extension ShareViewController: SocialShareDelegate {
             controller.dismissViewControllerAnimated(true, completion: nil)
         } else {
             print("- Mail Share Ok -")
-            controller.dismissViewControllerAnimated(true, completion: {
-                self.showAlert("Email sent successfully!!")
-            })
+            
+            if result == MFMailComposeResultSent {
+                controller.dismissViewControllerAnimated(true, completion: {
+                    self.showAlert("Email sent successfully!!")
+                })
+            }
+            
+            controller.dismissViewControllerAnimated(true, completion: nil)
         }
         
     }
