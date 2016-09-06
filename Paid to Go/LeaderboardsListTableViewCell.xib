@@ -80,6 +80,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgArrow" destination="3sE-Yj-UMK" id="N2L-pO-OVN"/>
                 <outlet property="imgPool" destination="Hg1-v7-sQ3" id="D7K-qz-Clk"/>
                 <outlet property="lblPosition" destination="7HG-u2-UcO" id="2X9-dX-FQP"/>
                 <outlet property="lblSuffix" destination="UQo-Bi-04w" id="2Fg-Gv-C74"/>

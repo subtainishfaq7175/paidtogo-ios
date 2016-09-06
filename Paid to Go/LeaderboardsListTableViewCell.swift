@@ -11,6 +11,7 @@ import UIKit
 class LeaderboardsListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgPool: UIImageView!
+    @IBOutlet weak var imgArrow: UIImageView!
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblPosition: UILabel!
@@ -51,6 +52,8 @@ class LeaderboardsListTableViewCell: UITableViewCell {
     }
     
     func configureCellWithLeaderboard(leaderboard : Leaderboard) {
+        
+        self.imgArrow.hidden = true
         
         if let firstName = leaderboard.firstName, lastName = leaderboard.lastName {
             self.lblTitle.text = firstName + " " + lastName

@@ -39,6 +39,7 @@
 		4DA07A4B1D4B94170090B076 /* Subroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA07A4A1D4B94170090B076 /* Subroute.swift */; };
 		4DB22D3C1D3FA498006D3FA6 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */; };
 		4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */; };
+		4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
 		4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0005C1D469094001394E3 /* MapAnnotation.swift */; };
@@ -163,6 +164,7 @@
 		4DA07A4A1D4B94170090B076 /* Subroute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subroute.swift; sourceTree = "<group>"; };
 		4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolDetailViewController.swift; sourceTree = "<group>"; };
+		4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		4DBF557B1D7EE9800059B249 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			children = (
 				52B3E0D31CA2D2D2000ED657 /* Settings.storyboard */,
 				52B3E0D51CA2D31B000ED657 /* SettingsViewController.swift */,
+				4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */,
 				4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */,
+				4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */,
 				4D9051631D4652210043A250 /* MapViewController.swift in Sources */,
 				4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */,
 				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,
