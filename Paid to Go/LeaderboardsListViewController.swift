@@ -38,7 +38,9 @@ final class LeaderboardsListViewController: MenuContentViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.showProgressHud()
         DataProvider.sharedInstance.getLeaderboards { (leaderboards, error) in
+            self.dismissProgressHud()
             
             guard let leaderboards = leaderboards else {
                 return
@@ -74,7 +76,7 @@ final class LeaderboardsListViewController: MenuContentViewController {
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
         customizeNavigationBarWithMenu()
-        self.tableHeaderView.configureForLeaderboards()
+        self.tableHeaderView.configureForLeaderboardsList()
     }
     
     // MARK: - Navigation

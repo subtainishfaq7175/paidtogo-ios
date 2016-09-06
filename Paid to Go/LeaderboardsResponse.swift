@@ -16,7 +16,8 @@ public class LeaderboardsResponse: Mappable {
 	internal let kLeaderboardsResponseIconPhotoDescriptionKey: String = "icon_photo_description"
 	internal let kLeaderboardsResponseIconPhotoKey: String = "icon_photo"
 	internal let kLeaderboardsResponseNameKey: String = "name"
-
+    internal let kLeaderboardsResponseEndDateTime: String = "end_date_time"
+    internal let kLeaderboardsResponsePoolTypeName: String = "pool_types_name"
 
     // MARK: Properties
 	public var leaderboard: [Leaderboard]?
@@ -24,6 +25,8 @@ public class LeaderboardsResponse: Mappable {
 	public var iconPhotoDescription: String?
 	public var iconPhoto: String?
 	public var name: String?
+    public var endDateTime: String?
+    public var poolTypeName: String?
 
     // MARK: ObjectMapper Initalizers
     /**
@@ -45,7 +48,8 @@ public class LeaderboardsResponse: Mappable {
 		iconPhotoDescription <- map[kLeaderboardsResponseIconPhotoDescriptionKey]
 		iconPhoto <- map[kLeaderboardsResponseIconPhotoKey]
 		name <- map[kLeaderboardsResponseNameKey]
-
+        endDateTime <- map[kLeaderboardsResponseEndDateTime]
+        poolTypeName <- map[kLeaderboardsResponsePoolTypeName]
     }
 
     /**

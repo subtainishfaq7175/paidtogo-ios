@@ -390,14 +390,11 @@ class DataProvider : DataProviderService {
     
     func getLeaderboardsForPool(poolId: String, completion: (leaderboard: LeaderboardsResponse?, error: String?) -> Void) {
         
-        let userId = User.currentUser?.userId
-        
         let params = [
-            "user_id" : userId,
             "pool_id" : poolId
         ]
         
-        ConnectionManager.sharedInstance.getLeaderboards(params as! [String : String]) { (responseValue, error) in
+        ConnectionManager.sharedInstance.getLeaderboards(params) { (responseValue, error) in
             
             if (error == nil) {
                 

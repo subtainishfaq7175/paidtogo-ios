@@ -61,6 +61,10 @@ class CustomColors {
     static func lightBlueColor() -> UIColor {
         return UIColor(rgba: "#34b5fb")
     }
+    
+    static func lightGrayColor() -> UIColor {
+        return UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+    }
 
     static func headerColor() -> UIColor {
         return UIColor(rgba: "#303030")

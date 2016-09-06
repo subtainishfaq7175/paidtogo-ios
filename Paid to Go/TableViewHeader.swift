@@ -11,6 +11,8 @@ import Foundation
 protocol TableViewHeaderConfiguration {
     func configureForPools(color:String)
     func configureForActivities()
+    func configureForLeaderboardsList()
+    func configureForLeaderboards()
 }
 
 class TableViewHeader: UIView {
@@ -52,11 +54,18 @@ extension TableViewHeader: TableViewHeaderConfiguration {
         self.backgroundColor = CustomColors.headerColor()
     }
     
-    func configureForLeaderboards() {
+    func configureForLeaderboardsList() {
         self.titleLabel.text = "Pool Name"
         self.attributeLabel.text = "Position"
         self.titleLabel.textColor = UIColor.whiteColor()
         self.attributeLabel.textColor = UIColor.whiteColor()
         self.backgroundColor = CustomColors.headerColor()
+    }
+    
+    func configureForLeaderboards() {
+        self.titleLabel.text = "Username"
+        self.attributeLabel.text = "Position"
+        self.titleLabel.textColor = UIColor.darkGrayColor()
+        self.attributeLabel.textColor = UIColor.darkGrayColor()
     }
 }

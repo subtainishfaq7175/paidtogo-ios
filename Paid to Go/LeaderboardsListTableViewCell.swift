@@ -49,4 +49,28 @@ class LeaderboardsListTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    func configureCellWithLeaderboard(leaderboard : Leaderboard) {
+        
+        if let firstName = leaderboard.firstName, lastName = leaderboard.lastName {
+            self.lblTitle.text = firstName + " " + lastName
+        }
+        
+        if let imageURLString = leaderboard.profilePicture {
+            let imageURL = NSURL(string: imageURLString)
+            self.imgPool.yy_setImageWithURL(imageURL, options: .ProgressiveBlur)
+        }
+        
+        if let place = leaderboard.place {
+            self.lblPosition.text = String(place)
+            self.lblSuffix.text = place.ordinal
+        }
+        
+        if let leaderboardID = leaderboard.userId, userID = User.currentUser?.userId {
+            if leaderboardID == userID {
+                print("Posicion del usuario")
+                self.backgroundColor = CustomColors.lightGrayColor()
+            }
+        }
+    }
 }
