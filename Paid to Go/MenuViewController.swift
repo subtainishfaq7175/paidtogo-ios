@@ -29,12 +29,15 @@ class MenuViewController: ViewController {
     weak var menuController: MainViewController?
     
     // MARK: - Variables
+    
     typealias MenuItem = (title: String, storyboard: String, identifier: String)
     typealias JSONObject = [String: AnyObject]
     typealias JSONArray = [JSONObject]
+    
     private let plistName = "MenuItems"
     
     var items = [MenuItem]()
+    
     weak var delegate: MenuViewControllerDelegate?
     
     // MARK: - Override
@@ -200,12 +203,18 @@ class MenuViewController: ViewController {
     }
     
     @IBAction func goProAction(sender: AnyObject) {
+        if let proVC = self.storyboard?.instantiateViewControllerWithIdentifier(String(ProViewController)) {
+            self.presentViewController(proVC, animated: true, completion: nil)
+        }
+        
+        /*
         let alertController = UIAlertController(title: "Become a Premium User!", message:
             "Do you want to buy a one year subscription for $29.99?\n\n[premium users duplicate earnings per mile in every pool]", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel,handler: nil))
         alertController.addAction(UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default,handler: goPro))
         
         self.presentViewController(alertController, animated: true, completion: nil)
+        */
     }
     
 }
