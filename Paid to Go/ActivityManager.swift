@@ -113,6 +113,16 @@ class ActivityManager: NSObject, ActivityTest {
 //        return sharedInstance.trackNumber
 //    }
     
+    static func setStartDateTime() {
+        sharedInstance.startDateToTrack = NSDate()
+    }
+    
+    static func getStartDateTime() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.stringFromDate(sharedInstance.startDateToTrack)
+    }
+    
     static func setMilesCounter(milesTravelled:Double) {
         sharedInstance.milesCounter += milesTravelled
     }
@@ -231,6 +241,22 @@ class ActivityManager: NSObject, ActivityTest {
         return activityRouteJSON
     }
     
+    static func hasPausedAndResumedActivity() -> Bool {
+        return sharedInstance.pausedAndResumedActivity
+    }
+    
+    static func setPausedAndResumedActivity() {
+        sharedInstance.pausedAndResumedActivity = true
+    }
+    
+    static func isFirstSubrouteAfterPausingAndResumingActivity() -> Bool {
+        return sharedInstance.firstSubrouteAfterPausingAndResumingActivity
+    }
+    
+    static func setFirstSubrouteAfterPausingAndResumingActivity(value:Bool) {
+        sharedInstance.firstSubrouteAfterPausingAndResumingActivity = value
+    }
+    
     // - ActivityTestMethods - //
     static func getTestCounter() -> Int {
         return sharedInstance.testCounter
@@ -246,21 +272,5 @@ class ActivityManager: NSObject, ActivityTest {
     
     static func setTestCounterRejected() {
         sharedInstance.testCounterRejected += 1
-    }
-    
-    static func hasPausedAndResumedActivity() -> Bool {
-        return sharedInstance.pausedAndResumedActivity
-    }
-    
-    static func setPausedAndResumedActivity() {
-        sharedInstance.pausedAndResumedActivity = true
-    }
-    
-    static func isFirstSubrouteAfterPausingAndResumingActivity() -> Bool {
-        return sharedInstance.firstSubrouteAfterPausingAndResumingActivity
-    }
-    
-    static func setFirstSubrouteAfterPausingAndResumingActivity(value:Bool) {
-        sharedInstance.firstSubrouteAfterPausingAndResumingActivity = value
     }
 }

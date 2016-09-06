@@ -13,6 +13,9 @@ class LeaderboardsViewController: ViewController {
     
     @IBOutlet weak var subtitleLabel: LocalizableLabel!
     
+    @IBOutlet weak var poolNameLabel: UILabel!
+    @IBOutlet weak var poolTypeLabel: UILabel!
+    
     @IBOutlet weak var endDateLabel: UILabel!
     
     // MARK: - Variables and Constants
@@ -56,9 +59,10 @@ class LeaderboardsViewController: ViewController {
     }
     
     func configureView() {
-//        self.endDateLabel.text = self.leaderboardsResponse.date
+        self.poolNameLabel.text = self.leaderboardsResponse?.name
         
-        /*
+//        self.endDateLabel.text = self.leaderboardsResponse.date
+        /*/
         guard let dateString = leaderboardsResponse.date else {
             continue
         }
@@ -69,7 +73,6 @@ class LeaderboardsViewController: ViewController {
             continue
         }
          */
-
     }
     
     // MARK: - Actions

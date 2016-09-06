@@ -241,6 +241,11 @@ extension PoolViewController: TrackDelegate {
         pauseButton.setTitle("Pause", forState: UIControlState.Normal)
         isTimerTracking = true
         countingSteps = true
+        
+        if !hasPausedAndResumedActivity {
+            print("Pool - Start date time -")
+            ActivityManager.setStartDateTime()
+        }
     }
     func pauseTracking() {
         pauseButton.setTitle("Resume", forState: UIControlState.Normal)
@@ -254,7 +259,7 @@ extension PoolViewController: TrackDelegate {
         activity.endLongitude = ActivityManager.sharedInstance.endLongitude
         
         activity.milesTraveled = String(format: "%.2f", ActivityManager.getMilesCounter())
-        activity.startDateTime = String(ActivityManager.sharedInstance.startDateToTrack)
+        activity.startDateTime = ActivityManager.getStartDateTime()
         activity.poolId = ActivityManager.sharedInstance.poolId
         activity.accessToken = User.currentUser?.accessToken
         

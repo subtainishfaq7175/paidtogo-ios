@@ -25,8 +25,6 @@ public class LeaderboardsResponse: Mappable {
 	public var iconPhoto: String?
 	public var name: String?
 
-
-
     // MARK: ObjectMapper Initalizers
     /**
     Map a JSON object to this class using ObjectMapper

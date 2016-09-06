@@ -482,6 +482,7 @@ class DataProvider : DataProviderService {
         
         let accessToken = User.currentUser?.accessToken
         
+        /*
         var userIDString = "["
         for userID in users {
             userIDString += userID
@@ -489,7 +490,10 @@ class DataProvider : DataProviderService {
         }
         userIDString = String(userIDString.characters.dropLast())
         userIDString += "]"
- 
+        */
+        
+        let userIDString = arrayToJSONString(users)
+        
         let params = [
             
             "access_token"  : accessToken,
@@ -582,6 +586,18 @@ class DataProvider : DataProviderService {
             }
             
         }
+    }
+    
+    func arrayToJSONString(array: Array<String>) -> String {
+        return array
+            .reduce("") { (acum, userID: String) -> String in
+                if acum.isEmpty {
+                    return "[\(userID)"
+                } else {
+                    return "\(acum),\(userID)"
+                }
+            }
+            .stringByAppendingString("]")
     }
 }
 
