@@ -9,6 +9,16 @@
 import UIKit
 import SnapKit
 
+struct CheckmarkStruct {
+    
+    var options = [
+        "I use PaidToGo for Exercise",
+        "I use PaidToGo to Commute to Work ",
+        "I am changing my commuting behaviour from driving a single passenger vehicle to an alternative because of PaidToGo"
+    ]
+    
+}
+
 class ProfileViewController: MenuContentViewController {
     
     // MARK: - Outlets
@@ -23,11 +33,18 @@ class ProfileViewController: MenuContentViewController {
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var paypalTextField: UITextField!
     
+    @IBOutlet weak var checkmarksTableView: UITableView!
+    
+    @IBOutlet weak var checkbox1MarkLabel: UILabel!
+    @IBOutlet weak var checkbox1Label: UILabel!
+    
     @IBOutlet weak var signupButtonViewContainer: UIView!
     
     @IBOutlet weak var proUserLabel: UILabel!
     
     // MARK: - Variables and Constants -
+    
+    var checkmarkStruct = CheckmarkStruct()
     
     var profileImage: UIImage?
     var shouldEnterPayPalAccount = false
@@ -59,6 +76,17 @@ class ProfileViewController: MenuContentViewController {
         self.populateFields()
         
         self.signUpButtonShouldChange(false)
+        
+        self.configureTableView()
+        
+        self.checkbox1Label.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        self.checkbox1Label.addGestureRecognizer(tapGesture)
+    }
+    
+    func tap() {
+        print("checkbox1Label pressed")
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,6 +96,12 @@ class ProfileViewController: MenuContentViewController {
     
     
     // MARK: - Functions -
+    
+    func configureTableView() {
+        self.checkmarksTableView.dataSource = self
+        self.checkmarksTableView.delegate = self
+        self.checkmarksTableView.separatorStyle = .None
+    }
     
     func configureViewForProUser() {
         
@@ -281,5 +315,36 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             }
         }
     }
+}
 
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return checkmarkStruct.options.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        cell.selectionStyle = .None
+        cell.textLabel?.text = checkmarkStruct.options[indexPath.row]
+        if let font = UIFont(name: "Open Sans", size: 10.0) {
+            cell.textLabel?.font = font
+        } else {
+            print("Font not found")
+        }
+        cell.textLabel?.numberOfLines = 0
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if indexPath.row == 2 {
+            return 70.0
+        }
+        
+        return 45.0
+    }
+    
 }
