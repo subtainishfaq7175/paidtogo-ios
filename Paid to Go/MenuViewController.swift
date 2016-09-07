@@ -302,6 +302,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    /*
     func goPro(alert: UIAlertAction!) {
         print("Go Pro")
         
@@ -334,6 +335,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 print("Error - IAP Failed to get autorenewable subscription")
             }
         }
-        
     }
+     */
 }
