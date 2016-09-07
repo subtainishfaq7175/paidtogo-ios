@@ -41,6 +41,62 @@ class ChangePasswordViewController: ViewController {
     
     @IBAction func changePasswordButtonAction(sender: AnyObject) {
     
+        self.view.endEditing(true)
+        
+        if validateNewPassword() {
+            
+            if let newPassword = self.newPasswordTextField.text {
+                let userToSend = User()
+                userToSend.accessToken = User.currentUser?.accessToken
+                userToSend.password = newPassword
+                
+                self.showProgressHud()
+                DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
+                    self.dismissProgressHud()
+                    
+                    if let err = error {
+                        print("Error \(err)")
+                        return
+                    }
+                    
+                    if let user = user {
+                        User.currentUser = user
+                        
+                        /*
+                        // Dismiss screen first, then show message
+                         
+                        let previousVC = self.navigationController?.viewControllers.first as! SettingsViewController
+                        self.navigationController?.popViewController(true, completion: {
+                            previousVC.showAlert("Password updated successfuly!!")
+                        })
+                         */
+                        
+                        self.showAlertAndDismissOnCompletion("Password updated successfuly!!")
+                    }
+                }
+            }
+            
+        }
     }
     
+    // MARK: - Methods -
+    
+    func validateNewPassword() -> Bool {
+        
+        if let newPassword = self.newPasswordTextField.text where newPassword.isEmpty == false,
+            let confirmNewPassword = self.confirmNewPasswordTextField.text where confirmNewPassword.isEmpty == false {
+            
+            if newPassword == confirmNewPassword {
+                return true
+            } else {
+                self.showAlert("You must enter the same password twice in order to confirm it")
+                return false
+            }
+            
+        } else {
+            self.showAlert("Please complete all fields")
+            return false
+        }
+        
+    }
 }

@@ -45,6 +45,18 @@ class ViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func showAlertAndDismissOnCompletion(text: String) {
+        let alertController = UIAlertController(title: "Paid to Go", message:
+            text, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: dismissViewController))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func dismissViewController(alert: UIAlertAction!) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     func setNavigationBarVisible(visible: Bool) {
         self.navigationController?.setNavigationBarHidden(!visible, animated: true)
     }

@@ -15,6 +15,7 @@
 		4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */; };
 		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
 		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
+		4D6354DF1D80617500230FF4 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */; };
 		4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */; };
 		4D63E17F1D2C3B9300E066D7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */; };
 		4D66E7771D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E7761D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib */; };
@@ -141,6 +142,7 @@
 		4D2CEE2F1D1058A400009843 /* Paid to Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Paid to Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D2CEE301D1058A500009843 /* CMDocumentShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDocumentShare.h; sourceTree = "<group>"; };
 		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
+		4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFilterViewController.swift; sourceTree = "<group>"; };
 		4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4D66E7761D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeaderboardsListTableViewCell.xib; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				4D6D87E41D42618F008DBC74 /* NSDate+Extensions.swift */,
 				4DF0005E1D46971C001394E3 /* UIImage+Extensions.swift */,
 				4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */,
+				4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -899,6 +902,7 @@
 				5276DE221CF8C458009B2CBE /* ActivityNotification.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
+				4D6354DF1D80617500230FF4 /* UINavigationController+Extensions.swift in Sources */,
 				52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */,
 				5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */,
 				4D66E77B1D37CD6B00E8AE09 /* ProtocolReusable.swift in Sources */,

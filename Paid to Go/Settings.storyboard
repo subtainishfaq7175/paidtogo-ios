@@ -76,12 +76,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-1H-Ccd">
-                                <rect key="frame" x="4" y="136" width="93" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="EFt-XL-ucG"/>
-                                </constraints>
+                                <rect key="frame" x="12" y="136" width="125" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Password"/>
+                                <state key="normal" title="Change password"/>
                                 <connections>
                                     <segue destination="eSi-Bw-U3O" kind="show" id="AsP-Xo-zBu"/>
                                 </connections>
@@ -95,7 +92,7 @@
                             <constraint firstItem="zEx-zB-tfz" firstAttribute="top" secondItem="VVi-EA-2j3" secondAttribute="bottom" constant="12" id="Swx-SS-CFP"/>
                             <constraint firstItem="zEx-zB-tfz" firstAttribute="leading" secondItem="06a-nP-daI" secondAttribute="leading" id="WT3-aG-MZ6"/>
                             <constraint firstItem="ZIH-XJ-wQP" firstAttribute="top" secondItem="5wE-4p-ock" secondAttribute="bottom" constant="30" id="bAJ-DZ-Wj2"/>
-                            <constraint firstItem="vC4-1H-Ccd" firstAttribute="leading" secondItem="06a-nP-daI" secondAttribute="leading" constant="4" id="dVh-0P-3j6"/>
+                            <constraint firstItem="vC4-1H-Ccd" firstAttribute="leading" secondItem="06a-nP-daI" secondAttribute="leading" constant="12" id="dVh-0P-3j6"/>
                             <constraint firstItem="5wE-4p-ock" firstAttribute="height" secondItem="06a-nP-daI" secondAttribute="height" multiplier="0.073" id="gYu-v2-NAt"/>
                             <constraint firstItem="vC4-1H-Ccd" firstAttribute="top" secondItem="zEx-zB-tfz" secondAttribute="bottom" constant="14" id="xUP-ol-uHG"/>
                         </constraints>
@@ -127,14 +124,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEf-sX-7nv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENT PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvc-kI-3zR" userLabel="Password Label">
-                                                <rect key="frame" x="10" y="20" width="95" height="14"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENT PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvc-kI-3zR" userLabel="Password Label">
+                                                <rect key="frame" x="10" y="-60" width="95" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20M-lQ-Z9S" userLabel="Password Text Field">
-                                                <rect key="frame" x="10" y="40" width="300" height="38"/>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20M-lQ-Z9S" userLabel="Password Text Field">
+                                                <rect key="frame" x="10" y="-40" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="9hf-7Q-8ks"/>
                                                 </constraints>
@@ -142,7 +139,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYf-14-oJa" userLabel="Password Line View">
-                                                <rect key="frame" x="10" y="78" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="-2" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="XUr-0M-GlA"/>
@@ -150,13 +147,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghk-5Z-aBl" userLabel="New Password Label">
-                                                <rect key="frame" x="10" y="99" width="75" height="14"/>
+                                                <rect key="frame" x="10" y="19" width="75" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4b7-7W-5gx" userLabel="New Password Text Field">
-                                                <rect key="frame" x="10" y="119" width="300" height="38"/>
+                                                <rect key="frame" x="10" y="39" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="US5-BK-pYA"/>
                                                 </constraints>
@@ -164,20 +161,20 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhl-eO-bFN" userLabel="New Password Line View">
-                                                <rect key="frame" x="10" y="157" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="77" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="qrc-XD-qAa"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT NEW PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La1-1p-CNP" userLabel="Confirm New Password Label">
-                                                <rect key="frame" x="10" y="178" width="109" height="14"/>
+                                                <rect key="frame" x="10" y="98" width="109" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQX-RO-9CP" userLabel="Confirm New Password Text Field">
-                                                <rect key="frame" x="10" y="198" width="300" height="38"/>
+                                                <rect key="frame" x="10" y="118" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Chj-wi-J5s"/>
                                                 </constraints>
@@ -185,7 +182,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-d8-7gb" userLabel="Confirm New Password Line View">
-                                                <rect key="frame" x="10" y="236" width="300" height="1"/>
+                                                <rect key="frame" x="10" y="156" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="dlB-RA-GDG"/>
@@ -223,7 +220,7 @@
                                             <constraint firstItem="YQX-RO-9CP" firstAttribute="top" secondItem="La1-1p-CNP" secondAttribute="bottom" constant="6" id="8Bo-S8-lu4"/>
                                             <constraint firstItem="4b7-7W-5gx" firstAttribute="top" secondItem="ghk-5Z-aBl" secondAttribute="bottom" constant="6" id="D8W-Qh-4bF"/>
                                             <constraint firstItem="Rhl-eO-bFN" firstAttribute="leading" secondItem="bEf-sX-7nv" secondAttribute="leading" constant="10" id="Fde-3A-FaB"/>
-                                            <constraint firstItem="bvc-kI-3zR" firstAttribute="top" secondItem="bEf-sX-7nv" secondAttribute="top" constant="20" id="ICM-nZ-ZBz"/>
+                                            <constraint firstItem="bvc-kI-3zR" firstAttribute="top" secondItem="bEf-sX-7nv" secondAttribute="top" constant="-60" id="ICM-nZ-ZBz"/>
                                             <constraint firstItem="bvc-kI-3zR" firstAttribute="leading" secondItem="bEf-sX-7nv" secondAttribute="leading" constant="10" id="JU4-24-Jbn"/>
                                             <constraint firstAttribute="trailing" secondItem="PYf-14-oJa" secondAttribute="trailing" constant="10" id="Lpw-H5-G2q"/>
                                             <constraint firstAttribute="trailing" secondItem="DND-d8-7gb" secondAttribute="trailing" constant="10" id="NXJ-gQ-VkV"/>
