@@ -21,6 +21,10 @@ class ProViewController: ViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let image = UIImage(named: "ic_close")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate) {
+            self.closeButton.setImage(image, forState: .Normal)
+            self.closeButton.tintColor = UIColor.whiteColor()
+        }
     }
     
     override func viewDidLayoutSubviews() {
