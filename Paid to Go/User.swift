@@ -29,6 +29,10 @@ class User: Mappable {
     
     var type: String?
     
+    var profileOption1 = false
+    var profileOption2 = false
+    var profileOption3 = false
+    
     init() {
         self.name = ""
         self.lastName = ""
@@ -83,6 +87,9 @@ class User: Mappable {
         userId          <- map["user_id"]
         paypalAccount   <- map["paypal_account"]
         type            <- map["user_type"]
+        profileOption1  <- map["profile_option_1"]
+        profileOption2  <- map["profile_option_2"]
+        profileOption3  <- map["profile_option_3"]
     }
 }
 
@@ -103,7 +110,6 @@ extension User {
     static var currentUser: User? {
         get {
             let defaults = NSUserDefaults.standardUserDefaults()
-            
             let userJSON = defaults.objectForKey(currentUserKey)
             
             let user = Mapper<User>().map(userJSON)

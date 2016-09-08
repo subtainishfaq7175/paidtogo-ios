@@ -17,6 +17,40 @@ struct CheckmarkStruct {
         "I am changing my commuting behaviour from driving a single passenger vehicle to an alternative because of PaidToGo"
     ]
     
+    var checked = [
+        false,
+        false,
+        false
+    ]
+    
+    init() {
+        // Update options state
+        let user = User.currentUser!
+        
+        checked[0] = user.profileOption1
+        checked[1] = user.profileOption2
+        checked[2] = user.profileOption3
+    }
+    
+    mutating func updateOptionState(index:Int) {
+        let user = User.currentUser!
+        
+        checked[index] = checked[index] == false ? true : false
+        
+        switch index {
+        case 0:
+            user.profileOption1 = checked[index]
+            break
+        case 1:
+            user.profileOption2 = checked[index]
+            break
+        default:
+            user.profileOption3 = checked[index]
+            break
+        }
+        
+        User.currentUser = user
+    }
 }
 
 class ProfileViewController: MenuContentViewController {
@@ -44,7 +78,7 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Variables and Constants -
     
-    var checkmarkStruct = CheckmarkStruct()
+    var checkmarksStruct = CheckmarkStruct()
     
     var profileImage: UIImage?
     var shouldEnterPayPalAccount = false
@@ -78,15 +112,6 @@ class ProfileViewController: MenuContentViewController {
         self.signUpButtonShouldChange(false)
         
         self.configureTableView()
-        
-        self.checkbox1Label.userInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        self.checkbox1Label.addGestureRecognizer(tapGesture)
-    }
-    
-    func tap() {
-        print("checkbox1Label pressed")
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -246,6 +271,11 @@ class ProfileViewController: MenuContentViewController {
 //                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
                     self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
                     
+                    // We persist the user's personal options locally
+                    user.profileOption1 = (User.currentUser?.profileOption1)!
+                    user.profileOption2 = (User.currentUser?.profileOption2)!
+                    user.profileOption3 = (User.currentUser?.profileOption3)!
+                    
                     User.currentUser = user
                     
                     let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
@@ -258,7 +288,6 @@ class ProfileViewController: MenuContentViewController {
                 } else if let error = error {
                     
                     self.showAlert(error)
-                    
                 }
             }
         }
@@ -320,20 +349,28 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return checkmarkStruct.options.count
+        return checkmarksStruct.options.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
         cell.selectionStyle = .None
-        cell.textLabel?.text = checkmarkStruct.options[indexPath.row]
-        if let font = UIFont(name: "Open Sans", size: 10.0) {
+        cell.textLabel?.text = checkmarksStruct.options[indexPath.row]
+        if let font = UIFont(name: "Open Sans", size: 12.0) {
             cell.textLabel?.font = font
         } else {
             print("Font not found")
         }
         cell.textLabel?.numberOfLines = 0
+        
+        if checkmarksStruct.checked[indexPath.row] {
+            cell.accessoryType = .Checkmark
+            cell.textLabel?.textColor = UIColor.blueColor()
+        } else {
+            cell.accessoryType = .None
+            cell.textLabel?.textColor = UIColor.darkTextColor()
+        }
         
         return cell
     }
@@ -341,10 +378,17 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row == 2 {
-            return 70.0
+            return 60.0
         }
         
-        return 45.0
+        return 30.0
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.signUpButtonShouldChange(true)
+        checkmarksStruct.updateOptionState(indexPath.row)
+        
+        self.checkmarksTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
 }
