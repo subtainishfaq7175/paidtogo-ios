@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,6 +15,8 @@
             <string>OpenSans-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -204,6 +206,46 @@
                                     <constraint firstItem="xgz-lu-jad" firstAttribute="centerY" secondItem="Nxx-8p-ihV" secondAttribute="centerY" id="sDc-fO-a4v"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fM-eR-L4W" userLabel="Alternative Header View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="37"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIV-kC-A4Y">
+                                        <rect key="frame" x="10" y="4" width="96" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="piU-1A-iGG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                        <state key="normal" title="6 Months">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sixMonthsButtonAction:" destination="gPs-bm-dig" eventType="touchUpInside" id="jn6-Gi-uUH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67U-k4-LdJ">
+                                        <rect key="frame" x="214" y="4" width="96" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="z8u-MP-3j0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                        <state key="normal" title="3 Months">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="threeMonthsButtonAction:" destination="gPs-bm-dig" eventType="touchUpInside" id="yMZ-42-hu2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="67U-k4-LdJ" firstAttribute="top" secondItem="6fM-eR-L4W" secondAttribute="top" constant="4" id="AC0-as-Tbg"/>
+                                    <constraint firstAttribute="bottom" secondItem="KIV-kC-A4Y" secondAttribute="bottom" constant="3" id="H5H-x4-XG7"/>
+                                    <constraint firstItem="KIV-kC-A4Y" firstAttribute="leading" secondItem="6fM-eR-L4W" secondAttribute="leading" constant="10" id="KVH-78-53h"/>
+                                    <constraint firstAttribute="bottom" secondItem="67U-k4-LdJ" secondAttribute="bottom" constant="3" id="Nfy-4A-asm"/>
+                                    <constraint firstAttribute="trailing" secondItem="67U-k4-LdJ" secondAttribute="trailing" constant="10" id="kO4-Td-zOm"/>
+                                    <constraint firstItem="KIV-kC-A4Y" firstAttribute="top" secondItem="6fM-eR-L4W" secondAttribute="top" constant="4" id="pFd-Jm-ynR"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKP-8L-0ML" userLabel="Footer View">
                                 <rect key="frame" x="0.0" y="511" width="320" height="57"/>
                                 <subviews>
@@ -296,6 +338,7 @@
                             <constraint firstItem="Nkf-4r-ANC" firstAttribute="leading" secondItem="lE5-Mj-Kzo" secondAttribute="leading" id="JEZ-G7-zTJ"/>
                             <constraint firstItem="Nxx-8p-ihV" firstAttribute="top" secondItem="BBr-q7-hCa" secondAttribute="bottom" id="Mic-t8-lbq"/>
                             <constraint firstItem="Nxx-8p-ihV" firstAttribute="leading" secondItem="lE5-Mj-Kzo" secondAttribute="leading" id="PH7-oE-Nnq"/>
+                            <constraint firstItem="6fM-eR-L4W" firstAttribute="bottom" secondItem="Nxx-8p-ihV" secondAttribute="bottom" id="Q52-WW-Bib"/>
                             <constraint firstItem="UID-nS-5us" firstAttribute="height" secondItem="lE5-Mj-Kzo" secondAttribute="height" multiplier="0.085" id="QcP-Qv-jOU"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="height" secondItem="lE5-Mj-Kzo" secondAttribute="height" multiplier="0.1" id="SA0-oq-U0j"/>
                             <constraint firstAttribute="trailing" secondItem="Nxx-8p-ihV" secondAttribute="trailing" id="Y2d-qn-LKU"/>
@@ -305,8 +348,11 @@
                             <constraint firstAttribute="trailing" secondItem="UID-nS-5us" secondAttribute="trailing" id="cxQ-ou-0I6"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="leading" secondItem="lE5-Mj-Kzo" secondAttribute="leading" id="dD1-Ao-Nkn"/>
                             <constraint firstItem="Nkf-4r-ANC" firstAttribute="top" secondItem="UID-nS-5us" secondAttribute="bottom" id="dme-Zk-WwS"/>
+                            <constraint firstItem="6fM-eR-L4W" firstAttribute="leading" secondItem="Nxx-8p-ihV" secondAttribute="leading" id="ey8-ak-mFY"/>
                             <constraint firstItem="Utn-BM-m6b" firstAttribute="top" secondItem="hKP-8L-0ML" secondAttribute="bottom" id="nCh-TD-koH"/>
                             <constraint firstItem="hKP-8L-0ML" firstAttribute="top" secondItem="Nkf-4r-ANC" secondAttribute="bottom" id="trK-2A-haZ"/>
+                            <constraint firstItem="6fM-eR-L4W" firstAttribute="trailing" secondItem="Nxx-8p-ihV" secondAttribute="trailing" id="wJU-6T-oq7"/>
+                            <constraint firstItem="6fM-eR-L4W" firstAttribute="top" secondItem="Nxx-8p-ihV" secondAttribute="top" id="xX9-Bt-PfF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WWR-6h-mL8"/>
@@ -325,6 +371,8 @@
                         <outlet property="lblTodate" destination="F01-ar-gLr" id="IwT-Pi-zXP"/>
                         <outlet property="lblTotalEarned" destination="d6c-Z0-1HD" id="vCU-9L-3Eg"/>
                         <outlet property="scrollView" destination="Nkf-4r-ANC" id="mq3-xB-CdA"/>
+                        <outlet property="sixMonthsButton" destination="KIV-kC-A4Y" id="5DB-U3-z2r"/>
+                        <outlet property="threeMonthsButton" destination="67U-k4-LdJ" id="RIb-KD-hFV"/>
                         <segue destination="Yqa-D1-r0D" kind="presentation" identifier="dateFilterSegue" id="Hpm-S7-XlT"/>
                     </connections>
                 </viewController>

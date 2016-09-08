@@ -10,9 +10,9 @@ import UIKit
 import Charts
 import SwiftDate
 
-enum Notifications {
-    static let DatesUpdated = "notification_user_updated_dates"
-}
+//enum Notifications {
+//    static let DatesUpdated = "notification_user_updated_dates"
+//}
 
 enum Stats {
     case Incomes
@@ -52,7 +52,7 @@ enum MonthNames : String {
 
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
-    // MARK: - Outlets
+    // MARK: - Outlets -
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var indicatorImageView: UIImageView!
@@ -72,11 +72,14 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     @IBOutlet weak var lblTotalEarned: UILabel!
     @IBOutlet weak var lblAmountEarned: UILabel!
     
+    @IBOutlet weak var sixMonthsButton: UIButton!
+    @IBOutlet weak var threeMonthsButton: UIButton!
+    
     @IBOutlet weak var incomesChartView: LineChartView!
     @IBOutlet weak var gasChartView: LineChartView!
     @IBOutlet weak var carbonChartview: LineChartView!
     
-    // MARK: - Variables and Constants
+    // MARK: - Variables and Constants -
     
     let kDateFilterSegueIdentifier = "dateFilterSegue"
     
@@ -89,11 +92,11 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var newFromDate : NSDate?
     var newToDate : NSDate?
     
-    var arrTotalIncomeByMonth = [Double](count: 11, repeatedValue: 0.0)
-    var arrTotalSavedGasByMonth = [Double](count: 11, repeatedValue: 0.0)
-    var arrTotalCarbonOffByMonth = [Double](count: 11, repeatedValue: 0.0)
+    var arrTotalIncomeByMonth = [Double](count: 12, repeatedValue: 0.0)
+    var arrTotalSavedGasByMonth = [Double](count: 12, repeatedValue: 0.0)
+    var arrTotalCarbonOffByMonth = [Double](count: 12, repeatedValue: 0.0)
     
-    // MARK: - Super
+    // MARK: - View life cycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,31 +117,31 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         self.scrollView.delegate = self
         self.loadStatsWithDefaultData()
-        self.registerForNotifications()
+//        self.registerForNotifications()
     }
     
-    // MARK: - Notifications
+//    // MARK: - Notifications -
+//    
+//    private func registerForNotifications() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificationDatesUpdated), name: Notifications.DatesUpdated, object: nil)
+//    }
+//    
+//    @objc private func notificationDatesUpdated(notification:NSNotification) {
+//        
+//        guard let userInfo = notification.userInfo else {
+//            return
+//        }
+//        
+//        guard let fromDate = userInfo["fromDate"] as? NSDate, toDate = userInfo["toDate"] as? NSDate else {
+//            return
+//        }
+//        
+//        shouldReloadStats = true
+//        newFromDate = fromDate
+//        newToDate = toDate
+//    }
     
-    private func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificationDatesUpdated), name: Notifications.DatesUpdated, object: nil)
-    }
-    
-    @objc private func notificationDatesUpdated(notification:NSNotification) {
-        
-        guard let userInfo = notification.userInfo else {
-            return
-        }
-        
-        guard let fromDate = userInfo["fromDate"] as? NSDate, toDate = userInfo["toDate"] as? NSDate else {
-            return
-        }
-        
-        shouldReloadStats = true
-        newFromDate = fromDate
-        newToDate = toDate
-    }
-    
-    // MARK: - Functions
+    // MARK: - UI Configuration -
     
     private func customizeNavigationBar() {
         setNavigationBarVisible(true)
@@ -146,9 +149,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
         
-        let filterImage = UIImage(named: "ic_filter")
-        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
-        self.navigationItem.rightBarButtonItem = rightButtonItem
+//        let filterImage = UIImage(named: "ic_filter")
+//        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
+//        self.navigationItem.rightBarButtonItem = rightButtonItem
     }
     
     private func customizeHeaderView() {
@@ -160,26 +163,26 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         // Get the date that was 1hr before now
         let todayThreeMonthsBack = NSCalendar.currentCalendar().dateByAddingUnit(
             .Month,
-            value: -6,
+            value: -5,
             toDate: NSDate(),
             options: [])
         let todayThreeMonthsBackString = todayThreeMonthsBack!.toString(DateFormat.Custom("dd/MM/yyyy"))
         self.lblFromdate.text = todayThreeMonthsBackString
     }
     
-    // MARK: - Chart Configuration
+    // MARK: - Chart Configuration -
     
     private func initCharts() {
         loadStatusIncomesData()
         loadStatusSavedGasData()
         loadStatusCarbonOffData()
         
-        initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes)
-        initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas)
-        initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff)
+        printTotalIncomeByMonth()
+        
+        configureChartForSixMonthsData()
     }
     
-    private func initChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats) {
+    private func initChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats, pastMonths: Int) {
         
         chart.userInteractionEnabled = false
         
@@ -189,13 +192,37 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
         
-        // Default: 6 months info
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Feb.rawValue], xIndex: 0))
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Mar.rawValue], xIndex: 1))
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Apr.rawValue], xIndex: 2))
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.May.rawValue], xIndex: 3))
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Jun.rawValue], xIndex: 4))
-        chartEntries.append(ChartDataEntry(value: chartDataEntries[Month.Jul.rawValue], xIndex: 5))
+        // Get current date and previous date
+        let currentDate = NSDate()
+        guard let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Month,
+            value: -pastMonths,
+            toDate: NSDate(),
+            options: []) else {
+                return
+        }
+        
+        // Get the months between the dates
+        let currentMonth = currentDate.month
+        let previousMonth = previousDate.month
+        
+        // For each month, enter the correct data
+        var index = 0
+        
+        for month in previousMonth..<currentMonth+1 {
+            print("Month: \(month)")
+            print("El monto total del mes es: \(chartDataEntries[month])")
+            
+            // We get the dataset of the month
+            chartEntries.append(ChartDataEntry(value: chartDataEntries[month], xIndex: index))
+            index += 1
+            
+            // We set the correct label for the month
+            let monthName = getMonthName(month)
+            print("Month name: \(monthName)")
+            xVals.append(monthName.rawValue)
+            
+        }
         
         switch stats {
         case Stats.Incomes:
@@ -213,16 +240,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         chartDataSet.fillAlpha = 1.0
         chartDataSets.append(chartDataSet)
         
-        xVals.append(MonthNames.Feb.rawValue)
-        xVals.append(MonthNames.Mar.rawValue)
-        xVals.append(MonthNames.Apr.rawValue)
-        xVals.append(MonthNames.May.rawValue)
-        xVals.append(MonthNames.Jun.rawValue)
-        xVals.append(MonthNames.Jul.rawValue)
-        
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
-        
         chart.data = chartData
+
     }
     
     private func loadStatusIncomesData() {
@@ -296,6 +316,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.arrTotalIncomeByMonth = [Double](count: self.arrTotalIncomeByMonth.count, repeatedValue: 0.0)
         self.arrTotalSavedGasByMonth = [Double](count: self.arrTotalSavedGasByMonth.count, repeatedValue: 0.0)
         self.arrTotalCarbonOffByMonth = [Double](count: self.arrTotalCarbonOffByMonth.count, repeatedValue: 0.0)
+    }
+    
+    func configureChartForSixMonthsData() {
+        initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes, pastMonths: 5)
+        initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 5)
+        initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 5)
+    }
+    
+    func configureChartForThreeMonthsData() {
+        initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes, pastMonths: 2)
+        initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 2)
+        initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 2)
     }
     
     // MARK: - Screen Updates
@@ -410,11 +442,23 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: - Actions
+    // MARK: - Actions -
     
-    @objc private func btnFilterSelected() {
-        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
+    @IBAction func sixMonthsButtonAction(sender: AnyObject) {
+        configureChartForSixMonthsData()
+        sixMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
     }
+    
+    @IBAction func threeMonthsButtonAction(sender: AnyObject) {
+        configureChartForThreeMonthsData()
+        sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        threeMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+    }
+    
+//    @objc private func btnFilterSelected() {
+//        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
+//    }
     
     @IBAction func incomesAction(sender: AnyObject) {
         moveIndicatorToLeft()
@@ -486,6 +530,47 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             }
         } else {
             
+        }
+    }
+    
+    // MARK: - Helper methods -
+    
+    func getMonthName(month: Int) -> MonthNames {
+        
+        switch month {
+        case Month.Jan.rawValue:
+            return MonthNames.Jan
+        case Month.Feb.rawValue:
+            return MonthNames.Feb
+        case Month.Mar.rawValue:
+            return MonthNames.Mar
+        case Month.Apr.rawValue:
+            return MonthNames.Apr
+        case Month.May.rawValue:
+            return MonthNames.May
+        case Month.Jun.rawValue:
+            return MonthNames.Jun
+        case Month.Jul.rawValue:
+            return MonthNames.Jul
+        case Month.Aug.rawValue:
+            return MonthNames.Aug
+        case Month.Sep.rawValue:
+            return MonthNames.Sep
+        case Month.Oct.rawValue:
+            return MonthNames.Oct
+        case Month.Nov.rawValue:
+            return MonthNames.Nov
+        default:
+            return MonthNames.Dic
+        }
+    }
+    
+    func printTotalIncomeByMonth() {
+        print("INCOME:")
+        
+        for index in 0..<12 {
+            print("Month: \(getMonthName(index))")
+            print("Income: \(arrTotalIncomeByMonth[index])")
         }
     }
 }

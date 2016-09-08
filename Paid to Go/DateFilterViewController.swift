@@ -52,7 +52,7 @@ class DateFilterViewController: ViewController {
         self.textFieldToDate.inputView = self.datePickerView
     }
     
-    // MARK: UX / UI
+    // MARK: Navigation
     
     func endEditingBeforeDismisingView( completion: () -> () ) {
         self.view.endEditing(true)
@@ -63,18 +63,17 @@ class DateFilterViewController: ViewController {
     
     @IBAction func btnAcceptPressed(sender: AnyObject) {
         
-        guard let fromDate = self.newFromDate, toDate = self.newToDate else {
-            self.showAlert("Please complete all fields")
-            return
-        }
+//        guard let fromDate = self.newFromDate, toDate = self.newToDate else {
+//            self.showAlert("Please complete all fields")
+//            return
+//        }
         
         // Dates updated. StatsViewController must reload the stats
-        let userInfo : Dictionary<String,NSDate>! = [
-            "fromDate" : fromDate,
-            "toDate"   : toDate
-        ]
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.DatesUpdated, object: nil, userInfo: userInfo)
+//        let userInfo : Dictionary<String,NSDate>! = [
+//            "fromDate" : fromDate,
+//            "toDate"   : toDate
+//        ]
+//        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.DatesUpdated, object: nil, userInfo: userInfo)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
