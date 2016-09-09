@@ -20,6 +20,26 @@ enum Stats {
     case CarbonOff
 }
 
+enum Day : Int {
+    case Mon = 0
+    case Tue
+    case Wed
+    case Thu
+    case Fri
+    case Sat
+    case Sun
+}
+
+enum DayNames : String {
+    case Mon = "Mon"
+    case Tue = "Tue"
+    case Wed = "Wed"
+    case Thu = "Thu"
+    case Fri = "Fri"
+    case Sat = "Sat"
+    case Sun = "Sun"
+}
+
 enum Month : Int {
     case Jan = 0
     case Feb
@@ -74,6 +94,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var sixMonthsButton: UIButton!
     @IBOutlet weak var threeMonthsButton: UIButton!
+    @IBOutlet weak var thisMonthButton: UIButton!
     
     @IBOutlet weak var incomesChartView: LineChartView!
     @IBOutlet weak var gasChartView: LineChartView!
@@ -177,7 +198,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         loadStatusSavedGasData()
         loadStatusCarbonOffData()
         
-        printTotalIncomeByMonth()
+//        printTotalIncomeByMonth()
         
         configureChartForSixMonthsData()
     }
@@ -210,8 +231,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         var index = 0
         
         for month in previousMonth..<currentMonth+1 {
-            print("Month: \(month)")
-            print("El monto total del mes es: \(chartDataEntries[month])")
             
             // We get the dataset of the month
             chartEntries.append(ChartDataEntry(value: chartDataEntries[month], xIndex: index))
@@ -219,7 +238,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             
             // We set the correct label for the month
             let monthName = getMonthName(month)
-            print("Month name: \(monthName)")
             xVals.append(monthName.rawValue)
             
         }
@@ -236,7 +254,47 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             break
         }
         
-        chartDataSet.lineWidth = 3.0
+        chartDataSet.lineWidth = 2.0
+        chartDataSet.fillAlpha = 1.0
+        chartDataSets.append(chartDataSet)
+        
+        chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
+        chart.data = chartData
+
+    }
+    
+    private func initWeekChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats, pastMonths: Int) {
+        
+        chart.userInteractionEnabled = false
+        
+        let chartData: LineChartData?
+        var chartDataSets: [IChartDataSet] = [IChartDataSet]()
+        var chartDataSet: ILineChartDataSet = LineChartDataSet()
+        var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
+        var xVals: [String] = [String]()
+        
+        for index in 0..<7 {
+            
+            chartEntries.append(ChartDataEntry(value: Double(index)*4.0, xIndex: index))
+            
+            let dayName = getDayName(index)
+            xVals.append(dayName.rawValue)
+            
+        }
+        
+        switch stats {
+        case Stats.Incomes:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "$")
+            break
+        case Stats.SavedGas:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "Miles Offset")
+            break
+        default:
+            chartDataSet = LineChartDataSet(yVals: chartEntries, label: "CO2 MT’s")
+            break
+        }
+        
+        chartDataSet.lineWidth = 2.0
         chartDataSet.fillAlpha = 1.0
         chartDataSets.append(chartDataSet)
         
@@ -264,6 +322,24 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             }
             
             self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
+        }
+    }
+    
+    private func loadStatusIncomesDataForLastWeek() {
+        
+        guard let incomes = self.status.incomes as StatusType? else {
+            return
+        }
+        
+        for incomeCalculatedUnit in incomes.calculatedUnits! {
+            
+            guard let dateString = incomeCalculatedUnit.date else {
+                continue
+            }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            
         }
     }
     
@@ -328,6 +404,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes, pastMonths: 2)
         initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 2)
         initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 2)
+    }
+    
+    func configureChartForThisMonthsData() {
+        initChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes, pastMonths: 0)
+        initChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 0)
+        initChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 0)
+    }
+    
+    func configureChartForCurrentWeek() {
+        initWeekChart(incomesChartView, chartDataEntries: arrTotalIncomeByMonth, stats: Stats.Incomes, pastMonths: 0)
+        initWeekChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 0)
+        initWeekChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 0)
     }
     
     // MARK: - Screen Updates
@@ -448,12 +536,21 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         configureChartForSixMonthsData()
         sixMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
     }
     
     @IBAction func threeMonthsButtonAction(sender: AnyObject) {
         configureChartForThreeMonthsData()
         sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         threeMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+    }
+    
+    @IBAction func thisMonthButtonAction(sender: AnyObject) {
+        configureChartForCurrentWeek()
+        sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        thisMonthButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
     }
     
 //    @objc private func btnFilterSelected() {
@@ -562,6 +659,26 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             return MonthNames.Nov
         default:
             return MonthNames.Dic
+        }
+    }
+    
+    func getDayName(day: Int) -> DayNames {
+        
+        switch day {
+        case Day.Mon.rawValue:
+            return DayNames.Mon
+        case Day.Tue.rawValue:
+            return DayNames.Tue
+        case Day.Wed.rawValue:
+            return DayNames.Wed
+        case Day.Thu.rawValue:
+            return DayNames.Thu
+        case Day.Fri.rawValue:
+            return DayNames.Fri
+        case Day.Sat.rawValue:
+            return DayNames.Sat
+        default:
+            return DayNames.Sun
         }
     }
     
