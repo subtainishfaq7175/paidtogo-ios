@@ -260,7 +260,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
         chart.data = chartData
-
+        
+        chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
     }
     
     private func initWeekChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats, pastMonths: Int) {
@@ -301,6 +302,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
         chart.data = chartData
 
+        chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
     }
     
     private func loadStatusIncomesData() {
@@ -324,6 +326,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
         }
     }
+    
+    // MARK: - To Do... -
     
     private func loadStatusIncomesDataForLastWeek() {
         
