@@ -711,29 +711,31 @@ Email Line View</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="GrQ-Rn-SMe" userLabel="Background">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAK-bw-ZEP" userLabel="Nav Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="CRu-D4-lUy"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvJ-CD-MWR">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cg-WF-xBe" userLabel="Scroll View Continer">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1441"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cg-WF-xBe" userLabel="Scroll View Continer">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-h5-vkc" userLabel="Content Label">
-                                                <rect key="frame" x="12" y="10" width="296" height="1421"/>
-                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et ex mi. Cras eu iaculis lorem. Donec faucibus urna suscipit enim tristique efficitur. Maecenas efficitur nisl vitae lectus pulvinar, et tempor risus vehicula. Mauris euismod luctus lorem sed vestibulum. Duis sit amet rhoncus nulla. Etiam ultricies sem est, elementum tempus arcu volutpat eget. Aliquam auctor, nunc sollicitudin posuere fringilla, urna ex maximus libero, ac interdum odio diam laoreet justo. Quisque vel nisi eget diam bibendum sollicitudin. In hac habitasse platea dictumst. Ut leo arcu, eleifend ut tortor vitae, scelerisque pharetra purus. Phasellus sit amet leo sodales, vehicula augue eget, pharetra purus.
-
-Nullam sollicitudin a nibh vel malesuada. Fusce ut efficitur tellus. Etiam at est non massa dapibus commodo. Mauris interdum imperdiet ex eu eleifend. Sed eu velit sit amet odio facilisis sodales congue porta ipsum. Etiam at tellus quam. Fusce vel nibh consectetur, aliquet eros eget, blandit quam. Etiam sed turpis sit amet nibh porttitor auctor. Suspendisse mauris nisi, congue ac luctus sed, condimentum id sapien. Morbi et enim porttitor, tincidunt nulla eu, elementum nisl. Maecenas ut euismod nisl. Integer non elit metus. Maecenas vel nisl metus.
-
-Suspendisse potenti. Nunc tincidunt sodales molestie. Aliquam sodales lacus sit amet lorem gravida, eget fermentum eros pretium. Cras malesuada, dolor non molestie congue, purus quam condimentum risus, quis aliquam libero sem non tortor. Aenean tincidunt dapibus iaculis. Suspendisse venenatis purus non justo iaculis fermentum. Nam maximus cursus sapien, euismod cursus ante euismod vel. Curabitur neque massa, imperdiet id accumsan eget, bibendum ut ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc in auctor erat. Nam malesuada rhoncus ex ut bibendum. Aliquam sit amet ante at risus fringilla lacinia pulvinar vitae nibh. Duis erat magna, faucibus in vulputate id, efficitur eget nulla. Curabitur dignissim id urna vitae finibus. Proin vel lorem scelerisque, porttitor nisi in, finibus neque. Fusce cursus, elit vitae sollicitudin iaculis, dui erat tempus augue, in consectetur odio tellus in eros.
-
-Fusce pellentesque placerat eros, porttitor efficitur orci cursus quis. Nullam cursus, justo a dignissim ullamcorper, tellus tortor posuere tellus, non ultricies urna magna lobortis augue. Mauris varius enim eget maximus vulputate. Vestibulum bibendum orci a risus sagittis lacinia. In hac habitasse platea dictumst. Mauris ornare lacus quis nisl consequat porttitor. Nam vitae interdum nulla, at suscipit purus. Aenean pretium interdum congue. Duis id erat at leo tincidunt lacinia a lobortis ipsum.
-
-Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra metus, quis blandit arcu. In iaculis justo in purus finibus, eget laoreet ante posuere. Suspendisse et magna libero. Sed vehicula maximus eros, id gravida lacus pulvinar eu. Vivamus cursus semper erat sed vehicula. Fusce fringilla id est vel mollis. Cras quis sapien placerat, porttitor urna vitae, fermentum mauris. Pellentesque dictum, velit sed rutrum scelerisque, quam magna mattis nisl, ac mattis nibh nunc eget urna. Etiam ut sapien tellus. Ut pharetra massa at sem auctor, et ultrices turpis gravida. Curabitur imperdiet purus lectus, ac sodales justo tempor sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-h5-vkc" userLabel="Content Label">
+                                                <rect key="frame" x="12" y="10" width="296" height="172"/>
+                                                <string key="text">PaidToGo will track your commute and use that data for purposes including payments, advertising and analytics. The data will be anonymized and no personal information will be transferred to 3rd parties. There is no guarantee of payment in the PaidToGo Open Pools. Payments are based on leaderboard position and funds available from our different fundraising operations.</string>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="cS9-h5-vkc" firstAttribute="leading" secondItem="7cg-WF-xBe" secondAttribute="leading" constant="12" id="GS7-hq-BgD"/>
                                             <constraint firstItem="cS9-h5-vkc" firstAttribute="top" secondItem="7cg-WF-xBe" secondAttribute="top" constant="10" id="iKB-lz-k4T"/>
@@ -742,6 +744,7 @@ Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra met
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="7cg-WF-xBe" firstAttribute="leading" secondItem="AvJ-CD-MWR" secondAttribute="leading" id="053-Em-OA0"/>
                                     <constraint firstAttribute="trailing" secondItem="7cg-WF-xBe" secondAttribute="trailing" id="MbO-g3-c97"/>
@@ -754,13 +757,21 @@ Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra met
                         <constraints>
                             <constraint firstItem="Xjf-E4-sfK" firstAttribute="top" secondItem="AvJ-CD-MWR" secondAttribute="bottom" id="3Yp-kx-nJn"/>
                             <constraint firstAttribute="trailing" secondItem="AvJ-CD-MWR" secondAttribute="trailing" id="47v-D4-qvJ"/>
+                            <constraint firstItem="GrQ-Rn-SMe" firstAttribute="leading" secondItem="AvJ-CD-MWR" secondAttribute="leading" id="5hI-Mv-MA1"/>
+                            <constraint firstItem="GrQ-Rn-SMe" firstAttribute="top" secondItem="AvJ-CD-MWR" secondAttribute="top" id="5kw-YT-jVE"/>
                             <constraint firstItem="AvJ-CD-MWR" firstAttribute="leading" secondItem="uxq-PI-wpA" secondAttribute="leading" id="Ags-vr-mpD"/>
+                            <constraint firstItem="GrQ-Rn-SMe" firstAttribute="bottom" secondItem="AvJ-CD-MWR" secondAttribute="bottom" id="RyF-E0-NH2"/>
+                            <constraint firstAttribute="trailing" secondItem="qAK-bw-ZEP" secondAttribute="trailing" id="Yqz-vg-5nj"/>
+                            <constraint firstItem="qAK-bw-ZEP" firstAttribute="top" secondItem="uxq-PI-wpA" secondAttribute="top" id="dEB-Ot-8RW"/>
+                            <constraint firstItem="GrQ-Rn-SMe" firstAttribute="trailing" secondItem="AvJ-CD-MWR" secondAttribute="trailing" id="hIG-BJ-0pZ"/>
                             <constraint firstItem="AvJ-CD-MWR" firstAttribute="top" secondItem="O72-9F-cLm" secondAttribute="bottom" id="teM-Zh-ElN"/>
+                            <constraint firstItem="qAK-bw-ZEP" firstAttribute="leading" secondItem="uxq-PI-wpA" secondAttribute="leading" id="tky-x0-nwN"/>
                             <constraint firstItem="7cg-WF-xBe" firstAttribute="width" secondItem="uxq-PI-wpA" secondAttribute="width" id="yTV-xh-gp8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentLabel" destination="cS9-h5-vkc" id="ifS-rQ-f8t"/>
+                        <outlet property="navBarBackgroundView" destination="qAK-bw-ZEP" id="0CZ-Bq-uby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9T0-vl-sH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -807,6 +818,7 @@ Sed vel nibh ultrices, tempus libero quis, rutrum felis. Quisque nec viverra met
         </scene>
     </scenes>
     <resources>
+        <image name="bg_home" width="320" height="568"/>
         <image name="ic_add_green" width="41" height="41"/>
         <image name="ic_navbar" width="91" height="22"/>
         <image name="ic_profile_placeholder" width="194" height="194"/>

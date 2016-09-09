@@ -193,6 +193,7 @@ class PoolDetailViewController: ViewController {
     @IBAction func btnTermsAndConditionsPressed(sender: AnyObject) {
         let destinationVC = StoryboardRouter.termsAndConditionsViewController()
         destinationVC.poolType = self.poolType
+        destinationVC.termsAndConditionsText = self.pool?.termsAndConditions
         self.showViewController(destinationVC, sender: nil)
     }
 }
