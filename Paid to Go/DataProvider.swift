@@ -151,6 +151,10 @@ class DataProvider : DataProviderService {
     
     // MARK: - Pools -
     
+    func getNationalPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
+        getPools(poolTypeId, open: "2", completion: completion)
+    }
+    
     func getOpenPools(poolTypeId: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         getPools(poolTypeId, open: "1", completion: completion)
     }
@@ -181,7 +185,6 @@ class DataProvider : DataProviderService {
     func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         
         guard let userID = User.currentUser?.userId else {
-            
             return
         }
         
@@ -191,6 +194,11 @@ class DataProvider : DataProviderService {
             "pool_type_id" : poolTypeId,
             "user_id"      : userID
         ]
+        
+        // National pools don't require the user's current position
+        if poolTypeId == "2" {
+            
+        }
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
             
@@ -478,17 +486,6 @@ class DataProvider : DataProviderService {
     func sendEmailToUsers(users: [String], completion: (result: Bool?, error: String?) -> Void) {
         
         let accessToken = User.currentUser?.accessToken
-        
-        /*
-        var userIDString = "["
-        for userID in users {
-            userIDString += userID
-            userIDString += ","
-        }
-        userIDString = String(userIDString.characters.dropLast())
-        userIDString += "]"
-        */
-        
         let userIDString = arrayToJSONString(users)
         
         let params = [

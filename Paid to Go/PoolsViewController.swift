@@ -103,6 +103,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                     destinationVC.pool = pool
                     destinationVC.typeEnum = self.type
                     destinationVC.poolType = self.poolType
+                    
                 }
             }
         }

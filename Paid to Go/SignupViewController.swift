@@ -138,7 +138,6 @@ class SignupViewController: ViewController {
     
     @IBAction func signup(sender: AnyObject) {
         
-        
         if(self.validate()) {
             
             self.showProgressHud("Loading")

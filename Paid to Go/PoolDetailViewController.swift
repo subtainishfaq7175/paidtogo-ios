@@ -69,10 +69,11 @@ class PoolDetailViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
+        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
     }
     
     private func configureView() {
-        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
+//        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
         
         backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         

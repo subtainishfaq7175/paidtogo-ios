@@ -69,5 +69,9 @@ class StoryboardRouter {
     static func termsAndConditionsViewController() -> TermsAndConditionsViewController {
         return mainStoryboard().instantiateViewControllerWithIdentifier("TermsAndConditions") as! TermsAndConditionsViewController
     }
+    
+    static func poolDetailViewController() -> PoolDetailViewController {
+        return homeStoryboard().instantiateViewControllerWithIdentifier("PoolDetailViewController") as! PoolDetailViewController
+    }
         
 }
