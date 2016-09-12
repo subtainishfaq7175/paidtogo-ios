@@ -106,14 +106,14 @@
                         <viewControllerLayoutGuide type="bottom" id="hMd-Vy-MDg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Kfv-jC-Ykw" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="62C-cJ-okC" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE1-VA-NCj" userLabel="Blank View">
-                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_btn_bluegreen" translatesAutoresizingMaskIntoConstraints="NO" id="398-2H-Iis" userLabel="Indicator Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="4" height="30"/>
@@ -135,10 +135,10 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ea8-bN-YNj" userLabel="Car Pool View">
-                                <rect key="frame" x="0.0" y="478" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="577" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_car" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LN4-zX-QSN" userLabel="Car Pool Button">
-                                        <rect key="frame" x="60" y="0.0" width="260" height="60"/>
+                                        <rect key="frame" x="60" y="0.0" width="315" height="60"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
                                         <state key="normal" title="Car Pool">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,7 +148,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="thY-G4-Xrs" userLabel="Arrow Image View">
-                                        <rect key="frame" x="298" y="0.0" width="10" height="60"/>
+                                        <rect key="frame" x="353" y="0.0" width="10" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="OQJ-sw-DbS"/>
                                         </constraints>
@@ -203,7 +203,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdR-Aa-c6k" userLabel="Bus Train View">
-                                <rect key="frame" x="0.0" y="418" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="517" width="375" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_btn_greenblue" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-MI-dJs" userLabel="Indicator Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="4" height="60"/>
@@ -212,7 +212,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_train" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4l6-2s-2WH" userLabel="Bus Train Button">
-                                        <rect key="frame" x="60" y="0.0" width="260" height="60"/>
+                                        <rect key="frame" x="60" y="0.0" width="315" height="60"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
                                         <state key="normal" title="Bus/Train">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,7 +222,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="3oR-uR-56Q" userLabel="Arrow Image View">
-                                        <rect key="frame" x="298" y="0.0" width="10" height="60"/>
+                                        <rect key="frame" x="353" y="0.0" width="10" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="vpD-KC-ZKh"/>
                                         </constraints>
@@ -269,7 +269,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RP9-nS-ExH" userLabel="Bike View">
-                                <rect key="frame" x="0.0" y="358" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="457" width="375" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_left_dark" translatesAutoresizingMaskIntoConstraints="NO" id="7lP-ER-ADi" userLabel="Indicator Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="4" height="60"/>
@@ -278,7 +278,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="cb9-Eq-oqf" userLabel="Arrow Image View">
-                                        <rect key="frame" x="298" y="0.0" width="10" height="60"/>
+                                        <rect key="frame" x="353" y="0.0" width="10" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="Xdd-rQ-4fz"/>
                                         </constraints>
@@ -291,7 +291,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_bike" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjj-3h-LeN" userLabel="Bike Button">
-                                        <rect key="frame" x="60" y="0.0" width="260" height="60"/>
+                                        <rect key="frame" x="60" y="0.0" width="315" height="60"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
                                         <state key="normal" title="Bike">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -335,10 +335,10 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbP-Pe-MJW" userLabel="Walk Run View">
-                                <rect key="frame" x="0.0" y="298" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="397" width="375" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_button_right" translatesAutoresizingMaskIntoConstraints="NO" id="vQ8-ig-7oz" userLabel="Arrow Image View">
-                                        <rect key="frame" x="298" y="0.0" width="10" height="60"/>
+                                        <rect key="frame" x="353" y="0.0" width="10" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="4hW-j9-2me"/>
                                         </constraints>
@@ -364,7 +364,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_walk" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-JC-BYv" userLabel="Walk Run Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="260" height="60"/>
+                                        <rect key="frame" x="60" y="0.0" width="315" height="60"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
                                         <state key="normal" title="Walk/Run">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -408,10 +408,10 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0T-xo-ur0" userLabel="Subtitle View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="234"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="333"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Commute Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCu-eH-3kj" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="55" y="102" width="210" height="30"/>
+                                        <rect key="frame" x="83" y="152" width="210" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ShS-Gg-s4l"/>
                                             <constraint firstAttribute="width" constant="210" id="ayS-kL-nda"/>
@@ -472,14 +472,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xrg-U9-k3e"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="elautlet" destination="OCu-eH-3kj" id="0cv-PB-r4f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-Mb-Unc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="1090"/>
+            <point key="canvasLocation" x="249" y="94"/>
         </scene>
         <!--Anti Cheat View Controller-->
         <scene sceneID="LxA-8W-dTY">
@@ -490,11 +489,11 @@
                         <viewControllerLayoutGuide type="bottom" id="VBk-gd-AXs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SBE-Nw-8EY" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-ZV-bwk" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                <rect key="frame" x="18" y="130" width="284" height="284"/>
+                                <rect key="frame" x="21" y="155" width="333" height="333"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -534,21 +533,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-up-bbD">
-                                <rect key="frame" x="104" y="227" width="111" height="91"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-up-bbD">
+                                <rect key="frame" x="132" y="277" width="111" height="91"/>
                                 <state key="normal" image="ic_camera"/>
                                 <connections>
                                     <action selector="takePicture:" destination="qEi-hY-t2X" eventType="touchUpInside" id="E4I-ON-OfC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
-                                <rect key="frame" x="24" y="434" width="272" height="88"/>
+                                <rect key="frame" x="24" y="508" width="327" height="88"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3p-kN-CtT">
-                                <rect key="frame" x="90" y="76" width="140" height="25"/>
+                                <rect key="frame" x="118" y="76" width="140" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2Qb-r7-lrZ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="9cZ-02-q9Y"/>
@@ -587,7 +586,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-551" y="1974"/>
+            <point key="canvasLocation" x="-75" y="1646"/>
         </scene>
         <!--Anti Cheat Image View Controller-->
         <scene sceneID="vYy-1N-r8t">
@@ -598,11 +597,11 @@
                         <viewControllerLayoutGuide type="bottom" id="vMQ-cq-zda"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Az-vr-MFd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1f-Su-6Il">
-                                <rect key="frame" x="90" y="32" width="140" height="25"/>
+                                <rect key="frame" x="118" y="32" width="140" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="7Cm-JC-tJ3"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="ntd-6t-Z3i"/>
@@ -614,10 +613,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39q-KJ-QUG" userLabel="Finish Button View">
-                                <rect key="frame" x="60" y="496" width="200" height="42"/>
+                                <rect key="frame" x="88" y="588" width="200" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ube-vV-kQE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="49"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <state key="normal" title="Let's Start">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -641,7 +640,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-GN-c2n">
-                                <rect key="frame" x="0.0" y="72" width="320" height="381"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="473"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.92549019610000005" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -657,7 +656,7 @@
                             <constraint firstItem="39q-KJ-QUG" firstAttribute="centerX" secondItem="5Az-vr-MFd" secondAttribute="centerX" id="n0K-PT-Z7t"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="photoImageView" destination="D2s-GN-c2n" id="VGr-OO-aQp"/>
                         <outlet property="startButtonView" destination="39q-KJ-QUG" id="u3i-RD-KoX"/>
@@ -666,7 +665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziJ-Sb-uLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551" y="2653"/>
+            <point key="canvasLocation" x="336.5" y="1641.5"/>
         </scene>
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
@@ -1138,7 +1137,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="846.5" y="1040.5"/>
+            <point key="canvasLocation" x="248.5" y="864.5"/>
         </scene>
         <!--Map-->
         <scene sceneID="4h0-YD-StX">
@@ -1223,7 +1222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2l-4H-uO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2441" y="294"/>
+            <point key="canvasLocation" x="2376.5" y="93.5"/>
         </scene>
         <!--Pool View Controller-->
         <scene sceneID="MYQ-l0-DcP">
@@ -1424,7 +1423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBr-ve-TFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910.5" y="247.5"/>
+            <point key="canvasLocation" x="1920.5" y="93.5"/>
         </scene>
         <!--Pool Detail View Controller-->
         <scene sceneID="qak-M2-xMB">
@@ -1680,7 +1679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2TF-lV-MNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319.5" y="1459.5"/>
+            <point key="canvasLocation" x="906.5" y="1359.5"/>
         </scene>
         <!--National Pools View Controller-->
         <scene sceneID="o2z-wW-mkt">
@@ -1829,7 +1828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMX-uz-kMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1858.5" y="985.5"/>
+            <point key="canvasLocation" x="906.5" y="556.5"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
@@ -2016,17 +2015,17 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_co" translatesAutoresizingMaskIntoConstraints="NO" id="E58-HW-f5U" userLabel="CO2 Image View">
                                                         <rect key="frame" x="0.0" y="40" width="20" height="20"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.2 Car-miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKC-wt-3gF" userLabel="Traffic Label">
-                                                        <rect key="frame" x="123" y="60" width="88" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 cal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKC-wt-3gF" userLabel="Calories Label">
+                                                        <rect key="frame" x="135" y="60" width="31" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_traffic" translatesAutoresizingMaskIntoConstraints="NO" id="Lov-zi-CUR" userLabel="Traffic Image View">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_walkrun" translatesAutoresizingMaskIntoConstraints="NO" id="Lov-zi-CUR" userLabel="Calories Image View">
                                                         <rect key="frame" x="0.0" y="60" width="20" height="20"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traffic Offset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeX-Nf-sTd" userLabel="Traffic Indicator">
-                                                        <rect key="frame" x="28" y="60" width="91" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Calories: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeX-Nf-sTd" userLabel="Calories Indicator">
+                                                        <rect key="frame" x="28" y="60" width="103" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2164,19 +2163,19 @@
                     <connections>
                         <outlet property="backToHomebutton" destination="XGU-j3-njh" id="J9y-0B-8p2"/>
                         <outlet property="backgroundColorView" destination="A8a-l4-hGe" id="jQM-mK-MQ4"/>
+                        <outlet property="caloriesLabel" destination="sKC-wt-3gF" id="eig-7d-oXN"/>
                         <outlet property="co2Label" destination="R3q-75-RdF" id="t5V-8i-3f2"/>
                         <outlet property="earnedLabel" destination="qgs-n5-XZG" id="WOE-cF-ayX"/>
                         <outlet property="gasLabel" destination="KfH-kb-Do1" id="03A-KV-b6T"/>
                         <outlet property="milesLabel" destination="iAk-hD-a3Z" id="Bg4-1F-iIN"/>
                         <outlet property="profileImageProportionalConstraint" destination="6Pg-vX-vZj" id="Yp1-Ur-DVd"/>
                         <outlet property="profileImageView" destination="tly-nR-k3h" id="NpR-wL-KnU"/>
-                        <outlet property="trafficLabel" destination="sKC-wt-3gF" id="uqn-pl-U7h"/>
                         <outlet property="wellDoneLabel" destination="D3X-Be-hXa" id="b3D-J2-4fo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AP-v7-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="1790"/>
+            <point key="canvasLocation" x="1945.5" y="1021.5"/>
         </scene>
         <!--Leaderboards View Controller-->
         <scene sceneID="oaK-vI-cnc">
@@ -2453,7 +2452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dr-bD-1Dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="1790"/>
+            <point key="canvasLocation" x="2415.5" y="1021.5"/>
         </scene>
         <!--Car Pool Invite View Controller-->
         <scene sceneID="aj1-mh-ZU2">
@@ -2464,11 +2463,11 @@
                         <viewControllerLayoutGuide type="bottom" id="KCU-cc-tAm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gsc-Da-3Bm" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBl-bb-FcN">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
@@ -2479,14 +2478,14 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SS1-ih-c1i">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarPoolInviteCell" id="7hu-Ih-u6W" customClass="CarPoolInviteCell" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7hu-Ih-u6W" id="PH9-3a-9Mo">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-Hb-FNB">
@@ -2502,7 +2501,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0T-NZ-owO">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0T-NZ-owO">
                                                     <rect key="frame" x="287" y="10" width="25" height="25"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -2528,14 +2527,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No users found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhE-hQ-69T" userLabel="Empty Results">
-                                <rect key="frame" x="95" y="272" width="130" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No users found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhE-hQ-69T" userLabel="Empty Results">
+                                <rect key="frame" x="123" y="322" width="130" height="25"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcf-zX-rg4" userLabel="Alpha Footer Button Up">
-                                <rect key="frame" x="130" y="526" width="60" height="32"/>
+                                <rect key="frame" x="158" y="625" width="60" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="sDB-qS-NfV"/>
                                     <constraint firstAttribute="height" constant="32" id="wIo-RY-6Ls"/>
@@ -2546,10 +2545,10 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-fb-V5f" userLabel="Alpha Footer View">
-                                <rect key="frame" x="0.0" y="398" width="320" height="170"/>
+                                <rect key="frame" x="0.0" y="497" width="375" height="170"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_pool_alpha_background" translatesAutoresizingMaskIntoConstraints="NO" id="YEX-3M-tgz" userLabel="Alpha footer">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2562,7 +2561,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92a-LT-SCr" userLabel="Alpha Footer Button Down">
-                                <rect key="frame" x="130" y="526" width="60" height="32"/>
+                                <rect key="frame" x="158" y="625" width="60" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="e9M-x4-9ek"/>
                                     <constraint firstAttribute="height" constant="32" id="ouK-AS-GM6"/>
@@ -2573,7 +2572,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UI-Y4-zhg" userLabel="Finish Button View">
-                                <rect key="frame" x="60" y="468" width="200" height="50"/>
+                                <rect key="frame" x="88" y="567" width="200" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Bd-iVE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -2621,7 +2620,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ETp-Bj-EJU"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btnAlphaFooter" destination="Fcf-zX-rg4" id="dnb-qm-v1d"/>
                         <outlet property="constraintAlphaFooterImgBottom" destination="uza-SF-49q" id="pQr-6q-bqA"/>
@@ -2636,7 +2635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KE4-M0-24f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-115" y="2653"/>
+            <point key="canvasLocation" x="236.5" y="2402.5"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="WkC-SA-byB">
@@ -2657,11 +2656,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.56470588239999997" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JcJ-1o-X3g" userLabel="Icons View Container">
-                                <rect key="frame" x="97" y="70" width="105" height="147"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcJ-1o-X3g" userLabel="Icons View Container">
+                                <rect key="frame" x="114" y="70" width="147" height="147"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvC-7L-Xbu" userLabel="Twitter Button">
-                                        <rect key="frame" x="0.0" y="82" width="52" height="80"/>
+                                        <rect key="frame" x="0.0" y="74" width="74" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="AvC-7L-Xbu" secondAttribute="height" multiplier="1:1" id="HKB-Gx-7B4"/>
                                         </constraints>
@@ -2671,7 +2670,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-BK-axP" userLabel="Mail Button">
-                                        <rect key="frame" x="52" y="52" width="73" height="54"/>
+                                        <rect key="frame" x="74" y="74" width="73" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uPd-BK-axP" secondAttribute="height" multiplier="1:1" id="D6M-uv-J6T"/>
                                         </constraints>
@@ -2681,7 +2680,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-X4-TFW" userLabel="Instagram Button">
-                                        <rect key="frame" x="82" y="0.0" width="52" height="52"/>
+                                        <rect key="frame" x="74" y="0.0" width="73" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a6F-X4-TFW" secondAttribute="height" multiplier="1:1" id="vSM-DM-FYR"/>
                                         </constraints>
@@ -2690,8 +2689,8 @@
                                             <action selector="instagram:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="oP2-cZ-GKL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW0-fJ-s5L" userLabel="Facebook Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW0-fJ-s5L" userLabel="Facebook Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wW0-fJ-s5L" secondAttribute="height" multiplier="1:1" id="9cT-2J-9uB"/>
                                         </constraints>
@@ -2725,8 +2724,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQh-OR-47i" userLabel="Description View">
                                 <rect key="frame" x="20" y="217" width="335" height="371"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="152" y="75" width="72" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="132" y="69" width="72" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2734,8 +2733,8 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="share_attention"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="106" width="335" height="229"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="335" height="191"/>
                                         <string key="text">Our open pools rely in part on contributions and carbon offsets from your network of family and friends to fund your alternative commute. Please share your commute stats on social media and ask your network to contribute to the pool(s) you are participating in. All contributors are given a verified offset certificate that shows the amount of carbon, traffic and/or calories have been offset. The more contributions we get, the more commuters we can pay not to drive!</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2754,8 +2753,8 @@
                                     <constraint firstItem="NBU-ml-NfG" firstAttribute="centerX" secondItem="oQh-OR-47i" secondAttribute="centerX" id="zvn-0d-2ge"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1v-Et-6hn" userLabel="Finish Button View">
-                                <rect key="frame" x="108" y="588" width="200" height="49"/>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1v-Et-6hn" userLabel="Finish Button View">
+                                <rect key="frame" x="88" y="588" width="200" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-Kz-saS" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="49"/>
@@ -2812,14 +2811,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cab-XG-6p0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="2559"/>
+            <point key="canvasLocation" x="1945.5" y="1822.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ilQ-bL-lrC">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="PQP-Ci-HHk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7tH-kq-1CZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2831,7 +2830,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NU5-pW-d5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="362"/>
+            <point key="canvasLocation" x="-218" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGv-2c-yFQ">
@@ -2851,14 +2850,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGf-SG-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="1790"/>
+            <point key="canvasLocation" x="1467.5" y="1021.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Isy-Yn-vel">
             <objects>
                 <navigationController storyboardIdentifier="AntiCheatNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KyA-Ev-gIW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tdv-lO-ix7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2870,7 +2869,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551" y="1258"/>
+            <point key="canvasLocation" x="-485" y="1642"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">
@@ -2889,7 +2888,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Z7-cT-kL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483.5" y="247.5"/>
+            <point key="canvasLocation" x="1467.5" y="93.5"/>
         </scene>
     </scenes>
     <resources>
@@ -2919,12 +2918,11 @@
         <image name="ic_share_instagram" width="81" height="81"/>
         <image name="ic_share_mail" width="81" height="81"/>
         <image name="ic_share_twitter" width="81" height="81"/>
-        <image name="ic_traffic" width="22" height="32"/>
         <image name="ic_up" width="128" height="128"/>
         <image name="ic_walkrun" width="28" height="26"/>
         <image name="pool_background_walk" width="800" height="533"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Umg-cc-hFL"/>
+        <segue reference="O0O-e6-PRD"/>
     </inferredMetricsTieBreakers>
 </document>

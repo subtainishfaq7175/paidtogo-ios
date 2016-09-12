@@ -18,7 +18,7 @@ class ActivityDetailViewController: ViewController {
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var gasLabel: UILabel!
     @IBOutlet weak var co2Label: UILabel!
-    @IBOutlet weak var trafficLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
@@ -81,6 +81,14 @@ class ActivityDetailViewController: ViewController {
             
             co2Label.text = "\(co2) Metric tons"
         }
+        
+//        if var cal = activityResponse?.savedCalories {
+//            if cal == "" {
+//                cal = "0 cal"
+//            }
+//            
+//            caloriesLabel.text = "\(cal) Metric tons"
+//        }
         
         if let earnedMoney = activity?.earnedMoney {
             earnedLabel.text = "$\(earnedMoney)"
