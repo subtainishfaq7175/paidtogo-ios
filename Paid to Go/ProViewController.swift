@@ -65,8 +65,8 @@ class ProViewController: ViewController {
                     if let user = user { //success
                         
                         User.currentUser = user
-                        self.showAlert("Congratulations!! You became a Pro User")
-                        
+//                        self.showAlert("Congratulations!! You became a Pro User")
+                        self.showAlertAndDismissModallyOnCompletion("Congratulations!! You became a Pro User")
                         
                     } else if let error = error {
                         

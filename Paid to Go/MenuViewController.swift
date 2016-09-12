@@ -26,9 +26,11 @@ class MenuViewController: ViewController {
     
     @IBOutlet weak var proUserLabel: UILabel!
     
-    weak var menuController: MainViewController?
+    @IBOutlet weak var upgradeToProViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Variables
+    
+    weak var menuController: MainViewController?
     
     typealias MenuItem = (title: String, storyboard: String, identifier: String)
     typealias JSONObject = [String: AnyObject]
@@ -111,10 +113,14 @@ class MenuViewController: ViewController {
             // Pro User
             proUserLabel.hidden = false
             goProButtonView.hidden = true
+            upgradeToProViewHeightConstraint.constant = 0.0
         } else {
             proUserLabel.hidden = true
             goProButtonView.hidden = false
+            upgradeToProViewHeightConstraint.constant = 64.0
         }
+        
+        self.view.layoutIfNeeded()
         
     }
     

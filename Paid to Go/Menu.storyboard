@@ -100,8 +100,8 @@
                                                     <action selector="profileAction:" destination="zmc-MI-pkM" eventType="touchUpInside" id="lXE-yJ-stw"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmb-hS-f5r">
-                                                <rect key="frame" x="268" y="133" width="65" height="28"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmb-hS-f5r">
+                                                <rect key="frame" x="267" y="133" width="65" height="28"/>
                                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="8k3-sh-ws8"/>
@@ -112,8 +112,8 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izE-L2-CU3" userLabel="Name View">
-                                                <rect key="frame" x="117" y="135" width="143" height="24"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izE-L2-CU3" userLabel="Name View">
+                                                <rect key="frame" x="116" y="135" width="143" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Surprice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFI-8N-8bL">
                                                         <rect key="frame" x="20" y="2" width="103" height="20"/>
@@ -231,6 +231,7 @@
                                     <constraint firstItem="Xib-dj-Oyc" firstAttribute="top" secondItem="AvK-7B-9Tk" secondAttribute="top" id="EMY-Vw-C6n"/>
                                     <constraint firstAttribute="trailing" secondItem="Xib-dj-Oyc" secondAttribute="trailing" id="Tm7-Zi-owC"/>
                                     <constraint firstAttribute="bottom" secondItem="Xib-dj-Oyc" secondAttribute="bottom" id="dkJ-KH-bR3"/>
+                                    <constraint firstAttribute="height" constant="64" id="faD-WE-dSh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -239,8 +240,8 @@
                             <constraint firstItem="dvF-4E-hwz" firstAttribute="leading" secondItem="YC9-lk-dKE" secondAttribute="leading" id="Dtk-hp-HLj"/>
                             <constraint firstItem="FP5-aW-AgL" firstAttribute="leading" secondItem="YC9-lk-dKE" secondAttribute="leading" id="FfH-QU-RwH"/>
                             <constraint firstItem="AvK-7B-9Tk" firstAttribute="leading" secondItem="YC9-lk-dKE" secondAttribute="leading" id="G0t-6L-DHq"/>
-                            <constraint firstItem="dDl-MP-sRE" firstAttribute="top" secondItem="dvF-4E-hwz" secondAttribute="bottom" constant="64" id="Juf-7u-g4H"/>
                             <constraint firstItem="dDl-MP-sRE" firstAttribute="top" secondItem="AvK-7B-9Tk" secondAttribute="bottom" id="UYN-LE-rxb"/>
+                            <constraint firstItem="AvK-7B-9Tk" firstAttribute="top" secondItem="dvF-4E-hwz" secondAttribute="bottom" id="VjA-2y-TIk"/>
                             <constraint firstAttribute="trailing" secondItem="FP5-aW-AgL" secondAttribute="trailing" id="cE5-JU-HBd"/>
                             <constraint firstAttribute="trailing" secondItem="AvK-7B-9Tk" secondAttribute="trailing" id="cFi-1G-rtH"/>
                             <constraint firstItem="AvK-7B-9Tk" firstAttribute="top" secondItem="dvF-4E-hwz" secondAttribute="bottom" id="d5w-B6-lQY"/>
@@ -259,6 +260,7 @@
                         <outlet property="proUserLabel" destination="kJP-XY-SLw" id="Qq8-wX-17Z"/>
                         <outlet property="profileImageView" destination="6am-0n-Xhm" id="wTy-AY-rBv"/>
                         <outlet property="tableview" destination="dvF-4E-hwz" id="rBY-5w-OxY"/>
+                        <outlet property="upgradeToProViewHeightConstraint" destination="faD-WE-dSh" id="Tav-ec-thk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNW-zU-GDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
