@@ -12,6 +12,7 @@ public class ActivityNotification: Mappable {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kActivityNotificationSavedCo2Key: String = "saved_co2"
+    internal let kActivityNotificationSavedCaloriesKey: String = "saved_calories"
 	internal let kActivityNotificationIconPhotoKey: String = "icon_photo"
 	internal let kActivityNotificationMilesTraveledKey: String = "miles_traveled"
 	internal let kActivityNotificationOpenKey: String = "open"
@@ -27,6 +28,7 @@ public class ActivityNotification: Mappable {
 
     // MARK: Properties
 	public var savedCo2: String?
+    public var savedCalories: String?
 	public var iconPhoto: String?
 	public var milesTraveled: String?
 	public var open: String?
@@ -56,6 +58,7 @@ public class ActivityNotification: Mappable {
     */
    public func mapping(map: Map) {
 		savedCo2 <- map[kActivityNotificationSavedCo2Key]
+        savedCalories <- map[kActivityNotificationSavedCaloriesKey]
 		iconPhoto <- map[kActivityNotificationIconPhotoKey]
 		milesTraveled <- map[kActivityNotificationMilesTraveledKey]
 		open <- map[kActivityNotificationOpenKey]

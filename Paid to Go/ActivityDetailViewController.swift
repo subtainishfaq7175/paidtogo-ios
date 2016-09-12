@@ -82,13 +82,13 @@ class ActivityDetailViewController: ViewController {
             co2Label.text = "\(co2) Metric tons"
         }
         
-//        if var cal = activityResponse?.savedCalories {
-//            if cal == "" {
-//                cal = "0 cal"
-//            }
-//            
-//            caloriesLabel.text = "\(cal) Metric tons"
-//        }
+        if var cal = activity?.savedCalories {
+            if cal == "" {
+                cal = "0 cal"
+            }
+            
+            caloriesLabel.text = "\(cal) Metric tons"
+        }
         
         if let earnedMoney = activity?.earnedMoney {
             earnedLabel.text = "$\(earnedMoney)"
