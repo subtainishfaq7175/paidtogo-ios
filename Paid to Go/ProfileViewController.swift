@@ -17,10 +17,24 @@ struct CheckmarkStruct {
         "I am changing my commuting behaviour from driving a single passenger vehicle to an alternative because of PaidToGo"
     ]
     
+    var commuteTypes = [
+        "Walk/Run",
+        "Bike",
+        "Train/Bus",
+        "Car Pool"
+    ]
+    
     var checked = [
         false,
         false,
         false
+    ]
+    
+    var commuteTypesChecked = [
+        false,
+        false,
+        false,
+        true
     ]
     
     init() {
@@ -50,6 +64,11 @@ struct CheckmarkStruct {
         }
         
         User.currentUser = user
+    }
+    
+    mutating func updateCommuteTypeState(index:Int) {
+        
+        commuteTypesChecked[index] = commuteTypesChecked[index] == false ? true : false
     }
 }
 
@@ -348,45 +367,93 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return checkmarksStruct.options.count
+        if section == 0 {
+            return checkmarksStruct.options.count
+        } else {
+            return checkmarksStruct.commuteTypes.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
         cell.selectionStyle = .None
-        cell.textLabel?.text = checkmarksStruct.options[indexPath.row]
-        if let font = UIFont(name: "Open Sans", size: 12.0) {
-            cell.textLabel?.font = font
-        } else {
-            print("Font not found")
-        }
-        cell.textLabel?.numberOfLines = 0
         
-        if checkmarksStruct.checked[indexPath.row] {
-            cell.accessoryType = .Checkmark
-            cell.textLabel?.textColor = UIColor.blueColor()
+        if indexPath.section == 0 {
+            cell.textLabel?.text = checkmarksStruct.options[indexPath.row]
+            if let font = UIFont(name: "Open Sans", size: 12.0) {
+                cell.textLabel?.font = font
+            } else {
+                print("Font not found")
+            }
+            cell.textLabel?.numberOfLines = 0
+            
+            if checkmarksStruct.checked[indexPath.row] {
+                cell.accessoryType = .Checkmark
+                cell.textLabel?.textColor = UIColor.blueColor()
+            } else {
+                cell.accessoryType = .None
+                cell.textLabel?.textColor = UIColor.darkTextColor()
+            }
         } else {
-            cell.accessoryType = .None
-            cell.textLabel?.textColor = UIColor.darkTextColor()
+            cell.textLabel?.text = checkmarksStruct.commuteTypes[indexPath.row]
+            if let font = UIFont(name: "Open Sans", size: 12.0) {
+                cell.textLabel?.font = font
+            } else {
+                print("Font not found")
+            }
+            cell.textLabel?.numberOfLines = 0
+            
+            if checkmarksStruct.commuteTypesChecked[indexPath.row] {
+                cell.accessoryType = .Checkmark
+                cell.textLabel?.textColor = UIColor.blueColor()
+            } else {
+                cell.accessoryType = .None
+                cell.textLabel?.textColor = UIColor.darkTextColor()
+            }
         }
         
         return cell
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeaderView = SectionHeaderView.instanceFromNib()
+        
+        if section == 0 {
+            sectionHeaderView.configureForCommutePreferencesSection()
+        } else {
+            sectionHeaderView.configureForCommuteTypesSection()
+        }
+        
+        return sectionHeaderView
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if indexPath.row == 2 {
+        if indexPath.row == 2 && indexPath.section == 0 {
             return 60.0
         }
         
-        return 30.0
+        return 40.0
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.signUpButtonShouldChange(true)
-        checkmarksStruct.updateOptionState(indexPath.row)
+//        self.signUpButtonShouldChange(true)
+        
+        if indexPath.section == 0 {
+            checkmarksStruct.updateOptionState(indexPath.row)
+        } else {
+            checkmarksStruct.updateCommuteTypeState(indexPath.row)
+        }
         
         self.checkmarksTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }

@@ -17,6 +17,7 @@ class NationalPoolsViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorView: UIView!
     @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerTitleLabel: UILabel!
     
     // MARK: - Variables and constants
     
@@ -24,7 +25,6 @@ class NationalPoolsViewController: ViewController {
     
     var typeEnum : PoolTypeEnum?
     var poolType : PoolType?
-    var pool : Pool?
     
     // MARK: - View life cycle
     
@@ -45,9 +45,9 @@ class NationalPoolsViewController: ViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLoad()
+        super.viewDidLayoutSubviews()
         
-        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
+//        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
         
 //        self.navBarBackgroundView.backgroundColor = UIColor(rgba: poolType!.color!)
     }
@@ -57,9 +57,12 @@ class NationalPoolsViewController: ViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let poolDetailVC = segue.destinationViewController as! PoolDetailViewController
-        poolDetailVC.pool = pool
-        poolDetailVC.typeEnum = self.typeEnum
-        poolDetailVC.poolType = self.poolType
+        
+        if let pool = sender as? Pool {
+            poolDetailVC.pool = pool
+            poolDetailVC.typeEnum = self.typeEnum
+            poolDetailVC.poolType = self.poolType
+        }
         
     }
     
@@ -68,6 +71,10 @@ class NationalPoolsViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
+        
+//        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
+        
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         headerImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         

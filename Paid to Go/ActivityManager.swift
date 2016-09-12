@@ -29,7 +29,8 @@ class ActivityManager: NSObject, ActivityTest {
     /**
      *  Singleton
      *
-     *  We use a Singleton to allow a quick switch between the different Pool Types (Walk/Run, Bike and Bus/Train)
+     *  We use a shared instance to ease the access and update of the activite's information.
+     *  The activitie's information can be updated from the pool screen and also from the map screen.
      *
      */
     static let sharedInstance = ActivityManager()
@@ -58,7 +59,6 @@ class ActivityManager: NSObject, ActivityTest {
     var startLongitude : Double = 0.0
     
     var initialLocation : CLLocation = CLLocation()
-    
     
 //    var metersFromStartLocation : Double = 0.0
 //    var distanceToFinalDestination : Double = 0.0
@@ -118,9 +118,13 @@ class ActivityManager: NSObject, ActivityTest {
     }
     
     static func getStartDateTime() -> String {
+        
         let formatter = NSDateFormatter()
+        formatter.timeZone = NSTimeZone(abbreviation: "UTC")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.stringFromDate(sharedInstance.startDateToTrack)
+        let dateUTC = formatter.stringFromDate(sharedInstance.startDateToTrack)
+        return dateUTC
+        
     }
     
     static func setMilesCounter(milesTravelled:Double) {

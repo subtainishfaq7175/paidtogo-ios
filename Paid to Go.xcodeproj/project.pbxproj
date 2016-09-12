@@ -42,6 +42,8 @@
 		4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */; };
 		4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */; };
 		4DBCE93D1D7F43120020B7A2 /* ProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */; };
+		4DC763A01D8730B10051BFF5 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */; };
+		4DC763A21D8732D80051BFF5 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
 		4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0005C1D469094001394E3 /* MapAnnotation.swift */; };
@@ -170,6 +172,8 @@
 		4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProViewController.swift; sourceTree = "<group>"; };
 		4DBF557B1D7EE9800059B249 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		4DF0005C1D469094001394E3 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 			children = (
 				525150AF1CA17D1900BEC445 /* Profile.storyboard */,
 				525150B11CA17D7900BEC445 /* ProfileViewController.swift */,
+				4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */,
+				4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -759,6 +765,7 @@
 				52444B731CDA6EF900934656 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				4D66E7771D37BC6100E8AE09 /* LeaderboardsListTableViewCell.xib in Resources */,
 				52B3E0D91CA2E59C000ED657 /* Balance.storyboard in Resources */,
+				4DC763A01D8730B10051BFF5 /* SectionHeaderView.xib in Resources */,
 				52444B751CDA6EF900934656 /* OpenSans-Light.ttf in Resources */,
 				4D97C21A1D2AF55000EF35F7 /* CustomDatePicker.xib in Resources */,
 				52A3743D1C9844A900E3A4A5 /* LaunchScreen.storyboard in Resources */,
@@ -886,6 +893,7 @@
 				4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */,
 				4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */,
 				4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */,
+				4DC763A21D8732D80051BFF5 /* SectionHeaderView.swift in Sources */,
 				4D9051631D4652210043A250 /* MapViewController.swift in Sources */,
 				4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */,
 				523977DA1CAF0FAC00C85CAF /* Pool.swift in Sources */,

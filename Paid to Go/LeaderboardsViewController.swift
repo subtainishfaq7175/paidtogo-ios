@@ -69,7 +69,6 @@ class LeaderboardsViewController: ViewController {
             }
             
         }
-
         
     }
     
@@ -84,7 +83,10 @@ class LeaderboardsViewController: ViewController {
         
         configureNavigationBar()
         configureTableView()
-//        configureView()
+        
+        if !cameFromWellDoneViewController {
+            configureView()
+        }
     }
     
     func configureNavigationBar() {

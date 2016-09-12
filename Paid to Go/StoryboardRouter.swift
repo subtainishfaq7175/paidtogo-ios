@@ -38,13 +38,13 @@ class StoryboardRouter {
     
     // MARK: - View Controllers
     
-    static func homeMainViewController() -> UIViewController {
-        return homeStoryboard().instantiateInitialViewController()!
-    }
+//    static func homeMainViewController() -> UIViewController {
+//        return homeStoryboard().instantiateInitialViewController()!
+//    }
     
-    static func initialMainViewController() -> UIViewController {
-        return mainStoryboard().instantiateInitialViewController()!
-    }
+//    static func initialMainViewController() -> UIViewController {
+//        return mainStoryboard().instantiateInitialViewController()!
+//    }
     
     static func menuMainViewController() -> UIViewController {
         return menuStoryboard().instantiateInitialViewController()!
@@ -62,9 +62,9 @@ class StoryboardRouter {
         return leaderboardsStoryboard().instantiateViewControllerWithIdentifier("LeaderboardsViewController") as! LeaderboardsViewController
     }
     
-    static func leaderboardsMainViewController() -> UIViewController {
-        return leaderboardsStoryboard().instantiateInitialViewController()!
-    }
+//    static func leaderboardsMainViewController() -> UIViewController {
+//        return leaderboardsStoryboard().instantiateInitialViewController()!
+//    }
     
     static func termsAndConditionsViewController() -> TermsAndConditionsViewController {
         return mainStoryboard().instantiateViewControllerWithIdentifier("TermsAndConditions") as! TermsAndConditionsViewController
@@ -72,6 +72,10 @@ class StoryboardRouter {
     
     static func poolDetailViewController() -> PoolDetailViewController {
         return homeStoryboard().instantiateViewControllerWithIdentifier("PoolDetailViewController") as! PoolDetailViewController
+    }
+    
+    static func nationalPoolsViewController() -> NationalPoolsViewController {
+        return homeStoryboard().instantiateViewControllerWithIdentifier("NationalPoolsViewController") as! NationalPoolsViewController
     }
         
 }

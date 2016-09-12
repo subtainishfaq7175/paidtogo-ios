@@ -243,18 +243,28 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
     }
     
+    @IBAction func nationalPoolsAction(sender: AnyObject) {
+        
+        let destinationVC = StoryboardRouter.nationalPoolsViewController()
+        
+        destinationVC.typeEnum = self.type
+        destinationVC.poolType = self.poolType
+        
+        self.showViewController(destinationVC, sender: nil)
+
+    }
+    
     // MARK: - UIScrollViewDelegate
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.x;
     }
     
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if decelerate == false {
-            let currentPage = scrollView.currentPage
-        }
-    }
+//    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if decelerate == false {
+//            let currentPage = scrollView.currentPage
+//        }
+//    }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if (self.lastContentOffset < scrollView.contentOffset.x) {
