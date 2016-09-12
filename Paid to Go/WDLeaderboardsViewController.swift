@@ -24,7 +24,6 @@ class WDLeaderboardsViewController: ViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
 
-    
     // MARK: - Variables and Constants
     
     var type: PoolTypeEnum?
@@ -83,9 +82,7 @@ class WDLeaderboardsViewController: ViewController {
 //                
 //            }
         }
-        
     }
-    
     
     func initViews(){
         

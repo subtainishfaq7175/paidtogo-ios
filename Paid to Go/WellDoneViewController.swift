@@ -189,7 +189,6 @@ class WellDoneViewController: ViewController {
     
     // MARK: - Actions
     
-    
     @IBAction func backToHome(sender: AnyObject) {
         if let mainVC = self.presentingViewController as? MainViewController {
             if let navVc = mainVC.contentViewController as? UINavigationController {
@@ -215,6 +214,20 @@ class WellDoneViewController: ViewController {
             }
         }
 //        self.presentHomeViewController()
+    }
+    
+    @IBAction func leaderboardsButtonAction(sender: AnyObject) {
+        let leaderboardsVC = StoryboardRouter.initialLeaderboardsViewController()
+        
+        leaderboardsVC.cameFromWellDoneViewController = true
+        leaderboardsVC.poolId = self.pool!.internalIdentifier!
+        
+        self.navigationController?.pushViewController(leaderboardsVC, animated: true)
+        
+//        leaderboardsVC.type = self.type!
+//        leaderboardsVC.activity = self.activity!
+//        leaderboardsVC.poolType = self.poolType!
+//        leaderboardsVC.pool = self.pool!
     }
     
     // MARK:- Helpers

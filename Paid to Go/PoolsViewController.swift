@@ -48,6 +48,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
 
     var lastContentOffset : CGFloat = 0
     
+    /// If the user switches the pool directly from the pool screen, the view must be updated to match the new pool type selected
     var quickSwitchPool = false
     
     // MARK: - Super -
@@ -118,23 +119,31 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
     
     private func initLayout() {
-        setNavigationBarVisible(true)
-        clearNavigationBarcolor()
+        
+//        setNavigationBarVisible(true)
+        
+//        clearNavigationBarcolor()
+        
+        // Sets the indicator [ Open pools - Closed pools ]
         setIndicatorOnLeft()
+        
+        // Configures the table view header -> [ Pool Name - Rate Per Mile ]
         self.tableHeaderView.configureForPools((self.poolType?.color)!)
         
+        // Sets up the view again if the poolType Changed -> [for ex., from Walk/Run to Bike ]
         if quickSwitchPool {
             setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
             quickSwitchPool = false
         }
         
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+        // Sets the background image according to the pool -> [ Walk - Bike - Bus - Car ]
+        setPoolBackgroundImage(self.backgroundImageView, poolType: poolType!)
     }
     
     private func initViews() {
         self.goImageView.roundWholeView()
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        
+        setPoolBackgroundImage(self.backgroundImageView, poolType: poolType!)
     }
     
     private func setIndicatorOnLeft() {

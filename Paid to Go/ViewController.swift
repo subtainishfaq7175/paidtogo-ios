@@ -14,15 +14,11 @@ import UIColor_Hex_Swift
 
 class ViewController: UIViewController {
     
-    
-    // MARK: - Super
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
-    }
+    // MARK: - View life cycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -36,7 +32,56 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // MARK: - Functions
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .Default
+    }
+    
+    // MARK: - Navigation Bar -
+    
+    func setNavigationBarVisible(visible: Bool) {
+        self.navigationController?.setNavigationBarHidden(!visible, animated: true)
+    }
+    
+    func clearNavigationBarcolor() {
+        if let navController = navigationController {
+            navController.navigationBar.df_setBackgroundColor(UIColor.clearColor())
+        }
+    }
+    
+    func setNavigationBarGreen(){
+        if let navController = navigationController {
+            navController.navigationBar.df_setBackgroundColor(CustomColors.NavbarBackground())
+        }
+    }
+    
+    func setNavigationBarColor(color: UIColor){
+        if let navController = navigationController {
+            navController.navigationBar.df_setBackgroundColor(color)
+        }
+    }
+    
+    func customizeNavigationBarWithTitleAndMenu(){
+        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action:#selector(MenuContentViewController.homeButtonAction(_:)) ) //"homeButtonAction:"
+        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = menuButtonItem
+        
+        
+        let titleImage = UIImage(named: "ic_navbar")
+        navigationItem.titleView = UIImageView(image: titleImage)
+    }
+    
+    func customizeNavigationBarWithMenu(){
+        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(_:))) //
+        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = menuButtonItem
+        
+    }
+    
+    // MARK: - Custom Alert View -
     
     func showAlert(text: String) {
         let alertController = UIAlertController(title: "Paid to Go", message:
@@ -62,36 +107,10 @@ class ViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func popViewController(alert: UIAlertAction!) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
+    // MARK: - UI Configuration -
     
-    func dismissViewController(alert: UIAlertAction!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    // MARK: - Views
     
-    func setNavigationBarVisible(visible: Bool) {
-        self.navigationController?.setNavigationBarHidden(!visible, animated: true)
-    }
-    
-    func clearNavigationBarcolor() {
-        if let navController = navigationController {
-            navController.navigationBar.df_setBackgroundColor(UIColor.clearColor())
-        }
-    }
-    
-    func setNavigationBarGreen(){
-        if let navController = navigationController {
-            navController.navigationBar.df_setBackgroundColor(CustomColors.NavbarBackground())
-        }
-    }
-
-    func setNavigationBarColor(color: UIColor){
-        if let navController = navigationController {
-            navController.navigationBar.df_setBackgroundColor(color)
-        }
-    }
-
     func setBorderToView(view: UIView, color: CGColor){
         view.round()
         view.layer.borderWidth = 1.2
@@ -104,24 +123,7 @@ class ViewController: UIViewController {
         view.layer.borderColor = color
     }
     
-    func customizeNavigationBarWithTitleAndMenu(){
-        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action:#selector(MenuContentViewController.homeButtonAction(_:)) ) //"homeButtonAction:"
-        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
-        self.navigationItem.leftBarButtonItem = menuButtonItem
-        
-        
-        let titleImage = UIImage(named: "ic_navbar")
-        navigationItem.titleView = UIImageView(image: titleImage)
-    }
-    
-    func customizeNavigationBarWithMenu(){
-        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(_:))) //
-        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
-        self.navigationItem.leftBarButtonItem = menuButtonItem
-        
-    }
+    // MARK: - Pools
     
     func setPoolColor(view: UIView, type: PoolTypeEnum) {
         switch type {
@@ -134,10 +136,9 @@ class ViewController: UIViewController {
         case .Train:
             view.backgroundColor = CustomColors.busTrainColor()
             break
-        case .Car:
-            view.backgroundColor = CustomColors.carColor()
-            break
         default:
+            // case .Car:
+            view.backgroundColor = CustomColors.carColor()
             break
         }
     }
@@ -167,20 +168,17 @@ class ViewController: UIViewController {
             
             //            view.backgroundColor = CustomColors.busTrainColor()
             break
-        case .Car:
+        default:
+            //case .Car:
             //            self.title = "car_title".localize()
             let titleImage = UIImage(named: "ic_car")
             navigationItem.titleView = UIImageView(image: titleImage)
             
             //            view.backgroundColor = CustomColors.carColor()
             break
-        default:
-            break
         }
         
         view.backgroundColor = UIColor(rgba: type.color!)
-        
-        
     }
     
     func setPoolTitle(type: PoolTypeEnum) {
@@ -197,13 +195,30 @@ class ViewController: UIViewController {
             let titleImage = UIImage(named: "ic_bustrain")
             navigationItem.titleView = UIImageView(image: titleImage)
             break
-        case .Car:
+        default:
+            // case .Car:
             let titleImage = UIImage(named: "ic_car")
             navigationItem.titleView = UIImageView(image: titleImage)
             break
-        default:
-            break
         }
+    }
+    
+    func setPoolBackgroundImage(header:UIImageView, poolType:PoolType) {
+        if let backgroundPicture = poolType.backgroundPicture {
+            let backgroundPictureURL = NSURL(string: backgroundPicture)
+            
+            header.yy_setImageWithURL(backgroundPictureURL, options: .ShowNetworkActivity)
+        }
+    }
+    
+    // MARK: - Navigation -
+    
+    func popViewController(alert: UIAlertAction!) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func dismissViewController(alert: UIAlertAction!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func logoutAnimated() {
@@ -220,8 +235,6 @@ class ViewController: UIViewController {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
-    
-    
     func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, pool: Pool, sender: AnyObject?) {
         if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
                 poolViewController.type = type
@@ -234,24 +247,23 @@ class ViewController: UIViewController {
         }
     }
     
-        
+    // MARK: - Progress Hud -
     
-        
-        func showProgressHud() {
-            let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loadingNotification.mode = MBProgressHUDMode.Indeterminate
-        }
-        
-        func showProgressHud(title: String) {
-            let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loadingNotification.mode = MBProgressHUDMode.Indeterminate
-            loadingNotification.labelText = title
-        }
-        
-        func dismissProgressHud() {
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-        }
-        
+    func showProgressHud() {
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.Indeterminate
     }
+    
+    func showProgressHud(title: String) {
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        loadingNotification.labelText = title
+    }
+    
+    func dismissProgressHud() {
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+    }
+    
+}
 
 	

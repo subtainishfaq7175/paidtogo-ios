@@ -23,10 +23,13 @@ class LeaderboardsViewController: ViewController {
     
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var suffixLabel: UILabel!
-        
+    
     // MARK: - Variables and Constants
     var leaderboards = [Leaderboard]()
     var leaderboardsResponse : LeaderboardsResponse!
+    
+    var cameFromWellDoneViewController = false
+    var poolId = ""
     
     // MARK: - Super
     
@@ -40,8 +43,12 @@ class LeaderboardsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !cameFromWellDoneViewController {
+            poolId = leaderboardsResponse.poolId!
+        }
+        
         self.showProgressHud()
-        DataProvider.sharedInstance.getLeaderboardsForPool(leaderboardsResponse.poolId!) { (leaderboard, error) in
+        DataProvider.sharedInstance.getLeaderboardsForPool(poolId) { (leaderboard, error) in
             self.dismissProgressHud()
             
             if let err = error {
@@ -50,15 +57,20 @@ class LeaderboardsViewController: ViewController {
             }
             
             if let leaderboardsResponse = leaderboard {
+                self.leaderboardsResponse = leaderboardsResponse
+                
                 if let leaderboards = leaderboardsResponse.leaderboard {
-                    
                     self.leaderboards = leaderboards
+                    
+                    self.configureView()
                     
                     self.tableView.reloadData()
                 }
             }
             
         }
+
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,7 +84,7 @@ class LeaderboardsViewController: ViewController {
         
         configureNavigationBar()
         configureTableView()
-        configureView()
+//        configureView()
     }
     
     func configureNavigationBar() {
