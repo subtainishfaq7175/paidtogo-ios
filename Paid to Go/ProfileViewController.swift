@@ -20,7 +20,7 @@ struct CheckmarkStruct {
     var commuteTypes = [
         "Walk/Run",
         "Bike",
-        "Train/Bus",
+        "Bus/Train",
         "Car Pool"
     ]
     
@@ -44,6 +44,11 @@ struct CheckmarkStruct {
         checked[0] = user.profileOption1
         checked[1] = user.profileOption2
         checked[2] = user.profileOption3
+        
+        commuteTypesChecked[0] = user.commuteTypeWalkRun
+        commuteTypesChecked[1] = user.commuteTypeBike
+        commuteTypesChecked[2] = user.commuteTypeBusTrain
+        commuteTypesChecked[3] = user.commuteTypeCar
     }
     
     mutating func updateOptionState(index:Int) {
@@ -67,8 +72,26 @@ struct CheckmarkStruct {
     }
     
     mutating func updateCommuteTypeState(index:Int) {
+        let user = User.currentUser!
         
         commuteTypesChecked[index] = commuteTypesChecked[index] == false ? true : false
+        
+        switch index {
+        case 0:
+            user.commuteTypeWalkRun = commuteTypesChecked[index]
+            break
+        case 1:
+            user.commuteTypeBike = commuteTypesChecked[index]
+            break
+        case 2:
+            user.commuteTypeBusTrain = commuteTypesChecked[index]
+            break
+        default:
+            user.commuteTypeCar = commuteTypesChecked[index]
+            break
+        }
+        
+        User.currentUser = user
     }
 }
 

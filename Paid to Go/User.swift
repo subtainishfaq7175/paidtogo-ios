@@ -33,6 +33,11 @@ class User: Mappable {
     var profileOption2 = false
     var profileOption3 = false
     
+    var commuteTypeWalkRun = false
+    var commuteTypeBike = false
+    var commuteTypeBusTrain = false
+    var commuteTypeCar = false
+    
     init() {
         self.name = ""
         self.lastName = ""
@@ -77,19 +82,24 @@ class User: Mappable {
     
     // Mappable
     func mapping(map: Map) {
-        email           <- map["email"]
-        name            <- map["first_name"]
-        lastName        <- map["last_name"]
-        password        <- map["password"]
-        bio             <- map["bio"]
-        profilePicture  <- map["profile_picture"]
-        accessToken     <- map["access_token"]
-        userId          <- map["user_id"]
-        paypalAccount   <- map["paypal_account"]
-        type            <- map["user_type"]
-        profileOption1  <- map["profile_option_1"]
-        profileOption2  <- map["profile_option_2"]
-        profileOption3  <- map["profile_option_3"]
+        email               <- map["email"]
+        name                <- map["first_name"]
+        lastName            <- map["last_name"]
+        password            <- map["password"]
+        bio                 <- map["bio"]
+        profilePicture      <- map["profile_picture"]
+        accessToken         <- map["access_token"]
+        userId              <- map["user_id"]
+        paypalAccount       <- map["paypal_account"]
+        type                <- map["user_type"]
+        profileOption1      <- map["profile_option_1"]
+        profileOption2      <- map["profile_option_2"]
+        profileOption3      <- map["profile_option_3"]
+        commuteTypeWalkRun  <- map["walk"]
+        commuteTypeBike     <- map["bike"]
+        commuteTypeBusTrain <- map["bus"]
+        commuteTypeCar      <- map["car"]
+        
     }
 }
 
