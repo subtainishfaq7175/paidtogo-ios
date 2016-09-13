@@ -118,7 +118,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var status = Status()
     
     // We use this boolean to verify if the user selected custom dates in DateFilterViewController, and we must reload the stats via API call.
-    var shouldReloadStats = false
+//    var shouldReloadStats = false
+    
+    let currentDate = NSDate()
     
     var newFromDate : NSDate?
     var newToDate : NSDate?
@@ -127,7 +129,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var arrTotalSavedGasByMonth = [Double](count: 12, repeatedValue: 0.0)
     var arrTotalCarbonOffByMonth = [Double](count: 12, repeatedValue: 0.0)
     
-    /*  We use the gregorian calendar logic to store the incomes by week
+    /*  We use the gregorian calendar logic to store the data by week
      [0] -> Sun
      [1] -> Mon
      [2] -> Tue
@@ -137,6 +139,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
      [6] -> Sat
      */
     var arrTotalIncomeByWeek = [Double](count: 7, repeatedValue: 0.0)
+    var arrTotalSavedGasByWeek = [Double](count: 7, repeatedValue: 0.0)
+    var arrTotalCarbonOffByWeek = [Double](count: 7, repeatedValue: 0.0)
     
     // MARK: - View life cycle
     
@@ -145,13 +149,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         self.customizeNavigationBar()
         
-        if shouldReloadStats {
-            self.reloadStatsWithCustomDates()
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+//        if shouldReloadStats {
+//            self.reloadStatsWithCustomDates()
+//        }
     }
     
     override func viewDidLoad() {
@@ -160,6 +160,10 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         self.loadStatsWithDefaultData()
 //        self.registerForNotifications()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
 //    // MARK: - Notifications -
@@ -190,10 +194,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.title = "menu_stats".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
-        
-//        let filterImage = UIImage(named: "ic_filter")
-//        let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: filterImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(btnFilterSelected))
-//        self.navigationItem.rightBarButtonItem = rightButtonItem
     }
     
     private func customizeHeaderView() {
@@ -218,9 +218,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         loadStatusIncomesData()
         loadStatusSavedGasData()
         loadStatusCarbonOffData()
-        loadStatusIncomesDataForLastWeek()
-        
-//        printTotalIncomeByMonth()
         
         configureChartForSixMonthsData()
     }
@@ -234,9 +231,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         var chartDataSet: ILineChartDataSet = LineChartDataSet()
         var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
+        var colorsCircle = [NSUIColor]()
         
         // Get current date and previous date
-        let currentDate = NSDate()
         guard let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(
             .Month,
             value: -pastMonths,
@@ -262,6 +259,14 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             let monthName = getMonthName(month)
             xVals.append(monthName.rawValue)
             
+            // We set a different color to the current month
+            var color : UIColor!
+            if month == currentMonth-1 {
+                color = CustomColors.greenColor()
+            } else {
+                color = CustomColors.carColor()
+            }
+            colorsCircle.append(color)
         }
         
         switch stats {
@@ -278,15 +283,27 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         chartDataSet.lineWidth = 2.0
         chartDataSet.fillAlpha = 1.0
+        chartDataSet.circleColors = colorsCircle
+        chartDataSet.drawValuesEnabled = true
         chartDataSets.append(chartDataSet)
         
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
         chart.data = chartData
         
+//        chart.leftAxis.limitLines.last?.lineColor = UIColor.redColor()
+        
+//        if let dataSet = chart.data?.getDataSetByIndex(0) {
+//            if let dataEntry = dataSet.entryForIndex(0) {
+//                
+//            }
+//            dataSet.setColor(CustomColors.bikeColor())
+//            dataSet.addColor(UIColor.redColor())
+//        }
+        
         chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
     }
     
-    private func initWeekChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats, pastMonths: Int) {
+    private func initWeekChart(chart: LineChartView, chartDataEntries: [Double], stats: Stats) {
         
         chart.userInteractionEnabled = false
         
@@ -335,6 +352,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
     }
     
+    // MARK: - Chart Data Source -
+    
     private func loadStatusIncomesData() {
         
         guard let incomes = self.status.incomes as StatusType? else {
@@ -354,113 +373,29 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             }
             
             self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
-        }
-    }
-    
-    // MARK: - To Do... -
-    
-    private func loadStatusIncomesDataForLastWeek() {
-        
-        let currentDate = NSDate()
-        
-        guard let incomes = self.status.incomes as StatusType? else {
-            return
-        }
-        
-        for incomeCalculatedUnit in incomes.calculatedUnits! {
             
-            guard let dateString = incomeCalculatedUnit.date else {
-                continue
-            }
-            
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
-            
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
-                continue
-            }
-            
-            // If the current day is sunday, we show all the information of the past week
-            
-            
-            // If weeks of the year match -> Monday to Saturday
-            if currentDate.weekOfYear == date.weekOfYear {
-                
-                // Sunday -> date.weekday == 1
-                let dayOfTheWeek = date.weekday-1
-                
-                self.updateIncomesForDayOfWeek(incomeCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-            }
-            
-            /*
-            switch currentDayOfTheWeek {
-                
-            case GregorianDay.Sun.rawValue:
-                // Sunday - All past week
-                break
-            case GregorianDay.Mon.rawValue:
-                // Monday - Only Monday
-                
-                // If weeks of the year match
-                if currentDate.weekOfYear == date.weekOfYear {
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
                     
-                    // If days match
-                    if currentDate.day == date.day {
-                        // We add the value to the day's amount counter
-                        self.arrTotalIncomeByWeek[currentDate.weekday-1] += incomeCalculatedUnit.value!
-                        
-                    }
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
                     
+                    self.updateIncomesForDayOfWeek(incomeCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
                 }
                 
-                break
-            case GregorianDay.Tue.rawValue:
-                // Tuesday - Monday and Tuesday
-                
-                // If weeks of the year match
+            } else {
+                // If weeks of the year match -> Monday to Saturday
                 if currentDate.weekOfYear == date.weekOfYear {
                     
-                    // If days match
-                    if currentDate.day == date.day {
-                        // We add the value to the day's amount counter
-                        self.arrTotalIncomeByWeek[currentDate.weekday-1] += incomeCalculatedUnit.value!
-                        
-                    }
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
                     
-                    // Yesterday
-                    guard let previousDate = NSCalendar.currentCalendar().dateByAddingUnit(
-                        .Day,
-                        value: -1,
-                        toDate: currentDate,
-                        options: []) else {
-                            return
-                    }
-                    
-                    if previousDate.day == date.day {
-                        // We add the value to the day's amount counter
-                        self.arrTotalIncomeByWeek[previousDate.weekday-1] += incomeCalculatedUnit.value!
-                    }
+                    self.updateIncomesForDayOfWeek(incomeCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
                 }
-                
-                break
-            case GregorianDay.Wed.rawValue:
-                // Wednesday - Monday to Wednesday
-                break
-            case GregorianDay.Thu.rawValue:
-                // Thursday - Monday to Thursday
-                break
-            case GregorianDay.Fri.rawValue:
-                // Friday - Monday to Friday
-                break
-            default:
-                // Saturday - Monday to Saturday
-                break
             }
-            */
-            
         }
     }
-    
-    // MARK: - Chart Data Source -
     
     private func loadStatusSavedGasData() {
         
@@ -481,6 +416,27 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             }
             
             self.arrTotalSavedGasByMonth[date.month-1] += savedGasCalculatedUnit.value!
+            
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    self.updateSavedGasForDayOfWeek(savedGasCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
+                }
+                
+            } else {
+                // If weeks of the year match -> Monday to Saturday
+                if currentDate.weekOfYear == date.weekOfYear {
+
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    self.updateSavedGasForDayOfWeek(savedGasCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
+                }
+            }
         }
     }
     
@@ -503,11 +459,31 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             }
             
             self.arrTotalCarbonOffByMonth[date.month-1] += carbonOffCalculatedUnit.value!
+            
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    self.updateCarbonOffForDayOfWeek(carbonOffCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
+                }
+                
+            } else {
+                // If weeks of the year match -> Monday to Saturday
+                if currentDate.weekOfYear == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    self.updateCarbonOffForDayOfWeek(carbonOffCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
+                }
+            }
         }
     }
     
     private func resetDataArrays() {
-        
         self.arrTotalIncomeByMonth = [Double](count: self.arrTotalIncomeByMonth.count, repeatedValue: 0.0)
         self.arrTotalSavedGasByMonth = [Double](count: self.arrTotalSavedGasByMonth.count, repeatedValue: 0.0)
         self.arrTotalCarbonOffByMonth = [Double](count: self.arrTotalCarbonOffByMonth.count, repeatedValue: 0.0)
@@ -532,9 +508,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
     func configureChartForCurrentWeek() {
-        initWeekChart(incomesChartView, chartDataEntries: arrTotalIncomeByWeek, stats: Stats.Incomes, pastMonths: 0)
-//        initWeekChart(gasChartView, chartDataEntries: arrTotalSavedGasByMonth, stats: Stats.SavedGas, pastMonths: 0)
-//        initWeekChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByMonth, stats: Stats.CarbonOff, pastMonths: 0)
+        initWeekChart(incomesChartView, chartDataEntries: arrTotalIncomeByWeek, stats: Stats.Incomes)
+        initWeekChart(gasChartView, chartDataEntries: arrTotalSavedGasByWeek, stats: Stats.SavedGas)
+        initWeekChart(carbonChartview, chartDataEntries: arrTotalCarbonOffByWeek, stats: Stats.CarbonOff)
     }
     
     // MARK: - Screen Updates
@@ -628,26 +604,26 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
-    private func reloadStatsWithCustomDates() {
-        
-        self.showProgressHud("Reloading status...")
-        DataProvider.sharedInstance.getStatusWithTimeInterval(newFromDate!, toDate: newToDate!) { (result, error) in
-            self.dismissProgressHud()
-            
-            if let error = error {
-                self.showAlert(error)
-                self.navigationController?.popViewControllerAnimated(true)
-            } else {
-                
-                self.status = result!
-                self.resetDataArrays()
-                self.initCharts()
-                self.updateHeaderViewWithNewDates()
-                self.updateFooterViewForIncomes()
-                self.shouldReloadStats = false
-            }
-        }
-    }
+//    private func reloadStatsWithCustomDates() {
+//        
+//        self.showProgressHud("Reloading status...")
+//        DataProvider.sharedInstance.getStatusWithTimeInterval(newFromDate!, toDate: newToDate!) { (result, error) in
+//            self.dismissProgressHud()
+//            
+//            if let error = error {
+//                self.showAlert(error)
+//                self.navigationController?.popViewControllerAnimated(true)
+//            } else {
+//                
+//                self.status = result!
+//                self.resetDataArrays()
+//                self.initCharts()
+//                self.updateHeaderViewWithNewDates()
+//                self.updateFooterViewForIncomes()
+//                self.shouldReloadStats = false
+//            }
+//        }
+//    }
     
     // MARK: - Actions -
     
@@ -803,6 +779,14 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     func updateIncomesForDayOfWeek(income:Double, dayOfWeek:Int) {
         self.arrTotalIncomeByWeek[dayOfWeek] += income
+    }
+    
+    func updateSavedGasForDayOfWeek(savedGas:Double, dayOfWeek:Int) {
+        self.arrTotalSavedGasByMonth[dayOfWeek] += savedGas
+    }
+    
+    func updateCarbonOffForDayOfWeek(carbonOff:Double, dayOfWeek:Int) {
+        self.arrTotalCarbonOffByWeek[dayOfWeek] += carbonOff
     }
     
     func printTotalIncomeByMonth() {
