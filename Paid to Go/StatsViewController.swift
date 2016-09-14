@@ -120,7 +120,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // We use this boolean to verify if the user selected custom dates in DateFilterViewController, and we must reload the stats via API call.
 //    var shouldReloadStats = false
     
-    let currentDate = NSDate()
+    var currentDate : NSDate! = NSDate()
     
     var newFromDate : NSDate?
     var newToDate : NSDate?
@@ -160,6 +160,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         self.loadStatsWithDefaultData()
 //        self.registerForNotifications()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -228,7 +229,8 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         let chartData: LineChartData?
         var chartDataSets: [IChartDataSet] = [IChartDataSet]()
-        var chartDataSet: ILineChartDataSet = LineChartDataSet()
+//        var chartDataSet: ILineChartDataSet = LineChartDataSet()
+        var chartDataSet = LineChartDataSet()
         var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
         var colorsCircle = [NSUIColor]()
@@ -267,6 +269,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
                 color = CustomColors.carColor()
             }
             colorsCircle.append(color)
+            
         }
         
         switch stats {
@@ -283,23 +286,24 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         chartDataSet.lineWidth = 2.0
         chartDataSet.fillAlpha = 1.0
+        
+        // Set font of the labels on top of the circles
+        chartDataSet.valueFont = UIFont(name: "OpenSans-Semibold", size: 11.0)!
+        // Set colors of the circles
         chartDataSet.circleColors = colorsCircle
+        // Set colors for lines, which are displayed on the bottom of the bar, previous to the label $ / Miles Offset / CO2 MT's
+//        chartDataSet.colors = colorsCircle
+        // Set colors of the labels on top of the circles
+        chartDataSet.valueColors = colorsCircle
+        // Draws all the colors set above
         chartDataSet.drawValuesEnabled = true
+        
         chartDataSets.append(chartDataSet)
         
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
         chart.data = chartData
-        
-//        chart.leftAxis.limitLines.last?.lineColor = UIColor.redColor()
-        
-//        if let dataSet = chart.data?.getDataSetByIndex(0) {
-//            if let dataEntry = dataSet.entryForIndex(0) {
-//                
-//            }
-//            dataSet.setColor(CustomColors.bikeColor())
-//            dataSet.addColor(UIColor.redColor())
-//        }
-        
+
+        // Animates the presentation of the chart
         chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
     }
     
@@ -309,9 +313,10 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         let chartData: LineChartData?
         var chartDataSets: [IChartDataSet] = [IChartDataSet]()
-        var chartDataSet: ILineChartDataSet = LineChartDataSet()
+        var chartDataSet = LineChartDataSet()
         var chartEntries: [ChartDataEntry] = [ChartDataEntry]()
         var xVals: [String] = [String]()
+        var colorsCircle = [NSUIColor]()
         
         for index in 0..<7 {
             
@@ -328,6 +333,19 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             let dayName = getDayName(index)
             xVals.append(dayName.rawValue)
             
+            // We set a different color to the current day
+            var color : UIColor!
+            if index == currentDate.weekday-2 {
+                color = CustomColors.greenColor()
+            } else {
+                color = CustomColors.carColor()
+            }
+            if index==6 && currentDate.weekday==1 {
+                color = CustomColors.greenColor()
+            }
+
+            colorsCircle.append(color)
+            
         }
         
         switch stats {
@@ -344,6 +362,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         chartDataSet.lineWidth = 2.0
         chartDataSet.fillAlpha = 1.0
+        
+        // Set font of the labels on top of the circles
+        chartDataSet.valueFont = UIFont(name: "OpenSans-Semibold", size: 11.0)!
+        // Set colors of the circles
+        chartDataSet.circleColors = colorsCircle
+        // Set colors for lines, which are displayed on the bottom of the bar, previous to the label $ / Miles Offset / CO2 MT's
+//        chartDataSet.colors = colorsCircle
+        // Set colors of the labels on top of the circles
+        chartDataSet.valueColors = colorsCircle
+        // Draws all the colors set above
+        chartDataSet.drawValuesEnabled = true
+        
         chartDataSets.append(chartDataSet)
         
         chartData = LineChartData(xVals: xVals, dataSets: chartDataSets)
@@ -681,7 +711,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         if (self.lastContentOffset < scrollView.contentOffset.x) {
             // moved right
             let currentPage = scrollView.currentPage
-            print("scrollViewDidEndDragging: \(currentPage)")
             
             switch currentPage {
             case 1:
@@ -702,7 +731,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         } else if (self.lastContentOffset > scrollView.contentOffset.x) {
             // moved left
             let currentPage = scrollView.currentPage
-            print("scrollViewDidEndDragging: \(currentPage)")
             
             switch currentPage {
             case 1:
