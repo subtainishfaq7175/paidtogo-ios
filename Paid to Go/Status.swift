@@ -37,7 +37,6 @@ public class Status: Mappable {
         savedGas            <-  map[kStatusSavedGas]
         carbonOff           <-  map[kStatusCarbonOff]
         calories            <-  map[kStatusCalories]
-        
     }
     
     /**

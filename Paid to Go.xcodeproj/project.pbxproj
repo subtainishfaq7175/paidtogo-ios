@@ -15,6 +15,7 @@
 		4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BFFD71D36D0560072045D /* LeaderboardsListViewController.swift */; };
 		4D2CEE2D1D104C9200009843 /* MailShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE2C1D104C9200009843 /* MailShareHelper.swift */; };
 		4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CEE311D1058A500009843 /* CMDocumentShare.m */; };
+		4D61B6CE1D89C7260087300C /* ChartsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D61B6CD1D89C7260087300C /* ChartsHelper.swift */; };
 		4D6354DF1D80617500230FF4 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */; };
 		4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */; };
 		4D63E17F1D2C3B9300E066D7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */; };
@@ -144,6 +145,7 @@
 		4D2CEE2F1D1058A400009843 /* Paid to Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Paid to Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D2CEE301D1058A500009843 /* CMDocumentShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDocumentShare.h; sourceTree = "<group>"; };
 		4D2CEE311D1058A500009843 /* CMDocumentShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDocumentShare.m; sourceTree = "<group>"; };
+		4D61B6CD1D89C7260087300C /* ChartsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsHelper.swift; sourceTree = "<group>"; };
 		4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFilterViewController.swift; sourceTree = "<group>"; };
 		4D63E17E1D2C3B9300E066D7 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				4D97C2191D2AF55000EF35F7 /* CustomDatePicker.xib */,
 				4D97C21B1D2AF84D00EF35F7 /* CustomDatePickerView.swift */,
 				4D63E17C1D2BDF1100E066D7 /* DateFilterViewController.swift */,
+				4D61B6CD1D89C7260087300C /* ChartsHelper.swift */,
 			);
 			name = Stats;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,
 				52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */,
 				52FC35061CC66C5600E094DA /* Platform.swift in Sources */,
+				4D61B6CE1D89C7260087300C /* ChartsHelper.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
 				523977D81CAF01C000C85CAF /* PoolCell.swift in Sources */,
