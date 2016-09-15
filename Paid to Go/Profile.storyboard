@@ -141,7 +141,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="26" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-GY-rGE" userLabel="Age Text Field">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-GY-rGE" userLabel="Age Text Field">
                                                 <rect key="frame" x="10" y="421" width="394" height="38"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -162,7 +162,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Male" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7G-Nh-jja" userLabel="Gender Text Field">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7G-Nh-jja" userLabel="Gender Text Field">
                                                 <rect key="frame" x="10" y="483" width="394" height="38"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -454,10 +454,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="0NW-UM-ibE"/>
                     <connections>
+                        <outlet property="ageTextField" destination="VtC-GY-rGE" id="dbO-XT-zOT"/>
                         <outlet property="bioTextField" destination="q0n-32-uIa" id="cyj-us-0F9"/>
                         <outlet property="checkmarksTableView" destination="626-LO-fh1" id="VnE-QF-4fF"/>
                         <outlet property="emailTextField" destination="lq7-kr-gPK" id="X7T-gc-7gY"/>
                         <outlet property="firstNameTextField" destination="c4B-yX-JmI" id="aqN-n8-fdQ"/>
+                        <outlet property="genderTextField" destination="d7G-Nh-jja" id="a15-UG-eTi"/>
                         <outlet property="lastNameTextField" destination="Atv-yZ-bsn" id="Nxa-kq-mw1"/>
                         <outlet property="passwordTextField" destination="2Os-mT-hz4" id="yte-yL-FOG"/>
                         <outlet property="passwordVerificationTextField" destination="718-cZ-4DR" id="8Fz-fJ-XzH"/>

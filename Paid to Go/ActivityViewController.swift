@@ -26,19 +26,20 @@ class ActivityViewController: MenuContentViewController {
     
     var activity : ActivityNotification?
     
-    var notifications:[ActivityNotification] = [ActivityNotification]() {
-        didSet {
-            if notifications.count == 0 {
-                // No recent activity
-                self.notificationsTableView.hidden = true
-                self.lblEmptyTableView.hidden = false
-            } else {
-                // Recent activity
-                self.notificationsTableView.hidden = false
-                self.lblEmptyTableView.hidden = true
-            }
-        }
-    }
+    var notifications:[ActivityNotification] = [ActivityNotification]()
+//    {
+//        didSet {
+//            if notifications.count == 0 {
+//                // No recent activity
+//                self.notificationsTableView.hidden = true
+//                self.lblEmptyTableView.hidden = false
+//            } else {
+//                // Recent activity
+//                self.notificationsTableView.hidden = false
+//                self.lblEmptyTableView.hidden = true
+//            }
+//        }
+//    }
     
     // MARK: - Super
     
@@ -130,16 +131,30 @@ class ActivityViewController: MenuContentViewController {
             if let error = error {
                 self.dismissProgressHud()
                 
+                // No recent activity
+                self.notificationsTableView.hidden = true
+                self.lblEmptyTableView.hidden = false
+                
                 return
             }
             
             if let activityNotifications = activityNotifications {
                 self.dismissProgressHud()
-
+                
                 self.notifications = activityNotifications
-                self.filterActivitiesWithoutDate()
-                self.sortActivitiesByDate()
-                self.notificationsTableView.reloadData()
+                
+                if self.notifications.count == 0 {
+                    // No recent activity
+                    self.notificationsTableView.hidden = true
+                    self.lblEmptyTableView.hidden = false
+                } else {
+                    // Recent activity
+                    self.notificationsTableView.hidden = false
+                    self.lblEmptyTableView.hidden = true
+                    self.filterActivitiesWithoutDate()
+                    self.sortActivitiesByDate()
+                    self.notificationsTableView.reloadData()
+                }
             }
         }
     }

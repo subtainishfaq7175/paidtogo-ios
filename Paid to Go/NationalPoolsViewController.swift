@@ -19,9 +19,26 @@ class NationalPoolsViewController: ViewController {
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var headerTitleLabel: UILabel!
     
+    @IBOutlet weak var emptyNationalPoolsLabel: UILabel!
+    
     // MARK: - Variables and constants
     
-    var nationalPools = [Pool]()
+    var nationalPools = [Pool]() {
+        didSet {
+            if nationalPools.count == 0 {
+                // No national pools
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.hidden = true
+                    self.emptyNationalPoolsLabel.hidden = false
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.hidden = false
+                    self.emptyNationalPoolsLabel.hidden = true
+                })
+            }
+        }
+    }
     
     var typeEnum : PoolTypeEnum?
     var poolType : PoolType?
@@ -113,6 +130,9 @@ class NationalPoolsViewController: ViewController {
                 self.nationalPools = pools
                 self.tableView.reloadData()
                 
+            } else {
+                self.tableView.hidden = true
+                self.emptyNationalPoolsLabel.hidden = false
             }
         }
 

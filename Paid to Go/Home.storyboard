@@ -75,6 +75,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -995,6 +997,12 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No closed pools available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dil-e0-G6p" userLabel="Empty Closed Pools Table Label">
+                                                <rect key="frame" x="375" y="0.0" width="375" height="284"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="openPoolsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Re-0F3" userLabel="Open Pools Table View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1058,16 +1066,30 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No open pools available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlB-PA-gF2" userLabel="Empty Open Pools Table Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="snq-jS-B2m" secondAttribute="bottom" id="7r6-QV-8z2"/>
+                                            <constraint firstItem="Dil-e0-G6p" firstAttribute="leading" secondItem="snq-jS-B2m" secondAttribute="leading" id="9V5-IC-MeB"/>
+                                            <constraint firstItem="LlB-PA-gF2" firstAttribute="trailing" secondItem="fUD-Re-0F3" secondAttribute="trailing" id="E90-mb-0g0"/>
+                                            <constraint firstItem="Dil-e0-G6p" firstAttribute="trailing" secondItem="snq-jS-B2m" secondAttribute="trailing" id="KKE-ww-sbZ"/>
                                             <constraint firstItem="snq-jS-B2m" firstAttribute="top" secondItem="ahC-Lt-FVS" secondAttribute="top" id="Kr5-mx-EgA"/>
                                             <constraint firstAttribute="trailing" secondItem="snq-jS-B2m" secondAttribute="trailing" id="M3e-6Y-L2F"/>
+                                            <constraint firstItem="LlB-PA-gF2" firstAttribute="bottom" secondItem="fUD-Re-0F3" secondAttribute="bottom" id="Q4l-w9-bcN"/>
+                                            <constraint firstItem="LlB-PA-gF2" firstAttribute="top" secondItem="fUD-Re-0F3" secondAttribute="top" id="SxA-sj-fWl"/>
                                             <constraint firstItem="fUD-Re-0F3" firstAttribute="leading" secondItem="ahC-Lt-FVS" secondAttribute="leading" id="XUH-ag-ZuF"/>
                                             <constraint firstItem="snq-jS-B2m" firstAttribute="width" secondItem="fUD-Re-0F3" secondAttribute="width" id="ZDG-Iy-wmP"/>
                                             <constraint firstItem="fUD-Re-0F3" firstAttribute="top" secondItem="ahC-Lt-FVS" secondAttribute="top" id="dSl-kN-9Jf"/>
                                             <constraint firstAttribute="bottom" secondItem="fUD-Re-0F3" secondAttribute="bottom" id="eRP-ai-4Bj"/>
+                                            <constraint firstItem="Dil-e0-G6p" firstAttribute="bottom" secondItem="snq-jS-B2m" secondAttribute="bottom" id="eWO-vz-YMX"/>
+                                            <constraint firstItem="LlB-PA-gF2" firstAttribute="leading" secondItem="fUD-Re-0F3" secondAttribute="leading" id="mQq-k5-MrA"/>
+                                            <constraint firstItem="Dil-e0-G6p" firstAttribute="top" secondItem="snq-jS-B2m" secondAttribute="top" id="yDh-Ue-NlV"/>
                                             <constraint firstItem="snq-jS-B2m" firstAttribute="leading" secondItem="fUD-Re-0F3" secondAttribute="trailing" id="zuG-Cy-ioa"/>
                                         </constraints>
                                     </view>
@@ -1112,6 +1134,8 @@
                         <outlet property="closedPoolsLabel" destination="4ST-ii-RfL" id="71W-96-JLx"/>
                         <outlet property="closedPoolsTableView" destination="snq-jS-B2m" id="RbH-8P-Kqo"/>
                         <outlet property="closedPoolsView" destination="iTo-Vf-c9H" id="WeE-wN-pd1"/>
+                        <outlet property="emptyClosedPoolsLabel" destination="Dil-e0-G6p" id="Euo-5P-vGk"/>
+                        <outlet property="emptyOpenPoolsLabel" destination="LlB-PA-gF2" id="FmS-OU-aj0"/>
                         <outlet property="goImageView" destination="f0S-FV-DXp" id="W9h-dq-oNf"/>
                         <outlet property="headerTitleLabel" destination="bBH-Gb-9vQ" id="bZm-l8-JdR"/>
                         <outlet property="indicatorLeadingConstraint" destination="4bY-Zb-oV1" id="9KO-V0-v5Y"/>
@@ -1735,7 +1759,7 @@
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No National pools available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-Iv-su6">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1822,6 +1846,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundColorView" destination="r7H-d2-L7w" id="VxZ-DS-9s8"/>
+                        <outlet property="emptyNationalPoolsLabel" destination="TLh-Iv-su6" id="tmg-xq-V0q"/>
                         <outlet property="headerImageView" destination="Z06-Lp-axz" id="Rwc-Jq-MH6"/>
                         <outlet property="headerTitleLabel" destination="t8P-55-X9V" id="son-Vv-1cP"/>
                         <outlet property="tableView" destination="dgp-Gm-Eww" id="fnj-Ab-OgS"/>

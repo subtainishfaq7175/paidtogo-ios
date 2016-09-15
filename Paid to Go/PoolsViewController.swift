@@ -25,6 +25,9 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var openPoolsLabel: UILabel!
     @IBOutlet weak var closedPoolsLabel: UILabel!
+    @IBOutlet weak var emptyClosedPoolsLabel: UILabel!
+    @IBOutlet weak var emptyOpenPoolsLabel: UILabel!
+    
     @IBOutlet weak var openPoolsIndicatorView: UIView!
     @IBOutlet weak var closedPoolsIndicatorView: UIView!
     
@@ -43,8 +46,38 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     var type: PoolTypeEnum?
     var poolType: PoolType?
-    var closedPools:[Pool] = [Pool]()
-    var openPools:[Pool] = [Pool]()
+    var closedPools:[Pool] = [Pool]() {
+        didSet {
+            if closedPools.count == 0 {
+                // No closed pools
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.closedPoolsTableView.hidden = true
+                    self.emptyClosedPoolsLabel.hidden = false
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.closedPoolsTableView.hidden = false
+                    self.emptyClosedPoolsLabel.hidden = true
+                })
+            }
+        }
+    }
+    var openPools:[Pool] = [Pool]() {
+        didSet {
+            if openPools.count == 0 {
+                // No open pools
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.openPoolsTableView.hidden = true
+                    self.emptyOpenPoolsLabel.hidden = false
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.openPoolsTableView.hidden = false
+                    self.emptyOpenPoolsLabel.hidden = true
+                })
+            }
+        }
+    }
 
     var lastContentOffset : CGFloat = 0
     
@@ -208,6 +241,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 self.openPools  = pools
                 self.openPoolsTableView.reloadData()
                 
+            } else {
+                // No open pools
+                self.openPoolsTableView.hidden = true
+                self.emptyOpenPoolsLabel.hidden = false
             }
         }
  
@@ -227,6 +264,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 self.closedPools  = pools
                 self.closedPoolsTableView.reloadData()
                 
+            } else {
+                // No closed pools
+                self.closedPoolsTableView.hidden = true
+                self.emptyClosedPoolsLabel.hidden = false
             }
         }
     }

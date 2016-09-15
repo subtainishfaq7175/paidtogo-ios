@@ -11,6 +11,8 @@ import SnapKit
 
 struct CheckmarkStruct {
     
+    var localUser = User.currentUser!
+    
     var options = [
         "I use PaidToGo for Exercise",
         "I use PaidToGo to Commute to Work ",
@@ -39,57 +41,72 @@ struct CheckmarkStruct {
     
     init() {
         // Update options state
-        let user = User.currentUser!
+//        let user = User.currentUser!
         
-        checked[0] = user.profileOption1
-        checked[1] = user.profileOption2
-        checked[2] = user.profileOption3
+        checked[0] = localUser.profileOption1
+        checked[1] = localUser.profileOption2
+        checked[2] = localUser.profileOption3
         
-        commuteTypesChecked[0] = user.commuteTypeWalkRun
-        commuteTypesChecked[1] = user.commuteTypeBike
-        commuteTypesChecked[2] = user.commuteTypeBusTrain
-        commuteTypesChecked[3] = user.commuteTypeCar
+        commuteTypesChecked[0] = localUser.commuteTypeWalkRun
+        commuteTypesChecked[1] = localUser.commuteTypeBike
+        commuteTypesChecked[2] = localUser.commuteTypeBusTrain
+        commuteTypesChecked[3] = localUser.commuteTypeCar
     }
     
     mutating func updateOptionState(index:Int) {
-        let user = User.currentUser!
+//        user = User.currentUser!
         
         checked[index] = checked[index] == false ? true : false
         
         switch index {
         case 0:
-            user.profileOption1 = checked[index]
+            localUser.profileOption1 = checked[index]
             break
         case 1:
-            user.profileOption2 = checked[index]
+            localUser.profileOption2 = checked[index]
             break
         default:
-            user.profileOption3 = checked[index]
+            localUser.profileOption3 = checked[index]
             break
         }
         
-        User.currentUser = user
+//        User.currentUser = user
     }
     
     mutating func updateCommuteTypeState(index:Int) {
-        let user = User.currentUser!
+//        localUser = User.currentUser!
         
         commuteTypesChecked[index] = commuteTypesChecked[index] == false ? true : false
         
         switch index {
         case 0:
-            user.commuteTypeWalkRun = commuteTypesChecked[index]
+            localUser.commuteTypeWalkRun = commuteTypesChecked[index]
             break
         case 1:
-            user.commuteTypeBike = commuteTypesChecked[index]
+            localUser.commuteTypeBike = commuteTypesChecked[index]
             break
         case 2:
-            user.commuteTypeBusTrain = commuteTypesChecked[index]
+            localUser.commuteTypeBusTrain = commuteTypesChecked[index]
             break
         default:
-            user.commuteTypeCar = commuteTypesChecked[index]
+            localUser.commuteTypeCar = commuteTypesChecked[index]
             break
         }
+        
+//        User.currentUser = user
+    }
+    
+    mutating func updateUserLocally() {
+        
+        let user = User.currentUser!
+        
+        user.profileOption1 = localUser.profileOption1
+        user.profileOption2 = localUser.profileOption2
+        user.profileOption3 = localUser.profileOption3
+        user.commuteTypeWalkRun = localUser.commuteTypeWalkRun
+        user.commuteTypeBike = localUser.commuteTypeBike
+        user.commuteTypeBusTrain = localUser.commuteTypeBusTrain
+        user.commuteTypeCar = localUser.commuteTypeCar
         
         User.currentUser = user
     }
@@ -106,6 +123,8 @@ class ProfileViewController: MenuContentViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordVerificationTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var genderTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var paypalTextField: UITextField!
     
@@ -198,6 +217,8 @@ class ProfileViewController: MenuContentViewController {
         lastNameTextField.text  = currentUser.lastName
         bioTextField.text       = currentUser.bio
         paypalTextField.text    = currentUser.paypalAccount
+        ageTextField.text       = currentUser.age
+        genderTextField.text    = currentUser.gender
         
         if let currentProfilePicture = currentUser.profilePicture {
             
@@ -222,10 +243,10 @@ class ProfileViewController: MenuContentViewController {
             return false
         }
         
-        if bioTextField.text! == "" {
-            showAlert("Biography field is empty")
-            return false
-        }
+//        if bioTextField.text! == "" {
+//            showAlert("Biography field is empty")
+//            return false
+//        }
         
         return true
     }
@@ -310,15 +331,23 @@ class ProfileViewController: MenuContentViewController {
                     
                     self.showAlert("profile_changes_submited".localize())
                     
-//                    self.profileImageView.yy_setImageWithURL(NSURL(string: (User.currentUser?.profilePicture)!), options: .RefreshImageCache)
                     self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
                     
                     // We persist the user's personal options locally
-                    user.profileOption1 = (User.currentUser?.profileOption1)!
-                    user.profileOption2 = (User.currentUser?.profileOption2)!
-                    user.profileOption3 = (User.currentUser?.profileOption3)!
+//                    user.profileOption1 = (User.currentUser?.profileOption1)!
+//                    user.profileOption2 = (User.currentUser?.profileOption2)!
+//                    user.profileOption3 = (User.currentUser?.profileOption3)!
+                    
+                    if let age = self.ageTextField.text where !age.isEmpty {
+                        user.age = age
+                    }
+                    
+                    if let gender = self.genderTextField.text where !gender.isEmpty {
+                        user.gender = gender
+                    }
                     
                     User.currentUser = user
+                    self.checkmarksStruct.updateUserLocally()
                     
                     let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
@@ -334,7 +363,6 @@ class ProfileViewController: MenuContentViewController {
             }
         }
     }
-    
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
@@ -364,7 +392,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     
-    func takePhotoFromGallery (){
+    func takePhotoFromGallery () {
         if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)) {
             
             let picker = UIImagePickerController();
@@ -387,6 +415,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
 }
+
+// MARK: - TableView DataSource and Delegate
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -470,7 +500,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.signUpButtonShouldChange(true)
+        self.signUpButtonShouldChange(true)
         
         if indexPath.section == 0 {
             checkmarksStruct.updateOptionState(indexPath.row)

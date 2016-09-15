@@ -24,11 +24,16 @@ final class LeaderboardsListViewController: MenuContentViewController {
     var leaderboards : [LeaderboardsResponse] = [LeaderboardsResponse]() {
         didSet {
             if leaderboards.count == 0 {
-                self.tableView.hidden = true
-                self.lblEmptyTable.hidden = false
+                // No leaderboards to show
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.hidden = true
+                    self.lblEmptyTable.hidden = false
+                })
             } else {
-                self.tableView.hidden = false
-                self.lblEmptyTable.hidden = true
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.hidden = false
+                    self.lblEmptyTable.hidden = true
+                })
             }
         }
     }
@@ -43,6 +48,10 @@ final class LeaderboardsListViewController: MenuContentViewController {
             self.dismissProgressHud()
             
             guard let leaderboards = leaderboards else {
+                
+                self.tableView.hidden = true
+                self.lblEmptyTable.hidden = false
+                
                 return
             }
             

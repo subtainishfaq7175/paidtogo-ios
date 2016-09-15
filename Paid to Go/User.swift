@@ -29,6 +29,11 @@ class User: Mappable {
     
     var type: String?
     
+    // MARK: Locally persisted, no API
+    
+    var age: String?
+    var gender: String?
+    
     var profileOption1 = false
     var profileOption2 = false
     var profileOption3 = false
@@ -82,6 +87,7 @@ class User: Mappable {
     
     // Mappable
     func mapping(map: Map) {
+        
         email               <- map["email"]
         name                <- map["first_name"]
         lastName            <- map["last_name"]
@@ -92,6 +98,8 @@ class User: Mappable {
         userId              <- map["user_id"]
         paypalAccount       <- map["paypal_account"]
         type                <- map["user_type"]
+        age                 <- map["age"]
+        gender              <- map["gender"]
         profileOption1      <- map["profile_option_1"]
         profileOption2      <- map["profile_option_2"]
         profileOption3      <- map["profile_option_3"]
@@ -99,7 +107,6 @@ class User: Mappable {
         commuteTypeBike     <- map["bike"]
         commuteTypeBusTrain <- map["bus"]
         commuteTypeCar      <- map["car"]
-        
     }
 }
 
