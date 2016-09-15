@@ -52,10 +52,10 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var newFromDate : NSDate?
     var newToDate : NSDate?
     
+    /// TO DO: The current logic works fine with stats from the same year. If we have a period of 6 months in between of a switch of year (for ex., oct-nov-dic-jan-feb-mar) some logic and validations should be added both when calculating the amounts and when drawing the chart (ChartsHelper)
     var arrTotalIncomeByMonth = [Double](count: 12, repeatedValue: 0.0)
     var arrTotalSavedGasByMonth = [Double](count: 12, repeatedValue: 0.0)
     var arrTotalCarbonOffByMonth = [Double](count: 12, repeatedValue: 0.0)
-    
     /*  We use the gregorian calendar logic to store the data by week:
      *
      *  [0 - Sun ; 1 - Mon ; 2 - Tue ; 3 - Wed ; 4 - Thu ; 5 - Fri ; 6 - Sat]
@@ -96,148 +96,12 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - Chart Configuration -
     
     private func initCharts() {
-        loadStatusIncomesData()
-        loadStatusSavedGasData()
-        loadStatusCarbonOffData()
+        
+        status.loadIncomesData(&arrTotalIncomeByMonth, weeklyIncomes: &arrTotalIncomeByWeek, currentDate: currentDate)
+        status.loadSavedGas(&arrTotalSavedGasByMonth, weeklyGasSaved: &arrTotalSavedGasByWeek, currentDate: currentDate)
+        status.loadCarbonOffset(&arrTotalCarbonOffByMonth, weeklyCarbonOffset:&arrTotalCarbonOffByWeek, currentDate: currentDate)
         
         configureChartForSixMonthsData()
-    }
-    
-    // MARK: - Chart Data Source -
-    
-    private func loadStatusIncomesData() {
-        
-        guard let incomes = self.status.incomes as StatusType? else {
-            return
-        }
-        
-        for incomeCalculatedUnit in incomes.calculatedUnits! {
-            
-            guard let dateString = incomeCalculatedUnit.date else {
-                continue
-            }
-            
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
-            
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
-                continue
-            }
-            
-            self.arrTotalIncomeByMonth[date.month-1] += incomeCalculatedUnit.value!
-            
-            // If the current day is Sunday, we show all the information of the past week
-            if currentDate.weekday == 1 {
-                if currentDate.weekOfYear-1 == date.weekOfYear {
-                    
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateIncomesForDayOfWeek(incomeCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-                
-            } else {
-                // If weeks of the year match -> Monday to Saturday
-                if currentDate.weekOfYear == date.weekOfYear {
-                    
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateIncomesForDayOfWeek(incomeCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-            }
-        }
-    }
-    
-    private func loadStatusSavedGasData() {
-        
-        guard let savedGas = self.status.savedGas as StatusType? else {
-            return
-        }
-        
-        for savedGasCalculatedUnit in savedGas.calculatedUnits! {
-
-            guard let dateString = savedGasCalculatedUnit.date else {
-                continue
-            }
-            
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
-            
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
-                continue
-            }
-            
-            self.arrTotalSavedGasByMonth[date.month-1] += savedGasCalculatedUnit.value!
-            
-            // If the current day is Sunday, we show all the information of the past week
-            if currentDate.weekday == 1 {
-                if currentDate.weekOfYear-1 == date.weekOfYear {
-                    
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateSavedGasForDayOfWeek(savedGasCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-                
-            } else {
-                // If weeks of the year match -> Monday to Saturday
-                if currentDate.weekOfYear == date.weekOfYear {
-
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateSavedGasForDayOfWeek(savedGasCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-            }
-        }
-    }
-    
-    private func loadStatusCarbonOffData() {
-        
-        guard let carbonOff = self.status.carbonOff as StatusType? else {
-            return
-        }
-        
-        for carbonOffCalculatedUnit in carbonOff.calculatedUnits! {
-            
-            guard let dateString = carbonOffCalculatedUnit.date else {
-                continue
-            }
-            
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
-            
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
-                continue
-            }
-            
-            self.arrTotalCarbonOffByMonth[date.month-1] += carbonOffCalculatedUnit.value!
-            
-            // If the current day is Sunday, we show all the information of the past week
-            if currentDate.weekday == 1 {
-                if currentDate.weekOfYear-1 == date.weekOfYear {
-                    
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateCarbonOffForDayOfWeek(carbonOffCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-                
-            } else {
-                // If weeks of the year match -> Monday to Saturday
-                if currentDate.weekOfYear == date.weekOfYear {
-                    
-                    // Sunday -> date.weekday == 1
-                    let dayOfTheWeek = date.weekday-1
-                    
-                    self.updateCarbonOffForDayOfWeek(carbonOffCalculatedUnit.value!, dayOfWeek: dayOfTheWeek)
-                }
-            }
-        }
-    }
-    
-    private func resetDataArrays() {
-        self.arrTotalIncomeByMonth = [Double](count: self.arrTotalIncomeByMonth.count, repeatedValue: 0.0)
-        self.arrTotalSavedGasByMonth = [Double](count: self.arrTotalSavedGasByMonth.count, repeatedValue: 0.0)
-        self.arrTotalCarbonOffByMonth = [Double](count: self.arrTotalCarbonOffByMonth.count, repeatedValue: 0.0)
     }
     
     func configureChartForSixMonthsData() {
@@ -302,11 +166,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
-    private func updateHeaderViewWithNewDates() {
-        self.lblFromdate.text = newFromDate?.toString(DateFormat.Custom("dd/MM/yyyy"))
-        self.lblTodate.text = newToDate?.toString(DateFormat.Custom("dd/MM/yyyy"))
-    }
-    
     private func updateFooterViewForIncomes() {
         self.lblTotalEarned.text = "Total Earned"
         guard let balance = self.status.incomes?.balance else {
@@ -354,43 +213,48 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - Actions -
     
     @IBAction func sixMonthsButtonAction(sender: AnyObject) {
+        
         configureChartForSixMonthsData()
+        
         sixMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
     }
     
     @IBAction func threeMonthsButtonAction(sender: AnyObject) {
+        
         configureChartForThreeMonthsData()
+        
         sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         threeMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
     }
     
     @IBAction func thisMonthButtonAction(sender: AnyObject) {
+        
         configureChartForCurrentWeek()
+        
         sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         thisMonthButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
     }
     
-//    @objc private func btnFilterSelected() {
-//        self.performSegueWithIdentifier(kDateFilterSegueIdentifier, sender: nil)
-//    }
-    
     @IBAction func incomesAction(sender: AnyObject) {
+        
         moveIndicatorToLeft()
         updateFooterViewForIncomes()
         self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     @IBAction func gasAction(sender: AnyObject) {
+        
         moveIndicatorToCenter()
         updateFooterViewForGas()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
     }
     
     @IBAction func carbonAction(sender: AnyObject) {
+        
         moveIndicatorToRight()
         updateFooterViewForCarbon()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
@@ -399,11 +263,13 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
         self.lastContentOffset = scrollView.contentOffset.x;
     }
     
     // Handles manual dragging by swiping on the screen
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
         if (self.lastContentOffset < scrollView.contentOffset.x) {
             // moved right
             let currentPage = scrollView.currentPage

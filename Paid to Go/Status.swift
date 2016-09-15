@@ -8,6 +8,13 @@
 
 import Foundation
 import ObjectMapper
+import SwiftDate
+
+enum Stats {
+    case Incomes
+    case SavedGas
+    case CarbonOff
+}
 
 public class Status: Mappable {
     
@@ -52,5 +59,136 @@ public class Status: Mappable {
         }
         
         return dictionary
+    }
+    
+    // MARK: Methods
+    
+    func loadIncomesData(inout monthlyIncomes:Array<Double>, inout weeklyIncomes:[Double], currentDate:NSDate) {
+        
+        guard let incomes = self.incomes as StatusType? else {
+            return
+        }
+        
+        for incomeCalculatedUnit in incomes.calculatedUnits! {
+            
+            guard let dateString = incomeCalculatedUnit.date else {
+                continue
+            }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            monthlyIncomes[date.month-1] += incomeCalculatedUnit.value!
+            
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyIncomes[dayOfTheWeek] += incomeCalculatedUnit.value!
+                }
+                
+            } else {
+                // If weeks of the year match -> Monday to Saturday
+                if currentDate.weekOfYear == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyIncomes[dayOfTheWeek] += incomeCalculatedUnit.value!
+                }
+            }
+        }
+    }
+    
+    func loadSavedGas(inout monthlyGasSaved:Array<Double>, inout weeklyGasSaved:[Double], currentDate:NSDate) {
+        
+        guard let savedGas = self.savedGas as StatusType? else {
+            return
+        }
+        
+        for savedGasCalculatedUnit in savedGas.calculatedUnits! {
+            
+            guard let dateString = savedGasCalculatedUnit.date else {
+                continue
+            }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            monthlyGasSaved[date.month-1] += savedGasCalculatedUnit.value!
+            
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyGasSaved[dayOfTheWeek] += savedGasCalculatedUnit.value!
+                }
+                
+            } else {
+                // If weeks of the year match -> Monday to Saturday
+                if currentDate.weekOfYear == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyGasSaved[dayOfTheWeek] += savedGasCalculatedUnit.value!
+                }
+            }
+        }
+    }
+    
+    func loadCarbonOffset(inout monthlyCarbonOffset:Array<Double>, inout weeklyCarbonOffset:[Double], currentDate:NSDate) {
+        
+        guard let carbonOff = self.carbonOff as StatusType? else {
+            return
+        }
+        
+        for carbonOffCalculatedUnit in carbonOff.calculatedUnits! {
+            
+            guard let dateString = carbonOffCalculatedUnit.date else {
+                continue
+            }
+            
+            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            
+            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+                continue
+            }
+            
+            monthlyCarbonOffset[date.month-1] += carbonOffCalculatedUnit.value!
+            
+            // If the current day is Sunday, we show all the information of the past week
+            if currentDate.weekday == 1 {
+                if currentDate.weekOfYear-1 == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyCarbonOffset[dayOfTheWeek] += carbonOffCalculatedUnit.value!
+                }
+                
+            } else {
+                // If weeks of the year match -> Monday to Saturday
+                if currentDate.weekOfYear == date.weekOfYear {
+                    
+                    // Sunday -> date.weekday == 1
+                    let dayOfTheWeek = date.weekday-1
+                    
+                    weeklyCarbonOffset[dayOfTheWeek] += carbonOffCalculatedUnit.value!
+                }
+            }
+        }
     }
 }

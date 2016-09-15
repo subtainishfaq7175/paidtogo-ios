@@ -11,12 +11,6 @@ import Charts
 
 // MARK: - Enums -
 
-enum Stats {
-    case Incomes
-    case SavedGas
-    case CarbonOff
-}
-
 enum GregorianDay : Int {
     case Sun = 0
     case Mon
@@ -95,7 +89,7 @@ class ChartsHelper: NSObject {
     var previousDate : NSDate! = NSDate()
     
     /**
-     Adds the value for the corresponding date
+     Adds the value for the corresponding date (Y axis)
      
      - parameter value: ammount (earnings, gas saved, carbon offset)
      - parameter index: date (month or day)
@@ -105,6 +99,11 @@ class ChartsHelper: NSObject {
         chartDataSetEntries.append(chartDataSetEntry)
     }
     
+    /**
+     Adds the corresponding date (X axis)
+     
+     - parameter date: type of date (month or day)
+     */
     func addXDate(date:String) {
         xVals.append(date)
     }
@@ -130,7 +129,7 @@ class ChartsHelper: NSObject {
             
             // We set the correct label for the month
             let monthName = getMonthName(month)
-            xVals.append(monthName.rawValue)
+            addXDate(monthName.rawValue)
             
             // We set a different color to the current month
             var color : UIColor!
@@ -184,10 +183,12 @@ class ChartsHelper: NSObject {
                 income = values[index+1]
             }
             
-            chartDataSetEntries.append(ChartDataEntry(value: income, xIndex: index))
+            // We set the data for the day
+            addYValueForXDate(income, index: index)
             
+            // We set the correct label for the day
             let dayName = getDayName(index)
-            xVals.append(dayName.rawValue)
+            addXDate(dayName.rawValue)
             
             // We set a different color to the current day
             var color : UIColor!
