@@ -47,6 +47,8 @@
 		4DC763A21D8732D80051BFF5 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */; };
 		4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD352C1D21624500A21739 /* Array+Extensions.swift */; };
 		4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA86921D1C46E800247168 /* ActivityManager.swift */; };
+		4DDD12C01D9068E5007C11CB /* PaymentValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD12BF1D9068E5007C11CB /* PaymentValidator.swift */; };
+		4DDD12C21D9068E9007C11CB /* PaymentValidatorPlatforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD12C11D9068E9007C11CB /* PaymentValidatorPlatforms.swift */; };
 		4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0005C1D469094001394E3 /* MapAnnotation.swift */; };
 		4DF0005F1D46971C001394E3 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0005E1D46971C001394E3 /* UIImage+Extensions.swift */; };
 		4DF169831D23FF3100D50F88 /* CLLocationManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */; };
@@ -178,6 +180,8 @@
 		4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4DDA86921D1C46E800247168 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		4DDD12BF1D9068E5007C11CB /* PaymentValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentValidator.swift; sourceTree = "<group>"; };
+		4DDD12C11D9068E9007C11CB /* PaymentValidatorPlatforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentValidatorPlatforms.swift; sourceTree = "<group>"; };
 		4DF0005C1D469094001394E3 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		4DF0005E1D46971C001394E3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		4DF169821D23FF3100D50F88 /* CLLocationManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -309,6 +313,15 @@
 			name = External;
 			sourceTree = "<group>";
 		};
+		4DDD12BE1D9068D9007C11CB /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD12C11D9068E9007C11CB /* PaymentValidatorPlatforms.swift */,
+				4DDD12BF1D9068E5007C11CB /* PaymentValidator.swift */,
+			);
+			name = IAP;
+			sourceTree = "<group>";
+		};
 		5218FB931CCAA2B80038E7F1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +342,7 @@
 		52227FD31C99A321002DBBFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4DDD12BE1D9068D9007C11CB /* IAP */,
 				524911921CAC125C00D6E763 /* Data */,
 				52258C101C9AF04100E3DAC7 /* Navigation */,
 				52227FD41C99A326002DBBFA /* Appearance */,
@@ -729,7 +743,7 @@
 				TargetAttributes = {
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = EUARY92ECY;
+						DevelopmentTeam = WBY4S2TLK6;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 0;
@@ -873,6 +887,7 @@
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
+				4DDD12C21D9068E9007C11CB /* PaymentValidatorPlatforms.swift in Sources */,
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
 				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
 				4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */,
@@ -929,6 +944,7 @@
 				4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */,
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
 				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,
+				4DDD12C01D9068E5007C11CB /* PaymentValidator.swift in Sources */,
 				52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */,
 				52FC35061CC66C5600E094DA /* Platform.swift in Sources */,
 				4D61B6CE1D89C7260087300C /* ChartsHelper.swift in Sources */,
@@ -1059,13 +1075,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "addd4122-db7d-41b6-a2e6-6b4dd77cc2c8";
+				PROVISIONING_PROFILE = "1e114a89-2407-483c-bf93-8abe662a2fa7";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1077,13 +1093,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "addd4122-db7d-41b6-a2e6-6b4dd77cc2c8";
+				PROVISIONING_PROFILE = "58f43db7-459b-4f3e-a2c1-107440066575";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 			};
 			name = Release;

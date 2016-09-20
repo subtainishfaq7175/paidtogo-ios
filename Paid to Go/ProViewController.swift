@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class ProViewController: ViewController {
 
@@ -14,6 +15,10 @@ class ProViewController: ViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
+    
+    // MARK: - Variables and constants
+    
+    var productsRequest:SKProductsRequest = SKProductsRequest()
     
     // MARK: - View life cycle -
     
@@ -38,16 +43,7 @@ class ProViewController: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Actions -
-    
-    @IBAction func closeButtonAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    
-    }
-    
-    @IBAction func acceptButtonAction(sender: AnyObject) {
-        print("Go Pro")
-        
+    func iapRayWenderlich() {
         self.showProgressHud()
         ProUser.store.requestProducts { (success, products) in
             self.dismissProgressHud()
@@ -65,7 +61,6 @@ class ProViewController: ViewController {
                     if let user = user { //success
                         
                         User.currentUser = user
-//                        self.showAlert("Congratulations!! You became a Pro User")
                         self.showAlertAndDismissModallyOnCompletion("Congratulations!! You became a Pro User")
                         
                     } else if let error = error {
@@ -80,6 +75,19 @@ class ProViewController: ViewController {
         }
     }
     
+    // MARK: - Actions -
+    
+    @IBAction func closeButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    
+    }
+    
+    @IBAction func acceptButtonAction(sender: AnyObject) {
+        print("Go Pro")
+        
+        becomeProUser()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -90,4 +98,42 @@ class ProViewController: ViewController {
     }
     */
 
+}
+
+extension ProViewController: SKProductsRequestDelegate {
+    
+    func becomeProUser() {
+        
+        var productID: NSSet
+        productID = NSSet(object: "com.aaronevans.paidtogo.prouser")
+        print("\(productID)")
+        
+        productsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+        productsRequest.delegate = self
+        productsRequest.start()
+    }
+    
+    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        
+        print("got the request from Apple")
+        
+        var count : Int = response.products.count
+        
+        if (count>0) {
+            
+            print("something")
+//            var validProducts = response.products
+//            var validProduct: SKProduct = response.products[0] as SKProduct
+//            if (validProduct.productIdentifier == self.product_id) {
+//                println(validProduct.localizedTitle)
+//                println(validProduct.localizedDescription)
+//                println(validProduct.price)
+//                buyProduct(validProduct);
+//            } else {
+//                println(validProduct.productIdentifier)
+//            }
+        } else {
+            print("nothing")
+        }
+    }
 }

@@ -98,6 +98,8 @@ class User: Mappable {
         userId              <- map["user_id"]
         paypalAccount       <- map["paypal_account"]
         type                <- map["user_type"]
+        
+        
         age                 <- map["age"]
         gender              <- map["gender"]
         profileOption1      <- map["profile_option_1"]

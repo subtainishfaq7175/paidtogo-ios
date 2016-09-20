@@ -143,6 +143,24 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func postValidateProUser(/*params: [String:AnyObject], completion:(error: String?) -> Void */) {
+        
+        // Load the receipt from the app bundle.
+        if let receiptURL = NSBundle.mainBundle().appStoreReceiptURL {
+            if let receipt = NSData(contentsOfURL: receiptURL) {
+                print("Receipt OK: \(receipt)")
+            } else {
+                print("Receipt Failed")
+            }
+        }
+        
+//        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+//        NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
+//        if (!receipt) {
+//        
+//        }
+    }
+    
     // MARK: - Notifications -
     
     func getNotifications(completion: ([Notification]) -> Void) {
@@ -317,20 +335,9 @@ class DataProvider : DataProviderService {
         
         let jsonRoute = ActivityManager.getActivityRouteString()
         json.updateValue(jsonRoute, forKey: "activity_route")
-        /*
-        let file = "file.txt" //this is the file. we will write to and read from it
-        let text = json. //just a text
         
-        if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(file)
-            
-            //writing
-            do {
-                try text.writeToURL(path, atomically: false, encoding: NSUTF8StringEncoding)
-            }
-            catch {/* error handling here */}
-        }
-        */
+        
+        
         ConnectionManager.sharedInstance.registerActivity(json) { (responseValue, error) in
             
             if (error == nil) {

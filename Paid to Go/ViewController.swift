@@ -240,8 +240,19 @@ class ViewController: UIViewController {
                 poolViewController.type = type
                 poolViewController.poolType = poolType
                 poolViewController.pool = pool
-            
-//                self.showViewController(poolViewController, sender: sender)
+//            self.showViewController(poolViewController, sender: sender)
+//            self.presentViewController(poolViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(poolViewController, animated: true)
+        }
+    }
+    
+    func showPoolViewControllerWithAntiCheatPhoto(type: PoolTypeEnum, poolType: PoolType, pool: Pool, validationPhoto:String, sender: AnyObject?) {
+        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
+            poolViewController.type = type
+            poolViewController.poolType = poolType
+            poolViewController.pool = pool
+            poolViewController.validationPhoto = validationPhoto
+//            self.showViewController(poolViewController, sender: sender)
 //            self.presentViewController(poolViewController, animated: true, completion: nil)
             self.navigationController?.pushViewController(poolViewController, animated: true)
         }

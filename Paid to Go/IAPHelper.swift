@@ -38,14 +38,25 @@ public class IAPHelper : NSObject  {
     public init(productIds: Set<ProductIdentifier>) {
         self.productIdentifiers = productIds
         
+        if !SKPaymentQueue.canMakePayments() {
+            print("Payment not allowed on this device")
+        } else {
+            print("Payment allowed")
+        }
+        
         for productIdentifier in productIds {
             //com.paidtogo.ProUser
             print("Product identifier: \(productIdentifier)")
+            
             let purchased = NSUserDefaults.standardUserDefaults().boolForKey(productIdentifier)
+            
             if purchased {
+                
                 purchasedProductIdentifiers.insert(productIdentifier)
                 print("Previously purchased: \(productIdentifier)")
+                
             } else {
+                
                 print("Not purchased: \(productIdentifier)")
             }
         }
@@ -85,6 +96,10 @@ extension IAPHelper {
     
     public func restorePurchases() {
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+    }
+    
+    public func validateSubscription() {
+        
     }
 }
 

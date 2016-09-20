@@ -263,6 +263,10 @@ extension PoolViewController: TrackDelegate {
         activity.poolId = ActivityManager.sharedInstance.poolId
         activity.accessToken = User.currentUser?.accessToken
         
+        if let validationPhoto = validationPhoto {
+            activity.photography = validationPhoto
+        }
+        
         print(activity.toString())
         
         pauseLocationUpdates()

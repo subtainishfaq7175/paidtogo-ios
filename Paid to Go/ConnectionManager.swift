@@ -34,6 +34,7 @@ class ConnectionManager {
     private var usersInviteURL : String { return "\(baseURL)/invite_users" }
     private var mystatusURL : String { return "\(baseURL)/mystatus" }
     private var activityRouteURL : String { return "\(baseURL)/activity_route" }
+    private var proUserValidationURL : String { return "https://buy.itunes.apple.com/verifyReceipt" }
     
     private var defaultHeaders: [String: String] {
         return [
@@ -96,6 +97,12 @@ extension ConnectionManager {
     func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
         
         let identifier = "Facebook Login API - POST"
+        self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
+    }
+    
+    func validateProUser(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
+        
+        let identifier = "Pro User Validation API - POST"
         self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
     }
     

@@ -144,6 +144,11 @@ class PoolViewController : ViewController {
     var type: PoolTypeEnum?
     
     /**
+     *  On Bus/Train pools, a photo is required for validation
+     */
+    var validationPhoto: String?
+    
+    /**
      *  Handles all the location features
      */
     var locationManager: CLLocationManager!

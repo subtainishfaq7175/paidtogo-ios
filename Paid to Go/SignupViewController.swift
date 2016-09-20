@@ -163,7 +163,6 @@ class SignupViewController: ViewController {
                 
             }
             
-            
             DataProvider.sharedInstance.postRegister(newUser, completion: { (user: User?, error: String?) in
                 
                 self.dismissProgressHud()

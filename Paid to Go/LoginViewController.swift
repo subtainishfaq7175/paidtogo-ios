@@ -32,8 +32,6 @@ class LoginViewController: ViewController {
         // Do any additional setup after loading the view, typically from a nib.
         initConstraints()
         
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,8 +51,11 @@ class LoginViewController: ViewController {
     }
     
     private func verifyIfThereIsCurrentUser() {
+        
+        DataProvider.sharedInstance.postValidateProUser()  //postValidateProUser
+        
         if let user = User.currentUser {
-            guard let userID = user.userId else {
+            guard let _ = user.userId else {
                 return
             }
 
@@ -85,6 +86,9 @@ class LoginViewController: ViewController {
                 if error == nil && user != nil {
                     
                     User.currentUser = user
+                    
+                    // Validate if user is pro
+//                    ProUser.store
                     
                     self.presentHomeViewController()
                     

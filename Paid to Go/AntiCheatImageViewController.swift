@@ -9,6 +9,7 @@
 import UIKit
 
 class AntiCheatImageViewController: ViewController {
+    
     @IBOutlet weak var startButtonView: UIView!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -38,8 +39,18 @@ class AntiCheatImageViewController: ViewController {
                 return
             }
             
-            if let poolType = poolType {
-                self.showPoolViewController(.Train, poolType: poolType, pool: self.pool!, sender: nil)
+            if let poolType = poolType, pool = self.pool {
+                
+                if let image = self.image {
+                    
+                    let imageData = UIImageJPEGRepresentation(image, 0.1)
+                    let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                    let validationPhoto = User.imagePrefix + base64String
+                    
+                    self.showPoolViewControllerWithAntiCheatPhoto(.Train, poolType: poolType, pool: pool, validationPhoto: validationPhoto, sender: nil)
+//                    self.showPoolViewController(.Train, poolType: poolType, pool: pool, sender: nil)
+                }
+                
             }
             
         }
