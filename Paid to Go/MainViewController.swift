@@ -12,7 +12,6 @@ import RainbowNavigation
 
 class MainViewController: REFrostedViewController {
     
-    
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +33,6 @@ class MainViewController: REFrostedViewController {
         self.direction = .Left
             
         }
-        
-        
     }
 }
 

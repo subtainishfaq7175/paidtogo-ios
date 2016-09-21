@@ -30,12 +30,19 @@ class ProViewController: ViewController {
             self.closeButton.setImage(image, forState: .Normal)
             self.closeButton.tintColor = UIColor.whiteColor()
         }
+        
+        self.setNeedsStatusBarAppearanceUpdate()
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.setBorderToView(self.acceptButton, color: UIColor.whiteColor().CGColor)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,7 +107,7 @@ class ProViewController: ViewController {
 
 }
 
-extension ProViewController: SKProductsRequestDelegate {
+extension ProViewController: SKProductsRequestDelegate, SKRequestDelegate {
     
     func becomeProUser() {
         
@@ -109,9 +116,12 @@ extension ProViewController: SKProductsRequestDelegate {
         print("\(productID)")
         
         productsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-        productsRequest.delegate = self
+//        productsRequest.delegate = self
         productsRequest.start()
+        productsRequest.delegate = self
     }
+    
+    
     
     func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         
@@ -120,7 +130,6 @@ extension ProViewController: SKProductsRequestDelegate {
         var count : Int = response.products.count
         
         if (count>0) {
-            
             print("something")
 //            var validProducts = response.products
 //            var validProduct: SKProduct = response.products[0] as SKProduct
@@ -136,4 +145,13 @@ extension ProViewController: SKProductsRequestDelegate {
             print("nothing")
         }
     }
+    
+    func requestDidFinish(request: SKRequest) {
+        print("request did finish: \(request)")
+    }
+    
+    func request(request: SKRequest, didFailWithError error: NSError) {
+        print("request did fail with error: \(error.description)")
+    }
+    
 }

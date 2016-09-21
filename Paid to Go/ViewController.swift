@@ -34,9 +34,9 @@ class ViewController: UIViewController {
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .Default
+//    }
     
     // MARK: - Navigation Bar -
     

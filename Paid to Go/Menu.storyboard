@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nac-S6-weN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="569" y="406"/>
+            <point key="canvasLocation" x="526" y="411"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="uiu-pG-ssI">
@@ -289,7 +289,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="664"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b7-1y-WQ5" userLabel="Close">
-                                                <rect key="frame" x="20" y="20" width="19" height="22"/>
+                                                <rect key="frame" x="20" y="28" width="19" height="22"/>
                                                 <state key="normal" image="ic_close"/>
                                                 <connections>
                                                     <action selector="closeButtonAction:" destination="ueM-L0-bv7" eventType="touchUpInside" id="Fac-C1-XA9"/>
@@ -382,7 +382,7 @@
                                             <constraint firstItem="aZV-Ae-ZB5" firstAttribute="top" secondItem="TSV-Yj-pEA" secondAttribute="bottom" id="SPi-mP-Kvh"/>
                                             <constraint firstItem="O4w-df-WO5" firstAttribute="leading" secondItem="yBm-bi-H2R" secondAttribute="leading" constant="10" id="Wab-M8-dEJ"/>
                                             <constraint firstItem="3Ng-dk-w0W" firstAttribute="centerX" secondItem="yBm-bi-H2R" secondAttribute="centerX" id="bUp-cU-x3x"/>
-                                            <constraint firstItem="2b7-1y-WQ5" firstAttribute="top" secondItem="yBm-bi-H2R" secondAttribute="top" constant="20" id="cy3-xq-YBP"/>
+                                            <constraint firstItem="2b7-1y-WQ5" firstAttribute="top" secondItem="yBm-bi-H2R" secondAttribute="top" constant="28" id="cy3-xq-YBP"/>
                                             <constraint firstItem="Caz-Sw-XRD" firstAttribute="leading" secondItem="yBm-bi-H2R" secondAttribute="leading" constant="10" id="gPs-AT-xVr"/>
                                             <constraint firstItem="2b7-1y-WQ5" firstAttribute="leading" secondItem="yBm-bi-H2R" secondAttribute="leading" constant="20" id="hZ4-UK-wgO"/>
                                             <constraint firstAttribute="bottom" secondItem="3Ng-dk-w0W" secondAttribute="bottom" constant="20" id="ngU-hV-JhQ"/>
@@ -420,6 +420,7 @@
                             <constraint firstItem="jKb-Nx-x8M" firstAttribute="top" secondItem="KFJ-Qv-Ufj" secondAttribute="bottom" id="xyg-yX-Rti"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Vm8-Qd-ZO1"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="acceptButton" destination="3Ng-dk-w0W" id="ZG2-9p-nAy"/>
@@ -428,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfB-16-FFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521.5" y="405.5"/>
+            <point key="canvasLocation" x="1487.5" y="405.5"/>
         </scene>
     </scenes>
     <resources>
