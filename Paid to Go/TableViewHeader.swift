@@ -43,7 +43,9 @@ extension TableViewHeader: TableViewHeaderConfiguration {
     
     func configureForPools(color:String) {
         self.titleLabel.text = "Pool Name"
-        self.backgroundColor = UIColor(rgba: color)
+        self.backgroundColor = UIColor.darkGrayColor()
+        titleLabel.textColor = UIColor.whiteColor()
+        attributeLabel.textColor = UIColor.whiteColor()
     }
     
     func configureForActivities() {

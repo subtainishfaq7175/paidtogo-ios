@@ -17,13 +17,15 @@ extension NSDate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        let date = dateFormatter.dateFromString(dateString)
-        
-        guard let dateStringUpdated = date!.toString(DateFormat.Custom("dd/MM/yyyy")) else {
-            return ""
+        if let date = dateFormatter.dateFromString(dateString) {
+            guard let dateStringUpdated = date.toString(DateFormat.Custom("dd/MM/yyyy")) else {
+                return ""
+            }
+            
+            return dateStringUpdated
         }
-
-        return dateStringUpdated
+        
+        return ""
     }
     
     // Input:Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy HH:mm:ss (NSDate)

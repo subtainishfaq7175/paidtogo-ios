@@ -140,7 +140,6 @@ extension PoolViewController {
             activity = Activity()
             
             self.startDateToTrack = NSDate()
-            
             startTracking()
             
             hasPoolStarted = true
@@ -456,6 +455,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
                 
         if ActivityManager.sharedInstance.startLongitude == 0.0 {
             locationUpdatedFirstTime(locationObj)
+            mapButtonPressed()
         } else {
             locationUpdatedSuccessiveTimes(locationObj)
         }
@@ -488,6 +488,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         
         ActivityManager.setLastLocation(location)
         
+        // If the map has allready been loaded at least once
         if let mapVC = mapViewController as MapViewController? {
             mapVC.addTravelSectionToMap(location)
             

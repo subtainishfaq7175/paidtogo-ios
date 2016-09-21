@@ -11,6 +11,7 @@
             <string>OpenSans-Italic</string>
             <string>OpenSans-Italic</string>
             <string>OpenSans-Italic</string>
+            <string>OpenSans-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -194,8 +195,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-Zx-pbU" userLabel="Earned View">
                                                 <rect key="frame" x="0.0" y="195" width="414" height="45"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Earned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYx-QO-KWT">
-                                                        <rect key="frame" x="12" y="13" width="75" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earnings*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYx-QO-KWT">
+                                                        <rect key="frame" x="12" y="13" width="65" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -224,6 +225,13 @@
                                                     <action selector="editingChanged:" destination="les-9x-ol5" eventType="editingChanged" id="VVj-zs-9pv"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZK-OM-yOi">
+                                                <rect key="frame" x="5" y="260" width="404" height="82"/>
+                                                <string key="text">*Based on pool rules and funds available. Paidtogo National Pools are competitive and earnings are released based on funds available and your leaderboard position. Pro members are paid first and then payments go down the list of free users until funds are exhausted. See the terms and conditions or paidtogo.com for more details</string>
+                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -232,12 +240,15 @@
                                             <constraint firstAttribute="trailing" secondItem="F8S-Jq-DqI" secondAttribute="trailing" id="3zy-6D-FC9"/>
                                             <constraint firstItem="DcN-RX-mt4" firstAttribute="width" secondItem="zQ3-T7-Qru" secondAttribute="width" multiplier="0.64" id="4e5-NS-oyH"/>
                                             <constraint firstAttribute="trailing" secondItem="dAH-NB-HCx" secondAttribute="trailing" id="55Y-yB-4Zg"/>
+                                            <constraint firstItem="4ZK-OM-yOi" firstAttribute="leading" secondItem="sYB-2z-SaN" secondAttribute="leading" constant="5" id="5EC-fH-bpK"/>
                                             <constraint firstItem="dAH-NB-HCx" firstAttribute="leading" secondItem="sYB-2z-SaN" secondAttribute="leading" id="5Y3-ro-Llg"/>
                                             <constraint firstItem="f9t-EK-F7o" firstAttribute="top" secondItem="kIc-Zx-pbU" secondAttribute="bottom" id="8AP-fi-HAT"/>
+                                            <constraint firstItem="4ZK-OM-yOi" firstAttribute="top" secondItem="kIc-Zx-pbU" secondAttribute="bottom" constant="20" id="8lP-tj-v8u"/>
                                             <constraint firstItem="DcN-RX-mt4" firstAttribute="centerX" secondItem="sYB-2z-SaN" secondAttribute="centerX" id="D7K-Mb-E6Y"/>
                                             <constraint firstItem="kIc-Zx-pbU" firstAttribute="height" secondItem="F8S-Jq-DqI" secondAttribute="height" multiplier="0.9" id="J8X-s0-I1n"/>
                                             <constraint firstAttribute="trailing" secondItem="ywX-r5-MKU" secondAttribute="trailing" id="L0f-Re-n8H"/>
                                             <constraint firstItem="F8S-Jq-DqI" firstAttribute="top" secondItem="ywX-r5-MKU" secondAttribute="bottom" id="OVd-hS-zW3"/>
+                                            <constraint firstAttribute="trailing" secondItem="4ZK-OM-yOi" secondAttribute="trailing" constant="5" id="R42-ba-2UP"/>
                                             <constraint firstItem="f9t-EK-F7o" firstAttribute="height" secondItem="F8S-Jq-DqI" secondAttribute="height" multiplier="0.9" id="XG5-6M-N38"/>
                                             <constraint firstItem="kIc-Zx-pbU" firstAttribute="top" secondItem="dAH-NB-HCx" secondAttribute="bottom" id="YeQ-sU-UUt"/>
                                             <constraint firstItem="ywX-r5-MKU" firstAttribute="leading" secondItem="sYB-2z-SaN" secondAttribute="leading" id="blI-Oa-9te"/>

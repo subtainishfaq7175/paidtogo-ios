@@ -15,6 +15,8 @@ class MapViewController: ViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var testLabelRejected: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -48,6 +50,11 @@ class MapViewController: ViewController {
 
         // Do any additional setup after loading the view.
         configureMap()
+        
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(closeButtonPressed))
+        gesture.direction = .Down
+        topView.addGestureRecognizer(gesture)
+        topView.userInteractionEnabled = true
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -151,6 +158,11 @@ class MapViewController: ViewController {
     @IBAction func closeButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func currentPositionButtonAction(sender: AnyObject) {
+        self.mapView.setCenterCoordinate(ActivityManager.getLastLocation().coordinate, animated: true)
+    }
+    
 }
 
 extension MapViewController : MKMapViewDelegate {

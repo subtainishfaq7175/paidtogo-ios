@@ -16,6 +16,8 @@ class NationalPoolsViewController: ViewController {
 //    @IBOutlet weak var navBarBackgroundView: UIView!    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorView: UIView!
+    @IBOutlet weak var tableHeaderView: TableViewHeader!
+    
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var headerTitleLabel: UILabel!
     
@@ -89,13 +91,12 @@ class NationalPoolsViewController: ViewController {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
         
-//        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
-        
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         headerImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
-//        self.title = "National Pools"
+        // Configures the table view header -> [ Pool Name - Rate Per Mile ]
+        self.tableHeaderView.configureForPools((self.poolType?.color)!)
     }
     
     func configureTableView() {

@@ -15,6 +15,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var goImageView: UIImageView!
+    @IBOutlet weak var goView: UIView!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
@@ -171,6 +173,9 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         // Sets the background image according to the pool -> [ Walk - Bike - Bus - Car ]
         setPoolBackgroundImage(self.backgroundImageView, poolType: poolType!)
+        
+        // Sets de National Pools background color
+        setPoolColor(self.goView, type: type!)
     }
     
     private func initViews() {

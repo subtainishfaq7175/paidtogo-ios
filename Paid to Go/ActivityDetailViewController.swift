@@ -93,7 +93,7 @@ class ActivityDetailViewController: ViewController {
         if let earnedMoney = activity?.earnedMoney {
             earnedLabel.text = "$\(earnedMoney)"
         } else {
-            earnedLabel.text = "$0"
+            earnedLabel.text = "$0.00"
         }
         
         if let startDate = activity?.startDateTime {
