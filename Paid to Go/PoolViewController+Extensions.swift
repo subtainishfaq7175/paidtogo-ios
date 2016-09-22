@@ -203,7 +203,7 @@ extension PoolViewController {
         default:
             let mapViewController = segue.destinationViewController as! MapViewController
             mapViewController.locationManager = self.locationManager
-            mapViewController.locationCoordinate = self.locationManager.location?.coordinate
+//            mapViewController.locationCoordinate = self.locationManager.location?.coordinate
             ActivityManager.setMapIsMainScreen(true)
             self.mapViewController = mapViewController
             break
@@ -461,6 +461,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         }
     }
     private func locationUpdatedFirstTime(location:CLLocation) {
+        
         ActivityManager.sharedInstance.startLatitude = location.coordinate.latitude
         ActivityManager.sharedInstance.startLongitude = location.coordinate.longitude
         ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
@@ -473,30 +474,30 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     }
     private func locationUpdatedSuccessiveTimes(location:CLLocation) {
         
-//        ActivityManager.updateMilesCounter(location)
-        
-        ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
-        ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
-        
-        /*
-        let milesTravelled = ActivityManager.getMilesCounter()
-        self.progressLabel.text = String(format: "%.2f", milesTravelled)
-        
-        let angle = ActivityManager.getCircularProgressAngle()
-        circularProgressView.angle = angle / circularProgressRoundOffset
-        */
-        
-        ActivityManager.setLastLocation(location)
-        
-        // If the map has allready been loaded at least once
-        if let mapVC = mapViewController as MapViewController? {
-            mapVC.addTravelSectionToMap(location)
+        if isTimerTracking {
             
-            let milesTravelled = ActivityManager.getMilesCounter()
-            self.progressLabel.text = String(format: "%.2f", milesTravelled)
+            ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
+            ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
             
-            let angle = ActivityManager.getCircularProgressAngle()
-            circularProgressView.angle = angle / circularProgressRoundOffset
+            if hasPausedAndResumedActivity {
+                hasPausedAndResumedActivity = false
+                
+                ActivityManager.setLastSubrouteInitialLocation(location)
+            }
+            
+            ActivityManager.setLastLocation(location)
+            
+            // If the map has allready been loaded at least once
+            if let mapVC = mapViewController as MapViewController? {
+                mapVC.addTravelSectionToMap(location)
+                
+                let milesTravelled = ActivityManager.getMilesCounter()
+                self.progressLabel.text = String(format: "%.2f", milesTravelled)
+                
+                let angle = ActivityManager.getCircularProgressAngle()
+                circularProgressView.angle = angle / circularProgressRoundOffset
+            }
+
         }
     }
 }

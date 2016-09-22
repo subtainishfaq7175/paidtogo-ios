@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+enum SubrouteType : String {
+    case Visible = "0"
+    case Invisible = "1"
+}
+
 class MapViewController: ViewController {
 
     // MARK: - IBOutlets
@@ -27,17 +32,7 @@ class MapViewController: ViewController {
     internal let kDistanceBetweenLocationsOffset = 25.0
     internal let metersPerMile = 1609.344
     
-    let geocoder = CLGeocoder()
-    
     var locationManager : CLLocationManager!
-    var locationCoordinate : CLLocationCoordinate2D!
-    
-    var route : MKRoute!
-    var source : MKMapItem!
-    var destination : MKMapItem!
-    
-//    var subroutes = [MKPolyline]()
-//    var mapIsMainScreen = false
     
     var previousLocation : CLLocation?
     var currentLocation : CLLocation?
@@ -78,13 +73,8 @@ class MapViewController: ViewController {
     }
     
     /**
-     *  Configures the map's pin with the app's main color
+     *  Centers the map on the user's current location
      */
-    private func configureMapPin() -> UIImage {
-        let mapPin = UIImage(named: "ic_map")?.imageWithRenderingMode(.AlwaysTemplate)
-        return (mapPin?.maskWithColor(CustomColors.greenColor()))!
-    }
-    
     private func configureMapRegion() {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 0.5 * metersPerMile, 0.5 * metersPerMile)
         mapView.setRegion(coordinateRegion, animated: true)
@@ -101,49 +91,28 @@ class MapViewController: ViewController {
         }
     }
     
-    private func addAnnotationsToMap() {
-        /*
-        let mapAnnotation = MapAnnotation(coordinate: ActivityManager.sharedInstance.endLocation.coordinate, title: "Final Location", subtitle: "")
-        mapView.addAnnotation(mapAnnotation)
-        mapView.reloadInputViews()
-         */
-    }
-    
+    /**
+     Handles the drawing of the user's route on the map
+     
+     - parameter currentLocation: the user's updated current location
+     */
     func addTravelSectionToMap(currentLocation:CLLocation) {
         
         let previousLocation = ActivityManager.getLastSubrouteInitialLocation()
         let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(previousLocation, locB: currentLocation)
         
+        // Test
         if ActivityManager.isMapMainScreen() {
             distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
         }
         
+        // We set a minimum offset of 10 meters of distance between user's location points, to draw only those subroutes on the map
         if distanceBetweenLocations > 10.0 {
             
-//            ActivityManager.updateMilesCounter(currentLocation)
+            // Update travelled miles by the user
             ActivityManager.updateMilesCounterWithMeters(distanceBetweenLocations)
             
-            var coordinates = [
-                previousLocation.coordinate,
-                currentLocation.coordinate
-            ]
-            
-            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-            
-            polyline.title = "0"
-            if ActivityManager.hasPausedAndResumedActivity() == true && ActivityManager.isFirstSubrouteAfterPausingAndResumingActivity() == true {
-                polyline.title = "1"
-                ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
-            }
-            
-            ActivityManager.addSubroute(polyline)
-            ActivityManager.setLastSubrouteInitialLocation(currentLocation)
-            ActivityManager.setTestCounter()
-            
-            if ActivityManager.isMapMainScreen() {
-                mapView.addOverlay(polyline, level: .AboveRoads)
-                testLabel.text = String(ActivityManager.getTestCounter())
-            }
+            configureTravelSection(previousLocation, currentLocation: currentLocation)
             
         } else {
             ActivityManager.setTestCounterRejected()
@@ -151,6 +120,41 @@ class MapViewController: ViewController {
                 testLabelRejected.text = String(ActivityManager.getTestCounterRejected())
             }
         }
+    }
+    
+    /**
+     Draws the subroutes on the map
+     
+     - parameter previousLocation: user's last location
+     - parameter currentLocation:  user's current location
+     */
+    func configureTravelSection(previousLocation:CLLocation, currentLocation:CLLocation){
+        
+        var coordinates = [
+            previousLocation.coordinate,
+            currentLocation.coordinate
+        ]
+        
+        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        
+        // Verifies if the subroute must or must not be visible
+        if ActivityManager.subrouteShouldBeInvisible() {
+            polyline.title = SubrouteType.Invisible.rawValue
+            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
+        } else {
+            polyline.title = SubrouteType.Visible.rawValue
+        }
+        
+        // If the map is on screen, the subroute is added. Otherwise, it will be drawn when the map screen is loaded
+        if ActivityManager.isMapMainScreen() {
+            mapView.addOverlay(polyline, level: .AboveRoads)
+            testLabel.text = String(ActivityManager.getTestCounter())
+        }
+        
+        ActivityManager.addSubroute(polyline)
+        
+        ActivityManager.setLastSubrouteInitialLocation(currentLocation)
+        ActivityManager.setTestCounter()
     }
     
     // MARK: - IBActions
@@ -167,136 +171,24 @@ class MapViewController: ViewController {
 
 extension MapViewController : MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation.isKindOfClass(MapAnnotation) {
-            
-            var mapAnnotationView = MKAnnotationView()
-            
-            if let mapAnnotView : MKAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(kMapAnnotationIdentifier) as MKAnnotationView? {
-                mapAnnotationView = mapAnnotView
-            } else {
-                mapAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: kMapAnnotationIdentifier)
-            }
-            
-            mapAnnotationView.enabled = true
-            mapAnnotationView.canShowCallout = true
-            
-            mapAnnotationView.image = configureMapPin()
-            
-            return mapAnnotationView
-            
-        } else {
-            return nil
-        }
-    }
-    
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         
         if let polylineOverlay = overlay as? MKPolyline {
-            let invisible = polylineOverlay.title
             let render = MKPolylineRenderer(polyline: polylineOverlay)
             
-            if invisible! == "0" {
-                render.strokeColor = CustomColors.greenColor()
-            } else {
-                render.strokeColor = UIColor.clearColor()
+            if let invisible = polylineOverlay.title {
+                if invisible == SubrouteType.Visible.rawValue {
+                    render.strokeColor = CustomColors.greenColor()
+                } else {
+                    render.strokeColor = UIColor.clearColor()
+                }
             }
             
             return render
+            
         }
         return nil
 
     }
     
 }
-
-/*
- private func addRouteToMap() {
- //        self.showProgressHud("Loading map...")
- 
- //  - Draws one line on the map between two points -
- 
- /*var coordinates = [
- (locationManager.location?.coordinate)!,
- ActivityManager.sharedInstance.endLocation.coordinate
- ]
- 
- let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
- 
- mapView.addOverlay(polyline, level: .AboveRoads)*/
- 
- 
- //  - Draws one road on the map from the user's current location to the final destination -
- 
- let initialLocation = locationManager.location!
- let endLocation = ActivityManager.sharedInstance.endLocation
- 
- // Initial location
- geocoder.reverseGeocodeLocation(initialLocation) { (placemarks, error) in
- if placemarks?.count > 0 {
- if let initialmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
- self.source =  MKMapItem(placemark: initialmkPlacemark)
- 
- // Final location
- self.geocoder.reverseGeocodeLocation(endLocation) { (placemarks, error) in
- if let finalmkPlacemark = self.getMKPlacemarkFromCLPlacemark(placemarks![0]) as MKPlacemark? {
- self.destination =  MKMapItem(placemark: finalmkPlacemark)
- 
- // Route between locations
- self.fetchRoute()
- }
- }
- }
- }
- }
- }
- */
-
-/*
- private func getMKPlacemarkFromCLPlacemark(clPlacemark:CLPlacemark) -> MKPlacemark? {
- if let addressDict = clPlacemark.addressDictionary as! [String:AnyObject]? {
- if let location = clPlacemark.location as CLLocation? {
- 
- let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict)
- return mkPlacemark
- }
- }
- 
- return nil
- }
- */
-
-/*
- private func fetchRoute() {
- let request:MKDirectionsRequest = MKDirectionsRequest()
- 
- // Source and destination are the relevant MKMapItems
- request.source = source
- request.destination = destination
- 
- // Specify the transportation type
- request.transportType = MKDirectionsTransportType.Automobile;
- 
- // If you're open to getting more than one route,
- // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
- request.requestsAlternateRoutes = true
- 
- let directions = MKDirections(request: request)
- 
- directions.calculateDirectionsWithCompletionHandler ({
- (response: MKDirectionsResponse?, error: NSError?) in
- 
- self.dismissProgressHud()
- 
- if error == nil {
- let directionsResponse = response
- // Get whichever currentRoute you'd like, ex. 0
- self.route = directionsResponse!.routes[0] as MKRoute
- 
- // Add route to map
- self.mapView.addOverlay(self.route.polyline, level: MKOverlayLevel.AboveRoads)
- }
- })
- }
- */

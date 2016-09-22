@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import MapKit
 
+// MARK: - Protocol -
+
 protocol ActivityTest {
     
     var testCounter : Int { get set }
@@ -39,16 +41,14 @@ class ActivityManager: NSObject, ActivityTest {
         
     }
     
+    internal static let metersToMiles = 0.000621371
+    
     // - Test - //
     var testCounter = 0
     var testCounterRejected = 0
     
-    internal static let metersToMiles = 0.000621371
-    
     var activity : Activity = Activity()
-    
     var poolId : String = ""
-    
     var startDateToTrack : NSDate = NSDate()
     
     var milesCounter : Double = 0.0
@@ -60,15 +60,11 @@ class ActivityManager: NSObject, ActivityTest {
     
     var initialLocation : CLLocation = CLLocation()
     
-//    var metersFromStartLocation : Double = 0.0
-//    var distanceToFinalDestination : Double = 0.0
-    
     //--//
     var lastLocation : CLLocation = CLLocation()
     var lastSubrouteInitialLocation : CLLocation = CLLocation()
     
     var subroutes = [MKPolyline]()
-    var subroutesPosta = [Subroute]()
     var mapIsMainScreen : Bool = false
     
     /**
@@ -100,7 +96,6 @@ class ActivityManager: NSObject, ActivityTest {
         lastSubrouteInitialLocation = CLLocation()
         
         subroutes = [MKPolyline]()
-        subroutesPosta = [Subroute]()
         mapIsMainScreen = false
         
         pausedAndResumedActivity = false
@@ -108,11 +103,6 @@ class ActivityManager: NSObject, ActivityTest {
     }
     
     //--//
-    
-//    static func getTrackNumber() -> Double {
-//        return sharedInstance.trackNumber
-//    }
-    
     static func setStartDateTime() {
         sharedInstance.startDateToTrack = NSDate()
     }
@@ -124,7 +114,6 @@ class ActivityManager: NSObject, ActivityTest {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateUTC = formatter.stringFromDate(sharedInstance.startDateToTrack)
         return dateUTC
-        
     }
     
     static func setMilesCounter(milesTravelled:Double) {
@@ -174,14 +163,6 @@ class ActivityManager: NSObject, ActivityTest {
     
     static func addSubroute(subroute:MKPolyline) {
         sharedInstance.subroutes.append(subroute)
-    }
-    
-    static func getSubroutesPosta() -> [Subroute] {
-        return sharedInstance.subroutesPosta
-    }
-    
-    static func addSubroutePosta(subroute:Subroute) {
-        sharedInstance.subroutesPosta.append(subroute)
     }
     
     static func getSubroutes() -> [MKPolyline] {
@@ -259,6 +240,15 @@ class ActivityManager: NSObject, ActivityTest {
     
     static func setFirstSubrouteAfterPausingAndResumingActivity(value:Bool) {
         sharedInstance.firstSubrouteAfterPausingAndResumingActivity = value
+    }
+    
+    // If the user has resumed the activity, we must not show the new subroute on the map
+    static func subrouteShouldBeInvisible() -> Bool {
+        if hasPausedAndResumedActivity() == true && isFirstSubrouteAfterPausingAndResumingActivity() == true {
+            return true
+        }
+        
+        return false
     }
     
     // - ActivityTestMethods - //

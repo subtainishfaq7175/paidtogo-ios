@@ -87,7 +87,7 @@ class ActivityDetailViewController: ViewController {
                 cal = "0 cal"
             }
             
-            caloriesLabel.text = "\(cal) Metric tons"
+            caloriesLabel.text = "\(cal) cal"
         }
         
         if let earnedMoney = activity?.earnedMoney {
