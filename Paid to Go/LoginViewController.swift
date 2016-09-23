@@ -65,7 +65,7 @@ class LoginViewController: ViewController {
     
     // MARK: - Actions
     @IBAction func loginButtonAction(sender: AnyObject) {
-        
+                
         if(validate()) {
             
             self.showProgressHud()
@@ -143,13 +143,13 @@ class LoginViewController: ViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        if segue.identifier == "segue_signup" {
-            if let destinationNC = segue.destinationViewController as? NavigationController {
-                if let destinationVC = destinationNC.viewControllers[0] as? SignupViewController {
-                    destinationVC.delegate = self
-                }
-            }
-        }
+//        if segue.identifier == "segue_signup" {
+//            if let destinationNC = segue.destinationViewController as? NavigationController {
+//                if let destinationVC = destinationNC.viewControllers[0] as? SignupViewController {
+//                    destinationVC.delegate = self
+//                }
+//            }
+//        }
     }
     
     // MARK: - Functions
@@ -199,11 +199,5 @@ class LoginViewController: ViewController {
         forgotPasswordBottomConstraint.constant = forgotPasswordBottomConstraint.constant + forgotPasswordBottomConstraint.constant * multiplier
     }
     
-}
-
-extension LoginViewController: SignupDelegate {
-    func goToHome() {
-        self.presentHomeViewController()
-    }
 }
 

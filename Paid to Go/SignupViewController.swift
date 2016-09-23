@@ -9,10 +9,6 @@
 import UIKit
 import Foundation
 
-protocol SignupDelegate {
-    func goToHome()
-}
-
 class SignupViewController: ViewController {
     
     @IBOutlet weak var signupButtonViewContainer: UIView!
@@ -32,8 +28,6 @@ class SignupViewController: ViewController {
     @IBOutlet weak var termsSwitch: UISwitch!
     
     var profileImage: UIImage?
-    
-    var delegate: SignupDelegate?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -137,7 +131,7 @@ class SignupViewController: ViewController {
     }
     
     @IBAction func signup(sender: AnyObject) {
-        
+                
         if(self.validate()) {
             
             self.showProgressHud("Loading")
@@ -163,6 +157,7 @@ class SignupViewController: ViewController {
                 
             }
             
+            
             DataProvider.sharedInstance.postRegister(newUser, completion: { (user: User?, error: String?) in
                 
                 self.dismissProgressHud()
@@ -184,12 +179,11 @@ class SignupViewController: ViewController {
                     
                     User.currentUser = newUser
                     
-                    self.dismissViewControllerAnimated(true, completion: {
-                        self.delegate?.goToHome()
-                    })
+                    self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
                 }
                 
             })
+            
         }
     }
 }
