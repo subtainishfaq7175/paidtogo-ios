@@ -542,9 +542,9 @@
                                     <action selector="takePicture:" destination="qEi-hY-t2X" eventType="touchUpInside" id="E4I-ON-OfC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
-                                <rect key="frame" x="24" y="508" width="327" height="88"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a Picture of the inside of your Bus or Train." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-3y-pEC">
+                                <rect key="frame" x="24" y="508" width="327" height="139"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -572,6 +572,7 @@
                             <constraint firstItem="pvc-up-bbD" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="VhC-h2-MiS"/>
                             <constraint firstItem="Chg-3y-pEC" firstAttribute="leading" secondItem="SBE-Nw-8EY" secondAttribute="leadingMargin" constant="8" id="VyE-hk-pto"/>
                             <constraint firstItem="cZm-ZV-bwk" firstAttribute="centerX" secondItem="SBE-Nw-8EY" secondAttribute="centerX" id="bmd-Mu-b9E"/>
+                            <constraint firstItem="VBk-gd-AXs" firstAttribute="top" secondItem="Chg-3y-pEC" secondAttribute="bottom" constant="20" id="gi9-OT-Xd2"/>
                             <constraint firstItem="pvc-up-bbD" firstAttribute="centerY" secondItem="SBE-Nw-8EY" secondAttribute="centerY" constant="-12" id="tyq-az-Lt7"/>
                         </constraints>
                     </view>
@@ -2944,7 +2945,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kk-4P-RMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-405.5" y="2465.5"/>
+            <point key="canvasLocation" x="-422.5" y="2465.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">
