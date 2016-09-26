@@ -25,6 +25,7 @@ class LoginViewController: ViewController {
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     
+    var tokenFB : String?
     
     // MARK: - Super
     override func viewDidLoad() {
@@ -105,39 +106,48 @@ class LoginViewController: ViewController {
         
         loginManager.logInWithReadPermissions(loginPermissions, fromViewController: self) { (result, error) in
             if let error = error {
+                self.showAlert(error.description)
                 print("Facebook Login Error: ",  error)
             } else {
                 
                 if let token = result.token {
                     
-                    let tokenString = token.tokenString
+                    self.tokenFB = token.tokenString
                     
                     loginManager.logOut()
                     
-                    let params = ["social_token" : tokenString]
-                    
-                    self.showProgressHud()
-                    
-                    DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
-                        self.dismissProgressHud()
-                        
-                        if let error = error where error.isEmpty == false {
-                            self.showAlert(error)
-                            return
-                        }
-                        
-                        if error == nil && user != nil {
-                            
-                            User.currentUser = user
-                            
-                            self.presentHomeViewController()
-                            
-                        }
-                    })
-                    
+                    self.loginFB(true)
                 }
             }
         }
+    }
+    
+    func loginFB(firstTry: Bool) {
+        
+        let params = ["social_token" : self.tokenFB!]
+        
+        self.showProgressHud()
+        
+        DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
+            self.dismissProgressHud()
+            
+            if let error = error where error.isEmpty == false {
+                if firstTry {
+                    self.loginFB(false)
+                } else {
+                    self.showAlert(error)
+                }
+                return
+            }
+            
+            if error == nil && user != nil {
+                
+                User.currentUser = user
+                
+                self.presentHomeViewController()
+                
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

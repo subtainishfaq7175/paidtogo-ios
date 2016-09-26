@@ -277,8 +277,8 @@ extension PoolViewController: TrackDelegate {
             
             self.dismissProgressHud()
             
-            if let error = error {
-                self.showAlert(error)
+            if let _ = error {
+                self.showAlert("Unable to connect with the server. Please verify your internet connection and try again")
                 return
             }
             

@@ -112,16 +112,17 @@ extension ProViewController: SKProductsRequestDelegate, SKRequestDelegate {
     func becomeProUser() {
         
         var productID: NSSet
-        productID = NSSet(object: "com.aaronevans.paidtogo.prouser")
+        productID = NSSet(objects: "com.aaronevans.paidtogo.prouser","test.subscription")
         print("\(productID)")
         
-        productsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-//        productsRequest.delegate = self
+        var set = Set<String>()
+        set.insert("com.aaronevans.paidtogo.prouser")
+        
+//        productsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+        productsRequest = SKProductsRequest(productIdentifiers: set)
         productsRequest.start()
         productsRequest.delegate = self
     }
-    
-    
     
     func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         

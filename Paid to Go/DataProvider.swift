@@ -154,11 +154,15 @@ class DataProvider : DataProviderService {
             }
         }
         
+        
+        
 //        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
 //        NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
 //        if (!receipt) {
 //        
 //        }
+        
+        
     }
     
     // MARK: - Notifications -
