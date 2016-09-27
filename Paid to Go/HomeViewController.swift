@@ -34,6 +34,12 @@ class HomeViewController: MenuContentViewController {
         customizeNavigationBarWithTitleAndMenu()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.showAlert("Llegue al home")
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationViewController = segue.destinationViewController as! PoolsViewController
         
@@ -62,7 +68,9 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Functions
     
-    
+    func proUserSubscriptionExpired(notification:NSNotification) {
+        
+    }
     
     // MARK: - Actions
     

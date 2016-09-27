@@ -171,7 +171,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         guard let balance = self.status.incomes?.balance else {
             return
         }
-        self.lblAmountEarned.text = "U$D " + String(format: "%.2f", (balance))
+        self.lblAmountEarned.text = "$ " + String(format: "%.2f", (balance))
     }
     
     private func updateFooterViewForGas() {

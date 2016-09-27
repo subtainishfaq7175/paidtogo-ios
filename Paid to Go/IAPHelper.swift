@@ -29,7 +29,6 @@ public class IAPHelper : NSObject  {
     
     private let productIdentifiers: Set<ProductIdentifier>
     private var purchasedProductIdentifiers = Set<ProductIdentifier>()
-    
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     
@@ -45,7 +44,6 @@ public class IAPHelper : NSObject  {
         }
         
         for productIdentifier in productIds {
-            //com.paidtogo.ProUser
             print("Product identifier: \(productIdentifier)")
             
             let purchased = NSUserDefaults.standardUserDefaults().boolForKey(productIdentifier)

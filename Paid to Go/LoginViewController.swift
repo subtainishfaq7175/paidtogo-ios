@@ -53,13 +53,43 @@ class LoginViewController: ViewController {
     
     private func verifyIfThereIsCurrentUser() {
         
-        DataProvider.sharedInstance.postValidateProUser()  //postValidateProUser
-        
         if let user = User.currentUser {
             guard let _ = user.userId else {
                 return
             }
-
+            
+            verifyProUserSubscription(user)
+        }
+    }
+    
+    private func verifyProUserSubscription(user:User) {
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.showProgressHud()
+        })
+        
+        // If there is a user persisted, and the user is Pro, we verify that the subscription is still valid
+        if user.isPro() {
+//            if let paymentToken = user.paymentToken where !paymentToken.isEmpty {
+                DataProvider.sharedInstance.postValidateProUser({ (error) in
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.dismissProgressHud()
+                    })
+                    
+                    if let _ = error {
+                        self.presentHomeViewControllerWithExpiredSubscriptionAlert()
+                    } else {
+                        self.presentHomeViewControllerWithoutAnimation()
+                    }
+                })
+//            }
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.dismissProgressHud()
+            })
+            
             presentHomeViewControllerWithoutAnimation()
         }
     }
@@ -88,10 +118,9 @@ class LoginViewController: ViewController {
                     
                     User.currentUser = user
                     
-                    // Validate if user is pro
-//                    ProUser.store
+                    self.verifyProUserSubscription(user!)
                     
-                    self.presentHomeViewController()
+//                    self.presentHomeViewController()
                     
                 }
             })

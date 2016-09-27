@@ -143,26 +143,25 @@ class DataProvider : DataProviderService {
         }
     }
     
-    func postValidateProUser(/*params: [String:AnyObject], completion:(error: String?) -> Void */) {
+    func postValidateProUser(completion:(error: String?) -> Void ) {
         
-        // Load the receipt from the app bundle.
-        if let receiptURL = NSBundle.mainBundle().appStoreReceiptURL {
-            if let receipt = NSData(contentsOfURL: receiptURL) {
-                print("Receipt OK: \(receipt)")
-            } else {
-                print("Receipt Failed")
-            }
+        if let receipt = AppleInAppValidator.getReceiptData() {
+            AppleInAppValidator.sharedInstance.verifyReceipt(receipt, completionHandler: { (result, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                    completion(error: error)
+                } else {
+                    
+                    if let receiptValidationResult = result {
+                        if receiptValidationResult.isValid() {
+                            completion(error: nil)
+                        } else {
+                            completion(error: "Error")
+                        }
+                    }
+                }
+            })
         }
-        
-        
-        
-//        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
-//        NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
-//        if (!receipt) {
-//        
-//        }
-        
-        
     }
     
     // MARK: - Notifications -
@@ -210,7 +209,7 @@ class DataProvider : DataProviderService {
             return
         }
         
-        let params = [
+        var params = [
             
             "open"         : open,
             "pool_type_id" : poolTypeId,
@@ -218,8 +217,13 @@ class DataProvider : DataProviderService {
         ]
         
         // National pools don't require the user's current position
-        if poolTypeId == "2" {
+        if poolTypeId != "2" {
             
+//            let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
+//            let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
+//            
+//            params["location_lat"] = lat
+//            params["location_lon"] = lon
         }
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
@@ -607,7 +611,6 @@ class DataProvider : DataProviderService {
 }
 
 protocol DataProviderService {
-    
     
     func getNotifications(completion: ([Notification]) -> Void)
     //    func getOpenPools(completion: ([Pool]) -> Void)

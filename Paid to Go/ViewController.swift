@@ -235,6 +235,16 @@ class ViewController: UIViewController {
         self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
+    func presentHomeViewControllerWithExpiredSubscriptionAlert() {
+        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
+//        
+//        let mainViewController = StoryboardRouter.menuMainViewController() as! MainViewController
+//        
+//        self.presentViewController(mainViewController, animated: true) {
+//            mainViewController.showAlert("Your Pro User Subscription has expired")
+//        }
+    }
+    
     func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, pool: Pool, sender: AnyObject?) {
         if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
                 poolViewController.type = type

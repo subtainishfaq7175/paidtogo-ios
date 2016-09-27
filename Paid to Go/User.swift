@@ -25,6 +25,7 @@ class User: Mappable {
     var paypalAccount: String?
     
     var accessToken: String?
+    var paymentToken: String?
     var userId: String?
     
     var type: String?
@@ -51,6 +52,7 @@ class User: Mappable {
         self.bio = ""
         self.profilePicture = ""
         self.accessToken = ""
+        self.paymentToken = ""
         self.userId = ""
         self.paypalAccount = ""
         self.type = ""
@@ -98,7 +100,7 @@ class User: Mappable {
         userId              <- map["user_id"]
         paypalAccount       <- map["paypal_account"]
         type                <- map["user_type"]
-        
+        paymentToken        <- map["payment_token"]
         
         age                 <- map["age"]
         gender              <- map["gender"]

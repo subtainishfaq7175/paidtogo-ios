@@ -11,13 +11,8 @@ import Foundation
 public struct ProUser {
     
     // BundleID chosen when registering this app's App ID in the Apple Member Center.
-//    private static let Prefix = "com.aaronevans.paidtogo"
-//    public static let ProUserSubscription = Prefix + ".prouser" + "pepe"
-    
     public static let ProUserSubscription = "com.aaronevans.paidtogo.prouser"
-    
     private static let productIdentifiers: Set<ProductIdentifier> = [ProUser.ProUserSubscription]
-    
     public static let store = IAPHelper(productIds: ProUser.productIdentifiers)
     
 }

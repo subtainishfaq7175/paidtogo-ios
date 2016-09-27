@@ -15,6 +15,7 @@ class ProViewController: ViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     // MARK: - Variables and constants
     
@@ -39,6 +40,7 @@ class ProViewController: ViewController {
         super.viewDidLayoutSubviews()
         
         self.setBorderToView(self.acceptButton, color: UIColor.whiteColor().CGColor)
+        self.setBorderToView(self.cancelButton, color: UIColor.whiteColor().CGColor)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -51,6 +53,7 @@ class ProViewController: ViewController {
     }
     
     func iapRayWenderlich() {
+        
         self.showProgressHud()
         ProUser.store.requestProducts { (success, products) in
             self.dismissProgressHud()
@@ -58,28 +61,39 @@ class ProViewController: ViewController {
             if success {
                 print("Product: \(products)")
                 
-                let userToSend = User()
-                userToSend.accessToken = User.currentUser?.accessToken
-                userToSend.type = UserType.Pro.rawValue
-                
-                DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
-                    self.dismissProgressHud()
-                    
-                    if let user = user { //success
-                        
-                        User.currentUser = user
-                        self.showAlertAndDismissModallyOnCompletion("Congratulations!! You became a Pro User")
-                        
-                    } else if let error = error {
-                        
-                        self.showAlert(error)
-                    }
+                if let autorenewableSubscription = products?.first {
+                    ProUser.store.buyProduct(autorenewableSubscription)
                 }
                 
             } else {
                 print("Error - IAP Failed to get autorenewable subscription")
             }
         }
+    }
+    
+    func becomePro() {
+        
+        let userToSend = User()
+        userToSend.accessToken = User.currentUser?.accessToken
+        userToSend.type = UserType.Pro.rawValue
+        
+        DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
+            self.dismissProgressHud()
+            
+            if let user = user { //success
+                
+                User.currentUser = user
+                self.showAlertAndDismissModallyOnCompletion("Congratulations!! You became a Pro User")
+                
+            } else if let error = error {
+                
+                self.showAlert(error)
+            }
+        }
+    }
+    
+    func handlePurchaseNotification(notification: NSNotification) {
+        becomePro()
     }
     
     // MARK: - Actions -
@@ -90,9 +104,12 @@ class ProViewController: ViewController {
     }
     
     @IBAction func acceptButtonAction(sender: AnyObject) {
-        print("Go Pro")
-        
-        becomeProUser()
+//        becomeProUser()
+        iapRayWenderlich()
+    }
+    
+    @IBAction func cancelButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*
@@ -105,54 +122,4 @@ class ProViewController: ViewController {
     }
     */
 
-}
-
-extension ProViewController: SKProductsRequestDelegate, SKRequestDelegate {
-    
-    func becomeProUser() {
-        
-        var productID: NSSet
-        productID = NSSet(objects: "com.aaronevans.paidtogo.prouser","test.subscription")
-        print("\(productID)")
-        
-        var set = Set<String>()
-        set.insert("com.aaronevans.paidtogo.prouser")
-        
-//        productsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-        productsRequest = SKProductsRequest(productIdentifiers: set)
-        productsRequest.start()
-        productsRequest.delegate = self
-    }
-    
-    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        
-        print("got the request from Apple")
-        
-        var count : Int = response.products.count
-        
-        if (count>0) {
-            print("something")
-//            var validProducts = response.products
-//            var validProduct: SKProduct = response.products[0] as SKProduct
-//            if (validProduct.productIdentifier == self.product_id) {
-//                println(validProduct.localizedTitle)
-//                println(validProduct.localizedDescription)
-//                println(validProduct.price)
-//                buyProduct(validProduct);
-//            } else {
-//                println(validProduct.productIdentifier)
-//            }
-        } else {
-            print("nothing")
-        }
-    }
-    
-    func requestDidFinish(request: SKRequest) {
-        print("request did finish: \(request)")
-    }
-    
-    func request(request: SKRequest, didFailWithError error: NSError) {
-        print("request did fail with error: \(error.description)")
-    }
-    
 }
