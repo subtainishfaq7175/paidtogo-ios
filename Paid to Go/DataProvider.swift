@@ -208,25 +208,26 @@ class DataProvider : DataProviderService {
     
     func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         
-        guard let userID = User.currentUser?.userId else {
-            return
-        }
+//        guard let userID = User.currentUser?.userId else {
+//            return
+//        }
         
         var params = [
             
             "open"         : open,
             "pool_type_id" : poolTypeId,
-            "user_id"      : userID
+//            "user_id"      : userID
         ]
         
         // National pools don't require the user's current position
         if poolTypeId != "2" {
+            /*
+            let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
+            let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
             
-//            let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
-//            let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
-//            
-//            params["location_lat"] = lat
-//            params["location_lon"] = lon
+            params["location_lat"] = lat
+            params["location_lon"] = lon
+             */
         }
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in

@@ -49,6 +49,8 @@ class ActivityViewController: MenuContentViewController {
         self.tableViewHeader.configureForActivities()
         self.configureTableView()
         self.getNotifications()
+        
+        self.title = "menu_activity".localize()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,8 +63,11 @@ class ActivityViewController: MenuContentViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.title = "menu_activity".localize()
-
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -74,14 +79,14 @@ class ActivityViewController: MenuContentViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kActivityDetailSegueIdentifier {
-            guard let activityRoute = sender as? [ActivitySubroute] else {
-                return
+            
+            if let vc = segue.destinationViewController as? ActivityDetailViewController {
+                vc.activity = self.activity
+                
+                if let activityRoute = sender as? [ActivitySubroute] {
+                    vc.activityRoute = activityRoute
+                }
             }
-            guard let vc = segue.destinationViewController as? ActivityDetailViewController else {
-                return
-            }
-            vc.activityRoute = activityRoute
-            vc.activity = self.activity
         }
     }
     

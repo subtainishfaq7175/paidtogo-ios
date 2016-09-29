@@ -84,7 +84,7 @@ class ActivityDetailViewController: ViewController {
         
         if var cal = activity?.savedCalories {
             if cal == "" {
-                cal = "0 cal"
+                cal = "0"
             }
             
             caloriesLabel.text = "\(cal) cal"
