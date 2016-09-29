@@ -62,36 +62,24 @@ class LoginViewController: ViewController {
         }
     }
     
+    /**
+     We verify, if the user has a currently active subscription, that the subscription is still valid
+     
+     - parameter user: the user
+     */
     private func verifyProUserSubscription(user:User) {
         
-        dispatch_async(dispatch_get_main_queue(), {
-            self.showProgressHud()
-        })
-        
-        // If there is a user persisted, and the user is Pro, we verify that the subscription is still valid
-        if user.isPro() {
-//            if let paymentToken = user.paymentToken where !paymentToken.isEmpty {
-                DataProvider.sharedInstance.postValidateProUser({ (error) in
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.dismissProgressHud()
-                    })
-                    
-                    if let _ = error {
-                        self.presentHomeViewControllerWithExpiredSubscriptionAlert()
-                    } else {
-                        self.presentHomeViewControllerWithoutAnimation()
-                    }
-                })
-//            }
-        } else {
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.dismissProgressHud()
+        if user.isPro() && user.hasPaymentToken() {
+            // If the user is a Pro User and has a paymentToken, we validate with the Apple API if the subscription is still in course
+            DataProvider.sharedInstance.postValidateProUser({ (error) in
+                if let _ = error {
+                    // Post Pro User expired notification
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NotificationsHelper.ProUserSubscriptionExpired.rawValue, object: nil))
+                }
             })
-            
-            presentHomeViewControllerWithoutAnimation()
         }
+        
+        presentHomeViewController()
     }
     
     // MARK: - Actions
@@ -119,9 +107,6 @@ class LoginViewController: ViewController {
                     User.currentUser = user
                     
                     self.verifyProUserSubscription(user!)
-                    
-//                    self.presentHomeViewController()
-                    
                 }
             })
         }
@@ -173,7 +158,7 @@ class LoginViewController: ViewController {
                 
                 User.currentUser = user
                 
-                self.presentHomeViewController()
+                self.verifyProUserSubscription(user!)
                 
             }
         })

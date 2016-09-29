@@ -34,6 +34,7 @@ class ProViewController: ViewController {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handlePurchaseNotification(_:)), name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,6 +77,9 @@ class ProViewController: ViewController {
         let userToSend = User()
         userToSend.accessToken = User.currentUser?.accessToken
         userToSend.type = UserType.Pro.rawValue
+        userToSend.paymentToken = AppleInAppValidator.getReceiptData()
+        
+        self.showProgressHud()
         
         DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
             self.dismissProgressHud()

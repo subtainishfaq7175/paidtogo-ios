@@ -32,12 +32,13 @@ class HomeViewController: MenuContentViewController {
         super.viewDidLoad()
         
         customizeNavigationBarWithTitleAndMenu()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(proUserSubscriptionExpired(_:)) , name: NotificationsHelper.ProUserSubscriptionExpired.rawValue, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.showAlert("Llegue al home")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,7 +70,29 @@ class HomeViewController: MenuContentViewController {
     // MARK: - Functions
     
     func proUserSubscriptionExpired(notification:NSNotification) {
-        
+        dispatch_async(dispatch_get_main_queue()) {
+            let alertController = UIAlertController(title: "Paid to Go", message:
+                "Your subscription was cancelled, PRO features will be removed", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(alertAction)
+            
+            self.presentViewController(alertController, animated: true, completion: {
+                // Update user profile
+
+                let userToSend = User()
+                userToSend.accessToken = User.currentUser?.accessToken!
+                userToSend.type = UserType.Normal.rawValue
+                
+                DataProvider.sharedInstance.postUpdateProfile(userToSend, completion: { (user, error) in
+                    if let user = user {
+                        User.currentUser = user
+                        
+                        let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
+                        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
+                    }
+                })
+            })
+        }
     }
     
     // MARK: - Actions

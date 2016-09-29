@@ -9,5 +9,7 @@
 import Foundation
 
 enum NotificationsHelper : String {
+    
     case UserProfileUpdated = "user_profile_updated"
+    case ProUserSubscriptionExpired = "pro_user_subscription_expired"
 }

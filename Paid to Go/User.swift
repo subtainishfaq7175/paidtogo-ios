@@ -83,6 +83,15 @@ class User: Mappable {
         return false
     }
     
+    func hasPaymentToken() -> Bool {
+        if let paymentToken = self.paymentToken where paymentToken.isEmpty {
+            print("User => NO paymentToken")
+            return false
+        }
+        print("User => paymentToken OK!")
+        return true
+    }
+    
     static func setProUser() {
         currentUser!.type = UserType.Pro.rawValue
     }

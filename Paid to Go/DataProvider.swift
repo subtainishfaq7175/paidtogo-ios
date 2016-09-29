@@ -161,6 +161,9 @@ class DataProvider : DataProviderService {
                     }
                 }
             })
+        } else {
+            // The receipt is nil, there is no pro user subscription. By logic, i shouldn't get here...
+            print("postValidateProUser - The receipt is nil")
         }
     }
     
