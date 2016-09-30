@@ -58,12 +58,10 @@ class ActivityDetailViewController: ViewController {
     func initLayout() {
         self.statsView.backgroundColor = CustomColors.carColor()
         
-        if var miles = activity?.milesTraveled {
-            if miles == "" {
-                miles = "0"
-            }
-            
+        if let miles = activity?.milesTraveled {
             milesLabel.text = "\(miles) miles"
+        } else {
+            milesLabel.text = "0 miles"
         }
         
         if var gas = activity?.savedGas {
@@ -91,7 +89,11 @@ class ActivityDetailViewController: ViewController {
         }
         
         if let earnedMoney = activity?.earnedMoney {
-            earnedLabel.text = "$\(earnedMoney)"
+            if earnedMoney == "0" {
+                earnedLabel.text = "$0.00"
+            } else {
+                earnedLabel.text = "$\(earnedMoney)"
+            }
         } else {
             earnedLabel.text = "$0.00"
         }
@@ -102,8 +104,9 @@ class ActivityDetailViewController: ViewController {
         
         if let endDate = activity?.endDateTime {
             endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(endDate))"
+        } else if let startDate = activity?.startDateTime {
+                endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(startDate))"
         }
-
     }
     
     func configureMap() {

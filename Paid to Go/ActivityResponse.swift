@@ -11,10 +11,10 @@ import ObjectMapper
 
 class ActivityResponse: Mappable {
     
-    var savedCalories: String?
+    var savedCalories: Double?
     var earnedMoney: Double?
-    var savedGas: String?
-    var savedCo2: String?
+    var savedGas: Double?
+    var savedCo2: Double?
     
     init() {
         
@@ -28,21 +28,10 @@ class ActivityResponse: Mappable {
     func mapping(map: Map) {
         
         savedCalories       <-  map["saved_calories"]
-        if savedCalories == nil {
-            savedCalories = "0"
-        }
         earnedMoney         <-  map["earned_money"]
-        if earnedMoney == nil {
-            earnedMoney = 0.0
-        }
         savedCo2            <-  map["saved_co2"]
-        if savedCo2 == nil {
-            savedCo2 = "0"
-        }
         savedGas            <-  map["saved_gas"]
-        if savedGas == nil {
-            savedGas = "0"
-        }
+
         
     }
 }

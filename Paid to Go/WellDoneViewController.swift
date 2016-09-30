@@ -106,42 +106,48 @@ class WellDoneViewController: ViewController {
             
         }
         
-        if var miles = activity?.milesTraveled {
-            if miles == "" {
-                miles = "0"
+        if let miles = activity?.milesTraveled {
+            if miles == "0.00" {
+                milesLabel.text = "0 miles"
+            } else {
+                milesLabel.text = "\(miles) miles"
             }
-            
-            milesLabel.text = "\(miles) miles"
         }
         
-        if var gas = activityResponse?.savedGas {
-            if gas == "" {
-                gas = "0"
+        if let gas = activityResponse?.savedGas {
+            if gas == 0.0 {
+                gasLabel.text = "0 gal"
+            } else {
+                gasLabel.text = String(format: "%.2f", gas) + " gal"
             }
-            
-            gasLabel.text = "\(gas) gal"
+        } else {
+             gasLabel.text = "0 gal"
         }
         
-        if var co2 = activityResponse?.savedCo2 {
-            if co2 == "" {
-                co2 = "0"
+        if let co2 = activityResponse?.savedCo2 {
+            if co2 == 0.0 {
+                co2Label.text = "0 Metric tons"
+            } else {
+                co2Label.text = String(format: "%.2f", co2) + " Metric tons"
             }
-            
-            co2Label.text = "\(co2) Metric tons"
+        } else {
+            co2Label.text = "0 Metric tons"
         }
         
-        if var cal = activityResponse?.savedCalories {
-            if cal == "" {
-                cal = "0 cal"
+        if let cal = activityResponse?.savedCalories {
+            if cal == 0.0 {
+                caloriesLabel.text = "0 cal"
+            } else {
+                caloriesLabel.text = String(format: "%.2f", cal) + " cal"
             }
-            
-            caloriesLabel.text = "\(cal) cal"
+        } else {
+            caloriesLabel.text = "0 cal"
         }
         
         if let earnedMoney = activityResponse?.earnedMoney {
             earnedLabel.text = "$\(earnedMoney)*"
         } else {
-            earnedLabel.text = "$0*"
+            earnedLabel.text = "$0.00*"
         }
         
     }

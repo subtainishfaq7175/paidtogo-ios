@@ -200,6 +200,11 @@ class PoolViewController : ViewController {
     var quickSwitchBetweenPools = false
     
     /**
+     *  Indicates if the user's location has been updated for the first time. (didUpdateLocations)
+     */
+    var firstLocationUpdate = true
+    
+    /**
      *  The PoolType of the quickswitch
      */
     var quickSwitchPoolType: PoolTypeEnum?

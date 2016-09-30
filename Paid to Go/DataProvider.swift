@@ -208,26 +208,23 @@ class DataProvider : DataProviderService {
     
     func getPools(poolTypeId: String, open: String, completion: (pools: [Pool]?, error: String?) -> Void) {
         
-//        guard let userID = User.currentUser?.userId else {
-//            return
-//        }
+        guard let userID = User.currentUser?.userId else {
+            return
+        }
         
         var params = [
-            
             "open"         : open,
             "pool_type_id" : poolTypeId,
-//            "user_id"      : userID
         ]
         
-        // National pools don't require the user's current position
-        if poolTypeId != "2" {
-            /*
-            let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
-            let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
-            
-            params["location_lat"] = lat
-            params["location_lon"] = lon
-             */
+        let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
+        let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
+        params["location_lat"] = lat
+        params["location_lon"] = lon
+        
+        // Closed pools should be filtered by the userID
+        if open == "0" {
+            params["user_id"] = userID
         }
         
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in

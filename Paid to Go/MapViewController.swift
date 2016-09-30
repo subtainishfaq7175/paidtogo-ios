@@ -25,6 +25,7 @@ class MapViewController: ViewController {
     @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var testLabelRejected: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var testHorizontalAccuracy: UILabel!
     
     // MARK: - Variables and constants
     
@@ -32,7 +33,7 @@ class MapViewController: ViewController {
     internal let kDistanceBetweenLocationsOffset = 25.0
     internal let metersPerMile = 1609.344
     
-    var locationManager : CLLocationManager!
+    var locationManager : CLLocationManager?
     
     var previousLocation : CLLocation?
     var currentLocation : CLLocation?
@@ -76,8 +77,13 @@ class MapViewController: ViewController {
      *  Centers the map on the user's current location
      */
     private func configureMapRegion() {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 0.5 * metersPerMile, 0.5 * metersPerMile)
-        mapView.setRegion(coordinateRegion, animated: true)
+        
+        if let locationManager = self.locationManager {
+             let coordinateRegion = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 0.5 * metersPerMile, 0.5 * metersPerMile)
+            
+            mapView.setRegion(coordinateRegion, animated: true)
+        }
+        
     }
     
     private func addSubroutesToMap() {
@@ -104,10 +110,11 @@ class MapViewController: ViewController {
         // Test
         if ActivityManager.isMapMainScreen() {
             distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
+            testHorizontalAccuracy.text = String(format: "%.2f", currentLocation.horizontalAccuracy)
         }
         
-        // We set a minimum offset of 10 meters of distance between user's location points, to draw only those subroutes on the map
-        if distanceBetweenLocations > 10.0 {
+        // We set a minimum offset of 30 meters of distance between user's location points, to draw only those subroutes on the map
+        if distanceBetweenLocations > 30.0 {
             
             // Update travelled miles by the user
             ActivityManager.updateMilesCounterWithMeters(distanceBetweenLocations)

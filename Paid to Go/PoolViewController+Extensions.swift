@@ -51,6 +51,8 @@ extension PoolViewController {
         
         let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
         self.progressLabel.text = String(format: "%.2f", milesCounter)
+        
+        mapButton.hidden = true
     }
     
     // MARK: - Private Methods
@@ -219,7 +221,7 @@ extension PoolViewController: TrackDelegate {
         // Paused
         if isTimerTracking {
             
-            //pausePedometerUpdates()
+            pausePedometerUpdates()
             pauseTracking()
             pauseLocationUpdates()
             
@@ -230,7 +232,7 @@ extension PoolViewController: TrackDelegate {
             ActivityManager.setPausedAndResumedActivity()
             ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(true)
             
-            //resumePedometerUpdates()
+            resumePedometerUpdates()
             startTracking()
             startLocationUpdates()
         }
@@ -245,6 +247,8 @@ extension PoolViewController: TrackDelegate {
             print("Pool - Start date time -")
             ActivityManager.setStartDateTime()
         }
+        
+        updatePedometer()
     }
     func pauseTracking() {
         pauseButton.setTitle("Resume", forState: UIControlState.Normal)
@@ -438,7 +442,13 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     func initLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if self.type == PoolTypeEnum.Walk || self.type == PoolTypeEnum.Bike {
+            locationManager.activityType = .Fitness
+        } else {
+            locationManager.activityType = .AutomotiveNavigation
+        }
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         locationManager.requestAlwaysAuthorization()
     }
@@ -450,12 +460,22 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        mapButton.hidden = false
+        
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
                 
         if ActivityManager.sharedInstance.startLongitude == 0.0 {
-            locationUpdatedFirstTime(locationObj)
-            mapButtonPressed()
+            
+            // We ignore the first location update to allow the GPS to configure its accuracy
+            if firstLocationUpdate {
+                firstLocationUpdate = false
+                mapButtonPressed()
+            } else {
+                locationUpdatedFirstTime(locationObj)
+//                mapButtonPressed()
+            }
+            
         } else {
             locationUpdatedSuccessiveTimes(locationObj)
         }
@@ -489,6 +509,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
             
             // If the map has allready been loaded at least once
             if let mapVC = mapViewController as MapViewController? {
+                
                 mapVC.addTravelSectionToMap(location)
                 
                 let milesTravelled = ActivityManager.getMilesCounter()

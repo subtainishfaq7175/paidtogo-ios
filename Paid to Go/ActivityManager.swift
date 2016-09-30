@@ -58,10 +58,11 @@ class ActivityManager: NSObject, ActivityTest {
     var startLatitude : Double = 0.0
     var startLongitude : Double = 0.0
     
-    var initialLocation : CLLocation = CLLocation()
+//    var initialLocation : CLLocation = CLLocation()
     
-    //--//
+    // The last updated location. Every new location updated is compared with the last updated location
     var lastLocation : CLLocation = CLLocation()
+    
     var lastSubrouteInitialLocation : CLLocation = CLLocation()
     
     var subroutes = [MKPolyline]()
