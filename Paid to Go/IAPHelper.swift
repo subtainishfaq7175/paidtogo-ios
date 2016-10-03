@@ -20,6 +20,9 @@
  * THE SOFTWARE.
  */
 
+// In-App Purchase Tutorial: Getting Started:
+//https://www.raywenderlich.com/122144/in-app-purchase-tutorial
+
 import StoreKit
 
 public typealias ProductIdentifier = String

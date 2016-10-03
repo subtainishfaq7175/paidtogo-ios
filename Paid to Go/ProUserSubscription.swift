@@ -12,9 +12,9 @@ public struct ProUser {
     
     // BundleID chosen when registering this app's App ID in the Apple Member Center.
     
-//    public static let ProUserSubscription = "com.aaronevans.paidtogo.prouser"
+    public static let ProUserSubscription = "com.aaronevans.paidtogo.prouser"
     
-    public static let ProUserSubscription = "test.subscription"
+//    public static let ProUserSubscription = "test.subscription"
     
     private static let productIdentifiers: Set<ProductIdentifier> = [ProUser.ProUserSubscription]
     public static let store = IAPHelper(productIds: ProUser.productIdentifiers)

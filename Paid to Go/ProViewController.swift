@@ -53,7 +53,7 @@ class ProViewController: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func iapRayWenderlich() {
+    func handleInAppPurchase() {
         
         self.showProgressHud()
         ProUser.store.requestProducts { (success, products) in
@@ -68,6 +68,7 @@ class ProViewController: ViewController {
                 
             } else {
                 print("Error - IAP Failed to get autorenewable subscription")
+                self.showAlert("Pro User subscription failed")
             }
         }
     }
@@ -108,8 +109,7 @@ class ProViewController: ViewController {
     }
     
     @IBAction func acceptButtonAction(sender: AnyObject) {
-//        becomeProUser()
-        iapRayWenderlich()
+        handleInAppPurchase()
     }
     
     @IBAction func cancelButtonAction(sender: AnyObject) {

@@ -170,7 +170,7 @@ class ActivityDetailViewController: ViewController {
                 return
             }
             
-            for index in 0..<((self.activityRoute?.count)!-1) {
+            for index in 0..<((self.activityRoute?.count)!/*-1*/) {
                 
                 let subroute = self.activityRoute![index]
                 
