@@ -499,7 +499,7 @@ class DataProvider : DataProviderService {
     
     // MARK: - Send Email -
     
-    func sendEmailToUsers(users: [String], completion: (result: Bool?, error: String?) -> Void) {
+    func sendEmailToUsers(users: [String], poolId: String,  completion: (result: Bool?, error: String?) -> Void) {
         
         let accessToken = User.currentUser?.accessToken
         let userIDString = arrayToJSONString(users)
@@ -507,7 +507,7 @@ class DataProvider : DataProviderService {
         let params = [
             
             "access_token"  : accessToken,
-            "pool_id"       : "4",
+            "pool_id"       : poolId,
             "users_id_array": userIDString
         ]
         

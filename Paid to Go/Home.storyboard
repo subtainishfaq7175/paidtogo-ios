@@ -1205,7 +1205,7 @@
                                     <action selector="closeButtonPressed:" destination="cwD-YC-yQK" eventType="touchUpInside" id="lLi-lj-vvX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-Em-zxJ" userLabel="Test Trace OK">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-Em-zxJ" userLabel="Test Trace OK">
                                 <rect key="frame" x="152" y="120" width="72" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="qTT-Kn-XSB"/>
@@ -1215,7 +1215,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-TK-f8b" userLabel="Test Trace REJECTED">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-TK-f8b" userLabel="Test Trace REJECTED">
                                 <rect key="frame" x="152" y="174" width="72" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="jOv-bz-8ZH"/>
@@ -1225,7 +1225,7 @@
                                 <color key="textColor" red="0.87450980389999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-bA-ji1" userLabel="Test Distance">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-bA-ji1" userLabel="Test Distance">
                                 <rect key="frame" x="152" y="228" width="72" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="WxS-Sk-MeS"/>
@@ -1235,7 +1235,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-hG-Ago" userLabel="Test Horizontal Accuracy">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-hG-Ago" userLabel="Test Horizontal Accuracy">
                                 <rect key="frame" x="151" y="282" width="72" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="l7D-J3-qn8"/>

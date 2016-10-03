@@ -52,7 +52,6 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var newFromDate : NSDate?
     var newToDate : NSDate?
     
-    /// TO DO: The current logic works fine with stats from the same year. If we have a period of 6 months in between of a switch of year (for ex., oct-nov-dic-jan-feb-mar) some logic and validations should be added both when calculating the amounts and when drawing the chart (ChartsHelper)
     var arrTotalIncomeByMonth = [Double](count: 12, repeatedValue: 0.0)
     var arrTotalSavedGasByMonth = [Double](count: 12, repeatedValue: 0.0)
     var arrTotalCarbonOffByMonth = [Double](count: 12, repeatedValue: 0.0)
@@ -183,7 +182,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
     private func updateFooterViewForCarbon() {
-        self.lblTotalEarned.text = "Total Carbon Off"
+        self.lblTotalEarned.text = "Metric Tons Offset"
         guard let balance = self.status.carbonOff?.balance else {
             return
         }

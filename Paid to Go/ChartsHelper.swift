@@ -117,10 +117,40 @@ class ChartsHelper: NSObject {
         
         // Get the months between the dates
         let currentMonth = currentDate.month
-        let previousMonth = previousDate.month
+        var previousMonth = previousDate.month
+        previousMonth -= 1
+
+        for index in 0..<pastMonths+1 {
+            
+            // We set the data for the month
+            addYValueForXDate(values[previousMonth], index: index)
+            
+            // We set the correct label for the month
+            let monthName = getMonthName(previousMonth)
+            addXDate(monthName.rawValue)
+            
+            // We set a different color to the current month
+            var color : UIColor!
+            if previousMonth == currentMonth-1 {
+                color = CustomColors.carColor()
+                colorsLabel.append(UIColor.blackColor())
+            } else {
+                color = CustomColors.carColor().colorWithAlphaComponent(0.5)
+                colorsLabel.append(UIColor.lightGrayColor())
+            }
+            colorsCircle.append(color)
+            
+            // We validate if the previous month is December. If it is, we set its next value to January
+            if previousMonth == 11 {
+                previousMonth = 0
+            } else {
+                previousMonth += 1
+            }
+        }
         
+        /*
         var index = 0
-        
+         
         for month in previousMonth-1..<currentMonth {
             
             // We set the data for the month
@@ -141,8 +171,8 @@ class ChartsHelper: NSObject {
                 colorsLabel.append(UIColor.lightGrayColor())
             }
             colorsCircle.append(color)
-            
         }
+         */
         
         switch stats {
         case Stats.Incomes:

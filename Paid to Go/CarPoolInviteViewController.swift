@@ -191,7 +191,7 @@ class CarPoolInviteViewController: ViewController {
             selectedUserIDs.append(userID)
         }
         
-        DataProvider.sharedInstance.sendEmailToUsers(selectedUserIDs) { (result, error) in
+        DataProvider.sharedInstance.sendEmailToUsers(selectedUserIDs, poolId: (self.pool?.internalIdentifier)!) { (result, error) in
             
             self.dismissProgressHud()
             

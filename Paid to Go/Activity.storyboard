@@ -34,6 +34,7 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -263,8 +264,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rGj-ls-VI0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="336"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMr-Gd-yTM" userLabel="Empty Route View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="336"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.74645432692307689" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your activity route was not tracked" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ1-G1-R4c">
+                                <rect key="frame" x="30" y="205" width="315" height="55"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUA-VA-hyh">
                                 <rect key="frame" x="0.0" y="400" width="375" height="267"/>
                                 <subviews>
@@ -287,8 +298,8 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.4 gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-n1-Gtw" userLabel="Gas Label">
-                                                        <rect key="frame" x="182" y="64" width="44" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-n1-Gtw" userLabel="Gas Label">
+                                                        <rect key="frame" x="182" y="64" width="32" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -306,8 +317,8 @@
                                                             <constraint firstAttribute="height" constant="20" id="SfC-HG-B1i"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25 Metric tons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-M3-G5v" userLabel="CO2 Label">
-                                                        <rect key="frame" x="188" y="86" width="109" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Metric tons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-M3-G5v" userLabel="CO2 Label">
+                                                        <rect key="frame" x="188" y="86" width="89" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -351,8 +362,8 @@
                                                             <constraint firstAttribute="width" constant="20" id="wKt-YY-7cr"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.2 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z41-Zm-idd" userLabel="Miles Label">
-                                                        <rect key="frame" x="207" y="42" width="60" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z41-Zm-idd" userLabel="Miles Label">
+                                                        <rect key="frame" x="207" y="42" width="48" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -363,8 +374,8 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.25*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-ku-dRf" userLabel="Earned Label">
-                                                        <rect key="frame" x="195" y="130" width="44" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-ku-dRf" userLabel="Earned Label">
+                                                        <rect key="frame" x="195" y="130" width="36" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -469,20 +480,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qMr-Gd-yTM" firstAttribute="top" secondItem="rGj-ls-VI0" secondAttribute="top" id="7uY-zM-dzU"/>
                             <constraint firstItem="VUA-VA-hyh" firstAttribute="top" secondItem="rGj-ls-VI0" secondAttribute="bottom" id="Mo5-kU-3Zm"/>
                             <constraint firstItem="VUA-VA-hyh" firstAttribute="leading" secondItem="4kz-tj-BlP" secondAttribute="leading" id="SbO-vI-T27"/>
+                            <constraint firstAttribute="trailing" secondItem="ZZ1-G1-R4c" secondAttribute="trailing" constant="30" id="TI9-Vz-tR6"/>
                             <constraint firstItem="VUA-VA-hyh" firstAttribute="height" secondItem="4kz-tj-BlP" secondAttribute="height" multiplier="0.4" id="YZE-DZ-Jaq"/>
                             <constraint firstItem="8aN-8o-A0D" firstAttribute="top" secondItem="VUA-VA-hyh" secondAttribute="bottom" id="ZOG-Cp-z4V"/>
+                            <constraint firstItem="ZZ1-G1-R4c" firstAttribute="centerY" secondItem="qMr-Gd-yTM" secondAttribute="centerY" id="cav-MT-psr"/>
                             <constraint firstAttribute="trailing" secondItem="VUA-VA-hyh" secondAttribute="trailing" id="dbI-WM-NUn"/>
+                            <constraint firstItem="ZZ1-G1-R4c" firstAttribute="leading" secondItem="4kz-tj-BlP" secondAttribute="leading" constant="30" id="eH4-su-dJi"/>
                             <constraint firstItem="rGj-ls-VI0" firstAttribute="leading" secondItem="4kz-tj-BlP" secondAttribute="leading" id="hSl-NU-6ct"/>
-                            <constraint firstItem="rGj-ls-VI0" firstAttribute="top" secondItem="4kz-tj-BlP" secondAttribute="top" id="med-R1-x62"/>
+                            <constraint firstItem="rGj-ls-VI0" firstAttribute="top" secondItem="6qz-hO-P3o" secondAttribute="bottom" id="sg7-ZM-2ka"/>
+                            <constraint firstItem="qMr-Gd-yTM" firstAttribute="trailing" secondItem="rGj-ls-VI0" secondAttribute="trailing" id="ukA-r1-Nhr"/>
+                            <constraint firstItem="qMr-Gd-yTM" firstAttribute="bottom" secondItem="rGj-ls-VI0" secondAttribute="bottom" id="vdR-yA-TSJ"/>
                             <constraint firstAttribute="trailing" secondItem="rGj-ls-VI0" secondAttribute="trailing" id="xL0-pr-mua"/>
+                            <constraint firstItem="qMr-Gd-yTM" firstAttribute="leading" secondItem="rGj-ls-VI0" secondAttribute="leading" id="xba-Aq-2bx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="caloriesLabel" destination="lGK-S3-gV3" id="qJe-Df-E3Y"/>
                         <outlet property="co2Label" destination="Z3U-M3-G5v" id="St2-FG-pVy"/>
                         <outlet property="earnedLabel" destination="Mwa-ku-dRf" id="31f-T7-aZS"/>
+                        <outlet property="emptyRouteLabel" destination="ZZ1-G1-R4c" id="yFx-bk-Hp2"/>
+                        <outlet property="emptyRouteView" destination="qMr-Gd-yTM" id="Mbh-E8-Fcn"/>
                         <outlet property="endDateLabel" destination="eWq-if-rbJ" id="dNe-4K-CXZ"/>
                         <outlet property="gasLabel" destination="6QA-n1-Gtw" id="N3F-X5-Un6"/>
                         <outlet property="mapView" destination="rGj-ls-VI0" id="cib-Gm-olK"/>

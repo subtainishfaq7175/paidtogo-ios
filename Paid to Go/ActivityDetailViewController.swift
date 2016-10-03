@@ -13,8 +13,11 @@ class ActivityDetailViewController: ViewController {
 
     // MARK: - IBOutlets -
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var statsView: UIView!
     
+    @IBOutlet weak var emptyRouteView: UIView!
+    @IBOutlet weak var emptyRouteLabel: UILabel!
+    
+    @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var gasLabel: UILabel!
     @IBOutlet weak var co2Label: UILabel!
@@ -110,10 +113,13 @@ class ActivityDetailViewController: ViewController {
     }
     
     func configureMap() {
-        guard let activityRoute = self.activityRoute else {
+        guard let _ = self.activityRoute else {
             // No Activity Route
             return
         }
+        
+        self.emptyRouteView.hidden = true
+        self.emptyRouteLabel.hidden = true
         
         self.mapView.delegate = self
         configureMapRegion()
