@@ -102,19 +102,18 @@ class ActivityDetailViewController: ViewController {
         }
         
         if let startDate = activity?.startDateTime {
-            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(startDate))"
+            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(startDate))"
         }
         
         if let endDate = activity?.endDateTime {
-            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(endDate))"
-        } else if let startDate = activity?.startDateTime {
-                endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyy(startDate))"
+            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(endDate))"
         }
     }
     
     func configureMap() {
         guard let _ = self.activityRoute else {
             // No Activity Route
+            print("No hay subroutes")
             return
         }
         
@@ -148,6 +147,8 @@ class ActivityDetailViewController: ViewController {
         var previousCoordinate = CLLocationCoordinate2D()
         var nextCoordinate = CLLocationCoordinate2D()
         var invisible : String
+        
+        print("Hay por lo menos 1 subroute")
         
         if subroutes.count > 0 {
             

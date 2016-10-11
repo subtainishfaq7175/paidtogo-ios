@@ -227,6 +227,11 @@ class DataProvider : DataProviderService {
             params["user_id"] = userID
         }
         
+        // National pools shouldn't be filtered by the poolTypId
+        if open == "2" {
+            params["pool_type_id"] = nil
+        }
+        
         ConnectionManager.sharedInstance.getPools(params) { (responseValue, error) in
             
             if (error == nil) {

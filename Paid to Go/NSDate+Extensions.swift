@@ -28,6 +28,24 @@ extension NSDate {
         return ""
     }
     
+    //  Input:yyyy-MM-dd HH:mm:ss (String)
+    //  Output:dd/MM/yyyy HH:mm:ss (String)
+    static func getDateStringWithFormatddMMyyyyHHmmss(dateString:String) -> String {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = dateFormatter.dateFromString(dateString) {
+            guard let dateStringUpdated = date.toString(DateFormat.Custom("dd/MM/yyyy HH:mm:ss")) else {
+                return ""
+            }
+            
+            return dateStringUpdated
+        }
+        
+        return ""
+    }
+    
     // Input:Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy HH:mm:ss (NSDate)
     static func getDateWithFormatddMMyyyy(dateString:String) -> NSDate {
         

@@ -419,25 +419,25 @@
                                                 <rect key="frame" x="0.0" y="182" width="375" height="85"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNe-qa-3Th" userLabel="Start Date Indicator">
-                                                        <rect key="frame" x="114" y="25" width="72" height="20"/>
+                                                        <rect key="frame" x="86" y="25" width="72" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/8/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfA-wg-mAN" userLabel="Start Date Label">
-                                                        <rect key="frame" x="193" y="25" width="59" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/8/8 16:30:47" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfA-wg-mAN" userLabel="Start Date Label">
+                                                        <rect key="frame" x="165" y="25" width="118" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sk8-Xr-zax" userLabel="End Date Indicator">
-                                                        <rect key="frame" x="120" y="47" width="66" height="20"/>
+                                                        <rect key="frame" x="92" y="47" width="66" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/9/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-if-rbJ" userLabel="End Date Label">
-                                                        <rect key="frame" x="193" y="47" width="59" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/9/8 16:46:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-if-rbJ" userLabel="End Date Label">
+                                                        <rect key="frame" x="165" y="47" width="118" height="20"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -450,7 +450,7 @@
                                                     <constraint firstItem="Sk8-Xr-zax" firstAttribute="trailing" secondItem="YNe-qa-3Th" secondAttribute="trailing" id="O2T-Cc-inx"/>
                                                     <constraint firstItem="hfA-wg-mAN" firstAttribute="leading" secondItem="YNe-qa-3Th" secondAttribute="trailing" constant="7" id="We9-tN-Rcn"/>
                                                     <constraint firstItem="eWq-if-rbJ" firstAttribute="leading" secondItem="Sk8-Xr-zax" secondAttribute="trailing" constant="7" id="bgF-hk-qDK"/>
-                                                    <constraint firstItem="YNe-qa-3Th" firstAttribute="centerX" secondItem="965-W2-U1N" secondAttribute="centerX" constant="-37.5" id="gJV-4P-O28"/>
+                                                    <constraint firstItem="YNe-qa-3Th" firstAttribute="centerX" secondItem="965-W2-U1N" secondAttribute="centerX" constant="-66" id="gJV-4P-O28"/>
                                                     <constraint firstItem="eWq-if-rbJ" firstAttribute="centerY" secondItem="Sk8-Xr-zax" secondAttribute="centerY" id="vUV-li-EuC"/>
                                                     <constraint firstItem="Sk8-Xr-zax" firstAttribute="top" secondItem="YNe-qa-3Th" secondAttribute="bottom" constant="2" id="zbg-yL-tif"/>
                                                 </constraints>

@@ -49,16 +49,12 @@ class ActivityViewController: MenuContentViewController {
         self.tableViewHeader.configureForActivities()
         self.configureTableView()
         self.getNotifications()
-        
-        self.title = "menu_activity".localize()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarVisible(true)
-        setNavigationBarGreen()
-        customizeNavigationBarWithMenu()
+        initLayout()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -99,6 +95,13 @@ class ActivityViewController: MenuContentViewController {
         self.notificationsTableView.rowHeight = UITableViewAutomaticDimension
         
         self.notificationsTableView.separatorStyle = .None
+    }
+    
+    func initLayout() {
+        setNavigationBarVisible(true)
+        self.title = "menu_activity".localize()
+        setNavigationBarGreen()
+        customizeNavigationBarWithMenu()
     }
     
     func refreshData (sender:AnyObject?) {

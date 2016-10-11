@@ -23,6 +23,8 @@ protocol ActivityTest {
     static func setTestCounterRejected()
 }
 
+// MARK: - Class -
+
 /* 
  *  Handles the whole activity process, and the necessary information to update the progress circle
  */
@@ -41,30 +43,38 @@ class ActivityManager: NSObject, ActivityTest {
         
     }
     
+    // MARK: - Attributes -
+    
+    /*
+     *  Conversion from meters to miles
+     */
     internal static let metersToMiles = 0.000621371
     
-    // - Test - //
-    var testCounter = 0
-    var testCounterRejected = 0
-    
+    /*
+     *  Attributes required by the API to register an activity
+     */
     var activity : Activity = Activity()
     var poolId : String = ""
     var startDateToTrack : NSDate = NSDate()
-    
     var milesCounter : Double = 0.0
     var endLatitude: Double = 0.0
     var endLongitude: Double = 0.0
-    
     var startLatitude : Double = 0.0
     var startLongitude : Double = 0.0
     
-//    var initialLocation : CLLocation = CLLocation()
-    
-    // The last updated location. Every new location updated is compared with the last updated location
+    /* 
+     *  The last updated location. Every new location updated is compared with the last updated location 
+     */
     var lastLocation : CLLocation = CLLocation()
     
+    /*
+     *  The previous location. Used instead of lastLocation to avoid issues after pausing and resuming an activity
+     */
     var lastSubrouteInitialLocation : CLLocation = CLLocation()
     
+    /*
+     *  Array containing the subroutes that will be drawn on the map
+     */
     var subroutes = [MKPolyline]()
     var mapIsMainScreen : Bool = false
     
@@ -78,9 +88,15 @@ class ActivityManager: NSObject, ActivityTest {
      */
     var firstSubrouteAfterPausingAndResumingActivity = false
     
+    // - Test - //
+    var testCounter = 0
+    var testCounterRejected = 0
+    
     func getMilesCounter() -> Double {
         return milesCounter
     }
+    
+    // MARK: - Methods -
     
     func resetActivity() {
         activity = Activity()
@@ -103,13 +119,11 @@ class ActivityManager: NSObject, ActivityTest {
         firstSubrouteAfterPausingAndResumingActivity = false
     }
     
-    //--//
     static func setStartDateTime() {
         sharedInstance.startDateToTrack = NSDate()
     }
     
     static func getStartDateTime() -> String {
-        
         let formatter = NSDateFormatter()
         formatter.timeZone = NSTimeZone(abbreviation: "UTC")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

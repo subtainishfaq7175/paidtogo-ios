@@ -170,7 +170,7 @@ class PoolDetailViewController: ViewController {
             return
         }
         
-        ActivityManager.sharedInstance.poolId = pool.internalIdentifier!
+//        ActivityManager.sharedInstance.poolId = pool.internalIdentifier!
         
         switch self.typeEnum! {
         case .Train:

@@ -263,7 +263,8 @@ extension PoolViewController: TrackDelegate {
         
         activity.milesTraveled = String(format: "%.2f", ActivityManager.getMilesCounter())
         activity.startDateTime = ActivityManager.getStartDateTime()
-        activity.poolId = ActivityManager.sharedInstance.poolId
+//        activity.poolId = ActivityManager.sharedInstance.poolId
+        activity.poolId = self.pool?.internalIdentifier
         activity.accessToken = User.currentUser?.accessToken
         
         if let validationPhoto = validationPhoto {
@@ -442,13 +443,12 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     func initLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        if self.type == PoolTypeEnum.Walk || self.type == PoolTypeEnum.Bike {
-            locationManager.activityType = .Fitness
-        } else {
-            locationManager.activityType = .AutomotiveNavigation
-        }
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.activityType = .Fitness
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        
+        // Set Location Manager precision: http://stackoverflow.com/questions/9746675/cllocationmanager-responsiveness
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10.0;
         
         locationManager.requestAlwaysAuthorization()
     }
@@ -464,7 +464,13 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
-                
+        
+        // Ignore updates with low precision: http://stackoverflow.com/questions/24867927/accuracy-of-core-location
+        if locationObj.horizontalAccuracy > 70 {
+            ActivityManager.setTestCounterRejected()
+            return;
+        }
+        
         if ActivityManager.sharedInstance.startLongitude == 0.0 {
             
             // We ignore the first location update to allow the GPS to configure its accuracy
