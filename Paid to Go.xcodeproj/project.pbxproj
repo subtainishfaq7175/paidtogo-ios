@@ -764,6 +764,9 @@
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -1092,6 +1095,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
@@ -1111,6 +1115,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
 				INFOPLIST_FILE = "Paid to Go/Info.plist";

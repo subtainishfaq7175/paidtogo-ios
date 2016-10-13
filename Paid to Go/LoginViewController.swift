@@ -119,6 +119,7 @@ class LoginViewController: ViewController {
         let loginPermissions = ["public_profile", "email"]
         
         loginManager.logInWithReadPermissions(loginPermissions, fromViewController: self) { (result, error) in
+            
             if let error = error {
                 self.showAlert(error.description)
                 print("Facebook Login Error: ",  error)

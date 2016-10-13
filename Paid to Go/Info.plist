@@ -53,6 +53,10 @@
 	<string>The location is needed</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The location is needed</string>
+    <key>NSMotionUsageDescription</key>
+    <string>The app requires your motion data</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>The app requires to access your gallery</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
