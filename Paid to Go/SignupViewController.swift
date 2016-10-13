@@ -49,7 +49,7 @@ class SignupViewController: ViewController {
         setNavigationBarGreen()
         
         let closeImage = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
-        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: "closeButtonAction:")
+        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SignupViewController.closeButtonAction(_:)))
         closeButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = closeButtonItem
 

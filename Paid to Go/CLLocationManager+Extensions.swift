@@ -12,7 +12,7 @@ import CoreLocation
 extension CLLocationManager {
     
     static func getDistanceBetweenLocations(locA:CLLocation, locB:CLLocation) -> Double {
-        var distance : CLLocationDistance = locA.distanceFromLocation(locB)
+        let distance : CLLocationDistance = locA.distanceFromLocation(locB)
         
         return distance
     }

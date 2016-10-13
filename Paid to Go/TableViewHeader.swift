@@ -28,7 +28,7 @@ class TableViewHeader: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        if let view = NSBundle.mainBundle().loadNibNamed(String(TableViewHeader), owner: self, options: nil).first as? UIView {
+        if let view = NSBundle.mainBundle().loadNibNamed(String(TableViewHeader), owner: self, options: nil)!.first as? UIView {
             self.addSubview(view)
             view.frame = self.bounds
         }

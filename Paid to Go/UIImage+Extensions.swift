@@ -20,11 +20,11 @@ extension UIImage {
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
         let bitmapContext = CGBitmapContextCreate(nil, Int(width), Int(height), 8, 0, colorSpace, bitmapInfo.rawValue)
         
-        CGContextClipToMask(bitmapContext, bounds, maskImage)
-        CGContextSetFillColorWithColor(bitmapContext, color.CGColor)
-        CGContextFillRect(bitmapContext, bounds)
+        CGContextClipToMask(bitmapContext!, bounds, maskImage!)
+        CGContextSetFillColorWithColor(bitmapContext!, color.CGColor)
+        CGContextFillRect(bitmapContext!, bounds)
         
-        let cImage = CGBitmapContextCreateImage(bitmapContext)
+        let cImage = CGBitmapContextCreateImage(bitmapContext!)
         let coloredImage = UIImage(CGImage: cImage!)
         
         return coloredImage

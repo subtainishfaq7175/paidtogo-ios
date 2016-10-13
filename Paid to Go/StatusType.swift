@@ -43,7 +43,7 @@ public class StatusType: NSObject, Mappable, NSCoding {
      */
     public func dictionaryRepresentation() -> [String : AnyObject ] {
         
-        var dictionary: [String : AnyObject ] = [ : ]
+        let dictionary: [String : AnyObject ] = [ : ]
         
 //        if balance != nil {
 //            dictionary.updateValue(balance!, forKey: "balance")

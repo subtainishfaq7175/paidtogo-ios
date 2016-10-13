@@ -137,10 +137,12 @@
 		7C039DAC1CE21BCD00C7DED4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C039DAB1CE21BCD00C7DED4 /* Transaction.swift */; };
 		7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C872D0D1CE62AC200A1083E /* PoolType.swift */; };
 		7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E737E1CE518F1006B4271 /* Activity.swift */; };
-		C34D996C6020C73A34190709 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */; };
+		ABCFBDCDE8AFF478BD7C4FB8 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
+		125B65BE42F88D7BDDF2F198 /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
 		4D068EE91D510F68007FE30A /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
 		4D190E401D66217E00BF65FA /* GeolocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationManager.swift; sourceTree = "<group>"; };
@@ -273,13 +275,11 @@
 		52EBFBBB1CFCD06E00FE829E /* CarPoolInviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPoolInviteCell.swift; sourceTree = "<group>"; };
 		52FA0DFE1CECB69C00A89CF7 /* HealthKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		52FC35051CC66C5600E094DA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
-		7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		7C039DA91CE216C100C7DED4 /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		7C039DAB1CE21BCD00C7DED4 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7C872D0D1CE62AC200A1083E /* PoolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolType.swift; sourceTree = "<group>"; };
 		7C8E737E1CE518F1006B4271 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
+		8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,23 +287,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C34D996C6020C73A34190709 /* Pods_Paid_to_Go.framework in Frameworks */,
 				4D8880901D6CBBE5008E514A /* StoreKit.framework in Frameworks */,
+				ABCFBDCDE8AFF478BD7C4FB8 /* Pods_Paid_to_Go.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07C59521EF84CD840A219719 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */,
-				8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4D068EE81D510F3C007FE30A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,8 +565,8 @@
 				4DBF557B1D7EE9800059B249 /* MyPlayground.playground */,
 				52A374311C9844A900E3A4A5 /* Paid to Go */,
 				52A374301C9844A900E3A4A5 /* Products */,
-				07C59521EF84CD840A219719 /* Pods */,
 				DF8DB721E9BE9F72CADCA60E /* Frameworks */,
+				857CD6AA9C58EF12EE67D75C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -711,11 +702,20 @@
 			name = Stats;
 			sourceTree = "<group>";
 		};
+		857CD6AA9C58EF12EE67D75C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */,
+				125B65BE42F88D7BDDF2F198 /* Pods-Paid to Go.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DF8DB721E9BE9F72CADCA60E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				4D88808F1D6CBBE5008E514A /* StoreKit.framework */,
-				7F87302DB8BB0DFE8E484C67 /* Pods_Paid_to_Go.framework */,
+				8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -727,12 +727,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52A374411C9844A900E3A4A5 /* Build configuration list for PBXNativeTarget "Paid to Go" */;
 			buildPhases = (
-				213CEE4DB6163B6906260FFB /* Check Pods Manifest.lock */,
+				C19F6246CF909756891082B2 /* [CP] Check Pods Manifest.lock */,
 				52A3742B1C9844A900E3A4A5 /* Sources */,
 				52A3742C1C9844A900E3A4A5 /* Frameworks */,
 				52A3742D1C9844A900E3A4A5 /* Resources */,
-				E751A36549216B21D1D5CCE5 /* Embed Pods Frameworks */,
-				90ED8972735CCA214F5EFE87 /* Copy Pods Resources */,
+				1AC24A4E3D979FC94BB67E49 /* [CP] Embed Pods Frameworks */,
+				6E7039F730115E22A7DFC20F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -756,6 +756,7 @@
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WBY4S2TLK6;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 0;
@@ -823,29 +824,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		213CEE4DB6163B6906260FFB /* Check Pods Manifest.lock */ = {
+		1AC24A4E3D979FC94BB67E49 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		90ED8972735CCA214F5EFE87 /* Copy Pods Resources */ = {
+		6E7039F730115E22A7DFC20F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,19 +854,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E751A36549216B21D1D5CCE5 /* Embed Pods Frameworks */ = {
+		C19F6246CF909756891082B2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1087,7 +1088,7 @@
 		};
 		52A374421C9844A900E3A4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7784E104AB9F0226C25A42FE /* Pods-Paid to Go.debug.xcconfig */;
+			baseConfigurationReference = 03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1100,12 +1101,13 @@
 				PROVISIONING_PROFILE = "57100575-8f5a-414d-9fae-1cc507bede3a";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		52A374431C9844A900E3A4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8292A6D1F6CAE6D3EF51639F /* Pods-Paid to Go.release.xcconfig */;
+			baseConfigurationReference = 125B65BE42F88D7BDDF2F198 /* Pods-Paid to Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1117,6 +1119,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58f43db7-459b-4f3e-a2c1-107440066575";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

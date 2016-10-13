@@ -1,4 +1,9 @@
 # KDCircularProgress
+
+[![Version](https://img.shields.io/cocoapods/v/KDCircularProgress.svg?style=flat)](http://cocoapods.org/pods/KDCircularProgress)
+[![License](https://img.shields.io/cocoapods/l/KDCircularProgress.svg?style=flat)](http://cocoapods.org/pods/KDCircularProgress)
+[![Platform](https://img.shields.io/cocoapods/p/KDCircularProgress.svg?style=flat)](http://cocoapods.org/pods/KDCircularProgress)
+
 `KDCircularProgress` is a circular progress view written in Swift. It makes it possible to have gradients in the progress view, along with glows and animations. 
 
 KDCircularProgress also has `IBInspectable` and `IBDesignable` support, so you can configure and preview inside the `Interface Builder`. 
@@ -36,6 +41,24 @@ view.addSubview(progress)
 ## Installation
 - It's on CocoaPods under the name (you guessed it!) KDCircularProgress
 - Just drag `KDCircularProgress.swift` into your project. `Carthage` support is on To-do list.
+
+### CocoaPods
+
+KDCircularProgress is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'KDCircularProgress'
+```
+
+### Manually
+
+Just drag `KDCircularProgress.swift` into your project.
+
+### Carthage
+
+`Carthage` support is on To-do list.
+
 
 ## Properties
 

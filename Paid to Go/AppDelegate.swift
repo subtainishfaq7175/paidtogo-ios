@@ -11,7 +11,7 @@
  import FBSDKCoreKit
  
  
- 
+
  let log: XCGLogger = {
     // Setup XCGLogger
     let log = XCGLogger.defaultInstance()
