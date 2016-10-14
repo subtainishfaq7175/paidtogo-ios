@@ -16,25 +16,29 @@ class SettingsViewController: MenuContentViewController {
     // MARK: - Variables and Constants
     
     
-    // MARK: - Super
+    // MARK: - View life cycle
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setNavigationBarVisible(true)
-        self.title = "menu_settings".localize()
-        setNavigationBarGreen()
         customizeNavigationBarWithMenu()
+        self.title = "Settings"
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         initViews()
     }
     
     // MARK: - Functions
     
-    func initViews(){
+    func initViews() {
         okButtonViewContainer.round()
     }
     

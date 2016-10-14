@@ -12,7 +12,7 @@ import SwiftDate
 
 class PoolDetailViewController: ViewController {
 
-    // MARK: - IBOutlets
+    // MARK: - Outlets -
     
     @IBOutlet weak var enterPoolButton: LocalizableButton!
     
@@ -35,13 +35,13 @@ class PoolDetailViewController: ViewController {
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var poolIconImageView: UIImageView!
     
-    // MARK: - Variables and constants
+    // MARK: - Attributes -
     
     var pool : Pool?
     var typeEnum : PoolTypeEnum?
     var poolType : PoolType?
     
-    // MARK: - View Lifecycle
+    // MARK: - View Lifecycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,13 +58,19 @@ class PoolDetailViewController: ViewController {
         
         configureView()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Private methods
+    // MARK: - Private methods -
     
     private func initLayout() {
         setNavigationBarVisible(true)
@@ -78,7 +84,7 @@ class PoolDetailViewController: ViewController {
         backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
         setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
+//        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
         
         bannerBottomBorderView.backgroundColor = UIColor(rgba: poolType!.color!)
         
@@ -192,9 +198,15 @@ class PoolDetailViewController: ViewController {
     }
     
     @IBAction func btnTermsAndConditionsPressed(sender: AnyObject) {
-        let destinationVC = StoryboardRouter.termsAndConditionsViewController()
-        destinationVC.poolType = self.poolType
-        destinationVC.termsAndConditionsText = self.pool?.termsAndConditions
-        self.showViewController(destinationVC, sender: nil)
+        let termsNavController = StoryboardRouter.termsAndConditionsNavigationController()
+        let termsVC = termsNavController.viewControllers.first as! TermsAndConditionsViewController
+        termsVC.poolType = self.poolType
+        termsVC.termsAndConditionsText = self.pool?.termsAndConditions
+        self.presentViewController(termsNavController, animated: true, completion: nil)
+        
+//        let destinationVC = StoryboardRouter.termsAndConditionsViewController()
+//        destinationVC.poolType = self.poolType
+//        destinationVC.termsAndConditionsText = self.pool?.termsAndConditions
+//        self.showViewController(destinationVC, sender: nil)
     }
 }

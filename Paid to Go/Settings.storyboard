@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NPj-GG-C3g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NPj-GG-C3g">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Italic.ttf">
+        <array key="OpenSans-Italic.ttf">
             <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Regular.ttf">
+        </array>
+        <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Settings View Controller-->
@@ -31,23 +24,19 @@
                         <viewControllerLayoutGuide type="bottom" id="ZIH-XJ-wQP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="06a-nP-daI" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEx-zB-tfz" userLabel="Geolocation View">
-                                <rect key="frame" x="0.0" y="76" width="320" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geolocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK7-qh-gCc">
-                                        <rect key="frame" x="14" y="13" width="85" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-gW-aIO">
-                                        <rect key="frame" x="257" y="8" width="51" height="31"/>
-                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-gW-aIO"/>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dOP-gW-aIO" secondAttribute="trailing" constant="14" id="Fvt-1O-YFF"/>
                                     <constraint firstItem="cK7-qh-gCc" firstAttribute="centerY" secondItem="zEx-zB-tfz" secondAttribute="centerY" id="ISg-n4-HbQ"/>
@@ -56,17 +45,15 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wE-4p-ock" userLabel="Ok Button View">
-                                <rect key="frame" x="60" y="496" width="200" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u63-gZ-IdC">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="Ok">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="EJ4-ax-kDi"/>
                                     <constraint firstAttribute="bottom" secondItem="u63-gZ-IdC" secondAttribute="bottom" id="PYl-1z-Nk6"/>
@@ -76,7 +63,6 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-1H-Ccd">
-                                <rect key="frame" x="12" y="136" width="125" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Change password"/>
                                 <connections>
@@ -84,7 +70,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zEx-zB-tfz" secondAttribute="trailing" id="8mY-qk-mZL"/>
                             <constraint firstItem="zEx-zB-tfz" firstAttribute="height" secondItem="06a-nP-daI" secondAttribute="height" multiplier="0.08" id="D3o-Sa-LrW"/>
@@ -104,9 +90,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AT-Ri-fSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="541"/>
+            <point key="canvasLocation" x="662" y="537"/>
         </scene>
-        <!--Change password-->
+        <!--Change Password View Controller-->
         <scene sceneID="EVv-3E-Q32">
             <objects>
                 <viewController id="eSi-Bw-U3O" customClass="ChangePasswordViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,23 +101,19 @@
                         <viewControllerLayoutGuide type="bottom" id="YWX-3O-LIe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6DV-0q-u8N">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-zJ-C6l" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEf-sX-7nv" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENT PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvc-kI-3zR" userLabel="Password Label">
-                                                <rect key="frame" x="10" y="-60" width="95" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20M-lQ-Z9S" userLabel="Password Text Field">
-                                                <rect key="frame" x="10" y="-40" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="9hf-7Q-8ks"/>
                                                 </constraints>
@@ -139,21 +121,18 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYf-14-oJa" userLabel="Password Line View">
-                                                <rect key="frame" x="10" y="-2" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="XUr-0M-GlA"/>
                                                     <constraint firstAttribute="height" constant="1" id="pIM-Ip-YlR"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghk-5Z-aBl" userLabel="New Password Label">
-                                                <rect key="frame" x="10" y="19" width="75" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4b7-7W-5gx" userLabel="New Password Text Field">
-                                                <rect key="frame" x="10" y="39" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="US5-BK-pYA"/>
                                                 </constraints>
@@ -161,20 +140,17 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhl-eO-bFN" userLabel="New Password Line View">
-                                                <rect key="frame" x="10" y="77" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="qrc-XD-qAa"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT NEW PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La1-1p-CNP" userLabel="Confirm New Password Label">
-                                                <rect key="frame" x="10" y="98" width="109" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQX-RO-9CP" userLabel="Confirm New Password Text Field">
-                                                <rect key="frame" x="10" y="118" width="300" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Chj-wi-J5s"/>
                                                 </constraints>
@@ -182,27 +158,24 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-d8-7gb" userLabel="Confirm New Password Line View">
-                                                <rect key="frame" x="10" y="156" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="dlB-RA-GDG"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dt-d4-2LA" userLabel="Ok Button View">
-                                                <rect key="frame" x="60" y="442" width="200" height="42"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCL-EA-zE5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Change Password">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="changePasswordButtonAction:" destination="eSi-Bw-U3O" eventType="touchUpInside" id="aIa-Ct-nkJ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="DCL-EA-zE5" secondAttribute="trailing" id="9Ff-YX-8qm"/>
                                                     <constraint firstItem="DCL-EA-zE5" firstAttribute="top" secondItem="7dt-d4-2LA" secondAttribute="top" id="CFj-An-CPF"/>
@@ -213,7 +186,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4b7-7W-5gx" secondAttribute="trailing" constant="10" id="10r-1x-G5e"/>
                                             <constraint firstItem="Rhl-eO-bFN" firstAttribute="top" secondItem="4b7-7W-5gx" secondAttribute="bottom" id="4vb-PM-X9w"/>
@@ -254,7 +227,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5SY-zJ-C6l" firstAttribute="top" secondItem="FcN-g9-AVT" secondAttribute="bottom" id="Svg-dP-IVy"/>
                             <constraint firstItem="5SY-zJ-C6l" firstAttribute="leading" secondItem="6DV-0q-u8N" secondAttribute="leading" id="gQo-ob-5sl"/>
@@ -262,7 +235,7 @@
                             <constraint firstAttribute="trailing" secondItem="5SY-zJ-C6l" secondAttribute="trailing" id="wX4-lr-KNG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Change password" id="yTd-eb-Rp2">
+                    <navigationItem key="navigationItem" id="yTd-eb-Rp2">
                         <barButtonItem key="backBarButtonItem" title=" " id="jDb-dy-pkO"/>
                     </navigationItem>
                     <connections>
@@ -274,17 +247,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oY4-ar-vwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258" y="541"/>
+            <point key="canvasLocation" x="1378" y="537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynH-Mx-2DQ">
             <objects>
                 <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NPj-GG-C3g" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3bD-TJ-d2g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="3bD-TJ-d2g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.25490196078431371" green="0.85490196078431369" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -293,7 +266,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyX-sB-sYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410" y="541"/>
+            <point key="canvasLocation" x="-63" y="537"/>
         </scene>
     </scenes>
 </document>

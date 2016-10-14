@@ -10,7 +10,7 @@ import UIKit
 
 class TermsAndConditionsViewController: ViewController {
     
-    @IBOutlet weak var navBarBackgroundView: UIView!
+//    @IBOutlet weak var navBarBackgroundView: UIView!
     
     @IBOutlet weak var contentLabel: UILabel!
     
@@ -27,7 +27,7 @@ class TermsAndConditionsViewController: ViewController {
         if let colorString = poolType.color as String? {
             if let color = UIColor(rgba: colorString) as UIColor? {
                 setNavigationBarColor(color)
-                navBarBackgroundView.backgroundColor = color
+
             }
         }
         
@@ -40,23 +40,19 @@ class TermsAndConditionsViewController: ViewController {
         super.viewDidLoad()
         
         self.title = "Terms And Conditions"
+        
+        let closeImage = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TermsAndConditionsViewController.closeButtonAction(_:)))
+        closeButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = closeButtonItem
     }
-    
-//    override func viewWillDisappear(animated: Bool) {
-//        
-//        guard let poolType = self.poolType else {
-//            return
-//        }
-//        
-//        if let colorString = poolType.color as String? {
-//            if let color = UIColor(rgba: colorString) as UIColor? {
-//                setNavigationBarColor(color)
-//            }
-//        }
-//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+    }
+    
+    @objc private func closeButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

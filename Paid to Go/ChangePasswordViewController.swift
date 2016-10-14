@@ -24,6 +24,11 @@ class ChangePasswordViewController: ViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "Change Password"
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        
     }
     
     override func viewDidLayoutSubviews() {

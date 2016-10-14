@@ -49,6 +49,8 @@ class ActivityViewController: MenuContentViewController {
         self.tableViewHeader.configureForActivities()
         self.configureTableView()
         self.getNotifications()
+        
+        self.title = "menu_activity".localize()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -99,8 +101,8 @@ class ActivityViewController: MenuContentViewController {
     
     func initLayout() {
         setNavigationBarVisible(true)
-        self.title = "menu_activity".localize()
-        setNavigationBarGreen()
+//        self.title = "menu_activity".localize()
+//        setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }
     

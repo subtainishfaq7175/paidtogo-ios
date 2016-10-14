@@ -1,45 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XOF-2P-5xX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Italic.ttf">
+        <array key="OpenSans-Italic.ttf">
             <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-            <string>OpenSans-Italic</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-LightItalic.ttf">
+        </array>
+        <array key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Regular.ttf">
+        </array>
+        <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Login View Controller-->
@@ -51,17 +28,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-kf-O4v" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-kf-O4v" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
+                                <frame key="frameInset" minY="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cy3-H3-MhY" userLabel="Scroll View Container">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cy3-H3-MhY" userLabel="Scroll View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_navbar" translatesAutoresizingMaskIntoConstraints="NO" id="AGj-I0-mVP" userLabel="Navbar Image View">
-                                                <rect key="frame" x="0.0" y="20" width="320" height="22"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_navbar" translatesAutoresizingMaskIntoConstraints="NO" id="AGj-I0-mVP" userLabel="Navbar Image View">
+                                                <frame key="frameInset" minY="20" width="320" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="ia7-XB-2bs"/>
                                                     <constraint firstAttribute="height" constant="16" id="nCm-vY-Kc4"/>
@@ -73,37 +50,37 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-RW-mxh" userLabel="Username Text Field">
-                                                <rect key="frame" x="10" y="94" width="300" height="29"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-RW-mxh" userLabel="Username Text Field">
+                                                <frame key="frameInset" minX="10" minY="94" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oQ-1n-x5L" userLabel="Password Label">
-                                                <rect key="frame" x="10" y="133" width="52" height="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oQ-1n-x5L" userLabel="Password Label">
+                                                <frame key="frameInset" minX="10" minY="133" width="52" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-GG-fEq" userLabel="Password Text Field">
-                                                <rect key="frame" x="10" y="145" width="300" height="29"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-GG-fEq" userLabel="Password Text Field">
+                                                <frame key="frameInset" minX="10" minY="145" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKn-vL-FC5" userLabel="Login View Container">
-                                                <rect key="frame" x="55" y="189" width="210" height="45"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKn-vL-FC5" userLabel="Login View Container">
+                                                <frame key="frameInset" minX="55" minY="189" width="210" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ps5-bi-cYW" userLabel="Login Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ps5-bi-cYW" userLabel="Login Button">
+                                                        <frame key="frameInset" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Log In">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pI4-SU-mfN"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ps5-bi-cYW" secondAttribute="trailing" id="2E4-Az-H6r"/>
                                                     <constraint firstItem="ps5-bi-cYW" firstAttribute="top" secondItem="yKn-vL-FC5" secondAttribute="top" id="5o9-OF-gch"/>
@@ -112,27 +89,27 @@
                                                     <constraint firstItem="ps5-bi-cYW" firstAttribute="leading" secondItem="yKn-vL-FC5" secondAttribute="leading" id="rbm-sP-cNn"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5R-eg-W8a">
-                                                <rect key="frame" x="98" y="274" width="124" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5R-eg-W8a">
+                                                <frame key="frameInset" minX="98" minY="274" width="124" height="17"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okt-bh-ket" userLabel="Facebook View Container">
-                                                <rect key="frame" x="55" y="436" width="210" height="45"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okt-bh-ket" userLabel="Facebook View Container">
+                                                <frame key="frameInset" minX="55" minY="436" width="210" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJf-Q2-7Ww" userLabel="Facebook Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJf-Q2-7Ww" userLabel="Facebook Button">
+                                                        <frame key="frameInset" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Login With Facebook">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="facebookButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wlY-Fl-ZRS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.23921568627450979" green="0.3529411764705882" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.23921568627450979" green="0.3529411764705882" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="zJf-Q2-7Ww" firstAttribute="top" secondItem="Okt-bh-ket" secondAttribute="top" id="EtC-pD-peD"/>
                                                     <constraint firstAttribute="width" constant="210" id="TrG-FK-heo"/>
@@ -141,21 +118,21 @@
                                                     <constraint firstAttribute="bottom" secondItem="zJf-Q2-7Ww" secondAttribute="bottom" id="g0C-3C-pZa"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-IY-v3M" userLabel="Signup View Container">
-                                                <rect key="frame" x="55" y="297" width="210" height="45"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-IY-v3M" userLabel="Signup View Container">
+                                                <frame key="frameInset" minX="55" minY="297" width="210" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZc-SE-WJI" userLabel="Signup Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZc-SE-WJI" userLabel="Signup Button">
+                                                        <frame key="frameInset" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Sign up">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <segue destination="tC6-jh-zqZ" kind="presentation" identifier="segue_signup" id="Gt2-uV-kBd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="YZc-SE-WJI" firstAttribute="leading" secondItem="T1U-IY-v3M" secondAttribute="leading" id="2JY-gQ-XwC"/>
                                                     <constraint firstAttribute="trailing" secondItem="YZc-SE-WJI" secondAttribute="trailing" id="QbR-KF-cZM"/>
@@ -164,54 +141,54 @@
                                                     <constraint firstItem="YZc-SE-WJI" firstAttribute="top" secondItem="T1U-IY-v3M" secondAttribute="top" id="s2r-sX-gg1"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oS-wY-Ycg" userLabel="Or View">
-                                                <rect key="frame" x="0.0" y="342" width="320" height="94"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oS-wY-Ycg" userLabel="Or View">
+                                                <frame key="frameInset" minY="342" width="320" height="94"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Or -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3h-jh-ItA">
-                                                        <rect key="frame" x="146" y="39" width="28" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="- Or -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3h-jh-ItA">
+                                                        <frame key="frameInset" minX="146" minY="39" width="28" height="17"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="C3h-jh-ItA" firstAttribute="centerX" secondItem="0oS-wY-Ycg" secondAttribute="centerX" id="CiR-1n-qdw"/>
                                                     <constraint firstItem="C3h-jh-ItA" firstAttribute="centerY" secondItem="0oS-wY-Ycg" secondAttribute="centerY" id="RCN-7F-57Y"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-rl-Dvm">
-                                                <rect key="frame" x="114" y="489" width="93" height="29"/>
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm6-rl-Dvm">
+                                                <frame key="frameInset" minX="114" minY="489" width="93" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <state key="normal" title="Forgot Password?">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="sGa-0V-qky" kind="show" id="0xY-9C-uV7"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMAIL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIy-O0-tGq" userLabel="Username Label">
-                                                <rect key="frame" x="10" y="82" width="51" height="14"/>
+                                                <frame key="frameInset" minX="10" minY="82" width="51" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0H-nL-gG4" userLabel="Username Line View">
-                                                <rect key="frame" x="10" y="122" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p0H-nL-gG4" userLabel="Username Line View">
+                                                <frame key="frameInset" minX="10" minY="122" width="300" height="1"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="zCG-Ar-8cL"/>
                                                 </constraints>
                                             </view>
-                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-0c-7XB" userLabel="Password Line View">
-                                                <rect key="frame" x="10" y="173" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-0c-7XB" userLabel="Password Line View">
+                                                <frame key="frameInset" minX="10" minY="173" width="300" height="1"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="0FC-Bk-IxR"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="O5R-eg-W8a" firstAttribute="centerX" secondItem="cy3-H3-MhY" secondAttribute="centerX" id="0Tw-j7-TDZ"/>
                                             <constraint firstItem="d7F-GG-fEq" firstAttribute="height" secondItem="MEp-RW-mxh" secondAttribute="height" id="5WY-zJ-Be4"/>
@@ -266,7 +243,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AGj-I0-mVP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.04" id="P02-Uy-X64"/>
                             <constraint firstItem="2iE-kf-O4v" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QTK-8A-OXc"/>
@@ -280,7 +257,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5E1-zX-kJi"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="facebookLoginButton" destination="zJf-Q2-7Ww" id="j1n-Ij-dlv"/>
                         <outlet property="facebookViewContainer" destination="Okt-bh-ket" id="Owv-c3-nj7"/>
@@ -305,18 +281,18 @@
                         <viewControllerLayoutGuide type="bottom" id="sYC-Fr-FgW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="juk-CT-Aj2" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c07-j0-x9D" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c07-j0-x9D" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
+                                <frame key="frameInset" minY="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naj-CV-sdD" userLabel="Scroll View Container">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naj-CV-sdD" userLabel="Scroll View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <view alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEj-Zc-PWh">
-                                                <rect key="frame" x="10" y="50" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <frame key="frameInset" minX="10" minY="50" width="300" height="1"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="V08-o0-Zgo"/>
                                                 </constraints>
@@ -324,19 +300,19 @@
 Email Line View</string>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMAIL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elY-xb-al8" userLabel="Email Label">
-                                                <rect key="frame" x="10" y="12" width="34" height="12"/>
+                                                <frame key="frameInset" minX="10" minY="12" width="34" height="12"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFX-El-kJo" userLabel="Email View Container">
-                                                <rect key="frame" x="55" y="66" width="210" height="45"/>
+                                                <frame key="frameInset" minX="55" minY="66" width="210" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Po-I3-xGI" userLabel="Email Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Po-I3-xGI" userLabel="Email Button">
+                                                        <frame key="frameInset" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                         <state key="normal" title="Submit">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbf-Wq-7Gw"/>
@@ -344,7 +320,7 @@ Email Line View</string>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="1Po-I3-xGI" secondAttribute="trailing" id="79c-gC-WAi"/>
                                                     <constraint firstAttribute="bottom" secondItem="1Po-I3-xGI" secondAttribute="bottom" id="KYf-Sy-O6I"/>
@@ -354,12 +330,12 @@ Email Line View</string>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W31-Uu-zxG" userLabel="Email Text Field">
-                                                <rect key="frame" x="10" y="22" width="300" height="29"/>
+                                                <frame key="frameInset" minX="10" minY="22" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="elY-xb-al8" firstAttribute="top" secondItem="naj-CV-sdD" secondAttribute="top" constant="12" id="1n2-zF-dUQ"/>
                                             <constraint firstItem="elY-xb-al8" firstAttribute="leading" secondItem="naj-CV-sdD" secondAttribute="leading" constant="10" id="2Ml-bS-o2A"/>
@@ -382,7 +358,7 @@ Email Line View</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="c07-j0-x9D" secondAttribute="trailing" id="1Wz-3z-ciM"/>
                             <constraint firstItem="W31-Uu-zxG" firstAttribute="height" secondItem="juk-CT-Aj2" secondAttribute="height" multiplier="0.052" id="AQq-z6-W6d"/>
@@ -412,17 +388,14 @@ Email Line View</string>
                         <viewControllerLayoutGuide type="bottom" id="1JS-M7-Pno"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gAT-OA-had" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjI-7v-ajs" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-uU-bdA" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="616"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-uU-bdA" userLabel="Scroll View Container">
                                         <subviews>
                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-Sn-3Dd" userLabel="Profile Image View">
-                                                <rect key="frame" x="96" y="23" width="128" height="128"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="uC9-Sn-3Dd" secondAttribute="height" multiplier="1:1" id="8fs-kV-OvX"/>
@@ -432,129 +405,109 @@ Email Line View</string>
                                                 </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b7-5o-TAt" userLabel="Username Label">
-                                                <rect key="frame" x="10" y="189" width="30" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4x-Cr-mnu" userLabel="Username Line View">
-                                                <rect key="frame" x="10" y="229" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="MjD-v9-1ma"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-ms-2at" userLabel="First Name Text Field">
-                                                <rect key="frame" x="10" y="252" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnU-wW-xDe" userLabel="First Name Label">
-                                                <rect key="frame" x="10" y="240" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh9-Dc-1UO" userLabel="First Name  Line View">
-                                                <rect key="frame" x="10" y="280" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="epT-vh-78M"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20I-jD-GjQ" userLabel="Last Name Text Field">
-                                                <rect key="frame" x="10" y="303" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-te-noO" userLabel="Last Name Label">
-                                                <rect key="frame" x="10" y="291" width="52" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-s1-rOM" userLabel="Last Name Line View">
-                                                <rect key="frame" x="10" y="331" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="S2r-ww-9hb"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEa-CL-8AK" userLabel="Password Text Field">
-                                                <rect key="frame" x="10" y="354" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSR-e0-DMl" userLabel="Password Label">
-                                                <rect key="frame" x="10" y="342" width="52" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-dw-DcC" userLabel="Password Line View">
-                                                <rect key="frame" x="10" y="382" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="McU-FC-eUW"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0T-bH-djN" userLabel="Retype Text Field">
-                                                <rect key="frame" x="10" y="405" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE PASS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olo-Ru-6Sk" userLabel="Retype Label">
-                                                <rect key="frame" x="10" y="393" width="58" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-HY-7kx" userLabel="Retype  Line View">
-                                                <rect key="frame" x="10" y="433" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="AYs-Mn-F9j"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ZV-JR-1XN" userLabel="Bio Text Field">
-                                                <rect key="frame" x="10" y="456" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-aw-oWO" userLabel="Bio Label">
-                                                <rect key="frame" x="10" y="444" width="19" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-up-h1l" userLabel="Bio Line View">
-                                                <rect key="frame" x="10" y="484" width="300" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ceq-1b-JTn"/>
                                                 </constraints>
                                             </view>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CBN-lm-X6Y">
-                                                <rect key="frame" x="10" y="499" width="51" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="rE9-iT-pyP"/>
                                                 </constraints>
                                             </switch>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-ZQ-eYV" userLabel="Signup Button Container">
-                                                <rect key="frame" x="55" y="549" width="210" height="45"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-ZQ-eYV" userLabel="Signup Button Container">
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJp-nq-3ZX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="45"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                         <state key="normal" title="Sign Up">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="signup:" destination="TPs-cv-zMZ" eventType="touchUpInside" id="rE8-Pq-V56"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="210" id="5o9-pG-psz"/>
                                                     <constraint firstItem="AJp-nq-3ZX" firstAttribute="top" secondItem="Gb6-ZQ-eYV" secondAttribute="top" id="Hr0-Du-2c2"/>
@@ -563,26 +516,22 @@ Email Line View</string>
                                                     <constraint firstItem="AJp-nq-3ZX" firstAttribute="leading" secondItem="Gb6-ZQ-eYV" secondAttribute="leading" id="t9h-d3-tDo"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_green" translatesAutoresizingMaskIntoConstraints="NO" id="sqK-Aj-pMv" userLabel="Add Image View">
-                                                <rect key="frame" x="179" y="125" width="31" height="31"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-eA-07q">
-                                                <rect key="frame" x="69" y="502" width="161" height="27"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_green" translatesAutoresizingMaskIntoConstraints="NO" id="sqK-Aj-pMv" userLabel="Add Image View"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-eA-07q">
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="11"/>
                                                 <state key="normal" title="I accept the terms and conditions">
-                                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="iM9-5Y-2pU" kind="show" id="hII-W8-QPJ"/>
+                                                    <segue destination="Yc8-g1-MLy" kind="presentation" id="PjZ-2j-gxY"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FaN-2u-1ZV" userLabel="Username Text Field">
-                                                <rect key="frame" x="10" y="201" width="300" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="FaN-2u-1ZV" secondAttribute="trailing" constant="10" id="0d2-Pk-Qus"/>
                                             <constraint firstAttribute="trailing" secondItem="q0T-bH-djN" secondAttribute="trailing" constant="10" id="0zm-QA-OuI"/>
@@ -659,7 +608,7 @@ Email Line View</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uC9-Sn-3Dd" firstAttribute="width" secondItem="gAT-OA-had" secondAttribute="width" multiplier="0.4" id="0Vy-4y-LkH"/>
                             <constraint firstItem="Gb6-ZQ-eYV" firstAttribute="height" secondItem="gAT-OA-had" secondAttribute="height" multiplier="0.08" id="29y-Im-pML"/>
@@ -674,7 +623,6 @@ Email Line View</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sbh-GD-naR"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImageView" destination="sqK-Aj-pMv" id="4RK-W3-f4C"/>
                         <outlet property="bioTextField" destination="5ZV-JR-1XN" id="bx7-mU-hZA"/>
@@ -686,7 +634,6 @@ Email Line View</string>
                         <outlet property="registerPhotoImageView" destination="uC9-Sn-3Dd" id="lIl-ph-bfS"/>
                         <outlet property="signupButton" destination="AJp-nq-3ZX" id="Rat-ew-CAW"/>
                         <outlet property="signupButtonViewContainer" destination="Gb6-ZQ-eYV" id="tSN-qY-KF1"/>
-                        <outlet property="termsAndConditionsButton" destination="Eck-eA-07q" id="PCc-wa-ulM"/>
                         <outlet property="termsSwitch" destination="CBN-lm-X6Y" id="V06-Id-MQm"/>
                     </connections>
                 </viewController>
@@ -708,34 +655,22 @@ Email Line View</string>
                         <viewControllerLayoutGuide type="bottom" id="Xjf-E4-sfK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uxq-PI-wpA" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="GrQ-Rn-SMe" userLabel="Background">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAK-bw-ZEP" userLabel="Nav Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="CRu-D4-lUy"/>
-                                </constraints>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="GrQ-Rn-SMe" userLabel="Background"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvJ-CD-MWR">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cg-WF-xBe" userLabel="Scroll View Continer">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-h5-vkc" userLabel="Content Label">
-                                                <rect key="frame" x="12" y="10" width="296" height="172"/>
                                                 <string key="text">PaidToGo will track your commute and use that data for purposes including payments, advertising and analytics. The data will be anonymized and no personal information will be transferred to 3rd parties. There is no guarantee of payment in the PaidToGo Open Pools. Payments are based on leaderboard position and funds available from our different fundraising operations.</string>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="cS9-h5-vkc" firstAttribute="leading" secondItem="7cg-WF-xBe" secondAttribute="leading" constant="12" id="GS7-hq-BgD"/>
                                             <constraint firstItem="cS9-h5-vkc" firstAttribute="top" secondItem="7cg-WF-xBe" secondAttribute="top" constant="10" id="iKB-lz-k4T"/>
@@ -744,7 +679,7 @@ Email Line View</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="7cg-WF-xBe" firstAttribute="leading" secondItem="AvJ-CD-MWR" secondAttribute="leading" id="053-Em-OA0"/>
                                     <constraint firstAttribute="trailing" secondItem="7cg-WF-xBe" secondAttribute="trailing" id="MbO-g3-c97"/>
@@ -753,7 +688,7 @@ Email Line View</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xjf-E4-sfK" firstAttribute="top" secondItem="AvJ-CD-MWR" secondAttribute="bottom" id="3Yp-kx-nJn"/>
                             <constraint firstAttribute="trailing" secondItem="AvJ-CD-MWR" secondAttribute="trailing" id="47v-D4-qvJ"/>
@@ -761,30 +696,26 @@ Email Line View</string>
                             <constraint firstItem="GrQ-Rn-SMe" firstAttribute="top" secondItem="AvJ-CD-MWR" secondAttribute="top" id="5kw-YT-jVE"/>
                             <constraint firstItem="AvJ-CD-MWR" firstAttribute="leading" secondItem="uxq-PI-wpA" secondAttribute="leading" id="Ags-vr-mpD"/>
                             <constraint firstItem="GrQ-Rn-SMe" firstAttribute="bottom" secondItem="AvJ-CD-MWR" secondAttribute="bottom" id="RyF-E0-NH2"/>
-                            <constraint firstAttribute="trailing" secondItem="qAK-bw-ZEP" secondAttribute="trailing" id="Yqz-vg-5nj"/>
-                            <constraint firstItem="qAK-bw-ZEP" firstAttribute="top" secondItem="uxq-PI-wpA" secondAttribute="top" id="dEB-Ot-8RW"/>
                             <constraint firstItem="GrQ-Rn-SMe" firstAttribute="trailing" secondItem="AvJ-CD-MWR" secondAttribute="trailing" id="hIG-BJ-0pZ"/>
                             <constraint firstItem="AvJ-CD-MWR" firstAttribute="top" secondItem="O72-9F-cLm" secondAttribute="bottom" id="teM-Zh-ElN"/>
-                            <constraint firstItem="qAK-bw-ZEP" firstAttribute="leading" secondItem="uxq-PI-wpA" secondAttribute="leading" id="tky-x0-nwN"/>
                             <constraint firstItem="7cg-WF-xBe" firstAttribute="width" secondItem="uxq-PI-wpA" secondAttribute="width" id="yTV-xh-gp8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sZ8-7o-fPI"/>
                     <connections>
                         <outlet property="contentLabel" destination="cS9-h5-vkc" id="ifS-rQ-f8t"/>
-                        <outlet property="navBarBackgroundView" destination="qAK-bw-ZEP" id="0CZ-Bq-uby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9T0-vl-sH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="311"/>
+            <point key="canvasLocation" x="3878" y="954"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oos-7E-6fN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XOF-2P-5xX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eea-6G-daN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eea-6G-daN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -802,8 +733,7 @@ Email Line View</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tC6-jh-zqZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjJ-Lt-gDq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yjJ-Lt-gDq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -815,6 +745,25 @@ Email Line View</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMd-wn-YPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1129" y="581"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="adh-kq-dy8">
+            <objects>
+                <navigationController storyboardIdentifier="TermsAndConditionsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Yc8-g1-MLy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="iPm-II-8VM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.25490196079999999" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iM9-5Y-2pU" kind="relationship" relationship="rootViewController" id="0a4-al-Vrk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1l-Hq-VCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3116" y="954"/>
         </scene>
     </scenes>
     <resources>

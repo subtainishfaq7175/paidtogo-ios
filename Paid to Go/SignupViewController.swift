@@ -11,6 +11,8 @@ import Foundation
 
 class SignupViewController: ViewController {
     
+    // MARK: - Outlets -
+    
     @IBOutlet weak var signupButtonViewContainer: UIView!
     @IBOutlet weak var registerPhotoImageView: UIImageView!
     @IBOutlet weak var addImageView: UIImageView!
@@ -27,7 +29,11 @@ class SignupViewController: ViewController {
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var termsSwitch: UISwitch!
     
+    // MARK: - Attributes -
+    
     var profileImage: UIImage?
+    
+    // MARK: - View life cycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,15 +58,14 @@ class SignupViewController: ViewController {
         let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SignupViewController.closeButtonAction(_:)))
         closeButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = closeButtonItem
-
-        
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         initViews()
     }
+    
+    // MARK: - Private methods -
     
     private func initViews(){
         signupButtonViewContainer.round()
@@ -108,8 +113,8 @@ class SignupViewController: ViewController {
         return true
     }
     
+    // MARK: - Actions -
     
-    // MARK: - Selectors
     @IBAction func photoTapAction(sender: AnyObject) {
         let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
