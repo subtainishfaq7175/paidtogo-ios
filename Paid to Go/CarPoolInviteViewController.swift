@@ -31,12 +31,7 @@ class CarPoolInviteViewController: ViewController {
     let cellReuseIdentifier = "CarPoolInviteCell"
     let kDefaultSearchBarText = "a"
     
-    var users: [User] = [User]() {
-        didSet {
-            print("SET ARRAY") // To do: handle empty label according to users.count
-        }
-    }
-    
+    var users: [User] = [User]()
     var selectedUsers : [User] = [User]()
     var type : PoolTypeEnum?
     var poolType: PoolType?
@@ -71,11 +66,21 @@ class CarPoolInviteViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
-        
         self.setPoolTitle(.Car)
+        self.navigationController?.navigationBar.barTintColor = CustomColors.carColor()
+        self.navigationController?.navigationBar.translucent = false
+//        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
+        
         self.searchUsersWithText(kDefaultSearchBarText)
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.translucent = true
+    }
+    
+    // MARK: - Private Methods -
     
     func handleTap(recognizer: UITapGestureRecognizer) {
         

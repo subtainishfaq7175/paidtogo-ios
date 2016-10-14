@@ -2298,7 +2298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dr-bD-1Dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="1022"/>
+            <point key="canvasLocation" x="3444" y="1021"/>
         </scene>
         <!--Car Pool Invite View Controller-->
         <scene sceneID="aj1-mh-ZU2">
@@ -2672,7 +2672,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGf-SG-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2279.5" y="1021.5"/>
+            <point key="canvasLocation" x="2049" y="1021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Isy-Yn-vel">

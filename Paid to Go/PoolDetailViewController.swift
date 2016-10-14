@@ -185,11 +185,11 @@ class PoolDetailViewController: ViewController {
             break
         case .Car:
             
-            let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as? CarPoolInviteViewController
-            carViewController!.type = self.typeEnum
-            carViewController!.poolType = self.poolType
-            carViewController!.pool = self.pool
-            self.showViewController(carViewController!, sender: nil)
+            let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as! CarPoolInviteViewController
+            carViewController.type = self.typeEnum
+            carViewController.poolType = self.poolType
+            carViewController.pool = self.pool
+            self.showViewController(carViewController, sender: nil)
             
             break
         default:
