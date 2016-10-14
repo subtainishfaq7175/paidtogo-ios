@@ -27,14 +27,21 @@ class AntiCheatViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            initViews()
+        
+        initViews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
     }
     
     // MARK: - Functions
     
     private func initLayout() {
         setNavigationBarVisible(true)
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+//        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         //        clearNavigationBarcolor()
     }
     

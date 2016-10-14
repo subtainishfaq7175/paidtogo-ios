@@ -50,13 +50,15 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>The location is needed</string>
+	<string>We need your location to bring you a better service.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The location is needed</string>
+	<string>We need your location to bring you a better service.</string>
     <key>NSMotionUsageDescription</key>
-    <string>The app requires your motion data</string>
+    <string>We need your motion data to bring you a better service.</string>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string>The app requires to access your gallery</string>
+    <string>We need to use the photo library to get users profile picture.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>We need to use the camera to take users profile picture.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

@@ -20,10 +20,22 @@ class AntiCheatImageViewController: ViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setPoolTitle(.Train)
-        startButtonView.round()
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+//        startButtonView.round()
+//        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         photoImageView.image = image
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        startButtonView.round()
+        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
     }
     
     @IBAction func startPool(sender: AnyObject) {

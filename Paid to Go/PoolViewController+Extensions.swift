@@ -19,6 +19,9 @@ extension PoolViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
+        
         initViews()
     }
     override func viewDidLoad() {
@@ -63,8 +66,8 @@ extension PoolViewController {
         
         setCustomNavigationBackButton()
         
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
+//        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+//        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
         bannerImageView.yy_setImageWithURL(NSURL(string: (pool?.banner)!), options: .ShowNetworkActivity)
         
         setPoolTitle(self.type!)
