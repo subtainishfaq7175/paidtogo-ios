@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>9</string>
 	<key>FacebookAppID</key>
 	<string>1730253337217048</string>
 	<key>FacebookDisplayName</key>
@@ -49,16 +49,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to use the camera to take users profile picture.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need your location to bring you a better service.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to bring you a better service.</string>
-    <key>NSMotionUsageDescription</key>
-    <string>We need your motion data to bring you a better service.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We need to use the photo library to get users profile picture.</string>
-    <key>NSCameraUsageDescription</key>
-    <string>We need to use the camera to take users profile picture.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>We need your motion data to bring you a better service.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to use the photo library to get users profile picture.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
