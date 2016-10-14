@@ -51,7 +51,7 @@
                                         <rect key="frame" x="0.0" y="1" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ole-iW-HXf" id="cwB-1G-aQb">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You earned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-mB-S2s">
@@ -82,7 +82,7 @@
                                         <rect key="frame" x="0.0" y="81" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Un6-Bg-wU0" id="9BU-hd-cid">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-rr-bpf" userLabel="Top View">
@@ -157,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="161" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zw8-nE-tTv" id="706-nZ-jt3">
-                                            <frame key="frameInset" width="375" height="79.5"/>
+                                            <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DpF-3s-wTx">

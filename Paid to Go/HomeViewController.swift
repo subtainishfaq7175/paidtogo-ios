@@ -23,8 +23,6 @@ class HomeViewController: MenuContentViewController {
         
         setNavigationBarVisible(true)
         
-        setBorderToView(elautlet, color: CustomColors.NavbarTintColor().CGColor)
-        
         GeolocationManager.initLocationManager()
     }
     
@@ -40,6 +38,14 @@ class HomeViewController: MenuContentViewController {
         super.viewDidAppear(animated)
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setBorderToView(elautlet, color: CustomColors.NavbarTintColor().CGColor)
+    }
+    
+    // MARK: - Navigation -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationViewController = segue.destinationViewController as! PoolsViewController

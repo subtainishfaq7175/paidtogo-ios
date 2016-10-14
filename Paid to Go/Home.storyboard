@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-Mb-Unc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="249" y="94"/>
+            <point key="canvasLocation" x="169" y="91"/>
         </scene>
         <!--Anti Cheat View Controller-->
         <scene sceneID="LxA-8W-dTY">
@@ -664,17 +664,20 @@
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pools_btn_greenblue" translatesAutoresizingMaskIntoConstraints="NO" id="1nf-Tc-GLV" userLabel="Indicator Image View">
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="100" id="dO0-HL-PfA"/>
-                                                                        </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="1nf-Tc-GLV" firstAttribute="leading" secondItem="oH7-SG-gqk" secondAttribute="leading" constant="8" id="4bY-Zb-oV1"/>
                                                                     <constraint firstAttribute="bottom" secondItem="1nf-Tc-GLV" secondAttribute="bottom" id="6Ji-3C-hXq"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="1nf-Tc-GLV" secondAttribute="trailing" constant="8" id="U2I-yT-m7l"/>
                                                                     <constraint firstItem="1nf-Tc-GLV" firstAttribute="top" secondItem="oH7-SG-gqk" secondAttribute="top" id="Wl0-BX-RXL"/>
                                                                 </constraints>
+                                                                <variation key="default">
+                                                                    <mask key="constraints">
+                                                                        <exclude reference="U2I-yT-m7l"/>
+                                                                    </mask>
+                                                                </variation>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -974,7 +977,7 @@
                         <outlet property="goView" destination="ebu-Pi-hsk" id="SQD-PA-rgV"/>
                         <outlet property="headerTitleLabel" destination="bBH-Gb-9vQ" id="bZm-l8-JdR"/>
                         <outlet property="indicatorLeadingConstraint" destination="4bY-Zb-oV1" id="9KO-V0-v5Y"/>
-                        <outlet property="indicatorWidthConstraint" destination="dO0-HL-PfA" id="2kq-Pb-tN9"/>
+                        <outlet property="indicatorTrailingConstraint" destination="U2I-yT-m7l" id="qGc-ci-3Ek"/>
                         <outlet property="openPoolsIndicatorView" destination="xTG-7T-2Zl" id="dfT-WE-KK4"/>
                         <outlet property="openPoolsLabel" destination="utN-iQ-Xeg" id="KPo-NB-9Bo"/>
                         <outlet property="openPoolsTableView" destination="fUD-Re-0F3" id="dB8-58-BYc"/>
@@ -996,7 +999,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-804" y="864"/>
+            <point key="canvasLocation" x="-860" y="864"/>
         </scene>
         <!--Map-->
         <scene sceneID="4h0-YD-StX">
@@ -1709,7 +1712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMX-uz-kMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712.5" y="864.5"/>
+            <point key="canvasLocation" x="724" y="863"/>
         </scene>
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
@@ -2466,7 +2469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KE4-M0-24f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26.5" y="3226.5"/>
+            <point key="canvasLocation" x="-95" y="3330"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="WkC-SA-byB">
@@ -2650,7 +2653,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NU5-pW-d5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463" y="93"/>
+            <point key="canvasLocation" x="-543" y="90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGv-2c-yFQ">

@@ -11,7 +11,7 @@ import CoreLocation
 
 class PoolsViewController: ViewController, UIScrollViewDelegate {
     
-    // MARK: - Outlets
+    // MARK: - Outlets -
     
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var goImageView: UIImageView!
@@ -20,7 +20,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var indicatorWidthConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var indicatorWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var indicatorTrailingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var openPoolsView: UIView!
     @IBOutlet weak var closedPoolsView: UIView!
@@ -41,7 +42,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     @IBOutlet weak var backgroundColorView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    // MARK: - Variables and Constants
+    // MARK: - Attributes
     
     let cellReuseIdentifier = "poolCell"
     let kPoolDetailSegue = "poolDetailSegue"
@@ -86,7 +87,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     /// If the user switches the pool directly from the pool screen, the view must be updated to match the new pool type selected
     var quickSwitchPool = false
     
-    // MARK: - Super -
+    // MARK: - View life cycle -
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -155,10 +156,6 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     private func initLayout() {
         
-//        setNavigationBarVisible(true)
-        
-//        clearNavigationBarcolor()
-        
         // Sets the indicator [ Open pools - Closed pools ]
         setIndicatorOnLeft()
         
@@ -185,8 +182,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
     
     private func setIndicatorOnLeft() {
-        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
-        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16
+        indicatorLeadingConstraint.active = true
+        indicatorTrailingConstraint.active = false
+//        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
+//        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16
         
         self.closedPoolsLabel.textColor = UIColor.grayColor()
         self.closedPoolsIndicatorView.backgroundColor = UIColor.grayColor()
@@ -196,8 +195,10 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     }
     
     private func setIndicatorOnRight() {
-        indicatorLeadingConstraint.constant = closedPoolsView.frame.origin.x + 8
-        indicatorWidthConstraint.constant = closedPoolsView.frame.width - 16
+        indicatorLeadingConstraint.active = false
+        indicatorTrailingConstraint.active = true
+//        indicatorLeadingConstraint.constant = closedPoolsView.frame.origin.x + 8
+//        indicatorWidthConstraint.constant = closedPoolsView.frame.width - 16
         
         self.openPoolsLabel.textColor = UIColor.grayColor()
         self.openPoolsIndicatorView.backgroundColor = UIColor.grayColor()
