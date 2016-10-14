@@ -17,7 +17,6 @@ private enum RequestType: String {
 
 class ConnectionManager {
     
-//    private var baseURL = "http://paid.xanthops.com/api/v1"
     private var baseURL = "http://paidtogo.com/api/v1"
     
     private var registerURL: String { return "\(baseURL)/register" }

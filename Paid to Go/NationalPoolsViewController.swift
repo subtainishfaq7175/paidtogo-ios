@@ -66,9 +66,7 @@ class NationalPoolsViewController: ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
-        
-//        self.navBarBackgroundView.backgroundColor = UIColor(rgba: poolType!.color!)
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
     }
     
     // MARK: - Navigation -
@@ -90,8 +88,6 @@ class NationalPoolsViewController: ViewController {
     private func initLayout() {
         setNavigationBarVisible(true)
         clearNavigationBarcolor()
-        
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
         headerImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         

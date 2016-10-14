@@ -62,6 +62,7 @@ class PoolDetailViewController: ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
     }
 
@@ -83,7 +84,7 @@ class PoolDetailViewController: ViewController {
         
         backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+//        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
 //        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
         
         bannerBottomBorderView.backgroundColor = UIColor(rgba: poolType!.color!)
