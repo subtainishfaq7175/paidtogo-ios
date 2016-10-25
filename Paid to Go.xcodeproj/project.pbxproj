@@ -755,7 +755,7 @@
 				TargetAttributes = {
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = EUARY92ECY;
+						DevelopmentTeam = WBY4S2TLK6;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -1096,15 +1096,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ivan Saroka (EFLSTCE6ZV)";
-				DEVELOPMENT_TEAM = EUARY92ECY;
+				CODE_SIGN_IDENTITY = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
+				DEVELOPMENT_TEAM = WBY4S2TLK6;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4ef56134-a05d-4d2a-9a9f-fdd42f05f02f";
-				PROVISIONING_PROFILE_SPECIFIER = "Paid To Go Development";
+				PROVISIONING_PROFILE = "57100575-8f5a-414d-9fae-1cc507bede3a";
+				PROVISIONING_PROFILE_SPECIFIER = "PaidToGo Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
@@ -1121,9 +1122,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
 				DEVELOPMENT_TEAM = WBY4S2TLK6;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58f43db7-459b-4f3e-a2c1-107440066575";
 				PROVISIONING_PROFILE_SPECIFIER = "PaidToGo Appstore";
