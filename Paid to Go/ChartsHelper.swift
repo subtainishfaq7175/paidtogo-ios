@@ -108,11 +108,25 @@ class ChartsHelper: NSObject {
         xVals.append(date)
     }
     
-    func configureChartForMonthsData(lineChart:LineChartView, values:[Double], stats:Stats, pastMonths:Int) {
+    func configureLabelAmountForTimePeriod(values:[Double], timePeriod:TimePeriod) {
+        switch timePeriod {
+        case TimePeriod.SixMonths:
+            
+            break
+        case TimePeriod.ThreeMonths:
+            
+            break
+        default:
+            
+            break
+        }
+    }
+    
+    func configureChartForMonthsData(lineChart:LineChartView, values:[Double], stats:Stats, pastMonths:Int, inout totalValues:[Double]) {
         
         lineChart.userInteractionEnabled = false
         
-        // Sets previous date six months back
+        // Sets previous date from months back (6 or 3)
         setPreviousDateMonthsBack(pastMonths)
         
         // Get the months between the dates
@@ -120,10 +134,13 @@ class ChartsHelper: NSObject {
         var previousMonth = previousDate.month
         previousMonth -= 1
 
+        var total = 0.0
+        
         for index in 0..<pastMonths+1 {
             
             // We set the data for the month
             addYValueForXDate(values[previousMonth], index: index)
+            total += values[previousMonth]
             
             // We set the correct label for the month
             let monthName = getMonthName(previousMonth)
@@ -148,41 +165,18 @@ class ChartsHelper: NSObject {
             }
         }
         
-        /*
-        var index = 0
-         
-        for month in previousMonth-1..<currentMonth {
-            
-            // We set the data for the month
-            addYValueForXDate(values[month], index: index)
-            index += 1
-            
-            // We set the correct label for the month
-            let monthName = getMonthName(month)
-            addXDate(monthName.rawValue)
-            
-            // We set a different color to the current month
-            var color : UIColor!
-            if month == currentMonth-1 {
-                color = CustomColors.carColor()
-                colorsLabel.append(UIColor.blackColor())
-            } else {
-                color = CustomColors.carColor().colorWithAlphaComponent(0.5)
-                colorsLabel.append(UIColor.lightGrayColor())
-            }
-            colorsCircle.append(color)
-        }
-         */
-        
         switch stats {
         case Stats.Incomes:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "$")
+            totalValues[0] = total
             break
         case Stats.SavedGas:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Miles Offset")
+            totalValues[1] = total
             break
         default:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "CO2 MT’s")
+            totalValues[2] = total
             break
         }
         
@@ -199,9 +193,11 @@ class ChartsHelper: NSObject {
         clearValues()
     }
     
-    func configureChartForWeekData(lineChart:LineChartView, values:[Double], stats:Stats) {
+    func configureChartForWeekData(lineChart:LineChartView, values:[Double], stats:Stats, inout totalValues:[Double]) {
         
         lineChart.userInteractionEnabled = false
+        
+        var total = 0.0
         
         for index in 0..<7 {
             
@@ -215,6 +211,7 @@ class ChartsHelper: NSObject {
             
             // We set the data for the day
             addYValueForXDate(income, index: index)
+            total += income
             
             // We set the correct label for the day
             let dayName = getDayName(index)
@@ -235,18 +232,20 @@ class ChartsHelper: NSObject {
             }
             
             colorsCircle.append(color)
-            
         }
         
         switch stats {
         case Stats.Incomes:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "$")
+            totalValues[0] = total
             break
         case Stats.SavedGas:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Miles Offset")
+            totalValues[1] = total
             break
         default:
             lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "CO2 MT’s")
+            totalValues[2] = total
             break
         }
         
@@ -261,7 +260,6 @@ class ChartsHelper: NSObject {
         lineChart.animate(xAxisDuration: 0.75, yAxisDuration: 0.75)
         
         clearValues()
-        
     }
     
     func configureChartDataSet() {

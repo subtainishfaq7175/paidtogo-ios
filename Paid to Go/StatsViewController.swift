@@ -10,6 +10,21 @@ import UIKit
 import Charts
 import SwiftDate
 
+/**
+ This enum discriminates between the three different types of time periods that the user can select to filter the charts info
+ */
+enum TimePeriod {
+    case SixMonths
+    case ThreeMonths
+    case LastWeek
+}
+
+private enum StatSelected {
+    case Income
+    case GasSaved
+    case CarbonOffset
+}
+
 class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     // MARK: - Outlets -
@@ -63,6 +78,17 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var arrTotalSavedGasByWeek = [Double](count: 7, repeatedValue: 0.0)
     var arrTotalCarbonOffByWeek = [Double](count: 7, repeatedValue: 0.0)
     
+    /// By default, we select the six months time period
+    private var timePeriod = TimePeriod.SixMonths
+    
+    /*  We use an array to store the total values, according to the time period selected [6 months, 3 months, 1 week]:
+     *
+     *  [0 - Amount ; 1 - Gas Saved ; 2 - Carbon Off]
+     */
+    var totalValuesForTimePeriod : [Double] = [Double](count: 3, repeatedValue: 0.0)
+    
+    private var statSelected = StatSelected.Income
+    
     // MARK: - View life cycle
     
     override func viewWillAppear(animated: Bool) {
@@ -104,24 +130,33 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
     func configureChartForSixMonthsData() {
+        timePeriod = TimePeriod.SixMonths
         
-        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 5)
-        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 5)
-        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 5)
+        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+        
+        updateFooterViewForCurrentStatSelected()
     }
     
     func configureChartForThreeMonthsData() {
+        timePeriod = TimePeriod.ThreeMonths
 
-        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 2)
-        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 2)
-        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 2)
+        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+        
+        updateFooterViewForCurrentStatSelected()
     }
     
     func configureChartForCurrentWeek() {
+        timePeriod = TimePeriod.LastWeek
 
-        chartsHelper.configureChartForWeekData(incomesChartView, values: arrTotalIncomeByWeek, stats: Stats.Incomes)
-        chartsHelper.configureChartForWeekData(gasChartView, values: arrTotalSavedGasByWeek, stats: Stats.SavedGas)
-        chartsHelper.configureChartForWeekData(carbonChartview, values: arrTotalCarbonOffByWeek, stats: Stats.CarbonOff)
+        chartsHelper.configureChartForWeekData(incomesChartView, values: arrTotalIncomeByWeek, stats: Stats.Incomes, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForWeekData(gasChartView, values: arrTotalSavedGasByWeek, stats: Stats.SavedGas, totalValues: &totalValuesForTimePeriod)
+        chartsHelper.configureChartForWeekData(carbonChartview, values: arrTotalCarbonOffByWeek, stats: Stats.CarbonOff, totalValues: &totalValuesForTimePeriod)
+        
+        updateFooterViewForCurrentStatSelected()
     }
     
     // MARK: - Screen Updates
@@ -165,28 +200,33 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         }
     }
     
+    private func updateFooterViewForCurrentStatSelected() {
+        switch statSelected {
+        case StatSelected.Income:
+            updateFooterViewForIncomes()
+            break
+        case StatSelected.GasSaved:
+            updateFooterViewForGas()
+            break
+        default:
+            updateFooterViewForCarbon()
+            break
+        }
+    }
+    
     private func updateFooterViewForIncomes() {
         self.lblTotalEarned.text = "Total Earned"
-        guard let balance = self.status.incomes?.balance else {
-            return
-        }
-        self.lblAmountEarned.text = "$ " + String(format: "%.2f", (balance))
+        self.lblAmountEarned.text = "$ " + String(format: "%.2f", (totalValuesForTimePeriod[0]))
     }
     
     private func updateFooterViewForGas() {
         self.lblTotalEarned.text = "Saved Gas"
-        guard let balance = self.status.savedGas?.balance else {
-            return
-        }
-        self.lblAmountEarned.text = "GAL " + String(format: "%.2f", (balance))
+        self.lblAmountEarned.text = "$ " + String(format: "%.2f", (totalValuesForTimePeriod[1]))
     }
     
     private func updateFooterViewForCarbon() {
         self.lblTotalEarned.text = "Metric Tons Offset"
-        guard let balance = self.status.carbonOff?.balance else {
-            return
-        }
-        self.lblAmountEarned.text = String(format: "%.2f", (balance))
+        self.lblAmountEarned.text = "$ " + String(format: "%.2f", (totalValuesForTimePeriod[2]))
     }
     
     // MARK: - API Calls
@@ -239,21 +279,24 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     }
     
     @IBAction func incomesAction(sender: AnyObject) {
-        
+        statSelected = StatSelected.Income
+        print("Selected - Income")
         moveIndicatorToLeft()
         updateFooterViewForIncomes()
         self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     @IBAction func gasAction(sender: AnyObject) {
-        
+        statSelected = StatSelected.GasSaved
+        print("Selected - GasSaved")
         moveIndicatorToCenter()
         updateFooterViewForGas()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
     }
     
     @IBAction func carbonAction(sender: AnyObject) {
-        
+        statSelected = StatSelected.CarbonOffset
+        print("Selected - CarbonOffset")
         moveIndicatorToRight()
         updateFooterViewForCarbon()
         self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
@@ -275,14 +318,20 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             
             switch currentPage {
             case 1:
+                statSelected = StatSelected.Income
+                print("Selected - Income")
                 moveIndicatorToLeft()
                 updateFooterViewForIncomes()
                 break
             case 2:
+                statSelected = StatSelected.GasSaved
+                print("Selected - GasSaved")
                 moveIndicatorToCenter()
                 updateFooterViewForGas()
                 break
             case 3:
+                statSelected = StatSelected.CarbonOffset
+                print("Selected - CarbonOffset")
                 moveIndicatorToRight()
                 updateFooterViewForCarbon()
                 break
@@ -295,14 +344,20 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
             
             switch currentPage {
             case 1:
+                statSelected = StatSelected.Income
+                print("Selected - Income")
                 moveIndicatorToLeft()
                 updateFooterViewForIncomes()
                 break
             case 2:
+                statSelected = StatSelected.GasSaved
+                print("Selected - GasSaved")
                 moveIndicatorToCenter()
                 updateFooterViewForGas()
                 break
             case 3:
+                statSelected = StatSelected.CarbonOffset
+                print("Selected - CarbonOffset")
                 moveIndicatorToRight()
                 updateFooterViewForCarbon()
                 break
