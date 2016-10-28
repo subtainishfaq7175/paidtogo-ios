@@ -222,8 +222,9 @@ class DataProvider : DataProviderService {
         params["location_lat"] = lat
         params["location_lon"] = lon
         
-        // Closed pools should be filtered by the userID
-        if open == "0" {
+        // Closed pools should be filtered by the userID. 
+        // National pools also require the userID, to determine if it's a Pro user
+        if open == "0" || open == "2" {
             params["user_id"] = userID
         }
         

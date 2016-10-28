@@ -57,7 +57,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     // MARK: - Variables and Constants -
 
-    let chartsHelper = ChartsHelper()
+    var chartsHelper : ChartsHelper!
     
     var lastContentOffset : CGFloat = 0
     var status = Status()
@@ -95,12 +95,15 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         self.customizeNavigationBar()
+        
+        self.chartsHelper = ChartsHelper(incomesChart: incomesChartView, gasChart: gasChartView, carbonChart: carbonChartview)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.scrollView.delegate = self
+        
         self.loadStatsWithDefaultData()
     }
     

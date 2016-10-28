@@ -88,6 +88,34 @@ class ChartsHelper: NSObject {
     var currentDate : NSDate! = NSDate()
     var previousDate : NSDate! = NSDate()
     
+    var valueFormatter : NSNumberFormatter {
+        get {
+            let valueFormatter = NSNumberFormatter()
+            valueFormatter.minimumSignificantDigits = 1
+            valueFormatter.minimumFractionDigits = 2
+            valueFormatter.maximumFractionDigits = 2
+            return valueFormatter
+        }
+    }
+    
+    init(incomesChart:LineChartView, gasChart:LineChartView, carbonChart:LineChartView) {
+        super.init()
+        
+        incomesChart.leftAxis.axisMinValue = 0.0
+        incomesChart.rightAxis.axisMinValue = 0.0
+        gasChart.leftAxis.axisMinValue = 0.0
+        gasChart.rightAxis.axisMinValue = 0.0
+        carbonChart.leftAxis.axisMinValue = 0.0
+        carbonChart.rightAxis.axisMinValue = 0.0
+        
+        incomesChart.leftAxis.valueFormatter = valueFormatter
+        incomesChart.rightAxis.valueFormatter = valueFormatter
+        gasChart.leftAxis.valueFormatter = valueFormatter
+        gasChart.rightAxis.valueFormatter = valueFormatter
+        carbonChart.leftAxis.valueFormatter = valueFormatter
+        carbonChart.rightAxis.valueFormatter = valueFormatter
+    }
+    
     /**
      Adds the value for the corresponding date (Y axis)
      
@@ -122,6 +150,9 @@ class ChartsHelper: NSObject {
         }
     }
     
+    /**
+     Data configuration of the chart, for the monthly time period
+     */
     func configureChartForMonthsData(lineChart:LineChartView, values:[Double], stats:Stats, pastMonths:Int, inout totalValues:[Double]) {
         
         lineChart.userInteractionEnabled = false
@@ -139,8 +170,12 @@ class ChartsHelper: NSObject {
         for index in 0..<pastMonths+1 {
             
             // We set the data for the month
-            addYValueForXDate(values[previousMonth], index: index)
-            total += values[previousMonth]
+            var value = values[previousMonth]
+            if stats == Stats.SavedGas {
+                value *= 1000
+            }
+            addYValueForXDate(value, index: index)
+            total += value
             
             // We set the correct label for the month
             let monthName = getMonthName(previousMonth)
@@ -171,7 +206,7 @@ class ChartsHelper: NSObject {
             totalValues[0] = total
             break
         case Stats.SavedGas:
-            lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Miles Offset")
+            lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Gas Saved (*1000)")
             totalValues[1] = total
             break
         default:
@@ -193,6 +228,9 @@ class ChartsHelper: NSObject {
         clearValues()
     }
     
+    /**
+     Data configuration of the chart, for the weekly time period
+     */
     func configureChartForWeekData(lineChart:LineChartView, values:[Double], stats:Stats, inout totalValues:[Double]) {
         
         lineChart.userInteractionEnabled = false
@@ -210,8 +248,12 @@ class ChartsHelper: NSObject {
             }
             
             // We set the data for the day
-            addYValueForXDate(income, index: index)
-            total += income
+            var value = income
+            if stats == Stats.SavedGas {
+                value *= 1000
+            }
+            addYValueForXDate(value, index: index)
+            total += value
             
             // We set the correct label for the day
             let dayName = getDayName(index)
@@ -240,7 +282,7 @@ class ChartsHelper: NSObject {
             totalValues[0] = total
             break
         case Stats.SavedGas:
-            lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Miles Offset")
+            lineChartDataSet = LineChartDataSet(yVals: chartDataSetEntries, label: "Gas Saved (*1000)")
             totalValues[1] = total
             break
         default:
@@ -262,6 +304,9 @@ class ChartsHelper: NSObject {
         clearValues()
     }
     
+    /**
+     Visual configuration of the chart
+     */
     func configureChartDataSet() {
         
         lineChartDataSet.lineWidth = 2.0
@@ -280,6 +325,9 @@ class ChartsHelper: NSObject {
         lineChartDataSet.drawValuesEnabled = true
         lineChartDataSet.drawCubicEnabled = true
         lineChartDataSet.drawFilledEnabled = true
+        
+        // Set format for the values on top of the circles
+        lineChartDataSet.valueFormatter = valueFormatter
     }
     
     func clearValues() {

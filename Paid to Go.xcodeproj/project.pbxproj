@@ -45,6 +45,7 @@
 		4DA07A4B1D4B94170090B076 /* Subroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA07A4A1D4B94170090B076 /* Subroute.swift */; };
 		4DB22D3C1D3FA498006D3FA6 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */; };
 		4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */; };
+		4DBC14241DC23805003FD977 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC14231DC23805003FD977 /* Double+Extensions.swift */; };
 		4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */; };
 		4DBCE93D1D7F43120020B7A2 /* ProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */; };
 		4DC763A01D8730B10051BFF5 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */; };
@@ -183,6 +184,7 @@
 		4DA07A4A1D4B94170090B076 /* Subroute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subroute.swift; sourceTree = "<group>"; };
 		4DB22D3B1D3FA498006D3FA6 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolDetailViewController.swift; sourceTree = "<group>"; };
+		4DBC14231DC23805003FD977 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProViewController.swift; sourceTree = "<group>"; };
 		4DBF557B1D7EE9800059B249 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				4DF0005E1D46971C001394E3 /* UIImage+Extensions.swift */,
 				4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */,
 				4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */,
+				4DBC14231DC23805003FD977 /* Double+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
+				4DBC14241DC23805003FD977 /* Double+Extensions.swift in Sources */,
 				4D2F43231D9AE6C70022B01E /* ReceiptValidationResult.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,

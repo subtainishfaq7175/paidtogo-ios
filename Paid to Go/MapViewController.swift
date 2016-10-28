@@ -113,8 +113,8 @@ class MapViewController: ViewController {
             testHorizontalAccuracy.text = String(format: "%.2f", currentLocation.horizontalAccuracy)
         }
         
-        // We set a minimum offset of 50 meters of distance between user's location points, to draw only those subroutes on the map
-        if distanceBetweenLocations > 50.0 {
+        // We set a minimum offset of 20 meters of distance between user's location points, to draw only those subroutes on the map
+        if distanceBetweenLocations > 20.0 {
             
             // Update travelled miles by the user
             ActivityManager.updateMilesCounterWithMeters(distanceBetweenLocations)

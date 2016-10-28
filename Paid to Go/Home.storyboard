@@ -65,7 +65,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ea8-bN-YNj" userLabel="Car Pool View">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ea8-bN-YNj" userLabel="Car Pool View">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_car" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LN4-zX-QSN" userLabel="Car Pool Button">
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
@@ -180,8 +180,8 @@
                                         <exclude reference="w2j-MI-dJs"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="KwW-xa-iXR"/>
                                         <exclude reference="C69-Ed-1wR"/>
+                                        <exclude reference="KwW-xa-iXR"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -239,8 +239,8 @@
                                         <exclude reference="7lP-ER-ADi"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="XgZ-Yt-1GF"/>
                                         <exclude reference="xGY-Ml-t9F"/>
+                                        <exclude reference="XgZ-Yt-1GF"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2489,8 +2489,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcJ-1o-X3g" userLabel="Icons View Container">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvC-7L-Xbu" userLabel="Twitter Button">
-                                        <frame key="frameInset" minY="74" width="74" height="73"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvC-7L-Xbu" userLabel="Twitter Button">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="AvC-7L-Xbu" secondAttribute="height" multiplier="1:1" id="HKB-Gx-7B4"/>
                                         </constraints>
@@ -2499,8 +2498,7 @@
                                             <action selector="twitter:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="LIB-Rm-UbB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-BK-axP" userLabel="Mail Button">
-                                        <frame key="frameInset" minX="74" minY="74" width="73" height="73"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-BK-axP" userLabel="Mail Button">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uPd-BK-axP" secondAttribute="height" multiplier="1:1" id="D6M-uv-J6T"/>
                                         </constraints>
@@ -2509,8 +2507,7 @@
                                             <action selector="email:" destination="WSC-Fb-2ub" eventType="touchUpInside" id="Kjm-l4-bLf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-X4-TFW" userLabel="Instagram Button">
-                                        <frame key="frameInset" minX="74" width="73" height="74"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-X4-TFW" userLabel="Instagram Button">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a6F-X4-TFW" secondAttribute="height" multiplier="1:1" id="vSM-DM-FYR"/>
                                         </constraints>
@@ -2642,7 +2639,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="PQP-Ci-HHk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7tH-kq-1CZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7tH-kq-1CZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2679,7 +2676,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AntiCheatNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KyA-Ev-gIW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tdv-lO-ix7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tdv-lO-ix7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

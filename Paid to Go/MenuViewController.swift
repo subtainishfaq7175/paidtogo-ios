@@ -99,10 +99,18 @@ class MenuViewController: ViewController {
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
+//        profileImageView.roundWholeView()
+//        nameView.round()
+//        proUserLabel.round()
+        configureViewForProUser()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         profileImageView.roundWholeView()
         nameView.round()
         proUserLabel.round()
-        configureViewForProUser()
     }
     
     func configureViewForProUser() {
