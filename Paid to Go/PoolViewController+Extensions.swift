@@ -453,6 +453,8 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10.0;
         
+        locationManager.allowsBackgroundLocationUpdates = true
+        
         locationManager.requestAlwaysAuthorization()
     }
     func startLocationUpdates() {
