@@ -25,22 +25,22 @@ final class LeaderboardsListViewController: MenuContentViewController {
         didSet {
             if leaderboards.count == 0 {
                 // No leaderboards to show
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.hidden = true
-                    self.lblEmptyTable.hidden = false
-                })
+                DispatchQueue.main.async {
+                    self.tableView.isHidden = true
+                    self.lblEmptyTable.isHidden = false
+                }
             } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.hidden = false
-                    self.lblEmptyTable.hidden = true
-                })
+                DispatchQueue.main.async {
+                    self.tableView.isHidden = false
+                    self.lblEmptyTable.isHidden = true
+                }
             }
         }
     }
     
     // MARK: - View Lifecycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.showProgressHud()
@@ -49,8 +49,8 @@ final class LeaderboardsListViewController: MenuContentViewController {
             
             guard let leaderboards = leaderboards else {
                 
-                self.tableView.hidden = true
-                self.lblEmptyTable.hidden = false
+                self.tableView.isHidden = true
+                self.lblEmptyTable.isHidden = false
                 
                 return
             }
@@ -60,7 +60,7 @@ final class LeaderboardsListViewController: MenuContentViewController {
             self.tableView.reloadData()
         }
         
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
         initLayout()
     }
     
@@ -76,12 +76,13 @@ final class LeaderboardsListViewController: MenuContentViewController {
     func configureTableView() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.registerNib(UINib(nibName: String(LeaderboardsListTableViewCell), bundle: nil), forCellReuseIdentifier: String(LeaderboardsListTableViewCell))
-        self.tableView.separatorStyle = .None
+        self.tableView.register(UINib(nibName: "LeaderboardsListTableViewCell", bundle: nil), forCellReuseIdentifier:
+            "LeaderboardsListTableViewCell")
+        self.tableView.separatorStyle = .none
     }
     
     func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
         customizeNavigationBarWithMenu()
@@ -89,42 +90,43 @@ final class LeaderboardsListViewController: MenuContentViewController {
     }
     
     // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! LeaderboardsViewController
-//        let leaderboard = sender as! Leaderboard
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! LeaderboardsViewController
+        //        let leaderboard = sender as! Leaderboard
         
         vc.leaderboardsResponse = sender as! LeaderboardsResponse
     }
-    
+   
     // MARK: - Actions
     
     func dismiss(sender: UIBarButtonItem){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension LeaderboardsListViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.leaderboards.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(LeaderboardsListTableViewCell)) as! LeaderboardsListTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardsListTableViewCell") as! LeaderboardsListTableViewCell
         
         if indexPath.row%2 == 0 {
-            cell.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         } else {
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.white
         }
         
-        cell.configureCellWithLeaderboardsResponse(self.leaderboards[indexPath.row])
+        cell.configureCellWithLeaderboardsResponse(leaderboardsResponse: self.leaderboards[indexPath.row])
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("leaderboardsSegue", sender: self.leaderboards[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "leaderboardsSegue", sender: self.leaderboards[indexPath.row])
+
     }
+    
 }

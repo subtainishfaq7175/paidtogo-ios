@@ -19,8 +19,8 @@ extension PoolViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: headerTitleLabel, color: CustomColors.NavbarTintColor().cgColor)
+        setBorderToView(view: bannerImageView, color: CustomColors.NavbarTintColor().cgColor)
         
         initViews()
     }
@@ -31,16 +31,16 @@ extension PoolViewController {
         initButtons()
         initLocationManager()
         
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         
         if(screenSize.height == 480.0) { //iPhone 4S
             self.circularProgressCenterYConstraint.constant = 0
         }
         
         if type == .Walk && CMPedometer.isStepCountingAvailable() {
-            self.stepCountLabel.hidden = false
+            self.stepCountLabel.isHidden = false
         } else {
-            self.stepCountLabel.hidden = true
+            self.stepCountLabel.isHidden = true
         }
         
         if type == PoolTypeEnum.Walk || type == PoolTypeEnum.Bike {
@@ -55,35 +55,35 @@ extension PoolViewController {
         let milesCounter = ActivityManager.sharedInstance.getMilesCounter()
         self.progressLabel.text = String(format: "%.2f", milesCounter)
         
-        mapButton.hidden = true
+        mapButton.isHidden = true
     }
     
     // MARK: - Private Methods
     
     private func initLayout() {
-        super.setNavigationBarVisible(true)
+        super.setNavigationBarVisible(visible: true)
         super.clearNavigationBarcolor()
         
         setCustomNavigationBackButton()
         
 //        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
 //        setBorderToView(bannerImageView, color: CustomColors.NavbarTintColor().CGColor)
-        bannerImageView.yy_setImageWithURL(NSURL(string: (pool?.banner)!), options: .ShowNetworkActivity)
+        bannerImageView.yy_setImage(with: URL(string: (pool?.banner)!), options: .showNetworkActivity)
         
-        setPoolTitle(self.type!)
-        setPoolBackgroundImage(self.type!)
+        setPoolTitle(type: self.type!)
+        setPoolBackgroundImage(type: self.type!)
         
         if type != PoolTypeEnum.Car {
             
             let switchImage = UIImage(named: "ic_pool_switch")
-            let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PoolViewController.switchButtonPressed))
+            let rightButtonItem: UIBarButtonItem = UIBarButtonItem(image: switchImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(PoolViewController.switchButtonPressed))
             self.navigationItem.rightBarButtonItem = rightButtonItem
         }
         
         if hasPausedAndResumedActivity {
-            pauseButton.hidden = false
+            pauseButton.isHidden = false
         } else {
-            pauseButton.hidden = true
+            pauseButton.isHidden = true
         }
     }
     private func initViews() {
@@ -92,21 +92,21 @@ extension PoolViewController {
         pauseButton.round()
     }
     private func initButtons() {
-        actionButton.addTarget(self, action: #selector(PoolViewController.actionButtonPressed), forControlEvents: .TouchUpInside)
-        pauseButton.addTarget(self, action: #selector(PoolViewController.pauseResumeButtonPressed), forControlEvents: .TouchUpInside)
-        mapButton.addTarget(self, action: #selector(PoolViewController.mapButtonPressed), forControlEvents: .TouchUpInside)
+        actionButton.addTarget(self, action: #selector(PoolViewController.actionButtonPressed), for: .touchUpInside)
+        pauseButton.addTarget(self, action: #selector(PoolViewController.pauseResumeButtonPressed), for: .touchUpInside)
+        mapButton.addTarget(self, action: #selector(PoolViewController.mapButtonPressed), for: .touchUpInside)
     }
     private func setCustomNavigationBackButton() {
         // Disable the swipe to make sure you get your chance to save
-        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
+        self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
         
         // Add an invisible bar button so that the back button is closer to the left border of the screen
-        let negativeSeparator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        let negativeSeparator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
         negativeSeparator.width = -20;
         
         // Replace the default back button
         self.navigationItem.setHidesBackButton(true, animated: false)
-        let backButton = UIBarButtonItem(image: UIImage(named: "ic_back35x35"), style: .Plain, target: self, action: #selector(PoolViewController.customBackViewController))
+        let backButton = UIBarButtonItem(image: UIImage(named: "ic_back35x35"), style: .plain, target: self, action: #selector(PoolViewController.customBackViewController))
         
         let leftBarButtonItems = [
             negativeSeparator,
@@ -149,10 +149,10 @@ extension PoolViewController {
             
             hasPoolStarted = true
             
-            actionButton.setTitle("action_finish".localize(), forState: UIControlState.Normal)
-            setPoolColor(self.actionButtonView, type: self.type!)
+            actionButton.setTitle("action_finish".localize(), for : UIControlState.normal)
+            setPoolColor(view: self.actionButtonView, type: self.type!)
             
-            pauseButton.hidden = false
+            pauseButton.isHidden = false
             
             startLocationUpdates()
             
@@ -167,11 +167,11 @@ extension PoolViewController {
         pauseResumeTracking()
     }
     func mapButtonPressed() {
-        self.performSegueWithIdentifier(kMapSegueIdentifier, sender: nil)
+        self.performSegue(withIdentifier: kMapSegueIdentifier, sender: nil)
     }
     func switchButtonPressed() {
         self.pauseResumeTracking()
-        self.showPoolSwitchAlert("Switch Pool")
+        self.showPoolSwitchAlert(text: "Switch Pool")
     }
     
     // MARK: - Navigation
@@ -180,36 +180,35 @@ extension PoolViewController {
         if hasPoolStarted {
             
             let alertController = UIAlertController(title: "Paid to Go", message:
-                "Wait!! If you leave now, all your progress will be lost. Are you sure that you want to leave?", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: backViewController))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: poolSwitchResume))
+                "Wait!! If you leave now, all your progress will be lost. Are you sure that you want to leave?", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: backViewController))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: poolSwitchResume))
             
-            self.presentViewController(alertController, animated: true, completion: {
+            self.present(alertController, animated: true, completion: {
                 self.pauseResumeTracking()
             })
             
         } else {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     func backViewController(alert: UIAlertAction!) {
         ActivityManager.sharedInstance.resetActivity()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "wellDoneSegue":
-            let wellDoneNavigationController = segue.destinationViewController as! UINavigationController
+            let wellDoneNavigationController = segue.destination as! UINavigationController
             let wellDoneViewController = wellDoneNavigationController.viewControllers.first as! WellDoneViewController
             
             wellDoneViewController.type = self.type
             break
         default:
-            let mapViewController = segue.destinationViewController as! MapViewController
+            let mapViewController = segue.destination as! MapViewController
             mapViewController.locationManager = self.locationManager
-//            mapViewController.locationCoordinate = self.locationManager.location?.coordinate
-            ActivityManager.setMapIsMainScreen(true)
+            //            mapViewController.locationCoordinate = self.locationManager.location?.coordinate
+            ActivityManager.setMapIsMainScreen(mapIsMainScreen: true)
             self.mapViewController = mapViewController
             break
         }
@@ -233,7 +232,7 @@ extension PoolViewController: TrackDelegate {
             
             hasPausedAndResumedActivity = true
             ActivityManager.setPausedAndResumedActivity()
-            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(true)
+            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(value: true)
             
             resumePedometerUpdates()
             startTracking()
@@ -242,7 +241,7 @@ extension PoolViewController: TrackDelegate {
     }
     func startTracking() {
         
-        pauseButton.setTitle("Pause", forState: UIControlState.Normal)
+        pauseButton.setTitle("Pause", for: UIControlState.normal)
         isTimerTracking = true
         countingSteps = true
         
@@ -254,7 +253,7 @@ extension PoolViewController: TrackDelegate {
         updatePedometer()
     }
     func pauseTracking() {
-        pauseButton.setTitle("Resume", forState: UIControlState.Normal)
+        pauseButton.setTitle("Resume", for: UIControlState.normal)
         isTimerTracking = false
         countingSteps = false
     }
@@ -281,18 +280,18 @@ extension PoolViewController: TrackDelegate {
         
         self.showProgressHud()
         
-        DataProvider.sharedInstance.postRegisterActivity(self.activity) { (activityResponse, error) in
+        DataProvider.sharedInstance.postRegisterActivity(activity: self.activity) { (activityResponse, error) in
             
             self.dismissProgressHud()
             
             if let _ = error {
-                self.showAlert("Unable to connect with the server. Please verify your internet connection and try again")
+                self.showAlert(text: "Unable to connect with the server. Please verify your internet connection and try again")
                 return
             }
             
             if let response = activityResponse {
                 
-                let poolDoneNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("poolDoneNavigationController") as! UINavigationController
+                let poolDoneNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "poolDoneNavigationController") as! UINavigationController
                 let wellDoneViewController = poolDoneNavigationController.viewControllers[0] as! WellDoneViewController
                 
                 wellDoneViewController.type = self.type
@@ -307,7 +306,7 @@ extension PoolViewController: TrackDelegate {
                 
                 ActivityManager.sharedInstance.resetActivity()
                 
-                self.presentViewController(poolDoneNavigationController, animated: true, completion: nil)
+                self.present(poolDoneNavigationController, animated: true, completion: nil)
             }
         }
     }
@@ -321,19 +320,19 @@ extension PoolViewController: SwitchDelegate {
     func showPoolSwitchAlert(text: String){
         
         if !hasPoolStarted {
-            self.showAlert("The pool hasn't started, you can't switch to another pool!!")
+            self.showAlert(text: "The pool hasn't started, you can't switch to another pool!!")
             
             return
         }
         
         let alertController = UIAlertController(title: "Paid to Go", message:
-            text, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alertController.addAction(UIAlertAction(title: "Walk/Run", style: UIAlertActionStyle.Default,handler: poolSwitchWalkRunSelected))
-        alertController.addAction(UIAlertAction(title: "Bike", style: UIAlertActionStyle.Default,handler: poolSwitchBikeSelected))
-        alertController.addAction(UIAlertAction(title: "Train/Bus", style: UIAlertActionStyle.Default,handler: poolSwitchTrainBusSelected))
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel,handler: poolSwitchResume))
+            text, preferredStyle: UIAlertControllerStyle.actionSheet)
+        alertController.addAction(UIAlertAction(title: "Walk/Run", style: UIAlertActionStyle.default,handler: poolSwitchWalkRunSelected))
+        alertController.addAction(UIAlertAction(title: "Bike", style: UIAlertActionStyle.default,handler: poolSwitchBikeSelected))
+        alertController.addAction(UIAlertAction(title: "Train/Bus", style: UIAlertActionStyle.default,handler: poolSwitchTrainBusSelected))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel,handler: poolSwitchResume))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     func poolSwitchWalkRunSelected(alert: UIAlertAction!) {
         print("Switch - Walk/Run -")
@@ -377,12 +376,12 @@ extension PoolViewController: PedometerDelegate {
             
         } else {
             // Pedometer not available for device
-            self.stepCountLabel.hidden = true
+            self.stepCountLabel.isHidden = true
         }
     }
     func pausePedometerUpdates() {
         
-        pedoMeter.stopPedometerUpdates()
+        pedoMeter.stopUpdates()
         
         if self.type == .Walk {
             self.stepCountLabel.text = "Steps: \(self.stepCount)"
@@ -392,9 +391,9 @@ extension PoolViewController: PedometerDelegate {
         
         if CMPedometer.isStepCountingAvailable() {
             
-            pedoMeter.startPedometerUpdatesFromDate(NSDate(), withHandler: { (data, error) in
+            pedoMeter.startUpdates(from: NSDate() as Date, withHandler: { (data, error) in
                 if let dataUpdated = data {
-                    self.stepCount = dataUpdated.numberOfSteps.integerValue
+                    self.stepCount = dataUpdated.numberOfSteps.intValue
                     if self.type == .Walk {
                         self.stepCountLabel.text = "Steps: \(self.stepCount)"
                     }
@@ -402,7 +401,7 @@ extension PoolViewController: PedometerDelegate {
             })
             
         } else {
-            self.stepCountLabel.hidden = true
+            self.stepCountLabel.isHidden = true
         }
         
     }
@@ -415,25 +414,30 @@ extension PoolViewController: PedometerDelegate {
         }
     }
     func stopPedometer() {
-        self.pedoMeter.stopPedometerUpdates()
+        self.pedoMeter.stopUpdates()
     }
     @objc func queryPedometerUpdates() {
         
         guard let startDate = self.startDateToTrack else {
             return
         }
-        self.pedoMeter.queryPedometerDataFromDate(startDate, toDate: NSDate()) { (data, error) in
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                // Background
+        self.pedoMeter.queryPedometerData(from: startDate as Date, to: NSDate() as Date) { (data, error) in
+            DispatchQueue.global().async {
                 if let dataUpdated = data {
-                    self.stepCount = dataUpdated.numberOfSteps.integerValue
+                    self.stepCount = dataUpdated.numberOfSteps.intValue
                 }
-                dispatch_async(dispatch_get_main_queue(), {
-                    // Main
+                DispatchQueue.main.async {
                     self.stepCountLabel.text = "Steps: \(self.stepCount)"
-                })
+
+                }
             }
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+//                // Background
+//
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    // Main
+//                })
+//            }
         }
     }
 
@@ -446,7 +450,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     func initLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.activityType = .Fitness
+        locationManager.activityType = .fitness
 //        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         // Set Location Manager precision: http://stackoverflow.com/questions/9746675/cllocationmanager-responsiveness
@@ -465,7 +469,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        mapButton.hidden = false
+        mapButton.isHidden = false
         
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
@@ -483,12 +487,12 @@ extension PoolViewController: ActivityLocationManagerDelegate {
                 firstLocationUpdate = false
                 mapButtonPressed()
             } else {
-                locationUpdatedFirstTime(locationObj)
+                locationUpdatedFirstTime(location: locationObj)
 //                mapButtonPressed()
             }
             
         } else {
-            locationUpdatedSuccessiveTimes(locationObj)
+            locationUpdatedSuccessiveTimes(location: locationObj)
         }
     }
     private func locationUpdatedFirstTime(location:CLLocation) {
@@ -498,10 +502,10 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         ActivityManager.sharedInstance.endLatitude = location.coordinate.latitude
         ActivityManager.sharedInstance.endLongitude = location.coordinate.longitude
         
-        ActivityManager.setLastLocation(location)
-        ActivityManager.setLastSubrouteInitialLocation(location)
+        ActivityManager.setLastLocation(lastLocation: location)
+        ActivityManager.setLastSubrouteInitialLocation(lastLocation: location)
         
-        self.mapButton.hidden = false
+        self.mapButton.isHidden = false
     }
     private func locationUpdatedSuccessiveTimes(location:CLLocation) {
         
@@ -513,15 +517,15 @@ extension PoolViewController: ActivityLocationManagerDelegate {
             if hasPausedAndResumedActivity {
                 hasPausedAndResumedActivity = false
                 
-                ActivityManager.setLastSubrouteInitialLocation(location)
+                ActivityManager.setLastSubrouteInitialLocation(lastLocation: location)
             }
             
-            ActivityManager.setLastLocation(location)
+            ActivityManager.setLastLocation(lastLocation: location)
             
             // If the map has allready been loaded at least once
             if let mapVC = mapViewController as MapViewController? {
                 
-                mapVC.addTravelSectionToMap(location)
+                mapVC.addTravelSectionToMap(currentLocation: location)
                 
                 let milesTravelled = ActivityManager.getMilesCounter()
                 self.progressLabel.text = String(format: "%.2f", milesTravelled)

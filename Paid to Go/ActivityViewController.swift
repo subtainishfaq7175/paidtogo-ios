@@ -53,18 +53,18 @@ class ActivityViewController: MenuContentViewController {
         self.title = "menu_activity".localize()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
     }
     
@@ -74,11 +74,11 @@ class ActivityViewController: MenuContentViewController {
     }
     
     // MARK: - Navigation -
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == kActivityDetailSegueIdentifier {
             
-            if let vc = segue.destinationViewController as? ActivityDetailViewController {
+            if let vc = segue.destination as? ActivityDetailViewController {
                 vc.activity = self.activity
                 
                 if let activityRoute = sender as? [ActivitySubroute] {
@@ -87,6 +87,7 @@ class ActivityViewController: MenuContentViewController {
             }
         }
     }
+   
     
     // MARK: - Functions -
     
@@ -96,11 +97,11 @@ class ActivityViewController: MenuContentViewController {
         self.notificationsTableView.dataSource = self
         self.notificationsTableView.rowHeight = UITableViewAutomaticDimension
         
-        self.notificationsTableView.separatorStyle = .None
+        self.notificationsTableView.separatorStyle = .none
     }
     
     func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
 //        self.title = "menu_activity".localize()
 //        setNavigationBarGreen()
         customizeNavigationBarWithMenu()
@@ -112,12 +113,12 @@ class ActivityViewController: MenuContentViewController {
     
     func sortActivitiesByDate() {
         
-        notifications.sortInPlace { (activityOne, activityTwo) -> Bool in
+        notifications.sort { (activityOne, activityTwo) -> Bool in
             
-            let dateOne = NSDate.getDateWithFormatddMMyyyy(activityOne.startDateTime!)
-            let dateTwo = NSDate.getDateWithFormatddMMyyyy(activityTwo.startDateTime!)
+            let dateOne = NSDate.getDateWithFormatddMMyyyy(dateString: activityOne.startDateTime!)
+            let dateTwo = NSDate.getDateWithFormatddMMyyyy(dateString: activityTwo.startDateTime!)
             
-            return dateOne.compare(dateTwo) == .OrderedDescending
+            return dateOne.compare(dateTwo as Date) == .orderedDescending
         }
     }
     
@@ -134,7 +135,7 @@ class ActivityViewController: MenuContentViewController {
     
     private func getNotifications () {
         
-        self.showProgressHud("Loading recent activity")
+        self.showProgressHud(title: "Loading recent activity")
         
         DataProvider.sharedInstance.getActivities { (activityNotifications, error) in
             
@@ -142,8 +143,8 @@ class ActivityViewController: MenuContentViewController {
                 self.dismissProgressHud()
                 
                 // No recent activity
-                self.notificationsTableView.hidden = true
-                self.lblEmptyTableView.hidden = false
+                self.notificationsTableView.isHidden = true
+                self.lblEmptyTableView.isHidden = false
                 
                 return
             }
@@ -155,12 +156,12 @@ class ActivityViewController: MenuContentViewController {
                 
                 if self.notifications.count == 0 {
                     // No recent activity
-                    self.notificationsTableView.hidden = true
-                    self.lblEmptyTableView.hidden = false
+                    self.notificationsTableView.isHidden = true
+                    self.lblEmptyTableView.isHidden = false
                 } else {
                     // Recent activity
-                    self.notificationsTableView.hidden = false
-                    self.lblEmptyTableView.hidden = true
+                    self.notificationsTableView.isHidden = false
+                    self.lblEmptyTableView.isHidden = true
                     self.filterActivitiesWithoutDate()
                     self.sortActivitiesByDate()
                     self.notificationsTableView.reloadData()
@@ -172,15 +173,15 @@ class ActivityViewController: MenuContentViewController {
 
 extension ActivityViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.notifications.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(defaultCellReuseIdentifier) as! ActivityDefaultCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: defaultCellReuseIdentifier) as! ActivityDefaultCell
         
-        cell.configure(self.notifications[indexPath.row])
+        cell.configure(notification: self.notifications[indexPath.row])
         
         return cell
     }
@@ -188,23 +189,23 @@ extension ActivityViewController: UITableViewDataSource {
 
 extension ActivityViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.activity = notifications[indexPath.row]
         let activityId = self.activity!.internalIdentifier
         
         self.showProgressHud()
-        DataProvider.sharedInstance.getActivityRoute(activityId!) { (activityRoute, error) in
+        DataProvider.sharedInstance.getActivityRoute(activityId: activityId!) { (activityRoute, error) in
             self.dismissProgressHud()
             if error == nil {
-                self.performSegueWithIdentifier(self.kActivityDetailSegueIdentifier, sender: activityRoute)
+                self.performSegue(withIdentifier: self.kActivityDetailSegueIdentifier, sender: activityRoute)
             } else {
-                self.performSegueWithIdentifier(self.kActivityDetailSegueIdentifier, sender: nil)
+                self.performSegue(withIdentifier: self.kActivityDetailSegueIdentifier, sender: nil)
             }
         }
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75.0
     }
 }

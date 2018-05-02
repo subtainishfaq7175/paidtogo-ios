@@ -52,7 +52,7 @@ class InApp: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required init?(_ map: Map){
+    required init?(map: Map){
 
     }
 
@@ -87,49 +87,49 @@ class InApp: Mappable {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if expiresDateMs != nil {
-			dictionary.updateValue(expiresDateMs!, forKey: kInAppExpiresDateMsKey)
+            dictionary.updateValue(expiresDateMs! as AnyObject, forKey: kInAppExpiresDateMsKey)
 		}
 		if purchaseDatePst != nil {
-			dictionary.updateValue(purchaseDatePst!, forKey: kInAppPurchaseDatePstKey)
+            dictionary.updateValue(purchaseDatePst! as AnyObject, forKey: kInAppPurchaseDatePstKey)
 		}
 		if purchaseDateMs != nil {
-			dictionary.updateValue(purchaseDateMs!, forKey: kInAppPurchaseDateMsKey)
+            dictionary.updateValue(purchaseDateMs! as AnyObject, forKey: kInAppPurchaseDateMsKey)
 		}
 		if webOrderLineItemId != nil {
-			dictionary.updateValue(webOrderLineItemId!, forKey: kInAppWebOrderLineItemIdKey)
+            dictionary.updateValue(webOrderLineItemId! as AnyObject, forKey: kInAppWebOrderLineItemIdKey)
 		}
 		if expiresDatePst != nil {
-			dictionary.updateValue(expiresDatePst!, forKey: kInAppExpiresDatePstKey)
+            dictionary.updateValue(expiresDatePst! as AnyObject, forKey: kInAppExpiresDatePstKey)
 		}
 		if isTrialPeriod != nil {
-			dictionary.updateValue(isTrialPeriod!, forKey: kInAppIsTrialPeriodKey)
+            dictionary.updateValue(isTrialPeriod! as AnyObject, forKey: kInAppIsTrialPeriodKey)
 		}
 		if transactionId != nil {
-			dictionary.updateValue(transactionId!, forKey: kInAppTransactionIdKey)
+            dictionary.updateValue(transactionId! as AnyObject, forKey: kInAppTransactionIdKey)
 		}
 		if productId != nil {
-			dictionary.updateValue(productId!, forKey: kInAppProductIdKey)
+            dictionary.updateValue(productId! as AnyObject, forKey: kInAppProductIdKey)
 		}
 		if purchaseDate != nil {
-			dictionary.updateValue(purchaseDate!, forKey: kInAppPurchaseDateKey)
+            dictionary.updateValue(purchaseDate! as AnyObject, forKey: kInAppPurchaseDateKey)
 		}
 		if expiresDate != nil {
-			dictionary.updateValue(expiresDate!, forKey: kInAppExpiresDateKey)
+            dictionary.updateValue(expiresDate! as AnyObject, forKey: kInAppExpiresDateKey)
 		}
 		if originalPurchaseDate != nil {
-			dictionary.updateValue(originalPurchaseDate!, forKey: kInAppOriginalPurchaseDateKey)
+            dictionary.updateValue(originalPurchaseDate! as AnyObject, forKey: kInAppOriginalPurchaseDateKey)
 		}
 		if originalTransactionId != nil {
-			dictionary.updateValue(originalTransactionId!, forKey: kInAppOriginalTransactionIdKey)
+            dictionary.updateValue(originalTransactionId! as AnyObject, forKey: kInAppOriginalTransactionIdKey)
 		}
 		if quantity != nil {
-			dictionary.updateValue(quantity!, forKey: kInAppQuantityKey)
+            dictionary.updateValue(quantity! as AnyObject, forKey: kInAppQuantityKey)
 		}
 		if originalPurchaseDateMs != nil {
-			dictionary.updateValue(originalPurchaseDateMs!, forKey: kInAppOriginalPurchaseDateMsKey)
+            dictionary.updateValue(originalPurchaseDateMs! as AnyObject, forKey: kInAppOriginalPurchaseDateMsKey)
 		}
 		if originalPurchaseDatePst != nil {
-			dictionary.updateValue(originalPurchaseDatePst!, forKey: kInAppOriginalPurchaseDatePstKey)
+            dictionary.updateValue(originalPurchaseDatePst! as AnyObject, forKey: kInAppOriginalPurchaseDatePstKey)
 		}
 
         return dictionary

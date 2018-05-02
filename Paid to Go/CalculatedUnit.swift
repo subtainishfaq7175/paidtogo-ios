@@ -22,7 +22,7 @@ public class CalculatedUnit: Mappable {
         
     }
     
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
         
     }
     

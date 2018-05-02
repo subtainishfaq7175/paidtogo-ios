@@ -18,8 +18,8 @@ class AntiCheatImageViewController: ViewController {
     var pool: Pool?
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        setPoolTitle(.Train)
+        super.viewWillAppear(animated: animated)
+        setPoolTitle(type: .Train)
 //        startButtonView.round()
 //        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         
@@ -35,33 +35,33 @@ class AntiCheatImageViewController: ViewController {
         super.viewDidLayoutSubviews()
         
         startButtonView.round()
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
     }
     
     @IBAction func startPool(sender: AnyObject) {
         
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getPoolType(.Train) { (poolType, error) in
+        DataProvider.sharedInstance.getPoolType(poolTypeEnum: .Train) { (poolType, error) in
             
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
+                self.showAlert(text: error)
                 return
             }
             
-            if let poolType = poolType, pool = self.pool {
+            if let poolType = poolType, let pool = self.pool {
                 
-                if let image = self.image {
-                    
-                    let imageData = UIImageJPEGRepresentation(image, 0.1)
-                    let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                    let validationPhoto = User.imagePrefix + base64String
-                    
-                    self.showPoolViewControllerWithAntiCheatPhoto(.Train, poolType: poolType, pool: pool, validationPhoto: validationPhoto, sender: nil)
-//                    self.showPoolViewController(.Train, poolType: poolType, pool: pool, sender: nil)
-                }
+//                if let image = self.image {
+//                    
+//                    let imageData = UIImageJPEGRepresentation(image, 0.1)
+//                    let base64String = imageData!.base64EncodedData(options: .)
+//                    let validationPhoto = User.imagePrefix + base64String
+//                    
+//                    self.showPoolViewControllerWithAntiCheatPhoto(.Train, poolType: poolType, pool: pool, validationPhoto: validationPhoto, sender: nil)
+////                    self.showPoolViewController(.Train, poolType: poolType, pool: pool, sender: nil)
+//                }
                 
             }
             

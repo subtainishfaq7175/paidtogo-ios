@@ -20,7 +20,7 @@ class AntiCheatViewController: ViewController {
     
     // MARK: - Super
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initLayout()
     }
@@ -34,19 +34,19 @@ class AntiCheatViewController: ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
     }
     
     // MARK: - Functions
     
     private func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
 //        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
         //        clearNavigationBarcolor()
     }
     
     private func initViews() {
-        setPoolTitle(.Train)
+        setPoolTitle(type: .Train)
     }
     
     // MARK: - Actions
@@ -54,20 +54,20 @@ class AntiCheatViewController: ViewController {
     @IBAction func takePicture(sender: AnyObject) {
         if(Platform.isSimulator) {
             
-            let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
+            let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .default, handler: {
                 action in
                 
                 self.takePhotoFromCamera()
             }))
-            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .Default, handler: {
+            photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .default, handler: {
                 action in
                 
                 self.takePhotoFromGallery()
             }))
             
-            photoActionSheet.addAction(UIAlertAction(title: "action_cancel".localize(), style: .Cancel, handler: nil))
-            self.presentViewController(photoActionSheet, animated: true, completion: nil)
+            photoActionSheet.addAction(UIAlertAction(title: "action_cancel".localize(), style: .cancel, handler: nil))
+            self.present(photoActionSheet, animated: true, completion: nil)
         } else {
             self.takePhotoFromCamera()
         }
@@ -85,39 +85,39 @@ extension AntiCheatViewController: UIImagePickerControllerDelegate, UINavigation
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
         
-        if let antiCheatImageViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AntiCheatImageViewController") as? AntiCheatImageViewController {
+        if let antiCheatImageViewController = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "AntiCheatImageViewController") as? AntiCheatImageViewController {
             antiCheatImageViewController.image = image
             antiCheatImageViewController.pool = self.pool!
-            self.showViewController(antiCheatImageViewController, sender: nil)
+            self.show(antiCheatImageViewController, sender: nil)
         }
         
     }
     
     func takePhotoFromCamera() {
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
             
             let picker = UIImagePickerController();
             picker.delegate = self;
-            picker.sourceType = UIImagePickerControllerSourceType.Camera;
+            picker.sourceType = UIImagePickerControllerSourceType.camera;
             picker.allowsEditing = true;
             
-            self.presentViewController(picker, animated: true, completion: nil);
+            self.present(picker, animated: true, completion: nil);
         }
     }
     
     // DELETE
     func takePhotoFromGallery (){
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)) {
             
             let picker = UIImagePickerController();
             picker.delegate = self;
             
-            picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
             picker.allowsEditing = true;
             
-            self.presentViewController(picker, animated: true, completion: nil);
+            self.present(picker, animated: true, completion: nil);
         }
     }
     

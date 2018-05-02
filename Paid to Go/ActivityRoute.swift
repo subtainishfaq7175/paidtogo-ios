@@ -17,7 +17,7 @@ class ActivityRoute: Mappable {
     
     }
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
     
     }
     

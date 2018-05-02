@@ -17,7 +17,7 @@ class TermsAndConditionsViewController: ViewController {
     var termsAndConditionsText : String?
     var poolType : PoolType?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let poolType = self.poolType else {
@@ -25,13 +25,18 @@ class TermsAndConditionsViewController: ViewController {
         }
     
         if let colorString = poolType.color as String? {
-            if let color = UIColor(rgba: colorString) as UIColor? {
-                setNavigationBarColor(color)
-
+         
+            do {
+                if let color = try UIColor(rgba_throws: colorString) as UIColor? {
+                    setNavigationBarColor(color: color)
             }
+            }catch {
+                
+            }
+            
         }
         
-        if let text = self.termsAndConditionsText where !text.isEmpty {
+        if let text = self.termsAndConditionsText, !text.isEmpty {
             self.contentLabel.text = text
         }
     }
@@ -41,8 +46,8 @@ class TermsAndConditionsViewController: ViewController {
         
         self.title = "Terms And Conditions"
         
-        let closeImage = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
-        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TermsAndConditionsViewController.closeButtonAction(_:)))
+        let closeImage = UIImage(named: "ic_close")?.withRenderingMode(.alwaysTemplate)
+        let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(TermsAndConditionsViewController.closeButtonAction(sender:)))
         closeButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = closeButtonItem
     }
@@ -53,6 +58,6 @@ class TermsAndConditionsViewController: ViewController {
     }
     
     @objc private func closeButtonAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

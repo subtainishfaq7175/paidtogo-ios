@@ -32,7 +32,7 @@ public class Leaderboard: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required public init?(_ map: Map){
+    required public init?(map: Map){
 
     }
 
@@ -56,19 +56,19 @@ public class Leaderboard: Mappable {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if userId != nil {
-			dictionary.updateValue(userId!, forKey: kLeaderboardUserIdKey)
+            dictionary.updateValue(userId! as AnyObject, forKey: kLeaderboardUserIdKey)
 		}
 		if lastName != nil {
-			dictionary.updateValue(lastName!, forKey: kLeaderboardLastNameKey)
+            dictionary.updateValue(lastName! as AnyObject, forKey: kLeaderboardLastNameKey)
 		}
 		if profilePicture != nil {
-			dictionary.updateValue(profilePicture!, forKey: kLeaderboardProfilePictureKey)
+            dictionary.updateValue(profilePicture! as AnyObject, forKey: kLeaderboardProfilePictureKey)
 		}
 		if firstName != nil {
-			dictionary.updateValue(firstName!, forKey: kLeaderboardFirstNameKey)
+            dictionary.updateValue(firstName! as AnyObject, forKey: kLeaderboardFirstNameKey)
 		}
 		if place != nil {
-			dictionary.updateValue(place!, forKey: kLeaderboardPlaceKey)
+            dictionary.updateValue(place! as AnyObject, forKey: kLeaderboardPlaceKey)
 		}
 
         return dictionary

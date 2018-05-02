@@ -2,9 +2,6 @@
 //  ChartLimitLine.swift
 //  Charts
 //
-//  Created by Daniel Cohen Gindi on 23/2/15.
-
-//
 //  Copyright 2015 Daniel Cohen Gindi & Philipp Jahoda
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
@@ -18,42 +15,44 @@ import CoreGraphics
 
 /// The limit line is an additional feature for all Line, Bar and ScatterCharts.
 /// It allows the displaying of an additional line in the chart that marks a certain maximum / limit on the specified axis (x- or y-axis).
-public class ChartLimitLine: ChartComponentBase
+open class ChartLimitLine: ComponentBase
 {
     @objc(ChartLimitLabelPosition)
     public enum LabelPosition: Int
     {
-        case LeftTop
-        case LeftBottom
-        case RightTop
-        case RightBottom
+        case leftTop
+        case leftBottom
+        case rightTop
+        case rightBottom
     }
     
     /// limit / maximum (the y-value or xIndex)
-    public var limit = Double(0.0)
+    @objc open var limit = Double(0.0)
     
     private var _lineWidth = CGFloat(2.0)
-    public var lineColor = NSUIColor(red: 237.0/255.0, green: 91.0/255.0, blue: 91.0/255.0, alpha: 1.0)
-    public var lineDashPhase = CGFloat(0.0)
-    public var lineDashLengths: [CGFloat]?
-    public var valueTextColor = NSUIColor.blackColor()
-    public var valueFont = NSUIFont.systemFontOfSize(13.0)
-    public var label = ""
-    public var drawLabelEnabled = true
-    public var labelPosition = LabelPosition.RightTop
+    @objc open var lineColor = NSUIColor(red: 237.0/255.0, green: 91.0/255.0, blue: 91.0/255.0, alpha: 1.0)
+    @objc open var lineDashPhase = CGFloat(0.0)
+    @objc open var lineDashLengths: [CGFloat]?
+    
+    @objc open var valueTextColor = NSUIColor.black
+    @objc open var valueFont = NSUIFont.systemFont(ofSize: 13.0)
+    
+    @objc open var drawLabelEnabled = true
+    @objc open var label = ""
+    @objc open var labelPosition = LabelPosition.rightTop
     
     public override init()
     {
         super.init()
     }
     
-    public init(limit: Double)
+    @objc public init(limit: Double)
     {
         super.init()
         self.limit = limit
     }
     
-    public init(limit: Double, label: String)
+    @objc public init(limit: Double, label: String)
     {
         super.init()
         self.limit = limit
@@ -61,7 +60,7 @@ public class ChartLimitLine: ChartComponentBase
     }
     
     /// set the line width of the chart (min = 0.2, max = 12); default 2
-    public var lineWidth: CGFloat
+    @objc open var lineWidth: CGFloat
     {
         get
         {
@@ -69,11 +68,11 @@ public class ChartLimitLine: ChartComponentBase
         }
         set
         {
-            if (newValue < 0.2)
+            if newValue < 0.2
             {
                 _lineWidth = 0.2
             }
-            else if (newValue > 12.0)
+            else if newValue > 12.0
             {
                 _lineWidth = 12.0
             }

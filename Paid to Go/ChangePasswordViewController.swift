@@ -88,8 +88,8 @@ class ChangePasswordViewController: ViewController {
     
     func validateNewPassword() -> Bool {
         
-        if let newPassword = self.newPasswordTextField.text where newPassword.isEmpty == false,
-            let confirmNewPassword = self.confirmNewPasswordTextField.text where confirmNewPassword.isEmpty == false {
+        if let newPassword = self.newPasswordTextField.text, newPassword.isEmpty == false,
+            let confirmNewPassword = self.confirmNewPasswordTextField.text, confirmNewPassword.isEmpty == false {
             
             if newPassword == confirmNewPassword {
                 return true

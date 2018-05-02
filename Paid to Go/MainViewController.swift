@@ -24,13 +24,13 @@ class MainViewController: REFrostedViewController {
         // menu configuration
         self.panGestureEnabled = true
         
-        if let menuController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController") as? MenuViewController {
+        if let menuController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController {
         menuController.delegate = self
         self.menuViewController = menuController
         
-        menuController.setMainViewController(self)
+            menuController.setMainViewController(menuViewController: self)
         
-        self.direction = .Left
+            self.direction = .left
             
         }
     }

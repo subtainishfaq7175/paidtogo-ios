@@ -44,10 +44,10 @@ class WDLeaderboardsViewController: ViewController {
         self.getData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
         initLayout()
     }
     
@@ -61,12 +61,12 @@ class WDLeaderboardsViewController: ViewController {
     private func getData() {
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getLeaderboardsForPool(self.activity!.poolId!) { (leaderboard, error) in
+        DataProvider.sharedInstance.getLeaderboardsForPool(poolId: self.activity!.poolId!) { (leaderboard, error) in
             
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
+                self.showAlert(text: error)
                 return
             }
             
@@ -93,15 +93,15 @@ class WDLeaderboardsViewController: ViewController {
         self.detailLabel.text = "This is where the pool's details will be written"
         self.endDateLabel.text =  self.pool!.endDateTime!.characters.split{$0 == " "}.map(String.init)[0]
  
-        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType!.backgroundPicture)!), options: .ShowNetworkActivity)
+        self.backgroundImageView.yy_setImage(with: URL(string: (poolType!.backgroundPicture)!), options: .showNetworkActivity)
         
     }
     
     func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         self.title = "menu_leaderboards".localize()
         
-        setPoolColor(backgroundColorView, type: type!)
+        setPoolColor(view: backgroundColorView, type: type!)
         clearNavigationBarcolor()
         
     }
@@ -112,23 +112,20 @@ class WDLeaderboardsViewController: ViewController {
 
 
 extension WDLeaderboardsViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.leaderboard?.leaderboard!.count)!
+
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! LeaderboardCell
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! LeaderboardCell
+        //        let cell = LeaderboardCell.deque(from: tableView)
         
-//        let cell = LeaderboardCell.deque(from: tableView)
-        
-        cell.configure((self.leaderboard?.leaderboard![indexPath.row])!)
+        cell.configure(leaderboard: (self.leaderboard?.leaderboard![indexPath.row])!)
         
         switch indexPath.row % 2 {
         case 0:
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.white
             
         case 1:
             cell.backgroundColor = CustomColors.creamyWhiteColor()
@@ -139,8 +136,9 @@ extension WDLeaderboardsViewController: UITableViewDataSource {
         }
         
         return cell
-        
     }
+    
+
 }
 
 extension WDLeaderboardsViewController: UITableViewDelegate {
@@ -155,7 +153,7 @@ extension WDLeaderboardsViewController: UITableViewDelegate {
     //    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
+        return UIScreen.main.bounds.height * 0.085
     }
 }
 

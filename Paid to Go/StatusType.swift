@@ -17,6 +17,10 @@ enum EnumStatusType {
 }
 
 public class StatusType: NSObject, Mappable, NSCoding {
+    public func encode(with aCoder: NSCoder) {
+        
+    }
+    
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     internal let kStatusTypeBalanceKey: String = "balance"
@@ -26,7 +30,7 @@ public class StatusType: NSObject, Mappable, NSCoding {
     var balance: Double?
     var calculatedUnits: [CalculatedUnit]?
     
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
         
     }
     

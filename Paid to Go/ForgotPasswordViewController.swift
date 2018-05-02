@@ -57,7 +57,7 @@ class ForgotPasswordViewController: ViewController {
             DataProvider.sharedInstance.postRecoverPassword(user, completion: { (genericResponse, error) in
                 self.dismissProgressHud()
                 
-                if let error = error where error.isEmpty == false {
+                if let error = error, error.isEmpty == false {
                     self.showAlert(error)
                     return
                 }

@@ -53,15 +53,15 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         didSet {
             if closedPools.count == 0 {
                 // No closed pools
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.closedPoolsTableView.hidden = true
-                    self.emptyClosedPoolsLabel.hidden = false
-                })
+                DispatchQueue.main.async {
+                    self.closedPoolsTableView.isHidden = true
+                    self.emptyClosedPoolsLabel.isHidden = false
+                }
             } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.closedPoolsTableView.hidden = false
-                    self.emptyClosedPoolsLabel.hidden = true
-                })
+                DispatchQueue.main.async {
+                    self.closedPoolsTableView.isHidden = false
+                    self.emptyClosedPoolsLabel.isHidden = true
+                }
             }
         }
     }
@@ -69,15 +69,15 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         didSet {
             if openPools.count == 0 {
                 // No open pools
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.openPoolsTableView.hidden = true
-                    self.emptyOpenPoolsLabel.hidden = false
-                })
+                DispatchQueue.main.async {
+                    self.openPoolsTableView.isHidden = true
+                    self.emptyOpenPoolsLabel.isHidden = false
+                }
             } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.openPoolsTableView.hidden = false
-                    self.emptyOpenPoolsLabel.hidden = true
-                })
+                DispatchQueue.main.async {
+                    self.openPoolsTableView.isHidden = false
+                    self.emptyOpenPoolsLabel.isHidden = true
+                }
             }
         }
     }
@@ -89,7 +89,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     // MARK: - View life cycle -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
@@ -116,26 +116,24 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         self.closedPoolsTableView.dataSource = self
         self.closedPoolsTableView.estimatedRowHeight = UITableViewAutomaticDimension
         
-        setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
+        setPoolColorAndTitle(view: backgroundColorView, typeEnum: type!, type: poolType!)
 //        self.backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
         
 //        self.getPools()
     }
     
     // MARK: - Navigation -
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == "segue_nationalpools" {
-            if let destinationVC = segue.destinationViewController as? NationalPoolsViewController {
+            if let destinationVC = segue.destination as? NationalPoolsViewController {
                 destinationVC.typeEnum = self.type
                 destinationVC.poolType = self.poolType
             }
         }
         
         if segue.identifier == "poolDetailSegue" {
-            if let destinationVC = segue.destinationViewController as? PoolDetailViewController {
+            if let destinationVC = segue.destination as? PoolDetailViewController {
                 if let pool = sender as? Pool {
                     destinationVC.pool = pool
                     destinationVC.typeEnum = self.type
@@ -145,13 +143,14 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
             }
         }
     }
+  
     
     // MARK: - Functions -
     
     private func showAntiCheatViewController(pool: Pool) {
-        let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
+        let vc = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "AnticheatViewController") as! AntiCheatViewController
         vc.pool = pool
-        self.showViewController(vc, sender: nil)
+        self.show(vc, sender: nil)
     }
     
     private func initLayout() {
@@ -160,57 +159,57 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         setIndicatorOnLeft()
         
         // Configures the table view header -> [ Pool Name - Rate Per Mile ]
-        self.tableHeaderView.configureForPools((self.poolType?.color)!)
+        self.tableHeaderView.configureForPools(color: (self.poolType?.color)!)
         
         // Sets up the view again if the poolType Changed -> [for ex., from Walk/Run to Bike ]
         if quickSwitchPool {
-            setPoolColorAndTitle(backgroundColorView, typeEnum: type!, type: poolType!)
+            setPoolColorAndTitle(view: backgroundColorView, typeEnum: type!, type: poolType!)
             quickSwitchPool = false
         }
         
         // Sets the background image according to the pool -> [ Walk - Bike - Bus - Car ]
-        setPoolBackgroundImage(self.backgroundImageView, poolType: poolType!)
+        setPoolBackgroundImage(header: self.backgroundImageView, poolType: poolType!)
         
         // Sets de National Pools background color
-        setPoolColor(self.goView, type: type!)
+        setPoolColor(view: self.goView, type: type!)
     }
     
     private func initViews() {
         self.goImageView.roundWholeView()
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setPoolBackgroundImage(self.backgroundImageView, poolType: poolType!)
+        setBorderToView(view: headerTitleLabel, color: CustomColors.NavbarTintColor().cgColor)
+        setPoolBackgroundImage(header: self.backgroundImageView, poolType: poolType!)
     }
     
     private func setIndicatorOnLeft() {
-        indicatorLeadingConstraint.active = true
-        indicatorTrailingConstraint.active = false
+        indicatorLeadingConstraint.isActive = true
+        indicatorTrailingConstraint.isActive = false
 //        indicatorLeadingConstraint.constant = openPoolsView.frame.origin.x + 8
 //        indicatorWidthConstraint.constant = openPoolsView.frame.width - 16
         
-        self.closedPoolsLabel.textColor = UIColor.grayColor()
-        self.closedPoolsIndicatorView.backgroundColor = UIColor.grayColor()
+        self.closedPoolsLabel.textColor = UIColor.gray
+        self.closedPoolsIndicatorView.backgroundColor = UIColor.gray
         
-        self.openPoolsLabel.textColor = UIColor.whiteColor()
+        self.openPoolsLabel.textColor = UIColor.white
         self.openPoolsIndicatorView.backgroundColor = CustomColors.NavbarBackground()
     }
     
     private func setIndicatorOnRight() {
-        indicatorLeadingConstraint.active = false
-        indicatorTrailingConstraint.active = true
+        indicatorLeadingConstraint.isActive = false
+        indicatorTrailingConstraint.isActive = true
 //        indicatorLeadingConstraint.constant = closedPoolsView.frame.origin.x + 8
 //        indicatorWidthConstraint.constant = closedPoolsView.frame.width - 16
         
-        self.openPoolsLabel.textColor = UIColor.grayColor()
-        self.openPoolsIndicatorView.backgroundColor = UIColor.grayColor()
+        self.openPoolsLabel.textColor = UIColor.gray
+        self.openPoolsIndicatorView.backgroundColor = UIColor.gray
         
-        self.closedPoolsLabel.textColor = UIColor.whiteColor()
+        self.closedPoolsLabel.textColor = UIColor.white
         self.closedPoolsIndicatorView.backgroundColor = CustomColors.lightBlueColor()
     }
     
     private func moveIndicatorToRight() {
         setIndicatorOnRight()
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
@@ -218,7 +217,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     private func moveIndicatorToLeft(){
         setIndicatorOnLeft()
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
@@ -233,12 +232,12 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         let poolTypeString = String(type)
         
-        DataProvider.sharedInstance.getOpenPools(poolTypeString) { (pools, error) in
+        DataProvider.sharedInstance.getOpenPools(poolTypeId: poolTypeString) { (pools, error) in
             
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
+                self.showAlert(text: error)
                 return
             }
             
@@ -249,19 +248,19 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 
             } else {
                 // No open pools
-                self.openPoolsTableView.hidden = true
-                self.emptyOpenPoolsLabel.hidden = false
+                self.openPoolsTableView.isHidden = true
+                self.emptyOpenPoolsLabel.isHidden = false
             }
         }
  
         self.showProgressHud()
         
-        DataProvider.sharedInstance.getClosedPools(poolTypeString) { (pools, error) in
+        DataProvider.sharedInstance.getClosedPools(poolTypeId: poolTypeString) { (pools, error) in
             
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
+                self.showAlert(text: error)
                 return
             }
             
@@ -272,8 +271,8 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
                 
             } else {
                 // No closed pools
-                self.closedPoolsTableView.hidden = true
-                self.emptyClosedPoolsLabel.hidden = false
+                self.closedPoolsTableView.isHidden = true
+                self.emptyClosedPoolsLabel.isHidden = false
             }
         }
     }
@@ -282,12 +281,12 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
     
     @IBAction func openPoolsAction(sender: AnyObject) {
         moveIndicatorToLeft()
-        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     @IBAction func closedPoolsAction(sender: AnyObject) {
         moveIndicatorToRight()
-        scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y: 0), animated: true)
     }
     
     @IBAction func nationalPoolsAction(sender: AnyObject) {
@@ -297,7 +296,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         destinationVC.typeEnum = self.type
         destinationVC.poolType = self.poolType
         
-        self.showViewController(destinationVC, sender: nil)
+        self.show(destinationVC, sender: nil)
 
     }
     
@@ -354,7 +353,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
 
 extension PoolsViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int?
         switch tableView.restorationIdentifier! {
         case "closedPoolsTableView":
@@ -368,15 +367,15 @@ extension PoolsViewController: UITableViewDataSource {
         return count!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! PoolCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! PoolCell
         
         switch tableView.restorationIdentifier! {
         case "closedPoolsTableView":
-            cell.configure(self.closedPools[indexPath.row])
+            cell.configure(pool: self.closedPools[indexPath.row])
             break
         case "openPoolsTableView":
-            cell.configure(self.openPools[indexPath.row])
+            cell.configure(pool: self.openPools[indexPath.row])
             break
         default: break
         }
@@ -384,7 +383,7 @@ extension PoolsViewController: UITableViewDataSource {
         
         switch indexPath.row % 2 {
         case 0:
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.white
             
         case 1:
             cell.backgroundColor = CustomColors.creamyWhiteColor()
@@ -405,16 +404,16 @@ extension PoolsViewController: UITableViewDelegate {
         
         if tableView == openPoolsTableView {
             let pool = self.openPools[indexPath.row]
-            self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
+            self.performSegue(withIdentifier: kPoolDetailSegue, sender: pool)
         } else {
             let pool = self.closedPools[indexPath.row]
-            self.performSegueWithIdentifier(kPoolDetailSegue, sender: pool)
+            self.performSegue(withIdentifier: kPoolDetailSegue, sender: pool)
         }
         
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
+        return UIScreen.main.bounds.height * 0.085
     }
     
 }

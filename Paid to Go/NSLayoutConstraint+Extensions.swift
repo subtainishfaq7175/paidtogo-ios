@@ -21,8 +21,8 @@ extension NSLayoutConstraint {
         
         newConstraint.priority = constraint.priority
         
-        NSLayoutConstraint.deactivateConstraints([constraint])
-        NSLayoutConstraint.activateConstraints([newConstraint])
+        NSLayoutConstraint.deactivate([constraint])
+        NSLayoutConstraint.activate([newConstraint])
         
         return newConstraint
     }

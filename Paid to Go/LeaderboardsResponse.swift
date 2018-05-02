@@ -33,7 +33,7 @@ public class LeaderboardsResponse: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required public init?(_ map: Map){
+    required public init?(map: Map){
 
     }
 
@@ -59,24 +59,24 @@ public class LeaderboardsResponse: Mappable {
     public func dictionaryRepresentation() -> [String : AnyObject ] {
 
         var dictionary: [String : AnyObject ] = [ : ]
-		if leaderboard?.count > 0 {
+		if (leaderboard?.count)! > 0 {
 			var temp: [AnyObject] = []
 			for item in leaderboard! {
-				temp.append(item.dictionaryRepresentation())
+                temp.append(item.dictionaryRepresentation() as AnyObject)
 			}
-			dictionary.updateValue(temp, forKey: kLeaderboardsResponseLeaderboardKey)
+            dictionary.updateValue(temp as AnyObject, forKey: kLeaderboardsResponseLeaderboardKey)
 		}
 		if poolId != nil {
-			dictionary.updateValue(poolId!, forKey: kLeaderboardsResponsePoolIdKey)
+            dictionary.updateValue(poolId! as AnyObject, forKey: kLeaderboardsResponsePoolIdKey)
 		}
 		if iconPhotoDescription != nil {
-			dictionary.updateValue(iconPhotoDescription!, forKey: kLeaderboardsResponseIconPhotoDescriptionKey)
+            dictionary.updateValue(iconPhotoDescription! as AnyObject, forKey: kLeaderboardsResponseIconPhotoDescriptionKey)
 		}
 		if iconPhoto != nil {
-			dictionary.updateValue(iconPhoto!, forKey: kLeaderboardsResponseIconPhotoKey)
+            dictionary.updateValue(iconPhoto! as AnyObject, forKey: kLeaderboardsResponseIconPhotoKey)
 		}
 		if name != nil {
-			dictionary.updateValue(name!, forKey: kLeaderboardsResponseNameKey)
+            dictionary.updateValue(name! as AnyObject, forKey: kLeaderboardsResponseNameKey)
 		}
 
         return dictionary

@@ -24,7 +24,7 @@ class LeaderboardsListTableViewCell: UITableViewCell {
         self.imgPool.round()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -37,8 +37,8 @@ class LeaderboardsListTableViewCell: UITableViewCell {
         }
         
         if let imageURLString = leaderboardsResponse.iconPhoto as String? {
-            let imageURL = NSURL(string: imageURLString)
-            self.imgPool.yy_setImageWithURL(imageURL, options: .ProgressiveBlur)
+            let imageURL = URL(string: imageURLString)
+            self.imgPool.yy_setImage(with: imageURL, options: .progressiveBlur)
         }
         
         if let leaderboards = leaderboardsResponse.leaderboard as [Leaderboard]? {
@@ -53,15 +53,15 @@ class LeaderboardsListTableViewCell: UITableViewCell {
     
     func configureCellWithLeaderboard(leaderboard : Leaderboard) {
         
-        self.imgArrow.hidden = true
+        self.imgArrow.isHidden = true
         
-        if let firstName = leaderboard.firstName, lastName = leaderboard.lastName {
+        if let firstName = leaderboard.firstName, let lastName = leaderboard.lastName {
             self.lblTitle.text = firstName + " " + lastName
         }
         
         if let imageURLString = leaderboard.profilePicture {
-            let imageURL = NSURL(string: imageURLString)
-            self.imgPool.yy_setImageWithURL(imageURL, options: .ProgressiveBlur)
+            let imageURL = URL(string: imageURLString)
+            self.imgPool.yy_setImage(with: imageURL, options: .progressiveBlur)
         }
         
         if let place = leaderboard.place {
@@ -69,7 +69,7 @@ class LeaderboardsListTableViewCell: UITableViewCell {
             self.lblSuffix.text = place.ordinal
         }
         
-        if let leaderboardID = leaderboard.userId, userID = User.currentUser?.userId {
+        if let leaderboardID = leaderboard.userId, let userID = User.currentUser?.userId {
             if leaderboardID == userID {
                 print("Posicion del usuario")
                 self.backgroundColor = CustomColors.lightGrayColor()

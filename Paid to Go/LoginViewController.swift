@@ -45,7 +45,7 @@ class LoginViewController: ViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(animated: animated)
         setNavigationBarVisible(false)
         
         verifyIfThereIsCurrentUser()
@@ -97,7 +97,7 @@ class LoginViewController: ViewController {
             DataProvider.sharedInstance.postLogin(newUser, completion: { (user, error) in
                 self.dismissProgressHud()
                 
-                if let error = error where error.isEmpty == false {
+                if let error = error, error.isEmpty == false {
                     self.showAlert(error)
                     return
                 }
@@ -146,7 +146,7 @@ class LoginViewController: ViewController {
         DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
             self.dismissProgressHud()
             
-            if let error = error where error.isEmpty == false {
+            if let error = error, error.isEmpty == false {
                 if firstTry {
                     self.loginFB(false)
                 } else {

@@ -9,6 +9,10 @@ import Foundation
 import ObjectMapper
 
 public class PoolType: NSObject, Mappable, NSCoding {
+    public func encode(with aCoder: NSCoder) {
+        
+    }
+    
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     internal let kPoolTypeDetailKey: String = "detail"
@@ -42,7 +46,7 @@ public class PoolType: NSObject, Mappable, NSCoding {
      Map a JSON object to this class using ObjectMapper
      - parameter map: A mapping from ObjectMapper
      */
-    required public init?(_ map: Map){
+    required public init?(map: Map){
         
     }
     

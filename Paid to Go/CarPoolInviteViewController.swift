@@ -56,35 +56,35 @@ class CarPoolInviteViewController: ViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
-        sendButtonView.roundVeryLittleForHeight(kConstraintBtnSendHeight)
+        sendButtonView.roundVeryLittleForHeight(height: kConstraintBtnSendHeight)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CarPoolInviteViewController.handleTap(_:)))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CarPoolInviteViewController.handleTap(recognizer:)))
         self.view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setPoolTitle(.Car)
+        self.setPoolTitle(type: .Car)
         self.navigationController?.navigationBar.barTintColor = CustomColors.carColor()
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
 //        self.setNavigationBarColor(UIColor(rgba: poolType!.color!))
         
-        self.searchUsersWithText(kDefaultSearchBarText)
+        self.searchUsersWithText(text: kDefaultSearchBarText)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     // MARK: - Private Methods -
     
     func handleTap(recognizer: UITapGestureRecognizer) {
         
-        if searchBar.isFirstResponder() {
+        if searchBar.isFirstResponder {
 //            self.view.endEditing(true)
             self.searchBar.resignFirstResponder()
 //            self.searchBar.endEditing(true)
@@ -120,23 +120,23 @@ class CarPoolInviteViewController: ViewController {
     
     // MARK:- Private methods
     
-    private func hideAlphaFooter() {
+     func hideAlphaFooter() {
         
         self.constraintAlphaFooterImgBottom.constant = -kConstraintImageAlphaFooterHeight
         self.constraintBtnSendBottom.constant = -kConstraintBtnSendHeight
         
-        UIView.animateWithDuration(0.4) { 
+        UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
             self.btnAlphaFooter.alpha = CGFloat(1)
         }
     }
     
-    private func showAlphaFooter() {
+     func showAlphaFooter() {
     
         self.constraintAlphaFooterImgBottom.constant = CGFloat(0)
         self.constraintBtnSendBottom.constant = kConstraintBtnSendHeight
         
-        UIView.animateWithDuration(0.4) {
+        UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
             self.btnAlphaFooter.alpha = CGFloat(0)
         }
@@ -144,11 +144,11 @@ class CarPoolInviteViewController: ViewController {
     
     // MARK:- API Calls
 
-    private func searchUsersWithText(text: String) {
+    func searchUsersWithText(text: String) {
 
-        self.showProgressHud("Searching...")
+        self.showProgressHud(title: "Searching...")
         
-        DataProvider.sharedInstance.searchUsersByName(text) { (users, error) in
+        DataProvider.sharedInstance.searchUsersByName(username: text) { (users, error) in
             
             if let error = error {
                 self.dismissProgressHud()
@@ -157,9 +157,9 @@ class CarPoolInviteViewController: ViewController {
                 self.tableView.reloadData()
                 
                 if self.users.count == 0 {
-                    self.lblEmptyResults.hidden = false
+                    self.lblEmptyResults.isHidden = false
                 } else {
-                    self.lblEmptyResults.hidden = true
+                    self.lblEmptyResults.isHidden = true
                 }
                 
                 return
@@ -172,9 +172,9 @@ class CarPoolInviteViewController: ViewController {
                 self.tableView.reloadData()
                 
                 if self.users.count == 0 {
-                    self.lblEmptyResults.hidden = false
+                    self.lblEmptyResults.isHidden = false
                 } else {
-                    self.lblEmptyResults.hidden = true
+                    self.lblEmptyResults.isHidden = true
                 }
             }
         }
@@ -183,12 +183,12 @@ class CarPoolInviteViewController: ViewController {
     private func sendEmailToUsers() {
         
         if selectedUsers.count == 0 {
-            self.showAlert("Please select one or more users to send the invitations to!")
+            self.showAlert(text: "Please select one or more users to send the invitations to!")
 
             return
         }
         
-        self.showProgressHud("Sending email...")
+        self.showProgressHud(title: "Sending email...")
         
         var selectedUserIDs = Array <String> ()
         for user in selectedUsers {
@@ -196,22 +196,22 @@ class CarPoolInviteViewController: ViewController {
             selectedUserIDs.append(userID)
         }
         
-        DataProvider.sharedInstance.sendEmailToUsers(selectedUserIDs, poolId: (self.pool?.internalIdentifier)!) { (result, error) in
+        DataProvider.sharedInstance.sendEmailToUsers(users: selectedUserIDs, poolId: (self.pool?.internalIdentifier)!) { (result, error) in
             
             self.dismissProgressHud()
             
             guard let err = error else {
                 
-                DataProvider.sharedInstance.getPoolType(.Car) { (poolType, error) in
+                DataProvider.sharedInstance.getPoolType(poolTypeEnum: .Car) { (poolType, error) in
                     
                     if let error = error {
-                        self.showAlert(error)
+                        self.showAlert(text: error)
                         return
                     }
                     
                     if let poolType = poolType {
                         
-                        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
+                        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "PoolViewController") as? PoolViewController {
                             poolViewController.type = self.type
                             poolViewController.poolType = poolType
                             poolViewController.pool = self.pool
@@ -224,14 +224,14 @@ class CarPoolInviteViewController: ViewController {
                 return
             }
             
-            self.showAlert("Unable to send invitations")
+            self.showAlert(text: "Unable to send invitations")
         }
     }
 }
 
 extension CarPoolInviteViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int?
         
         count = users.count
@@ -239,15 +239,15 @@ extension CarPoolInviteViewController: UITableViewDataSource {
         return count!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CarPoolInviteCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! CarPoolInviteCell
         
         
-        cell.configure(self.users[indexPath.row])
+        cell.configure(user: self.users[indexPath.row])
         
         switch indexPath.row % 2 {
         case 0:
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.white
             
         case 1:
             cell.backgroundColor = CustomColors.creamyWhiteColor()
@@ -256,7 +256,7 @@ extension CarPoolInviteViewController: UITableViewDataSource {
             break
         }
         
-        if selectedIndexPaths.containsObject(indexPath) {
+        if selectedIndexPaths.contains(indexPath) {
             cell.selectCell()
         }
         else {
@@ -269,24 +269,24 @@ extension CarPoolInviteViewController: UITableViewDataSource {
 
 extension CarPoolInviteViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.height * 0.085
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CarPoolInviteCell
+        let cell = tableView.cellForRow(at: indexPath) as! CarPoolInviteCell
         let userToAppend = self.users[indexPath.row]
         self.selectedUsers.append(userToAppend)
         
-        selectedIndexPaths.addObject(indexPath)
+        selectedIndexPaths.add(indexPath)
         
         cell.selectCell()
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CarPoolInviteCell
+        let cell = tableView.cellForRow(at: indexPath ) as! CarPoolInviteCell
         let userToRemove = self.users[indexPath.row]
 
         var indexOfUserToRemove = 0
@@ -298,10 +298,10 @@ extension CarPoolInviteViewController: UITableViewDelegate {
             }
         }
         
-        self.selectedUsers.removeAtIndex(indexOfUserToRemove)
+        self.selectedUsers.remove(at: indexOfUserToRemove)
  
-        if selectedIndexPaths.containsObject(indexPath) {
-            selectedIndexPaths.removeObject(indexPath)
+        if selectedIndexPaths.contains(indexPath) {
+            selectedIndexPaths.remove(indexPath)
         }
         
         cell.deselectCell()
@@ -309,34 +309,30 @@ extension CarPoolInviteViewController: UITableViewDelegate {
 }
 
 extension CarPoolInviteViewController: UIScrollViewDelegate {
-    
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.memory.y < scrollView.contentOffset.y {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
             // UP
-            showAlphaFooter()
+            self.showAlphaFooter()
             
         } else {
             // DOWN
-            hideAlphaFooter()
+            self.hideAlphaFooter()
         }
     }
 }
 
 extension CarPoolInviteViewController: UISearchBarDelegate {
-
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         
         guard let text = searchBar.text else {
             return
         }
         
-        self.searchUsersWithText(text)
+        self.searchUsersWithText(text: text)
     }
     
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     

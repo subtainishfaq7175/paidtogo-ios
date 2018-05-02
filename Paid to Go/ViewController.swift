@@ -16,13 +16,13 @@ class ViewController: UIViewController {
     
     // MARK: - View life cycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.title = ""
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     func clearNavigationBarcolor() {
         if let navController = navigationController {
-            navController.navigationBar.df_setBackgroundColor(UIColor.clearColor())
+            navController.navigationBar.df_setBackgroundColor(UIColor.clear)
         }
     }
     
@@ -78,8 +78,8 @@ class ViewController: UIViewController {
     }
     
     func customizeNavigationBarWithTitleAndMenu(){
-        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action:#selector(MenuContentViewController.homeButtonAction(_:)) ) //"homeButtonAction:"
+        let menuImage = UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action:#selector(MenuContentViewController.homeButtonAction(sender:)) ) //"homeButtonAction:"
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
         
@@ -89,8 +89,8 @@ class ViewController: UIViewController {
     }
     
     func customizeNavigationBarWithMenu(){
-        let menuImage = UIImage(named: "ic_menu")?.imageWithRenderingMode(.AlwaysTemplate)
-        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(_:))) //
+        let menuImage = UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(sender:))) //
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
         
@@ -100,26 +100,26 @@ class ViewController: UIViewController {
     
     func showAlert(text: String) {
         let alertController = UIAlertController(title: "Paid to Go", message:
-            text, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            text, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func showAlertAndDismissOnCompletion(text: String) {
         let alertController = UIAlertController(title: "Paid to Go", message:
-            text, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: popViewController))
+            text, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: popViewController))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func showAlertAndDismissModallyOnCompletion(text: String) {
         let alertController = UIAlertController(title: "Paid to Go", message:
-            text, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: dismissViewController))
+            text, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: dismissViewController))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - UI Configuration -
@@ -193,7 +193,12 @@ class ViewController: UIViewController {
             break
         }
         
-        view.backgroundColor = UIColor(rgba: type.color!)
+        do {
+            view.backgroundColor = try UIColor(rgba_throws: type.color!)
+
+        }catch{
+            
+        }
     }
     
     func setPoolTitle(type: PoolTypeEnum) {
@@ -220,38 +225,38 @@ class ViewController: UIViewController {
     
     func setPoolBackgroundImage(header:UIImageView, poolType:PoolType) {
         if let backgroundPicture = poolType.backgroundPicture {
-            let backgroundPictureURL = NSURL(string: backgroundPicture)
+            let backgroundPictureURL = URL(string: backgroundPicture)
             
-            header.yy_setImageWithURL(backgroundPictureURL, options: .ShowNetworkActivity)
+            header.yy_setImage(with: backgroundPictureURL, options: .showNetworkActivity)
         }
     }
     
     // MARK: - Navigation -
     
     func popViewController(alert: UIAlertAction!) {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func dismissViewController(alert: UIAlertAction!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func logoutAnimated() {
         if let window = self.view.window {
-            window.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+            window.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
     
     func presentHomeViewController() {
-        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
+        self.present(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
     }
     
     func presentHomeViewControllerWithoutAnimation() {
-        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
+        self.present(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
     }
     
     func presentHomeViewControllerWithExpiredSubscriptionAlert() {
-        self.presentViewController(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
+        self.present(StoryboardRouter.menuMainViewController(), animated: false, completion: nil)
 //        
 //        let mainViewController = StoryboardRouter.menuMainViewController() as! MainViewController
 //        
@@ -261,7 +266,7 @@ class ViewController: UIViewController {
     }
     
     func showPoolViewController(type: PoolTypeEnum, poolType: PoolType, pool: Pool, sender: AnyObject?) {
-        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
+        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "PoolViewController") as? PoolViewController {
                 poolViewController.type = type
                 poolViewController.poolType = poolType
                 poolViewController.pool = pool
@@ -272,7 +277,7 @@ class ViewController: UIViewController {
     }
     
     func showPoolViewControllerWithAntiCheatPhoto(type: PoolTypeEnum, poolType: PoolType, pool: Pool, validationPhoto:String, sender: AnyObject?) {
-        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("PoolViewController") as? PoolViewController {
+        if let poolViewController = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "PoolViewController") as? PoolViewController {
             poolViewController.type = type
             poolViewController.poolType = poolType
             poolViewController.pool = pool
@@ -286,18 +291,18 @@ class ViewController: UIViewController {
     // MARK: - Progress Hud -
     
     func showProgressHud() {
-        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        let loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.indeterminate
     }
     
     func showProgressHud(title: String) {
-        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        let loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.indeterminate
         loadingNotification.labelText = title
     }
     
     func dismissProgressHud() {
-        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
     
 }

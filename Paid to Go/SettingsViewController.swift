@@ -21,12 +21,12 @@ class SettingsViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         customizeNavigationBarWithMenu()
         self.title = "Settings"
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
     }
     

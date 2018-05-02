@@ -35,7 +35,7 @@ class ActivityDetailViewController: ViewController {
     
     // MARK: - View life cycle -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.title = "Activity Detail"
@@ -102,11 +102,11 @@ class ActivityDetailViewController: ViewController {
         }
         
         if let startDate = activity?.startDateTime {
-            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(startDate))"
+            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(dateString: startDate))"
         }
         
         if let endDate = activity?.endDateTime {
-            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(endDate))"
+            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(dateString: endDate))"
         }
     }
     
@@ -117,8 +117,8 @@ class ActivityDetailViewController: ViewController {
             return
         }
         
-        self.emptyRouteView.hidden = true
-        self.emptyRouteLabel.hidden = true
+        self.emptyRouteView.isHidden = true
+        self.emptyRouteLabel.isHidden = true
         
         self.mapView.delegate = self
         configureMapRegion()
@@ -166,7 +166,7 @@ class ActivityDetailViewController: ViewController {
                 
                 let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
                 polyline.title = "0"
-                mapView.addOverlay(polyline, level: .AboveRoads)
+                mapView.add(polyline, level: .aboveRoads)
                 
                 return
             }
@@ -188,7 +188,7 @@ class ActivityDetailViewController: ViewController {
                     
                     let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
                     polyline.title = subroute.invisible
-                    mapView.addOverlay(polyline, level: .AboveRoads)
+                    mapView.add(polyline, level: .aboveRoads)
                     
                     previousCoordinate = nextCoordinate
                 }
@@ -212,7 +212,7 @@ extension ActivityDetailViewController: MKMapViewDelegate {
             if invisible! == "0" {
                 render.strokeColor = CustomColors.greenColor()
             } else {
-                render.strokeColor = UIColor.clearColor()
+                render.strokeColor = UIColor.clear
             }
             
             return render

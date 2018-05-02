@@ -12,7 +12,7 @@ extension UINavigationController {
     func pushViewController(viewController: UIViewController, animated: Bool, completion: () -> ()) {
         pushViewController(viewController, animated: animated)
         
-        if let coordinator = transitionCoordinator() where animated {
+        if let coordinator = transitionCoordinator(), animated {
             coordinator.animateAlongsideTransition(nil) { _ in
                 completion()
             }
@@ -24,7 +24,7 @@ extension UINavigationController {
     func popViewController(animated: Bool, completion: () -> ()) {
         popViewControllerAnimated(animated)
         
-        if let coordinator = transitionCoordinator() where animated {
+        if let coordinator = transitionCoordinator(), animated {
             coordinator.animateAlongsideTransition(nil) { _ in
                 completion()
             }

@@ -33,8 +33,8 @@ class ReceiptValidationResult: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required init?(_ map: Map){
-        let json = map.JSONDictionary
+    required init?(map: Map){
+        let json = map.JSON
         guard let _ = json["receipt"] as? [String: AnyObject] else {
             return nil
         }
@@ -61,23 +61,23 @@ class ReceiptValidationResult: Mappable {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if receipt != nil {
-			dictionary.updateValue(receipt!.dictionaryRepresentation(), forKey: kReceiptValidationResultReceiptKey)
+            dictionary.updateValue(receipt!.dictionaryRepresentation() as AnyObject, forKey: kReceiptValidationResultReceiptKey)
 		}
-		if latestReceiptInfo?.count > 0 {
+		if (latestReceiptInfo?.count)! > 0 {
 			var temp: [AnyObject] = []
 			for item in latestReceiptInfo! {
-				temp.append(item.dictionaryRepresentation())
+                temp.append(item.dictionaryRepresentation() as AnyObject)
 			}
-			dictionary.updateValue(temp, forKey: kReceiptValidationResultLatestReceiptInfoKey)
+            dictionary.updateValue(temp as AnyObject, forKey: kReceiptValidationResultLatestReceiptInfoKey)
 		}
 		if status != nil {
-			dictionary.updateValue(status!, forKey: kReceiptValidationResultStatusKey)
+            dictionary.updateValue(status! as AnyObject, forKey: kReceiptValidationResultStatusKey)
 		}
 		if environment != nil {
-			dictionary.updateValue(environment!, forKey: kReceiptValidationResultEnvironmentKey)
+            dictionary.updateValue(environment! as AnyObject, forKey: kReceiptValidationResultEnvironmentKey)
 		}
 		if latestReceipt != nil {
-			dictionary.updateValue(latestReceipt!, forKey: kReceiptValidationResultLatestReceiptKey)
+            dictionary.updateValue(latestReceipt! as AnyObject, forKey: kReceiptValidationResultLatestReceiptKey)
 		}
 
         return dictionary
@@ -100,7 +100,7 @@ extension ReceiptValidationResult {
         
         for info in inApps {
             if let expiresDateString = info.expiresDate {
-                let expiresDateStringComponents = expiresDateString.componentsSeparatedByString(" ")
+                let expiresDateStringComponents = expiresDateString.components(separatedBy: " ")
                 var expiresDateStringFormatted = ""
                 
                 for component in expiresDateStringComponents {
@@ -108,13 +108,13 @@ extension ReceiptValidationResult {
                         break
                     }
                     if component != expiresDateStringComponents.first {
-                        expiresDateStringFormatted.appendContentsOf(" ")
+                        expiresDateStringFormatted.append(" ")
                     }
                     
-                    expiresDateStringFormatted.appendContentsOf(component)
+                    expiresDateStringFormatted.append(component)
                 }
                 
-                let expiresDate = NSDate.getDateWithFormatddMMyyyy(expiresDateStringFormatted)
+                let expiresDate = NSDate.getDateWithFormatddMMyyyy(dateString: expiresDateStringFormatted)
                 
                 if !expiresDate.isDatePreviousToCurrentDate() {
                     return true
