@@ -14,29 +14,30 @@
 
  let log: XCGLogger = {
     // Setup XCGLogger
-    let log = XCGLogger.defaultInstance()
+    let log = XCGLogger.default
     
     log.setup(
-        .Debug,
+        level: .debug,
         showLogIdentifier   : false,
         showFunctionName    : false,
         showThreadName      : false,
-        showLogLevel        : true,
+        showLevel        : true,
         showFileNames       : true,
         showLineNumbers     : true,
         showDate            : false
     )
     
     
-    log.xcodeColorsEnabled = true // Or set the XcodeColors environment variable in your scheme to YES
-    log.xcodeColors = [
-        .Verbose        : .lightGrey,
-        .Debug          : XCGLogger.XcodeColor(fg: (60, 153, 95)),
-        .Info           : XCGLogger.XcodeColor(fg: (71, 162, 201)),
-        .Warning        : XCGLogger.XcodeColor(fg: (208, 230, 85)),
-        .Error          : XCGLogger.XcodeColor(fg: (199, 20, 50)), // Optionally use a UIColor
-        .Severe         : XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
-    ]
+//    log.isEnabledFor(level: XCGLogger.debug)
+//        = true // Or set the XcodeColors environment variable in your scheme to YES
+//    log.xcodeColors = [
+//        .Verbose        : .lightGrey,
+//        .Debug          : XCGLogger.XcodeColor(fg: (60, 153, 95)),
+//        .Info           : XCGLogger.XcodeColor(fg: (71, 162, 201)),
+//        .Warning        : XCGLogger.XcodeColor(fg: (208, 230, 85)),
+//        .Error          : XCGLogger.XcodeColor(fg: (199, 20, 50)), // Optionally use a UIColor
+//        .Severe         : XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
+//    ]
     
     return log
  }()
@@ -46,11 +47,17 @@
     
     var window: UIWindow?
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url , sourceApplication: sourceApplication, annotation: annotation)
     }
-    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        self.customizeNavigationBar()
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        return true
+    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -62,12 +69,12 @@
     }
     
     private func customizeNavigationBar() {
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
         UINavigationBar.appearance().tintColor = CustomColors.NavbarTintColor()   // Navigation bar buttons color
         UINavigationBar.appearance().titleTextAttributes = [
             
-                NSForegroundColorAttributeName : CustomColors.NavbarTintColor(),
-                NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 18)!
+            NSAttributedStringKey.foregroundColor : CustomColors.NavbarTintColor(),
+            NSAttributedStringKey.font : UIFont(name: "OpenSans-Semibold", size: 18)!
             
         ]
         

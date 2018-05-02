@@ -17,23 +17,23 @@ class StoryboardRouter {
     
     // MARK: - Storyboards
     static func mainStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
     static func homeStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Home", bundle: NSBundle.mainBundle())
+        return UIStoryboard(name: "Home", bundle: Bundle.main)
     }
     
     static func menuStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Menu", bundle: NSBundle.mainBundle())
+        return UIStoryboard(name: "Menu", bundle: Bundle.main)
     }
     
     static func leaderboardsStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Leaderboards", bundle: NSBundle.mainBundle())
+        return UIStoryboard(name: "Leaderboards", bundle: Bundle.main)
     }
     
     static func profileStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: "Profile", bundle: NSBundle.mainBundle())
+        return UIStoryboard(name: "Profile", bundle: Bundle.main)
     }
     
     // MARK: - View Controllers
@@ -51,15 +51,15 @@ class StoryboardRouter {
     }
     
     static func initialSignupViewController() -> SignupViewController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("SignupViewController") as! SignupViewController
+        return mainStoryboard().instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
     }
     
     static func initialProfileViewController() -> ProfileViewController {
-        return profileStoryboard().instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        return profileStoryboard().instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
     }
     
     static func initialLeaderboardsViewController() -> LeaderboardsViewController {
-        return leaderboardsStoryboard().instantiateViewControllerWithIdentifier("LeaderboardsViewController") as! LeaderboardsViewController
+        return leaderboardsStoryboard().instantiateViewController(withIdentifier: "LeaderboardsViewController") as! LeaderboardsViewController
     }
     
 //    static func leaderboardsMainViewController() -> UIViewController {
@@ -67,19 +67,19 @@ class StoryboardRouter {
 //    }
     
     static func termsAndConditionsViewController() -> TermsAndConditionsViewController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("TermsAndConditions") as! TermsAndConditionsViewController
+        return mainStoryboard().instantiateViewController(withIdentifier: "TermsAndConditions") as! TermsAndConditionsViewController
     }
     
     static func termsAndConditionsNavigationController() -> UINavigationController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("TermsAndConditionsNavigationController") as! UINavigationController
+        return mainStoryboard().instantiateViewController(withIdentifier: "TermsAndConditionsNavigationController") as! UINavigationController
     }
     
     static func poolDetailViewController() -> PoolDetailViewController {
-        return homeStoryboard().instantiateViewControllerWithIdentifier("PoolDetailViewController") as! PoolDetailViewController
+        return homeStoryboard().instantiateViewController(withIdentifier: "PoolDetailViewController") as! PoolDetailViewController
     }
     
     static func nationalPoolsViewController() -> NationalPoolsViewController {
-        return homeStoryboard().instantiateViewControllerWithIdentifier("NationalPoolsViewController") as! NationalPoolsViewController
+        return homeStoryboard().instantiateViewController(withIdentifier: "NationalPoolsViewController") as! NationalPoolsViewController
     }
         
 }

@@ -17,8 +17,8 @@ class AntiCheatImageViewController: ViewController {
     var image: UIImage?
     var pool: Pool?
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated: animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setPoolTitle(type: .Train)
 //        startButtonView.round()
 //        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)

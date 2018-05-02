@@ -22,5 +22,5 @@ public struct ProUser {
 }
 
 func resourceNameForProductIdentifier(productIdentifier: String) -> String? {
-    return productIdentifier.componentsSeparatedByString(".").last
+    return productIdentifier.components(separatedBy: ".").last
 }

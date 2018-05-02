@@ -31,6 +31,6 @@ extension String {
         
         let nsSt = self as NSString
         
-        return nsSt.stringByAppendingPathComponent(path)
+        return nsSt.appendingPathComponent(path)
     }
 }

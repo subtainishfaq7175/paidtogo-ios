@@ -82,7 +82,7 @@ class CarPoolInviteViewController: ViewController {
     
     // MARK: - Private Methods -
     
-    func handleTap(recognizer: UITapGestureRecognizer) {
+    @objc func handleTap(recognizer: UITapGestureRecognizer) {
         
         if searchBar.isFirstResponder {
 //            self.view.endEditing(true)

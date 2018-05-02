@@ -56,7 +56,7 @@ public class Pool: Mappable {
      Map a JSON object to this class using ObjectMapper
      - parameter map: A mapping from ObjectMapper
      */
-    required public init?(_ map: Map){
+    required public init?(map: Map){
         
     }
     
@@ -96,43 +96,43 @@ public class Pool: Mappable {
         var dictionary: [String : AnyObject ] = [ : ]
         
         if quantMembers != nil {
-            dictionary.updateValue(quantMembers!, forKey: kPoolQuantMembersKey)
+            dictionary.updateValue(quantMembers! as AnyObject, forKey: kPoolQuantMembersKey)
         }
         if earnedMoneyPerMile != nil {
-            dictionary.updateValue(earnedMoneyPerMile!, forKey: kPoolEarnedMoneyPerMileKey)
+            dictionary.updateValue(earnedMoneyPerMile! as AnyObject, forKey: kPoolEarnedMoneyPerMileKey)
         }
         if poolType != nil {
-            dictionary.updateValue(poolType!.dictionaryRepresentation(), forKey: kPoolPoolTypeKey)
+            dictionary.updateValue(poolType!.dictionaryRepresentation() as AnyObject, forKey: kPoolPoolTypeKey)
         }
         if banner != nil {
-            dictionary.updateValue(banner!, forKey: kPoolBannerKey)
+            dictionary.updateValue(banner! as AnyObject, forKey: kPoolBannerKey)
         }
         if destinationLatitude != nil {
-            dictionary.updateValue(destinationLatitude!, forKey: kPoolDestinationLatitudeKey)
+            dictionary.updateValue(destinationLatitude! as AnyObject, forKey: kPoolDestinationLatitudeKey)
         }
         if name != nil {
-            dictionary.updateValue(name!, forKey: kPoolNameKey)
+            dictionary.updateValue(name! as AnyObject, forKey: kPoolNameKey)
         }
         if moneyAvailable != nil {
-            dictionary.updateValue(moneyAvailable!, forKey: kPoolMoneyAvailableKey)
+            dictionary.updateValue(moneyAvailable! as AnyObject, forKey: kPoolMoneyAvailableKey)
         }
         if internalIdentifier != nil {
-            dictionary.updateValue(internalIdentifier!, forKey: kPoolInternalIdentifierKey)
+            dictionary.updateValue(internalIdentifier! as AnyObject, forKey: kPoolInternalIdentifierKey)
         }
         if iconPhoto != nil {
-            dictionary.updateValue(iconPhoto!, forKey: kPoolIconPhotoKey)
+            dictionary.updateValue(iconPhoto! as AnyObject, forKey: kPoolIconPhotoKey)
         }
         if open != nil {
-            dictionary.updateValue(open!, forKey: kPoolOpenKey)
+            dictionary.updateValue(open! as AnyObject, forKey: kPoolOpenKey)
         }
         if destinationLongitude != nil {
-            dictionary.updateValue(destinationLongitude!, forKey: kPoolDestinationLongitudeKey)
+            dictionary.updateValue(destinationLongitude! as AnyObject, forKey: kPoolDestinationLongitudeKey)
         }
         if photoIconDescription != nil {
-            dictionary.updateValue(photoIconDescription!, forKey: kPoolPhotoIconDescriptionKey)
+            dictionary.updateValue(photoIconDescription! as AnyObject, forKey: kPoolPhotoIconDescriptionKey)
         }
         if endDateTime != nil {
-            dictionary.updateValue(endDateTime!, forKey: kPoolEndDateTimeKey)
+            dictionary.updateValue(endDateTime! as AnyObject, forKey: kPoolEndDateTimeKey)
         }
         
         return dictionary

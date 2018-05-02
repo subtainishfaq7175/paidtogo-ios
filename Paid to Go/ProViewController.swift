@@ -99,7 +99,7 @@ class ProViewController: ViewController {
         }
     }
     
-    func handlePurchaseNotification(notification: NSNotification) {
+    @objc func handlePurchaseNotification(notification: NSNotification) {
         becomePro()
     }
     

@@ -36,8 +36,8 @@ class CustomDatePickerView: UIView {
         let btnCloseImage = UIImage(named: "ic_close")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         self.btnClose.setImage(btnCloseImage, for: .normal)
 //        self.btnClose.setImage(, forState: UIControlState.Normal)
-        self.btnClose.tintColor = UIColor.init(colorLiteralRed: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
-        
+//        self.btnClose.tintColor = UIColor.init(colorLiteralRed: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
+         self.btnClose.tintColor = UIColor(red: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
         let gregorian: NSCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         let currentDate: Date = Date()
         var components: DateComponents = DateComponents()

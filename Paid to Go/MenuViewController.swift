@@ -184,11 +184,11 @@ class MenuViewController: ViewController {
                     return [MenuItem]()
             }
             
-            menuItems.append(
+            menuItems.append((
                 title: title.localize(),
                 storyboard: storyboard,
                 identifier: identifier
-            )
+            ))
         }
         
         if let firstItem = menuItems.first {

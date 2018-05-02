@@ -138,7 +138,7 @@ extension PoolViewController {
     
     // MARK: - IBActions
     
-    func actionButtonPressed() {
+    @objc func actionButtonPressed() {
         
         if !hasPoolStarted {
             
@@ -163,20 +163,20 @@ extension PoolViewController {
             
         }
     }
-    func pauseResumeButtonPressed() {
+    @objc func pauseResumeButtonPressed() {
         pauseResumeTracking()
     }
-    func mapButtonPressed() {
+    @objc func mapButtonPressed() {
         self.performSegue(withIdentifier: kMapSegueIdentifier, sender: nil)
     }
-    func switchButtonPressed() {
+    @objc func switchButtonPressed() {
         self.pauseResumeTracking()
         self.showPoolSwitchAlert(text: "Switch Pool")
     }
     
     // MARK: - Navigation
     
-    func customBackViewController() {
+    @objc func customBackViewController() {
         if hasPoolStarted {
             
             let alertController = UIAlertController(title: "Paid to Go", message:

@@ -17,7 +17,10 @@ private enum RequestType: String {
 
 class ConnectionManager {
     
-    private var baseURL = "https://www.paidtogo.com/api/v1"
+//    private var baseURL = "https://www.paidtogo.com/api/v1"
+// local server
+    private var baseURL = "http://192.168.10.119:8000/api/v1"
+
     
     private var registerURL: String { return "\(baseURL)/register" }
     private var loginURL: String { return "\(baseURL)/login" }
@@ -61,7 +64,7 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
     return newDictionary
 }
 
-//extension ConnectionManager {
+extension ConnectionManager {
 //
 //
 //    // MARK:- Login/Register
@@ -73,12 +76,13 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 //
 //    }
 //
-//    func login(params: [String: AnyObject], apiCompletion: (_ responseValue: AnyObject?, error: String?) -> Void) {
-//
-//        let identifier = "Login API - POST"
+    func login(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Login API - POST"
+        self.postRequest(identifier: identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
 //        self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
-//
-//    }
+
+    }
 //
 //    func forgotPassword(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //
@@ -194,67 +198,68 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 //        let identifier = "Stats API - GET"
 //        self.postRequest(identifier, url: self.mystatusURL, params: params, apiCompletion: apiCompletion)
 //    }
-//}
+}
 
-//extension ConnectionManager {
-//    
-//    private func printRequest(identifier: String, requestType: RequestType, requestURL: String, value: AnyObject) {
-//        print(identifier + " - " + requestType.rawValue + " - " + requestURL + " : ")
-//        print(value)
-//    }
-//    
-//    private func printRequest(identifier: String, requestType: RequestType, requestURL: String) {
-//        print(identifier + " - " + requestType.rawValue + " - " + requestURL)
-//    }
-//    
-//    func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
-//        
-//        let paramsDict = dictionaryWithoutEmptyValues(dict: params)
-//        
+extension ConnectionManager {
+//
+    private func printRequest(identifier: String, requestType: RequestType, requestURL: String, value: AnyObject) {
+        print(identifier + " - " + requestType.rawValue + " - " + requestURL + " : ")
+        print(value)
+    }
+//
+    private func printRequest(identifier: String, requestType: RequestType, requestURL: String) {
+        print(identifier + " - " + requestType.rawValue + " - " + requestURL)
+    }
+//
+    func postRequest(identifier: String, url: String,  params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        
+        let paramsDict = dictionaryWithoutEmptyValues(dict: params)
+        
 //        self.printRequest(identifier: identifier,
 //                          requestType: RequestType.Request,
 //                          requestURL: url,
 //                          value: paramsDict as AnyObject)
-//
-//        Alamofire.request(url, method: .post, parameters: paramsDict, encoding: URLEncoding(destination: .httpBody), headers: nil)
-//            .responseJSON { (response) in
-//                
-//                guard let value = response.result.value else {
-//                    print("CONNECTION ERROR: \(response)")
-//                    apiCompletion(nil, "error_connection")
-//                    return
-//                }
-//                
+
+        Alamofire.request(url, method: .post, parameters: paramsDict, encoding: URLEncoding(destination: .httpBody), headers: nil)
+            .responseJSON { (response) in
+                
+                guard let value = response.result.value else {
+                    print("CONNECTION ERROR: \(response)")
+                    apiCompletion(nil, "error_connection")
+                    return
+                }
+                
 //                self.printRequest(identifier: identifier,
 //                    requestType: RequestType.Response,
 //                    requestURL: url,
 //                    value: value as AnyObject)
-//                
-//                if response.result.isSuccess {
-//                    if response.response?.statusCode == 200 {
-//                        
-//                        apiCompletion(value as AnyObject, nil)
-//                        return
-//                        
-//                    }  else {
-//                        
+                
+                if response.result.isSuccess {
+                    if response.response?.statusCode == 200 {
+                        
+                        apiCompletion(value as AnyObject, nil)
+                        return
+                        
+                    }  else {
+                        apiCompletion(value as AnyObject, "error_default")
+
 //                        if let errorDetail = value["code"] as? String {
 //                            apiCompletion(responseValue: value, error: errorDetail)
 //                        }  else {
-//                            apiCompletion(responseValue: value, error: "error_default")
+//                            apiCompletion(value as AnyObject, "error_default")
 //                        }
-//                        return
-//                    }
-//                    
-//                } else if response.result.isFailure {
-//                    
-//                    apiCompletion(responseValue: value, error: "error_connection")
-//                    
-//                    return
-//                }
-//        }
-//    }
-//    
+                        return
+                    }
+                    
+                } else if response.result.isFailure {
+                    
+                    apiCompletion(value as AnyObject, "error_connection")
+                    
+                    return
+                }
+        }
+    }
+//
 //    
 //
 //    
@@ -307,5 +312,5 @@ func dictionaryWithoutEmptyValues(dict: [String: AnyObject]) -> [String: AnyObje
 //        }
 //    }
 //    
-//}
+}
 

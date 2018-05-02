@@ -15,7 +15,7 @@ class LocalizableButton: UIButton {
     @IBInspectable var localizableKey: String? {
         didSet {
             if let key = localizableKey {
-                self.setTitle(String(key: key), forState: .Normal)
+                self.setTitle(String(key: key), for: .normal)
             }
         }
     }

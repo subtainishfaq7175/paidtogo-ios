@@ -13,7 +13,7 @@ class SectionHeaderView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
     static func instanceFromNib() -> SectionHeaderView {
-        return UINib(nibName: "SectionHeaderView", bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first! as! SectionHeaderView
+        return UINib(nibName: "SectionHeaderView", bundle: Bundle.main).instantiate(withOwner: self, options: nil).first! as! SectionHeaderView
     }
     
     func configureForCommutePreferencesSection() {

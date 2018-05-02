@@ -124,10 +124,10 @@ class ActivityManager: NSObject, ActivityTest {
     }
     
     static func getStartDateTime() -> String {
-        let formatter = NSDateFormatter()
-        formatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateUTC = formatter.stringFromDate(sharedInstance.startDateToTrack)
+        let dateUTC = formatter.string(from: sharedInstance.startDateToTrack as Date)
         return dateUTC
     }
     
@@ -136,12 +136,12 @@ class ActivityManager: NSObject, ActivityTest {
     }
     
     static func updateMilesCounter(currentLocation:CLLocation) {
-        let metersTravelled = sharedInstance.lastLocation.distanceFromLocation(currentLocation) as Double!
-        setMilesCounter(metersTravelled*metersToMiles)
+        let metersTravelled = sharedInstance.lastLocation.distance(from: currentLocation) as Double!
+        setMilesCounter(milesTravelled: metersTravelled!*metersToMiles)
     }
     
     static func updateMilesCounterWithMeters(meters:Double) {
-        setMilesCounter(meters*metersToMiles)
+        setMilesCounter(milesTravelled: meters*metersToMiles)
     }
     
     static func getMilesCounter() -> Double {
@@ -206,7 +206,7 @@ class ActivityManager: NSObject, ActivityTest {
         
         print("Activity Route:\n \(activityRouteString)")
         
-        var finalString = activityRouteString.substringToIndex(activityRouteString.characters.count-1)
+        var finalString = activityRouteString.substringToIndex(index: activityRouteString.characters.count-1)
         finalString = finalString + "]"
         
         print("Activity Route Final:\n \(finalString)")
@@ -223,7 +223,7 @@ class ActivityManager: NSObject, ActivityTest {
             
             let lat = String(polyline.coordinate.latitude)
             let lon = String(polyline.coordinate.longitude)
-            let invisible = String(polyline.title)
+            let invisible = String(describing: polyline.title)
             
             let subroute = [
                 "'latitude'":lat,
@@ -231,14 +231,14 @@ class ActivityManager: NSObject, ActivityTest {
                 "'invisible'":invisible
             ]
             
-            jsonArrayRoute.append(subroute)
+            jsonArrayRoute.append(subroute as NSDictionary)
         }
         
         let activityRouteJSON = [
             "activity_route":jsonArrayRoute
         ]
         
-        return activityRouteJSON
+        return activityRouteJSON as [String : AnyObject]
     }
     
     static func hasPausedAndResumedActivity() -> Bool {
