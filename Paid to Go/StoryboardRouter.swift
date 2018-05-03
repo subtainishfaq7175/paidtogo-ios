@@ -45,9 +45,12 @@ class StoryboardRouter {
 //    static func initialMainViewController() -> UIViewController {
 //        return mainStoryboard().instantiateInitialViewController()!
 //    }
-    
     static func menuMainViewController() -> UIViewController {
         return menuStoryboard().instantiateInitialViewController()!
+    }
+    
+    static func homeViewController() -> HomeViewController {
+        return homeStoryboard().instantiateViewController(withIdentifier:IdentifierConstants.idConsShared.HOME_VC) as! HomeViewController
     }
     
     static func initialSignupViewController() -> SignupViewController {

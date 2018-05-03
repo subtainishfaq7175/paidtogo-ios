@@ -19,7 +19,7 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.10.119:8000/api/v1"
+    private var baseURL = "http://192.168.0.13:8000/api/v1"
 
     
     private var registerURL: String { return "\(baseURL)/register" }
@@ -241,13 +241,13 @@ extension ConnectionManager {
                         return
                         
                     }  else {
-                        apiCompletion(value as AnyObject, "error_default")
+//                        apiCompletion(value as AnyObject, "error_default")
 
-//                        if let errorDetail = value["code"] as? String {
-//                            apiCompletion(responseValue: value, error: errorDetail)
-//                        }  else {
-//                            apiCompletion(value as AnyObject, "error_default")
-//                        }
+                        if let errorDetail = (value as AnyObject)["code"] as? String {
+                            apiCompletion(value as AnyObject, errorDetail)
+                        }  else {
+                            apiCompletion(value as AnyObject, "error_default")
+                        }
                         return
                     }
                     
