@@ -14,6 +14,7 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Outlets -
     
+    @IBOutlet weak var optionsTV: UITableView!
     @IBOutlet weak var elautlet: UILabel! // title label
     
     // MARK: - View life cycle -
@@ -28,7 +29,7 @@ class HomeViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configTableView()
         customizeNavigationBarWithTitleAndMenu()
         
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
@@ -42,9 +43,17 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
+//        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
     }
-    
+    func configTableView()  {
+        guard let nib = UINib(nibName: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, bundle: nil) as? UINib  else {
+            print("nib not founded")
+            return
+        }
+        optionsTV.estimatedRowHeight = Constants.consShared.HUNDRED_INT.toCGFloat
+        optionsTV.register(nib, forCellReuseIdentifier: IdentifierConstants.idConsShared.LOCAL_POOL_TVC)
+        
+    }
     // MARK: - Navigation -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as! PoolsViewController
@@ -192,4 +201,19 @@ class HomeViewController: MenuContentViewController {
         }
     }
     
+}
+extension HomeViewController:UITableViewDelegate{
+    
+}
+extension HomeViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, for: indexPath) as! LocalPoolTVC
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.height / Constants.consShared.THREE_INT.toCGFloat
+    }
 }

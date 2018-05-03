@@ -74,6 +74,8 @@ class LoginViewController: ViewController {
             DataProvider.sharedInstance.postValidateProUser(completion: { (error) in
                 if let _ = error {
                     // Post Pro User expired notification
+                      NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
+                    
 //                    NotificationCenter.default.postNotification(NSNotification(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil))
                 }
             })
