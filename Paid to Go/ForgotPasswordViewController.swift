@@ -54,22 +54,22 @@ class ForgotPasswordViewController: ViewController {
             let user = User()
             user.email = emailTextField.text
             
-//            DataProvider.sharedInstance.postRecoverPassword(user, completion: { (genericResponse, error) in
-//                self.dismissProgressHud()
-//                
-//                if let error = error, error.isEmpty == false {
-//                    self.showAlert(error)
-//                    return
-//                }
-//                
-//                if error == nil && genericResponse != nil {
-//                    
-//                    if genericResponse?.code == "PASSWORD_RECOVERED" {
-//                        self.showAlert("password_recovered".localize())
-//                    }
-//                    
-//                }
-//            })
+            DataProvider.sharedInstance.postRecoverPassword(user: user, completion: { (genericResponse, error) in
+                self.dismissProgressHud()
+
+                if let error = error, error.isEmpty == false {
+                    self.showAlert(text: error)
+                    return
+                }
+                
+                if error == nil && genericResponse != nil {
+
+                    if genericResponse?.code == "PASSWORD_RECOVERED" {
+                        self.showAlert(text: "password_recovered".localize())
+                    }
+
+                }
+            })
         }
         
     }

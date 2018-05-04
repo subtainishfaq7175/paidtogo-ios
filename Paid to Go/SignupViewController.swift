@@ -45,12 +45,12 @@ class SignupViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        emailTextField.text = "test@test.test1"
-        //        firstNameTextField.text = "test"
-        //        lastNameTextField.text = "test"
-        //        passwordVerificationTextField.text = "test123"
-        //        passwordTextField.text = "test123"
-        //        bioTextField.text = "test"
+//                emailTextField.text = "test@test.test1"
+//                firstNameTextField.text = "test"
+//                lastNameTextField.text = "test"
+//                passwordVerificationTextField.text = "test123"
+//                passwordTextField.text = "test123"
+//                bioTextField.text = "test"
       
         setNavigationBarGreen()
         
@@ -58,6 +58,7 @@ class SignupViewController: ViewController {
         let closeButtonItem = UIBarButtonItem(image: closeImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(SignupViewController.closeButtonAction(sender:)))
         closeButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = closeButtonItem
+        addGestureRecognizers()
     }
     
     override func viewDidLayoutSubviews() {
@@ -113,9 +114,27 @@ class SignupViewController: ViewController {
         return true
     }
     
-    // MARK: - Actions -
-    
-    @IBAction func photoTapAction(sender: AnyObject) {
+    func addGestureRecognizers() {
+       addImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TapGesture)))
+        registerPhotoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TapGesture)))
+    }
+    @objc func TapGesture(_ gesture:UIGestureRecognizer)  {
+        guard let gestureView = gesture.view else {
+            return
+        }
+        switch (gestureView) {
+        case registerPhotoImageView:
+            setUserImage()
+            break
+        case addImageView:
+            setUserImage()
+            break
+        default:
+            break
+        }
+    }
+    //    MARK: - Photo Navigations
+   private func setUserImage()  {
         let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .default, handler: {
             action in
@@ -129,6 +148,12 @@ class SignupViewController: ViewController {
         }))
         photoActionSheet.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel, handler: nil))
         self.present(photoActionSheet, animated: true, completion: nil)
+    }
+    
+    // MARK: - Actions -
+    
+    @IBAction func photoTapAction(sender: AnyObject) {
+   
     }
     
     @IBAction func closeButtonAction(sender: AnyObject) {
@@ -163,29 +188,31 @@ class SignupViewController: ViewController {
                 
             }
             
-            
+            DataProvider.sharedInstance.postRegister(user: newUser, completion: { (user: User?, error: String?) in
+                self.dismissProgressHud()
+                
+                if let error = error, error.isEmpty == false {
+                    self.showAlert(text: error)
+                    return
+                }
+                
+                if error == nil && user != nil {
+                    
+                    newUser.accessToken = user!.accessToken
+                    newUser.userId = user!.userId
+                    newUser.profilePicture = user?.profilePicture
+                    newUser.email = user!.email
+                    newUser.name = user?.name
+                    newUser.lastName = user?.lastName
+                    newUser.bio = user?.bio
+                    
+                    User.currentUser = newUser
+                    
+                    self.present(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
+                }
+            })
 //            DataProvider.sharedInstance.postRegisterActivity(activity: newUser, completion: { (user: User?, error: String?) in
-//                self.dismissProgressHud()
 //
-//                if let error = error, error.isEmpty == false {
-//                    self.showAlert(error)
-//                    return
-//                }
-//
-//                if error == nil && user != nil {
-//
-//                    newUser.accessToken = user!.accessToken
-//                    newUser.userId = user!.userId
-//                    newUser.profilePicture = user?.profilePicture
-//                    newUser.email = user!.email
-//                    newUser.name = user?.name
-//                    newUser.lastName = user?.lastName
-//                    newUser.bio = user?.bio
-//
-//                    User.currentUser = newUser
-//
-//                    self.presentViewController(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
-//                }
 //
 //            })
             
