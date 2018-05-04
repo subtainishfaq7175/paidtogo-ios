@@ -33,10 +33,10 @@ class LeaderboardsViewController: ViewController {
     
     // MARK: - Super
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setBorderToView(subtitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
         initLayout()
     }
     
@@ -48,11 +48,11 @@ class LeaderboardsViewController: ViewController {
         }
         
         self.showProgressHud()
-        DataProvider.sharedInstance.getLeaderboardsForPool(poolId) { (leaderboard, error) in
+        DataProvider.sharedInstance.getLeaderboardsForPool(poolId: poolId) { (leaderboard, error) in
             self.dismissProgressHud()
             
             if let err = error {
-                self.showAlert("Error - Leaderboards - \(err)")
+                self.showAlert(text: "Error - Leaderboards - \(err)")
                 return
             }
             
@@ -90,7 +90,7 @@ class LeaderboardsViewController: ViewController {
     }
     
     func configureNavigationBar() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         self.title = "menu_leaderboards".localize()
         clearNavigationBarcolor()
     }
@@ -98,10 +98,10 @@ class LeaderboardsViewController: ViewController {
     func configureTableView() {
         self.tableView.dataSource = self
         
-        let nib = UINib(nibName: String(LeaderboardsListTableViewCell), bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: String(LeaderboardsListTableViewCell))
+        let nib = UINib(nibName: "LeaderboardsListTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "LeaderboardsListTableViewCell")
         
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
     }
     
     func configureView() {
@@ -111,7 +111,7 @@ class LeaderboardsViewController: ViewController {
         self.poolTypeLabel.text = self.leaderboardsResponse?.poolTypeName
         
         if let dateString = leaderboardsResponse?.endDateTime {
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            let dateStringISO = dateString.substringToIndex(index: dateString.characters.count-9)
             
             self.endDateLabel.text = dateStringISO
         }
@@ -129,20 +129,22 @@ class LeaderboardsViewController: ViewController {
     // MARK: - Actions
     
     func dismiss(sender: UIBarButtonItem){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension LeaderboardsViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leaderboards.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                return leaderboards.count
+
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(LeaderboardsListTableViewCell)) as! LeaderboardsListTableViewCell
-        cell.configureCellWithLeaderboard(leaderboards[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardsListTableViewCell") as! LeaderboardsListTableViewCell
+        cell.configureCellWithLeaderboard(leaderboard: leaderboards[indexPath.row])
         return cell
     }
+    
 }

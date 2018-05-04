@@ -36,19 +36,19 @@ class CarPoolInviteCell: UITableViewCell {
     }
     
     func deselectCell() {
-        self.selectedView.backgroundColor = UIColor.lightGrayColor()
+        self.selectedView.backgroundColor = UIColor.lightGray
     }
     
     func configure(user: User) {
         
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
         self.nameLabel.text = user.fullName()
         
         if let imageURL = user.profilePicture {
-            self.profileImageView.yy_setImageWithURL(
-                NSURL( string: imageURL ),
-                options: .ProgressiveBlur )
+            self.profileImageView.yy_setImage(
+                with: URL( string: imageURL ),
+                options: .progressiveBlur )
         }
     }
 }

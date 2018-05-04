@@ -25,7 +25,7 @@ class ActivityDefaultCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
     
     override func layoutSubviews() {
@@ -37,14 +37,14 @@ class ActivityDefaultCell: UITableViewCell {
     func configure(notification: ActivityNotification) {
         
         self.titleLabel.text = notification.name
-        self.dateLabel.text = notification.startDateTime?.substringToIndex(11)
+        self.dateLabel.text = notification.startDateTime?.substringToIndex(index: 11)
         self.detailLabel.text = notification.milesTraveled! + " mi."
         
         if let imageURL = notification.iconPhoto {
         
-        self.notificationImageView.yy_setImageWithURL(
-            NSURL(string: imageURL),
-            options: .ProgressiveBlur )
+            self.notificationImageView.yy_setImage(
+                with: URL(string: imageURL),
+                options: .progressiveBlur )
         }
     }
     

@@ -10,32 +10,40 @@ import UIKit
 import UIColor_Hex_Swift
 
 class CustomColors {
-    
+    static func getColor(_ rgba:String) -> UIColor {
+        do{
+            return try UIColor(rgba_throws: rgba)
+        }catch{
+            return UIColor.white
+
+        }
+    }
     //Navbar background color
     static func greenColor() -> UIColor{
-        return UIColor(rgba: "#6eff93")
+        
+        return getColor("#6eff93")
     }
     
     //Navbar tint color
     private static func grayColor() ->UIColor {
        // return UIColor(rgba: "#454544")
-        return UIColor(rgba: "#333333")
+        return getColor( "#333333")
     }
     
     private static func orangeColor() -> UIColor {
-        return UIColor(rgba: "#fa9221")
+        return getColor("#fa9221")
     }
     
     private static func redColor() -> UIColor {
-        return UIColor(rgba: "#f95452")
+        return getColor( "#f95452")
     }
     
     private static func yellowColor() -> UIColor {
-        return UIColor(rgba: "#feec10")
+        return getColor("#feec10")
     }
     
     private static func cyanColor() -> UIColor {
-        return UIColor(rgba: "#41dafc")
+        return getColor("#41dafc")
     }
     
     static func walkRunColor() -> UIColor {
@@ -55,23 +63,23 @@ class CustomColors {
     }
     
     static func creamyWhiteColor() -> UIColor {
-        return UIColor(rgba: "#eae9e5")
+        return getColor("#eae9e5")
     }
     
     static func lightBlueColor() -> UIColor {
-        return UIColor(rgba: "#34b5fb")
+        return getColor("#34b5fb")
     }
     
     static func lightGrayColor() -> UIColor {
-        return UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+        return UIColor.lightGray.withAlphaComponent(0.5)
     }
 
     static func headerColor() -> UIColor {
-        return UIColor(rgba: "#303030")
+        return getColor( "#303030")
     }
 
     private static func customGrayColor(value:String) -> UIColor {
-        return UIColor(rgba: value)
+        return getColor( value)
     }
     
     
@@ -80,16 +88,16 @@ class CustomColors {
     }
     
     static func NavbarTintColor () -> UIColor {
-        return UIColor.blackColor()
+        return UIColor.black
     }
    
     
     static func userNameNotificationTextColor () -> UIColor {
-        return customGrayColor("#353535")
+        return customGrayColor(value: "#353535")
     }
     
     static func notificationMessageTextColor() -> UIColor {
-        return customGrayColor("#424242")
+        return customGrayColor(value: "#424242")
     }
     
     static func notificationActivityIndicatorTextColor () -> UIColor {

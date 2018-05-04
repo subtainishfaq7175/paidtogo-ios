@@ -28,7 +28,7 @@ class TableViewHeader: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        if let view = NSBundle.mainBundle().loadNibNamed(String(TableViewHeader), owner: self, options: nil)!.first as? UIView {
+        if let view = Bundle.main.loadNibNamed(String(describing: TableViewHeader()), owner: self, options: nil)!.first as? UIView {
             self.addSubview(view)
             view.frame = self.bounds
         }
@@ -43,31 +43,31 @@ extension TableViewHeader: TableViewHeaderConfiguration {
     
     func configureForPools(color:String) {
         self.titleLabel.text = "Pool Name"
-        self.backgroundColor = UIColor.darkGrayColor()
-        titleLabel.textColor = UIColor.whiteColor()
-        attributeLabel.textColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.darkGray
+        titleLabel.textColor = UIColor.white
+        attributeLabel.textColor = UIColor.white
     }
     
     func configureForActivities() {
         self.titleLabel.text = "Pool Name"
         self.attributeLabel.text = "Miles Travelled"
-        self.titleLabel.textColor = UIColor.whiteColor()
-        self.attributeLabel.textColor = UIColor.whiteColor()
+        self.titleLabel.textColor = UIColor.white
+        self.attributeLabel.textColor = UIColor.white
         self.backgroundColor = CustomColors.headerColor()
     }
     
     func configureForLeaderboardsList() {
         self.titleLabel.text = "Pool Name"
         self.attributeLabel.text = "Position"
-        self.titleLabel.textColor = UIColor.whiteColor()
-        self.attributeLabel.textColor = UIColor.whiteColor()
+        self.titleLabel.textColor = UIColor.white
+        self.attributeLabel.textColor = UIColor.white
         self.backgroundColor = CustomColors.headerColor()
     }
     
     func configureForLeaderboards() {
         self.titleLabel.text = "Username"
         self.attributeLabel.text = "Position"
-        self.titleLabel.textColor = UIColor.darkGrayColor()
-        self.attributeLabel.textColor = UIColor.darkGrayColor()
+        self.titleLabel.textColor = UIColor.darkGray
+        self.attributeLabel.textColor = UIColor.darkGray
     }
 }

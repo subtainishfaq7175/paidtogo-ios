@@ -28,22 +28,31 @@ class CustomDatePickerView: UIView {
     var selectedDate : NSDate?
     
     static func instanceFromNib() -> CustomDatePickerView {
-        return UINib(nibName: "CustomDatePicker", bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first! as! CustomDatePickerView
+        return UINib(nibName: "CustomDatePicker", bundle: Bundle.main).instantiate(withOwner: self, options: nil).first! as! CustomDatePickerView
     }
 
     override func awakeFromNib() {
         
-        let btnCloseImage = UIImage(named: "ic_close")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        self.btnClose.setImage(btnCloseImage, forState: UIControlState.Normal)
-        self.btnClose.tintColor = UIColor.init(colorLiteralRed: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
-        
-        let gregorian: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let currentDate: NSDate = NSDate()
-        let components: NSDateComponents = NSDateComponents()
+        let btnCloseImage = UIImage(named: "ic_close")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.btnClose.setImage(btnCloseImage, for: .normal)
+//        self.btnClose.setImage(, forState: UIControlState.Normal)
+//        self.btnClose.tintColor = UIColor.init(colorLiteralRed: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
+         self.btnClose.tintColor = UIColor(red: 234.0, green: 233.0, blue: 229.0, alpha: 1.0)
+        let gregorian: NSCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let currentDate: Date = Date()
+        var components: DateComponents = DateComponents()
         
         components.year = 0
-        let maxDate: NSDate = gregorian.dateByAddingComponents(components, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))!
-        self.datePicker.maximumDate = maxDate
+        
+        
+        
+//        let maxDate: NSDate = gregorian.dateByAddingComponents(components as DateComponents, toDate: currentDate as Date, options: NSCalendar.Options(rawValue: 0))! as NSDate
+        
+        let maxDate: Date = gregorian.date(byAdding: components, to: currentDate, options: NSCalendar.Options(rawValue: 0))!
+        
+        
+        
+        self.datePicker.maximumDate = maxDate as Date
     }
 
     @IBAction func btnCancelPressed(sender: AnyObject) {
@@ -54,12 +63,12 @@ class CustomDatePickerView: UIView {
     
     @IBAction func btnFilterPressed(sender: AnyObject) {
         if self.delegate != nil {
-            self.delegate?.userDidPressBtnFilter(self.selectedDate)
+            self.delegate?.userDidPressBtnFilter(selectedDate: self.selectedDate)
         }
     }
     
     @IBAction func datePickerValueChanged(sender: AnyObject) {
-        self.selectedDate = self.datePicker.date
+        self.selectedDate = self.datePicker.date as NSDate
     }
     
 }

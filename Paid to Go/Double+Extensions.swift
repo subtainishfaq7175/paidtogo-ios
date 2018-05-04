@@ -9,6 +9,6 @@
 import Foundation
 
 extension Double {
-    var roundTo2f: Double {return Double(round(self*100)/100)  }
-    var roundTo3f: Double {return Double(round(self*1000)/1000) }
+//    var roundTo2f: Double {return Double(round(self*100)/100)  }
+//    var roundTo3f: Double {return Double(round(self*1000)/1000) }
 }

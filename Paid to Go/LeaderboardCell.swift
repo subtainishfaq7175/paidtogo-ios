@@ -38,9 +38,9 @@ class LeaderboardCell: UITableViewCell /*, Reusable */{
         self.titleLabel.text = "\(leaderboard.firstName!) \(leaderboard.lastName!)"
         
         if let imageURL = leaderboard.profilePicture {
-            self.profileImageView.yy_setImageWithURL(
-                NSURL( string: imageURL),
-                options: .ProgressiveBlur )
+            self.profileImageView.yy_setImage(
+                with: URL( string: imageURL),
+                options: .progressiveBlur)
         }
     }
     

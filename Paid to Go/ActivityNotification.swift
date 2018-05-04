@@ -48,7 +48,7 @@ public class ActivityNotification: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-   public required init?(_ map: Map){
+    public required init?(map: Map){
 
     }
 
@@ -81,40 +81,40 @@ public class ActivityNotification: Mappable {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if savedCo2 != nil {
-			dictionary.updateValue(savedCo2!, forKey: kActivityNotificationSavedCo2Key)
+            dictionary.updateValue(savedCo2! as AnyObject, forKey: kActivityNotificationSavedCo2Key)
 		}
 		if iconPhoto != nil {
-			dictionary.updateValue(iconPhoto!, forKey: kActivityNotificationIconPhotoKey)
+            dictionary.updateValue(iconPhoto! as AnyObject, forKey: kActivityNotificationIconPhotoKey)
 		}
 		if milesTraveled != nil {
-			dictionary.updateValue(milesTraveled!, forKey: kActivityNotificationMilesTraveledKey)
+            dictionary.updateValue(milesTraveled! as AnyObject, forKey: kActivityNotificationMilesTraveledKey)
 		}
 		if open != nil {
-			dictionary.updateValue(open!, forKey: kActivityNotificationOpenKey)
+            dictionary.updateValue(open! as AnyObject, forKey: kActivityNotificationOpenKey)
 		}
 		if poolId != nil {
-			dictionary.updateValue(poolId!, forKey: kActivityNotificationPoolIdKey)
+            dictionary.updateValue(poolId! as AnyObject, forKey: kActivityNotificationPoolIdKey)
 		}
 		if startDateTime != nil {
-			dictionary.updateValue(startDateTime!, forKey: kActivityNotificationStartDateTimeKey)
+            dictionary.updateValue(startDateTime! as AnyObject, forKey: kActivityNotificationStartDateTimeKey)
 		}
 		if savedGas != nil {
-			dictionary.updateValue(savedGas!, forKey: kActivityNotificationSavedGasKey)
+            dictionary.updateValue(savedGas! as AnyObject, forKey: kActivityNotificationSavedGasKey)
 		}
 		if iconPhotoDescription != nil {
-			dictionary.updateValue(iconPhotoDescription!, forKey: kActivityNotificationIconPhotoDescriptionKey)
+            dictionary.updateValue(iconPhotoDescription! as AnyObject, forKey: kActivityNotificationIconPhotoDescriptionKey)
 		}
 		if endDateTime != nil {
-			dictionary.updateValue(endDateTime!, forKey: kActivityNotificationEndDateTimeKey)
+            dictionary.updateValue(endDateTime! as AnyObject, forKey: kActivityNotificationEndDateTimeKey)
 		}
 		if earnedMoney != nil {
-			dictionary.updateValue(earnedMoney!, forKey: kActivityNotificationEarnedMoneyKey)
+            dictionary.updateValue(earnedMoney! as AnyObject, forKey: kActivityNotificationEarnedMoneyKey)
 		}
 		if user != nil {
 			dictionary.updateValue(user!, forKey: kActivityNotificationUserKey)
 		}
 		if name != nil {
-			dictionary.updateValue(name!, forKey: kActivityNotificationNameKey)
+            dictionary.updateValue(name! as AnyObject, forKey: kActivityNotificationNameKey)
 		}
 
         return dictionary

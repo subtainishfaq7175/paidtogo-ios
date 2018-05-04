@@ -150,10 +150,10 @@ class ProfileViewController: MenuContentViewController {
     
     // MARK: - Super -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         self.title = "menu_profile".localize()
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
@@ -170,7 +170,7 @@ class ProfileViewController: MenuContentViewController {
         
         self.populateFields()
         
-        self.signUpButtonShouldChange(false)
+        self.signUpButtonShouldChange(value: false)
         
         self.configureTableView()
     }
@@ -186,7 +186,7 @@ class ProfileViewController: MenuContentViewController {
     func configureTableView() {
         self.checkmarksTableView.dataSource = self
         self.checkmarksTableView.delegate = self
-        self.checkmarksTableView.separatorStyle = .None
+        self.checkmarksTableView.separatorStyle = .none
     }
     
     func configureViewForProUser() {
@@ -195,9 +195,9 @@ class ProfileViewController: MenuContentViewController {
         
         if user.isPro() {
             // Pro User
-            proUserLabel.hidden = false
+            proUserLabel.isHidden = false
         } else {
-            proUserLabel.hidden = true
+            proUserLabel.isHidden = true
         }
         
     }
@@ -224,22 +224,22 @@ class ProfileViewController: MenuContentViewController {
             
             print(currentProfilePicture)
             
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"))
+            profileImageView.yy_setImage(with: URL(string: currentProfilePicture) , placeholder: UIImage(named: "ic_profile_placeholder"))
         }
     }
     
     private func validate() -> Bool {
         
         if emailTextField.text! == "" {
-            showAlert("Email field is empty")
+            showAlert(text: "Email field is empty")
             return false
         }
         if firstNameTextField.text! == "" {
-            showAlert("First name field is empty")
+            showAlert(text: "First name field is empty")
             return false
         }
         if lastNameTextField.text! == "" {
-            showAlert("Last Name field is empty")
+            showAlert(text: "Last Name field is empty")
             return false
         }
         
@@ -261,31 +261,31 @@ class ProfileViewController: MenuContentViewController {
     
     func enableSignUpButton() {
         signupButtonViewContainer.alpha = CGFloat(1.0)
-        signupButtonViewContainer.userInteractionEnabled = true
+        signupButtonViewContainer.isUserInteractionEnabled = true
     }
     
     func disableSignUpButton() {
         signupButtonViewContainer.alpha = CGFloat(0.3)
-        signupButtonViewContainer.userInteractionEnabled = false
+        signupButtonViewContainer.isUserInteractionEnabled = false
     }
     
     // MARK: - Selectors -
     
     @IBAction func photoTapAction(sender: AnyObject) {
         
-        let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .Default, handler: {
+        let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_camera_option".localize(), style: .default, handler: {
             action in
             
             self.takePhotoFromCamera()
         }))
-        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .Default, handler: {
+        photoActionSheet.addAction(UIAlertAction(title: "auth_photo_library_option".localize(), style: .default, handler: {
             action in
             
             self.takePhotoFromGallery()
         }))
-        photoActionSheet.addAction(UIAlertAction(title: "cancel".localize(), style: .Cancel, handler: nil))
-        self.presentViewController(photoActionSheet, animated: true, completion: nil)
+        photoActionSheet.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel, handler: nil))
+        self.present(photoActionSheet, animated: true, completion: nil)
     }
     
     
@@ -310,57 +310,58 @@ class ProfileViewController: MenuContentViewController {
             userToSend.lastName = lastNameTextField.text
             userToSend.bio = bioTextField.text
             
-            if let paypalAcount = self.paypalTextField.text where self.paypalTextField.text?.characters.count > 0 {
+            if let paypalAcount = self.paypalTextField.text, self.paypalTextField.text != "" {
                 userToSend.paypalAccount = paypalAcount
             }
             
-            if let profileImage = profileImage {
-                
-                let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
-                let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                let encodedImageWithPrefix = User.imagePrefix + base64String
-                
-                userToSend.profilePicture = encodedImageWithPrefix
-            }
+//            if let profileImage = profileImage {
+//                
+//                let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
+////                (.Encoding64CharacterLineLength)
+//                let base64String = imageData!.base64EncodedData(options: .encoding64CharacterLineLength)
+//                let encodedImageWithPrefix = User.imagePrefix + base64String
+//                
+//                userToSend.profilePicture = encodedImageWithPrefix
+//            }
             
-            DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
-                
-                self.dismissProgressHud()
-                
-                if let user = user { //success
-                    
-                    self.showAlert("profile_changes_submited".localize())
-                    
-                    self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
-                    
-                    // We persist the user's personal options locally
-//                    user.profileOption1 = (User.currentUser?.profileOption1)!
-//                    user.profileOption2 = (User.currentUser?.profileOption2)!
-//                    user.profileOption3 = (User.currentUser?.profileOption3)!
-                    
-                    if let age = self.ageTextField.text where !age.isEmpty {
-                        user.age = age
-                    }
-                    
-                    if let gender = self.genderTextField.text where !gender.isEmpty {
-                        user.gender = gender
-                    }
-                    
-                    User.currentUser = user
-                    self.checkmarksStruct.updateUserLocally()
-                    
-                    let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
-                    
-                    self.signUpButtonShouldChange(false)
-                    
-                    self.view.endEditing(true)
-                    
-                } else if let error = error {
-                    
-                    self.showAlert(error)
-                }
-            }
+//            DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
+//
+//                self.dismissProgressHud()
+//
+//                if let user = user { //success
+//
+//                    self.showAlert("profile_changes_submited".localize())
+//
+//                    self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
+//
+//                    // We persist the user's personal options locally
+////                    user.profileOption1 = (User.currentUser?.profileOption1)!
+////                    user.profileOption2 = (User.currentUser?.profileOption2)!
+////                    user.profileOption3 = (User.currentUser?.profileOption3)!
+//
+//                    if let age = self.ageTextField.text where !age.isEmpty {
+//                        user.age = age
+//                    }
+//
+//                    if let gender = self.genderTextField.text where !gender.isEmpty {
+//                        user.gender = gender
+//                    }
+//
+//                    User.currentUser = user
+//                    self.checkmarksStruct.updateUserLocally()
+//
+//                    let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
+//                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
+//
+//                    self.signUpButtonShouldChange(false)
+//
+//                    self.view.endEditing(true)
+//
+//                } else if let error = error {
+//
+//                    self.showAlert(error)
+//                }
+//            }
         }
     }
 }
@@ -375,42 +376,42 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         self.profileImageView.image = image
         
-        picker.dismissViewControllerAnimated(true, completion: nil);
+        picker.dismiss(animated: true, completion: nil);
         
-        self.signUpButtonShouldChange(true)
+        self.signUpButtonShouldChange(value: true)
     }
     
     func takePhotoFromCamera() {
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
             
             let picker = UIImagePickerController();
             picker.delegate = self;
-            picker.sourceType = UIImagePickerControllerSourceType.Camera;
+            picker.sourceType = UIImagePickerControllerSourceType.camera;
             picker.allowsEditing = true;
             
-            self.presentViewController(picker, animated: true, completion: nil);
+            self.present(picker, animated: true, completion: nil);
         }
     }
     
     func takePhotoFromGallery () {
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)) {
             
             let picker = UIImagePickerController();
             picker.delegate = self;
             
-            picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
             picker.allowsEditing = true;
             
-            self.presentViewController(picker, animated: true, completion: nil);
+            self.present(picker, animated: true, completion: nil);
         }
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
         if let textField = sender as? UITextField {
-            if textField.text?.characters.count > 0 {
-                self.signUpButtonShouldChange(true)
+            if textField.text != "" {
+                self.signUpButtonShouldChange(value: true)
             } else {
-                self.signUpButtonShouldChange(false)
+                self.signUpButtonShouldChange(value: false)
             }
         }
     }
@@ -424,7 +425,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return checkmarksStruct.options.count
         } else {
@@ -432,10 +433,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         
         if indexPath.section == 0 {
             cell.textLabel?.text = checkmarksStruct.options[indexPath.row]
@@ -447,11 +448,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.numberOfLines = 0
             
             if checkmarksStruct.checked[indexPath.row] {
-                cell.accessoryType = .Checkmark
-                cell.textLabel?.textColor = UIColor.blueColor()
+                cell.accessoryType = .checkmark
+                cell.textLabel?.textColor = UIColor.blue
             } else {
-                cell.accessoryType = .None
-                cell.textLabel?.textColor = UIColor.darkTextColor()
+                cell.accessoryType = .none
+                cell.textLabel?.textColor = UIColor.darkText
             }
         } else {
             cell.textLabel?.text = checkmarksStruct.commuteTypes[indexPath.row]
@@ -463,18 +464,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.numberOfLines = 0
             
             if checkmarksStruct.commuteTypesChecked[indexPath.row] {
-                cell.accessoryType = .Checkmark
-                cell.textLabel?.textColor = UIColor.blueColor()
+                cell.accessoryType = .checkmark
+                cell.textLabel?.textColor = UIColor.blue
             } else {
-                cell.accessoryType = .None
-                cell.textLabel?.textColor = UIColor.darkTextColor()
+                cell.accessoryType = .none
+                cell.textLabel?.textColor = UIColor.darkText
             }
         }
         
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib()
         
         if section == 0 {
@@ -486,7 +487,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return sectionHeaderView
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row == 2 && indexPath.section == 0 {
             return 60.0
@@ -495,20 +496,20 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return 40.0
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.signUpButtonShouldChange(true)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.signUpButtonShouldChange(value: true)
         
         if indexPath.section == 0 {
-            checkmarksStruct.updateOptionState(indexPath.row)
+            checkmarksStruct.updateOptionState(index: indexPath.row)
         } else {
-            checkmarksStruct.updateCommuteTypeState(indexPath.row)
+            checkmarksStruct.updateCommuteTypeState(index: indexPath.row)
         }
         
-        self.checkmarksTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.checkmarksTableView.reloadRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
     }
     
 }

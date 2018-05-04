@@ -2,9 +2,6 @@
 //  ChartDataEntry.swift
 //  Charts
 //
-//  Created by Daniel Cohen Gindi on 23/2/15.
-
-//
 //  Copyright 2015 Daniel Cohen Gindi & Philipp Jahoda
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
@@ -14,118 +11,98 @@
 
 import Foundation
 
-public class ChartDataEntry: NSObject
+open class ChartDataEntry: ChartDataEntryBase
 {
-    /// the actual value (y axis)
-    public var value = Double(0.0)
+    /// the x value
+    @objc open var x = Double(0.0)
     
-    /// the index on the x-axis
-    public var xIndex = Int(0)
-    
-    /// optional spot for additional data this Entry represents
-    public var data: AnyObject?
-    
-    public override required init()
+    public required init()
     {
         super.init()
     }
     
-    public init(value: Double, xIndex: Int)
+    /// An Entry represents one single entry in the chart.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    @objc public init(x: Double, y: Double)
     {
-        super.init()
+        super.init(y: y)
         
-        self.value = value
-        self.xIndex = xIndex
+        self.x = x
     }
     
-    public init(value: Double, xIndex: Int, data: AnyObject?)
+    /// An Entry represents one single entry in the chart.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter data: Space for additional data this Entry represents.
+    
+    @objc public init(x: Double, y: Double, data: AnyObject?)
     {
-        super.init()
+        super.init(y: y)
         
-        self.value = value
-        self.xIndex = xIndex
+        self.x = x
+        
         self.data = data
     }
     
-    // MARK: NSObject
+    /// An Entry represents one single entry in the chart.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter icon: icon image
     
-    public override func isEqual(object: AnyObject?) -> Bool
+    @objc public init(x: Double, y: Double, icon: NSUIImage?)
     {
-        if (object === nil)
-        {
-            return false
-        }
+        super.init(y: y, icon: icon)
         
-        if (!object!.isKindOfClass(self.dynamicType))
-        {
-            return false
-        }
-        
-        if (object!.data !== data && !object!.data.isEqual(self.data))
-        {
-            return false
-        }
-        
-        if (object!.xIndex != xIndex)
-        {
-            return false
-        }
-        
-        if (fabs(object!.value - value) > 0.00001)
-        {
-            return false
-        }
-        
-        return true
+        self.x = x
     }
     
+    /// An Entry represents one single entry in the chart.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter icon: icon image
+    /// - parameter data: Space for additional data this Entry represents.
+    
+    @objc public init(x: Double, y: Double, icon: NSUIImage?, data: AnyObject?)
+    {
+        super.init(y: y, icon: icon, data: data)
+        
+        self.x = x
+    }
+        
     // MARK: NSObject
     
-    public override var description: String
+    open override var description: String
     {
-        return "ChartDataEntry, xIndex: \(xIndex), value \(value)"
+        return "ChartDataEntry, x: \(x), y \(y)"
     }
     
     // MARK: NSCopying
     
-    public func copyWithZone(zone: NSZone) -> AnyObject
+    @objc open func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
-        let copy = self.dynamicType.init()
+        let copy = type(of: self).init()
         
-        copy.value = value
-        copy.xIndex = xIndex
+        copy.x = x
+        copy.y = y
         copy.data = data
         
         return copy
     }
 }
 
-public func ==(lhs: ChartDataEntry, rhs: ChartDataEntry) -> Bool
-{
-    if (lhs === rhs)
-    {
-        return true
+// MARK: Equatable
+extension ChartDataEntry/*: Equatable*/ {
+    open override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? ChartDataEntry else { return false }
+
+        if self === object
+        {
+            return true
+        }
+
+        return ((data == nil && object.data == nil) || (data?.isEqual(object.data) ?? false))
+            && y == object.y
+            && x == object.x
     }
-    
-    if (!lhs.isKindOfClass(rhs.dynamicType))
-    {
-        return false
-    }
-    
-    if (lhs.data !== rhs.data && !lhs.data!.isEqual(rhs.data))
-    {
-        return false
-    }
-    
-    if (lhs.xIndex != rhs.xIndex)
-    {
-        return false
-    }
-    
-    if (fabs(lhs.value - rhs.value) > 0.00001)
-    {
-        return false
-    }
-    
-    return true
 }

@@ -33,7 +33,7 @@ public class Status: Mappable {
         
     }
 
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
         
     }
     
@@ -55,7 +55,7 @@ public class Status: Mappable {
         var dictionary: [String : AnyObject ] = [ : ]
         
         if incomes != nil {
-            dictionary.updateValue(incomes!.dictionaryRepresentation(), forKey: "incomes")
+            dictionary.updateValue(incomes!.dictionaryRepresentation() as AnyObject, forKey: "incomes")
         }
         
         return dictionary
@@ -63,7 +63,7 @@ public class Status: Mappable {
     
     // MARK: Methods
     
-    func loadIncomesData(inout monthlyIncomes:Array<Double>, inout weeklyIncomes:[Double], currentDate:NSDate) {
+    func loadIncomesData( monthlyIncomes:inout Array<Double>, weeklyIncomes:inout [Double], currentDate:Date) {
         
         guard let incomes = self.incomes as StatusType? else {
             return
@@ -75,9 +75,9 @@ public class Status: Mappable {
                 continue
             }
             
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            let dateStringISO = dateString.substringToIndex(index: dateString.count-9)
             
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+            guard let date = dateStringISO.date(format: DateFormat.custom("yyyy-MM-dd")) else {
                 continue
             }
             
@@ -106,7 +106,7 @@ public class Status: Mappable {
         }
     }
     
-    func loadSavedGas(inout monthlyGasSaved:Array<Double>, inout weeklyGasSaved:[Double], currentDate:NSDate) {
+    func loadSavedGas( monthlyGasSaved:inout Array<Double>, weeklyGasSaved:inout [Double], currentDate:Date) {
         
         guard let savedGas = self.savedGas as StatusType? else {
             return
@@ -118,15 +118,16 @@ public class Status: Mappable {
                 continue
             }
             
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            let dateStringISO = dateString.substringToIndex(index: dateString.count-9)
             
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+            guard let date = dateStringISO.date(format: DateFormat.custom("yyyy-MM-dd")) else {
                 continue
             }
             
             monthlyGasSaved[date.month-1] += savedGasCalculatedUnit.value!
             
             // If the current day is Sunday, we show all the information of the past week
+            
             if currentDate.weekday == 1 {
                 if currentDate.weekOfYear-1 == date.weekOfYear {
                     
@@ -149,7 +150,7 @@ public class Status: Mappable {
         }
     }
     
-    func loadCarbonOffset(inout monthlyCarbonOffset:Array<Double>, inout weeklyCarbonOffset:[Double], currentDate:NSDate) {
+    func loadCarbonOffset( monthlyCarbonOffset:inout Array<Double>, weeklyCarbonOffset:inout [Double], currentDate:Date) {
         
         guard let carbonOff = self.carbonOff as StatusType? else {
             return
@@ -161,9 +162,9 @@ public class Status: Mappable {
                 continue
             }
             
-            let dateStringISO = dateString.substringToIndex(dateString.characters.count-9)
+            let dateStringISO = dateString.substringToIndex(index: dateString.count-9)
             
-            guard let date = dateStringISO.toDate(DateFormat.Custom("yyyy-MM-dd")) else {
+            guard let date = dateStringISO.date(format: DateFormat.custom("yyyy-MM-dd")) else {
                 continue
             }
             

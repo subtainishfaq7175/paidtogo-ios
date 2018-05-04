@@ -45,7 +45,7 @@ class ShareViewController: ViewController {
     
     // MARK: - View life cycle -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
@@ -64,17 +64,17 @@ class ShareViewController: ViewController {
     // MARK: - Functions -
     
     private func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         //        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setPoolColor(backgroundColorView, type: type!)
+        setPoolColor(view: backgroundColorView, type: type!)
         
         
         if Platform.DeviceType.IS_IPHONE_4_OR_LESS { // Device is iPhone 4s, 3.5 inches
-            shareTextLabel.font = shareTextLabel.font.fontWithSize(12.0)
+            shareTextLabel.font = shareTextLabel.font.withSize(12.0)
         }
         if Platform.DeviceType.IS_IPHONE_6_OR_GREATER {
 //            shareTextLabelBottomConstraint.constant = 36
-            shareTextLabel.font = shareTextLabel.font.fontWithSize(16.0)
+            shareTextLabel.font = shareTextLabel.font.withSize(16.0)
         }
     }
     
@@ -103,20 +103,22 @@ class ShareViewController: ViewController {
     }
     
     @IBAction func finish(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
     
     func documentsPathForFileName(name: String) -> String {
         
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        return documentsPath.stringByAppendingString(name)
+        var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+       return documentsPath + name
+//        return documentsPath.app
+//        return documentsPath.append(name)
     }
     
     func socialShare(sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
         var sharingItems = [AnyObject]()
         
         if let text = sharingText {
-            sharingItems.append(text)
+            sharingItems.append(text as AnyObject)
         }
         if let image = sharingImage {
             sharingItems.append(image)
@@ -126,8 +128,8 @@ class ShareViewController: ViewController {
         }
         
         let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivityTypeCopyToPasteboard,UIActivityTypeAirDrop,UIActivityTypeAddToReadingList,UIActivityTypeAssignToContact,UIActivityTypePostToTencentWeibo,UIActivityTypePostToVimeo,UIActivityTypePrint,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToWeibo]
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        activityViewController.excludedActivityTypes = [UIActivityType.copyToPasteboard,UIActivityType.airDrop,UIActivityType.addToReadingList,UIActivityType.assignToContact,UIActivityType.postToTencentWeibo,UIActivityType.postToVimeo,UIActivityType.print,UIActivityType.saveToCameraRoll,UIActivityType.postToWeibo]
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
 
@@ -136,7 +138,7 @@ extension ShareViewController: SocialShareDelegate {
     var shareText : String { return "Hey, i just completed a pool! Check out my stats and download the app at" }
     
     func facebookShare() {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
             print("- Facebook Share -")
             
             // Activity view controller: No anda...
@@ -154,7 +156,7 @@ extension ShareViewController: SocialShareDelegate {
                 
                 content.photos = [shareImage]
                 
-                FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
+                FBSDKShareDialog.show(from: self, with: content, delegate: self)
             }
             
             /// Problema con FBSDKShareDialog()
@@ -236,20 +238,20 @@ extension ShareViewController: SocialShareDelegate {
 //            }
             
         } else {
-            self.showAlert("Please login to a Facebook account to share.")
+            self.showAlert(text: "Please login to a Facebook account to share.")
         }
     }
     
     func instagramShare() {
-        let instagramURL = NSURL(string: "instagram://app")
-        if !UIApplication.sharedApplication().canOpenURL(instagramURL!) {
+        let instagramURL = URL(string: "instagram://app")
+        if !UIApplication.shared.canOpenURL(instagramURL!) {
             print("SIN INSTAGRAM")
             
-            self.showAlert("Please login to an Instagram account to share.")
+            self.showAlert(text: "Please login to an Instagram account to share.")
             
-            let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to an Instagram account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
             return
         }
@@ -258,7 +260,7 @@ extension ShareViewController: SocialShareDelegate {
             self.shareInstagram = CMDocumentShare()
         }
         
-        self.shareInstagramImage(self.screenshot!)
+        self.shareInstagramImage(image: self.screenshot!)
         
 //
 //        let instagramURL = NSURL(string: "instagram://app")
@@ -286,27 +288,28 @@ extension ShareViewController: SocialShareDelegate {
         print("SHARE ON INSTAGRAM")
         
         let homeDirectory = NSHomeDirectory()
-        let savePath = homeDirectory.stringByAppendingPathComponent("Documents/StudAppPic.igo")
+        let savePath = homeDirectory.stringByAppendingPathComponent(path: "Documents/StudAppPic.igo")
         
         print("savePath -> \(savePath)")
         
         let imgData = UIImageJPEGRepresentation(image, 0.1)
         
         do {
-            try imgData?.writeToFile(savePath, options: NSDataWritingOptions.AtomicWrite)
+//            WritingOptions.AtomicWrite
+            try imgData?.write(to: URL(string: savePath)!, options: NSData.WritingOptions.atomicWrite)
         } catch {
             print("Something went wrong!")
         }
         
-        let theFileURL = NSURL(fileURLWithPath: savePath)
+        let theFileURL = URL(fileURLWithPath: savePath)
         
-        self.documentInteractor = UIDocumentInteractionController(URL: theFileURL)
+        self.documentInteractor = UIDocumentInteractionController(url:theFileURL)
         self.documentInteractor?.delegate = self
         self.documentInteractor?.name = "PaidToGo"
         self.documentInteractor?.annotation = ["InstagramCaption":"My statistics!!"]
-        self.documentInteractor?.UTI = "com.instagram.exclusivegram"
+        self.documentInteractor?.uti = "com.instagram.exclusivegram"
         
-        let presented = self.documentInteractor?.presentOpenInMenuFromRect(self.view.frame, inView: self.view, animated: true)
+        let presented = self.documentInteractor?.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
         
         if presented == false {
             print("SIN INSTAGRAM EN EL DISPOSITIVO")
@@ -315,7 +318,7 @@ extension ShareViewController: SocialShareDelegate {
 
     
     func twitterShare() {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
             print("- Twitter Share -")
             
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
@@ -327,9 +330,9 @@ extension ShareViewController: SocialShareDelegate {
                 print("Initial Text FAILED")
             }
             
-            if let url = NSURL(string: "www.paidtogo.com") {
-                if UIApplication.sharedApplication().canOpenURL(url) {
-                    let urlAdded = twitterSheet.addURL(url)
+            if let url = URL(string: "www.paidtogo.com") {
+                if UIApplication.shared.canOpenURL(url) {
+                    let urlAdded = twitterSheet.add(url)
                     
                     if urlAdded {
                         print("URL OK")
@@ -337,7 +340,7 @@ extension ShareViewController: SocialShareDelegate {
                         print("URL FAILED")
                     }
                 } else {
-                    let urlAdded = twitterSheet.addURL(NSURL(string: "www.paidtogo.com"))
+                    let urlAdded = twitterSheet.add(URL(string: "www.paidtogo.com"))
                     
                     if urlAdded {
                         print("URL OK")
@@ -348,7 +351,7 @@ extension ShareViewController: SocialShareDelegate {
             }
             
             if let image = self.screenshot {
-                let imageAdded = twitterSheet.addImage(image)
+                let imageAdded = twitterSheet.add(image)
                 
                 if imageAdded {
                     print("Image OK")
@@ -364,32 +367,32 @@ extension ShareViewController: SocialShareDelegate {
                 
                 switch(getResult.rawValue) {
                     
-                    case SLComposeViewControllerResult.Cancelled.rawValue:
+                case SLComposeViewControllerResult.cancelled.rawValue:
                         print("- Twitter Share Cancelled -")
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     break
                     
-                    case SLComposeViewControllerResult.Done.rawValue:
+                case SLComposeViewControllerResult.done.rawValue:
                         print("- Twitter Share Ok -")
-                        self.dismissViewControllerAnimated(true, completion: {
-                            self.showAlert("Twitter share successfull!!")
+                        self.dismiss(animated: true, completion: {
+                            self.showAlert(text: "Twitter share successfull!!")
                         })
                     break
                     
                 default:
                     print("- Twitter Share Error -")
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                     break
                 }
             }
             
             self.showProgressHud()
-            self.presentViewController(twitterSheet, animated: true, completion: {
+            self.present(twitterSheet, animated: true, completion: {
                 self.dismissProgressHud()
             })
             
         } else {
-            self.showAlert("Please login to a Twitter account to share.")
+            self.showAlert(text: "Please login to a Twitter account to share.")
         }
     }
     
@@ -398,7 +401,7 @@ extension ShareViewController: SocialShareDelegate {
     func mailShare() {
         if !MFMailComposeViewController.canSendMail() {
             
-            self.showAlert("Unable to share by mail. There's no email account configured")
+            self.showAlert(text: "Unable to share by mail. There's no email account configured")
             return
             
         } else {
@@ -421,7 +424,7 @@ extension ShareViewController: SocialShareDelegate {
                 composeVC.setMessageBody(htmlString, isHTML: true)
             }
             
-            self.presentViewController(composeVC, animated: true, completion: nil)
+            self.present(composeVC, animated: true, completion: nil)
         }
     }
     
@@ -430,17 +433,17 @@ extension ShareViewController: SocialShareDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         if let error = error {
             print("- Mail Share Error -\n\(error.description))")
-            controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismiss(animated: true, completion: nil)
         } else {
             print("- Mail Share Ok -")
             
-            if result == MFMailComposeResult.Sent {
-                controller.dismissViewControllerAnimated(true, completion: {
-                    self.showAlert("Email sent successfully!!")
+            if result == MFMailComposeResult.sent {
+                controller.dismiss(animated: true, completion: {
+                    self.showAlert(text: "Email sent successfully!!")
                 })
             }
             
-            controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -449,18 +452,17 @@ extension ShareViewController: SocialShareDelegate {
 // MARK: - Facebook Share Dialog Delegate -
 
 extension ShareViewController: FBSDKSharingDelegate {
-    
-    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject: AnyObject]) {
+    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
         print("- Facebook Share Ok -")
-        
+
     }
-    
-    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+
+    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
         print("- Facebook Share Error -")
-        print(error.description)
+        print(error.localizedDescription)
     }
     
-    func sharerDidCancel(sharer: FBSDKSharing!) {
+    func sharerDidCancel(_ sharer: FBSDKSharing!) {
         print("sharerDidCancel")
     }
 }

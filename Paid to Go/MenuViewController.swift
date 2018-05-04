@@ -46,7 +46,7 @@ class MenuViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.items = loadItemsFromPList(plistName)
+        self.items = loadItemsFromPList(plist: plistName)
         
         tableview.delegate = self
         tableview.dataSource = self
@@ -56,9 +56,9 @@ class MenuViewController: ViewController {
         
         nameLabel.text = currentUser.fullName()
        
-        if let currentProfilePicture = currentUser.profilePicture where currentUser.profilePicture?.characters.count > 0 {
+        if let currentProfilePicture = currentUser.profilePicture, currentUser.profilePicture != "" {
             
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .ShowNetworkActivity, completion: { (image, url, type, stage, error) in
+            profileImageView.yy_setImage(with: URL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
                 
                 guard let img = image else {
                     self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
@@ -71,7 +71,7 @@ class MenuViewController: ViewController {
             self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userProfileUpdated), name: NotificationsHelper.UserProfileUpdated.rawValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: NSNotification.Name(rawValue: NotificationsHelper.UserProfileUpdated.rawValue), object: nil)
     }
     
     @objc private func userProfileUpdated() {
@@ -80,9 +80,9 @@ class MenuViewController: ViewController {
         
         nameLabel.text = currentUser.fullName()
         
-        if let currentProfilePicture = currentUser.profilePicture where currentUser.profilePicture?.characters.count > 0 {
+        if let currentProfilePicture = currentUser.profilePicture, currentUser.profilePicture != "" {
             
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .ShowNetworkActivity, completion: { (image, url, type, stage, error) in
+            profileImageView.yy_setImage(with: URL(string: currentProfilePicture) , placeholder: UIImage(named: "ic_profile_placeholder"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
                 
                 guard let img = image else {
                     self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
@@ -97,7 +97,7 @@ class MenuViewController: ViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool){
+    override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
 //        profileImageView.roundWholeView()
 //        nameView.round()
@@ -119,12 +119,12 @@ class MenuViewController: ViewController {
         
         if user.isPro() {
             // Pro User
-            proUserLabel.hidden = false
-            goProButtonView.hidden = true
+            proUserLabel.isHidden = false
+            goProButtonView.isHidden = true
             upgradeToProViewHeightConstraint.constant = 0.0
         } else {
-            proUserLabel.hidden = true
-            goProButtonView.hidden = false
+            proUserLabel.isHidden = true
+            goProButtonView.isHidden = false
             upgradeToProViewHeightConstraint.constant = 64.0
         }
         
@@ -164,7 +164,7 @@ class MenuViewController: ViewController {
         
         var menuItems = [MenuItem]()
         
-        guard let pathToPList = NSBundle.mainBundle().pathForResource(plist, ofType: "plist") else {
+        guard let pathToPList = Bundle.main.path(forResource: plist, ofType: "plist") else {
             log.error("Path to plist is invalid")
             return menuItems
         }
@@ -184,15 +184,15 @@ class MenuViewController: ViewController {
                     return [MenuItem]()
             }
             
-            menuItems.append(
+            menuItems.append((
                 title: title.localize(),
                 storyboard: storyboard,
                 identifier: identifier
-            )
+            ))
         }
         
         if let firstItem = menuItems.first {
-            self.delegate?.setMenuContentViewController(UIStoryboard(name: firstItem.storyboard, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(firstItem.identifier))
+            self.delegate?.setMenuContentViewController(controller: UIStoryboard(name: firstItem.storyboard, bundle: Bundle.main).instantiateViewController(withIdentifier: firstItem.identifier))
         }
         
         return menuItems
@@ -213,13 +213,13 @@ class MenuViewController: ViewController {
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func goProAction(sender: AnyObject) {
-        if let proVC = self.storyboard?.instantiateViewControllerWithIdentifier(String(ProViewController)) {
+        if let proVC = self.storyboard?.instantiateViewController(withIdentifier: "ProViewController") {
             
-            self.presentViewController(proVC, animated: true, completion: nil)
+            self.present(proVC, animated: true, completion: nil)
         }
     }
     
@@ -245,8 +245,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             itemsSection
             ].count
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             
         case headerSection:
@@ -262,25 +261,22 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //        if indexPath.section == headerSection {
         //            return tableView.dequeueReusableCellWithIdentifier(MenuHeaderCell.identifier) as! MenuHeaderCell
         //        } else {
-        let itemCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCell.identifier) as! MenuItemCell
+        let itemCell = tableView.dequeueReusableCell(withIdentifier: MenuItemCell.identifier) as! MenuItemCell
         
-//        let itemCell = MenuItemCell.deque(from: tableView)
+        //        let itemCell = MenuItemCell.deque(from: tableView)
         
         let menuItem = items[indexPath.row]
         
         itemCell.configure(title: menuItem.title)
         return itemCell
-        
-        //        }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+ 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
             
         case headerSection:
@@ -296,17 +292,18 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == itemsSection {
             // Only handles action for items section. Not for header.
             let selectedItem = items[indexPath.row]
-            let controller = UIStoryboard(name: selectedItem.storyboard, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(selectedItem.identifier)
+            let controller = UIStoryboard(name: selectedItem.storyboard, bundle: Bundle.main).instantiateViewController(withIdentifier: selectedItem.identifier)
             
-            self.delegate?.setMenuContentViewController(controller)
+            self.delegate?.setMenuContentViewController(controller: controller)
         }
     }
+ 
     
     /*
     func goPro(alert: UIAlertAction!) {

@@ -43,7 +43,7 @@ class PoolDetailViewController: ViewController {
     
     // MARK: - View Lifecycle -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
@@ -62,8 +62,14 @@ class PoolDetailViewController: ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
-        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
+        setBorderToView(view: headerTitleLabel, color: CustomColors.NavbarTintColor().cgColor)
+        do {
+            let col = try UIColor(rgba_throws:poolType!.color! )
+            setBorderToViewAndRoundVeryLittle(view: poolIconImageView, color: col.cgColor)
+
+        }catch{
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,32 +80,36 @@ class PoolDetailViewController: ViewController {
     // MARK: - Private methods -
     
     private func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         clearNavigationBarcolor()
-        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
+        setPoolColorAndTitle(view: backgroundColorView, typeEnum: typeEnum!, type: poolType!)
     }
     
     private func configureView() {
 //        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
         
-        backgroundImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+        backgroundImageView.yy_setImage(with: URL(string: (poolType?.backgroundPicture)!), options: .showNetworkActivity)
         
 //        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
 //        setBorderToViewAndRoundVeryLittle(poolIconImageView, color: UIColor(rgba: poolType!.color!).CGColor)
-        
-        bannerBottomBorderView.backgroundColor = UIColor(rgba: poolType!.color!)
+        do {
+            bannerBottomBorderView.backgroundColor = try UIColor(rgba_throws: poolType!.color!)
+
+        }catch{
+            
+        }
         
         configureContinueButton()
         
         if let iconImage = pool?.iconPhoto as String? {
             if !iconImage.isEmpty {
-                poolIconImageView.yy_setImageWithURL(NSURL(string: (iconImage)), options: .ShowNetworkActivity)
+                poolIconImageView.yy_setImage(with: URL(string: (iconImage)), options: .showNetworkActivity)
             }
         }
         
         if let bannerImage = pool?.banner as String? {
             if !bannerImage.isEmpty {
-                bannerImageView.yy_setImageWithURL(NSURL(string: (bannerImage)), options: .ShowNetworkActivity)
+                bannerImageView.yy_setImage(with: URL(string: (bannerImage)), options: .showNetworkActivity)
             }
         }
         
@@ -116,7 +126,7 @@ class PoolDetailViewController: ViewController {
         }
         
         if let endDate = pool?.endDateTime {
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(endDate)
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: endDate)
         }
         
         if let poolTitle = pool?.name {
@@ -125,38 +135,38 @@ class PoolDetailViewController: ViewController {
     }
     
     private func configureContinueButton() {
-        enterPoolButton.roundVeryLittleForHeight(50.0)
+        enterPoolButton.roundVeryLittleForHeight(height: 50.0)
         
         guard let poolStartDateString = pool?.startDateTime else {
             return
         }
         
-        let poolStartDate = NSDate.getDateWithFormatddMMyyyy(poolStartDateString)
+        let poolStartDate = NSDate.getDateWithFormatddMMyyyy(dateString: poolStartDateString)
         
         if !poolStartDate.isDatePreviousToCurrentDate() {
             // The pool hasn't started yet
-            enterPoolButton.setTitle("Coming soon...", forState: UIControlState.Normal)
+            enterPoolButton.setTitle("Coming soon...", for: UIControlState.normal)
             enterPoolButton.alpha = CGFloat(0.3)
-            enterPoolButton.enabled = false
+            enterPoolButton.isEnabled = false
             
             dateTitleLabel.text = "Begins on:"
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(poolStartDateString)
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: poolStartDateString)
             
         } else {
             // The pool has started
-            enterPoolButton.setTitle("Continue", forState: UIControlState.Normal)
+            enterPoolButton.setTitle("Continue", for: UIControlState.normal)
             enterPoolButton.alpha = CGFloat(1)
-            enterPoolButton.enabled = true
+            enterPoolButton.isEnabled = true
             
             dateTitleLabel.text = "Ends on:"
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy((pool?.endDateTime)!)
+            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: (pool?.endDateTime)!)
         }
     }
     
     private func showAntiCheatViewController(pool: Pool) {
-        let vc = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("AnticheatViewController") as! AntiCheatViewController
+        let vc = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "AnticheatViewController") as! AntiCheatViewController
         vc.pool = pool
-        self.showViewController(vc, sender: nil)
+        self.show(vc, sender: nil)
     }
     
     // MARK: - IBActions
@@ -164,10 +174,10 @@ class PoolDetailViewController: ViewController {
     @IBAction func btnSponsorPressed(sender: AnyObject) {
         
         if let sponsorURL = pool?.sponsorLink {
-            let url : NSURL = NSURL(string: sponsorURL)!
+            let url : URL = URL(string: sponsorURL)!
             
-            if UIApplication.sharedApplication().canOpenURL(url) {
-                UIApplication.sharedApplication().openURL(url)
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
             }
         }
     }
@@ -181,19 +191,19 @@ class PoolDetailViewController: ViewController {
         
         switch self.typeEnum! {
         case .Train:
-            showAntiCheatViewController(pool)
+            showAntiCheatViewController(pool: pool)
             break
         case .Car:
             
-            let carViewController = StoryboardRouter.homeStoryboard().instantiateViewControllerWithIdentifier("CarPoolInviteViewController") as! CarPoolInviteViewController
+            let carViewController = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: "CarPoolInviteViewController") as! CarPoolInviteViewController
             carViewController.type = self.typeEnum
             carViewController.poolType = self.poolType
             carViewController.pool = self.pool
-            self.showViewController(carViewController, sender: nil)
+            self.show(carViewController, sender: nil)
             
             break
         default:
-            showPoolViewController(self.typeEnum!, poolType: self.poolType!, pool: pool, sender: nil)
+            showPoolViewController(type: self.typeEnum!, poolType: self.poolType!, pool: pool, sender: nil)
             break
         }
     }
@@ -203,7 +213,7 @@ class PoolDetailViewController: ViewController {
         let termsVC = termsNavController.viewControllers.first as! TermsAndConditionsViewController
         termsVC.poolType = self.poolType
         termsVC.termsAndConditionsText = self.pool?.termsAndConditions
-        self.presentViewController(termsNavController, animated: true, completion: nil)
+        self.present(termsNavController, animated: true, completion: nil)
         
 //        let destinationVC = StoryboardRouter.termsAndConditionsViewController()
 //        destinationVC.poolType = self.poolType

@@ -75,13 +75,13 @@ class DateFilterViewController: ViewController {
 //        ]
 //        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.DatesUpdated, object: nil, userInfo: userInfo)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnClosePressed(sender: AnyObject) {
         
         endEditingBeforeDismisingView {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -89,7 +89,7 @@ class DateFilterViewController: ViewController {
 extension DateFilterViewController : CustomDatePickerViewDelegate {
     
     func userDidPressBtnCancel() {
-        if self.textFieldFromDate.isFirstResponder() {
+        if self.textFieldFromDate.isFirstResponder {
             self.textFieldFromDate.resignFirstResponder()
         } else {
             self.textFieldToDate.resignFirstResponder()
@@ -97,7 +97,7 @@ extension DateFilterViewController : CustomDatePickerViewDelegate {
     }
     
     func userDidPressBtnFilter(selectedDate : NSDate?) {
-        if self.textFieldFromDate.isFirstResponder() {
+        if self.textFieldFromDate.isFirstResponder {
             // Load From Date
             guard let newFromDate = selectedDate else {
                 return
@@ -105,7 +105,9 @@ extension DateFilterViewController : CustomDatePickerViewDelegate {
             
             self.newFromDate = selectedDate
             
-            let newDateString = newFromDate.toString(DateFormat.Custom("dd/MM/yyyy"))
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let newDateString = formatter.string(from: newFromDate as Date)
             
             self.textFieldFromDate.text = newDateString
             self.textFieldFromDate.resignFirstResponder()
@@ -117,8 +119,10 @@ extension DateFilterViewController : CustomDatePickerViewDelegate {
             }
             
             self.newToDate = selectedDate
-            
-            let newDateString = newToDate.toString(DateFormat.Custom("dd/MM/yyyy"))
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let newDateString = formatter.string(from: newToDate as Date)
+//            let newDateString = newToDate.toString(DateFormat.Custom("dd/MM/yyyy"))
             
             self.textFieldToDate.text = newDateString
             self.textFieldToDate.resignFirstResponder()

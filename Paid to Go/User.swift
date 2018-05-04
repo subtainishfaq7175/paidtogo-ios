@@ -58,7 +58,7 @@ class User: Mappable {
         self.type = ""
     }
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
@@ -145,26 +145,28 @@ extension User {
     
     static var currentUser: User? {
         get {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            let userJSON = defaults.objectForKey(currentUserKey)
-            
-            let user = Mapper<User>().map(userJSON)
+            let defaults = UserDefaults.standard
+//            let userJSON = defaults.object(forKey: currentUserKey)
+            guard let userJSON = defaults.object(forKey: currentUserKey) else {
+                return nil
+            }
+            let user = Mapper<User>().map(JSON: userJSON as! [String : Any])
             
             return user
             
         }
         
         set {
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             
             if let newUser = newValue {
                 
                 let userJSONDict = Mapper().toJSON(newUser)
-                defaults.setObject(userJSONDict, forKey: currentUserKey)
+                defaults.set(userJSONDict, forKey: currentUserKey)
                 
             } else {
                 
-                defaults.setObject(nil, forKey: currentUserKey)
+                defaults.set(nil, forKey: currentUserKey)
                 
             }
             

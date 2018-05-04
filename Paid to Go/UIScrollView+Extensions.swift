@@ -14,6 +14,6 @@ extension UIScrollView {
     }
     
     func changeToPage(page: Int) {
-        self.setContentOffset(CGPointMake(CGFloat(page) * self.frame.width, 0), animated: true)
+        self.setContentOffset(CGPoint(x: CGFloat(page) * self.frame.width,y: 0), animated: true)
     }
 }

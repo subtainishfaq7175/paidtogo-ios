@@ -13,9 +13,9 @@ class ForgotPasswordViewController: ViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var submitButtonViewContainer: UIView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         self.title = "password_recover_title".localize()
         
     }
@@ -38,7 +38,7 @@ class ForgotPasswordViewController: ViewController {
     
     private func validate() -> Bool {
         if emailTextField.text == "" {
-            showAlert("An email address shall be specified")
+            showAlert(text: "An email address shall be specified")
             return false
         }
         
@@ -54,20 +54,20 @@ class ForgotPasswordViewController: ViewController {
             let user = User()
             user.email = emailTextField.text
             
-            DataProvider.sharedInstance.postRecoverPassword(user, completion: { (genericResponse, error) in
+            DataProvider.sharedInstance.postRecoverPassword(user: user, completion: { (genericResponse, error) in
                 self.dismissProgressHud()
-                
-                if let error = error where error.isEmpty == false {
-                    self.showAlert(error)
+
+                if let error = error, error.isEmpty == false {
+                    self.showAlert(text: error)
                     return
                 }
                 
                 if error == nil && genericResponse != nil {
-                    
+
                     if genericResponse?.code == "PASSWORD_RECOVERED" {
-                        self.showAlert("password_recovered".localize())
+                        self.showAlert(text: "password_recovered".localize())
                     }
-                    
+
                 }
             })
         }

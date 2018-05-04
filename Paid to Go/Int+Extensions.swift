@@ -27,4 +27,10 @@ extension Int {
             return suffix
         }
     }
+    var toCGFloat:CGFloat{
+        return CGFloat(self)
+    }
+    var toDouble:Double{
+        return Double(self)
+    }
 }

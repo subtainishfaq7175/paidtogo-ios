@@ -27,7 +27,7 @@ class ChangePasswordViewController: ViewController {
         self.title = "Change Password"
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         
     }
     
@@ -56,7 +56,7 @@ class ChangePasswordViewController: ViewController {
                 userToSend.password = newPassword
                 
                 self.showProgressHud()
-                DataProvider.sharedInstance.postUpdateProfile(userToSend) { (user, error) in
+                DataProvider.sharedInstance.postUpdateProfile(user: userToSend) { (user, error) in
                     self.dismissProgressHud()
                     
                     if let err = error {
@@ -76,7 +76,7 @@ class ChangePasswordViewController: ViewController {
                         })
                          */
                         
-                        self.showAlertAndDismissOnCompletion("Password updated successfuly!!")
+                        self.showAlertAndDismissOnCompletion(text: "Password updated successfuly!!")
                     }
                 }
             }
@@ -88,18 +88,18 @@ class ChangePasswordViewController: ViewController {
     
     func validateNewPassword() -> Bool {
         
-        if let newPassword = self.newPasswordTextField.text where newPassword.isEmpty == false,
-            let confirmNewPassword = self.confirmNewPasswordTextField.text where confirmNewPassword.isEmpty == false {
+        if let newPassword = self.newPasswordTextField.text, newPassword.isEmpty == false,
+            let confirmNewPassword = self.confirmNewPasswordTextField.text, confirmNewPassword.isEmpty == false {
             
             if newPassword == confirmNewPassword {
                 return true
             } else {
-                self.showAlert("You must enter the same password twice in order to confirm it")
+                self.showAlert(text: "You must enter the same password twice in order to confirm it")
                 return false
             }
             
         } else {
-            self.showAlert("Please complete all fields")
+            self.showAlert(text: "Please complete all fields")
             return false
         }
         

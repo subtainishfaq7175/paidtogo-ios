@@ -27,7 +27,7 @@ class PoolCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
     
     override func layoutSubviews() {
@@ -46,9 +46,9 @@ class PoolCell: UITableViewCell {
         }
         
         if let imageURL = pool.iconPhoto {
-            self.poolImageView.yy_setImageWithURL(
-                NSURL( string: imageURL),
-                options: .ProgressiveBlur )
+            self.poolImageView.yy_setImage(
+                with: URL( string: imageURL),
+                options: .progressiveBlur )
         }
     }
 }

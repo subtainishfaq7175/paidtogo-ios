@@ -17,7 +17,8 @@ extension String
             print("index \(index) out of bounds")
             return ""
         }
-        return self.substringFromIndex(self.startIndex.advancedBy(index))
+//        return self.substringFromIndex(index: self.startIndex.advanced(by: index))
+        return self.substringFromIndex(index:index)
     }
     
     func substringToIndex(index: Int) -> String
@@ -27,6 +28,7 @@ extension String
             print("index \(index) out of bounds")
             return ""
         }
-        return self.substringToIndex(self.startIndex.advancedBy(index))
+//        return self.substringToIndex(index: self.startIndex.advanced(by: index))
+        return self.substringToIndex(index:index)
     }
 }

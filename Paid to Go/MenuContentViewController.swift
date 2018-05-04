@@ -26,7 +26,7 @@ class MenuContentViewController: ViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         clearNavigationBarcolor()
@@ -34,17 +34,17 @@ class MenuContentViewController: ViewController {
     
     func addMenuButton() {
         
-        let menuButtonImage = UIImage(named: "ic_add_green")?.imageWithRenderingMode(.AlwaysTemplate)
+        let menuButtonImage = UIImage(named: "ic_add_green")?.withRenderingMode(.alwaysTemplate)
         
         let menuButton = UIBarButtonItem(
             image: menuButtonImage,
-            style: .Done,
+            style: .done,
             target: self,
-            action: #selector(MenuContentViewController.homeButtonAction(_:)) // "menuButtonAction:"
+            action: #selector(MenuContentViewController.homeButtonAction(sender:)) // "menuButtonAction:"
         )
         
-        menuButton.tintColor = UIColor.whiteColor()
-        menuButton.enabled = true
+        menuButton.tintColor = UIColor.white
+        menuButton.isEnabled = true
         
         self.navigationItem.leftBarButtonItem = menuButton
     }

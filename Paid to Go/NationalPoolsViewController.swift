@@ -29,15 +29,15 @@ class NationalPoolsViewController: ViewController {
         didSet {
             if nationalPools.count == 0 {
                 // No national pools
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.hidden = true
-                    self.emptyNationalPoolsLabel.hidden = false
-                })
+                DispatchQueue.main.async {
+                    self.tableView.isHidden = true
+                    self.emptyNationalPoolsLabel.isHidden = false
+                }
             } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.hidden = false
-                    self.emptyNationalPoolsLabel.hidden = true
-                })
+                DispatchQueue.main.async {
+                    self.tableView.isHidden = false
+                    self.emptyNationalPoolsLabel.isHidden = true
+                }
             }
         }
     }
@@ -50,14 +50,14 @@ class NationalPoolsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setPoolColorAndTitle(backgroundColorView, typeEnum: typeEnum!, type: poolType!)
+        setPoolColorAndTitle(view: backgroundColorView, typeEnum: typeEnum!, type: poolType!)
         
         self.configureTableView()
         
         self.getNationalPools()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
@@ -66,39 +66,35 @@ class NationalPoolsViewController: ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setBorderToView(headerTitleLabel, color: CustomColors.NavbarTintColor().CGColor)
+        setBorderToView(view: headerTitleLabel, color: CustomColors.NavbarTintColor().cgColor)
     }
     
     // MARK: - Navigation -
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let poolDetailVC = segue.destinationViewController as! PoolDetailViewController
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let poolDetailVC = segue.destination as! PoolDetailViewController
         if let pool = sender as? Pool {
             poolDetailVC.pool = pool
             poolDetailVC.typeEnum = self.typeEnum
             poolDetailVC.poolType = self.poolType
         }
-        
     }
     
     // MARK: - Methods -
     
     private func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         clearNavigationBarcolor()
         
-        headerImageView.yy_setImageWithURL(NSURL(string: (poolType?.backgroundPicture)!), options: .ShowNetworkActivity)
+        headerImageView.yy_setImage(with: URL(string: (poolType?.backgroundPicture)!), options: .showNetworkActivity)
         
         // Configures the table view header -> [ Pool Name - Rate Per Mile ]
-        self.tableHeaderView.configureForPools((self.poolType?.color)!)
+        self.tableHeaderView.configureForPools(color: (self.poolType?.color)!)
     }
     
     func configureTableView() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
     }
     
     // MARK: - API Calls
@@ -113,12 +109,12 @@ class NationalPoolsViewController: ViewController {
         
         let poolTypeString = String(type)
         
-        DataProvider.sharedInstance.getNationalPools(poolTypeString) { (pools, error) in
+        DataProvider.sharedInstance.getNationalPools(poolTypeId: poolTypeString) { (pools, error) in
             
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
+                self.showAlert(text: error)
                 return
             }
             
@@ -128,8 +124,8 @@ class NationalPoolsViewController: ViewController {
                 self.tableView.reloadData()
                 
             } else {
-                self.tableView.hidden = true
-                self.emptyNationalPoolsLabel.hidden = false
+                self.tableView.isHidden = true
+                self.emptyNationalPoolsLabel.isHidden = false
             }
         }
 
@@ -138,24 +134,24 @@ class NationalPoolsViewController: ViewController {
 
 extension NationalPoolsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nationalPools.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("poolCell") as! PoolCell
-        cell.configure(nationalPools[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "poolCell") as! PoolCell
+        cell.configure(pool: nationalPools[indexPath.row])
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let pool = self.nationalPools[indexPath.row]
-        self.performSegueWithIdentifier("poolDetailSegue", sender: pool)
+        self.performSegue(withIdentifier: "poolDetailSegue", sender: pool)
         
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height * 0.085
+        return UIScreen.main.bounds.height * 0.085
     }
 }
 

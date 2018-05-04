@@ -48,15 +48,15 @@ class MapViewController: ViewController {
         configureMap()
         
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(closeButtonPressed))
-        gesture.direction = .Down
+        gesture.direction = .down
         topView.addGestureRecognizer(gesture)
-        topView.userInteractionEnabled = true
+        topView.isUserInteractionEnabled = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        ActivityManager.setMapIsMainScreen(false)
+        ActivityManager.setMapIsMainScreen(mapIsMainScreen: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,7 +92,7 @@ class MapViewController: ViewController {
         
         if subroutes.count > 0 {
             for subroute in subroutes {
-                mapView.addOverlay(subroute, level: .AboveRoads)
+                mapView.add(subroute, level: .aboveRoads)
             }
         }
     }
@@ -105,7 +105,7 @@ class MapViewController: ViewController {
     func addTravelSectionToMap(currentLocation:CLLocation) {
         
         let previousLocation = ActivityManager.getLastSubrouteInitialLocation()
-        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(previousLocation, locB: currentLocation)
+        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(locA: previousLocation, locB: currentLocation)
         
         // Test
         if ActivityManager.isMapMainScreen() {
@@ -117,9 +117,9 @@ class MapViewController: ViewController {
         if distanceBetweenLocations > 20.0 {
             
             // Update travelled miles by the user
-            ActivityManager.updateMilesCounterWithMeters(distanceBetweenLocations)
+            ActivityManager.updateMilesCounterWithMeters(meters: distanceBetweenLocations)
             
-            configureTravelSection(previousLocation, currentLocation: currentLocation)
+            configureTravelSection(previousLocation: previousLocation, currentLocation: currentLocation)
             
         } else {
             ActivityManager.setTestCounterRejected()
@@ -147,31 +147,31 @@ class MapViewController: ViewController {
         // Verifies if the subroute must or must not be visible
         if ActivityManager.subrouteShouldBeInvisible() {
             polyline.title = SubrouteType.Invisible.rawValue
-            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(false)
+            ActivityManager.setFirstSubrouteAfterPausingAndResumingActivity(value: false)
         } else {
             polyline.title = SubrouteType.Visible.rawValue
         }
         
         // If the map is on screen, the subroute is added. Otherwise, it will be drawn when the map screen is loaded
         if ActivityManager.isMapMainScreen() {
-            mapView.addOverlay(polyline, level: .AboveRoads)
+            mapView.add(polyline, level: .aboveRoads)
             testLabel.text = String(ActivityManager.getTestCounter())
         }
         
-        ActivityManager.addSubroute(polyline)
+        ActivityManager.addSubroute(subroute: polyline)
         
-        ActivityManager.setLastSubrouteInitialLocation(currentLocation)
+        ActivityManager.setLastSubrouteInitialLocation(lastLocation: currentLocation)
         ActivityManager.setTestCounter()
     }
     
     // MARK: - IBActions
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func currentPositionButtonAction(sender: AnyObject) {
-        self.mapView.setCenterCoordinate(ActivityManager.getLastLocation().coordinate, animated: true)
+        self.mapView.setCenter(ActivityManager.getLastLocation().coordinate, animated: true)
     }
     
 }
@@ -187,7 +187,7 @@ extension MapViewController : MKMapViewDelegate {
                 if invisible == SubrouteType.Visible.rawValue {
                     render.strokeColor = CustomColors.greenColor()
                 } else {
-                    render.strokeColor = UIColor.clearColor()
+                    render.strokeColor = UIColor.clear
                 }
             }
             

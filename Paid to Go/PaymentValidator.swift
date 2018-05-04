@@ -11,7 +11,8 @@ import Foundation
 import Alamofire
 
 // MARK: - Error -
-enum PaymentValidationError: ErrorType {
+enum PaymentValidationError: Error {
+    
     case ServerError
     case NoResponseValue
 }
@@ -35,7 +36,7 @@ protocol PlatformPaymentData {
      
      - returns: A tuple containing if the response is a valid object and an optional error type.
      */
-    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: ErrorType?)
+    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: Error?)
 }
 
 struct IOSPlatformPaymentData: PlatformPaymentData {
@@ -45,13 +46,13 @@ struct IOSPlatformPaymentData: PlatformPaymentData {
 
     func getPaymentData(withToken token: String) -> [String : AnyObject] {
         return [
-            "token": token,
-            "platform": platform,
-            "packageName": bundleID
+            "token": token as AnyObject,
+            "platform": platform as AnyObject,
+            "packageName": bundleID as AnyObject
         ]
     }
     
-    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: ErrorType?) {
+    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: Error?) {
         return (isValid: true, error: nil)
     }
 }
@@ -64,14 +65,14 @@ struct AndroidPlatformPaymentData: PlatformPaymentData {
     
     func getPaymentData(withToken token: String) -> [String : AnyObject] {
         return [
-            "token": token,
-            "platform": platform,
-            "packageName": packageName,
-            "keyObject": keyObject
+            "token": token as AnyObject,
+            "platform": platform as AnyObject,
+            "packageName": packageName as AnyObject,
+            "keyObject": keyObject as AnyObject
         ]
     }
     
-    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: ErrorType?) {
+    func parseJSONResponse(response: [String: AnyObject?]) -> (isValid: Bool?, error: Error?) {
         return (isValid: true, error: nil)
     }
 }
@@ -92,22 +93,21 @@ extension PaymentValidator {
      - parameter platformPaymentData: A platformPaymentData struct
      - parameter callback:            The callback that handles the result
      */
-    func validatePayment(paymentToken paymentToken: String, withPlatformPaymentData platformPaymentData: PlatformPaymentData, callback: (isValid: Bool?, error: ErrorType?) -> Void) {
+    func validatePayment(paymentToken paymentToken: String, withPlatformPaymentData platformPaymentData: PlatformPaymentData, callback: @escaping (_ isValid: Bool?, _ error: Error?) -> Void) {
         let params = platformPaymentData.getPaymentData(withToken: paymentToken)
         
-        Alamofire
-            .request(.POST, url, parameters: params)
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding(destination: .httpBody), headers: nil)
             .validate()
             .responseJSON { response in
                 guard let value = response.result.value as? [String: AnyObject?] else {
-                    callback(isValid: nil, error: PaymentValidationError.NoResponseValue)
+                    callback(nil, PaymentValidationError.NoResponseValue)
                     return
                 }
                 
                 // Do something with value JSON
-                let parsedResponse = platformPaymentData.parseJSONResponse(value)
+                let parsedResponse = platformPaymentData.parseJSONResponse(response: value)
                 
-                callback(isValid: parsedResponse.isValid, error: parsedResponse.error)
+                callback(parsedResponse.isValid, parsedResponse.error)
             }
     }
 }

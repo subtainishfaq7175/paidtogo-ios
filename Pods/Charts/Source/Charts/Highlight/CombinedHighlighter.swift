@@ -2,9 +2,6 @@
 //  CombinedHighlighter.swift
 //  Charts
 //
-//  Created by Daniel Cohen Gindi on 26/7/15.
-
-//
 //  Copyright 2015 Daniel Cohen Gindi & Philipp Jahoda
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
@@ -15,48 +12,54 @@
 import Foundation
 import CoreGraphics
 
-public class CombinedHighlighter: ChartHighlighter
+@objc(CombinedChartHighlighter)
+open class CombinedHighlighter: ChartHighlighter
 {
-    /// Returns a list of SelectionDetail object corresponding to the given xIndex.
-    /// - parameter xIndex:
-    /// - returns:
-    public override func getSelectionDetailsAtIndex(xIndex: Int, dataSetIndex: Int?) -> [ChartSelectionDetail]
+    /// bar highlighter for supporting stacked highlighting
+    private var barHighlighter: BarHighlighter?
+    
+    @objc public init(chart: CombinedChartDataProvider, barDataProvider: BarChartDataProvider)
     {
-        var vals = [ChartSelectionDetail]()
-        var pt = CGPoint()
+        super.init(chart: chart)
         
-        guard let
-            data = self.chart?.data as? CombinedChartData
+        // if there is BarData, create a BarHighlighter
+        self.barHighlighter = barDataProvider.barData == nil ? nil : BarHighlighter(chart: barDataProvider)
+    }
+    
+    open override func getHighlights(xValue: Double, x: CGFloat, y: CGFloat) -> [Highlight]
+    {
+        var vals = [Highlight]()
+        
+        guard
+            let chart = self.chart as? CombinedChartDataProvider,
+            let dataObjects = chart.combinedData?.allData
             else { return vals }
         
-        // get all chartdata objects
-        var dataObjects = data.allData
-        
-        for i in 0 ..< dataObjects.count
+        for i in 0..<dataObjects.count
         {
-            for j in 0 ..< dataObjects[i].dataSetCount
+            let dataObject = dataObjects[i]
+
+            // in case of BarData, let the BarHighlighter take over
+            if barHighlighter != nil && dataObject is BarChartData,
+                let high = barHighlighter?.getHighlight(x: x, y: y)
             {
-                let dataSet = dataObjects[i].getDataSetByIndex(j)
-                
-                // dont include datasets that cannot be highlighted
-                if !dataSet.isHighlightEnabled
+                high.dataIndex = i
+                vals.append(high)
+            }
+            else
+            {
+                for j in 0..<dataObject.dataSetCount
                 {
-                    continue
-                }
-                
-                // extract all y-values from all DataSets at the given x-index
-                let yVals: [Double] = dataSet.yValsForXIndex(xIndex)
-                for yVal in yVals
-                {
-                    pt.y = CGFloat(yVal)
-                    
-                    self.chart!
-                        .getTransformer(dataSet.axisDependency)
-                        .pointValueToPixel(&pt)
-                    
-                    if !pt.y.isNaN
+                    guard let dataSet = dataObject.getDataSetByIndex(j),
+                        dataSet.isHighlightEnabled      // don't include datasets that cannot be highlighted
+                        else { continue }
+
+                    let highs = buildHighlights(dataSet: dataSet, dataSetIndex: j, xValue: xValue, rounding: .closest)
+
+                    for high in highs
                     {
-                        vals.append(ChartSelectionDetail(y: pt.y, value: yVal, dataIndex: i, dataSetIndex: j, dataSet: dataSet))
+                        high.dataIndex = i
+                        vals.append(high)
                     }
                 }
             }

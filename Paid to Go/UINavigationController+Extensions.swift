@@ -9,11 +9,11 @@
 import Foundation
 
 extension UINavigationController {
-    func pushViewController(viewController: UIViewController, animated: Bool, completion: () -> ()) {
+    func pushViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> ()) {
         pushViewController(viewController, animated: animated)
         
-        if let coordinator = transitionCoordinator() where animated {
-            coordinator.animateAlongsideTransition(nil) { _ in
+        if let coordinator = transitionCoordinator, animated {
+            coordinator.animate(alongsideTransition: nil) { _ in
                 completion()
             }
         } else {
@@ -21,11 +21,11 @@ extension UINavigationController {
         }
     }
     
-    func popViewController(animated: Bool, completion: () -> ()) {
-        popViewControllerAnimated(animated)
+    func popViewController(animated: Bool, completion: @escaping () -> ()) {
+        popViewController(animated: animated)
         
-        if let coordinator = transitionCoordinator() where animated {
-            coordinator.animateAlongsideTransition(nil) { _ in
+        if let coordinator = transitionCoordinator, animated {
+            coordinator.animate(alongsideTransition: nil) { _ in
                 completion()
             }
         } else {

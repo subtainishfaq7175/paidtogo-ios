@@ -34,7 +34,7 @@ class GeolocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedAlways {
+        if status == CLAuthorizationStatus.authorizedAlways {
             startLocationUpdates()
         } else {
             print("User didn't authorize the app to use the current location.")

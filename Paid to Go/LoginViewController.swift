@@ -44,9 +44,9 @@ class LoginViewController: ViewController {
         initViews()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarVisible(false)
+        setNavigationBarVisible(visible: false)
         
         verifyIfThereIsCurrentUser()
     }
@@ -58,7 +58,7 @@ class LoginViewController: ViewController {
                 return
             }
             
-            verifyProUserSubscription(user)
+            verifyProUserSubscription(user: user)
         }
     }
     
@@ -71,10 +71,12 @@ class LoginViewController: ViewController {
         
         if user.isPro() && user.hasPaymentToken() {
             // If the user is a Pro User and has a paymentToken, we validate with the Apple API if the subscription is still in course
-            DataProvider.sharedInstance.postValidateProUser({ (error) in
+            DataProvider.sharedInstance.postValidateProUser(completion: { (error) in
                 if let _ = error {
                     // Post Pro User expired notification
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NotificationsHelper.ProUserSubscriptionExpired.rawValue, object: nil))
+                      NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
+                    
+//                    NotificationCenter.default.postNotification(NSNotification(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil))
                 }
             })
         }
@@ -94,19 +96,19 @@ class LoginViewController: ViewController {
             newUser.email       = usernameTextField.text
             newUser.password    = passwordTextField.text
             
-            DataProvider.sharedInstance.postLogin(newUser, completion: { (user, error) in
+            DataProvider.sharedInstance.postLogin(user: newUser, completion: { (user, error) in
                 self.dismissProgressHud()
-                
-                if let error = error where error.isEmpty == false {
-                    self.showAlert(error)
+
+                if let error = error, error.isEmpty == false {
+                    self.showAlert(text: error)
                     return
                 }
-                
+
                 if error == nil && user != nil {
-                    
+
                     User.currentUser = user
-                    
-                    self.verifyProUserSubscription(user!)
+
+                    self.verifyProUserSubscription(user: user!)
                 }
             })
         }
@@ -118,20 +120,20 @@ class LoginViewController: ViewController {
         
         let loginPermissions = ["public_profile", "email"]
         
-        loginManager.logInWithReadPermissions(loginPermissions, fromViewController: self) { (result, error) in
+        loginManager.logIn(withReadPermissions: loginPermissions, from: self) { (result, error) in
             
             if let error = error {
-                self.showAlert(error.description)
+                self.showAlert(text: error.localizedDescription)
                 print("Facebook Login Error: ",  error)
             } else {
                 
-                if let token = result.token {
+                if let token = result?.token {
                     
                     self.tokenFB = token.tokenString
                     
                     loginManager.logOut()
                     
-                    self.loginFB(true)
+                    self.loginFB(firstTry: true)
                 }
             }
         }
@@ -143,49 +145,49 @@ class LoginViewController: ViewController {
         
         self.showProgressHud()
         
-        DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
-            self.dismissProgressHud()
-            
-            if let error = error where error.isEmpty == false {
-                if firstTry {
-                    self.loginFB(false)
-                } else {
-                    self.showAlert(error)
-                }
-                return
-            }
-            
-            if error == nil && user != nil {
-                
-                User.currentUser = user
-                
-                self.verifyProUserSubscription(user!)
-                
-            }
-        })
+//        DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
+//            self.dismissProgressHud()
+//            
+//            if let error = error, error.isEmpty == false {
+//                if firstTry {
+//                    self.loginFB(false)
+//                } else {
+//                    self.showAlert(error)
+//                }
+//                return
+//            }
+//            
+//            if error == nil && user != nil {
+//                
+//                User.currentUser = user
+//                
+//                self.verifyProUserSubscription(user!)
+//                
+//            }
+//        })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-//        if segue.identifier == "segue_signup" {
-//            if let destinationNC = segue.destinationViewController as? NavigationController {
-//                if let destinationVC = destinationNC.viewControllers[0] as? SignupViewController {
-//                    destinationVC.delegate = self
-//                }
-//            }
-//        }
+        //        if segue.identifier == "segue_signup" {
+        //            if let destinationNC = segue.destinationViewController as? NavigationController {
+        //                if let destinationVC = destinationNC.viewControllers[0] as? SignupViewController {
+        //                    destinationVC.delegate = self
+        //                }
+        //            }
+        //        }
     }
     
     // MARK: - Functions
     
     private func validate() -> Bool {
         if usernameTextField.text == "" {
-            showAlert("alert_username_empty".localize())
+            showAlert(text: "alert_username_empty".localize())
             return false
         }
         if passwordTextField.text == "" {
-            showAlert("alert_password_empty".localize())
+            showAlert(text: "alert_password_empty".localize())
             return false
         }
         
@@ -193,14 +195,14 @@ class LoginViewController: ViewController {
     }
     
     private func initConstraints(){
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         
         switch screenSize.height {
         case _ where screenSize.height >= 736.0: // iPhone 6 Plus
-            updateTopAndBottomConstraints(0.5)
+            updateTopAndBottomConstraints(multiplier: 0.5)
             break
         case 667.0: // iPhone 6
-            updateTopAndBottomConstraints(0.25)
+            updateTopAndBottomConstraints(multiplier: 0.25)
             break
         default:
             break

@@ -9,53 +9,53 @@
 import Foundation
 
 protocol TimerDelegate {
-    func timerWillStart(timer : Timer)
-    func timerDidFire(timer : Timer)
-    func timerDidPause(timer : Timer)
-    func timerWillResume(timer : Timer)
-    func timerDidStop(timer : Timer)
+    func timerWillStart(timer : CustomTimer)
+    func timerDidFire(timer : CustomTimer)
+    func timerDidPause(timer : CustomTimer)
+    func timerWillResume(timer : CustomTimer)
+    func timerDidStop(timer : CustomTimer)
 }
 
-class Timer : NSObject {
+class CustomTimer : NSObject {
     
-    var timer : NSTimer!
-    var interval : NSTimeInterval
-    var difference : NSTimeInterval = 0.0
+    var timer : Timer!
+    var interval : TimeInterval
+    var difference : TimeInterval = 0.0
     var delegate : TimerDelegate?
     
-    init(interval: NSTimeInterval, delegate: TimerDelegate?)
+    init(interval: TimeInterval, delegate: TimerDelegate?)
     {
         self.interval = interval
         self.delegate = delegate
     }
     
-    func start(aTimer : NSTimer?)
+    @objc func start(aTimer : Timer?)
     {
         if aTimer != nil { fire() }
         if timer == nil {
-            delegate?.timerWillStart(self)
-            timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(Timer.fire), userInfo: nil, repeats: true)
+            delegate?.timerWillStart(timer: self)
+            timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(Timer.fire), userInfo: nil, repeats: true)
         }
     }
     
     func pause()
     {
         if timer != nil {
-            difference = timer.fireDate.timeIntervalSinceDate(NSDate())
+            difference = timer.fireDate.timeIntervalSince(Date())
             timer.invalidate()
             timer = nil
-            delegate?.timerDidPause(self)
+            delegate?.timerDidPause(timer: self)
         }
     }
     
     func resume()
     {
         if timer == nil {
-            delegate?.timerWillResume(self)
+            delegate?.timerWillResume(timer: self)
             if difference == 0.0 {
-                start(nil)
+                start(aTimer: nil)
             } else {
-                NSTimer.scheduledTimerWithTimeInterval(difference, target: self, selector: #selector(Timer.start(_:)), userInfo: nil, repeats: false)
+                Timer.scheduledTimer(timeInterval: difference, target: self, selector: #selector(CustomTimer.start(aTimer:)), userInfo: nil, repeats: false)
                 difference = 0.0
             }
         }
@@ -67,12 +67,12 @@ class Timer : NSObject {
             difference = 0.0
             timer.invalidate()
             timer = nil
-            delegate?.timerDidStop(self)
+            delegate?.timerDidStop(timer: self)
         }
     }
     
     func fire()
     {
-        delegate?.timerDidFire(self)
+        delegate?.timerDidFire(timer: self)
     }
 }

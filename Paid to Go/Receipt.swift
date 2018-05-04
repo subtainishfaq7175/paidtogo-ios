@@ -58,7 +58,7 @@ class Receipt: Mappable {
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
-    required init?(_ map: Map){
+    required init?(map: Map){
 
     }
 
@@ -96,62 +96,62 @@ class Receipt: Mappable {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if receiptCreationDatePst != nil {
-			dictionary.updateValue(receiptCreationDatePst!, forKey: kReceiptReceiptCreationDatePstKey)
+            dictionary.updateValue(receiptCreationDatePst! as AnyObject, forKey: kReceiptReceiptCreationDatePstKey)
 		}
 		if versionExternalIdentifier != nil {
-			dictionary.updateValue(versionExternalIdentifier!, forKey: kReceiptVersionExternalIdentifierKey)
+            dictionary.updateValue(versionExternalIdentifier! as AnyObject, forKey: kReceiptVersionExternalIdentifierKey)
 		}
 		if originalPurchaseDatePst != nil {
-			dictionary.updateValue(originalPurchaseDatePst!, forKey: kReceiptOriginalPurchaseDatePstKey)
+            dictionary.updateValue(originalPurchaseDatePst! as AnyObject, forKey: kReceiptOriginalPurchaseDatePstKey)
 		}
 		if downloadId != nil {
-			dictionary.updateValue(downloadId!, forKey: kReceiptDownloadIdKey)
+            dictionary.updateValue(downloadId! as AnyObject, forKey: kReceiptDownloadIdKey)
 		}
-		if inApp?.count > 0 {
+		if (inApp?.count)! > 0 {
 			var temp: [AnyObject] = []
 			for item in inApp! {
-				temp.append(item.dictionaryRepresentation())
+                temp.append(item.dictionaryRepresentation() as AnyObject)
 			}
-			dictionary.updateValue(temp, forKey: kReceiptInAppKey)
+            dictionary.updateValue(temp as AnyObject, forKey: kReceiptInAppKey)
 		}
 		if requestDatePst != nil {
-			dictionary.updateValue(requestDatePst!, forKey: kReceiptRequestDatePstKey)
+            dictionary.updateValue(requestDatePst! as AnyObject, forKey: kReceiptRequestDatePstKey)
 		}
 		if receiptType != nil {
-			dictionary.updateValue(receiptType!, forKey: kReceiptReceiptTypeKey)
+            dictionary.updateValue(receiptType! as AnyObject, forKey: kReceiptReceiptTypeKey)
 		}
 		if originalPurchaseDate != nil {
-			dictionary.updateValue(originalPurchaseDate!, forKey: kReceiptOriginalPurchaseDateKey)
+            dictionary.updateValue(originalPurchaseDate! as AnyObject, forKey: kReceiptOriginalPurchaseDateKey)
 		}
 		if appItemId != nil {
-			dictionary.updateValue(appItemId!, forKey: kReceiptAppItemIdKey)
+            dictionary.updateValue(appItemId! as AnyObject, forKey: kReceiptAppItemIdKey)
 		}
 		if originalApplicationVersion != nil {
-			dictionary.updateValue(originalApplicationVersion!, forKey: kReceiptOriginalApplicationVersionKey)
+            dictionary.updateValue(originalApplicationVersion! as AnyObject, forKey: kReceiptOriginalApplicationVersionKey)
 		}
 		if bundleId != nil {
-			dictionary.updateValue(bundleId!, forKey: kReceiptBundleIdKey)
+            dictionary.updateValue(bundleId! as AnyObject, forKey: kReceiptBundleIdKey)
 		}
 		if requestDateMs != nil {
-			dictionary.updateValue(requestDateMs!, forKey: kReceiptRequestDateMsKey)
+            dictionary.updateValue(requestDateMs! as AnyObject, forKey: kReceiptRequestDateMsKey)
 		}
 		if adamId != nil {
-			dictionary.updateValue(adamId!, forKey: kReceiptAdamIdKey)
+            dictionary.updateValue(adamId! as AnyObject, forKey: kReceiptAdamIdKey)
 		}
 		if receiptCreationDate != nil {
-			dictionary.updateValue(receiptCreationDate!, forKey: kReceiptReceiptCreationDateKey)
+            dictionary.updateValue(receiptCreationDate! as AnyObject, forKey: kReceiptReceiptCreationDateKey)
 		}
 		if requestDate != nil {
-			dictionary.updateValue(requestDate!, forKey: kReceiptRequestDateKey)
+            dictionary.updateValue(requestDate! as AnyObject, forKey: kReceiptRequestDateKey)
 		}
 		if originalPurchaseDateMs != nil {
-			dictionary.updateValue(originalPurchaseDateMs!, forKey: kReceiptOriginalPurchaseDateMsKey)
+            dictionary.updateValue(originalPurchaseDateMs! as AnyObject, forKey: kReceiptOriginalPurchaseDateMsKey)
 		}
 		if receiptCreationDateMs != nil {
-			dictionary.updateValue(receiptCreationDateMs!, forKey: kReceiptReceiptCreationDateMsKey)
+            dictionary.updateValue(receiptCreationDateMs! as AnyObject, forKey: kReceiptReceiptCreationDateMsKey)
 		}
 		if applicationVersion != nil {
-			dictionary.updateValue(applicationVersion!, forKey: kReceiptApplicationVersionKey)
+            dictionary.updateValue(applicationVersion! as AnyObject, forKey: kReceiptApplicationVersionKey)
 		}
 
         return dictionary

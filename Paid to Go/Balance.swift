@@ -21,7 +21,7 @@ class Balance: Mappable {
         self.balance = 0
     }
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     

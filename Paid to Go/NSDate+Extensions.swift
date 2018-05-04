@@ -14,11 +14,11 @@ extension NSDate {
     // Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy (String)
     static func getDateStringWithFormatddMMyyyy(dateString:String) -> String {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        if let date = dateFormatter.dateFromString(dateString) {
-            guard let dateStringUpdated = date.toString(DateFormat.Custom("dd/MM/yyyy")) else {
+        if let date = dateFormatter.date(from: dateString) {
+            guard let dateStringUpdated = date.string(custom: "yyyy-MM-dd HH:mm:ss") as? String else {
                 return ""
             }
             
@@ -32,11 +32,11 @@ extension NSDate {
     //  Output:dd/MM/yyyy HH:mm:ss (String)
     static func getDateStringWithFormatddMMyyyyHHmmss(dateString:String) -> String {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        if let date = dateFormatter.dateFromString(dateString) {
-            guard let dateStringUpdated = date.toString(DateFormat.Custom("dd/MM/yyyy HH:mm:ss")) else {
+        if let date = dateFormatter.date(from: dateString) {
+            guard let dateStringUpdated = date.string(custom: "dd/MM/yyyy HH:mm:ss") as? String else {
                 return ""
             }
             
@@ -49,20 +49,20 @@ extension NSDate {
     // Input:Input:yyyy-MM-dd HH:mm:ss - Output:dd/MM/yyyy HH:mm:ss (NSDate)
     static func getDateWithFormatddMMyyyy(dateString:String) -> NSDate {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        guard let date = dateFormatter.dateFromString(dateString) else {
+        guard let date = dateFormatter.date(from: dateString) else {
             return NSDate()
         }
         
-        return date
+        return date as NSDate
     }
     
     func isDatePreviousToCurrentDate() -> Bool {
         let currentDate = NSDate()
         
-        let comparisonResult = self.compare(currentDate)
+        let comparisonResult = self.compare(currentDate as Date)
         
         if comparisonResult.rawValue <= 0 {
             // Pool date is previous to current date

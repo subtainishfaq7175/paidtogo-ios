@@ -57,7 +57,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     // MARK: - Variables and Constants -
 
-    var chartsHelper : ChartsHelper!
+//    var chartsHelper : ChartsHelper!
     
     var lastContentOffset : CGFloat = 0
     var status = Status()
@@ -67,16 +67,17 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     var newFromDate : NSDate?
     var newToDate : NSDate?
     
-    var arrTotalIncomeByMonth = [Double](count: 12, repeatedValue: 0.0)
-    var arrTotalSavedGasByMonth = [Double](count: 12, repeatedValue: 0.0)
-    var arrTotalCarbonOffByMonth = [Double](count: 12, repeatedValue: 0.0)
+    var arrTotalIncomeByMonth = [Double](repeating: 0.0, count: 12)
+//    (count: 12, repeatedValue: 0.0)
+    var arrTotalSavedGasByMonth = [Double](repeating: 0.0, count: 12)
+    var arrTotalCarbonOffByMonth = [Double](repeating: 0.0, count: 12)
     /*  We use the gregorian calendar logic to store the data by week:
      *
      *  [0 - Sun ; 1 - Mon ; 2 - Tue ; 3 - Wed ; 4 - Thu ; 5 - Fri ; 6 - Sat]
      */
-    var arrTotalIncomeByWeek = [Double](count: 7, repeatedValue: 0.0)
-    var arrTotalSavedGasByWeek = [Double](count: 7, repeatedValue: 0.0)
-    var arrTotalCarbonOffByWeek = [Double](count: 7, repeatedValue: 0.0)
+    var arrTotalIncomeByWeek = [Double](repeating: 0.0, count: 7)
+    var arrTotalSavedGasByWeek = [Double](repeating: 0.0, count: 7)
+    var arrTotalCarbonOffByWeek = [Double](repeating: 0.0, count: 7)
     
     /// By default, we select the six months time period
     private var timePeriod = TimePeriod.SixMonths
@@ -85,18 +86,18 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
      *
      *  [0 - Amount ; 1 - Gas Saved ; 2 - Carbon Off]
      */
-    var totalValuesForTimePeriod : [Double] = [Double](count: 3, repeatedValue: 0.0)
+    var totalValuesForTimePeriod : [Double] = [Double](repeating: 0.0, count: 3)
     
     private var statSelected = StatSelected.Income
     
     // MARK: - View life cycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.customizeNavigationBar()
         
-        self.chartsHelper = ChartsHelper(incomesChart: incomesChartView, gasChart: gasChartView, carbonChart: carbonChartview)
+//        self.chartsHelper = ChartsHelper(incomesChart: incomesChartView, gasChart: gasChartView, carbonChart: carbonChartview)
     }
     
     override func viewDidLoad() {
@@ -116,7 +117,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     private func customizeNavigationBar() {
         self.title = "menu_stats".localize()
         
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         setNavigationBarGreen()
         customizeNavigationBarWithMenu()
     }
@@ -125,9 +126,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     private func initCharts() {
         
-        status.loadIncomesData(&arrTotalIncomeByMonth, weeklyIncomes: &arrTotalIncomeByWeek, currentDate: currentDate)
-        status.loadSavedGas(&arrTotalSavedGasByMonth, weeklyGasSaved: &arrTotalSavedGasByWeek, currentDate: currentDate)
-        status.loadCarbonOffset(&arrTotalCarbonOffByMonth, weeklyCarbonOffset:&arrTotalCarbonOffByWeek, currentDate: currentDate)
+        status.loadIncomesData(monthlyIncomes: &arrTotalIncomeByMonth, weeklyIncomes: &arrTotalIncomeByWeek, currentDate: currentDate as Date)
+        status.loadSavedGas(monthlyGasSaved: &arrTotalSavedGasByMonth, weeklyGasSaved: &arrTotalSavedGasByWeek, currentDate: currentDate as Date)
+        status.loadCarbonOffset(monthlyCarbonOffset: &arrTotalCarbonOffByMonth, weeklyCarbonOffset:&arrTotalCarbonOffByWeek, currentDate: currentDate as Date)
         
         configureChartForSixMonthsData()
     }
@@ -135,9 +136,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     func configureChartForSixMonthsData() {
         timePeriod = TimePeriod.SixMonths
         
-        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 5, totalValues: &totalValuesForTimePeriod)
         
         updateFooterViewForCurrentStatSelected()
     }
@@ -145,9 +146,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     func configureChartForThreeMonthsData() {
         timePeriod = TimePeriod.ThreeMonths
 
-        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(incomesChartView, values: arrTotalIncomeByMonth, stats:Stats.Incomes, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(gasChartView, values: arrTotalSavedGasByMonth, stats:Stats.SavedGas, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForMonthsData(carbonChartview, values: arrTotalCarbonOffByMonth, stats:Stats.CarbonOff, pastMonths: 2, totalValues: &totalValuesForTimePeriod)
         
         updateFooterViewForCurrentStatSelected()
     }
@@ -155,9 +156,9 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     func configureChartForCurrentWeek() {
         timePeriod = TimePeriod.LastWeek
 
-        chartsHelper.configureChartForWeekData(incomesChartView, values: arrTotalIncomeByWeek, stats: Stats.Incomes, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForWeekData(gasChartView, values: arrTotalSavedGasByWeek, stats: Stats.SavedGas, totalValues: &totalValuesForTimePeriod)
-        chartsHelper.configureChartForWeekData(carbonChartview, values: arrTotalCarbonOffByWeek, stats: Stats.CarbonOff, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForWeekData(incomesChartView, values: arrTotalIncomeByWeek, stats: Stats.Incomes, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForWeekData(gasChartView, values: arrTotalSavedGasByWeek, stats: Stats.SavedGas, totalValues: &totalValuesForTimePeriod)
+//        chartsHelper.configureChartForWeekData(carbonChartview, values: arrTotalCarbonOffByWeek, stats: Stats.CarbonOff, totalValues: &totalValuesForTimePeriod)
         
         updateFooterViewForCurrentStatSelected()
     }
@@ -182,7 +183,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     private func moveIndicatorToRight() {
         setIndicatorOnRight()
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
@@ -190,7 +191,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     private func moveIndicatorToCenter(){
         setIndicatorOnCenter()
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
@@ -198,7 +199,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     private func moveIndicatorToLeft(){
         setIndicatorOnLeft()
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
@@ -236,13 +237,13 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
     
     private func loadStatsWithDefaultData() {
         
-        self.showProgressHud("Loading status...")
+        self.showProgressHud(title: "Loading status...")
         DataProvider.sharedInstance.getStatus { (result, error) in
             self.dismissProgressHud()
             
             if let error = error {
-                self.showAlert(error)
-                self.navigationController?.popViewControllerAnimated(true)
+                self.showAlert(text: error)
+                self.navigationController?.popViewController(animated: true)
                 
             } else {
                 self.status = result!
@@ -258,27 +259,27 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         
         configureChartForSixMonthsData()
         
-        sixMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        sixMonthsButton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+        threeMonthsButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        thisMonthButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
     }
     
     @IBAction func threeMonthsButtonAction(sender: AnyObject) {
         
         configureChartForThreeMonthsData()
         
-        sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        threeMonthsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        thisMonthButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        sixMonthsButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        threeMonthsButton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+        thisMonthButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
     }
     
     @IBAction func thisMonthButtonAction(sender: AnyObject) {
         
         configureChartForCurrentWeek()
         
-        sixMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        threeMonthsButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        thisMonthButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        sixMonthsButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        threeMonthsButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        thisMonthButton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
     }
     
     @IBAction func incomesAction(sender: AnyObject) {
@@ -286,7 +287,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         print("Selected - Income")
         moveIndicatorToLeft()
         updateFooterViewForIncomes()
-        self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+        self.scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     @IBAction func gasAction(sender: AnyObject) {
@@ -294,7 +295,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         print("Selected - GasSaved")
         moveIndicatorToCenter()
         updateFooterViewForGas()
-        self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width, 0), animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y: 0), animated: true)
     }
     
     @IBAction func carbonAction(sender: AnyObject) {
@@ -302,7 +303,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         print("Selected - CarbonOffset")
         moveIndicatorToRight()
         updateFooterViewForCarbon()
-        self.scrollView.setContentOffset(CGPointMake(UIScreen.mainScreen().bounds.width * 2, 0), animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: (UIScreen.main.bounds.width * 2), y: 0), animated: true)
     }
     
     // MARK: - UIScrollViewDelegate
@@ -390,7 +391,7 @@ class StatsViewController: MenuContentViewController, UIScrollViewDelegate {
         print("INCOME:")
         
         for index in 0..<12 {
-            print("Month: \(chartsHelper.getMonthName(index))")
+//            print("Month: \(chartsHelper.getMonthName(index))")
             print("Income: \(arrTotalIncomeByMonth[index])")
         }
     }

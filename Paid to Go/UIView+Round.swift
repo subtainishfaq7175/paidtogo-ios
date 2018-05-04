@@ -28,5 +28,16 @@ extension UIView {
         self.layer.cornerRadius = height / 2
         self.layer.masksToBounds = true
     }
-
+    func cardView()  {
+        self.layer.cornerRadius = Constants.consShared.THREE_INT.toCGFloat
+        self.layer.shadowOffset = CGSize(width: Constants.consShared.ZERO_INT.toCGFloat, height: Constants.consShared.ZERO_INT.toCGFloat)
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false
+    }
+    func cardView(_ cornerRadius:CGFloat,opacity:Float)  {
+        self.layer.cornerRadius = cornerRadius
+        self.layer.shadowOffset = CGSize(width: Constants.consShared.ZERO_INT.toCGFloat, height: Constants.consShared.ZERO_INT.toCGFloat)
+        self.layer.shadowOpacity = opacity
+        self.layer.masksToBounds = false
+    }
 }

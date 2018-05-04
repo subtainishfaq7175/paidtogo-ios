@@ -42,7 +42,7 @@ class WellDoneViewController: ViewController {
     
     // MARK: -  Super
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         initLayout()
@@ -60,28 +60,26 @@ class WellDoneViewController: ViewController {
         
         self.populateFields()
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-            case "shareSegue":
-                let shareViewController = segue.destinationViewController as! ShareViewController
-                shareViewController.type = self.type!
-                
-                shareViewController.screenshot = self.screenshot
-                
-                break
-            case "leaderboardsSegue":
-                let wdLeaderboardsViewController = segue.destinationViewController as! WDLeaderboardsViewController
-                wdLeaderboardsViewController.type = self.type!
-                wdLeaderboardsViewController.activity = self.activity!
-                wdLeaderboardsViewController.poolType = self.poolType!
-                wdLeaderboardsViewController.pool = self.pool!
-            default:
-                break
+        case "shareSegue":
+            let shareViewController = segue.destination as! ShareViewController
+            shareViewController.type = self.type!
+            
+            shareViewController.screenshot = self.screenshot
+            
+            break
+        case "leaderboardsSegue":
+            let wdLeaderboardsViewController = segue.destination as! WDLeaderboardsViewController
+            wdLeaderboardsViewController.type = self.type!
+            wdLeaderboardsViewController.activity = self.activity!
+            wdLeaderboardsViewController.poolType = self.poolType!
+            wdLeaderboardsViewController.pool = self.pool!
+        default:
+            break
         }
-        
     }
+
     
     // MARK: - Functions
     
@@ -92,7 +90,7 @@ class WellDoneViewController: ViewController {
         if let currentProfilePicture = currentUser.profilePicture {
             
             //profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
-            profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), placeholder: nil, options: .RefreshImageCache, completion: { (img, url, type, stage, error) in
+            profileImageView.yy_setImage(with: URL(string: currentProfilePicture), placeholder: nil, options: .refreshImageCache, completion: { (img, url, type, stage, error) in
                 
                 // Once the user picture was loaded, we take a screenshot for share
                 guard let screenshot = self.screenShotMethod() as UIImage? else {
@@ -153,42 +151,42 @@ class WellDoneViewController: ViewController {
     }
     
     private func initLayout() {
-        setNavigationBarVisible(true)
+        setNavigationBarVisible(visible: true)
         clearNavigationBarcolor()
   
         self.title = "menu_home".localize()
         
-        setPoolColor(backgroundColorView, type: type!)
+        setPoolColor(view: backgroundColorView, type: type!)
         
         if let switchPoolType = self.switchPoolType {
-            self.backToHomebutton.setTitle("Choose next Pool!", forState: UIControlState.Normal)
+            self.backToHomebutton.setTitle("Choose next Pool!", for: UIControlState.normal)
         }
     }
     
     private func initViews() {
         profileImageView.roundWholeView()
         
-        let screenHeight = UIScreen.mainScreen().bounds.size.height
+        let screenHeight = UIScreen.main.bounds.size.height
         
         if screenHeight == 480.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 24.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.3)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(constraint: profileImageProportionalConstraint, multiplier: 0.3)
             }
         } else if screenHeight == 568.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 36.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.38)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(constraint: profileImageProportionalConstraint, multiplier: 0.38)
             }
         } else if screenHeight == 667.0 {
             if let font = UIFont(name: "OpenSans-Semibold", size: 40.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.44)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(constraint: profileImageProportionalConstraint, multiplier: 0.44)
             }
         } else {
             if let font = UIFont(name: "OpenSans-Semibold", size: 44.0) {
                 wellDoneLabel.font = font
-                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(profileImageProportionalConstraint, multiplier: 0.48)
+                profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(constraint: profileImageProportionalConstraint, multiplier: 0.48)
             }
         }
     }
@@ -201,7 +199,7 @@ class WellDoneViewController: ViewController {
                 if let switchPoolType = self.switchPoolType {
                     if let poolsVc = navVc.viewControllers[1] as? PoolsViewController {
                         
-                        DataProvider.sharedInstance.getPoolType(switchPoolType, completion: { (poolType, error) in
+                        DataProvider.sharedInstance.getPoolType(poolTypeEnum: switchPoolType, completion: { (poolType, error) in
                             poolsVc.poolType = poolType
                             poolsVc.type = switchPoolType
                             poolsVc.openPools = [Pool]()
@@ -209,13 +207,13 @@ class WellDoneViewController: ViewController {
                             poolsVc.quickSwitchPool = true
 //                            poolsVc.openPoolsTableView.reloadData()
                             navVc.popToViewController(poolsVc, animated: true)
-                            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
                         })
                         
                     }
                 } else {
-                    navVc.popToRootViewControllerAnimated(true)
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    navVc.popToRootViewController(animated: true)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
             }
         }
@@ -241,10 +239,10 @@ class WellDoneViewController: ViewController {
     func screenShotMethod() -> UIImage? {
         //let layer = UIApplication.sharedApplication().keyWindow!.layer
         let layer = self.backgroundColorView.layer
-        let scale = UIScreen.mainScreen().scale
+        let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
         
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
         let screenshot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
