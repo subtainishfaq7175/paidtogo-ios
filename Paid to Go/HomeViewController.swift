@@ -42,8 +42,7 @@ class HomeViewController: MenuContentViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
+        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
     }
     func configTableView()  {
         guard let nib = UINib(nibName: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, bundle: nil) as? UINib  else {
@@ -202,6 +201,7 @@ class HomeViewController: MenuContentViewController {
     }
     
 }
+// MARK: - Extensions
 extension HomeViewController:UITableViewDelegate{
     
 }

@@ -187,23 +187,23 @@ func getClosedPools(poolTypeId: String, completion: (_ pools: [Pool]?, _ error: 
     getPools(poolTypeId: poolTypeId, open: "0", completion: completion)
     }
     
-func getPoolType(poolTypeEnum: PoolTypeEnum, completion: (_ poolType: PoolType?, _ error: String?) -> Void) {
+    func getPoolType(poolTypeEnum: PoolTypeEnum, completion: @escaping (_ poolType: PoolType?, _ error: String?) -> Void) {
         
-//        ConnectionManager.sharedInstance.getPoolType(poolTypeEnum) { (responseValue, error) in
-//
-//            if (error == nil) {
-//
-//                let poolType = Mapper<PoolType>().map(responseValue)
-//                completion(poolType: poolType, error: nil)
-//                return
-//
-//            } else {
-//
-//                completion(poolType: nil, error: self.getError(error!))
-//                return
-//
-//            }
-//        }
+    ConnectionManager.sharedInstance.getPoolType(params: poolTypeEnum) { (responseValue, error) in
+
+            if (error == nil) {
+
+                let poolType = Mapper<PoolType>().map(JSON: responseValue as! [String : Any])
+                completion(poolType, nil)
+                return
+
+            } else {
+
+                completion(nil, self.getError(error: error!))
+                return
+
+            }
+        }
     }
     
 func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _ error: String?) -> Void) {

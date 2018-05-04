@@ -172,7 +172,8 @@ class SignupViewController: ViewController {
             newUser.lastName    = lastNameTextField.text!
             newUser.password    = passwordTextField.text!
             newUser.bio         = bioTextField.text!
-            
+            newUser.type         = "1"
+
             if let profileImage = profileImage {
                 
 //                let imageData = UIImagePNGRepresentation(profileImage)
