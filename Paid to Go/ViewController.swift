@@ -248,7 +248,7 @@ class ViewController: UIViewController {
     }
     
     func presentHomeViewController() {
-        self.present(StoryboardRouter.homeViewController(), animated: true, completion: nil)
+        self.present(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
     }
     
     func presentHomeViewControllerWithoutAnimation() {

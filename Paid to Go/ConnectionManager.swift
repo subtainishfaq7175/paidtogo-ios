@@ -19,7 +19,7 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.0.13:8000/api/v1"
+    private var baseURL = "http://192.168.10.143:8000/api/v1"
 
     
     private var registerURL: String { return "\(baseURL)/register" }
@@ -69,12 +69,12 @@ extension ConnectionManager {
 //
 //    // MARK:- Login/Register
 //
-//    func register(params: [String: AnyObject], apiCompletion: (_ responseValue: AnyObject?, _ error: String?) -> Void) {
-//
-//        let identifier = "Register API - POST"
-//        self.postRequest(identifier, url: self.registerURL, params: params, apiCompletion: apiCompletion)
-//
-//    }
+    func register(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Register API - POST"
+        self.postRequest(identifier: identifier, url: self.registerURL, params: params, apiCompletion: apiCompletion)
+
+    }
 //
     func login(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
 
@@ -84,12 +84,12 @@ extension ConnectionManager {
 
     }
 //
-//    func forgotPassword(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
-//
-//        let identifier = "Forgot PW API - POST"
-//        self.postRequest(identifier, url: self.forgotPasswordURL, params: params, apiCompletion: apiCompletion)
-//
-//    }
+    func forgotPassword(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Forgot PW API - POST"
+        self.postRequest(identifier: identifier, url: self.forgotPasswordURL, params: params, apiCompletion: apiCompletion)
+
+    }
 //
 //    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //

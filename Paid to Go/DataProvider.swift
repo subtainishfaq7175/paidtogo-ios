@@ -53,26 +53,26 @@ class DataProvider : DataProviderService {
     
     // MARK: - Auth -
     
-//    func postRegister(user: User, completion: (user: User?, error: String?) -> Void) {
-//
-//        let json = Mapper().toJSON(user)
-//
-//        ConnectionManager.sharedInstance.register(json) { (responseValue, error) in
-//
-//            if (error == nil) {
-//
-//                let user = Mapper<User>().map(responseValue)
-//                completion(user: user, error: nil)
-//                return
-//
-//            } else {
-//
-//                completion(user: nil, error: self.getError(error!))
-//                return
-//
-//            }
-//        }
-//    }
+    func postRegister(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
+
+        let json = Mapper().toJSON(user)
+
+        ConnectionManager.sharedInstance.register(params: json as [String : AnyObject]) { (responseValue, error) in
+
+            if (error == nil) {
+
+                let user = Mapper<User>().map(JSON: responseValue as! [String : Any])
+                completion(user, nil)
+                return
+
+            } else {
+
+                completion(nil, self.getError(error: error!))
+                return
+
+            }
+        }
+    }
     
     func postLogin(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
 
@@ -95,27 +95,27 @@ class DataProvider : DataProviderService {
         }
     }
     
-//    func postRecoverPassword(user: User, completion: (genericResponse: GenericResponse?, error: String?) -> Void) {
-//
-//        let json = Mapper().toJSON(user)
-//
-//        ConnectionManager.sharedInstance.forgotPassword(json) { (responseValue, error) in
-//
-//            if (error == nil) {
-//
-//                let genericResponse = Mapper<GenericResponse>().map(responseValue)
-//                completion(genericResponse: genericResponse, error: nil)
-//                return
-//
-//            } else {
-//
-//                completion(genericResponse: nil, error: self.getError(error!))
-//
-//                return
-//
-//            }
-//        }
-//    }
+    func postRecoverPassword(user: User, completion: @escaping (_ genericResponse: GenericResponse?, _ error: String?) -> Void) {
+
+        let json = Mapper().toJSON(user)
+
+        ConnectionManager.sharedInstance.forgotPassword(params: json as [String : AnyObject]) { (responseValue, error) in
+
+            if (error == nil) {
+
+                let genericResponse = Mapper<GenericResponse>().map(JSON: responseValue  as! [String : Any])
+                completion(genericResponse, nil)
+                return
+
+            } else {
+
+                completion(nil, self.getError(error: error!))
+
+                return
+
+            }
+        }
+    }
     
 //    func postFacebookLogin(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
 //

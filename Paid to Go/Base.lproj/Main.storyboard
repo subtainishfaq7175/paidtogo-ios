@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -31,7 +31,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-kf-O4v" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
@@ -285,7 +285,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sYC-Fr-FgW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="juk-CT-Aj2" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c07-j0-x9D" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
@@ -320,7 +320,7 @@ Email Line View</string>
                                                         </state>
                                                         <connections>
                                                             <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbf-Wq-7Gw"/>
-                                                            <action selector="recoverPassword:" destination="sGa-0V-qky" eventType="touchUpInside" id="ckU-Ik-qIQ"/>
+                                                            <action selector="recoverPasswordWithSender:" destination="sGa-0V-qky" eventType="touchUpInside" id="8rb-hG-C7A"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -392,17 +392,17 @@ Email Line View</string>
                         <viewControllerLayoutGuide type="bottom" id="1JS-M7-Pno"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gAT-OA-had" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjI-7v-ajs" userLabel="Scroll View" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-uU-bdA" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="679.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="721.66666666666663"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-Sn-3Dd" userLabel="Profile Image View">
-                                                <rect key="frame" x="112.5" y="23" width="150" height="150"/>
+                                                <rect key="frame" x="124.33333333333333" y="23" width="165.33333333333337" height="165.66666666666666"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="uC9-Sn-3Dd" secondAttribute="height" multiplier="1:1" id="8fs-kV-OvX"/>
@@ -412,125 +412,125 @@ Email Line View</string>
                                                 </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b7-5o-TAt" userLabel="Username Label">
-                                                <rect key="frame" x="10" y="211" width="29.5" height="14"/>
+                                                <rect key="frame" x="10.000000000000002" y="226.66666666666669" width="29.666666666666671" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4x-Cr-mnu" userLabel="Username Line View">
-                                                <rect key="frame" x="10" y="256.5" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="276" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="MjD-v9-1ma"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-ms-2at" userLabel="First Name Text Field">
-                                                <rect key="frame" x="10" y="279.5" width="355" height="35"/>
+                                                <rect key="frame" x="10" y="299" width="394" height="38"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnU-wW-xDe" userLabel="First Name Label">
-                                                <rect key="frame" x="10" y="267.5" width="54.5" height="14"/>
+                                                <rect key="frame" x="9.9999999999999964" y="287" width="54.666666666666657" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh9-Dc-1UO" userLabel="First Name  Line View">
-                                                <rect key="frame" x="10" y="313.5" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="336" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="epT-vh-78M"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20I-jD-GjQ" userLabel="Last Name Text Field">
-                                                <rect key="frame" x="10" y="336.5" width="355" height="34.5"/>
+                                                <rect key="frame" x="10" y="359" width="394" height="38"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-te-noO" userLabel="Last Name Label">
-                                                <rect key="frame" x="10" y="324.5" width="51.5" height="14"/>
+                                                <rect key="frame" x="9.9999999999999964" y="347" width="51.666666666666657" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-s1-rOM" userLabel="Last Name Line View">
-                                                <rect key="frame" x="10" y="370" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="396" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="S2r-ww-9hb"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEa-CL-8AK" userLabel="Password Text Field">
-                                                <rect key="frame" x="10" y="393" width="355" height="34.5"/>
+                                                <rect key="frame" x="10" y="419" width="394" height="38.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSR-e0-DMl" userLabel="Password Label">
-                                                <rect key="frame" x="10" y="381" width="51.5" height="14"/>
+                                                <rect key="frame" x="9.9999999999999964" y="407" width="51.666666666666657" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-dw-DcC" userLabel="Password Line View">
-                                                <rect key="frame" x="10" y="426.5" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="456.33333333333337" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="McU-FC-eUW"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0T-bH-djN" userLabel="Retype Text Field">
-                                                <rect key="frame" x="10" y="449.5" width="355" height="35"/>
+                                                <rect key="frame" x="10" y="479.33333333333337" width="394" height="38"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETYPE PASS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olo-Ru-6Sk" userLabel="Retype Label">
-                                                <rect key="frame" x="10" y="437.5" width="57.5" height="14"/>
+                                                <rect key="frame" x="9.9999999999999964" y="467.33333333333337" width="57.666666666666657" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-HY-7kx" userLabel="Retype  Line View">
-                                                <rect key="frame" x="10" y="483.5" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="516.33333333333337" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="AYs-Mn-F9j"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ZV-JR-1XN" userLabel="Bio Text Field">
-                                                <rect key="frame" x="10" y="506.5" width="355" height="34.5"/>
+                                                <rect key="frame" x="10" y="539.33333333333337" width="394" height="38.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-aw-oWO" userLabel="Bio Label">
-                                                <rect key="frame" x="10" y="494.5" width="18.5" height="14"/>
+                                                <rect key="frame" x="10.000000000000002" y="527.33333333333337" width="18.666666666666671" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-up-h1l" userLabel="Bio Line View">
-                                                <rect key="frame" x="10" y="540" width="355" height="1"/>
+                                                <rect key="frame" x="10" y="576.66666666666663" width="394" height="1"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ceq-1b-JTn"/>
                                                 </constraints>
                                             </view>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CBN-lm-X6Y">
-                                                <rect key="frame" x="10" y="555" width="51" height="31"/>
+                                                <rect key="frame" x="10" y="591.66666666666663" width="51" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="rE9-iT-pyP"/>
                                                 </constraints>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-ZQ-eYV" userLabel="Signup Button Container">
-                                                <rect key="frame" x="82.5" y="604" width="210" height="53.5"/>
+                                                <rect key="frame" x="102" y="640.66666666666663" width="210" height="59"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJp-nq-3ZX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="53.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="59"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                         <state key="normal" title="Sign Up">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="signup:" destination="TPs-cv-zMZ" eventType="touchUpInside" id="rE8-Pq-V56"/>
+                                                            <action selector="signupWithSender:" destination="TPs-cv-zMZ" eventType="touchUpInside" id="32V-ar-Dr7"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -543,11 +543,11 @@ Email Line View</string>
                                                     <constraint firstItem="AJp-nq-3ZX" firstAttribute="leading" secondItem="Gb6-ZQ-eYV" secondAttribute="leading" id="t9h-d3-tDo"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_green" translatesAutoresizingMaskIntoConstraints="NO" id="sqK-Aj-pMv" userLabel="Add Image View">
-                                                <rect key="frame" x="217.5" y="147" width="36" height="36"/>
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_green" translatesAutoresizingMaskIntoConstraints="NO" id="sqK-Aj-pMv" userLabel="Add Image View">
+                                                <rect key="frame" x="244.66666666666663" y="162.66666666666666" width="40" height="39.666666666666657"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-eA-07q">
-                                                <rect key="frame" x="69" y="557" width="161" height="27"/>
+                                                <rect key="frame" x="69" y="593.66666666666663" width="161" height="27"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="11"/>
                                                 <state key="normal" title="I accept the terms and conditions">
                                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -557,7 +557,7 @@ Email Line View</string>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FaN-2u-1ZV" userLabel="Username Text Field">
-                                                <rect key="frame" x="10" y="223" width="355" height="34.5"/>
+                                                <rect key="frame" x="10" y="238.66666666666671" width="394" height="38.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
@@ -669,11 +669,7 @@ Email Line View</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX0-KP-hUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Jd4-jt-k99" userLabel="image_tap_listener">
-                    <connections>
-                        <action selector="photoTapAction:" destination="TPs-cv-zMZ" id="kPC-Rd-Oxu"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Jd4-jt-k99" userLabel="image_tap_listener"/>
             </objects>
             <point key="canvasLocation" x="2194" y="837"/>
         </scene>
@@ -686,20 +682,20 @@ Email Line View</string>
                         <viewControllerLayoutGuide type="bottom" id="Xjf-E4-sfK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uxq-PI-wpA" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_home" translatesAutoresizingMaskIntoConstraints="NO" id="GrQ-Rn-SMe" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvJ-CD-MWR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cg-WF-xBe" userLabel="Scroll View Continer">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="153.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="153.66666666666666"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-h5-vkc" userLabel="Content Label">
-                                                <rect key="frame" x="12" y="10" width="351" height="133.5"/>
+                                                <rect key="frame" x="12" y="10" width="390" height="133.66666666666666"/>
                                                 <string key="text">PaidToGo will track your commute and use that data for purposes including payments, advertising and analytics. The data will be anonymized and no personal information will be transferred to 3rd parties. There is no guarantee of payment in the PaidToGo Open Pools. Payments are based on leaderboard position and funds available from our different fundraising operations.</string>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -752,7 +748,7 @@ Email Line View</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XOF-2P-5xX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eea-6G-daN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -770,7 +766,7 @@ Email Line View</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tC6-jh-zqZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yjJ-Lt-gDq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -788,7 +784,7 @@ Email Line View</string>
                 <navigationController storyboardIdentifier="TermsAndConditionsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Yc8-g1-MLy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="iPm-II-8VM">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25490196079999999" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
