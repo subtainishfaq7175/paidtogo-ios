@@ -12,6 +12,12 @@ class Constants {
     private init(){
         
     }
+//    String constants
+    let APP_NAME = "Paid To Go"
+    let OK_STR = "OK"
+    let YES_STR = "Yes"
+    let NO_STR = "No"
+
 //    Interger Values
     let ZERO_INT:Int  = 0
     let ONE_INT:Int  = 1

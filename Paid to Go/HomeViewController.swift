@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import HealthKitUI
 
 
 class HomeViewController: MenuContentViewController {
@@ -30,11 +30,16 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        configHealtStore()
         customizeNavigationBarWithTitleAndMenu()
-        
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
     }
-    
+        func configHealtStore(){
+            if PTGHealthStore.healthStoreShared.isHealthDataAvaiable(){
+                PTGHealthStore.healthStoreShared.configHealthKit()
+            }
+
+        }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -42,8 +47,9 @@ class HomeViewController: MenuContentViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
+//        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
     }
+
     func configTableView()  {
         guard let nib = UINib(nibName: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, bundle: nil) as? UINib  else {
             print("nib not founded")
