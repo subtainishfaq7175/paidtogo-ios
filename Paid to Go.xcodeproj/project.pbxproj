@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10268C3420A080BB0037336A /* HealthKit.framework */; };
+		104BEBDA20A1905000B3AE1D /* PTGHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */; };
+		104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDB20A1971600B3AE1D /* AppUtils.swift */; };
+		104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDD20A1989600B3AE1D /* ExtViewController.swift */; };
 		10924C73209B029800F2C650 /* GenCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C72209B029800F2C650 /* GenCustomView.swift */; };
 		10924C75209B035100F2C650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C74209B035100F2C650 /* Constants.swift */; };
 		10924C78209B048400F2C650 /* BaseVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C77209B048400F2C650 /* BaseVc.swift */; };
@@ -149,6 +153,10 @@
 
 /* Begin PBXFileReference section */
 		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
+		10268C3420A080BB0037336A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTGHealthStore.swift; sourceTree = "<group>"; };
+		104BEBDB20A1971600B3AE1D /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		104BEBDD20A1989600B3AE1D /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		10924C72209B029800F2C650 /* GenCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenCustomView.swift; sourceTree = "<group>"; };
 		10924C74209B035100F2C650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		10924C77209B048400F2C650 /* BaseVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVc.swift; sourceTree = "<group>"; };
@@ -301,6 +309,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */,
 				4D8880901D6CBBE5008E514A /* StoreKit.framework in Frameworks */,
 				ABCFBDCDE8AFF478BD7C4FB8 /* Pods_Paid_to_Go.framework in Frameworks */,
 			);
@@ -321,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				10924C77209B048400F2C650 /* BaseVc.swift */,
+				104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -394,6 +404,7 @@
 				4D8880931D6CC7D4008E514A /* ProUserSubscription.swift */,
 				10924C74209B035100F2C650 /* Constants.swift */,
 				10924C7E209B5BBE00F2C650 /* IdentifierConstants.swift */,
+				104BEBDB20A1971600B3AE1D /* AppUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -512,6 +523,7 @@
 				4D9141BA1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift */,
 				4D6354DE1D80617500230FF4 /* UINavigationController+Extensions.swift */,
 				4DBC14231DC23805003FD977 /* Double+Extensions.swift */,
+				104BEBDD20A1989600B3AE1D /* ExtViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -759,6 +771,7 @@
 		DF8DB721E9BE9F72CADCA60E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10268C3420A080BB0037336A /* HealthKit.framework */,
 				4D88808F1D6CBBE5008E514A /* StoreKit.framework */,
 				8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */,
 			);
@@ -805,7 +818,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -1017,6 +1030,7 @@
 				4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */,
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				4D9141BB1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift in Sources */,
+				104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
@@ -1025,6 +1039,7 @@
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */,
+				104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */,
 				4D6D87E51D42618F008DBC74 /* NSDate+Extensions.swift in Sources */,
 				4DBCE93B1D7F3B460020B7A2 /* ChangePasswordViewController.swift in Sources */,
 				4DC763A21D8732D80051BFF5 /* SectionHeaderView.swift in Sources */,
@@ -1063,6 +1078,7 @@
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
 				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,
 				4DDD12C01D9068E5007C11CB /* PaymentValidator.swift in Sources */,
+				104BEBDA20A1905000B3AE1D /* PTGHealthStore.swift in Sources */,
 				52502AE91CF73C4C008E3E3D /* NationalPoolsViewController.swift in Sources */,
 				52FC35061CC66C5600E094DA /* Platform.swift in Sources */,
 				4D61B6CE1D89C7260087300C /* ChartsHelper.swift in Sources */,

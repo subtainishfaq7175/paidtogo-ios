@@ -19,7 +19,7 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.10.143:8000/api/v1"
+    private var baseURL = "http://192.168.0.12:8000/api/v1"
 
     
     private var registerURL: String { return "\(baseURL)/register" }
@@ -158,28 +158,28 @@ extension ConnectionManager {
 //        self.postRequest(identifier, url: self.activityRouteURL, params: params, apiCompletion: apiCompletion)
 //    }
 //
-//    func getPoolType(params: PoolTypeEnum, apiCompletion: (responseValue:  AnyObject?, error: String?) -> Void) {
-//
-//        let identifier = "Pool Types API - GET"
-//        var url: String?
-//
-//        switch params {
-//        case .Walk:
-//            url = self.poolTypesURL + "?id=1"
-//            break
-//        case.Bike:
-//            url = self.poolTypesURL + "?id=2"
-//            break
-//        case.Train:
-//            url = self.poolTypesURL + "?id=3"
-//            break
-//        case.Car:
-//            url = self.poolTypesURL + "?id=4"
-//            break
-//        }
-//
-//        self.getRequest(identifier, url: url!, apiCompletion: apiCompletion)
-//    }
+    func getPoolType(params: PoolTypeEnum, apiCompletion: @escaping (_ responseValue:  AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Pool Types API - GET"
+        var url: String?
+
+        switch params {
+        case .Walk:
+            url = self.poolTypesURL + "?id=1"
+            break
+        case.Bike:
+            url = self.poolTypesURL + "?id=2"
+            break
+        case.Train:
+            url = self.poolTypesURL + "?id=3"
+            break
+        case.Car:
+            url = self.poolTypesURL + "?id=4"
+            break
+        }
+
+        self.getRequest(identifier: identifier, url: url!, apiCompletion: apiCompletion)
+    }
 //
 //    func searchUsersByName(params: [String: String], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //
@@ -264,53 +264,55 @@ extension ConnectionManager {
 //
 //    
 //    
-//    private func getRequest(identifier: String, url: String, apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
-//        
-//        
-//        
-//        self.printRequest(identifier,
-//                          requestType: RequestType.Request,
-//                          requestURL: url)
-//        
-//        Alamofire
-//            .request(Method.GET, url,  encoding: ParameterEncoding.JSON, headers: nil)
-//            .responseJSON { (response) in
-//                
-//                guard let value = response.result.value else {
-//                    apiCompletion(responseValue: nil, error: "error_connection")
-//                    return
-//                }
-//                
-//                
-//                self.printRequest(identifier,
-//                    requestType: RequestType.Response,
-//                    requestURL: url,
-//                    value: value)
-//                
-//                if response.result.isSuccess {
-//                    if response.response?.statusCode == 200 {
-//                        
-//                        apiCompletion(responseValue: value, error: nil)
-//                        return
-//                        
-//                    }  else {
-//                        
-//                        if let errorDetail = value["code"] as? String {
-//                            apiCompletion(responseValue: value, error: errorDetail)
-//                        }  else {
-//                            apiCompletion(responseValue: value, error: "error_default")
-//                        }
-//                        return
-//                    }
-//                    
-//                } else   if response.result.isFailure {
-//                    
-//                    apiCompletion(responseValue: value, error: "error_connection")
-//                    
-//                    return
-//                }
-//        }
-//    }
-//    
+    private func getRequest(identifier: String, url: String, apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        
+        
+        
+        self.printRequest(identifier: identifier,
+                          requestType: RequestType.Request,
+                          requestURL: url)
+        //        Alamofire
+        //            .request(Method.GET, url,  encoding: ParameterEncoding.JSON, headers: nil)
+
+        Alamofire
+            .request(url, method: .get)
+            .responseJSON { (response) in
+                
+                guard let value = response.result.value else {
+                    apiCompletion(nil, "error_connection")
+                    return
+                }
+                
+                
+                self.printRequest(identifier: identifier,
+                    requestType: RequestType.Response,
+                    requestURL: url,
+                    value: value as AnyObject)
+                
+                if response.result.isSuccess {
+                    if response.response?.statusCode == 200 {
+                        
+                        apiCompletion(value as AnyObject, nil)
+                        return
+                        
+                    }  else {
+                        
+                        if let errorDetail = (value as AnyObject)["code"] as? String {
+                            apiCompletion(value as AnyObject, errorDetail)
+                        }  else {
+                            apiCompletion(value as AnyObject, "error_default")
+                        }
+                        return
+                    }
+                    
+                } else   if response.result.isFailure {
+                    
+                    apiCompletion(value as AnyObject, "error_connection")
+                    
+                    return
+                }
+        }
+    }
+    
 }
 
