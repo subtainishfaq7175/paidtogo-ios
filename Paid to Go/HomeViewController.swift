@@ -16,7 +16,7 @@ class HomeViewController: MenuContentViewController {
     
     @IBOutlet weak var optionsTV: UITableView!
     @IBOutlet weak var elautlet: UILabel! // title label
-    
+    let geolocationManager =  GeolocationManager.sharedInstance
     // MARK: - View life cycle -
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,7 +24,11 @@ class HomeViewController: MenuContentViewController {
         
         setNavigationBarVisible(visible: true)
         
-        GeolocationManager.initLocationManager()
+       geolocationManager.initLocationManager()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            print("\(self.geolocationManager.getCurrentLocationCoordinate().latitude), \(self.geolocationManager.getCurrentLocationCoordinate().longitude)")
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -48,6 +52,8 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
+       
+
     }
 
     func configTableView()  {
