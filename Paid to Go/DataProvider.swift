@@ -217,8 +217,8 @@ func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _
             "pool_type_id" : poolTypeId,
         ]
         
-        let lat = String(GeolocationManager.getCurrentLocationCoordinate().latitude)
-        let lon = String(GeolocationManager.getCurrentLocationCoordinate().longitude)
+        let lat = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude)
+        let lon = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude)
         params["location_lat"] = lat
         params["location_lon"] = lon
         

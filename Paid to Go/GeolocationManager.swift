@@ -1,3 +1,4 @@
+
 //
 //  GeolocationManager.swift
 //  Paid to Go
@@ -9,21 +10,33 @@
 import UIKit
 import CoreLocation
 
-class GeolocationManager: NSObject, CLLocationManagerDelegate {
-    
+class GeolocationManager: NSObject {
+//    Singalton Implementations
     static let sharedInstance = GeolocationManager()
-    
+    private override init() {}
+
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
     
-    private override init() {}
     
-    static func initLocationManager() {
-        sharedInstance.locationManager.delegate = sharedInstance.self
-        sharedInstance.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        sharedInstance.locationManager.requestAlwaysAuthorization()
-    }
+     func initLocationManager() {
+        if (CLLocationManager.locationServicesEnabled()){
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse,.authorizedAlways:
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            break
+        default:
+            print(Constants.consShared.APP_NAME,"app not authorized for loacation")
+            break
+        }
+        }else {
+            print(Constants.consShared.APP_NAME,"Location services not enabled for this app")
+
+        }
+        print("on viewDidLoad Location is \(currentLocation.coordinate.latitude) and \(currentLocation.coordinate.longitude)")    }
     
     func startLocationUpdates() {
         locationManager.startUpdatingLocation()
@@ -32,16 +45,28 @@ class GeolocationManager: NSObject, CLLocationManagerDelegate {
     func pauseLocationUpdates() {
         locationManager.stopUpdatingLocation()
     }
+  
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func getCurrentLocation() -> CLLocation {
+        return currentLocation
+    }
+    
+    func getCurrentLocationCoordinate() -> CLLocationCoordinate2D {
+        return currentLocation.coordinate
+    }
+    
+}
+extension GeolocationManager : CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+
         if status == CLAuthorizationStatus.authorizedAlways {
             startLocationUpdates()
         } else {
             print("User didn't authorize the app to use the current location.")
         }
     }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         pauseLocationUpdates()
         
         let locationArray = locations as NSArray
@@ -49,13 +74,4 @@ class GeolocationManager: NSObject, CLLocationManagerDelegate {
         
         currentLocation = locationObj
     }
-    
-    static func getCurrentLocation() -> CLLocation {
-        return sharedInstance.currentLocation
-    }
-    
-    static func getCurrentLocationCoordinate() -> CLLocationCoordinate2D {
-        return sharedInstance.currentLocation.coordinate
-    }
-    
 }

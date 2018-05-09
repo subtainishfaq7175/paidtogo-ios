@@ -23,10 +23,8 @@ class PTGHealthStore {
     // Health store avaiablity check
     func isHealthDataAvaiable() -> Bool {
         if HKHealthStore.isHealthDataAvailable(){
-            print("Congratulations heath store available")
             return true
         }else {
-            print("sorry heath store unavailable")
             AppUtils.utilsShared.showAlert(viewController, message: "Sorry heath store is unavailable !!!", type: .simpleMessge, title: Constants.consShared.APP_NAME, btnTitle:Constants.consShared.OK_STR )
             return false
         }
@@ -57,9 +55,14 @@ class PTGHealthStore {
                 //                completion(false, HealthkitSetupError.dataTypeNotAvailable)
                 return
         }
-        let workout = HKObjectType.workoutType()
         getTodayseWorkouts { (workout, error) in
-            print("Workout: \(workout) error : \(error)")
+            guard let workout = workout else {
+                return
+            }
+            for work in workout {
+                print("Workout: \(work.totalEnergyBurned) error : \(error)")
+
+            }
 
         }
         let types:[HKObjectType] = [stepCount,cycling,walkAndRunning]
@@ -114,15 +117,13 @@ class PTGHealthStore {
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .other)
         
         //2. Get all workouts that only came from this app.
-        let sourcePredicate = HKQuery.predicateForObjects(from: HKSource.default())
+//        let sourcePredicate = HKQuery.predicateForObjects(from: HKSource.default())
         
         //3. Combine the predicates into a single predicate.
-        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [workoutPredicate,
-                                                                           sourcePredicate])
+        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [workoutPredicate])
         
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate,
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate,
                                               ascending: true)
-        
         let query = HKSampleQuery(sampleType: HKObjectType.workoutType(),
                                   predicate: compound,
                                   limit: 0,
@@ -143,21 +144,5 @@ class PTGHealthStore {
         
         HKHealthStore().execute(query)
     }
-//    func getTodaysWorkout(completion: @escaping (Double,Error?) -> Void) {
-//        let now = Date()
-//        let startOfDay = Calendar.current.startOfDay(for: now)
-//        let query = HKStatisticsQuery(quantityType: HKQuantityType.workoutType(), quantitySamplePredicate: HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate), options: .cumulativeSum) { (_, result, error) in
-//            guard let result = result, let sum = result.sumQuantity() else {
-//                log.error("Failed to fetch steps = \(error?.localizedDescription ?? "N/A")")
-//                completion(0.0,error)
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                completion(sum.doubleValue(for: HKUnit.count()), nil)
-//            }
-//        }
-//
-//        healthStore.execute(query)
-//    }
+
 }
