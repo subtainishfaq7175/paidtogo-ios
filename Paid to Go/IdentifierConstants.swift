@@ -15,9 +15,15 @@ class IdentifierConstants {
     }
 //    storyboard ids
     var HOME_VC:String {return "HomeViewController"}
-    
+    var ADD_ORGANIZATION_VC:String {return "AddOrganizationVC"}
+    var MAIN_POOL_VC:String {return "MainPoolVC"}
+    var LINK_ORGANIZATION_VC:String {return "LinkOrganizationVC"}
+
+
 //    table view cell ids
     var LOCAL_POOL_TVC:String {return "LocalPoolTVC"}
+    var ORGANIZATION_TVC:String {return "OrganizationTVC"}
+
 
 }
 

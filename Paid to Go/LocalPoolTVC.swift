@@ -10,6 +10,7 @@ import UIKit
 
 class LocalPoolTVC: UITableViewCell {
 
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var itemStatusLB: UILabel!
     @IBOutlet weak var itemValueLB: UILabel!
     @IBOutlet weak var selectionView: UILabel!
@@ -19,6 +20,7 @@ class LocalPoolTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        mainView.cardView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

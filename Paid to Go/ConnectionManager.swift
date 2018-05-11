@@ -19,12 +19,18 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.0.12:8000/api/v1"
+    private var baseURL = "http://192.168.10.143:8000/api/v1"
+// newlly create requests according to new design
+    private var invitationsURL: String { return "\(baseURL)/getInvitations" }
 
-    
+//    old requests used into new design
     private var registerURL: String { return "\(baseURL)/register" }
     private var loginURL: String { return "\(baseURL)/login" }
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
+    private var acceptInvitationURL : String { return "\(baseURL)/acceptInvitation" }
+
+    
+//    old requests list
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
     private var paymentURL : String { return "\(baseURL)/payment" }
@@ -90,6 +96,7 @@ extension ConnectionManager {
         self.postRequest(identifier: identifier, url: self.forgotPasswordURL, params: params, apiCompletion: apiCompletion)
 
     }
+    
 //
 //    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //
@@ -158,6 +165,22 @@ extension ConnectionManager {
 //        self.postRequest(identifier, url: self.activityRouteURL, params: params, apiCompletion: apiCompletion)
 //    }
 //
+    
+    //    MARK: - NEW REQUESTS
+    func invitations(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "Invitaions API - POST"
+        self.postRequest(identifier: identifier, url: self.invitationsURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    func acceptInvitation(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "Accept Invitation API - POST"
+        self.postRequest(identifier: identifier, url: self.acceptInvitationURL, params: params, apiCompletion: apiCompletion)
+        
+    }
+    
+    
+    
+    
     func getPoolType(params: PoolTypeEnum, apiCompletion: @escaping (_ responseValue:  AnyObject?, _ error: String?) -> Void) {
 
         let identifier = "Pool Types API - GET"
@@ -215,10 +238,10 @@ extension ConnectionManager {
         
         let paramsDict = dictionaryWithoutEmptyValues(dict: params)
         
-//        self.printRequest(identifier: identifier,
-//                          requestType: RequestType.Request,
-//                          requestURL: url,
-//                          value: paramsDict as AnyObject)
+        self.printRequest(identifier: identifier,
+                          requestType: RequestType.Request,
+                          requestURL: url,
+                          value: paramsDict as AnyObject)
 
         Alamofire.request(url, method: .post, parameters: paramsDict, encoding: URLEncoding(destination: .httpBody), headers: nil)
             .responseJSON { (response) in
@@ -229,10 +252,10 @@ extension ConnectionManager {
                     return
                 }
                 
-//                self.printRequest(identifier: identifier,
-//                    requestType: RequestType.Response,
-//                    requestURL: url,
-//                    value: value as AnyObject)
+                self.printRequest(identifier: identifier,
+                    requestType: RequestType.Response,
+                    requestURL: url,
+                    value: value as AnyObject)
                 
                 if response.result.isSuccess {
                     if response.response?.statusCode == 200 {

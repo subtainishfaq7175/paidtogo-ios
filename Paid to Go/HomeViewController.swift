@@ -14,9 +14,11 @@ class HomeViewController: MenuContentViewController {
     
     // MARK: - Outlets -
     
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var optionsTV: UITableView!
     @IBOutlet weak var elautlet: UILabel! // title label
     let geolocationManager =  GeolocationManager.sharedInstance
+    var tabsAddedCount = Constants.consShared.ZERO_INT
     // MARK: - View life cycle -
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +35,6 @@ class HomeViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTableView()
         configHealtStore()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
@@ -52,19 +53,30 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
-       
+        if tabsAddedCount == Constants.consShared.ONE_INT {
+            self.addTabs()
+        }
+        tabsAddedCount += Constants.consShared.ONE_INT
 
     }
-
-    func configTableView()  {
-        guard let nib = UINib(nibName: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, bundle: nil) as? UINib  else {
-            print("nib not founded")
-            return
+    // MARK: - Tabs Navigation
+    func createTabVC(_ vc:UIViewController,frame:CGRect){
+        vc.view.frame = frame
+        self.addChildViewController(vc);
+        self.mainScrollView!.addSubview(vc.view);
+        vc.didMove(toParentViewController: self)
+    }
+    func addTabs(){
+        let dataArray:[String] = ["tab"]
+        for index in Constants.consShared.ZERO_INT...(dataArray.count - 1){
+            createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
         }
-        optionsTV.estimatedRowHeight = Constants.consShared.HUNDRED_INT.toCGFloat
-        optionsTV.register(nib, forCellReuseIdentifier: IdentifierConstants.idConsShared.LOCAL_POOL_TVC)
+        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * dataArray.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
+        self.mainScrollView.contentSize = CGSize(width: view.frame.width * ((dataArray.count + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
+        
         
     }
+    
     // MARK: - Navigation -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as! PoolsViewController
@@ -213,19 +225,4 @@ class HomeViewController: MenuContentViewController {
     }
     
 }
-// MARK: - Extensions
-extension HomeViewController:UITableViewDelegate{
-    
-}
-extension HomeViewController:UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, for: indexPath) as! LocalPoolTVC
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height / Constants.consShared.THREE_INT.toCGFloat
-    }
-}
+

@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10268C3420A080BB0037336A /* HealthKit.framework */; };
+		1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */; };
+		1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */; };
+		1045EC6720A4823B00B6F2D9 /* OrganizationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */; };
+		1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */; };
 		104BEBDA20A1905000B3AE1D /* PTGHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */; };
 		104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDB20A1971600B3AE1D /* AppUtils.swift */; };
 		104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDD20A1989600B3AE1D /* ExtViewController.swift */; };
+		105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */; };
+		10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10764ACD20A5AD6F00003A6D /* Invitations.swift */; };
 		10924C73209B029800F2C650 /* GenCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C72209B029800F2C650 /* GenCustomView.swift */; };
 		10924C75209B035100F2C650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C74209B035100F2C650 /* Constants.swift */; };
 		10924C78209B048400F2C650 /* BaseVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C77209B048400F2C650 /* BaseVc.swift */; };
@@ -154,9 +160,15 @@
 /* Begin PBXFileReference section */
 		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		10268C3420A080BB0037336A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPoolVC.swift; sourceTree = "<group>"; };
+		1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTVC.swift; sourceTree = "<group>"; };
+		1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizationTVC.xib; sourceTree = "<group>"; };
+		1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkOrganizationVC.swift; sourceTree = "<group>"; };
 		104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTGHealthStore.swift; sourceTree = "<group>"; };
 		104BEBDB20A1971600B3AE1D /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		104BEBDD20A1989600B3AE1D /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
+		105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrganizationVC.swift; sourceTree = "<group>"; };
+		10764ACD20A5AD6F00003A6D /* Invitations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitations.swift; sourceTree = "<group>"; };
 		10924C72209B029800F2C650 /* GenCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenCustomView.swift; sourceTree = "<group>"; };
 		10924C74209B035100F2C650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		10924C77209B048400F2C650 /* BaseVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVc.swift; sourceTree = "<group>"; };
@@ -340,6 +352,7 @@
 			children = (
 				4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */,
 				10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */,
+				1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -422,6 +435,7 @@
 			children = (
 				523977D51CAF019D00C85CAF /* Components */,
 				52258C0E1C9AEFCB00E3DAC7 /* Home.storyboard */,
+				1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */,
 				52258C131C9AF10000E3DAC7 /* HomeViewController.swift */,
 				5255239C1CA987CE00D92F7F /* MenuContentViewController.swift */,
 				524911951CAC5FFC00D6E763 /* PoolsViewController.swift */,
@@ -436,6 +450,8 @@
 				52EBFBB91CFCC2CB00FE829E /* CarPoolInviteViewController.swift */,
 				4DB22D3D1D3FA67F006D3FA6 /* PoolDetailViewController.swift */,
 				4D9051621D4652210043A250 /* MapViewController.swift */,
+				105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */,
+				1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -464,6 +480,7 @@
 		523977D61CAF01A600C85CAF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */,
 				4D068EE91D510F68007FE30A /* TableViewHeader.swift */,
 				10924C7A209B20DC00F2C650 /* LocalPoolTVC.swift */,
 				523977D71CAF01C000C85CAF /* PoolCell.swift */,
@@ -597,6 +614,7 @@
 				4DA07A4A1D4B94170090B076 /* Subroute.swift */,
 				4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */,
 				4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */,
+				10764ACD20A5AD6F00003A6D /* Invitations.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -879,6 +897,7 @@
 				52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */,
 				52B3E0E01CA3254C000ED657 /* Activity.storyboard in Resources */,
 				525150B01CA17D1900BEC445 /* Profile.storyboard in Resources */,
+				1045EC6720A4823B00B6F2D9 /* OrganizationTVC.xib in Resources */,
 				4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */,
 				52258C0F1C9AEFCB00E3DAC7 /* Home.storyboard in Resources */,
 			);
@@ -1014,6 +1033,7 @@
 				4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
+				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				4DDD12C21D9068E9007C11CB /* PaymentValidatorPlatforms.swift in Sources */,
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
@@ -1035,7 +1055,10 @@
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
 				10924C73209B029800F2C650 /* GenCustomView.swift in Sources */,
+				1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */,
+				10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
+				1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */,
 				529A9D311CC57DD800720377 /* AntiCheatImageViewController.swift in Sources */,
 				5210C7541CAAC606002B4DF3 /* ActivityDefaultCell.swift in Sources */,
 				4D2BFFD81D36D0560072045D /* LeaderboardsListViewController.swift in Sources */,
@@ -1074,6 +1097,7 @@
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */,
+				105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */,
 				4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */,
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
 				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,

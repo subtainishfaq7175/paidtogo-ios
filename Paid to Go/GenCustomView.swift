@@ -13,7 +13,11 @@ class GenCustomView : UIView{
             self.layer.cornerRadius = roundedPixels
         }
     }
+    @IBInspectable var isCircle:Bool = false
     override func awakeFromNib() {
+        if isCircle {
+            self.layer.cornerRadius = self.frame.size.width / Constants.consShared.TWO_INT.toCGFloat
+        }
     }
 }
 
