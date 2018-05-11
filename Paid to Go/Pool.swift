@@ -30,6 +30,9 @@ public class Pool: Mappable {
     internal let kPoolLimitPerMonthKey: String = "limit_per_month"
     internal let kPoolSponsorLinkKey: String = "link"
     internal let kTermsAndConditionsKey: String = "terms_and_condition"
+    internal let kCountryKey: String = "country"
+
+    
     
     // MARK: Properties
     public var quantMembers: Int?
@@ -50,7 +53,8 @@ public class Pool: Mappable {
     public var limitPerMonth: String?
     public var sponsorLink: String?
     public var termsAndConditions: String?
-    
+    public var country: String?
+
     // MARK: ObjectMapper Initalizers
     /**
      Map a JSON object to this class using ObjectMapper
@@ -85,6 +89,8 @@ public class Pool: Mappable {
         limitPerMonth <- map[kPoolLimitPerMonthKey]
         sponsorLink <- map[kPoolSponsorLinkKey]
         termsAndConditions <- map[kTermsAndConditionsKey]
+        country <- map[kCountryKey]
+
     }
     
     /**
@@ -134,7 +140,9 @@ public class Pool: Mappable {
         if endDateTime != nil {
             dictionary.updateValue(endDateTime! as AnyObject, forKey: kPoolEndDateTimeKey)
         }
-        
+        if country != nil {
+            dictionary.updateValue(country! as AnyObject, forKey: kCountryKey)
+        }
         return dictionary
     }
 }

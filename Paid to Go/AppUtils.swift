@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 class AppUtils {
     static let utilsShared = AppUtils()
     private init(){
@@ -28,4 +29,24 @@ class AppUtils {
         }
         viewController.present(alertController, animated: true, completion: nil)
     }
+    
+    
+    
+    // MARK: - Progress Hud -
+    
+    func showProgressHud(_ vc :UIViewController) {
+        let loadingNotification = MBProgressHUD.showAdded(to: vc.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.indeterminate
+    }
+    
+    func showProgressHud(_ vc: UIViewController,title: String) {
+        let loadingNotification = MBProgressHUD.showAdded(to: vc.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.indeterminate
+        loadingNotification.label.text = title
+    }
+    
+    func dismissProgressHud(_ vc:UIViewController) {
+        MBProgressHUD.hideAllHUDs(for: vc.view, animated: true)
+    }
+    
 }
