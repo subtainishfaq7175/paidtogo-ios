@@ -30,6 +30,9 @@ extension Int {
     var toCGFloat:CGFloat{
         return CGFloat(self)
     }
+    var toFloat:Float{
+        return Float(self)
+    }
     var toDouble:Double{
         return Double(self)
     }

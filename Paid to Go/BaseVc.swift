@@ -12,6 +12,7 @@ import MBProgressHUD
 class BaseVc: UIViewController {
     internal let consShared = Constants.consShared
     internal let idConsShared = IdentifierConstants.idConsShared
+    internal let colorShared = CustomColors.colorShared
 
     override func viewDidLoad() {
         super.viewDidLoad()

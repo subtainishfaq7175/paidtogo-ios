@@ -68,12 +68,12 @@ extension LinkOrganizationVC : UITableViewDataSource{
         if let id = invitations[indexPath.row].id {
             cell.invitationId = id
         }
-        if let company = invitations[indexPath.row].pool?.name {
+        if let company = invitations[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
             cell.companyNameLB.text = company
         }else {
             cell.companyNameLB.text = "Not available"
         }
-        if let country = invitations[indexPath.row].pool?.country {
+        if let country = invitations[indexPath.row].pool?.country , country != consShared.EMPTY_STR{
             cell.countryLB.text = country
         }else {
             cell.countryLB.text = "Not available"

@@ -16,6 +16,9 @@
 		104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDB20A1971600B3AE1D /* AppUtils.swift */; };
 		104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDD20A1989600B3AE1D /* ExtViewController.swift */; };
 		105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */; };
+		10680E5520A99DDC00DC0570 /* TempProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5420A99DDC00DC0570 /* TempProfile.swift */; };
+		10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5620A9CAC700DC0570 /* AccountVC.swift */; };
+		10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */; };
 		10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10764ACD20A5AD6F00003A6D /* Invitations.swift */; };
 		10924C73209B029800F2C650 /* GenCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C72209B029800F2C650 /* GenCustomView.swift */; };
 		10924C75209B035100F2C650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C74209B035100F2C650 /* Constants.swift */; };
@@ -168,6 +171,9 @@
 		104BEBDB20A1971600B3AE1D /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		104BEBDD20A1989600B3AE1D /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrganizationVC.swift; sourceTree = "<group>"; };
+		10680E5420A99DDC00DC0570 /* TempProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempProfile.swift; sourceTree = "<group>"; };
+		10680E5620A9CAC700DC0570 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrganizationsVC.swift; sourceTree = "<group>"; };
 		10764ACD20A5AD6F00003A6D /* Invitations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitations.swift; sourceTree = "<group>"; };
 		10924C72209B029800F2C650 /* GenCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenCustomView.swift; sourceTree = "<group>"; };
 		10924C74209B035100F2C650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -552,6 +558,9 @@
 				525150B11CA17D7900BEC445 /* ProfileViewController.swift */,
 				4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */,
 				4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */,
+				10680E5420A99DDC00DC0570 /* TempProfile.swift */,
+				10680E5620A9CAC700DC0570 /* AccountVC.swift */,
+				10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1004,6 +1013,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10680E5520A99DDC00DC0570 /* TempProfile.swift in Sources */,
 				7C039DAC1CE21BCD00C7DED4 /* Transaction.swift in Sources */,
 				4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */,
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
@@ -1031,6 +1041,7 @@
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,
 				4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */,
 				4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */,
+				10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
@@ -1114,6 +1125,7 @@
 				4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
+				10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */,
 				4D936E591D25BEB600A0CB3A /* Status.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
 				4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */,

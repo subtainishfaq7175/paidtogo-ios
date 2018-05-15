@@ -10,6 +10,14 @@ import UIKit
 import UIColor_Hex_Swift
 
 class CustomColors {
+    
+//    Singalton
+    private init(){
+        
+    }
+    
+   static let colorShared = CustomColors()
+    
     static func getColor(_ rgba:String) -> UIColor {
         do{
             return try UIColor(rgba_throws: rgba)
@@ -18,6 +26,20 @@ class CustomColors {
 
         }
     }
+     func getColorfromString(_ rgba:String) -> UIColor {
+        do{
+            return try UIColor(rgba_throws: rgba)
+        }catch{
+            return UIColor.white
+            
+        }
+    }
+    
+    
+    var springGreen:UIColor {
+        return getColorfromString("#00FC65")
+    }
+    
     //Navbar background color
     static func greenColor() -> UIColor{
         

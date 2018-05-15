@@ -19,9 +19,11 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.10.143:8000/api/v1"
+    private var baseURL = "http://192.168.0.12:8000/api/v1"
 // newlly create requests according to new design
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
+    private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
+
 
 //    old requests used into new design
     private var registerURL: String { return "\(baseURL)/register" }
@@ -167,6 +169,11 @@ extension ConnectionManager {
 //
     
     //    MARK: - NEW REQUESTS
+    func userActivities(_ userId:String,apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "USER ACTIVITIES API - GET"
+        self.getRequest(identifier: identifier, url: self.userActivitiesURL + userId, apiCompletion: apiCompletion)
+        
+    }
     func invitations(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         let identifier = "Invitaions API - POST"
         self.postRequest(identifier: identifier, url: self.invitationsURL, params: params, apiCompletion: apiCompletion)

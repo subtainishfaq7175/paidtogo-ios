@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class OrganizationTVC: UITableViewCell {
 
     @IBAction func linkBtnAction(_ sender: Any) {
@@ -15,7 +14,12 @@ class OrganizationTVC: UITableViewCell {
             guard let  parentVC = parentVC else {
                 return
             }
-            linkToOrganization(parentVC)
+            if isLocationLinked {
+                
+            }else {
+                linkToOrganization(parentVC)
+
+            }
         }
     }
     @IBOutlet weak var countryLB: UILabel!
@@ -25,12 +29,31 @@ class OrganizationTVC: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     var invitationId = Constants.consShared.ZERO_INT
     var parentVC:LinkOrganizationVC?
+    var isLocationLinked:Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.cardView()
-        // Initialization code
+        if isLocationLinked  {
+            linkOL.setTitle("Linked", for: .normal)
+        }
     }
-
+    func removeOrganization(_ parentVC:LinkOrganizationVC)  {
+        AppUtils.utilsShared.showProgressHud(parentVC)
+        DataProvider.sharedInstance.acceptInvitation("182", invitationsId: invitationId, completion: { (response, error) in
+            AppUtils.utilsShared.dismissProgressHud(parentVC)
+            
+            if let error = error, error.isEmpty == false {
+                parentVC.showAlert(error)
+                return
+            }
+            
+            if let res = response , let detail = res.detail {
+                parentVC.showAlert(detail)
+                self.linkOL.setTitle("Linked", for: .normal)
+                self.linkOL.isEnabled = false
+            }
+        })
+    }
     func linkToOrganization(_ parentVC:LinkOrganizationVC)  {
         AppUtils.utilsShared.showProgressHud(parentVC)
         DataProvider.sharedInstance.acceptInvitation("182", invitationsId: invitationId, completion: { (response, error) in
@@ -43,6 +66,8 @@ class OrganizationTVC: UITableViewCell {
             
             if let res = response , let detail = res.detail {
                 parentVC.showAlert(detail)
+                self.linkOL.setTitle("Linked", for: .normal)
+                self.linkOL.isEnabled = false
             }
         })
     }
