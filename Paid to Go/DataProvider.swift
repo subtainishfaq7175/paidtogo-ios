@@ -256,25 +256,25 @@ func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _
     
     // MARK: - Profile -
     
-func postUpdateProfile(user: User, completion: (_ user: User?, _ error: String?) -> Void) {
+    func postUpdateProfile(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
         
         let json = Mapper().toJSON(user)
                 
-//        ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
-//            
-//            if (error == nil) {
-//                
-//                let user = Mapper<User>().map(responseValue)
-//                completion(user: user, error: nil)
-//                return
-//                
-//            } else {
-//                
-//                completion(user: nil, error: self.getError(error!))
-//                return
-//                
-//            }
-//        }
+    ConnectionManager.sharedInstance.updateProfile(params: json as [String : AnyObject]) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(JSON: responseValue  as! [String : Any])
+                completion(user, nil)
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        }
     }
     
     // MARK: - Balance -

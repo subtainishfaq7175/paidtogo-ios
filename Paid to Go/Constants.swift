@@ -18,6 +18,7 @@ class Constants {
     let YES_STR = "Yes"
     let NO_STR = "No"
     let EMPTY_STR = ""
+    let NA_STR = "Not Available"
 
 //    Interger Values
     let ZERO_INT:Int  = 0

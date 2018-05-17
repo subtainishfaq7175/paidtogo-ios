@@ -30,10 +30,10 @@ class ConnectionManager {
     private var loginURL: String { return "\(baseURL)/login" }
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var acceptInvitationURL : String { return "\(baseURL)/acceptInvitation" }
+    private var updateProfileURL : String { return "\(baseURL)/update_profile" }
 
     
 //    old requests list
-    private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
     private var paymentURL : String { return "\(baseURL)/payment" }
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
@@ -99,13 +99,13 @@ extension ConnectionManager {
 
     }
     
-//
-//    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
-//
-//        let identifier = "Update Profile API - POST"
-//        self.postRequest(identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
-//
-//    }
+
+    func updateProfile(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Update Profile API - POST"
+        self.postRequest(identifier: identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
+
+    }
 //
 //    func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //

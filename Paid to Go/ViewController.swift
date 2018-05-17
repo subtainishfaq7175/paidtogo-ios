@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     func setNavigationBarGreen() {
         if let navController = navigationController {
             navController.navigationBar.df_setBackgroundColor(CustomColors.NavbarBackground())
-        }
+        } 
     }
     
     func setNavigationBarGreenWithTitle(title: String) {

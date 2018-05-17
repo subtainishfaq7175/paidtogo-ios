@@ -26,6 +26,7 @@
 		10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C7A209B20DC00F2C650 /* LocalPoolTVC.swift */; };
 		10924C7D209B20DC00F2C650 /* LocalPoolTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */; };
 		10924C7F209B5BBE00F2C650 /* IdentifierConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C7E209B5BBE00F2C650 /* IdentifierConstants.swift */; };
+		10D2101720AD62B1009F6D31 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2101620AD62B1009F6D31 /* UserProfileVC.swift */; };
 		4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D068EE91D510F68007FE30A /* TableViewHeader.swift */; };
 		4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */; };
 		4D190E411D66217E00BF65FA /* GeolocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D190E401D66217E00BF65FA /* GeolocationManager.swift */; };
@@ -181,6 +182,7 @@
 		10924C7A209B20DC00F2C650 /* LocalPoolTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPoolTVC.swift; sourceTree = "<group>"; };
 		10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalPoolTVC.xib; sourceTree = "<group>"; };
 		10924C7E209B5BBE00F2C650 /* IdentifierConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierConstants.swift; sourceTree = "<group>"; };
+		10D2101620AD62B1009F6D31 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		125B65BE42F88D7BDDF2F198 /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
 		4D068EE91D510F68007FE30A /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				10680E5420A99DDC00DC0570 /* TempProfile.swift */,
 				10680E5620A9CAC700DC0570 /* AccountVC.swift */,
 				10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */,
+				10D2101620AD62B1009F6D31 /* UserProfileVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1036,6 +1039,7 @@
 				4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */,
 				522994ED1CC15A4400C589C6 /* WDLeaderboardsViewController.swift in Sources */,
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
+				10D2101720AD62B1009F6D31 /* UserProfileVC.swift in Sources */,
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
 				4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */,
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,

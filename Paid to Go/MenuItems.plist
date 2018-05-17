@@ -14,7 +14,7 @@
 		<key>title</key>
 		<string>Profile</string>
 		<key>identifier</key>
-		<string>TempProfile</string>
+		<string>ProfileNavigationController</string>
 		<key>storyboard</key>
 		<string>Profile</string>
 	</dict>

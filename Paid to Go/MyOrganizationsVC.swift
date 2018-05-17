@@ -12,8 +12,10 @@ import UIKit
 }
 class MyOrganizationsVC: BaseVc {
 
+    @IBOutlet weak var addOrgContainerView: UIView!
     @IBOutlet weak var addOrgnizationView: GenCustomView!
     @IBOutlet weak var organiztionsTV: UITableView!
+    var layoutCount = Constants.consShared.ZERO_INT
     override func viewDidLoad() {
         super.viewDidLoad()
         organiztionsTV.register(UINib(nibName: idConsShared.ORGANIZATION_TVC, bundle: nil), forCellReuseIdentifier: idConsShared.ORGANIZATION_TVC)
@@ -22,6 +24,12 @@ class MyOrganizationsVC: BaseVc {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .blue
+    }
+    override func viewDidLayoutSubviews() {
+        if layoutCount == consShared.ONE_INT {
+            organiztionsTV.contentInset = UIEdgeInsets(top: consShared.ZERO_INT.toCGFloat, left: consShared.ZERO_INT.toCGFloat, bottom: addOrgContainerView.frame.height, right: consShared.ZERO_INT.toCGFloat)
+        }
+        layoutCount += consShared.ONE_INT
     }
 // get my organizations from server
     func getOrganizations()  {
@@ -54,6 +62,29 @@ class MyOrganizationsVC: BaseVc {
             break
         default:
             break
+        }
+    }
+}
+extension MyOrganizationsVC : UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == organiztionsTV {
+           if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
+                organiztionsTV.isScrollEnabled = false
+            }
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView == organiztionsTV {
+            if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
+                organiztionsTV.isScrollEnabled = false
+            }
+        }
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == organiztionsTV {
+            if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
+                organiztionsTV.isScrollEnabled = false
+            }
         }
     }
 }
@@ -95,3 +126,4 @@ extension MyOrganizationsVC : UITableViewDataSource{
         return cell
     }
 }
+
