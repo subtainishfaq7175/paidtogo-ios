@@ -52,7 +52,7 @@ class LoginViewController: ViewController {
     }
     
     private func verifyIfThereIsCurrentUser() {
-        
+
         if let user = User.currentUser {
             guard let _ = user.userId else {
                 return

@@ -20,6 +20,8 @@ class IdentifierConstants {
     var LINK_ORGANIZATION_VC:String {return "LinkOrganizationVC"}
     var MY_ORGANIZATIONS_VC:String {return "MyOrganizationsVC"}
     var ACCOUNT_VC:String {return "AccountVC"}
+    var CHANGE_PASS_VC:String {return "ChagnePassVC"}
+
 
 
 //    table view cell ids

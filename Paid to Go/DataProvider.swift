@@ -619,7 +619,7 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
     
     
     //    MARK: - New Requests
-    func getOrganizations(_ userId: String, completion: @escaping (_ invitations: [Invitations]?, _ error: String?) -> Void) {
+    func getOrganizations(_ userId: String, completion: @escaping (_ organization: [ActivityNotification]?, _ error: String?) -> Void) {
         
         //        let json = Mapper().toJSON(user)
         
@@ -627,10 +627,10 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             
             if (error == nil) {
                 
-                if let invitations = Mapper<Invitations>().mapArray(JSONObject: (responseValue as! [String : Any])["Invitations"])
+                if let organizations = Mapper<ActivityNotification>().mapArray(JSONObject: (responseValue))
                 {
                     
-                    completion(invitations, nil)
+                    completion(organizations, nil)
                     
                 }
                 return
@@ -668,8 +668,8 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             }
         }
     }
-    func acceptInvitation(_ userId:String, invitationsId: Int, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
-        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject]) { (responseValue, error) in
+    func acceptInvitation(_ userId:String, invitationsId: Int,isOrgLinked: Bool, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
+        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject], isOrgLinked:isOrgLinked) { (responseValue, error) in
             if (error == nil) {
                 if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]){
                     completion(res, nil)
@@ -681,6 +681,7 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             }
         }
     }
+    
 }
 protocol DataProviderService {
     

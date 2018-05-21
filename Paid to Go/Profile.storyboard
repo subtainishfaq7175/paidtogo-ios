@@ -855,6 +855,128 @@
             </objects>
             <point key="canvasLocation" x="1535" y="331"/>
         </scene>
+        <!--Chagne PassVC-->
+        <scene sceneID="zpR-LF-eoz">
+            <objects>
+                <viewController storyboardIdentifier="ChagnePassVC" id="agJ-6e-LCG" customClass="ChagnePassVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CzE-1q-tIJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="HS1-3D-7KJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="56N-AR-NRb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-Vw-9mu">
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NEW PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dAe-Ys-yTE" customClass="HoshiTextField" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="304" height="41.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                <color key="value" red="0.0039215686274509803" green="0.90196078431372551" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="23"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="agJ-6e-LCG" id="O6S-vH-VAf"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="REPEAT NEW PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-ti-mPR" customClass="HoshiTextField" customModule="Paid_to_Go" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="57.5" width="304" height="41.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                <color key="value" red="0.0039215686274509803" green="0.90196078431372551" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="23"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="agJ-6e-LCG" id="iFv-BU-QgT"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5Q-zx-6vY">
+                                        <rect key="frame" x="64" y="406" width="192" height="30"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="K5Q-zx-6vY" secondAttribute="height" multiplier="96:15" id="aGe-pC-mui"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="4"/>
+                                        <state key="normal" title="Change Password">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="changePasswordAction:" destination="agJ-6e-LCG" eventType="touchUpInside" id="CB2-4J-af2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="K5Q-zx-6vY" firstAttribute="centerX" secondItem="5LV-Vw-9mu" secondAttribute="centerX" id="3aE-4e-kIS"/>
+                                    <constraint firstItem="zdS-ti-mPR" firstAttribute="trailing" secondItem="dAe-Ys-yTE" secondAttribute="trailing" id="6SE-Xh-YVa"/>
+                                    <constraint firstItem="dAe-Ys-yTE" firstAttribute="top" secondItem="5LV-Vw-9mu" secondAttribute="top" constant="8" id="8cM-Mu-cXC">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                                    </constraint>
+                                    <constraint firstItem="zdS-ti-mPR" firstAttribute="top" secondItem="dAe-Ys-yTE" secondAttribute="bottom" constant="8" id="CCg-cg-JRE"/>
+                                    <constraint firstItem="dAe-Ys-yTE" firstAttribute="leading" secondItem="5LV-Vw-9mu" secondAttribute="leading" constant="8" id="DBA-kE-G8u"/>
+                                    <constraint firstItem="dAe-Ys-yTE" firstAttribute="height" secondItem="zdS-ti-mPR" secondAttribute="height" id="J21-6e-7R0"/>
+                                    <constraint firstAttribute="trailing" secondItem="dAe-Ys-yTE" secondAttribute="trailing" constant="8" id="LFl-9e-V9N"/>
+                                    <constraint firstItem="dAe-Ys-yTE" firstAttribute="height" secondItem="5LV-Vw-9mu" secondAttribute="height" multiplier="0.09" id="UVc-n3-McF"/>
+                                    <constraint firstAttribute="bottom" secondItem="K5Q-zx-6vY" secondAttribute="bottom" constant="24" id="bkp-Wq-Jnb"/>
+                                    <constraint firstItem="zdS-ti-mPR" firstAttribute="leading" secondItem="dAe-Ys-yTE" secondAttribute="leading" id="i9p-AP-fb3"/>
+                                    <constraint firstItem="K5Q-zx-6vY" firstAttribute="width" secondItem="5LV-Vw-9mu" secondAttribute="width" multiplier="0.6" id="yEh-ty-7K2"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="8cM-Mu-cXC"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5LV-Vw-9mu" firstAttribute="top" secondItem="CzE-1q-tIJ" secondAttribute="bottom" id="Vjq-jC-Ghs"/>
+                            <constraint firstItem="5LV-Vw-9mu" firstAttribute="leading" secondItem="56N-AR-NRb" secondAttribute="leading" id="coq-gE-7bY"/>
+                            <constraint firstItem="HS1-3D-7KJ" firstAttribute="top" secondItem="5LV-Vw-9mu" secondAttribute="bottom" id="dly-xC-a3b"/>
+                            <constraint firstAttribute="trailing" secondItem="5LV-Vw-9mu" secondAttribute="trailing" id="pV4-Ov-g5s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changePasswordOL" destination="K5Q-zx-6vY" id="SFM-nI-FXn"/>
+                        <outlet property="passwrodTF" destination="dAe-Ys-yTE" id="MC3-c1-chR"/>
+                        <outlet property="repeatPasswordTF" destination="zdS-ti-mPR" id="dmN-Y0-eFt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HnB-Fs-HsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2250" y="330"/>
+        </scene>
         <!--User ProfileVC-->
         <scene sceneID="ztp-7z-jOE">
             <objects>
@@ -956,16 +1078,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="145.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPd-Am-RTc" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
-                                                        <rect key="frame" x="123.5" y="16" width="72.5" height="73"/>
+                                                        <rect key="frame" x="119.5" y="16" width="80.5" height="80.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="AZd-v2-RRV">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72.5" height="73"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="80.5"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-Qy-vJC" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
-                                                                <rect key="frame" x="27.5" y="54.5" width="18" height="18"/>
+                                                                <rect key="frame" x="29" y="55.5" width="24" height="24.5"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit_p4" translatesAutoresizingMaskIntoConstraints="NO" id="Mgg-oj-teL">
-                                                                        <rect key="frame" x="0.0" y="0.5" width="18" height="18"/>
+                                                                        <rect key="frame" x="0.5" y="0.5" width="24" height="24.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </imageView>
                                                                 </subviews>
@@ -988,7 +1110,7 @@
                                                             <constraint firstAttribute="width" secondItem="rPd-Am-RTc" secondAttribute="height" multiplier="1:1" id="4wJ-Fh-iKp"/>
                                                             <constraint firstItem="AZd-v2-RRV" firstAttribute="top" secondItem="rPd-Am-RTc" secondAttribute="top" id="AQt-cP-2I2"/>
                                                             <constraint firstAttribute="trailing" secondItem="AZd-v2-RRV" secondAttribute="trailing" id="Gdd-jJ-EzB"/>
-                                                            <constraint firstItem="mLm-Qy-vJC" firstAttribute="height" secondItem="AZd-v2-RRV" secondAttribute="height" multiplier="0.25" id="NIh-G7-DMh"/>
+                                                            <constraint firstItem="mLm-Qy-vJC" firstAttribute="height" secondItem="AZd-v2-RRV" secondAttribute="height" multiplier="0.3" id="NIh-G7-DMh"/>
                                                             <constraint firstAttribute="bottom" secondItem="AZd-v2-RRV" secondAttribute="bottom" id="hog-ut-dqm"/>
                                                             <constraint firstItem="mLm-Qy-vJC" firstAttribute="centerX" secondItem="rPd-Am-RTc" secondAttribute="centerX" id="mXz-J0-vgK"/>
                                                             <constraint firstItem="AZd-v2-RRV" firstAttribute="leading" secondItem="rPd-Am-RTc" secondAttribute="leading" id="xWY-PP-fL0"/>
@@ -998,7 +1120,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jodie Allen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-wp-s6p">
-                                                        <rect key="frame" x="8" y="113" width="304" height="23.5"/>
+                                                        <rect key="frame" x="8" y="120.5" width="304" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1013,7 +1135,7 @@
                                                     </constraint>
                                                     <constraint firstItem="Yn4-wp-s6p" firstAttribute="leading" secondItem="OAd-vj-CQ5" secondAttribute="leading" constant="8" id="UXn-6q-FU8"/>
                                                     <constraint firstItem="Yn4-wp-s6p" firstAttribute="top" secondItem="rPd-Am-RTc" secondAttribute="bottom" constant="24" id="VWD-kE-zb1"/>
-                                                    <constraint firstItem="rPd-Am-RTc" firstAttribute="height" secondItem="OAd-vj-CQ5" secondAttribute="height" multiplier="0.5" id="iZF-0f-ixz"/>
+                                                    <constraint firstItem="rPd-Am-RTc" firstAttribute="height" secondItem="OAd-vj-CQ5" secondAttribute="height" multiplier="0.55" id="iZF-0f-ixz"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1058,6 +1180,7 @@
                         <outlet property="accountOL" destination="M3j-We-biQ" id="OWB-Yh-jwT"/>
                         <outlet property="childSV" destination="A8L-Xo-mcZ" id="WyN-Jj-ed5"/>
                         <outlet property="editView" destination="mLm-Qy-vJC" id="5XV-eo-hME"/>
+                        <outlet property="mainView" destination="xJC-YJ-bag" id="4xM-F1-Zkq"/>
                         <outlet property="organizationBottomView" destination="3gM-v7-eip" id="7BL-Pf-GYe"/>
                         <outlet property="organizationsOL" destination="jcb-bH-ZTV" id="xIg-QT-Eoc"/>
                         <outlet property="parentSV" destination="3IO-n1-M26" id="XbW-Io-ET3"/>

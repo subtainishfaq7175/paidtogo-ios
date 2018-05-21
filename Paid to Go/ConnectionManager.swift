@@ -23,6 +23,7 @@ class ConnectionManager {
 // newlly create requests according to new design
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
     private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
+    private var recjectInvitationURL: String { return "\(baseURL)/rejectInvitation" }
 
 
 //    old requests used into new design
@@ -179,9 +180,18 @@ extension ConnectionManager {
         self.postRequest(identifier: identifier, url: self.invitationsURL, params: params, apiCompletion: apiCompletion)
         
     }
-    func acceptInvitation(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
-        let identifier = "Accept Invitation API - POST"
-        self.postRequest(identifier: identifier, url: self.acceptInvitationURL, params: params, apiCompletion: apiCompletion)
+    
+    func acceptInvitation(params: [String: AnyObject],isOrgLinked: Bool, apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        var identifier  = ""
+        var url = ""
+        if isOrgLinked {
+            identifier = "Reject Invitation API - POST"
+            url = recjectInvitationURL
+        }else {
+            identifier = "Accept Invitation API - POST"
+            url = acceptInvitationURL
+        }
+        self.postRequest(identifier: identifier, url: url, params: params, apiCompletion: apiCompletion)
         
     }
     
@@ -330,14 +340,14 @@ extension ConnectionManager {
                         if let errorDetail = (value as AnyObject)["code"] as? String {
                             apiCompletion(value as AnyObject, errorDetail)
                         }  else {
-                            apiCompletion(value as AnyObject, "error_default")
+                            apiCompletion(value as AnyObject, "error_default".localize())
                         }
                         return
                     }
                     
                 } else   if response.result.isFailure {
                     
-                    apiCompletion(value as AnyObject, "error_connection")
+                    apiCompletion(value as AnyObject, "error_connection".localize())
                     
                     return
                 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 @objc protocol ChildScollDelegate {
     @objc optional func tableview(should enableScroll:Bool)
 }
@@ -16,12 +17,14 @@ class MyOrganizationsVC: BaseVc {
     @IBOutlet weak var addOrgnizationView: GenCustomView!
     @IBOutlet weak var organiztionsTV: UITableView!
     var layoutCount = Constants.consShared.ZERO_INT
+    var linkedOrgs = [ActivityNotification]()
+    var isDisableScroll:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         organiztionsTV.register(UINib(nibName: idConsShared.ORGANIZATION_TVC, bundle: nil), forCellReuseIdentifier: idConsShared.ORGANIZATION_TVC)
         organiztionsTV.estimatedRowHeight = Constants.consShared.HUNDRED_INT.toCGFloat
         addOrgnizationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleGesture)))
-
+        getOrganizations()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .blue
     }
@@ -35,7 +38,7 @@ class MyOrganizationsVC: BaseVc {
     func getOrganizations()  {
         self.showProgressHud()
         //        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitation, error) in
-        DataProvider.sharedInstance.getInvitations("182", completion: { (invitations, error) in
+        DataProvider.sharedInstance.getOrganizations("2", completion: { (organizations, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
@@ -43,8 +46,9 @@ class MyOrganizationsVC: BaseVc {
                 return
             }
             
-            if error == nil && invitations != nil {
-                
+            if let organizations = organizations {
+                self.linkedOrgs = organizations
+                self.organiztionsTV.reloadData()
             }
         })
     }
@@ -66,27 +70,49 @@ class MyOrganizationsVC: BaseVc {
     }
 }
 extension MyOrganizationsVC : UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == organiztionsTV {
-           if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
-                organiztionsTV.isScrollEnabled = false
-            }
-        }
-    }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView == organiztionsTV {
-            if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
-                organiztionsTV.isScrollEnabled = false
-            }
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView == organiztionsTV {
+//           if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
+//            if isDisableScroll  {
+////                organiztionsTV.isScrollEnabled = false
+//                isDisableScroll = false
+//                return
+//            }
+//            isDisableScroll = true
+//           }else {
+//            isDisableScroll = false
+//            }
+//        }
+//    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == organiztionsTV {
             if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
-                organiztionsTV.isScrollEnabled = false
+                if isDisableScroll  {
+                    organiztionsTV.isScrollEnabled = false
+                    isDisableScroll = false
+                    return
+                }
+                isDisableScroll = true
+            }else {
+                isDisableScroll = false
             }
         }
     }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView == organiztionsTV {
+            if  scrollView.contentOffset.y == consShared.ZERO_INT.toCGFloat {
+                if isDisableScroll  {
+                    organiztionsTV.isScrollEnabled = false
+                    isDisableScroll = false
+                    return
+                }
+                isDisableScroll = true
+            }else {
+                isDisableScroll = false
+            }
+        }
+    }
+    
 }
 extension MyOrganizationsVC : ChildScollDelegate{
     func tableview(should enableScroll: Bool) {
@@ -98,31 +124,35 @@ extension MyOrganizationsVC : UITableViewDelegate{
 }
 extension MyOrganizationsVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return linkedOrgs.count
         return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idConsShared.ORGANIZATION_TVC, for: indexPath) as! OrganizationTVC
-        cell.selectionStyle = .none
-//        if let id = invitations[indexPath.row].id {
-//            cell.invitationId = id
+//        cell.selectionStyle = .none
+//        if let id = linkedOrgs[indexPath.row].poolId {
+//            cell.invitationId = Int(id)!
 //        }
-//        if let company = invitations[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
+//        if let company = linkedOrgs[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
 //            cell.companyNameLB.text = company
 //        }else {
 //            cell.companyNameLB.text = "Not available"
 //        }
-//        if let country = invitations[indexPath.row].pool?.country , country != consShared.EMPTY_STR{
+//        if let country = linkedOrgs[indexPath.row].pool?.country , country != consShared.EMPTY_STR{
 //            cell.countryLB.text = country
 //        }else {
 //            cell.countryLB.text = "Not available"
 //        }
-//        if let url = invitations[indexPath.row].pool?.banner {
+//        if let url = linkedOrgs[indexPath.row].pool?.banner {
 //            cell.bannerIV.yy_setImage(with: URL(string:url), placeholder: #imageLiteral(resourceName: "ic_ph_organization_p4"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
 //
 //            })
 //
 //        }
+//        cell.isOrgLinked = true
 //        cell.parentVC = self
+////        cell.setBtnTitle()
+//        cell.linkOL.setTitle("Linked", for: .normal)
         return cell
     }
 }

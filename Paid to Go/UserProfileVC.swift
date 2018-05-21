@@ -19,6 +19,7 @@ class UserProfileVC: MenuContentViewController {
     @IBOutlet weak var childSV: UIScrollView!
     @IBOutlet weak var parentSV: UIScrollView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainView: UIView!
     
     @IBOutlet weak var tabContainerView: UIView!
     //    tab buttons and their bottom views
@@ -54,10 +55,8 @@ class UserProfileVC: MenuContentViewController {
     }
     func config(){
         NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: NSNotification.Name(rawValue: NotificationsHelper.UserProfileUpdated.rawValue), object: nil)
-
         editView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleGesture)))
-//        profileIV.layer.masksToBounds = true
-        profileIV.clipsToBounds = true
+
     }
 //    update ui on profile update
     @objc private func userProfileUpdated() {
@@ -97,8 +96,8 @@ class UserProfileVC: MenuContentViewController {
         if layoutCounter == consShared.ONE_INT {
             addTabs()
             self.profilePhotoView.addConstraint(NSLayoutConstraint(item: profilePhotoView, attribute: .bottom, relatedBy: .equal, toItem: editView, attribute: .bottom, multiplier: consShared.ONE_INT.toCGFloat, constant: -(editView.frame.size.height * 0.5)))
-                profileIV.layer.cornerRadius = profileIV.frame.width / consShared.TWO_INT.toCGFloat
-            profilePhotoView.round()
+            profileIV.round()
+            editView.round()
         }
         layoutCounter += consShared.ONE_INT
     }
@@ -246,16 +245,13 @@ extension UserProfileVC : UIScrollViewDelegate {
         guard let delegate = scrollDelegate else {
             return
         }
-        print("\(self.view.frame.size.height * 0.35), \(scrollView.contentOffset.y)")
-        if (scrollView.contentOffset.y + 8)  >= (self.view.frame.size.height * 0.35){
+        print("\(self.mainView.frame.size.height * 0.35), \(scrollView.contentOffset.y)")
+        if (scrollView.contentOffset.y + 8)  >= (self.mainView.frame.size.height * 0.35){
             delegate.tableview!(should: true)
         }else {
             delegate.tableview!(should: false)
             
         }
-        //        if childSV == scrollView {
-        //            topConstraint.constant =  topConstraint.constant - scrollView.contentOffset.y
-        //        }
     }
     
 }

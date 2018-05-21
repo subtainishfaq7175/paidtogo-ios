@@ -25,6 +25,8 @@ public class ActivityNotification: Mappable {
 	internal let kActivityNotificationUserKey: String = "user"
 	internal let kActivityNotificationNameKey: String = "name"
     internal let kActivityNotificationInternalIdentifierKey : String = "activity_id"
+    internal let kActivityNotificationPoolKey : String = "pool"
+    internal let kActivityNotificationCodeKey : String = "code"
 
     // MARK: Properties
 	public var savedCo2: String?
@@ -41,7 +43,8 @@ public class ActivityNotification: Mappable {
 	 var user: User?
 	public var name: String?
     public var internalIdentifier: String?
-
+    public var pool: Pool?
+    public var code: Int?
 
     // MARK: ObjectMapper Initalizers
     /**
@@ -71,6 +74,9 @@ public class ActivityNotification: Mappable {
 		user <- map[kActivityNotificationUserKey]
 		name <- map[kActivityNotificationNameKey]
         internalIdentifier <- map[kActivityNotificationInternalIdentifierKey]
+        pool <- map[kActivityNotificationPoolKey]
+        code <- map[kActivityNotificationCodeKey]
+
     }
 
     /**
@@ -116,6 +122,9 @@ public class ActivityNotification: Mappable {
 		if name != nil {
             dictionary.updateValue(name! as AnyObject, forKey: kActivityNotificationNameKey)
 		}
+        if pool != nil {
+            dictionary.updateValue(pool! as AnyObject, forKey: kActivityNotificationPoolKey)
+        }
 
         return dictionary
     }

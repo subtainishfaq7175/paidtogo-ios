@@ -12,6 +12,9 @@
 		1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */; };
 		1045EC6720A4823B00B6F2D9 /* OrganizationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */; };
 		1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */; };
+		1047795520B293F7003D4086 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795420B293F6003D4086 /* HoshiTextField.swift */; };
+		1047795820B29803003D4086 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795720B29803003D4086 /* TextFieldsEffects.swift */; };
+		1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795920B2A11F003D4086 /* ChagnePassVC.swift */; };
 		104BEBDA20A1905000B3AE1D /* PTGHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */; };
 		104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDB20A1971600B3AE1D /* AppUtils.swift */; };
 		104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDD20A1989600B3AE1D /* ExtViewController.swift */; };
@@ -168,6 +171,10 @@
 		1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTVC.swift; sourceTree = "<group>"; };
 		1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizationTVC.xib; sourceTree = "<group>"; };
 		1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkOrganizationVC.swift; sourceTree = "<group>"; };
+		1047795420B293F6003D4086 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		1047795620B2959C003D4086 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		1047795720B29803003D4086 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
+		1047795920B2A11F003D4086 /* ChagnePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChagnePassVC.swift; sourceTree = "<group>"; };
 		104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTGHealthStore.swift; sourceTree = "<group>"; };
 		104BEBDB20A1971600B3AE1D /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		104BEBDD20A1989600B3AE1D /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +345,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1047795320B293D6003D4086 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				1047795720B29803003D4086 /* TextFieldsEffects.swift */,
+				1047795620B2959C003D4086 /* TextFieldEffects.h */,
+				1047795420B293F6003D4086 /* HoshiTextField.swift */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
 		10924C71209B026F00F2C650 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +430,7 @@
 		52227FD31C99A321002DBBFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1047795320B293D6003D4086 /* Animations */,
 				4DDD12BE1D9068D9007C11CB /* IAP */,
 				524911921CAC125C00D6E763 /* Data */,
 				52258C101C9AF04100E3DAC7 /* Navigation */,
@@ -564,6 +582,7 @@
 				10680E5620A9CAC700DC0570 /* AccountVC.swift */,
 				10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */,
 				10D2101620AD62B1009F6D31 /* UserProfileVC.swift */,
+				1047795920B2A11F003D4086 /* ChagnePassVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1028,6 +1047,7 @@
 				4D2F43231D9AE6C70022B01E /* ReceiptValidationResult.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */,
+				1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
 				10924C78209B048400F2C650 /* BaseVc.swift in Sources */,
 				4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */,
@@ -1071,6 +1091,7 @@
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
 				10924C73209B029800F2C650 /* GenCustomView.swift in Sources */,
 				1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */,
+				1047795520B293F7003D4086 /* HoshiTextField.swift in Sources */,
 				10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */,
@@ -1097,6 +1118,7 @@
 				5276DE221CF8C458009B2CBE /* ActivityNotification.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
+				1047795820B29803003D4086 /* TextFieldsEffects.swift in Sources */,
 				4D6354DF1D80617500230FF4 /* UINavigationController+Extensions.swift in Sources */,
 				52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */,
 				5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */,

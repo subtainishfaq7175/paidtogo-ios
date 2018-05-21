@@ -61,6 +61,11 @@ class AccountVC: BaseVc {
             break
         case changePasswordLB:
             print("change password taped")
+            guard let navigationController = self.navigationController else {
+                print("No navigation controller")
+                return
+            }
+            navigationController.pushViewController(StoryboardRouter.profileStoryboard().instantiateViewController(withIdentifier: idConsShared.CHANGE_PASS_VC) , animated: true)
             break
         default:
             break
@@ -145,7 +150,7 @@ class AccountVC: BaseVc {
 //                                if let gender = self.genderTextField.text where !gender.isEmpty {
 //                                    user.gender = gender
 //                                }
-            
+                                print("User id \(user.userId)")
                                 User.currentUser = user
                                 self.checkmarksStruct.updateUserLocally()
             
