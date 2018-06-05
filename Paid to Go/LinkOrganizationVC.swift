@@ -36,7 +36,7 @@ class LinkOrganizationVC: BaseVc {
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
-                self.showAlert(error)
+                self.present(self.alert(error), animated: true, completion: nil)
                 return
             }
             

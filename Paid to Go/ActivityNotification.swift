@@ -7,7 +7,7 @@
 
 import Foundation
 import ObjectMapper
-
+// start_longitude,  , ,
 public class ActivityNotification: Mappable {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
@@ -27,7 +27,16 @@ public class ActivityNotification: Mappable {
     internal let kActivityNotificationInternalIdentifierKey : String = "activity_id"
     internal let kActivityNotificationPoolKey : String = "pool"
     internal let kActivityNotificationCodeKey : String = "code"
-
+    internal let kActivityNotificationStepsKey : String = "sum_of_step"
+    
+    
+//    New fields
+    internal let kActivityNotificationStartLongKey : String = "start_longitude"
+    internal let kActivityNotificationStartLatKey : String = "start_latitude"
+    internal let kActivityNotificationUserIDKey : String = "user_id"
+    internal let kActivityNotificationPhotoKey : String = "photo"
+    internal let kActivityNotificationEndLatKey : String = "end_latitude"
+    internal let kActivityNotificationEndLongKey : String = "end_longitude"
     // MARK: Properties
 	public var savedCo2: String?
     public var savedCalories: String?
@@ -43,8 +52,18 @@ public class ActivityNotification: Mappable {
 	 var user: User?
 	public var name: String?
     public var internalIdentifier: String?
+    public var SumOfStep: Int?
+
     public var pool: Pool?
     public var code: Int?
+    
+    public var startLongitude: Double?
+    public var startLatitude: Double?
+    public var endLongitude: Double?
+    public var endLatitude: Double?
+    public var userId: Int?
+    public var photo: String?
+
 
     // MARK: ObjectMapper Initalizers
     /**
@@ -76,6 +95,14 @@ public class ActivityNotification: Mappable {
         internalIdentifier <- map[kActivityNotificationInternalIdentifierKey]
         pool <- map[kActivityNotificationPoolKey]
         code <- map[kActivityNotificationCodeKey]
+        SumOfStep <- map[kActivityNotificationStepsKey]
+    
+    startLongitude <- map[kActivityNotificationStartLongKey]
+    startLatitude <- map[kActivityNotificationStartLongKey]
+    endLongitude <- map[kActivityNotificationEndLongKey]
+    endLatitude <- map[kActivityNotificationEndLatKey]
+    userId <- map[kActivityNotificationUserIDKey]
+    photo <- map[kActivityNotificationPhotoKey]
 
     }
 
@@ -125,6 +152,29 @@ public class ActivityNotification: Mappable {
         if pool != nil {
             dictionary.updateValue(pool! as AnyObject, forKey: kActivityNotificationPoolKey)
         }
+        if SumOfStep != nil {
+            dictionary.updateValue(SumOfStep! as AnyObject, forKey: kActivityNotificationStepsKey)
+        }
+        
+        if let startLatitude = startLatitude {
+            dictionary.updateValue(startLatitude as AnyObject, forKey: kActivityNotificationStartLongKey)
+        }
+        if let startLongitude = startLongitude {
+            dictionary.updateValue(startLongitude as AnyObject, forKey: kActivityNotificationStartLongKey)
+        }
+        if let endLatitude = endLatitude {
+            dictionary.updateValue(endLatitude  as AnyObject, forKey: kActivityNotificationEndLatKey)
+        }
+        if let endLongitude = endLongitude {
+            dictionary.updateValue(endLongitude as AnyObject, forKey: kActivityNotificationEndLongKey)
+        }
+        if let userId = userId {
+            dictionary.updateValue(userId as AnyObject, forKey: kActivityNotificationUserIDKey)
+        }
+        if let photo = photo {
+            dictionary.updateValue(photo as AnyObject, forKey: kActivityNotificationPhotoKey)
+        }
+
 
         return dictionary
     }

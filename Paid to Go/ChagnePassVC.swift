@@ -31,12 +31,12 @@ class ChagnePassVC: BaseVc {
     //    MARK: - CHANGE PASSWORD
     private func validate() -> Bool {
         if passwrodTF.text! == "" {
-            present(showAlert( "New Password field is empty"), animated: true, completion: nil)
+            present(alert( "New Password field is empty"), animated: true, completion: nil)
             
             return false
         }
         if repeatPasswordTF.text! == "" {
-            present(showAlert( "Repeate New Password field is empty"), animated: true, completion: nil)
+            present(alert( "Repeate New Password field is empty"), animated: true, completion: nil)
 
            
             return false
@@ -44,7 +44,7 @@ class ChagnePassVC: BaseVc {
         if passwrodTF.text == repeatPasswordTF.text{
             return true
         }else {
-            present(showAlert( "New Password and Repeat New password isn't match."), animated: true, completion: nil)
+            present(alert( "New Password and Repeat New password isn't match."), animated: true, completion: nil)
             return false
         }
     }
@@ -65,14 +65,12 @@ class ChagnePassVC: BaseVc {
                 self.dismissProgressHud()
                 
                 if let user = user { //success
-                    
-                    self.showAlert("profile_changes_submited".localize())
+                    self.present(self.alert("profile_changes_submited".localize()), animated: true, completion: nil)
                   
                     User.currentUser = user
                     self.checkmarksStruct.updateUserLocally()
                 } else if let error = error {
-                    
-                    self.showAlert(error)
+                    self.present(self.alert(error), animated: true, completion: nil)
                 }
             }
         }

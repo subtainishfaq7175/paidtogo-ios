@@ -67,12 +67,13 @@ class OrganizationTVC: UITableViewCell {
             AppUtils.utilsShared.dismissProgressHud(parentVC)
             
             if let error = error, error.isEmpty == false {
-                parentVC.showAlert(error)
+                
+                parentVC.present(parentVC.alert(error), animated: true, completion: nil)
                 return
             }
             
             if let res = response , let detail = res.detail {
-                parentVC.showAlert(detail)
+                parentVC.present(parentVC.alert(detail), animated: true, completion: nil)
                 self.linkOL.setTitle("Linked", for: .normal)
                 self.linkOL.isEnabled = false
             }

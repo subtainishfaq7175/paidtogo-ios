@@ -8,10 +8,16 @@
 
 import UIKit
 
-class MainPoolVC: UIViewController {
-
+class MainPoolVC: BaseVc {
+// Health fit ui elements
+    @IBOutlet weak var calLB: UILabel!
+    @IBOutlet weak var offsetLB: UILabel!
+    @IBOutlet weak var traveledLB: UILabel!
+    @IBOutlet weak var gasLB: UILabel!
+    @IBOutlet weak var stepLB: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var hkDataTV: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         topView.cardView()
@@ -22,6 +28,7 @@ class MainPoolVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
     func configTableView()  {
         guard let nib = UINib(nibName: IdentifierConstants.idConsShared.LOCAL_POOL_TVC, bundle: nil) as? UINib  else {
             print("nib not founded")

@@ -12,7 +12,7 @@ enum AlertType:Int {
 }
 extension UIViewController{
 //    this  generate alert for simply showing a message with no action
-    func showAlert(_ message:String, type:AlertType = .simpleMessge, title: String = "Paid to Go", btnTitle:String = "Ok") -> UIAlertController {
+    func alert(_ message:String, type:AlertType = .simpleMessge, title: String = "Paid to Go", btnTitle:String = "Ok") -> UIAlertController {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
         switch type {

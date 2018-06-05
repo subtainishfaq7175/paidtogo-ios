@@ -36,4 +36,7 @@ extension Int {
     var toDouble:Double{
         return Double(self)
     }
+    var toString:String{
+        return "\(self)"
+    }
 }

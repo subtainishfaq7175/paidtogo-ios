@@ -19,6 +19,8 @@ class HomeViewController: MenuContentViewController {
     @IBOutlet weak var elautlet: UILabel! // title label
     let geolocationManager =  GeolocationManager.sharedInstance
     var tabsAddedCount = Constants.consShared.ZERO_INT
+    var activityData = [ActivityNotification]()
+
     // MARK: - View life cycle -
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,7 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configHealtStore()
+        getActivityData()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
     }
@@ -53,11 +56,48 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
-        if tabsAddedCount == Constants.consShared.ONE_INT {
-            self.addTabs()
-        }
-        tabsAddedCount += Constants.consShared.ONE_INT
+       
 
+    }
+    //    MARK: - FETCH DATA FROM SERVER
+    
+    func getActivityData()  {
+        self.showProgressHud()
+            DataProvider.sharedInstance.getOrganizations((User.currentUser?.userId)!, completion: { (data, error) in
+//        DataProvider.sharedInstance.getOrganizations("2", completion: { (data, error) in
+            self.dismissProgressHud()
+            
+            if let error = error, error.isEmpty == false {
+                self.present(self.alert(error), animated: true, completion: nil)
+                
+                return
+            }
+            
+            if let data = data {
+                self.activityData = data
+
+//                if tabsAddedCount == Constants.consShared.ONE_INT {
+//                }
+//                tabsAddedCount += Constants.consShared.ONE_INT
+            }
+            self.addTabs()
+        })
+    }
+    func setString (_ string:String?, label:UILabel){
+        if let string = string {
+            label.text = string
+        }else{
+            label.text = consShared.ZERO_INT.toString
+        }
+    }
+    func populateUI(_ index:Int, mainPool:MainPoolVC)  {
+        setString(activityData[index].savedCalories, label: mainPool.calLB)
+        setString(activityData[index].savedGas , label: mainPool.gasLB)
+        setString(activityData[index].milesTraveled, label: mainPool.traveledLB)
+        setString(activityData[index].savedCo2, label: mainPool.offsetLB)
+        setString(activityData[index].SumOfStep?.toString, label: mainPool.stepLB)
+        
+        
     }
     // MARK: - Tabs Navigation
     func createTabVC(_ vc:UIViewController,frame:CGRect){
@@ -67,12 +107,16 @@ class HomeViewController: MenuContentViewController {
         vc.didMove(toParentViewController: self)
     }
     func addTabs(){
-        let dataArray:[String] = ["tab"]
-        for index in Constants.consShared.ZERO_INT...(dataArray.count - 1){
-            createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
+        if activityData.count > consShared.ZERO_INT {
+            for index in Constants.consShared.ZERO_INT...(activityData.count - consShared.ONE_INT){
+                let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
+                populateUI(index, mainPool: mainPool)
+                createTabVC(mainPool, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
+            }
         }
-        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * dataArray.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
-        self.mainScrollView.contentSize = CGSize(width: view.frame.width * ((dataArray.count + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
+        
+        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * activityData.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
+        self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((activityData.count) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
         
         
     }

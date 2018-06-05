@@ -85,11 +85,13 @@ class AccountVC: BaseVc {
 //            return false
 //        }
         if userFirstNameTF.text! == "" {
-            showAlert( "First name field is empty")
+            present(alert( "First name field is empty"), animated: true, completion: nil)
+           
             return false
         }
         if userLastNameTF.text! == "" {
-            showAlert( "Last Name field is empty")
+            
+            present(alert( "Last Name field is empty"), animated: true, completion: nil)
             return false
         }
         
@@ -133,8 +135,8 @@ class AccountVC: BaseVc {
                             self.dismissProgressHud()
             
                             if let user = user { //success
-            
-                                self.showAlert("profile_changes_submited".localize())
+            self.present(self.alert("profile_changes_submited".localize()), animated: true, completion: nil)
+                                
             
 //                                self.profileImageView.yy_setImageWithURL(NSURL(string: user.profilePicture!), placeholder: UIImage(named: "ic_profile_placeholder"))
             
@@ -163,8 +165,8 @@ class AccountVC: BaseVc {
                                 self.view.endEditing(true)
             
                             } else if let error = error {
-            
-                                self.showAlert(error)
+                            self.present(self.alert(error), animated: true, completion: nil)
+                                
                             }
                         }
         }

@@ -42,7 +42,8 @@ class MyOrganizationsVC: BaseVc {
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
-                self.showAlert(error)
+                self.present(self.alert(error), animated: true, completion: nil)
+                
                 return
             }
             
@@ -124,35 +125,35 @@ extension MyOrganizationsVC : UITableViewDelegate{
 }
 extension MyOrganizationsVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return linkedOrgs.count
-        return 10
+        return linkedOrgs.count
+//        return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idConsShared.ORGANIZATION_TVC, for: indexPath) as! OrganizationTVC
-//        cell.selectionStyle = .none
-//        if let id = linkedOrgs[indexPath.row].poolId {
-//            cell.invitationId = Int(id)!
-//        }
-//        if let company = linkedOrgs[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
-//            cell.companyNameLB.text = company
-//        }else {
-//            cell.companyNameLB.text = "Not available"
-//        }
-//        if let country = linkedOrgs[indexPath.row].pool?.country , country != consShared.EMPTY_STR{
-//            cell.countryLB.text = country
-//        }else {
-//            cell.countryLB.text = "Not available"
-//        }
-//        if let url = linkedOrgs[indexPath.row].pool?.banner {
-//            cell.bannerIV.yy_setImage(with: URL(string:url), placeholder: #imageLiteral(resourceName: "ic_ph_organization_p4"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
-//
-//            })
-//
-//        }
-//        cell.isOrgLinked = true
-//        cell.parentVC = self
-////        cell.setBtnTitle()
-//        cell.linkOL.setTitle("Linked", for: .normal)
+        cell.selectionStyle = .none
+        if let id = linkedOrgs[indexPath.row].poolId {
+            cell.invitationId = Int(id)!
+        }
+        if let company = linkedOrgs[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
+            cell.companyNameLB.text = company
+        }else {
+            cell.companyNameLB.text = "Not available"
+        }
+        if let country = linkedOrgs[indexPath.row].pool?.country , country != consShared.EMPTY_STR{
+            cell.countryLB.text = country
+        }else {
+            cell.countryLB.text = "Not available"
+        }
+        if let url = linkedOrgs[indexPath.row].pool?.banner {
+            cell.bannerIV.yy_setImage(with: URL(string:url), placeholder: #imageLiteral(resourceName: "ic_ph_organization_p4"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
+
+            })
+
+        }
+        cell.isOrgLinked = true
+        cell.parentVC = self
+//        cell.setBtnTitle()
+        cell.linkOL.setTitle("Linked", for: .normal)
         return cell
     }
 }
