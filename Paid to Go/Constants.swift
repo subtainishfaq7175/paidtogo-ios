@@ -17,6 +17,8 @@ class Constants {
     let OK_STR = "OK"
     let YES_STR = "Yes"
     let NO_STR = "No"
+    let EMPTY_STR = ""
+    let NA_STR = "Not Available"
 
 //    Interger Values
     let ZERO_INT:Int  = 0
@@ -26,5 +28,9 @@ class Constants {
     let FOUR_INT:Int  = 4
     let FIVE_INT:Int  = 5
     let HUNDRED_INT:Int  = 100
+//    Fonts name
+    let OPEN_SANS_SEMIBOLD = "OpenSans-Semibold"
+    let OPEN_SANS_LIGHT = "OpenSans-Light"
+
 
 }

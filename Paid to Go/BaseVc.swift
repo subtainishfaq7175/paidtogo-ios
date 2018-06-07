@@ -12,6 +12,8 @@ import MBProgressHUD
 class BaseVc: UIViewController {
     internal let consShared = Constants.consShared
     internal let idConsShared = IdentifierConstants.idConsShared
+    internal let colorShared = CustomColors.colorShared
+    internal let utilsShared = AppUtils.utilsShared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class BaseVc: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
     // MARK: - Progress Hud -
     
    internal func showProgressHud() {

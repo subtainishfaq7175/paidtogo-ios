@@ -69,7 +69,7 @@
     }
     
     private func customizeNavigationBar() {
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
         UINavigationBar.appearance().tintColor = CustomColors.NavbarTintColor()   // Navigation bar buttons color
         UINavigationBar.appearance().titleTextAttributes = [
             

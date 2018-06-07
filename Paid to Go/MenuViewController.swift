@@ -238,13 +238,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return [headerSection,itemsSection].count
+        }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return [
-            headerSection,
-            itemsSection
-            ].count
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             

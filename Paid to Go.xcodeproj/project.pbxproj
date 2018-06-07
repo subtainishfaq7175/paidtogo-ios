@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1006EC8F20C6B08A00A78181 /* ActivityTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */; };
 		10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10268C3420A080BB0037336A /* HealthKit.framework */; };
 		1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */; };
 		1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */; };
 		1045EC6720A4823B00B6F2D9 /* OrganizationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */; };
 		1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */; };
+		1047795520B293F7003D4086 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795420B293F6003D4086 /* HoshiTextField.swift */; };
+		1047795820B29803003D4086 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795720B29803003D4086 /* TextFieldsEffects.swift */; };
+		1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047795920B2A11F003D4086 /* ChagnePassVC.swift */; };
 		104BEBDA20A1905000B3AE1D /* PTGHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */; };
 		104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDB20A1971600B3AE1D /* AppUtils.swift */; };
 		104BEBDE20A1989600B3AE1D /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BEBDD20A1989600B3AE1D /* ExtViewController.swift */; };
 		105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */; };
+		10680E5520A99DDC00DC0570 /* TempProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5420A99DDC00DC0570 /* TempProfile.swift */; };
+		10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5620A9CAC700DC0570 /* AccountVC.swift */; };
+		10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */; };
 		10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10764ACD20A5AD6F00003A6D /* Invitations.swift */; };
 		10924C73209B029800F2C650 /* GenCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C72209B029800F2C650 /* GenCustomView.swift */; };
 		10924C75209B035100F2C650 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C74209B035100F2C650 /* Constants.swift */; };
@@ -23,6 +30,7 @@
 		10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C7A209B20DC00F2C650 /* LocalPoolTVC.swift */; };
 		10924C7D209B20DC00F2C650 /* LocalPoolTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */; };
 		10924C7F209B5BBE00F2C650 /* IdentifierConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10924C7E209B5BBE00F2C650 /* IdentifierConstants.swift */; };
+		10D2101720AD62B1009F6D31 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2101620AD62B1009F6D31 /* UserProfileVC.swift */; };
 		4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D068EE91D510F68007FE30A /* TableViewHeader.swift */; };
 		4D068EED1D5111EF007FE30A /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */; };
 		4D190E411D66217E00BF65FA /* GeolocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D190E401D66217E00BF65FA /* GeolocationManager.swift */; };
@@ -159,15 +167,23 @@
 
 /* Begin PBXFileReference section */
 		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
+		1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableVC.swift; sourceTree = "<group>"; };
 		10268C3420A080BB0037336A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPoolVC.swift; sourceTree = "<group>"; };
 		1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTVC.swift; sourceTree = "<group>"; };
 		1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizationTVC.xib; sourceTree = "<group>"; };
 		1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkOrganizationVC.swift; sourceTree = "<group>"; };
+		1047795420B293F6003D4086 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		1047795620B2959C003D4086 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		1047795720B29803003D4086 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
+		1047795920B2A11F003D4086 /* ChagnePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChagnePassVC.swift; sourceTree = "<group>"; };
 		104BEBD920A1905000B3AE1D /* PTGHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTGHealthStore.swift; sourceTree = "<group>"; };
 		104BEBDB20A1971600B3AE1D /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		104BEBDD20A1989600B3AE1D /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrganizationVC.swift; sourceTree = "<group>"; };
+		10680E5420A99DDC00DC0570 /* TempProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempProfile.swift; sourceTree = "<group>"; };
+		10680E5620A9CAC700DC0570 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrganizationsVC.swift; sourceTree = "<group>"; };
 		10764ACD20A5AD6F00003A6D /* Invitations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitations.swift; sourceTree = "<group>"; };
 		10924C72209B029800F2C650 /* GenCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenCustomView.swift; sourceTree = "<group>"; };
 		10924C74209B035100F2C650 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -175,6 +191,7 @@
 		10924C7A209B20DC00F2C650 /* LocalPoolTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPoolTVC.swift; sourceTree = "<group>"; };
 		10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalPoolTVC.xib; sourceTree = "<group>"; };
 		10924C7E209B5BBE00F2C650 /* IdentifierConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierConstants.swift; sourceTree = "<group>"; };
+		10D2101620AD62B1009F6D31 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		125B65BE42F88D7BDDF2F198 /* Pods-Paid to Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.release.xcconfig"; sourceTree = "<group>"; };
 		4D068EE91D510F68007FE30A /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
@@ -330,6 +347,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1047795320B293D6003D4086 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				1047795720B29803003D4086 /* TextFieldsEffects.swift */,
+				1047795620B2959C003D4086 /* TextFieldEffects.h */,
+				1047795420B293F6003D4086 /* HoshiTextField.swift */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
 		10924C71209B026F00F2C650 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +432,7 @@
 		52227FD31C99A321002DBBFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1047795320B293D6003D4086 /* Animations */,
 				4DDD12BE1D9068D9007C11CB /* IAP */,
 				524911921CAC125C00D6E763 /* Data */,
 				52258C101C9AF04100E3DAC7 /* Navigation */,
@@ -452,6 +480,7 @@
 				4D9051621D4652210043A250 /* MapViewController.swift */,
 				105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */,
 				1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */,
+				1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -552,6 +581,11 @@
 				525150B11CA17D7900BEC445 /* ProfileViewController.swift */,
 				4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */,
 				4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */,
+				10680E5420A99DDC00DC0570 /* TempProfile.swift */,
+				10680E5620A9CAC700DC0570 /* AccountVC.swift */,
+				10680E5820A9CADF00DC0570 /* MyOrganizationsVC.swift */,
+				10D2101620AD62B1009F6D31 /* UserProfileVC.swift */,
+				1047795920B2A11F003D4086 /* ChagnePassVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1004,6 +1038,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10680E5520A99DDC00DC0570 /* TempProfile.swift in Sources */,
 				7C039DAC1CE21BCD00C7DED4 /* Transaction.swift in Sources */,
 				4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */,
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
@@ -1013,8 +1048,10 @@
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				4DBC14241DC23805003FD977 /* Double+Extensions.swift in Sources */,
 				4D2F43231D9AE6C70022B01E /* ReceiptValidationResult.swift in Sources */,
+				1006EC8F20C6B08A00A78181 /* ActivityTableVC.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */,
+				1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
 				10924C78209B048400F2C650 /* BaseVc.swift in Sources */,
 				4D97C21C1D2AF84D00EF35F7 /* CustomDatePickerView.swift in Sources */,
@@ -1026,11 +1063,13 @@
 				4DCD352D1D21624500A21739 /* Array+Extensions.swift in Sources */,
 				522994ED1CC15A4400C589C6 /* WDLeaderboardsViewController.swift in Sources */,
 				52B3E0E81CA326E7000ED657 /* LeaderboardsViewController.swift in Sources */,
+				10D2101720AD62B1009F6D31 /* UserProfileVC.swift in Sources */,
 				52B3E0DE1CA3253F000ED657 /* ActivityViewController.swift in Sources */,
 				4D63E17D1D2BDF1100E066D7 /* DateFilterViewController.swift in Sources */,
 				5218FB951CCAA2C60038E7F1 /* ConnectionManager.swift in Sources */,
 				4D97C2161D2A959100EF35F7 /* StatusType.swift in Sources */,
 				4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */,
+				10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
 				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
@@ -1056,6 +1095,7 @@
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
 				10924C73209B029800F2C650 /* GenCustomView.swift in Sources */,
 				1045EC6920A488F500B6F2D9 /* LinkOrganizationVC.swift in Sources */,
+				1047795520B293F7003D4086 /* HoshiTextField.swift in Sources */,
 				10764ACE20A5AD6F00003A6D /* Invitations.swift in Sources */,
 				525150B21CA17D7900BEC445 /* ProfileViewController.swift in Sources */,
 				1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */,
@@ -1082,6 +1122,7 @@
 				5276DE221CF8C458009B2CBE /* ActivityNotification.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
+				1047795820B29803003D4086 /* TextFieldsEffects.swift in Sources */,
 				4D6354DF1D80617500230FF4 /* UINavigationController+Extensions.swift in Sources */,
 				52FA0DFF1CECB69C00A89CF7 /* HealthKit.swift in Sources */,
 				5276DE201CF8883A009B2CBE /* LeaderboardCell.swift in Sources */,
@@ -1114,6 +1155,7 @@
 				4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
+				10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */,
 				4D936E591D25BEB600A0CB3A /* Status.swift in Sources */,
 				52A374331C9844A900E3A4A5 /* AppDelegate.swift in Sources */,
 				4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */,
@@ -1243,7 +1285,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1251,6 +1293,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1267,13 +1310,14 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

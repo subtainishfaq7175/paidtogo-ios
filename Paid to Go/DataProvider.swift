@@ -256,25 +256,25 @@ func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _
     
     // MARK: - Profile -
     
-func postUpdateProfile(user: User, completion: (_ user: User?, _ error: String?) -> Void) {
+    func postUpdateProfile(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
         
         let json = Mapper().toJSON(user)
                 
-//        ConnectionManager.sharedInstance.updateProfile(json) { (responseValue, error) in
-//            
-//            if (error == nil) {
-//                
-//                let user = Mapper<User>().map(responseValue)
-//                completion(user: user, error: nil)
-//                return
-//                
-//            } else {
-//                
-//                completion(user: nil, error: self.getError(error!))
-//                return
-//                
-//            }
-//        }
+    ConnectionManager.sharedInstance.updateProfile(params: json as [String : AnyObject]) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(JSON: responseValue  as! [String : Any])
+                completion(user, nil)
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        }
     }
     
     // MARK: - Balance -
@@ -618,8 +618,32 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
 
     
     
-    
     //    MARK: - New Requests
+    func getOrganizations(_ userId: String, completion: @escaping (_ organization: [ActivityNotification]?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.userActivities(userId) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let organizations = Mapper<ActivityNotification>().mapArray(JSONObject: (responseValue))
+                {
+                    
+                    completion(organizations, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        }
+    }
+
     func getInvitations(_ userId: String, completion: @escaping (_ invitations: [Invitations]?, _ error: String?) -> Void) {
         
 //        let json = Mapper().toJSON(user)
@@ -644,8 +668,8 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             }
         }
     }
-    func acceptInvitation(_ userId:String, invitationsId: Int, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
-        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invatation_id": invitationsId as AnyObject]) { (responseValue, error) in
+    func acceptInvitation(_ userId:String, invitationsId: Int,isOrgLinked: Bool, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
+        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject], isOrgLinked:isOrgLinked) { (responseValue, error) in
             if (error == nil) {
                 if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]){
                     completion(res, nil)
@@ -657,6 +681,7 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             }
         }
     }
+    
 }
 protocol DataProviderService {
     

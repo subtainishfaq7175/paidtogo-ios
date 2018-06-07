@@ -19,19 +19,22 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.10.143:8000/api/v1"
+    private var baseURL = "http://192.168.0.14:8080/api/v1"
 // newlly create requests according to new design
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
+    private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
+    private var recjectInvitationURL: String { return "\(baseURL)/rejectInvitation" }
+
 
 //    old requests used into new design
     private var registerURL: String { return "\(baseURL)/register" }
     private var loginURL: String { return "\(baseURL)/login" }
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var acceptInvitationURL : String { return "\(baseURL)/acceptInvitation" }
+    private var updateProfileURL : String { return "\(baseURL)/update_profile" }
 
     
 //    old requests list
-    private var updateProfileURL : String { return "\(baseURL)/update_profile" }
     private var balanceURL : String { return "\(baseURL)/balance" }
     private var paymentURL : String { return "\(baseURL)/payment" }
     private var poolTypesURL : String { return "\(baseURL)/pool_types" }
@@ -97,13 +100,13 @@ extension ConnectionManager {
 
     }
     
-//
-//    func updateProfile(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
-//
-//        let identifier = "Update Profile API - POST"
-//        self.postRequest(identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
-//
-//    }
+
+    func updateProfile(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+
+        let identifier = "Update Profile API - POST"
+        self.postRequest(identifier: identifier, url: self.updateProfileURL, params: params, apiCompletion: apiCompletion)
+
+    }
 //
 //    func facebookLogin(params: [String: AnyObject], apiCompletion: (responseValue: AnyObject?, error: String?) -> Void) {
 //
@@ -167,14 +170,28 @@ extension ConnectionManager {
 //
     
     //    MARK: - NEW REQUESTS
+    func userActivities(_ userId:String,apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "USER ACTIVITIES API - GET"
+        self.getRequest(identifier: identifier, url: self.userActivitiesURL + userId, apiCompletion: apiCompletion)
+        
+    }
     func invitations(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         let identifier = "Invitaions API - POST"
         self.postRequest(identifier: identifier, url: self.invitationsURL, params: params, apiCompletion: apiCompletion)
         
     }
-    func acceptInvitation(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
-        let identifier = "Accept Invitation API - POST"
-        self.postRequest(identifier: identifier, url: self.acceptInvitationURL, params: params, apiCompletion: apiCompletion)
+    
+    func acceptInvitation(params: [String: AnyObject],isOrgLinked: Bool, apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        var identifier  = ""
+        var url = ""
+        if isOrgLinked {
+            identifier = "Reject Invitation API - POST"
+            url = recjectInvitationURL
+        }else {
+            identifier = "Accept Invitation API - POST"
+            url = acceptInvitationURL
+        }
+        self.postRequest(identifier: identifier, url: url, params: params, apiCompletion: apiCompletion)
         
     }
     
@@ -323,14 +340,14 @@ extension ConnectionManager {
                         if let errorDetail = (value as AnyObject)["code"] as? String {
                             apiCompletion(value as AnyObject, errorDetail)
                         }  else {
-                            apiCompletion(value as AnyObject, "error_default")
+                            apiCompletion(value as AnyObject, "error_default".localize())
                         }
                         return
                     }
                     
                 } else   if response.result.isFailure {
                     
-                    apiCompletion(value as AnyObject, "error_connection")
+                    apiCompletion(value as AnyObject, "error_connection".localize())
                     
                     return
                 }

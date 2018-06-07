@@ -30,7 +30,13 @@ class AppUtils {
         viewController.present(alertController, animated: true, completion: nil)
     }
     
-    
+    //   MARK: - STRING OPERATINOS
+    func getNotAvailableStr(_ str:String?) -> String {
+        if let str = str , str != Constants.consShared.EMPTY_STR {
+            return str
+        }
+        return Constants.consShared.NA_STR
+    }
     
     // MARK: - Progress Hud -
     

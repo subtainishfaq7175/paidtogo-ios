@@ -11,8 +11,8 @@ enum AlertType:Int {
     case simpleMessge,withTask
 }
 extension UIViewController{
-//    this is generate alert for simply showing a message with no action
-    func showAlert(_ message:String, type:AlertType = .simpleMessge, title: String = "Paid to Go", btnTitle:String = "Ok") {
+//    this  generate alert for simply showing a message with no action
+    func alert(_ message:String, type:AlertType = .simpleMessge, title: String = "Paid to Go", btnTitle:String = "Ok") -> UIAlertController {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
         switch type {
@@ -22,6 +22,7 @@ extension UIViewController{
         case .withTask:
             break
         }
-        self.present(alertController, animated: true, completion: nil)
+//         self.present(alertController, animated: true, completion: nil)
+        return alertController
     }
 }
