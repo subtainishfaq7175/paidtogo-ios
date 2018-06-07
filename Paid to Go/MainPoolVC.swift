@@ -17,7 +17,8 @@ class MainPoolVC: BaseVc {
     @IBOutlet weak var stepLB: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var hkDataTV: UITableView!
-
+    @IBOutlet weak var activitySV: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         topView.cardView()
@@ -37,6 +38,22 @@ class MainPoolVC: BaseVc {
         hkDataTV.estimatedRowHeight = Constants.consShared.HUNDRED_INT.toCGFloat
         hkDataTV.register(nib, forCellReuseIdentifier: IdentifierConstants.idConsShared.LOCAL_POOL_TVC)
         
+    }
+    override func viewDidLayoutSubviews() {
+        addTabs()
+    }
+    func addTabs()  {
+        for index in 0 ... 2 {
+            let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
+            createTabVC(activityTable, frame: CGRect(x: self.activitySV.frame.size.width * index.toCGFloat, y: 0, width: self.activitySV.frame.size.width, height: self.activitySV.frame.size.height), scrollView: activitySV)
+        }
+        activitySV.contentSize = CGSize(width: activitySV.frame.width * 3.0, height: activitySV.frame.height)
+    }
+    func createTabVC(_ vc:UIViewController,frame:CGRect, scrollView :UIScrollView){
+        vc.view.frame = frame
+        self.addChildViewController(vc);
+        scrollView.addSubview(vc.view);
+        vc.didMove(toParentViewController: self)
     }
 }
 

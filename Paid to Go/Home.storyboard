@@ -3408,6 +3408,43 @@
             </objects>
             <point key="canvasLocation" x="-349" y="-759"/>
         </scene>
+        <!--Activity TableVC-->
+        <scene sceneID="wgC-5R-xFO">
+            <objects>
+                <viewController storyboardIdentifier="ActivityTableVC" id="uP3-yg-fSG" customClass="ActivityTableVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bZg-5N-R2T"/>
+                        <viewControllerLayoutGuide type="bottom" id="vNf-1c-hh1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FP7-Xv-Dpz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="276-jm-OuP">
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uP3-yg-fSG" id="iaO-wg-1R3"/>
+                                    <outlet property="delegate" destination="uP3-yg-fSG" id="gsm-H6-OD0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="276-jm-OuP" firstAttribute="leading" secondItem="FP7-Xv-Dpz" secondAttribute="leading" id="FC5-np-cUU"/>
+                            <constraint firstItem="276-jm-OuP" firstAttribute="top" secondItem="bZg-5N-R2T" secondAttribute="bottom" id="J6K-Ia-b3N"/>
+                            <constraint firstAttribute="trailing" secondItem="276-jm-OuP" secondAttribute="trailing" id="K3r-5n-7mk"/>
+                            <constraint firstItem="vNf-1c-hh1" firstAttribute="top" secondItem="276-jm-OuP" secondAttribute="bottom" id="yel-LJ-VmS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityTV" destination="276-jm-OuP" id="yLz-EF-Fh5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5z-F0-WRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="401.25" y="-705"/>
+        </scene>
         <!--Add OrganizationVC-->
         <scene sceneID="AO5-AY-D0c">
             <objects>
@@ -4034,22 +4071,26 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3J3-3p-50W">
                                         <rect key="frame" x="12" y="255" width="296" height="203"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="leX-ah-GNi" id="obq-81-MNE"/>
-                                            <outlet property="delegate" destination="leX-ah-GNi" id="kQS-PU-iPy"/>
-                                        </connections>
                                     </tableView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNC-eC-TvB">
+                                        <rect key="frame" x="16" y="255" width="288" height="205"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="3J3-3p-50W" firstAttribute="leading" secondItem="0Ax-Ln-tWq" secondAttribute="leading" constant="12" id="1ua-IH-2HX"/>
+                                    <constraint firstAttribute="bottom" secondItem="zNC-eC-TvB" secondAttribute="bottom" id="Mcn-l2-qPm"/>
                                     <constraint firstAttribute="bottom" secondItem="3J3-3p-50W" secondAttribute="bottom" constant="2" id="OBj-hj-itG"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="leading" secondItem="0Ax-Ln-tWq" secondAttribute="leading" constant="16" id="Sh6-xa-0hd"/>
                                     <constraint firstAttribute="trailing" secondItem="8i7-lU-uLK" secondAttribute="trailing" constant="16" id="Ulg-do-Dcg"/>
                                     <constraint firstItem="3J3-3p-50W" firstAttribute="top" secondItem="8i7-lU-uLK" secondAttribute="bottom" constant="8" id="hFf-qs-ibl"/>
+                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="leading" secondItem="8i7-lU-uLK" secondAttribute="leading" id="q5M-tt-luG"/>
                                     <constraint firstAttribute="trailing" secondItem="3J3-3p-50W" secondAttribute="trailing" constant="12" id="v1M-8K-RV2"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="height" secondItem="0Ax-Ln-tWq" secondAttribute="height" multiplier="0.52" id="wTb-1O-LJa"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="top" secondItem="0Ax-Ln-tWq" secondAttribute="top" constant="8" id="wfb-gZ-06U"/>
+                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="top" secondItem="8i7-lU-uLK" secondAttribute="bottom" constant="8" id="xSu-Ga-SUQ"/>
+                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="trailing" secondItem="8i7-lU-uLK" secondAttribute="trailing" id="yBk-tC-Wq5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4066,6 +4107,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activitySV" destination="zNC-eC-TvB" id="Nie-85-qgs"/>
                         <outlet property="calLB" destination="3ry-9w-ac4" id="MB6-aw-GCb"/>
                         <outlet property="gasLB" destination="gwz-I6-lGn" id="vzV-OJ-FbT"/>
                         <outlet property="hkDataTV" destination="3J3-3p-50W" id="IfG-Uo-sZM"/>

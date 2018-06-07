@@ -19,7 +19,7 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.0.12:8000/api/v1"
+    private var baseURL = "http://192.168.0.14:8080/api/v1"
 // newlly create requests according to new design
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
     private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }

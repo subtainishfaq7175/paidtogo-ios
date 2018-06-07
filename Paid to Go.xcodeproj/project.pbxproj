@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1006EC8F20C6B08A00A78181 /* ActivityTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */; };
 		10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10268C3420A080BB0037336A /* HealthKit.framework */; };
 		1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */; };
 		1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */; };
@@ -166,6 +167,7 @@
 
 /* Begin PBXFileReference section */
 		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
+		1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableVC.swift; sourceTree = "<group>"; };
 		10268C3420A080BB0037336A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPoolVC.swift; sourceTree = "<group>"; };
 		1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTVC.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				4D9051621D4652210043A250 /* MapViewController.swift */,
 				105C7E2F20A34D5F00299F4D /* AddOrganizationVC.swift */,
 				1045EC6820A488F500B6F2D9 /* LinkOrganizationVC.swift */,
+				1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1045,6 +1048,7 @@
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
 				4DBC14241DC23805003FD977 /* Double+Extensions.swift in Sources */,
 				4D2F43231D9AE6C70022B01E /* ReceiptValidationResult.swift in Sources */,
+				1006EC8F20C6B08A00A78181 /* ActivityTableVC.swift in Sources */,
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */,
 				1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */,

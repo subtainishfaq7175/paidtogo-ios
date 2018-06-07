@@ -21,6 +21,7 @@ class IdentifierConstants {
     var MY_ORGANIZATIONS_VC:String {return "MyOrganizationsVC"}
     var ACCOUNT_VC:String {return "AccountVC"}
     var CHANGE_PASS_VC:String {return "ChagnePassVC"}
+    var ACTIVITY_TABLE_VC:String {return "ActivityTableVC"}
 
 
 

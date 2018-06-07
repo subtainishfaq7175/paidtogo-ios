@@ -91,32 +91,41 @@ class HomeViewController: MenuContentViewController {
         }
     }
     func populateUI(_ index:Int, mainPool:MainPoolVC)  {
-        setString(activityData[index].savedCalories, label: mainPool.calLB)
-        setString(activityData[index].savedGas , label: mainPool.gasLB)
-        setString(activityData[index].milesTraveled, label: mainPool.traveledLB)
-        setString(activityData[index].savedCo2, label: mainPool.offsetLB)
-        setString(activityData[index].SumOfStep?.toString, label: mainPool.stepLB)
-        
-        
+//        setString(activityData[index].savedCalories, label: mainPool.calLB)
+//        setString(activityData[index].savedGas , label: mainPool.gasLB)
+//        setString(activityData[index].milesTraveled, label: mainPool.traveledLB)
+//        setString(activityData[index].savedCo2, label: mainPool.offsetLB)
+//        setString(activityData[index].SumOfStep?.toString, label: mainPool.stepLB)
+//        for index in 0 ... 2 {
+//            let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
+//            createTabVC(activityTable, frame: CGRect(x: mainPool.view.frame.size.width * index.toCGFloat, y: mainPool.activitySV.frame.origin.y, width: mainPool.activitySV.frame.size.width, height: mainPool.activitySV.frame.size.height), scrollView: mainPool.activitySV)
+//        }
+//        mainPool.activitySV.contentSize = CGSize(width: mainPool.activitySV.frame.width * 3.0, height: mainPool.activitySV.frame.height)
+//
+//        mainPool.addTabs()
     }
     // MARK: - Tabs Navigation
-    func createTabVC(_ vc:UIViewController,frame:CGRect){
+    func createTabVC(_ vc:UIViewController,frame:CGRect, scrollView :UIScrollView){
         vc.view.frame = frame
         self.addChildViewController(vc);
-        self.mainScrollView!.addSubview(vc.view);
+        scrollView.addSubview(vc.view);
         vc.didMove(toParentViewController: self)
     }
     func addTabs(){
-        if activityData.count > consShared.ZERO_INT {
-            for index in Constants.consShared.ZERO_INT...(activityData.count - consShared.ONE_INT){
+//        if activityData.count > consShared.ZERO_INT {
+//            activityData.count - consShared.ONE_INT
+            for index in Constants.consShared.ZERO_INT...(2){
                 let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
+                let frame = CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height)
+                mainPool.view.frame = frame
+                createTabVC(mainPool, frame: frame, scrollView: self.mainScrollView)
                 populateUI(index, mainPool: mainPool)
-                createTabVC(mainPool, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
+
             }
-        }
+//        }
         
-        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * activityData.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height))
-        self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((activityData.count) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
+        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * 2, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
+        self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((2) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
         
         
     }
