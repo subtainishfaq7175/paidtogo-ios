@@ -40,7 +40,7 @@ class MainPoolVC: BaseVc {
         
     }
     override func viewDidLayoutSubviews() {
-        addTabs()
+//        addTabs()
     }
     func addTabs()  {
         for index in 0 ... 2 {

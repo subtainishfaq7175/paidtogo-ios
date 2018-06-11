@@ -38,7 +38,8 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configHealtStore()
-        getActivityData()
+        self.addTabs()
+//        getActivityData()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
     }
@@ -108,7 +109,7 @@ class HomeViewController: MenuContentViewController {
     func createTabVC(_ vc:UIViewController,frame:CGRect, scrollView :UIScrollView){
         vc.view.frame = frame
         self.addChildViewController(vc);
-        scrollView.addSubview(vc.view);
+        mainScrollView.addSubview(vc.view);
         vc.didMove(toParentViewController: self)
     }
     func addTabs(){
@@ -117,9 +118,9 @@ class HomeViewController: MenuContentViewController {
             for index in Constants.consShared.ZERO_INT...(2){
                 let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
                 let frame = CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height)
-                mainPool.view.frame = frame
-                createTabVC(mainPool, frame: frame, scrollView: self.mainScrollView)
-                populateUI(index, mainPool: mainPool)
+//                mainPool.view.frame = frame
+//                populateUI(index, mainPool: mainPool)
+                createTabVC(mainPool, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
 
             }
 //        }
