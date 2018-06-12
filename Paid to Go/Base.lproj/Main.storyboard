@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,10 +107,6 @@
                                                         <state key="normal" title="Login With Facebook">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="facebookButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wlY-Fl-ZRS"/>
-                                                            <action selector="facebookButtonActionWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="13x-rd-ZbE"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.23921568627450979" green="0.3529411764705882" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -262,7 +258,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="5E1-zX-kJi"/>
                     <connections>
-                        <outlet property="facebookLoginButton" destination="zJf-Q2-7Ww" id="j1n-Ij-dlv"/>
                         <outlet property="facebookViewContainer" destination="Okt-bh-ket" id="Owv-c3-nj7"/>
                         <outlet property="forgotPasswordBottomConstraint" destination="jfx-v7-7kC" id="0p3-fQ-Jtz"/>
                         <outlet property="loginViewContainer" destination="yKn-vL-FC5" id="phE-Td-png"/>

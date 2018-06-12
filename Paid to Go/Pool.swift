@@ -31,8 +31,10 @@ public class Pool: Mappable {
     internal let kPoolSponsorLinkKey: String = "link"
     internal let kTermsAndConditionsKey: String = "terms_and_condition"
     internal let kCountryKey: String = "country"
+    internal let kStaticKey: String = "statistics"
+    internal let kActiviesKey: String = "activities"
+    internal let kNationalKey: String = "national"
 
-    
     
     // MARK: Properties
     public var quantMembers: Int?
@@ -54,6 +56,11 @@ public class Pool: Mappable {
     public var sponsorLink: String?
     public var termsAndConditions: String?
     public var country: String?
+    public var statistics: ActivityResponse? = ActivityResponse()
+    public var activities: [ActivityNotification]? = [ActivityNotification]()
+    public var id: Int?
+    public var national: Int?
+
 
     // MARK: ObjectMapper Initalizers
     /**
@@ -79,6 +86,7 @@ public class Pool: Mappable {
         name <- map[kPoolNameKey]
         moneyAvailable <- map[kPoolMoneyAvailableKey]
         internalIdentifier <- map[kPoolInternalIdentifierKey]
+        id <- map[kPoolInternalIdentifierKey]
         iconPhoto <- map[kPoolIconPhotoKey]
         open <- map[kPoolOpenKey]
         destinationLongitude <- map[kPoolDestinationLongitudeKey]
@@ -90,6 +98,9 @@ public class Pool: Mappable {
         sponsorLink <- map[kPoolSponsorLinkKey]
         termsAndConditions <- map[kTermsAndConditionsKey]
         country <- map[kCountryKey]
+        statistics <- map[kStaticKey]
+        activities <- map[kActiviesKey]
+        national <- map[kNationalKey]
 
     }
     
@@ -142,6 +153,15 @@ public class Pool: Mappable {
         }
         if country != nil {
             dictionary.updateValue(country! as AnyObject, forKey: kCountryKey)
+        }
+        if let statistics = statistics {
+            dictionary.updateValue(statistics as AnyObject, forKey: kStaticKey)
+        }
+        if let activities = activities {
+            dictionary.updateValue(activities as AnyObject, forKey: kActiviesKey)
+        }
+        if let national = national {
+            dictionary.updateValue(national as AnyObject, forKey: kNationalKey)
         }
         return dictionary
     }

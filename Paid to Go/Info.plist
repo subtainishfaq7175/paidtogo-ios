@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>02</string>
 	<key>FacebookAppID</key>
 	<string>1730253337217048</string>
 	<key>FacebookDisplayName</key>
@@ -108,6 +108,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

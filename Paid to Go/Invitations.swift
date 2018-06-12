@@ -12,6 +12,7 @@ import ObjectMapper
 class Invitations: Mappable {
     
     var id: Int!
+    var idStr: String!
     var pool: Pool?
     var user: User?
     
@@ -29,6 +30,7 @@ class Invitations: Mappable {
     func mapping(map: Map) {
         
         id              <- map["id"]
+        idStr              <- map["id"]
         user         <- map["user"]
         pool           <- map["pool"]
     }

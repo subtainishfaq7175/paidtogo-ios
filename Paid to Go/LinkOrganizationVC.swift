@@ -31,8 +31,8 @@ class LinkOrganizationVC: BaseVc {
     }
     func getInvitations()  {
         self.showProgressHud()
-//        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitation, error) in
-        DataProvider.sharedInstance.getInvitations("182", completion: { (invitations, error) in
+        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitations, error) in
+//        DataProvider.sharedInstance.getInvitations("182", completion: { (invitations, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
@@ -65,8 +65,13 @@ extension LinkOrganizationVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idConsShared.ORGANIZATION_TVC, for: indexPath) as! OrganizationTVC
         cell.selectionStyle = .none
-        if let id = invitations[indexPath.row].id {
-            cell.invitationId = id
+        if let id = invitations[indexPath.row].idStr {
+            //            MARK: - NEED TO CAST TO INT FROM SERVER
+            if let invitationId = Int(id) {
+                cell.invitationId = invitationId
+            }else {
+                cell.invitationId = consShared.ZERO_INT
+            }
         }
         if let company = invitations[indexPath.row].pool?.name, company != consShared.EMPTY_STR {
             cell.companyNameLB.text = company
@@ -79,7 +84,9 @@ extension LinkOrganizationVC : UITableViewDataSource{
             cell.countryLB.text = "Not available"
         }
         if let url = invitations[indexPath.row].pool?.banner {
-            cell.bannerIV.yy_setImage(with: URL(string:url), placeholder: #imageLiteral(resourceName: "ic_ph_organization_p4"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
+            //            MARK: - NEED TO GET COMPLETE URL FROM SERVER
+            let  completeUrl = "https://www.paidtogo.com/images/pools/"+url
+            cell.bannerIV.yy_setImage(with: URL(string:completeUrl), placeholder: #imageLiteral(resourceName: "ic_paidtogo"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
                 
             })
 

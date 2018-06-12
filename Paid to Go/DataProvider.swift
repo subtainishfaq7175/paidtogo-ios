@@ -619,15 +619,15 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
     
     
     //    MARK: - New Requests
-    func getOrganizations(_ userId: String, completion: @escaping (_ organization: [ActivityNotification]?, _ error: String?) -> Void) {
+    func getOrganizations(_ userId: String, completion: @escaping (_ organization: ActivePoolsRes?, _ error: String?) -> Void) {
         
         //        let json = Mapper().toJSON(user)
         
-        ConnectionManager.sharedInstance.userActivities(userId) { (responseValue, error) in
+        ConnectionManager.sharedInstance.activePools(userId) { (responseValue, error) in
             
             if (error == nil) {
                 
-                if let organizations = Mapper<ActivityNotification>().mapArray(JSONObject: (responseValue))
+                if let organizations = Mapper<ActivePoolsRes>().map(JSON: (responseValue as! [String : Any]))
                 {
                     
                     completion(organizations, nil)
