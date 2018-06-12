@@ -31,8 +31,8 @@ class LinkOrganizationVC: BaseVc {
     }
     func getInvitations()  {
         self.showProgressHud()
-//        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitation, error) in
-        DataProvider.sharedInstance.getInvitations("182", completion: { (invitations, error) in
+        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitations, error) in
+//        DataProvider.sharedInstance.getInvitations("182", completion: { (invitations, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {

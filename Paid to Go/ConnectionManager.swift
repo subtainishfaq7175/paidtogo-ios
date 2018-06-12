@@ -19,7 +19,7 @@ class ConnectionManager {
     
 //    private var baseURL = "https://www.paidtogo.com/api/v1"
 // local server
-    private var baseURL = "http://192.168.0.14:8080/api/v1"
+    private var baseURL = "http://192.168.0.14:8000/api/v1"
 // newlly create requests according to new design
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
     private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
@@ -32,6 +32,7 @@ class ConnectionManager {
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var acceptInvitationURL : String { return "\(baseURL)/acceptInvitation" }
     private var updateProfileURL : String { return "\(baseURL)/update_profile" }
+    private var activePool: String { return "\(baseURL)/activePools" }
 
     
 //    old requests list
@@ -173,6 +174,13 @@ extension ConnectionManager {
     func userActivities(_ userId:String,apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         let identifier = "USER ACTIVITIES API - GET"
         self.getRequest(identifier: identifier, url: self.userActivitiesURL + userId, apiCompletion: apiCompletion)
+        
+    }
+    func activePools(_ userId:String,apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "ACTIVE POOLS API - POST"
+        let params:[String: AnyObject] = ["user_id": userId as AnyObject]
+        self.postRequest(identifier: identifier, url: self.activePool, params: params, apiCompletion: apiCompletion)
+//        self.getRequest(identifier: identifier, url: self.userActivitiesURL + userId, apiCompletion: apiCompletion)
         
     }
     func invitations(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {

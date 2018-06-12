@@ -37,6 +37,11 @@ public class ActivityNotification: Mappable {
     internal let kActivityNotificationPhotoKey : String = "photo"
     internal let kActivityNotificationEndLatKey : String = "end_latitude"
     internal let kActivityNotificationEndLongKey : String = "end_longitude"
+    
+    internal let kActivityNotificationStepCountKey : String = "total_steps"
+    internal let kActivityNotificationActivityTypeKey : String = "activity_type"
+
+    
     // MARK: Properties
 	public var savedCo2: String?
     public var savedCalories: String?
@@ -64,7 +69,8 @@ public class ActivityNotification: Mappable {
     public var userId: Int?
     public var photo: String?
 
-
+    public var activityType: Int?
+    public var totalSteps: Int?
     // MARK: ObjectMapper Initalizers
     /**
     Map a JSON object to this class using ObjectMapper
@@ -103,7 +109,8 @@ public class ActivityNotification: Mappable {
     endLatitude <- map[kActivityNotificationEndLatKey]
     userId <- map[kActivityNotificationUserIDKey]
     photo <- map[kActivityNotificationPhotoKey]
-
+    activityType <- map[kActivityNotificationActivityTypeKey]
+    totalSteps <- map[kActivityNotificationStepCountKey]
     }
 
     /**
@@ -174,7 +181,12 @@ public class ActivityNotification: Mappable {
         if let photo = photo {
             dictionary.updateValue(photo as AnyObject, forKey: kActivityNotificationPhotoKey)
         }
-
+        if let activityType = activityType {
+            dictionary.updateValue(activityType as AnyObject, forKey: kActivityNotificationActivityTypeKey)
+        }
+        if let totalSteps = totalSteps {
+            dictionary.updateValue(totalSteps as AnyObject, forKey: kActivityNotificationStepsKey)
+        }
 
         return dictionary
     }

@@ -3429,7 +3429,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="276-jm-OuP" firstAttribute="leading" secondItem="FP7-Xv-Dpz" secondAttribute="leading" id="FC5-np-cUU"/>
                             <constraint firstItem="276-jm-OuP" firstAttribute="top" secondItem="bZg-5N-R2T" secondAttribute="bottom" id="J6K-Ia-b3N"/>

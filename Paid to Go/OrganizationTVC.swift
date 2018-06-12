@@ -63,7 +63,7 @@ class OrganizationTVC: UITableViewCell {
 //    }
     func linkToOrganization(_ parentVC:UIViewController, isOrgLinked: Bool)  {
         AppUtils.utilsShared.showProgressHud(parentVC)
-        DataProvider.sharedInstance.acceptInvitation("182", invitationsId: 259, isOrgLinked:isOrgLinked,completion: { (response, error) in
+        DataProvider.sharedInstance.acceptInvitation((User.currentUser?.userId)!, invitationsId: invitationId, isOrgLinked:isOrgLinked,completion: { (response, error) in
             AppUtils.utilsShared.dismissProgressHud(parentVC)
             
             if let error = error, error.isEmpty == false {

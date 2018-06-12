@@ -31,8 +31,9 @@ public class Pool: Mappable {
     internal let kPoolSponsorLinkKey: String = "link"
     internal let kTermsAndConditionsKey: String = "terms_and_condition"
     internal let kCountryKey: String = "country"
+    internal let kStaticKey: String = "statistics"
+    internal let kActiviesKey: String = "activities"
 
-    
     
     // MARK: Properties
     public var quantMembers: Int?
@@ -54,7 +55,8 @@ public class Pool: Mappable {
     public var sponsorLink: String?
     public var termsAndConditions: String?
     public var country: String?
-
+    public var statistics: ActivityResponse? = ActivityResponse()
+    public var activities: [ActivityNotification]? = [ActivityNotification]()
     // MARK: ObjectMapper Initalizers
     /**
      Map a JSON object to this class using ObjectMapper
@@ -90,7 +92,8 @@ public class Pool: Mappable {
         sponsorLink <- map[kPoolSponsorLinkKey]
         termsAndConditions <- map[kTermsAndConditionsKey]
         country <- map[kCountryKey]
-
+        statistics <- map[kStaticKey]
+        activities <- map[kActiviesKey]
     }
     
     /**
@@ -142,6 +145,12 @@ public class Pool: Mappable {
         }
         if country != nil {
             dictionary.updateValue(country! as AnyObject, forKey: kCountryKey)
+        }
+        if let statistics = statistics {
+            dictionary.updateValue(statistics as AnyObject, forKey: kStaticKey)
+        }
+        if let activities = activities {
+            dictionary.updateValue(activities as AnyObject, forKey: kActiviesKey)
         }
         return dictionary
     }

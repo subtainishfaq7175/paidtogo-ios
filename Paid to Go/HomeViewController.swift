@@ -19,7 +19,7 @@ class HomeViewController: MenuContentViewController {
     @IBOutlet weak var elautlet: UILabel! // title label
     let geolocationManager =  GeolocationManager.sharedInstance
     var tabsAddedCount = Constants.consShared.ZERO_INT
-    var activityData = [ActivityNotification]()
+    var pools = [Pool]()
 
     // MARK: - View life cycle -
     
@@ -38,8 +38,10 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configHealtStore()
-        self.addTabs()
-//        getActivityData()
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
+//            self.addTabs()
+//        }
+        getActivityData()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
     }
@@ -65,7 +67,7 @@ class HomeViewController: MenuContentViewController {
     func getActivityData()  {
         self.showProgressHud()
             DataProvider.sharedInstance.getOrganizations((User.currentUser?.userId)!, completion: { (data, error) in
-//        DataProvider.sharedInstance.getOrganizations("2", completion: { (data, error) in
+//        DataProvider.sharedInstance.getOrganizations("180", completion: { (data, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
@@ -75,7 +77,15 @@ class HomeViewController: MenuContentViewController {
             }
             
             if let data = data {
-                self.activityData = data
+                if let sponsorPools = data.sponsorPools {
+                    for pool in sponsorPools {
+                        self.pools.append(pool)
+                    }
+                }
+                if let nationalPool = data.nationalPool {
+                    self.pools.append(nationalPool)
+                }
+//                self.activityData = data
 
 //                if tabsAddedCount == Constants.consShared.ONE_INT {
 //                }
@@ -91,12 +101,22 @@ class HomeViewController: MenuContentViewController {
             label.text = consShared.ZERO_INT.toString
         }
     }
+    func setDouble (_ value:Double?, label:UILabel){
+        if let value = value {
+            label.text = "\(value)"
+        }else{
+            label.text = "\(consShared.ZERO_INT.toDouble)"
+        }
+    }
     func populateUI(_ index:Int, mainPool:MainPoolVC)  {
-//        setString(activityData[index].savedCalories, label: mainPool.calLB)
-//        setString(activityData[index].savedGas , label: mainPool.gasLB)
-//        setString(activityData[index].milesTraveled, label: mainPool.traveledLB)
-//        setString(activityData[index].savedCo2, label: mainPool.offsetLB)
-//        setString(activityData[index].SumOfStep?.toString, label: mainPool.stepLB)
+        if let statics = pools[index].statistics{
+            setDouble(statics.savedCalories, label: mainPool.calLB)
+            setDouble(statics.savedGas , label: mainPool.gasLB)
+            setDouble(statics.milesTraveled, label: mainPool.traveledLB)
+            setDouble(statics.savedCo2, label: mainPool.offsetLB)
+            setDouble(statics.totalSteps, label: mainPool.stepLB)
+        }
+   
 //        for index in 0 ... 2 {
 //            let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
 //            createTabVC(activityTable, frame: CGRect(x: mainPool.view.frame.size.width * index.toCGFloat, y: mainPool.activitySV.frame.origin.y, width: mainPool.activitySV.frame.size.width, height: mainPool.activitySV.frame.size.height), scrollView: mainPool.activitySV)
@@ -113,20 +133,23 @@ class HomeViewController: MenuContentViewController {
         vc.didMove(toParentViewController: self)
     }
     func addTabs(){
-//        if activityData.count > consShared.ZERO_INT {
+        if pools.count > consShared.ZERO_INT {
 //            activityData.count - consShared.ONE_INT
-            for index in Constants.consShared.ZERO_INT...(2){
+            for index in Constants.consShared.ZERO_INT...(pools.count - consShared.ONE_INT){
                 let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
                 let frame = CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height)
-//                mainPool.view.frame = frame
-//                populateUI(index, mainPool: mainPool)
+                mainPool.view.frame = frame
+                populateUI(index, mainPool: mainPool)
                 createTabVC(mainPool, frame: CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
+                if let activities = pools[index].activities {
+                    mainPool.activities = activities
+                }
 
             }
-//        }
+        }
         
-        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * 2, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
-        self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((2) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
+        createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * pools.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
+        self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((pools.count) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
         
         
     }

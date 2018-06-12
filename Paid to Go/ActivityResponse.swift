@@ -9,8 +9,10 @@
 import Foundation
 import ObjectMapper
 
-class ActivityResponse: Mappable {
+public class ActivityResponse: Mappable {
     
+    var milesTraveled: Double?
+    var totalSteps: Double?
     var savedCalories: Double?
     var earnedMoney: Double?
     var savedGas: Double?
@@ -20,17 +22,19 @@ class ActivityResponse: Mappable {
         
     }
     
-    required init?(map: Map) {
+    required public init?(map: Map) {
         
     }
     
     // Mappable
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         
         savedCalories       <-  map["saved_calories"]
         earnedMoney         <-  map["earned_money"]
         savedCo2            <-  map["saved_co2"]
         savedGas            <-  map["saved_gas"]
+        milesTraveled       <-  map["miles_traveled"]
+        totalSteps          <-  map["total_steps"]
 
         
     }
