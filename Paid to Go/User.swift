@@ -27,7 +27,8 @@ class User: Mappable {
     var accessToken: String?
     var paymentToken: String?
     var userId: String?
-    
+    var userIdInt: Int?
+
     var type: String?
     
     // MARK: Locally persisted, no API
@@ -113,6 +114,7 @@ class User: Mappable {
         profilePicture      <- map["profile_picture"]
         accessToken         <- map["access_token"]
         userId              <- map["user_id"]
+        userIdInt           <- map["user_id"]
         paypalAccount       <- map["paypal_account"]
         type                <- map["user_type"]
         paymentToken        <- map["payment_token"]

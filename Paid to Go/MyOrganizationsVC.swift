@@ -136,7 +136,11 @@ extension MyOrganizationsVC : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: idConsShared.ORGANIZATION_TVC, for: indexPath) as! OrganizationTVC
         cell.selectionStyle = .none
         if let id = linkedOrgs[indexPath.row].internalIdentifier {
-            cell.invitationId = Int(id)!
+            if let idStr = Int(id) {
+                cell.invitationId = idStr
+            }else {
+                cell.invitationId = consShared.ZERO_INT
+            }
         }
         if let company = linkedOrgs[indexPath.row].name, company != consShared.EMPTY_STR {
             cell.companyNameLB.text = company
@@ -149,7 +153,8 @@ extension MyOrganizationsVC : UITableViewDataSource{
             cell.countryLB.text = "Not available"
         }
         if let url = linkedOrgs[indexPath.row].banner {
-            cell.bannerIV.yy_setImage(with: URL(string:url), placeholder: #imageLiteral(resourceName: "ic_ph_organization_p4"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
+            let  completeUrl = "https://www.paidtogo.com/images/pools/"+url
+            cell.bannerIV.yy_setImage(with: URL(string:completeUrl), placeholder: #imageLiteral(resourceName: "ic_paidtogo"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
 
             })
 
@@ -157,6 +162,12 @@ extension MyOrganizationsVC : UITableViewDataSource{
         cell.isOrgLinked = true
         cell.parentVC = self
 //        cell.setBtnTitle()
+        if let nationalPool = linkedOrgs[indexPath.row].national, nationalPool == consShared.ONE_INT {
+            cell.linkOL.isEnabled = false
+        }else {
+            cell.linkOL.isEnabled = true
+
+        }
         cell.linkOL.setTitle("Linked", for: .normal)
         return cell
     }

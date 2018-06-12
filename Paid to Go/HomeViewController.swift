@@ -38,9 +38,7 @@ class HomeViewController: MenuContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configHealtStore()
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
-//            self.addTabs()
-//        }
+//        PoolSyncAlert.showAlert()
         getActivityData()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
@@ -56,6 +54,8 @@ class HomeViewController: MenuContentViewController {
         
     }
     
+    
+   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
@@ -65,8 +65,11 @@ class HomeViewController: MenuContentViewController {
     //    MARK: - FETCH DATA FROM SERVER
     
     func getActivityData()  {
+        guard let userID = User.currentUser?.userId else {
+            return
+        }
         self.showProgressHud()
-            DataProvider.sharedInstance.getOrganizations((User.currentUser?.userId)!, completion: { (data, error) in
+            DataProvider.sharedInstance.getOrganizations(userID, completion: { (data, error) in
 //        DataProvider.sharedInstance.getOrganizations("180", completion: { (data, error) in
             self.dismissProgressHud()
             

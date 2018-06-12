@@ -33,6 +33,7 @@ public class Pool: Mappable {
     internal let kCountryKey: String = "country"
     internal let kStaticKey: String = "statistics"
     internal let kActiviesKey: String = "activities"
+    internal let kNationalKey: String = "national"
 
     
     // MARK: Properties
@@ -57,6 +58,10 @@ public class Pool: Mappable {
     public var country: String?
     public var statistics: ActivityResponse? = ActivityResponse()
     public var activities: [ActivityNotification]? = [ActivityNotification]()
+    public var id: Int?
+    public var national: Int?
+
+
     // MARK: ObjectMapper Initalizers
     /**
      Map a JSON object to this class using ObjectMapper
@@ -81,6 +86,7 @@ public class Pool: Mappable {
         name <- map[kPoolNameKey]
         moneyAvailable <- map[kPoolMoneyAvailableKey]
         internalIdentifier <- map[kPoolInternalIdentifierKey]
+        id <- map[kPoolInternalIdentifierKey]
         iconPhoto <- map[kPoolIconPhotoKey]
         open <- map[kPoolOpenKey]
         destinationLongitude <- map[kPoolDestinationLongitudeKey]
@@ -94,6 +100,8 @@ public class Pool: Mappable {
         country <- map[kCountryKey]
         statistics <- map[kStaticKey]
         activities <- map[kActiviesKey]
+        national <- map[kNationalKey]
+
     }
     
     /**
@@ -151,6 +159,9 @@ public class Pool: Mappable {
         }
         if let activities = activities {
             dictionary.updateValue(activities as AnyObject, forKey: kActiviesKey)
+        }
+        if let national = national {
+            dictionary.updateValue(national as AnyObject, forKey: kNationalKey)
         }
         return dictionary
     }

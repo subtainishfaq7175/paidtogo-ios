@@ -4111,7 +4111,9 @@
                         <outlet property="calLB" destination="3ry-9w-ac4" id="MB6-aw-GCb"/>
                         <outlet property="gasLB" destination="gwz-I6-lGn" id="vzV-OJ-FbT"/>
                         <outlet property="hkDataTV" destination="3J3-3p-50W" id="IfG-Uo-sZM"/>
+                        <outlet property="numberLB" destination="rfU-Ha-ZEP" id="zge-ve-bY3"/>
                         <outlet property="offsetLB" destination="Loe-D0-AAk" id="4dp-WT-QRM"/>
+                        <outlet property="pointsLB" destination="4dz-Cp-E2g" id="32u-LC-xUt"/>
                         <outlet property="stepLB" destination="WBq-b0-hYo" id="eO7-il-xJT"/>
                         <outlet property="topView" destination="8i7-lU-uLK" id="ir3-J1-Dbn"/>
                         <outlet property="traveledLB" destination="c3X-VN-hqJ" id="Ylp-6V-AAO"/>

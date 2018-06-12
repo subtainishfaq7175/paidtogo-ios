@@ -27,6 +27,7 @@ class Constants {
     let THREE_INT:Int  = 3
     let FOUR_INT:Int  = 4
     let FIVE_INT:Int  = 5
+    let EIGHT_INT:Int  = 8
     let HUNDRED_INT:Int  = 100
 //    Fonts name
     let OPEN_SANS_SEMIBOLD = "OpenSans-Semibold"

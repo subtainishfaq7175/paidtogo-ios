@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1006EC8F20C6B08A00A78181 /* ActivityTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */; };
 		10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10268C3420A080BB0037336A /* HealthKit.framework */; };
+		103D80E720CF9BDF004FD490 /* PoolSyncAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103D80E620CF9BDF004FD490 /* PoolSyncAlert.xib */; };
+		103D80E920CFA114004FD490 /* PoolSyncAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D80E820CFA114004FD490 /* PoolSyncAlert.swift */; };
 		1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */; };
 		1045EC6620A4823B00B6F2D9 /* OrganizationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */; };
 		1045EC6720A4823B00B6F2D9 /* OrganizationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */; };
@@ -170,6 +172,8 @@
 		03696EAC0DAA521129CB80CB /* Pods-Paid to Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paid to Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go.debug.xcconfig"; sourceTree = "<group>"; };
 		1006EC8E20C6B08A00A78181 /* ActivityTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableVC.swift; sourceTree = "<group>"; };
 		10268C3420A080BB0037336A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		103D80E620CF9BDF004FD490 /* PoolSyncAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoolSyncAlert.xib; sourceTree = "<group>"; };
+		103D80E820CFA114004FD490 /* PoolSyncAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolSyncAlert.swift; sourceTree = "<group>"; };
 		1045EC6220A436F900B6F2D9 /* MainPoolVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPoolVC.swift; sourceTree = "<group>"; };
 		1045EC6420A4823B00B6F2D9 /* OrganizationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTVC.swift; sourceTree = "<group>"; };
 		1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizationTVC.xib; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 				4D068EEC1D5111EF007FE30A /* TableViewHeader.xib */,
 				10924C7B209B20DC00F2C650 /* LocalPoolTVC.xib */,
 				1045EC6520A4823B00B6F2D9 /* OrganizationTVC.xib */,
+				103D80E620CF9BDF004FD490 /* PoolSyncAlert.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 		4D068EE81D510F3C007FE30A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				103D80E820CFA114004FD490 /* PoolSyncAlert.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -937,6 +943,7 @@
 				52444B711CDA6EF900934656 /* OpenSans-BoldItalic.ttf in Resources */,
 				10924C7D209B20DC00F2C650 /* LocalPoolTVC.xib in Resources */,
 				52A374381C9844A900E3A4A5 /* Main.storyboard in Resources */,
+				103D80E720CF9BDF004FD490 /* PoolSyncAlert.xib in Resources */,
 				52444B761CDA6EF900934656 /* OpenSans-LightItalic.ttf in Resources */,
 				52444B721CDA6EF900934656 /* OpenSans-ExtraBold.ttf in Resources */,
 				52D5B1101CAD779A00E0BCE1 /* Localizable.strings in Resources */,
@@ -1054,6 +1061,7 @@
 				4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */,
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
 				4D2F43241D9AE6C70022B01E /* InApp.swift in Sources */,
+				103D80E920CFA114004FD490 /* PoolSyncAlert.swift in Sources */,
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,

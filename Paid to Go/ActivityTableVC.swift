@@ -69,7 +69,7 @@ extension ActivityTableVC : UITableViewDataSource {
             }
             break
         case consShared.TWO_INT:
-            cell.itemIV.image = #imageLiteral(resourceName: "ic_bike")
+            cell.itemIV.image = #imageLiteral(resourceName: "ic_weight_with_bg")
             cell.itemTitleLB.text = "DAILY WORKOUT"
             if let activity = activity, let calories = activity.savedCalories {
                 cell.itemValueLB.text = "\(calories) kCal"

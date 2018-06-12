@@ -10,6 +10,8 @@ import UIKit
 
 class MainPoolVC: BaseVc {
 // Health fit ui elements
+    @IBOutlet weak var pointsLB: UILabel!
+    @IBOutlet weak var numberLB: UILabel!
     @IBOutlet weak var calLB: UILabel!
     @IBOutlet weak var offsetLB: UILabel!
     @IBOutlet weak var traveledLB: UILabel!
@@ -19,6 +21,7 @@ class MainPoolVC: BaseVc {
     @IBOutlet weak var hkDataTV: UITableView!
     @IBOutlet weak var activitySV: UIScrollView!
     var activities = [ActivityNotification]()
+    var isSubView = false
     override func viewDidLoad() {
         super.viewDidLoad()
         topView.cardView()
@@ -40,9 +43,12 @@ class MainPoolVC: BaseVc {
         
     }
     override func viewDidLayoutSubviews() {
-        if activities.count > consShared.ZERO_INT {
+        if activities.count > consShared.ZERO_INT && !isSubView {
 //            hkDataTV.reloadData()
-            addTabs()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                self.addTabs()
+                self.isSubView = true
+            }
 
         }
     }
@@ -51,7 +57,7 @@ class MainPoolVC: BaseVc {
             for index in consShared.ZERO_INT ... (activities.count - consShared.ONE_INT) {
                 let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
                     activityTable.activity = activities[index]
-                createTabVC(activityTable, frame: CGRect(x: self.topView.frame.size.width * index.toCGFloat, y: consShared.ZERO_INT.toCGFloat, width: self.topView.frame.size.width, height: self.activitySV.frame.size.height), scrollView: activitySV)
+                createTabVC(activityTable, frame: CGRect(x: (self.topView.frame.size.width) * index.toCGFloat, y: consShared.ZERO_INT.toCGFloat, width: self.topView.frame.size.width, height: self.activitySV.frame.size.height), scrollView: activitySV)
                 activityTable.activityTV.reloadData()
             }
             activitySV.contentSize = CGSize(width: topView.frame.width * activities.count.toCGFloat, height: activitySV.frame.height)

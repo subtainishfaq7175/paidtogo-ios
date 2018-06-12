@@ -200,12 +200,17 @@ class SignupViewController: ViewController {
                 if error == nil && user != nil {
                     
                     newUser.accessToken = user!.accessToken
-                    newUser.userId = user!.userId
+                    if let userID = user!.userIdInt {
+                        newUser.userId = "\(userID)"
+                    }else {
+                        newUser.userId = "\(Constants.consShared.ZERO_INT)"
+
+                    }
                     newUser.profilePicture = user?.profilePicture
-                    newUser.email = user!.email
-                    newUser.name = user?.name
-                    newUser.lastName = user?.lastName
-                    newUser.bio = user?.bio
+//                    newUser.email = user!.email
+//                    newUser.name = user?.name
+//                    newUser.lastName = user?.lastName
+//                    newUser.bio = user?.bio
                     
                     User.currentUser = newUser
                     
