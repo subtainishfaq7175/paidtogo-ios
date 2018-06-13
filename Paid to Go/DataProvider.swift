@@ -643,6 +643,37 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
             }
         }
     }
+    func postUserActivity(_ poolId: Int, miles: Double, steps:Double, activityType:Int,  completion: @escaping (_ organization: GenericResponse?, _ error: String?) -> Void) {
+        
+        
+        
+        
+        let params:[String:AnyObject] = ["pool_id":poolId as AnyObject,"access_token":User.currentUser?.accessToken  as AnyObject,"start_date_time":"2017-10-19 23:33:39" as AnyObject,"end_latitude":"-58.623286984147" as AnyObject,"end_longitude":"-58.623286984147" as AnyObject,"miles_traveled":miles as AnyObject,"start_latitude":"-34.648671381877" as AnyObject,"start_longitude":"-58.623290159003" as AnyObject,"total_steps":steps as AnyObject, "end_date_time":"2018-05-14 13:33:39" as AnyObject,"activity_type":activityType as AnyObject]
+        
+        
+        
+        //        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.postActivity(params: params) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let organizations = Mapper<GenericResponse>().map(JSON: (responseValue as! [String : Any]))
+                {
+                    
+                    completion(organizations, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        }
+    }
 
     func getInvitations(_ userId: String, completion: @escaping (_ invitations: [Invitations]?, _ error: String?) -> Void) {
         

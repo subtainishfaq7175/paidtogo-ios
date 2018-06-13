@@ -20,25 +20,55 @@ class HomeViewController: MenuContentViewController {
     let geolocationManager =  GeolocationManager.sharedInstance
     var tabsAddedCount = Constants.consShared.ZERO_INT
     var pools = [Pool]()
+    static var steps:Double? = Constants.consShared.ZERO_INT.toDouble
+    static var mileTravel:Double? = Constants.consShared.ZERO_INT.toDouble
 
     // MARK: - View life cycle -
-    
+    @objc func showSyncAlert(sender: AnyObject?) {
+        configHealtStore()
+        showSyncAlert()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setNavigationBarVisible(visible: true)
-        
+        addSyncButton()
        geolocationManager.initLocationManager()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             print("\(self.geolocationManager.getCurrentLocationCoordinate().latitude), \(self.geolocationManager.getCurrentLocationCoordinate().longitude)")
             
         }
     }
-    
+    func addSyncButton() {
+        
+        let menuButtonImage = #imageLiteral(resourceName: "ic_sync_p4").withRenderingMode(.alwaysTemplate)
+        
+        let menuButton = UIBarButtonItem(
+            image: menuButtonImage,
+            style: .done,
+            target: self,
+            action: #selector(showSyncAlert(sender:)) // "menuButtonAction:"
+        )
+        
+        menuButton.tintColor = UIColor.black
+        menuButton.isEnabled = true
+        
+        self.navigationItem.rightBarButtonItem = menuButton
+    }
+
+    func getPools() -> [ActivityType] {
+        var poolsData = [ActivityType]()
+        for pool in pools {
+            if let title = pool.name , let id = pool.internalIdentifier {
+                poolsData.append(ActivityType(title: title, id: Int(id)!))
+            }
+        }
+        return poolsData
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configHealtStore()
-//        PoolSyncAlert.showAlert()
+       
         getActivityData()
         customizeNavigationBarWithTitleAndMenu()
         NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
@@ -80,6 +110,7 @@ class HomeViewController: MenuContentViewController {
             }
             
             if let data = data {
+                self.pools = [Pool]()
                 if let sponsorPools = data.sponsorPools {
                     for pool in sponsorPools {
                         self.pools.append(pool)
@@ -88,14 +119,15 @@ class HomeViewController: MenuContentViewController {
                 if let nationalPool = data.nationalPool {
                     self.pools.append(nationalPool)
                 }
-//                self.activityData = data
-
-//                if tabsAddedCount == Constants.consShared.ONE_INT {
-//                }
-//                tabsAddedCount += Constants.consShared.ONE_INT
             }
             self.addTabs()
         })
+    }
+    func showSyncAlert()  {
+        let alertNib = Bundle.main.loadNibNamed("PoolSyncAlert", owner: self, options: nil)?.first as! PoolSyncAlert
+        alertNib.pools = self.getPools()
+        alertNib.syncDelegate = self
+        alertNib.showAlert()
     }
     func setString (_ string:String?, label:UILabel){
         if let string = string {
@@ -306,3 +338,12 @@ class HomeViewController: MenuContentViewController {
     
 }
 
+extension HomeViewController : SyncDelegate {
+    func activity(synced: Bool) {
+        if synced {
+            getActivityData()
+        }else{
+            showAlert(text: "There is some network problem.")
+        }
+    }
+}
