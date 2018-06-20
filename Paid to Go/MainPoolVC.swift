@@ -10,6 +10,7 @@ import UIKit
 
 class MainPoolVC: BaseVc {
 // Health fit ui elements
+    @IBOutlet weak var poolNameLb: UILabel!
     @IBOutlet weak var pointsLB: UILabel!
     @IBOutlet weak var numberLB: UILabel!
     @IBOutlet weak var calLB: UILabel!

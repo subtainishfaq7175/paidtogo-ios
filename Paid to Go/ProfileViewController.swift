@@ -167,7 +167,7 @@ class ProfileViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addLogoutButton()
         self.populateFields()
         
         self.signUpButtonShouldChange(value: false)
@@ -182,7 +182,22 @@ class ProfileViewController: MenuContentViewController {
     
     
     // MARK: - Functions -
-    
+    func addLogoutButton() {
+        
+        let menuButtonImage = #imageLiteral(resourceName: "ic_sync_p4").withRenderingMode(.alwaysTemplate)
+        
+        let menuButton = UIBarButtonItem(
+            image: menuButtonImage,
+            style: .done,
+            target: self,
+            action: #selector(logout(sender:)) // "menuButtonAction:"
+        )
+        
+        menuButton.tintColor = UIColor.black
+        menuButton.isEnabled = true
+        
+        self.navigationItem.rightBarButtonItem = menuButton
+    }
     func configureTableView() {
         self.checkmarksTableView.dataSource = self
         self.checkmarksTableView.delegate = self

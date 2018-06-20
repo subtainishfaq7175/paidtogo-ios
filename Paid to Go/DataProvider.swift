@@ -703,6 +703,7 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
         ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject], isOrgLinked:isOrgLinked) { (responseValue, error) in
             if (error == nil) {
                 if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]){
+                    res.isLinked = isOrgLinked
                     completion(res, nil)
                 }
                 return

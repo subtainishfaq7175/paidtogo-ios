@@ -151,7 +151,8 @@ class HomeViewController: MenuContentViewController {
             setDouble(statics.savedCo2, label: mainPool.offsetLB)
             setDouble(statics.totalSteps, label: mainPool.stepLB)
         }
-   
+        setString(pools[index].name,label:mainPool.poolNameLb)
+        
 //        for index in 0 ... 2 {
 //            let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
 //            createTabVC(activityTable, frame: CGRect(x: mainPool.view.frame.size.width * index.toCGFloat, y: mainPool.activitySV.frame.origin.y, width: mainPool.activitySV.frame.size.width, height: mainPool.activitySV.frame.size.height), scrollView: mainPool.activitySV)

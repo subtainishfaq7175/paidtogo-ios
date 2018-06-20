@@ -45,18 +45,19 @@ class ActivityViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableViewHeader.configureForActivities()
-        self.configureTableView()
-        self.getNotifications()
+        //        TODO: - commented by VB
+
+//        self.tableViewHeader.configureForActivities()
+//        self.configureTableView()
+//        self.getNotifications()
         
         self.title = "menu_activity".localize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        initLayout()
+        //        TODO: - commented by VBS
+//        initLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {

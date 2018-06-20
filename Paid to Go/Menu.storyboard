@@ -210,9 +210,6 @@
                                         <state key="normal" title="Upgrade to PRO!">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="goProAction:" destination="zmc-MI-pkM" eventType="touchUpInside" id="wQD-4G-sxU"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

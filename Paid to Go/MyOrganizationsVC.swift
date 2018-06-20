@@ -161,15 +161,26 @@ extension MyOrganizationsVC : UITableViewDataSource{
         }
         cell.isOrgLinked = true
         cell.parentVC = self
-//        cell.setBtnTitle()
-        if let nationalPool = linkedOrgs[indexPath.row].national, nationalPool == consShared.ONE_INT {
-            cell.linkOL.isEnabled = false
-        }else {
-            cell.linkOL.isEnabled = true
-
+        if let national = linkedOrgs[indexPath.row].national,  let nationalPool =  Int(national){
+            cell.nationalPool = nationalPool
         }
-        cell.linkOL.setTitle("Linked", for: .normal)
+        
+        cell.organizationDelegate = self
+        cell.position = indexPath.row
+        cell.linkOL.setTitle("Remove", for: .normal)
         return cell
     }
 }
-
+extension MyOrganizationsVC : OrganizationDelegate{
+    func orgatizationLinked(_ error: String?, isLinked: Bool, row: Int, message: String?) {
+        if let error = error {
+            present(alert(error), animated: true, completion: nil)
+            return
+        }
+        if isLinked {
+            linkedOrgs.remove(at: row)
+            organiztionsTV.reloadData()
+        }
+    }
+  
+}
