@@ -24,6 +24,7 @@ class ConnectionManager {
     private var invitationsURL: String { return "\(baseURL)/getInvitations" }
     private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
     private var recjectInvitationURL: String { return "\(baseURL)/rejectInvitation" }
+    private var registerActivity: String { return "\(baseURL)/register_activity" }
 
 
 //    old requests used into new design
@@ -188,7 +189,11 @@ extension ConnectionManager {
         self.postRequest(identifier: identifier, url: self.invitationsURL, params: params, apiCompletion: apiCompletion)
         
     }
-    
+    func postActivity(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        let identifier = "POST ACTIVITY API - POST"
+        self.postRequest(identifier: identifier, url: self.registerActivity, params: params, apiCompletion: apiCompletion)
+        
+    }
     func acceptInvitation(params: [String: AnyObject],isOrgLinked: Bool, apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         var identifier  = ""
         var url = ""

@@ -51,8 +51,8 @@ class MenuContentViewController: ViewController {
         
         self.navigationItem.leftBarButtonItem = menuButton
     }
-    
     func homeButtonAction(sender: AnyObject?) {
         menuController?.presentMenuViewController()
     }
+    
 }

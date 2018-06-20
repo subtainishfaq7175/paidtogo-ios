@@ -13,7 +13,8 @@ class GenericResponse: Mappable {
     
     var detail: String?
     var code: String?
-    
+    var isLinked: Bool?
+
     
     
     init() {

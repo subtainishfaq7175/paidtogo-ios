@@ -28,6 +28,9 @@ class IdentifierConstants {
 //    table view cell ids
     var LOCAL_POOL_TVC:String {return "LocalPoolTVC"}
     var ORGANIZATION_TVC:String {return "OrganizationTVC"}
+    
+//     VIEW 
+    var GENERAL_PICKER_CELL:String {return "GeneralPickerCell"}
 
 
 }

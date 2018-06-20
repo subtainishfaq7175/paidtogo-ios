@@ -59,7 +59,7 @@ public class Pool: Mappable {
     public var statistics: ActivityResponse? = ActivityResponse()
     public var activities: [ActivityNotification]? = [ActivityNotification]()
     public var id: Int?
-    public var national: Int?
+    public var national: String?
 
 
     // MARK: ObjectMapper Initalizers

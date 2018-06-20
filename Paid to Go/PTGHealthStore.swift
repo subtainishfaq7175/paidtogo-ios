@@ -74,8 +74,10 @@ class PTGHealthStore {
                 switch type {
                 case stepCount:
                     print("Steps: \(data) error : \(error)")
+                    HomeViewController.steps = data
                     break
                 case walkAndRunning:
+                    HomeViewController.mileTravel = data
                     print("Walk: \(data) error : \(error)")
                     break
                 case cycling:

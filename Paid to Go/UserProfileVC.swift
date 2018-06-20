@@ -52,6 +52,32 @@ class UserProfileVC: MenuContentViewController {
         tabContainerView.cardView()
         config()
         setUIData()
+        addLogoutButton()
+    }
+    func addLogoutButton() {
+        
+        let menuButtonImage = #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysTemplate)
+        
+        let menuButton = UIBarButtonItem(
+            image: menuButtonImage,
+            style: .done,
+            target: self,
+            action: #selector(gestureListener(_:))
+        )
+        
+        menuButton.tintColor = UIColor.black
+        menuButton.isEnabled = true
+        
+        self.navigationItem.rightBarButtonItem = menuButton
+    }
+    override func logoutAnimated() {
+        if let window = self.view.window {
+            window.rootViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    @objc func gestureListener(_ gesture:UIGestureRecognizer) {
+        User.currentUser = nil
+        logoutAnimated()
     }
     func config(){
         NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: NSNotification.Name(rawValue: NotificationsHelper.UserProfileUpdated.rawValue), object: nil)

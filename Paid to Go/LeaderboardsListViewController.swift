@@ -42,33 +42,33 @@ final class LeaderboardsListViewController: MenuContentViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.showProgressHud()
-        DataProvider.sharedInstance.getLeaderboards { (leaderboards, error) in
-            self.dismissProgressHud()
-            
-            guard let leaderboards = leaderboards else {
-                
-                self.tableView.isHidden = true
-                self.lblEmptyTable.isHidden = false
-                
-                return
-            }
-            
-            self.leaderboards = leaderboards
-            
-            self.tableView.reloadData()
-        }
-        
-        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
-        initLayout()
+//        TODO: Commented by VB
+//        self.showProgressHud()
+//        DataProvider.sharedInstance.getLeaderboards { (leaderboards, error) in
+//            self.dismissProgressHud()
+//
+//            guard let leaderboards = leaderboards else {
+//
+//                self.tableView.isHidden = true
+//                self.lblEmptyTable.isHidden = false
+//
+//                return
+//            }
+//
+//            self.leaderboards = leaderboards
+//
+//            self.tableView.reloadData()
+//        }
+//
+//        setBorderToView(view: subtitleLabel, color: CustomColors.NavbarTintColor().cgColor)
+//        initLayout()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureTableView()
-        initLayout()
+        //        TODO: Commented by VB
+//        configureTableView()
+//        initLayout()
     }
     
     // MARK: - Private Methods
