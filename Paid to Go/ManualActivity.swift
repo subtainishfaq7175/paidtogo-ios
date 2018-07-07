@@ -51,7 +51,7 @@ class ManualActivity: Mappable, Codable {
     }
     
     
-    func toJSON() -> [String:Any] {
+    func toJSON() -> [String : Any] {
         var dictionary: [String : Any] = [:]
         
         dictionary["startDate"] = self.startDate.string()

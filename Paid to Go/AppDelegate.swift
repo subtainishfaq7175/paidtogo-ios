@@ -56,6 +56,14 @@
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        if let lastSyncDate = Settings.shared.autoTrackingStartDate {
+            let lastDateTimeStamp = lastSyncDate.timeIntervalSince1970
+            let currentTimeStamp = Date().timeIntervalSince1970
+            if currentTimeStamp - lastDateTimeStamp > 86400 {
+                ActivityMoniteringManager.sharedManager.postAutoTrackingData()
+            }
+        }
+        
         return true
     }
     

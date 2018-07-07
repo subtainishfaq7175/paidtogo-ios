@@ -36,6 +36,9 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     var startDate: Date!
     var autoTracking = true
     
+     var autoTrackingWalking = false
+     var autoTrackingCycling = false
+    
 //    var numberOfSteps:Int! = nil
 //    var distance:Double! = nil
 //    var averagePace:Double! = nil
@@ -56,19 +59,11 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     var lastLocation: CLLocation!
     
     var cyclingTimer: Timer = Timer()
+    var autoTrackingActivityData: [ManualActivity] = []
     
     var autoTrackingStartDate: Date {
         get {
-            let userDefaults = UserDefaults.standard
-            guard let autoStartDate = userDefaults.value(forKey: "AutoTrackingStartDate") else {
-                return Date()
-            }
-            return autoStartDate as! Date
-        }
-        
-        set {
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(newValue, forKey: "AutoTrackingStartDate")
+            return Settings.shared.autoTrackingStartDate ?? Date()
         }
     }
     
@@ -179,13 +174,6 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             }
         }
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if !ActivityON {
-//            //viewControllerMain.checkMotion(<#ViewController#>)
-//        }
-//    }
-    
     
     public func save(activity: ManualActivity) {
         activityData.append(activity)
@@ -357,20 +345,49 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         getHealthKitData()
     }
     
+    func postAutoTrackingData() {
+        getHealthKitData()
+    }
+    
     private func getHealthKitData() {
         var activities: [ManualActivity] = []
         getWalkingRunningData { walkingRunningactivity in
             if let activity = walkingRunningactivity {
                 activities.append(activity)
             }
+            self.autoTrackingWalking = true
+            self.autoTrackingActivityData = activities
+            self.didGetHealthKitData()
         }
         
         getCyclingData { cyclingActivity in
             if let activity = cyclingActivity {
                 activities.append(activity)
             }
+            self.autoTrackingCycling = true
+            self.autoTrackingActivityData = activities
+            self.didGetHealthKitData()
         }
-        
+    }
+    
+    func didGetHealthKitData() {
+        if autoTrackingWalking, autoTrackingCycling {
+            var jsonObject: [[String : Any]] = []
+            for activity in autoTrackingActivityData {
+                jsonObject.append(activity.toJSON())
+            }
+            
+            do {
+                if JSONSerialization.isValidJSONObject(jsonObject) {
+                    let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+                    if let jsonString = String(data: jsonData, encoding: .utf8) {
+                        print(jsonString)
+                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     private func getWalkingRunningData(completion: @escaping (ManualActivity?) -> Void) {
