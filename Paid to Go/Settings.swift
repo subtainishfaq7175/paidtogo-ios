@@ -12,6 +12,7 @@ import Foundation
 // This will ensure your keys are always correct.
 enum DefaultsKeys: String {
     case Autotracking
+    case AutotrackingStartDate
 }
 
 class Settings {
@@ -21,6 +22,19 @@ class Settings {
         }
         set {
             userdefaults.set(newValue, forKey: DefaultsKeys.Autotracking.rawValue)
+            
+            if newValue {
+                userdefaults.set(Date(), forKey: DefaultsKeys.AutotrackingStartDate.rawValue)
+            }
+        }
+    }
+    
+    var autoTrackingStartDate : Date? {
+        get {
+            return userdefaults.object(forKey: DefaultsKeys.AutotrackingStartDate.rawValue) as? Date
+        }
+        set {
+            userdefaults.set(newValue, forKey: DefaultsKeys.AutotrackingStartDate.rawValue)
         }
     }
     

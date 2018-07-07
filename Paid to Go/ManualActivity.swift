@@ -50,4 +50,17 @@ class ManualActivity: Mappable, Codable {
         steps           <-  map["steps"]
     }
     
+    
+    func toJSON() -> [String:Any] {
+        var dictionary: [String : Any] = [:]
+        
+        dictionary["startDate"] = self.startDate.string()
+        dictionary["endDate"] = self.endDate.string()
+        dictionary["milesTraveled"] = self.milesTraveled
+        dictionary["steps"] = self.steps
+        dictionary["type"] = self.type.rawValue
+        
+        return dictionary
+    }
+    
 }
