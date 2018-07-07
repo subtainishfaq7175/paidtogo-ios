@@ -9,7 +9,7 @@ import CoreLocation
 import CoreMotion
 import HealthKit
 
-enum ActivityTypeEnum {
+enum ActivityTypeEnum : Int {
     case none
     case walkingRunning
     case cycling
