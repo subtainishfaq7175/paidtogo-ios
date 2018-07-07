@@ -48,6 +48,8 @@ class PoolSyncAlert: UIView {
         }
         activePoolLB.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gesture(_:))))
         pollLB.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gesture(_:))))
+        
+        getActivityData()
     }
     
      func showProgressHud() {
@@ -94,6 +96,13 @@ class PoolSyncAlert: UIView {
         let activities = ActivityMoniteringManager.sharedManager.activityData
         do {
             let data = try JSONEncoder().encode(activities)
+            if JSONSerialization.isValidJSONObject(activities) {
+                let jsonData = try JSONSerialization.data(withJSONObject: activities, options: .prettyPrinted)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    print(jsonString)
+                }
+            }
+            
             let json = String(data: data, encoding: .utf8)
             print(json)
         } catch {
