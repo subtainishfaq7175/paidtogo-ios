@@ -240,6 +240,7 @@ extension SettingsViewController: SettingSwitchTableViewCellDelegate {
                         break;
                         
                     case .autoTracking:
+                        Settings.shared.isAutoTrackingOn = state
                         break;
                     }
                 }

@@ -253,21 +253,29 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     }
     
     func trackWalking(){
-        let date = Date()
+        trackRunning(fromDate: Date())
+    }
+    
+    func trackRunning(){
+       trackRunning(fromDate: Date())
+    }
+    
+    func trackRunning(fromDate date:Date) {
         
-        pedometer.startUpdates(from: date, withHandler: { (pedometerData, error) in
+        // To get the Data uptill now for auto tracking
+        pedometer.queryPedometerData(from: date, to: Date()) { (pedometerData, error) in
             if let pedData = pedometerData {
-                let distance = pedData.distance!.doubleValue * 0.00062137
-                self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: distance)
+                if self.delegate != nil {
+                    let distance = pedData.distance!.doubleValue * 0.00062137
+                    self.delegate?.didRun(Steps: pedData.numberOfSteps, Distance: distance)
+                }
                 print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
             } else {
                 print("Steps: Not Available!")
             }
-        })
-    }
-    
-    func trackRunning(){
-        pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
+        }
+        
+        pedometer.startUpdates(from: date, withHandler: { (pedometerData, error) in
             if let pedData = pedometerData {
                 if self.delegate != nil {
                     let distance = pedData.distance!.doubleValue * 0.00062137
@@ -279,6 +287,8 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             }
         })
     }
+    
+    
     
     func trackCycling(){
         cyclingTimer.invalidate()
