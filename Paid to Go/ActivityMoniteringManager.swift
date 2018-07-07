@@ -7,17 +7,18 @@
 //
 import CoreLocation
 import CoreMotion
+import HealthKit
 
 enum ActivityTypeEnum {
     case none
-    case walking
-    case running
+    case walkingRunning
     case cycling
 }
 
 protocol ActivityMoniteringManagerDelegate {
-    func didWalk(Steps steps: NSNumber, Distance distance:NSNumber)
-    func didRun(Steps steps: NSNumber, Distance distance:NSNumber)
+    func didWalk(Steps steps: NSNumber, Distance distance:Double)
+    func didRun(Steps steps: NSNumber, Distance distance:Double)
+    func didCycling(activity: ManualActivity)
     func didCycle(Speed speed: Double)
     func didCycle(Distance distance: Double)
     func didDetectActivity(Activity activity: NSString)
@@ -54,6 +55,23 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
     
+    var cyclingTimer: Timer = Timer()
+    
+    var autoTrackingStartDate: Date {
+        get {
+            let userDefaults = UserDefaults.standard
+            guard let autoStartDate = userDefaults.value(forKey: "AutoTrackingStartDate") else {
+                return Date()
+            }
+            return autoStartDate as! Date
+        }
+        
+        set {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(newValue, forKey: "AutoTrackingStartDate")
+        }
+    }
+    
     var traveledDistance: Double = 0
     
     var speeds = Array<Double>()
@@ -64,6 +82,8 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     //var timer = Timer()
     let timerInterval = 1.0
     var timeElapsed:TimeInterval = 0.0
+    
+    var activityData: [ManualActivity] = []
     
     // These are the properties you can store in your singleton
     
@@ -78,7 +98,19 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     }
     
     private override init() {
-        
+        let userDefaults = UserDefaults.standard
+        if let activityData = userDefaults.value(forKey: "ActivityData") as? Data {
+            do {
+                let activities = try JSONDecoder().decode([ManualActivity].self, from: activityData)
+                self.activityData = activities
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    deinit {
+        cyclingTimer.invalidate()
     }
     
     func initLocationManager()  {
@@ -154,17 +186,51 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
 //        }
 //    }
     
+    
+    public func save(activity: ManualActivity) {
+        activityData.append(activity)
+        let userDefaults = UserDefaults.standard
+        do {
+            let data = try JSONEncoder().encode(activityData)
+            userDefaults.set(data, forKey: "ActivityData")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getData(for type: HKSampleType, unit: HKUnit, startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        
+        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            
+            var distance: Double = 0
+            
+            if (results?.count)! > 0 {
+                for result in results as! [HKQuantitySample] {
+                    distance += result.quantity.doubleValue(for: unit)
+                }
+                completion(distance, nil)
+            } else {
+                completion(distance, error)
+            }
+        }
+        
+        let healthStore = HKHealthStore()
+        healthStore.execute(query)
+    }
+    
     func checkMotion() {
         motionActivityManager.startActivityUpdates(to: OperationQueue.current!) { (activity) in
             
             if (activity?.running)! {
                 self.trackRunning()
                 self.motionType = "running"
-                self.activityType = .running
+                self.activityType = .walkingRunning
             } else if (activity?.walking)! {
                 self.trackWalking()
                 self.motionType = "walking"
-                self.activityType = .walking
+                self.activityType = .walkingRunning
             } else if (activity?.cycling)! {
                 self.startCyclingTimer()
                 self.motionType = "cycling"
@@ -179,12 +245,34 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func stopTracking() {
+        if #available(iOS 10.0, *) {
+            pedometer.stopEventUpdates()
+            cyclingTimer.invalidate()
+        }
+    }
+    
     func trackWalking(){
+        let date = Date()
+        
+        pedometer.startUpdates(from: date, withHandler: { (pedometerData, error) in
+            if let pedData = pedometerData {
+                let distance = pedData.distance!.doubleValue * 0.00062137
+                self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: distance)
+                print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
+            } else {
+                print("Steps: Not Available!")
+            }
+        })
+    }
+    
+    func trackRunning(){
         pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
-            if let pedData = pedometerData{
-                //var distance = pedData.distance
-                
-                self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: pedData.distance!)
+            if let pedData = pedometerData {
+                if self.delegate != nil {
+                    let distance = pedData.distance!.doubleValue * 0.00062137
+                    self.delegate?.didRun(Steps: pedData.numberOfSteps, Distance: distance)
+                }
                 print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
             } else {
                 print("Steps: Not Available!")
@@ -193,30 +281,19 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     }
     
     func trackCycling(){
-        pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
-            if let pedData = pedometerData{
-                //var distance = pedData.distance
-                print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
-            } else {
-                print("Steps: Not Available!")
-            }
-        })
+        cyclingTimer.invalidate()
+        cyclingTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(getCycling), userInfo: nil, repeats: true)
     }
     
-   
-    
-    func trackRunning(){
-        pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
-            if let pedData = pedometerData{
-                //var distance = pedData.distance
-                if self.delegate != nil {
-                    self.delegate?.didRun(Steps: pedData.numberOfSteps, Distance: pedData.distance!)
-                }
-                print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
-            } else {
-                print("Steps: Not Available!")
+    @objc func getCycling() {
+        getCyclingData { [weak self] activity in
+            guard let strongSelf = self, let strongActivity = activity else {
+                return
             }
-        })
+            if strongSelf.delegate != nil {
+                strongSelf.delegate?.didCycling(activity: strongActivity)
+            }
+        }
     }
     
     func startCyclingTimer() {
@@ -264,6 +341,94 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             seconds = 0
         }
         //print("\(seconds)")
+    }
+    
+    func postDataAutomatically() {
+        getHealthKitData()
+    }
+    
+    private func getHealthKitData() {
+        var activities: [ManualActivity] = []
+        getWalkingRunningData { walkingRunningactivity in
+            if let activity = walkingRunningactivity {
+                activities.append(activity)
+            }
+        }
+        
+        getCyclingData { cyclingActivity in
+            if let activity = cyclingActivity {
+                activities.append(activity)
+            }
+        }
+        
+    }
+    
+    private func getWalkingRunningData(completion: @escaping (ManualActivity?) -> Void) {
+        let autoActivity = ManualActivity()
+        
+        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning) else {
+            return
+        }
+        let distanceUnit = HKUnit.mile()
+        let startDate = autoTrackingStartDate
+        let endDate = Date()
+        
+        getData(for: distanceType, unit: distanceUnit, startDate: startDate, endDate: endDate) { [weak self] distance, error in
+            if (error != nil) {
+                completion(nil)
+                print(error)
+            } else {
+                autoActivity.milesTraveled = distance
+                autoActivity.startDate = startDate
+                autoActivity.endDate = endDate
+                autoActivity.type = .walkingRunning
+                print(autoActivity)
+                
+                guard let stepType = HKSampleType.quantityType(forIdentifier: .stepCount) else {
+                    return
+                }
+                let stepUnit = HKUnit.count()
+                
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.getData(for: stepType, unit: stepUnit, startDate: startDate, endDate: endDate) { steps, error in
+                    if (error != nil) {
+                        print(error)
+                        completion(nil)
+                    } else {
+                        autoActivity.steps = Int(steps)
+                        print(autoActivity)
+                        completion(autoActivity)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func getCyclingData(completion: @escaping (ManualActivity?) -> Void) {
+        let autoActivity = ManualActivity()
+        
+        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceCycling) else {
+            return
+        }
+        let distanceUnit = HKUnit.mile()
+        let startDate = autoTrackingStartDate
+        let endDate = Date()
+        
+        getData(for: distanceType, unit: distanceUnit, startDate: startDate, endDate: endDate) { distance, error in
+            if (error != nil) {
+                completion(nil)
+                print(error)
+            } else {
+                autoActivity.milesTraveled = distance
+                autoActivity.startDate = startDate
+                autoActivity.endDate = endDate
+                autoActivity.type = .cycling
+                print(autoActivity)
+                completion(autoActivity)
+            }
+        }
     }
 }
 

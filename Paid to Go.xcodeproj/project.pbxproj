@@ -60,7 +60,6 @@
 		4D7697A01D21A458002D5E63 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76979F1D21A458002D5E63 /* Timer.swift */; };
 		4D77430B1D5A16DD00ACD544 /* ActivityRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */; };
 		4D77430D1D5A182C00ACD544 /* ActivitySubroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */; };
-		4D8880901D6CBBE5008E514A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D88808F1D6CBBE5008E514A /* StoreKit.framework */; };
 		4D8880921D6CBC84008E514A /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8880911D6CBC84008E514A /* IAPHelper.swift */; };
 		4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8880931D6CC7D4008E514A /* ProUserSubscription.swift */; };
 		4D9051631D4652210043A250 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9051621D4652210043A250 /* MapViewController.swift */; };
@@ -168,6 +167,9 @@
 		7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C872D0D1CE62AC200A1083E /* PoolType.swift */; };
 		7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E737E1CE518F1006B4271 /* Activity.swift */; };
 		ABCFBDCDE8AFF478BD7C4FB8 /* Pods_Paid_to_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */; };
+		D829834020F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */; };
+		D829834220F1196400FDA7A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834120F1196400FDA7A8 /* Settings.swift */; };
+		D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834320F11F9700FDA7A8 /* ManualActivity.swift */; };
 		D8C8E30220EF67500031BF1D /* ActivityMoniteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */; };
 		D8C8E30320EF67500031BF1D /* ActivityMoniteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */; };
 /* End PBXBuildFile section */
@@ -231,7 +233,6 @@
 		4D76979F1D21A458002D5E63 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRoute.swift; sourceTree = "<group>"; };
 		4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySubroute.swift; sourceTree = "<group>"; };
-		4D88808F1D6CBBE5008E514A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4D8880911D6CBC84008E514A /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		4D8880931D6CC7D4008E514A /* ProUserSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProUserSubscription.swift; sourceTree = "<group>"; };
 		4D9051621D4652210043A250 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +249,7 @@
 		4DBC14231DC23805003FD977 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProViewController.swift; sourceTree = "<group>"; };
-		4DBF557B1D7EE9800059B249 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		4DBF557B1D7EE9800059B249 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4DC7639F1D8730B10051BFF5 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		4DC763A11D8732D80051BFF5 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		4DCD352C1D21624500A21739 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -343,6 +344,9 @@
 		7C872D0D1CE62AC200A1083E /* PoolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolType.swift; sourceTree = "<group>"; };
 		7C8E737E1CE518F1006B4271 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paid_to_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		D829834120F1196400FDA7A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D829834320F11F9700FDA7A8 /* ManualActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualActivity.swift; sourceTree = "<group>"; };
 		D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringViewController.swift; sourceTree = "<group>"; };
 		D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -353,7 +357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				10268C3520A080BB0037336A /* HealthKit.framework in Frameworks */,
-				4D8880901D6CBBE5008E514A /* StoreKit.framework in Frameworks */,
 				ABCFBDCDE8AFF478BD7C4FB8 /* Pods_Paid_to_Go.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,6 +657,7 @@
 		5282D7B81CAAF78A002713EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D829834320F11F9700FDA7A8 /* ManualActivity.swift */,
 				5276DE211CF8C458009B2CBE /* ActivityNotification.swift */,
 				528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */,
 				528F54CF1CF79D72008E015C /* Leaderboard.swift */,
@@ -786,9 +790,11 @@
 		52B3E0D21CA2D2B9000ED657 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D829833E20F0FBCE00FDA7A8 /* Cells */,
 				52B3E0D31CA2D2D2000ED657 /* Settings.storyboard */,
 				52B3E0D51CA2D31B000ED657 /* SettingsViewController.swift */,
 				4DBCE93A1D7F3B460020B7A2 /* ChangePasswordViewController.swift */,
+				D829834120F1196400FDA7A8 /* Settings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -849,11 +855,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D829833E20F0FBCE00FDA7A8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		DF8DB721E9BE9F72CADCA60E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				10268C3420A080BB0037336A /* HealthKit.framework */,
-				4D88808F1D6CBBE5008E514A /* StoreKit.framework */,
 				8804ADD694D6FAACF6B51FFD /* Pods_Paid_to_Go.framework */,
 			);
 			name = Frameworks;
@@ -894,7 +907,7 @@
 				TargetAttributes = {
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9354JZD4RV;
+						DevelopmentTeam = VGX8V886Q6;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -902,7 +915,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1175,6 +1188,7 @@
 				4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */,
 				105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */,
 				4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */,
+				D829834020F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift in Sources */,
 				D8C8E30220EF67500031BF1D /* ActivityMoniteringViewController.swift in Sources */,
 				7C872D0E1CE62AC200A1083E /* PoolType.swift in Sources */,
 				4D7697A01D21A458002D5E63 /* Timer.swift in Sources */,
@@ -1190,6 +1204,7 @@
 				10924C75209B035100F2C650 /* Constants.swift in Sources */,
 				4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
+				D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */,
 				4D936E591D25BEB600A0CB3A /* Status.swift in Sources */,
@@ -1197,6 +1212,7 @@
 				4DB22D3E1D3FA67F006D3FA6 /* PoolDetailViewController.swift in Sources */,
 				52258C141C9AF10000E3DAC7 /* HomeViewController.swift in Sources */,
 				4DDA86931D1C46E800247168 /* ActivityManager.swift in Sources */,
+				D829834220F1196400FDA7A8 /* Settings.swift in Sources */,
 				4DB22D3C1D3FA498006D3FA6 /* UIScrollView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1315,13 +1331,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: aaron soth-evans (8573AE3L9T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9354JZD4RV;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VGX8V886Q6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1340,13 +1357,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: aaron soth-evans (WBY4S2TLK6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9354JZD4RV;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VGX8V886Q6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
