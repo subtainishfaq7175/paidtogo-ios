@@ -94,17 +94,19 @@ class PoolSyncAlert: UIView {
     
     private func getActivityData() {
         let activities = ActivityMoniteringManager.sharedManager.activityData
+        
+        var jsonObject: [[String : Any]] = []
+        for activity in activities {
+            jsonObject.append(activity.toJSON())
+        }
+        
         do {
-            let data = try JSONEncoder().encode(activities)
-            if JSONSerialization.isValidJSONObject(activities) {
-                let jsonData = try JSONSerialization.data(withJSONObject: activities, options: .prettyPrinted)
+            if JSONSerialization.isValidJSONObject(jsonObject) {
+                let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
                 if let jsonString = String(data: jsonData, encoding: .utf8) {
                     print(jsonString)
                 }
             }
-            
-            let json = String(data: data, encoding: .utf8)
-            print(json)
         } catch {
             print(error)
         }
