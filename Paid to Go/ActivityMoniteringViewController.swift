@@ -27,7 +27,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet weak var bannerImageView: UIImageView!
+    
+    
     var isCycling: Bool = false
+    var showBackButton: Bool = false
     
     var activity = ManualActivity()
     
@@ -36,7 +39,12 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         // Do any additional setup after loading the view.
         
         setNavigationBarVisible(visible: true)
-        customizeNavigationBarWithMenu()
+        if showBackButton {
+            customizeNavigationBarWithBack()
+        } else {
+            customizeNavigationBarWithMenu()
+        }
+
         ActivityMoniteringManager.sharedManager.delegate = self
         actionButtonView.layer.cornerRadius = (actionButtonView.bounds.height / 2) - 2
         bannerView.layer.cornerRadius = (bannerView.bounds.height / 2)

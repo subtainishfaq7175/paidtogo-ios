@@ -24,10 +24,7 @@ class HomeViewController: MenuContentViewController {
     static var mileTravel:Double? = Constants.consShared.ZERO_INT.toDouble
 
     // MARK: - View life cycle -
-    @objc func showSyncAlert(sender: AnyObject?) {
-        configHealtStore()
-        showSyncAlert()
-    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -39,6 +36,7 @@ class HomeViewController: MenuContentViewController {
             
         }
     }
+    
     func addSyncButton() {
         
         let menuButtonImage = #imageLiteral(resourceName: "ic_sync_p4").withRenderingMode(.alwaysTemplate)
@@ -53,7 +51,29 @@ class HomeViewController: MenuContentViewController {
         menuButton.tintColor = UIColor.black
         menuButton.isEnabled = true
         
-        self.navigationItem.rightBarButtonItem = menuButton
+        
+        let trackingButtonImage = #imageLiteral(resourceName: "ic_walkrun").withRenderingMode(.alwaysTemplate)
+        
+        let trackingButton = UIBarButtonItem(
+            image: trackingButtonImage,
+            style: .done,
+            target: self,
+            action: #selector(showTracking(sender:)) // "menuButtonAction:"
+        )
+        
+        trackingButton.tintColor = UIColor.black
+        trackingButton.isEnabled = true
+    
+        self.navigationItem.rightBarButtonItems = [menuButton, trackingButton] 
+    }
+    
+    @objc func showSyncAlert(sender: AnyObject?) {
+        configHealtStore()
+        showSyncAlert()
+    }
+    
+    @objc func showTracking(sender: AnyObject?) {
+        showTracking()
     }
 
     func getPools() -> [ActivityType] {
@@ -123,12 +143,22 @@ class HomeViewController: MenuContentViewController {
             self.addTabs()
         })
     }
+    
     func showSyncAlert()  {
         let alertNib = Bundle.main.loadNibNamed("PoolSyncAlert", owner: self, options: nil)?.first as! PoolSyncAlert
         alertNib.pools = self.getPools()
         alertNib.syncDelegate = self
         alertNib.showAlert()
     }
+    
+    func showTracking()  {
+        let viewController = UIStoryboard(name: "Activity", bundle: Bundle.main).instantiateViewController(withIdentifier: "ActivityMoniteringViewController") as! ActivityMoniteringViewController
+        
+        viewController.showBackButton = true
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func setString (_ string:String?, label:UILabel){
         if let string = string {
             label.text = string

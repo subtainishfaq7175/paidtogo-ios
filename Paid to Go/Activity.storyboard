@@ -652,7 +652,7 @@
         <!--Activity Monitering View Controller-->
         <scene sceneID="wXl-xm-7Fp">
             <objects>
-                <viewController storyboardIdentifier="PoolViewController" id="sXm-4z-t88" customClass="ActivityMoniteringViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityMoniteringViewController" id="sXm-4z-t88" customClass="ActivityMoniteringViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nuj-qY-suW"/>
                         <viewControllerLayoutGuide type="bottom" id="net-yR-kNF"/>

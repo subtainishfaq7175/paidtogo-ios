@@ -93,7 +93,19 @@ class ViewController: UIViewController {
         let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(MenuContentViewController.homeButtonAction(sender:))) //
         menuButtonItem.tintColor = CustomColors.NavbarTintColor()
         self.navigationItem.leftBarButtonItem = menuButtonItem
-        
+    }
+    
+    func customizeNavigationBarWithBack() {
+        let menuImage = UIImage(named: "ic_back35x35")?.withRenderingMode(.alwaysTemplate)
+        let menuButtonItem = UIBarButtonItem(image: menuImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction(sender:))) //
+        menuButtonItem.tintColor = CustomColors.NavbarTintColor()
+        self.navigationItem.leftBarButtonItem = menuButtonItem
+    }
+    
+    @objc func backAction(sender: AnyObject?) {
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
     
     // MARK: - Custom Alert View -
