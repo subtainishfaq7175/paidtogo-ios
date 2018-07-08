@@ -244,11 +244,22 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func trackWalking(){
-        pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
+    func trackWalking() {
+        trackRunning(from: Date())
+    }
+    
+    func trackRunning() {
+        trackRunning(from: Date())
+    }
+    
+    func trackRunning(from date:Date) {
+        
+        // We have to get the Data up till now in case of Auto tracking and the user is currently stationary
+        pedometer.queryPedometerData(from: date, to: Date()) { (pedometerData, error) in
             if let pedData = pedometerData {
                 if self.delegate != nil {
                     let distance = pedData.distance!.doubleValue * 0.00062137
+                    self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: distance)
                     self.delegate?.didRun(Steps: pedData.numberOfSteps, Distance: distance)
                 }
                 print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
@@ -261,6 +272,7 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             if let pedData = pedometerData {
                 if self.delegate != nil {
                     let distance = pedData.distance!.doubleValue * 0.00062137
+                    self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: distance)
                     self.delegate?.didRun(Steps: pedData.numberOfSteps, Distance: distance)
                 }
                 print("Steps:\(pedData.numberOfSteps) & Distance: \(pedData.distance)")
@@ -269,8 +281,6 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             }
         })
     }
-    
-    
     
     func trackCycling(){
         cyclingTimer.invalidate()

@@ -60,7 +60,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             actionButtonView.isHidden = true
             
             let startOftheDay = Calendar.current.startOfDay(for: Date())
-            ActivityMoniteringManager.sharedManager.trackRunning(fromDate: startOftheDay)
+            ActivityMoniteringManager.sharedManager.trackRunning(from: startOftheDay)
         } else {
             actionButton.isHidden = false
             actionButtonView.isHidden = false
