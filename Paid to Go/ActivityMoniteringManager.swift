@@ -190,7 +190,11 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
-        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+        let newPredicate = NSPredicate(format: "metadata.%K != YES", HKMetadataKeyWasUserEntered)
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, newPredicate])
+        
+        let query = HKSampleQuery(sampleType: type, predicate: compoundPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
             
             var distance: Double = 0
             
@@ -241,9 +245,7 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     }
     
     func trackWalking(){
-        let date = Date()
-        
-        pedometer.startUpdates(from: date, withHandler: { (pedometerData, error) in
+        pedometer.startUpdates(from: Date(), withHandler: { (pedometerData, error) in
             if let pedData = pedometerData {
                 let distance = pedData.distance!.doubleValue * 0.00062137
                 self.delegate?.didWalk(Steps: pedData.numberOfSteps, Distance: distance)
