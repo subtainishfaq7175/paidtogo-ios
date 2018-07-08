@@ -29,7 +29,6 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     @IBOutlet weak var bannerImageView: UIImageView!
     var isCycling: Bool = false
     
-    
     var activity = ManualActivity()
     
     override func viewDidLoad() {
@@ -44,12 +43,28 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         bannerView.layer.borderWidth = 2.0
         bannerView.layer.borderColor = UIColor.black.cgColor
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Settings.shared.isAutoTrackingOn {
+            actionButton.isHidden = true
+            actionButtonView.isHidden = true
+            
+            let startOftheDay = Calendar.current.startOfDay(for: Date())
+            ActivityMoniteringManager.sharedManager.trackRunning(fromDate: startOftheDay)
+        } else {
+            actionButton.isHidden = false
+            actionButtonView.isHidden = false
+            ActivityMoniteringManager.sharedManager.stopTracking()
+          // stop updates
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     //MARK: - Action Methods
     
