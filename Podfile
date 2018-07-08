@@ -56,6 +56,7 @@ target 'Paid to Go' do
     # https://github.com/jdg/MBProgressHUD
     pod 'MBProgressHUD', '~> 1.1.0'
     
+    pod 'DropDown'
     
     # Facebook
     pod 'FBSDKCoreKit'

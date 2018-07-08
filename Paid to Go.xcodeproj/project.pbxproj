@@ -172,6 +172,9 @@
 		D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834320F11F9700FDA7A8 /* ManualActivity.swift */; };
 		D8C8E30220EF67500031BF1D /* ActivityMoniteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */; };
 		D8C8E30320EF67500031BF1D /* ActivityMoniteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */; };
+		F9952B6A20F18E2C0099BA84 /* MainStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */; };
+		F9952B6C20F193E60099BA84 /* ActivitiesGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9952B6B20F193E60099BA84 /* ActivitiesGraphViewController.swift */; };
+		F9AF15D720F1A8B800158A02 /* GraphsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF15D620F1A8B800158A02 /* GraphsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -349,6 +352,9 @@
 		D829834320F11F9700FDA7A8 /* ManualActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualActivity.swift; sourceTree = "<group>"; };
 		D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringViewController.swift; sourceTree = "<group>"; };
 		D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringManager.swift; sourceTree = "<group>"; };
+		F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatsViewController.swift; sourceTree = "<group>"; };
+		F9952B6B20F193E60099BA84 /* ActivitiesGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesGraphViewController.swift; sourceTree = "<group>"; };
+		F9AF15D620F1A8B800158A02 /* GraphsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -811,6 +817,7 @@
 		52B3E0DC1CA3251B000ED657 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				F9952B6820F18E030099BA84 /* Stats */,
 				5282D7B51CAAF66B002713EE /* Components */,
 				52B3E0DD1CA3253F000ED657 /* ActivityViewController.swift */,
 				52B3E0DF1CA3254C000ED657 /* Activity.storyboard */,
@@ -872,6 +879,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F9952B6820F18E030099BA84 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */,
+				F9952B6B20F193E60099BA84 /* ActivitiesGraphViewController.swift */,
+				F9AF15D620F1A8B800158A02 /* GraphsCollectionViewCell.swift */,
+			);
+			name = Stats;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -884,7 +901,6 @@
 				52A3742C1C9844A900E3A4A5 /* Frameworks */,
 				52A3742D1C9844A900E3A4A5 /* Resources */,
 				1AC24A4E3D979FC94BB67E49 /* [CP] Embed Pods Frameworks */,
-				6E7039F730115E22A7DFC20F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -994,6 +1010,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -1018,6 +1035,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -1040,21 +1058,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E7039F730115E22A7DFC20F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paid to Go/Pods-Paid to Go-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C19F6246CF909756891082B2 /* [CP] Check Pods Manifest.lock */ = {
@@ -1088,6 +1091,7 @@
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
 				4D2F43241D9AE6C70022B01E /* InApp.swift in Sources */,
 				103D80E920CFA114004FD490 /* PoolSyncAlert.swift in Sources */,
+				F9952B6C20F193E60099BA84 /* ActivitiesGraphViewController.swift in Sources */,
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
 				5234D7001C9C465E00910765 /* MenuViewController.swift in Sources */,
@@ -1185,6 +1189,7 @@
 				4D2F43251D9AE6C70022B01E /* Receipt.swift in Sources */,
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
+				F9AF15D720F1A8B800158A02 /* GraphsCollectionViewCell.swift in Sources */,
 				4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */,
 				105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */,
 				4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */,
@@ -1203,6 +1208,7 @@
 				52B2C90A1CC6A2A400504E49 /* PoolTypeEnum.swift in Sources */,
 				10924C75209B035100F2C650 /* Constants.swift in Sources */,
 				4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */,
+				F9952B6A20F18E2C0099BA84 /* MainStatsViewController.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
 				D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,

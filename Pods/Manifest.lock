@@ -9,6 +9,7 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
+  - DropDown (2.3.1)
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -43,6 +44,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Charts
+  - DropDown
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -59,10 +61,36 @@ DEPENDENCIES:
   - XCGLogger (~> 6.0.2)
   - YYWebImage (~> 1.0.5)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Bolts
+    - Charts
+    - DropDown
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - KDCircularProgress
+    - MBProgressHUD
+    - ObjcExceptionBridging
+    - ObjectMapper
+    - PagingMenuController
+    - RainbowNavigation
+    - REFrostedViewController
+    - SnapKit
+    - SwiftDate
+    - TPKeyboardAvoiding
+    - UIColor_Hex_Swift
+    - XCGLogger
+    - YYCache
+    - YYImage
+    - YYWebImage
+
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
@@ -82,6 +110,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 9e9c0ec212a177a42ada2e04a2c67d357693a61b
+PODFILE CHECKSUM: 581fd617c068fd5b89cbe0c236222f9fb33ac281
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
