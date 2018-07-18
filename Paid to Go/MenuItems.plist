@@ -58,5 +58,13 @@
 		<key>storyboard</key>
 		<string>Settings</string>
 	</dict>
+    <dict>
+        <key>title</key>
+        <string>Tracking</string>
+        <key>identifier</key>
+        <string>ActivityTrackingController</string>
+        <key>storyboard</key>
+        <string>Activity</string>
+    </dict>
 </array>
 </plist>

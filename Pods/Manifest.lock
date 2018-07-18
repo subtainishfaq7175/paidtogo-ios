@@ -16,6 +16,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.11.0):
     - FBSDKCoreKit
+  - FSPagerView (0.7.1)
   - KDCircularProgress (1.5.2)
   - MBProgressHUD (1.1.0)
   - ObjcExceptionBridging (1.0.1):
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FSPagerView
   - KDCircularProgress
   - MBProgressHUD (~> 1.1.0)
   - ObjectMapper (~> 2.2.9)
@@ -62,7 +64,7 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0.5)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bolts
     - Charts
@@ -70,6 +72,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - FSPagerView
     - KDCircularProgress
     - MBProgressHUD
     - ObjcExceptionBridging
@@ -94,6 +97,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   KDCircularProgress: 12f677b2deb02409ab48c6cae1898d146b8ad549
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
@@ -110,6 +114,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 581fd617c068fd5b89cbe0c236222f9fb33ac281
+PODFILE CHECKSUM: c7c3c166f6fcf2b3757e672f10a2572d2ae38ce9
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

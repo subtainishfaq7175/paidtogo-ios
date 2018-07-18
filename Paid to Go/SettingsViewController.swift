@@ -69,11 +69,8 @@ class SettingsViewController: MenuContentViewController {
         
         setNavigationBarVisible(visible: true)
         customizeNavigationBarWithMenu()
-        
-        self.tableView.tableFooterView = UIView(frame: .zero)
-        self.tableView.sectionHeaderHeight = 44
-        self.tableView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-        self.title = "Settings"
+        setuptableView()
+        setupViewController()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,6 +84,15 @@ class SettingsViewController: MenuContentViewController {
     
     // MARK: - Functions
     
+    private func setupViewController() {
+        title = "Settings"
+    }
+    
+    func setuptableView()  {
+        self.tableView.tableFooterView = UIView(frame: .zero)
+        self.tableView.sectionHeaderHeight = 44
+        self.tableView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+    }
     
     
     // MARK: - Actions

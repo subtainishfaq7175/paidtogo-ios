@@ -14,11 +14,12 @@ protocol SettingSwitchTableViewCellDelegate {
 
 class SettingSwitchTableViewCell: UITableViewCell {
 
-    var delegate:SettingSwitchTableViewCellDelegate?
-    
+   // MARK: - Outlets
     @IBOutlet weak var toggleSwitch: UISwitch!
     @IBOutlet weak var menuTitleLabel: UILabel!
     
+    // MARK: - Variables
+    var delegate:SettingSwitchTableViewCellDelegate?
     var section = 0
     var row = 0
     
@@ -37,8 +38,8 @@ class SettingSwitchTableViewCell: UITableViewCell {
     }
     
     @IBAction func valueChanged(_ sender: UISwitch) {
-        if self.delegate != nil {
-            self.delegate?.didChangeSwitch(state: sender.isOn, on: section, and: row)
+        if delegate != nil {
+           delegate?.didChangeSwitch(state: sender.isOn, on: section, and: row)
         }
     }
     

@@ -152,11 +152,14 @@ class HomeViewController: MenuContentViewController {
     }
     
     func showTracking()  {
-        let viewController = UIStoryboard(name: "Activity", bundle: Bundle.main).instantiateViewController(withIdentifier: "ActivityMoniteringViewController") as! ActivityMoniteringViewController
+//        let viewController = StoryboardRouter.activityMoniteringViewController()
+//        viewController.showBackButton = true
+//        self.navigationController?.pushViewController(viewController, animated: true)
         
-        viewController.showBackButton = true
+         let viewController = StoryboardRouter.activitySponserViewController()
+         self.present(viewController, animated: true, completion: nil)
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     func setString (_ string:String?, label:UILabel){

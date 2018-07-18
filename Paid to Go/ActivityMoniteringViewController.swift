@@ -28,9 +28,9 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet weak var bannerImageView: UIImageView!
     
-    
     var isCycling: Bool = false
     var showBackButton: Bool = false
+    var isStart: Bool = false
     
     var activity = ManualActivity()
     
@@ -77,8 +77,21 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     //MARK: - Action Methods
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        showActivitySelectionSheet()
-        activity.startDate = Date()
+        
+        if isStart {
+            setupUIForStart(true)
+            ActivityMoniteringManager.sharedManager.stopTracking()
+            activity.endDate = Date()
+            ActivityMoniteringManager.sharedManager.save(activity: activity)
+            activity = ManualActivity()
+            sender.setTitle("Start", for: .normal)
+        } else {
+            showActivitySelectionSheet()
+            activity.startDate = Date()
+            sender.setTitle("Stop", for: .normal)
+        }
+        
+        isStart = !isStart
     }
     
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
@@ -93,15 +106,15 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     //MARK: - Private Methods
     
     private func setupUIForStart(_ isStart: Bool) {
-        if !isStart {
-            actionButton.isHidden = true
-            actionButtonView.isHidden = true
-            pauseButton.isHidden = false
-        } else {
-            actionButtonView.isHidden = false
-            actionButton.isHidden = false
-            pauseButton.isHidden = true
-        }
+//        if !isStart {
+//            actionButton.isHidden = true
+//            actionButtonView.isHidden = true
+////            pauseButton.isHidden = false
+//        } else {
+//            actionButtonView.isHidden = false
+//            actionButton.isHidden = false
+////            pauseButton.isHidden = true
+//        }
     }
     
     private func showActivitySelectionSheet() {

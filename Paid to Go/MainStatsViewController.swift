@@ -45,7 +45,7 @@ class MainStatsViewController: MenuContentViewController {
     //MARK: - Private Methods
     
     private func setupRightBarButton() {
-        rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_bike"), style: .done, target: self, action: #selector(rightBarButtonTapped))
+        rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "activity_graph"), style: .done, target: self, action: #selector(rightBarButtonTapped))
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
@@ -60,9 +60,9 @@ class MainStatsViewController: MenuContentViewController {
         activityGraphContainer.isHidden = !activityGraphContainer.isHidden
         activityListingContainer.isHidden = !activityListingContainer.isHidden
         if activityListingContainer.isHidden {
-            rightBarButton!.image = #imageLiteral(resourceName: "ic_car")
+            rightBarButton!.image = #imageLiteral(resourceName: "activity_listing")
         } else {
-            rightBarButton!.image = #imageLiteral(resourceName: "ic_bike")
+            rightBarButton!.image = #imageLiteral(resourceName: "activity_graph")
         }
     }
     

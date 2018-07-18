@@ -12,7 +12,12 @@ import Charts
 
 class ActivitiesGraphViewController: UIViewController {
 
+    var selectedTag = -1
+    var tags = ["GAS SAVED", "CO2 OFFSET", "CALORIES", "GAS SAVED", "CO2 OFFSET", "CALORIES"]
     
+     @IBOutlet private weak var selectedTimeLabel: UILabel!
+     @IBOutlet private weak var selectedActivityLabel: UILabel!
+
     @IBOutlet private weak var durationDropDownView: UIView! {
         didSet {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(durationDropDownTapped))
@@ -54,45 +59,48 @@ class ActivitiesGraphViewController: UIViewController {
     //MARK: - Private Methods
     
     private func setupViewController() {
-        setupDropDownApperance()
+        setupCharView()
+        setupTagsView()
         setupDurationDropDown()
         setupActivityDropDown()
-        setupTagsView()
+        
+        setupDropDownApperance()
         updateChart()
+        
+        DropDown.startListeningToKeyboard()
+    }
+    
+    private func setupCharView() {
+        lineChart.cardView()
     }
     
     private func setupDropDownApperance() {
         let appearance = DropDown.appearance()
         appearance.backgroundColor = UIColor(white: 1, alpha: 1)
         appearance.selectionBackgroundColor = UIColor(red: 0.6494, green: 0.8155, blue: 1.0, alpha: 0.2)
-        appearance.cornerRadius = 8
+        
+        appearance.cornerRadius = 16
         appearance.shadowColor = UIColor(white: 0.6, alpha: 1)
         appearance.shadowOpacity = 0.9
         appearance.shadowRadius = 25
         appearance.animationduration = 0.25
         appearance.textColor = .darkGray
+        
+        
     }
     
     private func setupActivityDropDown() {
         activityDropDown.anchorView = activityDropDownView
         activityDropDown.bottomOffset = CGPoint(x: 0, y: activityDropDownView.bounds.height)
         activityDropDown.dataSource = [
-            "10 €",
-            "20 €",
-            "30 €",
-            "40 €",
-            "50 €",
-            "60 €",
-            "70 €",
-            "80 €",
-            "90 €",
-            "100 €",
-            "110 €",
-            "120 €"
+            "WALK / RUN",
+            "BYCYCLE",
+            "WORKOUT"
         ]
         activityDropDown.selectionAction  = { index, item in
             print(index)
             print(item)
+            self.selectedActivityLabel.text = item
         }
     }
     
@@ -100,23 +108,15 @@ class ActivitiesGraphViewController: UIViewController {
         durationDropDown.anchorView = durationDropDownView
         durationDropDown.bottomOffset = CGPoint(x: 0, y: durationDropDownView.bounds.height)
         durationDropDown.dataSource = [
-            "10 €",
-            "20 €",
-            "30 €",
-            "40 €",
-            "50 €",
-            "60 €",
-            "70 €",
-            "80 €",
-            "90 €",
-            "100 €",
-            "110 €",
-            "120 €"
+            "6 MONTHS",
+            "3 MONTHS",
+            "THIS WEEK"
         ]
         
         durationDropDown.selectionAction = { index, item in
             print(index)
             print(item)
+            self.selectedTimeLabel.text = item
         }
     }
     
@@ -170,15 +170,19 @@ extension ActivitiesGraphViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! GraphsCollectionViewCell
-        cell.titleLabel.text = "Hello I'm Tag"
-        cell.backgroundColor = .white
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GraphsCollectionViewCell.identifier, for: indexPath) as! GraphsCollectionViewCell
+        cell.titleLabel.text = tags[indexPath.row]
+        cell.updateView(with: (indexPath.row == selectedTag))
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedTag = indexPath.row
+        collectionView.reloadData()
+    }
     
 }

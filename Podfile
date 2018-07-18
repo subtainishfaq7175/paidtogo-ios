@@ -52,11 +52,18 @@ target 'Paid to Go' do
     # Charts: Beautiful charts for iOS/tvOS/OSX!
     # https://github.com/danielgindi/Charts
     pod 'Charts'
+    
     # MBProgressHud
     # https://github.com/jdg/MBProgressHUD
     pod 'MBProgressHUD', '~> 1.1.0'
     
+    # DropDown
+    # https://github.com/AssistoLab/DropDown
     pod 'DropDown'
+    
+    # DropDown
+    # https://github.com/WenchaoD/FSPagerView
+    pod 'FSPagerView'
     
     # Facebook
     pod 'FBSDKCoreKit'

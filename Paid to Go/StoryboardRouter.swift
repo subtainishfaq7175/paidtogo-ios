@@ -36,6 +36,10 @@ class StoryboardRouter {
         return UIStoryboard(name: "Profile", bundle: Bundle.main)
     }
     
+    static func activityStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "Activity", bundle: Bundle.main)
+    }
+    
     // MARK: - View Controllers
     
 //    static func homeMainViewController() -> UIViewController {
@@ -84,5 +88,20 @@ class StoryboardRouter {
     static func nationalPoolsViewController() -> NationalPoolsViewController {
         return homeStoryboard().instantiateViewController(withIdentifier: "NationalPoolsViewController") as! NationalPoolsViewController
     }
+    
+    static func activitySponserViewController() -> ActivitySponsorViewController {
+        let viewController = homeStoryboard().instantiateViewController(withIdentifier: "ActivitySponsorViewController") as! ActivitySponsorViewController
+        
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        
+//        viewController.definesPresentationContext = true
+        return viewController
+    }
+    
+    static func activityMoniteringViewController() -> ActivityMoniteringViewController {
+        return activityStoryboard().instantiateViewController(withIdentifier: "ActivityMoniteringViewController") as! ActivityMoniteringViewController
+    }
+    
         
 }
