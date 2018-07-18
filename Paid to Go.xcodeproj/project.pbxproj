@@ -172,11 +172,11 @@
 		D80DAA5620F8795600806CB8 /* PoolBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA5520F8795600806CB8 /* PoolBalanceViewController.swift */; };
 		D80DAA5920F8798100806CB8 /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA5820F8798100806CB8 /* BalanceTableViewCell.swift */; };
 		D80DAA5B20F879AA00806CB8 /* AddOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA5A20F879AA00806CB8 /* AddOrganizationTableViewCell.swift */; };
-		D80DAA5F20F8C4F000806CB8 /* LeaderBoardPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA5D20F8C4F000806CB8 /* LeaderBoardPageViewCell.swift */; };
 		D80DAA6020F8C4F000806CB8 /* LeaderBoardPageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D80DAA5E20F8C4F000806CB8 /* LeaderBoardPageViewCell.xib */; };
 		D80DAA6220F8CD5F00806CB8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6120F8CD5F00806CB8 /* LeaderboardViewController.swift */; };
 		D80DAA6420F8CE0700806CB8 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */; };
 		D80DAA6620FCC0FC00806CB8 /* ActivitySponsorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */; };
+		D80DAA7020FF636600806CB8 /* LeaderBoardPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */; };
 		D829834020F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */; };
 		D829834220F1196400FDA7A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834120F1196400FDA7A8 /* Settings.swift */; };
 		D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834320F11F9700FDA7A8 /* ManualActivity.swift */; };
@@ -362,11 +362,11 @@
 		D80DAA5520F8795600806CB8 /* PoolBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolBalanceViewController.swift; sourceTree = "<group>"; };
 		D80DAA5820F8798100806CB8 /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
 		D80DAA5A20F879AA00806CB8 /* AddOrganizationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrganizationTableViewCell.swift; sourceTree = "<group>"; };
-		D80DAA5D20F8C4F000806CB8 /* LeaderBoardPageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardPageViewCell.swift; sourceTree = "<group>"; };
 		D80DAA5E20F8C4F000806CB8 /* LeaderBoardPageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardPageViewCell.xib; sourceTree = "<group>"; };
 		D80DAA6120F8CD5F00806CB8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySponsorViewController.swift; sourceTree = "<group>"; };
+		D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardPageViewCell.swift; sourceTree = "<group>"; };
 		D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		D829834120F1196400FDA7A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D829834320F11F9700FDA7A8 /* ManualActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualActivity.swift; sourceTree = "<group>"; };
@@ -908,7 +908,7 @@
 		D80DAA5C20F8C41C00806CB8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D80DAA5D20F8C4F000806CB8 /* LeaderBoardPageViewCell.swift */,
+				D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */,
 				D80DAA5E20F8C4F000806CB8 /* LeaderBoardPageViewCell.xib */,
 				D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */,
 			);
@@ -1179,6 +1179,7 @@
 				10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
+				D80DAA7020FF636600806CB8 /* LeaderBoardPageViewCell.swift in Sources */,
 				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				4DDD12C21D9068E9007C11CB /* PaymentValidatorPlatforms.swift in Sources */,
@@ -1234,7 +1235,6 @@
 				4D8880921D6CBC84008E514A /* IAPHelper.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				5276DE221CF8C458009B2CBE /* ActivityNotification.swift in Sources */,
-				D80DAA5F20F8C4F000806CB8 /* LeaderBoardPageViewCell.swift in Sources */,
 				5255239D1CA987CE00D92F7F /* MenuContentViewController.swift in Sources */,
 				D80DAA6620FCC0FC00806CB8 /* ActivitySponsorViewController.swift in Sources */,
 				52D5B1121CAD78EB00E0BCE1 /* LocalizableLabel.swift in Sources */,
