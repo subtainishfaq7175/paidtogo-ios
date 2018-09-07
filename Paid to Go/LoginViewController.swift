@@ -47,42 +47,8 @@ class LoginViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarVisible(visible: false)
-        
-        verifyIfThereIsCurrentUser()
     }
     
-    private func verifyIfThereIsCurrentUser() {
-
-        if let user = User.currentUser {
-            guard let _ = user.userId else {
-                return
-            }
-            
-            verifyProUserSubscription(user: user)
-        }
-    }
-    
-    /**
-     We verify, if the user has a currently active subscription, that the subscription is still valid
-     
-     - parameter user: the user
-     */
-    private func verifyProUserSubscription(user:User) {
-        
-        if user.isPro() && user.hasPaymentToken() {
-            // If the user is a Pro User and has a paymentToken, we validate with the Apple API if the subscription is still in course
-            DataProvider.sharedInstance.postValidateProUser(completion: { (error) in
-                if let _ = error {
-                    // Post Pro User expired notification
-                      NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
-                    
-//                    NotificationCenter.default.postNotification(NSNotification(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil))
-                }
-            })
-        }
-        
-        presentHomeViewController()
-    }
     
     // MARK: - Actions
     @IBAction func loginButtonAction(sender: AnyObject) {
@@ -115,6 +81,9 @@ class LoginViewController: ViewController {
     }
     
     @IBAction func facebookButtonAction(sender: AnyObject) {
+        
+//        self.showAlert(text: "Under Development")
+//        return;
         
         let loginManager = FBSDKLoginManager.init()
         
@@ -224,6 +193,28 @@ class LoginViewController: ViewController {
         usernameTopConstraint.constant = usernameTopConstraint.constant + usernameTopConstraint.constant * multiplier
         
         forgotPasswordBottomConstraint.constant = forgotPasswordBottomConstraint.constant + forgotPasswordBottomConstraint.constant * multiplier
+    }
+    
+    /**
+     We verify, if the user has a currently active subscription, that the subscription is still valid
+     
+     - parameter user: the user
+     */
+    private func verifyProUserSubscription(user:User) {
+        
+        if user.isPro() && user.hasPaymentToken() {
+            // If the user is a Pro User and has a paymentToken, we validate with the Apple API if the subscription is still in course
+            DataProvider.sharedInstance.postValidateProUser(completion: { (error) in
+                if let _ = error {
+                    // Post Pro User expired notification
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
+                    
+                    //                    NotificationCenter.default.postNotification(NSNotification(name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil))
+                }
+            })
+        }
+        
+        presentHomeViewController()
     }
     
 }

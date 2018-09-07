@@ -24,8 +24,8 @@ enum LocationTag :Int  {
 }
 
 enum AppNotificationTag :Int  {
-    case avaliableCouponNearby
     case checkIns
+    case avaliableCouponNearby
     case newCouponEarned
     case avaliableOffersNearMe
     case weeklyOffers
@@ -57,10 +57,9 @@ class SettingsViewController: MenuContentViewController {
    
     let locationRows = ["Geolocation", "Auto Tracking"]
     
-    let appNotificationRows = ["Available Coupon Nearby", "Check Ins", "New Coupon Earned","Available Offers Near Me", "Weekly Offers", "Monthly Offers"]
+    let appNotificationRows = ["Check Ins", "Available Coupon Nearby", "New Coupon Earned","Available Offers Near Me", "Weekly Offers", "Monthly Offers"]
     
     let emailNotificationRows = ["New offers Near Me ", "New Coupons Earned"]
-    
     
     var items = [MenuItem]()
     
@@ -91,7 +90,7 @@ class SettingsViewController: MenuContentViewController {
     func setuptableView()  {
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.tableView.sectionHeaderHeight = 44
-        self.tableView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        self.tableView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
     }
     
     
@@ -113,7 +112,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return SectionTag.count
+        return 2 //SectionTag.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,13 +125,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 return LocationTag.count
                 
             case .appNotification:
-                return AppNotificationTag.count
+                return 1 // AppNotificationTag.count
                 
             case .emailNotification:
-                return EmailNotificationTag.count
+                return  0 //EmailNotificationTag.count
                 
-                //        case SectionTag.others:
-                //            return self.items.count
                 
             default:
                 log.warning("Unhandled section")
@@ -153,7 +150,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         itemCell.row = indexPath.row
         
         itemCell.selectionStyle = .none
-        itemCell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        itemCell.backgroundColor = .clear
         
         var title:String? = nil
         
@@ -163,9 +160,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 
             case .location:
                 title = locationRows[indexPath.row]
+                if indexPath.row == LocationTag.autoTracking.rawValue {
+                    itemCell.toggleSwitch.setOn(Settings.shared.isAutoTrackingOn, animated: false)
+                }
+                
                 break;
             case .appNotification:
                 title = appNotificationRows[indexPath.row]
+                if indexPath.row == AppNotificationTag.checkIns.rawValue {
+                    itemCell.toggleSwitch.setOn(Settings.shared.checkInsNotification, animated: false)
+                }
                  break;
             case .emailNotification:
                 title = emailNotificationRows[indexPath.row]
@@ -195,7 +199,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         headerView.addSubview(textLabel)
         
-        headerView.backgroundColor =  #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        headerView.backgroundColor = .clear
+//        headerView.backgroundColor =  #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1)
         return headerView
     }
     
@@ -247,6 +252,11 @@ extension SettingsViewController: SettingSwitchTableViewCellDelegate {
                         
                     case .autoTracking:
                         Settings.shared.isAutoTrackingOn = state
+                        
+                        if (!state) {
+                            showAlert(text: "switchedToManualTracking".localize())
+                        }
+                        
                         break;
                     }
                 }
@@ -263,6 +273,7 @@ extension SettingsViewController: SettingSwitchTableViewCellDelegate {
                         break;
                         
                     case .checkIns:
+                        Settings.shared.checkInsNotification = state
                         break;
                         
                     case .monthlyOffers:

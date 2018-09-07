@@ -62,11 +62,19 @@
                                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                                 </variation>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45d-g9-bVP">
+                                                <rect key="frame" x="159.5" y="0.0" width="42.5" height="18"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="psB-lO-1hs" firstAttribute="leading" secondItem="feS-fn-3SD" secondAttribute="leading" id="4dG-Yb-8Sj"/>
                                             <constraint firstAttribute="trailing" secondItem="40b-ut-qvB" secondAttribute="trailing" constant="4" id="Bpy-xH-EAD"/>
+                                            <constraint firstAttribute="trailing" secondItem="45d-g9-bVP" secondAttribute="trailing" id="F8k-UD-igu"/>
+                                            <constraint firstItem="45d-g9-bVP" firstAttribute="top" secondItem="feS-fn-3SD" secondAttribute="top" id="Kb1-SG-7M4"/>
                                             <constraint firstItem="psB-lO-1hs" firstAttribute="top" secondItem="40b-ut-qvB" secondAttribute="bottom" id="RaA-rj-kCV"/>
                                             <constraint firstAttribute="bottom" secondItem="psB-lO-1hs" secondAttribute="bottom" id="UMK-Kw-C42"/>
                                             <constraint firstItem="40b-ut-qvB" firstAttribute="leading" secondItem="feS-fn-3SD" secondAttribute="leading" id="bN3-hG-1ob"/>
@@ -133,6 +141,7 @@
                 <outlet property="countryLB" destination="psB-lO-1hs" id="F82-Sl-Csd"/>
                 <outlet property="linkOL" destination="xHh-7J-NST" id="KcH-1Q-4R4"/>
                 <outlet property="mainView" destination="Oqw-Ea-POJ" id="UHH-i8-iaT"/>
+                <outlet property="poolTypelabel" destination="45d-g9-bVP" id="m1B-y3-L8G"/>
             </connections>
         </tableViewCell>
     </objects>

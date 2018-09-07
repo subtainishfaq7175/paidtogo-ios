@@ -37,8 +37,11 @@ class MyOrganizationsVC: BaseVc {
 // get my organizations from server
     func getOrganizations()  {
         self.showProgressHud()
-        //        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitation, error) in
-        DataProvider.sharedInstance.getOrganizations((User.currentUser?.userId)!, completion: { (organizations, error) in
+        
+        var startDate = Date()
+        var endDate = startDate.tomorrow
+        
+        DataProvider.sharedInstance.getSubscribedPools ((User.currentUser?.userId)!,startDate: startDate, endDate: endDate, completion: { (data, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
@@ -46,16 +49,38 @@ class MyOrganizationsVC: BaseVc {
                 
                 return
             }
-            if  let organizations = organizations, let sponsorPools = organizations.sponsorPools  {
-                self.linkedOrgs.append(contentsOf: sponsorPools)
-                
+            
+            if let data = data {
+                self.linkedOrgs = [Pool]()
+                for pool in data {
+                    self.linkedOrgs.append(pool)
+                    
+                }
+                self.organiztionsTV.reloadData()
             }
-            if let organizations = organizations, let nationalPool = organizations.nationalPool{
-                self.linkedOrgs.append(nationalPool)
-            }
-            self.organiztionsTV.reloadData()
-
+            
+            
         })
+        
+//        //        DataProvider.sharedInstance.getInvitations((User.currentUser?.userId)!, completion: { (invitation, error) in
+//        DataProvider.sharedInstance.getOrganizations((User.currentUser?.userId)!, completion: { (organizations, error) in
+//            self.dismissProgressHud()
+//
+//            if let error = error, error.isEmpty == false {
+//                self.present(self.alert(error), animated: true, completion: nil)
+//
+//                return
+//            }
+//            if  let organizations = organizations, let sponsorPools = organizations.sponsorPools  {
+//                self.linkedOrgs.append(contentsOf: sponsorPools)
+//
+//            }
+//            if let organizations = organizations, let nationalPool = organizations.nationalPool{
+//                self.linkedOrgs.append(nationalPool)
+//            }
+//            self.organiztionsTV.reloadData()
+//
+//        })
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -167,6 +192,7 @@ extension MyOrganizationsVC : UITableViewDataSource{
         
         cell.organizationDelegate = self
         cell.position = indexPath.row
+        cell.poolId = linkedOrgs[indexPath.row].id!
         cell.linkOL.setTitle("Remove", for: .normal)
         return cell
     }

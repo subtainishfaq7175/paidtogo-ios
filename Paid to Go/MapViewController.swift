@@ -107,11 +107,11 @@ class MapViewController: ViewController {
         let previousLocation = ActivityManager.getLastSubrouteInitialLocation()
         let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(locA: previousLocation, locB: currentLocation)
         
-        // Test
-        if ActivityManager.isMapMainScreen() {
-            distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
-            testHorizontalAccuracy.text = String(format: "%.2f", currentLocation.horizontalAccuracy)
-        }
+//        // Test
+//        if ActivityManager.isMapMainScreen() {
+//            distanceLabel.text = String(format: "%.2f", distanceBetweenLocations)
+//            testHorizontalAccuracy.text = String(format: "%.2f", currentLocation.horizontalAccuracy)
+//        }
         
         // We set a minimum offset of 20 meters of distance between user's location points, to draw only those subroutes on the map
         if distanceBetweenLocations > 20.0 {

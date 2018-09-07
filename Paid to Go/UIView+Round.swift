@@ -40,4 +40,20 @@ extension UIView {
         self.layer.shadowOpacity = opacity
         self.layer.masksToBounds = false
     }
+    
+    func addblurView() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+        sendSubview(toBack: blurEffectView)
+    }
+    
+    func rotateViewBy270() {
+        let origin = self.frame
+        
+        self.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 3/2)); //270º
+        self.frame = origin
+    }
 }

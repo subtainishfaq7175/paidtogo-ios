@@ -116,8 +116,8 @@ class ActivityViewController: MenuContentViewController {
         
         notifications.sort { (activityOne, activityTwo) -> Bool in
             
-            let dateOne = NSDate.getDateWithFormatddMMyyyy(dateString: activityOne.startDateTime!)
-            let dateTwo = NSDate.getDateWithFormatddMMyyyy(dateString: activityTwo.startDateTime!)
+            let dateOne = Date.getDateWithFormatddMMyyyy(dateString: activityOne.startDateTime!)
+            let dateTwo = Date.getDateWithFormatddMMyyyy(dateString: activityTwo.startDateTime!)
             
             return dateOne.compare(dateTwo as Date) == .orderedDescending
         }

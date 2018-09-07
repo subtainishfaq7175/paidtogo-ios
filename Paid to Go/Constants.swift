@@ -13,7 +13,7 @@ class Constants {
         
     }
 //    String constants
-    let APP_NAME = "Paid To Go"
+    let APP_NAME = "Paidtogo"
     let OK_STR = "OK"
     let YES_STR = "Yes"
     let NO_STR = "No"
@@ -33,5 +33,14 @@ class Constants {
     let OPEN_SANS_SEMIBOLD = "OpenSans-Semibold"
     let OPEN_SANS_LIGHT = "OpenSans-Light"
 
+ // Notification
+    let NOTIFICATION_LOCATION_UPDATED = "LocationUpdated"
+    let NOTIFICATION_DID_EXIT_CURRENT_GYM = "LocationExitCurrentGym"
+    let NOTIFICATION_DID_ENTER_CURRENT_GYM = "LocationEnterCurrentGym"
+    
+    let NOTIFICATION_ACTIVITIES_SYNCED = "activitiesSynced"
+//    let NOTIFICATION_USER_IMAGE_UPDATED = "USER_IMAGE_UPDATED"
+    let NOTIFICATION_USER_UPDATED = "USER_UPDATED"
+    let NOTIFICATION_WELLDONE_SCREEN_APPEARED = "WELLDONE_SCREEN_APPEARED"
 
 }

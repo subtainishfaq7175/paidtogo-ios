@@ -59,57 +59,57 @@ class ActivityDetailViewController: ViewController {
     // MARK: - Configure UI -
     
     func initLayout() {
-        self.statsView.backgroundColor = CustomColors.carColor()
-        
-        if let miles = activity?.milesTraveled {
-            milesLabel.text = "\(miles) miles"
-        } else {
-            milesLabel.text = "0 miles"
-        }
-        
-        if var gas = activity?.savedGas {
-            if gas == "" {
-                gas = "0"
-            }
-            
-            gasLabel.text = "\(gas) gal"
-        }
-        
-        if var co2 = activity?.savedCo2 {
-            if co2 == "" {
-                co2 = "0"
-            }
-            
-            co2Label.text = "\(co2) Metric tons"
-        }
-        
-        if var cal = activity?.savedCalories {
-            if cal == "" {
-                cal = "0"
-            }
-            
-            caloriesLabel.text = "\(cal) cal"
-        }
-        
-        if let earnedMoney = activity?.earnedMoney {
-            if earnedMoney == "0" {
-                earnedLabel.text = "$0.00"
-            } else {
-                earnedLabel.text = "$\(earnedMoney)"
-            }
-        } else {
-            earnedLabel.text = "$0.00"
-        }
-        
-        if let startDate = activity?.startDateTime {
-            startDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(dateString: startDate))"
-        }
-        
-        if let endDate = activity?.endDateTime {
-            endDateLabel.text = "\(NSDate.getDateStringWithFormatddMMyyyyHHmmss(dateString: endDate))"
-        }
+//        self.statsView.backgroundColor = CustomColors.carColor()
+//
+//        if let miles = activity?.milesTraveled {
+//            milesLabel.text = "\(miles) miles"
+//        } else {
+//            milesLabel.text = "0 miles"
+//        }
+//
+//        if var gas = activity?.savedGas {
+//            if gas == "" {
+//                gas = "0"
+//            }
+//
+//            gasLabel.text = "\(gas) gal"
+//        }
+//
+//        if var co2 = activity?.savedCo2 {
+//            if co2 == "" {
+//                co2 = "0"
+//            }
+//
+//            co2Label.text = "\(co2) Metric tons"
+//        }
+//
+//        if var cal = activity?.savedCalories {
+//            if cal == "" {
+//                cal = "0"
+//            }
+//
+//            caloriesLabel.text = "\(cal) cal"
+//        }
+//
+//        if let earnedMoney = activity?.earnedMoney {
+//            if earnedMoney == "0" {
+//                earnedLabel.text = "$0.00"
+//            } else {
+//                earnedLabel.text = "$\(earnedMoney)"
+//            }
+//        } else {
+//            earnedLabel.text = "$0.00"
+//        }
+//
+//        if let startDate = activity?.startDateTime {
+//            startDateLabel.text = "\(Date.getDateStringWithFormatddMMyyyyHHmmss(dateString: startDate))"
+//        }
+//
+//        if let endDate = activity?.endDateTime {
+//            endDateLabel.text = "\(Date.getDateStringWithFormatddMMyyyyHHmmss(dateString: endDate))"
+//        }
     }
-    
+
     func configureMap() {
         guard let _ = self.activityRoute else {
             // No Activity Route

@@ -410,7 +410,7 @@ extension ShareViewController: SocialShareDelegate {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
             
-            composeVC.setSubject("Paid to Go")
+            composeVC.setSubject("Paidtogo")
             
             if let image = self.screenshot {
                  composeVC.addAttachmentData(UIImageJPEGRepresentation(image, CGFloat(0.1))!, mimeType: "image/jpeg", fileName:  "test.jpeg")

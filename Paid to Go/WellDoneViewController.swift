@@ -22,6 +22,7 @@ class WellDoneViewController: ViewController {
     @IBOutlet weak var co2Label: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var earnedLabel: UILabel!
+    @IBOutlet weak var activityTypeLabel: UILabel!
     
     @IBOutlet weak var backToHomebutton: UIButton!
     
@@ -31,9 +32,10 @@ class WellDoneViewController: ViewController {
     
     var type: PoolTypeEnum?
     var poolType: PoolType?
-    var activityResponse: ActivityResponse?
-    var activity: Activity?
+    var activityResponse: ActivityNotification?
+    var activity : ManualActivity?
     var pool: Pool?
+    var activityType = ActivityTypeEnum.walkingRunning
     
     var screenshot : UIImage?
     
@@ -59,25 +61,27 @@ class WellDoneViewController: ViewController {
         super.viewDidLoad()
         
         self.populateFields()
+        
+        NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_WELLDONE_SCREEN_APPEARED), object: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "shareSegue":
-            let shareViewController = segue.destination as! ShareViewController
-            shareViewController.type = self.type!
-            
-            shareViewController.screenshot = self.screenshot
-            
-            break
-        case "leaderboardsSegue":
-            let wdLeaderboardsViewController = segue.destination as! WDLeaderboardsViewController
-            wdLeaderboardsViewController.type = self.type!
-            wdLeaderboardsViewController.activity = self.activity!
-            wdLeaderboardsViewController.poolType = self.poolType!
-            wdLeaderboardsViewController.pool = self.pool!
-        default:
-            break
-        }
+//        switch segue.identifier! {
+//        case "shareSegue":
+//            let shareViewController = segue.destination as! ShareViewController
+//            shareViewController.type = self.type!
+//
+//            shareViewController.screenshot = self.screenshot
+//
+//            break
+//        case "leaderboardsSegue":
+//            let wdLeaderboardsViewController = segue.destination as! WDLeaderboardsViewController
+//            wdLeaderboardsViewController.type = self.type!
+//            wdLeaderboardsViewController.activity = self.activity!
+//            wdLeaderboardsViewController.poolType = self.poolType!
+//            wdLeaderboardsViewController.pool = self.pool!
+//        default:
+//            break
+//        }
     }
 
     
@@ -90,7 +94,7 @@ class WellDoneViewController: ViewController {
         if let currentProfilePicture = currentUser.profilePicture {
             
             //profileImageView.yy_setImageWithURL(NSURL(string: currentProfilePicture), options: .RefreshImageCache)
-            profileImageView.yy_setImage(with: URL(string: currentProfilePicture), placeholder: nil, options: .refreshImageCache, completion: { (img, url, type, stage, error) in
+            profileImageView.yy_setImage(with: URL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .refreshImageCache, completion: { (img, url, type, stage, error) in
                 
                 // Once the user picture was loaded, we take a screenshot for share
                 guard let screenshot = self.screenShotMethod() as UIImage? else {
@@ -104,11 +108,15 @@ class WellDoneViewController: ViewController {
             
         }
         
-        if let miles = activity?.milesTraveled {
-            if miles == "0.00" {
+        updateLabelsFromActivityResponse()
+    }
+    
+    private func updateLabelsFromActivityResponse() {
+        if let miles = activityResponse?.milesTraveled {
+            if miles == 0.0 {
                 milesLabel.text = "0 miles"
             } else {
-                milesLabel.text = "\(miles) miles"
+                milesLabel.text = String(format: "%.2f", miles) + " miles"
             }
         }
         
@@ -119,7 +127,7 @@ class WellDoneViewController: ViewController {
                 gasLabel.text = String(format: "%.2f", gas) + " gal"
             }
         } else {
-             gasLabel.text = "0 gal"
+            gasLabel.text = "0 gal"
         }
         
         if let co2 = activityResponse?.savedCo2 {
@@ -142,12 +150,57 @@ class WellDoneViewController: ViewController {
             caloriesLabel.text = "0 cal"
         }
         
-        if let earnedMoney = activityResponse?.earnedMoney {
-            earnedLabel.text = "$\(earnedMoney)*"
+        if let earnedMoney = activityResponse?.totalSteps {
+            earnedLabel.text = "\(earnedMoney) steps"
         } else {
-            earnedLabel.text = "$0.00*"
+            earnedLabel.text = "0 steps"
+        }
+    }
+    
+    private func updateLabelsFromActivity() {
+        if let miles = activity?.milesTraveled {
+            if miles == 0.0 {
+                milesLabel.text = "0 miles"
+            } else {
+                 milesLabel.text = String(format: "%.2f", miles) + " miles"
+            }
         }
         
+        if let gas = activity?.traffic {
+            if gas == 0.0 {
+                gasLabel.text = "0 gal"
+            } else {
+                gasLabel.text = String(format: "%.2f", gas) + " gal"
+            }
+        } else {
+            gasLabel.text = "0 gal"
+        }
+        
+        if let co2 = activity?.co2Offset {
+            if co2 == 0.0 {
+                co2Label.text = "0 Metric tons"
+            } else {
+                co2Label.text = String(format: "%.2f", co2) + " Metric tons"
+            }
+        } else {
+            co2Label.text = "0 Metric tons"
+        }
+        
+        if let cal = activity?.calories {
+            if cal == 0.0 {
+                caloriesLabel.text = "0 cal"
+            } else {
+                caloriesLabel.text = String(format: "%.2f", cal) + " cal"
+            }
+        } else {
+            caloriesLabel.text = "0 cal"
+        }
+        
+        if let steps = activity?.steps {
+            earnedLabel.text = "\(steps) steps"
+        } else {
+            earnedLabel.text = "0 steps"
+        }
     }
     
     private func initLayout() {
@@ -156,11 +209,11 @@ class WellDoneViewController: ViewController {
   
         self.title = "menu_home".localize()
         
-        setPoolColor(view: backgroundColorView, type: type!)
+//        setPoolColor(view: backgroundColorView, type: type!)
         
-        if let switchPoolType = self.switchPoolType {
-            self.backToHomebutton.setTitle("Choose next Pool!", for: UIControlState.normal)
-        }
+//        if let switchPoolType = self.switchPoolType {
+//            self.backToHomebutton.setTitle("Choose next Pool!", for: UIControlState.normal)
+//        }
     }
     
     private func initViews() {
@@ -189,6 +242,22 @@ class WellDoneViewController: ViewController {
                 profileImageProportionalConstraint = NSLayoutConstraint.changeMultiplier(constraint: profileImageProportionalConstraint, multiplier: 0.48)
             }
         }
+        
+        var activityType = "Walk/Run/Bike"
+        
+        
+        switch self.activityType {
+        case .walkingRunning:
+            activityType = "Walk/Run"
+        case .cycling:
+            activityType = "Bike"
+        case .workout:
+            activityType = "Workout"
+        case .none:
+            activityType = "Walk/Run/Bike"
+            
+        }
+        activityTypeLabel.text = activityType
     }
     
     // MARK: - Actions

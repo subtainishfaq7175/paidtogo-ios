@@ -11,6 +11,7 @@ import UIKit
     @objc optional func orgatizationLinked(_ error:String?, isLinked:Bool, row:Int, message:String?)
 }
 class OrganizationTVC: UITableViewCell {
+    
     @IBAction func linkBtnAction(_ sender: Any) {
             guard let  parentVC = parentVC else {
                 return
@@ -21,12 +22,17 @@ class OrganizationTVC: UITableViewCell {
         }
         parentVC.present(parentVC.alert("You can't remove National Pool."), animated: true, completion: nil)
     }
+    
     @IBOutlet weak var countryLB: UILabel!
     @IBOutlet weak var linkOL: UIButton!
     @IBOutlet weak var companyNameLB: UILabel!
     @IBOutlet weak var bannerIV: UIImageView!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var poolTypelabel: UILabel!
+    
     var invitationId = Constants.consShared.ZERO_INT
+    
+    var poolId = Constants.consShared.ZERO_INT
     var parentVC:UIViewController?
     var isOrgLinked:Bool = false
     var nationalPool:Int? = Constants.consShared.ZERO_INT
@@ -42,24 +48,34 @@ class OrganizationTVC: UITableViewCell {
         guard let userID = User.currentUser?.userId else {
             return
         }
-        DataProvider.sharedInstance.acceptInvitation(userID, invitationsId: invitationId, isOrgLinked:isOrgLinked,completion: { (response, error) in
-            AppUtils.utilsShared.dismissProgressHud(parentVC)
-            
-            if let error = error, error.isEmpty == false {
-                if let delegate = self.organizationDelegate {
-                    delegate.orgatizationLinked!(error, isLinked: false,row:self.position,message: nil)
+        
+        if isOrgLinked {
+            DataProvider.sharedInstance.unSubcribePool(userID, poolId: poolId) { (response, error) in
+                AppUtils.utilsShared.dismissProgressHud(parentVC)
+                if error == nil {
+                    self.linkOL.setTitle("Removed", for: .normal)
+                    self.linkOL.isEnabled = false
                 }
-                return
+                
             }
-            
-            if let res = response , let detail = res.detail, let isLinked = res.isLinked {
-                if let delegate = self.organizationDelegate {
-                    delegate.orgatizationLinked!(nil, isLinked: isLinked,row:self.position,message: detail)
+        } else {
+            DataProvider.sharedInstance.subcribePool(userID, poolId: poolId) { (response, error) in
+                AppUtils.utilsShared.dismissProgressHud(parentVC)
+                if error == nil {
+                    self.linkOL.setTitle("Linked", for: .normal)
+                    self.linkOL.isEnabled = false
+                    
+                    self.organizationDelegate?.orgatizationLinked!(error, isLinked: !isOrgLinked, row: self.position, message: nil)
+                    
+                    NotificationCenter.default.post(name: .organizationLinked, object: nil, userInfo: nil)
                 }
-                self.linkOL.setTitle("Linked", for: .normal)
-                self.linkOL.isEnabled = false
+                
             }
-        })
+        }
+        
+        
+        
+        
     }
     
 }

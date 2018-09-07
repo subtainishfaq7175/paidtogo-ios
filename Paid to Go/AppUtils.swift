@@ -14,7 +14,7 @@ class AppUtils {
         
     }
 //    this is generate alert for simply showing a message with no action
-    func showAlert(_ vc :UIViewController?, message:String, type:AlertType = .simpleMessge, title: String = "Paid to Go", btnTitle:String = "Ok") {
+    func showAlert(_ vc :UIViewController?, message:String, type:AlertType = .simpleMessge, title: String = "Paidtogo", btnTitle:String = "Ok") {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
         switch type {

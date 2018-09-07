@@ -51,27 +51,19 @@
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url , sourceApplication: sourceApplication, annotation: annotation)
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         self.customizeNavigationBar()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        if let lastSyncDate = Settings.shared.autoTrackingStartDate {
-            let lastDateTimeStamp = lastSyncDate.timeIntervalSince1970
-            let currentTimeStamp = Date().timeIntervalSince1970
-            if currentTimeStamp - lastDateTimeStamp > 86400 {
-                ActivityMoniteringManager.sharedManager.postAutoTrackingData()
-            }
-        }
+        ActivityMoniteringManager.sharedManager.postDataAutomatically()
         
-        return true
-    }
-    
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        self.customizeNavigationBar()
+        cleanUp()
         
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        verifyIfThereIsCurrentUser()
+        
+        DataProvider.sharedInstance.fetchMasterData()
         
         return true
     }
@@ -113,5 +105,47 @@
     }
     
     
+    private func verifyIfThereIsCurrentUser() {
+        
+        if let user = User.currentUser {
+            guard let _ = user.userId else {
+                return
+            }
+            
+            presentHomeViewController()
+        }
+    }
+    
+    // just for fun
+    func presentHomeViewController() {
+//        let user = User()
+//        user.name = "Razi"
+//        user.lastName = "Tiwana"
+//        user.email = "razitiwana@gmail.com"
+//        user.userId = "1697"
+//        User.currentUser = user
+        
+        window?.rootViewController = StoryboardRouter.menuMainViewController()
+    }
+    
+    // MARK: - Clean Up
+    
+    func clearDefaults() {
+        User.logout()
+    }
+    
+    func cleanUp() {
+        // items added in userobject
+        cleanUp(onDate: "cleanUp08August2018")
+    }
+    
+    func cleanUp(onDate date: String?) {
+        let isAlreadyExecuted: Bool = UserDefaults.standard.bool(forKey: date ?? "")
+        if !isAlreadyExecuted {
+            UserDefaults.standard.set(true, forKey: date ?? "")
+            UserDefaults.standard.synchronize()
+            clearDefaults()
+        }
+    }
 }
  

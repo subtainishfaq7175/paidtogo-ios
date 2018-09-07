@@ -10,8 +10,10 @@ import UIKit
 
 class ChagnePassVC: BaseVc {
 
+    @IBOutlet weak var oldPasswordTF: HoshiTextField!
     @IBOutlet weak var passwrodTF: HoshiTextField!
     @IBOutlet weak var repeatPasswordTF: HoshiTextField!
+    
     @IBOutlet weak var changePasswordOL: UIButton!
     @IBAction func changePasswordAction(_ sender: Any) {
         changePassword()
@@ -36,51 +38,53 @@ class ChagnePassVC: BaseVc {
             return false
         }
         if repeatPasswordTF.text! == "" {
-            present(alert( "Repeate New Password field is empty"), animated: true, completion: nil)
+            present(alert( "Confirm Password field is empty"), animated: true, completion: nil)
 
-           
             return false
         }
-        if passwrodTF.text == repeatPasswordTF.text{
+        if oldPasswordTF.text! == "" {
+            present(alert( "Old Password field is empty"), animated: true, completion: nil)
+            
+            return false
+        }
+        
+        if ((passwrodTF.text?.count) ?? 0) < 8 {
+            present(alert( "The new password must be at least 8 characters."), animated: true, completion: nil)
+            
+            return false
+        }
+        
+        if passwrodTF.text == repeatPasswordTF.text {
             return true
         }else {
-            present(alert( "New Password and Repeat New password isn't match."), animated: true, completion: nil)
+            present(alert( "New Password and Confirm Password doesn't match."), animated: true, completion: nil)
             return false
         }
     }
+    
     func changePassword(){
         if validate() {
             
             self.showProgressHud()
             
-            let userToSend: User!
-            userToSend = User()
-            
-            userToSend.accessToken = User.currentUser?.accessToken
-            userToSend.password = passwrodTF.text
-            
-            
-            DataProvider.sharedInstance.postUpdateProfile(user: userToSend) { (user, error) in
-                
+            DataProvider.sharedInstance.changePassword(oldPasswordTF.text!, newPassword:passwrodTF.text!) { (message, error) in
                 self.dismissProgressHud()
-                
-                if let user = user { //success
-                    self.present(self.alert("profile_changes_submited".localize()), animated: true, completion: nil)
-                  
-                    User.currentUser = user
-                    self.checkmarksStruct.updateUserLocally()
+                if error == nil {
+                    self.present(self.alert(message!), animated: true, completion: nil)
                 } else if let error = error {
                     self.present(self.alert(error), animated: true, completion: nil)
                 }
             }
-        }
         
+        }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
 }
+
+
 extension ChagnePassVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == passwrodTF {

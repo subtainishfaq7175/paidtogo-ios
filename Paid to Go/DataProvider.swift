@@ -1,4 +1,4 @@
-//
+    //
 //  DataProvider.swift
 //  Celebrastic
 //
@@ -53,25 +53,28 @@ class DataProvider : DataProviderService {
     
     // MARK: - Auth -
     
-    func postRegister(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
-
+    func postRegister(user: User,imageData:Data?, imageName:String?, completion: @escaping (_ user: User?, _ error: String?) -> Void, progresshandler:@escaping (Progress) -> Void) {
+        
         let json = Mapper().toJSON(user)
 
-        ConnectionManager.sharedInstance.register(params: json as [String : AnyObject]) { (responseValue, error) in
-
+        ConnectionManager.sharedInstance.register(params: json as [String : AnyObject], imageData: imageData, imageName: imageName, apiCompletion: { (responseValue, error) in
             if (error == nil) {
-
+                
                 let user = Mapper<User>().map(JSON: responseValue as! [String : Any])
                 completion(user, nil)
                 return
-
+                
             } else {
-
-                completion(nil, self.getError(error: error!))
+                if error! == "USER_NOT_FOUND" {
+                    completion(nil, "error_email_not_found".localize())
+                } else {
+                    completion(nil, self.getError(error: error!))
+                }
                 return
-
             }
-        }
+        }, progresshandler: { (progress) in
+            progresshandler(progress)
+        })
     }
     
     func postLogin(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
@@ -109,12 +112,44 @@ class DataProvider : DataProviderService {
 
             } else {
 
-                completion(nil, self.getError(error: error!))
+                if error! == "USER_NOT_FOUND" {
+                     completion(nil, "error_email_not_found".localize())
+                } else {
+                     completion(nil, self.getError(error: error!))
+                }
 
                 return
 
             }
         }
+    }
+    
+    func updateProfilePicture(user: User,imageData:Data?, imageName:String?, completion: @escaping (_ user: User?, _ error: String?) -> Void, progresshandler:@escaping (Progress) -> Void) {
+        
+//        let json = Mapper().toJSON(user)
+        
+        
+        let params = ["access_token": (User.currentUser?.accessToken ?? "") as AnyObject
+                      ]
+        
+        ConnectionManager.sharedInstance.updateProfilePicture(params: params as [String : AnyObject], imageData: imageData, imageName: imageName, apiCompletion: { (responseValue, error) in
+            if (error == nil) {
+//                completion(nil, nil)
+                
+                if let user = Mapper<User>().map(JSON: responseValue as! [String : Any]) {
+                     completion(user, nil)
+                } else {
+                    completion(nil, self.getError(error: ""))
+                }
+                return
+                
+            } else {
+                completion(nil, self.getError(error: error!))
+                return
+            }
+        }, progresshandler: { (progress) in
+            progresshandler(progress)
+        })
     }
     
 //    func postFacebookLogin(params: [String: AnyObject], completion: (user: User?, error: String?) -> Void) {
@@ -175,6 +210,11 @@ class DataProvider : DataProviderService {
     
     // MARK: - Pools -
     
+    
+    
+    
+    
+    
 func getNationalPools(poolTypeId: String, completion: (_ pools: [Pool]?, _ error: String?) -> Void) {
     getPools(poolTypeId: poolTypeId, open: "2", completion: completion)
     }
@@ -189,22 +229,23 @@ func getClosedPools(poolTypeId: String, completion: (_ pools: [Pool]?, _ error: 
     
     func getPoolType(poolTypeEnum: PoolTypeEnum, completion: @escaping (_ poolType: PoolType?, _ error: String?) -> Void) {
         
-    ConnectionManager.sharedInstance.getPoolType(params: poolTypeEnum) { (responseValue, error) in
-
-            if (error == nil) {
-
-                let poolType = Mapper<PoolType>().map(JSON: responseValue as! [String : Any])
-                completion(poolType, nil)
-                return
-
-            } else {
-
-                completion(nil, self.getError(error: error!))
-                return
-
-            }
-        }
+//        ConnectionManager.sharedInstance.getPoolType(params: poolTypeEnum) { (responseValue, error) in
+//
+//            if (error == nil) {
+//
+//                let poolType = Mapper<PoolType>().map(JSON: responseValue as! [String : Any])
+//                completion(poolType, nil)
+//                return
+//
+//            } else {
+//                completion(nil, self.getError(error: error!))
+//                return
+//
+//            }
+//        }
     }
+    
+    
     
 func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _ error: String?) -> Void) {
         
@@ -257,13 +298,18 @@ func getPools(poolTypeId: String, open: String, completion: (_ pools: [Pool]?, _
     // MARK: - Profile -
     
     func postUpdateProfile(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
+
+        let params = ["first_name": user.name as AnyObject,
+                      "last_name": user.lastName as AnyObject,
+                      "email": user.email as AnyObject,
+                       "paypal_account": user.email as AnyObject,
+                      "access_token": (User.currentUser?.accessToken ?? "") as AnyObject,
+                      "user_id": User.currentUser?.userId as AnyObject,
+                      ]
         
-        let json = Mapper().toJSON(user)
-                
-    ConnectionManager.sharedInstance.updateProfile(params: json as [String : AnyObject]) { (responseValue, error) in
+    ConnectionManager.sharedInstance.updateProfile(params: params) { (responseValue, error) in
             
             if (error == nil) {
-                
                 let user = Mapper<User>().map(JSON: responseValue  as! [String : Any])
                 completion(user, nil)
                 return
@@ -616,33 +662,37 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
 //            .append("]")
 //    }
 
+   
+    
+    
     
     
     //    MARK: - New Requests
-    func getOrganizations(_ userId: String, completion: @escaping (_ organization: ActivePoolsRes?, _ error: String?) -> Void) {
-        
-        //        let json = Mapper().toJSON(user)
-        
-        ConnectionManager.sharedInstance.activePools(userId) { (responseValue, error) in
-            
-            if (error == nil) {
-                
-                if let organizations = Mapper<ActivePoolsRes>().map(JSON: (responseValue as! [String : Any]))
-                {
-                    
-                    completion(organizations, nil)
-                    
-                }
-                return
-                
-            } else {
-                
-                completion(nil, self.getError(error: error!))
-                return
-                
-            }
-        }
-    }
+//    func getOrganizations(_ userId: String, completion: @escaping (_ organization: ActivePoolsRes?, _ error: String?) -> Void) {
+//
+//        //        let json = Mapper().toJSON(user)
+//
+//        ConnectionManager.sharedInstance.activePools(userId) { (responseValue, error) in
+//
+//            if (error == nil) {
+//
+//                if let organizations = Mapper<ActivePoolsRes>().map(JSON: (responseValue as! [String : Any]))
+//                {
+//
+//                    completion(organizations, nil)
+//
+//                }
+//                return
+//
+//            } else {
+//
+//                completion(nil, self.getError(error: error!))
+//                return
+//
+//            }
+//        }
+//    }
+    
     func postUserActivity(_ poolId: Int, miles: Double, steps:Double, activityType:Int,  completion: @escaping (_ organization: GenericResponse?, _ error: String?) -> Void) {
         
         
@@ -654,14 +704,83 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
         
         //        let json = Mapper().toJSON(user)
         
-        ConnectionManager.sharedInstance.postActivity(params: params) { (responseValue, error) in
-            
-            if (error == nil) {
+//        ConnectionManager.sharedInstance.postActivity(params: params) { (responseValue, error) in
+//            
+//            if (error == nil) {
+//                
+//                if let organizations = Mapper<GenericResponse>().map(JSON: (responseValue as! [String : Any]))
+//                {
+//                    
+//                    completion(organizations, nil)
+//                    
+//                }
+//                return
+//                
+//            } else {
+//                
+//                completion(nil, self.getError(error: error!))
+//                return
+//                
+//            }
+//        }
+    }
+
+//    func getInvitations(_ userId: String, completion: @escaping (_ invitations: [Invitations]?, _ error: String?) -> Void) {
+//
+////        let json = Mapper().toJSON(user)
+//
+//        ConnectionManager.sharedInstance.invitations(params: ["user_id": userId as AnyObject]) { (responseValue, error) in
+//
+//            if (error == nil) {
+//
+//                if let invitations = Mapper<Invitations>().mapArray(JSONObject: (responseValue as! [String : Any])["Invitations"])
+//                {
+//
+//                    completion(invitations, nil)
+//
+//                }
+//                return
+//
+//            } else {
+//
+//                completion(nil, self.getError(error: error!))
+//                return
+//
+//            }
+//        }
+//    }
+//    func acceptInvitation(_ userId:String, invitationsId: Int,isOrgLinked: Bool, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
+//        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject], isOrgLinked:isOrgLinked) { (responseValue, error) in
+//            if (error == nil) {
+//                if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]){
+//                    res.isLinked = isOrgLinked
+//                    completion(res, nil)
+//                }
+//                return
+//            } else {
+//                completion(nil, self.getError(error: error!))
+//                return
+//            }
+//        }
+//    }
+    
+    //    MARK: -  Really New Requests
+    
+    func getSubscribedPools(_ userId: String, startDate:Date, endDate:Date, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+    
+        ConnectionManager.sharedInstance.userSubscribedPools(userId,
+                                                             startDate: startDate.formatedStingYYYY_MM_dd(),
+                                                             endDate: endDate.formatedStingYYYY_MM_dd(),
+                                                             apiCompletion: { (responseValue, error) in
+                                                                
+                                                                if (error == nil) {
                 
-                if let organizations = Mapper<GenericResponse>().map(JSON: (responseValue as! [String : Any]))
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
                 {
                     
-                    completion(organizations, nil)
+                    completion(pools, nil)
                     
                 }
                 return
@@ -672,22 +791,30 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
                 return
                 
             }
-        }
+        })
     }
-
-    func getInvitations(_ userId: String, completion: @escaping (_ invitations: [Invitations]?, _ error: String?) -> Void) {
+    
+    
+    func getEligiblePools(_ userId: String, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
         
-//        let json = Mapper().toJSON(user)
+        //        let json = Mapper().toJSON(user)
         
-        ConnectionManager.sharedInstance.invitations(params: ["user_id": userId as AnyObject]) { (responseValue, error) in
+        let lat = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude)
+        let long = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude)
+        
+//        testting
+//        lat = String(31.52036960000001)
+//        long = String(74.3587473)
+        
+        ConnectionManager.sharedInstance.userEligiblePools(userId, lattitude: lat, longitude: long, apiCompletion: { (responseValue, error) in
             
             if (error == nil) {
                 
-                if let invitations = Mapper<Invitations>().mapArray(JSONObject: (responseValue as! [String : Any])["Invitations"])
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
                 {
                     
-                    completion(invitations, nil)
-
+                    completion(pools, nil)
+                    
                 }
                 return
                 
@@ -697,14 +824,15 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
                 return
                 
             }
-        }
+        })
     }
-    func acceptInvitation(_ userId:String, invitationsId: Int,isOrgLinked: Bool, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
-        ConnectionManager.sharedInstance.acceptInvitation(params: ["user_id": userId as AnyObject, "invitation_id": invitationsId as AnyObject], isOrgLinked:isOrgLinked) { (responseValue, error) in
+    
+    func subcribePool(_ userId:String, poolId: Int, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
+        ConnectionManager.sharedInstance.subcribePool(params: ["user_id": userId as AnyObject, "pool_id": poolId as AnyObject]) { (responseValue, error) in
             if (error == nil) {
                 if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]){
-                    res.isLinked = isOrgLinked
-                    completion(res, nil)
+//                    res.isLinked = isOrgLinked
+                    completion(nil, nil)
                 }
                 return
             } else {
@@ -714,7 +842,260 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
         }
     }
     
+    func unSubcribePool(_ userId:String, poolId: Int, completion: @escaping (_ respose: GenericResponse?, _ error: String?) -> Void) {
+        ConnectionManager.sharedInstance.unSubcribePool(params: ["user_id": userId as AnyObject, "pool_id": poolId as AnyObject]) { (responseValue, error) in
+            if (error == nil) {
+                if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]) {
+                    //                    res.isLinked = isOrgLinked
+                    completion(nil, nil)
+                }
+                return
+            } else {
+                completion(nil, self.getError(error: error!))
+                return
+            }
+        }
+    }
+    
+    func searchPools(withSearchString searchString: String, poolType type:String, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
+        
+        let params = ["name": searchString as AnyObject,
+                      "type": type as AnyObject,
+                      "created_at":  Date().formatedStingYYYY_MM_dd() as AnyObject
+                      ]
+        
+        ConnectionManager.sharedInstance.searchPool(params:params, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(pools, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+            }
+        })
+        
+        
+    }
+    
+    func changePassword(_ oldPassword: String, newPassword: String, completion: @escaping (_ message: String?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+        
+        let user = User.currentUser
+        
+        let params = ["old_password": oldPassword as AnyObject,
+                      "new_password": newPassword as AnyObject,
+                      "password_repeat": newPassword as AnyObject,
+                      "access_token": (user?.accessToken ?? "") as AnyObject,
+                      "user_id": user?.userId as AnyObject,
+                      ]
+        
+        ConnectionManager.sharedInstance.changePassword(params:params,
+                                                        apiCompletion: { (responseValue, error) in
+                                                            
+                                                            if (error == nil) {
+                                                                completion("Password Updated Sucessfully", nil)
+                                                                return
+                                                                
+                                                            } else {
+                                                                
+                                                                completion(nil, self.getError(error: error!))
+                                                                return
+                                                                
+                                                            }
+        })
+    }
+    
+    func userBalance(_ userId: String, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.userBalance(userId, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(pools, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        })
+    }
+    
+    func userLeaderBoard(_ userId: String, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.userLeaderBoard(userId, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(pools, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        })
+    }
+    
+    func getSponsors(_ userId: String, completion: @escaping (_ sponsor: [Sponsor]?, _ error: String?) -> Void) {
+        
+        //        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.userSponsors(userId, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let sponsors : [Sponsor] = Mapper<Sponsor>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(sponsors, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        })
+    }
+    
+    
+    func userActivities(_ userId: String, completion: @escaping (_ activities: [ActivityNotification]?, _ error: String?) -> Void) {
+        
+        ConnectionManager.sharedInstance.userActivities(userId, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let activities : [ActivityNotification] = Mapper<ActivityNotification>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(activities, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        })
+    }
+    
+    func registerActivites(_ activities: [AnyObject], completion: @escaping (_ respose: AnyObject?, _ error: String?) -> Void)  {
+        ConnectionManager.sharedInstance.registerActivity(params: activities, apiCompletion: { (responseValue, error) in
+            if (error == nil) {
+//                if let res = Mapper<GenericResponse>().map(JSON: responseValue as! [String : Any]) {
+//                   
+//                }
+                completion(responseValue, nil)
+                return
+            } else {
+                completion(nil, self.getError(error: error!))
+                return
+            }
+        })
+    }
+    
+    func getGraphData(_ userId: String, poolId:String, span:String , completion: @escaping (_ graphData: [ActivityNotification]?, _ error: String?) -> Void) {
+        
+        ConnectionManager.sharedInstance.graphData(userId, span: span, poolID: poolId, apiCompletion: { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                if let graphData : [ActivityNotification] = Mapper<ActivityNotification>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                {
+                    
+                    completion(graphData, nil)
+                    
+                }
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        })
+    }
+    
+    func fetchMasterData() {
+        ConnectionManager.sharedInstance.fetchMasterData(apiCompletion: { (response, error) in
+            if (error == nil) {
+    
+                if let responseArray = response {
+                    
+                    let masterData = MasterData()
+                    for item in responseArray as! [[String : AnyObject]] {
+                        
+                        if item["key"] as! String == "calories" {
+                            masterData.caloriesPerMile = item["value"] as? Int
+                        }
+                        if item["key"] as! String == "steps" {
+                            masterData.stepsPerMile = item["value"] as? Int
+                        }
+                        if item["key"] as! String == "gymCheckIn" {
+                             masterData.gymCheckIn = item["value"] as? Int
+                        }
+                        if item["key"] as! String == "traffic" {
+                             masterData.trafficPerMile = item["value"] as? Double
+                        }
+                        if item["key"] as! String == "co2" {
+                             masterData.co2OffsetPerMile = item["value"] as? Double
+                        }
+                        if item["key"] as! String == "profit" {
+                             masterData.profit = item["value"] as? Double
+                        }
+                        if item["key"] as! String == "speedOnFoot" {
+                             masterData.speedOnFoot = item["value"] as? Int
+                        }
+                        if item["key"] as! String == "speedOnBike" {
+                             masterData.speedOnBike = item["value"] as? Int
+                        }
+                    }
+                    MasterData.sharedData = masterData;
+                }
+            } else {
+                
+            }
+        })
+    }
+    
 }
+
 protocol DataProviderService {
     
     func getNotifications(completion: ([Notification]) -> Void)

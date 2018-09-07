@@ -46,6 +46,9 @@ class ChangePasswordViewController: ViewController {
     
     @IBAction func changePasswordButtonAction(sender: AnyObject) {
     
+        self.showAlert(text: "Under Development")
+        return;
+        
         self.view.endEditing(true)
         
         if validateNewPassword() {

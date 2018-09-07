@@ -22,8 +22,8 @@ class IdentifierConstants {
     var ACCOUNT_VC:String {return "AccountVC"}
     var CHANGE_PASS_VC:String {return "ChagnePassVC"}
     var ACTIVITY_TABLE_VC:String {return "ActivityTableVC"}
-
-
+    var WebViewViewController_VC:String {return "WebViewViewController"}
+    var WellDoneViewController_VC:String {return "wellDoneViewController"}
 
 //    table view cell ids
     var LOCAL_POOL_TVC:String {return "LocalPoolTVC"}

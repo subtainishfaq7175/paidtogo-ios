@@ -13,9 +13,18 @@ import Foundation
 enum DefaultsKeys: String {
     case Autotracking
     case AutotrackingStartDate
+    case CheckInsNotification
+    case AutotrackingStartDateForCycling
 }
 
 class Settings {
+    
+    // MARK: Keys
+    private let initialPopUpAlreadyShownKey = "initialPopUpAlreadyShownKey"
+    private let trackingNotRequiredPopUpAlreadyShownKey = "trackingNotRequiredPopUpAlreadyShownKey"
+    private let checkInsNotificationKey = "checkInsNotificationKey"
+    
+    
     var isAutoTrackingOn: Bool {
         get {
             return userdefaults.bool(forKey: DefaultsKeys.Autotracking.rawValue)
@@ -37,6 +46,46 @@ class Settings {
             userdefaults.set(newValue, forKey: DefaultsKeys.AutotrackingStartDate.rawValue)
         }
     }
+    
+    var autoTrackingStartDateForCycling : Date? {
+        get {
+            return userdefaults.object(forKey: DefaultsKeys.AutotrackingStartDateForCycling.rawValue) as? Date
+        }
+        set {
+            userdefaults.set(newValue, forKey: DefaultsKeys.AutotrackingStartDateForCycling.rawValue)
+        }
+    }
+    
+    var initialPopUpAlreadyShown :Bool {
+        get {
+            return userdefaults.bool(forKey: initialPopUpAlreadyShownKey)
+        }
+        set {
+            userdefaults.set(newValue, forKey: initialPopUpAlreadyShownKey)
+        }
+    }
+    
+    var trackingNotRequiredPopUpAlreadyShown :Bool {
+        get {
+            return userdefaults.bool(forKey: trackingNotRequiredPopUpAlreadyShownKey)
+        }
+        set {
+            userdefaults.set(newValue, forKey: trackingNotRequiredPopUpAlreadyShownKey)
+        }
+    }
+    
+    var checkInsNotification :Bool {
+        get {
+            return userdefaults.bool(forKey: checkInsNotificationKey)
+        }
+        set {
+            userdefaults.set(newValue, forKey: checkInsNotificationKey)
+            if newValue {
+                GeolocationManager.sharedInstance.registerForNotification()
+            }
+        }
+    }
+    
     
     let userdefaults = UserDefaults.standard
     

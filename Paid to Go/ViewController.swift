@@ -14,6 +14,13 @@ import UIColor_Hex_Swift
 
 class ViewController: UIViewController {
     
+    internal let consShared = Constants.consShared
+    internal let idConsShared = IdentifierConstants.idConsShared
+    internal let colorShared = CustomColors.colorShared
+    internal let utilsShared = AppUtils.utilsShared
+    
+    var progressHUD : MBProgressHUD?
+    
     // MARK: - View life cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +118,7 @@ class ViewController: UIViewController {
     // MARK: - Custom Alert View -
     
     func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Paid to Go", message:
+        let alertController = UIAlertController(title: "Paidtogo", message:
             text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
@@ -119,7 +126,7 @@ class ViewController: UIViewController {
     }
     
     func showAlertAndDismissOnCompletion(text: String) {
-        let alertController = UIAlertController(title: "Paid to Go", message:
+        let alertController = UIAlertController(title: "Paidtogo", message:
             text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: popViewController))
         
@@ -127,9 +134,17 @@ class ViewController: UIViewController {
     }
     
     func showAlertAndDismissModallyOnCompletion(text: String) {
-        let alertController = UIAlertController(title: "Paid to Go", message:
+        let alertController = UIAlertController(title: "Paidtogo", message:
             text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: dismissViewController))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlert(text: String, completion: ((UIAlertAction) -> Swift.Void)? = nil) {
+        let alertController = UIAlertController(title: "Paidtogo", message:
+            text, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: completion))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -255,12 +270,14 @@ class ViewController: UIViewController {
     
     func logoutAnimated() {
         if let window = self.view.window {
-            window.rootViewController?.dismiss(animated: true, completion: nil)
+            window.rootViewController = StoryboardRouter.loginViewController()
         }
     }
     
     func presentHomeViewController() {
-        self.present(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
+        showAlert(text: "switchedToManualTracking".localize()) { (action) in
+             self.view.window?.rootViewController? = StoryboardRouter.menuMainViewController()
+        }
     }
     
     func presentHomeViewControllerWithoutAnimation() {
@@ -310,11 +327,21 @@ class ViewController: UIViewController {
     func showProgressHud(title: String) {
         let loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingNotification.mode = MBProgressHUDMode.indeterminate
-        loadingNotification.labelText = title
+        loadingNotification.label.text = title
+    }
+    
+    func showProgressHud(progress: Float) {
+        if progressHUD == nil {
+            progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+            progressHUD?.mode = .annularDeterminate
+        }
+
+        progressHUD!.progress = progress
     }
     
     func dismissProgressHud() {
         MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+        progressHUD = nil
     }
     
 }

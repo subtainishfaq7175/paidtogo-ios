@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,8 +31,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-ES-Hgi">
                                 <rect key="frame" x="0.0" y="0.0" width="62" height="58.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_walkrun" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-gu-Tkt">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_walkrun" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-gu-Tkt">
                                         <rect key="frame" x="17" y="16" width="28" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="7hm-zp-4rz"/>
+                                            <constraint firstAttribute="width" constant="28" id="UOb-kh-4hI"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +59,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="221" height="29.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAILY WALK / RUN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i1-Jt-lMr">
-                                                <rect key="frame" x="0.0" y="9.5" width="154.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="8.5" width="129" height="21"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -63,24 +67,11 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2s-Rx-bdD">
-                                                <rect key="frame" x="156.5" y="10.5" width="64.5" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact-widthClass=compact">
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                                </variation>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="N2s-Rx-bdD" firstAttribute="leading" secondItem="2i1-Jt-lMr" secondAttribute="trailing" constant="2" id="GV0-zH-Qcc"/>
                                             <constraint firstAttribute="bottom" secondItem="2i1-Jt-lMr" secondAttribute="bottom" id="aAi-uM-Vlu"/>
-                                            <constraint firstItem="2i1-Jt-lMr" firstAttribute="width" secondItem="KQQ-3p-oOo" secondAttribute="width" multiplier="0.7" id="gjS-ah-L9D"/>
-                                            <constraint firstAttribute="trailing" secondItem="N2s-Rx-bdD" secondAttribute="trailing" id="uSK-yC-Upr"/>
                                             <constraint firstItem="2i1-Jt-lMr" firstAttribute="leading" secondItem="KQQ-3p-oOo" secondAttribute="leading" id="wt2-cU-acP"/>
-                                            <constraint firstAttribute="bottom" secondItem="N2s-Rx-bdD" secondAttribute="bottom" id="yvP-DK-E8o"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKY-6S-aAC">
@@ -95,24 +86,12 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-5o-PvH">
-                                                <rect key="frame" x="154" y="0.0" width="66.5" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact-widthClass=compact">
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                                </variation>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Byq-5o-PvH" secondAttribute="trailing" id="CbP-aZ-NCD"/>
                                             <constraint firstItem="oQK-Ev-uxB" firstAttribute="top" secondItem="UKY-6S-aAC" secondAttribute="top" id="Stm-yP-tAs"/>
                                             <constraint firstItem="oQK-Ev-uxB" firstAttribute="leading" secondItem="UKY-6S-aAC" secondAttribute="leading" id="a0f-p8-mXB"/>
                                             <constraint firstItem="oQK-Ev-uxB" firstAttribute="width" secondItem="UKY-6S-aAC" secondAttribute="width" multiplier="0.7" id="dm2-dT-ZcI"/>
-                                            <constraint firstItem="Byq-5o-PvH" firstAttribute="leading" secondItem="oQK-Ev-uxB" secondAttribute="trailing" id="dvi-Q2-dIH"/>
-                                            <constraint firstItem="Byq-5o-PvH" firstAttribute="top" secondItem="UKY-6S-aAC" secondAttribute="top" id="tCs-87-ygV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -158,11 +137,9 @@
             <connections>
                 <outlet property="dividerView" destination="bfL-hj-nMf" id="eD0-Z8-dnA"/>
                 <outlet property="itemIV" destination="NmH-gu-Tkt" id="bSY-NY-I11"/>
-                <outlet property="itemStatusLB" destination="Byq-5o-PvH" id="lbS-re-5Bx"/>
                 <outlet property="itemTitleLB" destination="2i1-Jt-lMr" id="Gqe-V9-zC3"/>
                 <outlet property="itemValueLB" destination="oQK-Ev-uxB" id="W10-9D-f37"/>
                 <outlet property="mainView" destination="YAN-wh-Db1" id="EK9-Lf-ZHX"/>
-                <outlet property="selectionView" destination="N2s-Rx-bdD" id="3dl-HQ-DIh"/>
             </connections>
             <point key="canvasLocation" x="25" y="51.5"/>
         </tableViewCell>

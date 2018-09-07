@@ -125,7 +125,7 @@ class ProfileViewController: MenuContentViewController {
     @IBOutlet weak var passwordVerificationTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
-    @IBOutlet weak var bioTextField: UITextField!
+//    @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var paypalTextField: UITextField!
     
     @IBOutlet weak var checkmarksTableView: UITableView!
@@ -223,14 +223,14 @@ class ProfileViewController: MenuContentViewController {
         profileImageView.roundWholeView()
     }
     
-    private func populateFields() {
+    @objc private func populateFields() {
         
         let currentUser         = User.currentUser!
         
         emailTextField.text     = currentUser.email
         firstNameTextField.text = currentUser.name
         lastNameTextField.text  = currentUser.lastName
-        bioTextField.text       = currentUser.bio
+//        bioTextField.text       = currentUser.bio
         paypalTextField.text    = currentUser.paypalAccount
         ageTextField.text       = currentUser.age
         genderTextField.text    = currentUser.gender
@@ -284,6 +284,21 @@ class ProfileViewController: MenuContentViewController {
         signupButtonViewContainer.isUserInteractionEnabled = false
     }
     
+    private func showlogOutAlert() {
+        let alertController = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
+        
+        let logoutAction = UIAlertAction(title: "Log out?", style: .default) { walkingAction in
+            User.logout()
+            self.logoutAnimated()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(logoutAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Selectors -
     
     @IBAction func photoTapAction(sender: AnyObject) {
@@ -305,10 +320,7 @@ class ProfileViewController: MenuContentViewController {
     
     
     @IBAction func logout(sender: AnyObject) {
-        
-        User.logout()
-        self.logoutAnimated()
-        
+        showlogOutAlert()
     }
     
     @IBAction func submitAction(sender: AnyObject?){
@@ -323,7 +335,7 @@ class ProfileViewController: MenuContentViewController {
             userToSend.accessToken = User.currentUser?.accessToken
             userToSend.name = firstNameTextField.text
             userToSend.lastName = lastNameTextField.text
-            userToSend.bio = bioTextField.text
+//            userToSend.bio = bioTextField.text
             
             if let paypalAcount = self.paypalTextField.text, self.paypalTextField.text != "" {
                 userToSend.paypalAccount = paypalAcount

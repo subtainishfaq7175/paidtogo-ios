@@ -51,20 +51,7 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMr-lc-V1R">
                                         <rect key="frame" x="109.5" y="0.0" width="110" height="43.5"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="8X2-HE-1gS">
-                                                <rect key="frame" x="17.5" y="-15.5" width="75" height="75"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="8X2-HE-1gS" secondAttribute="height" multiplier="1:1" id="CF9-0Q-adZ"/>
-                                                    <constraint firstAttribute="height" constant="75" id="rEb-BP-9ja"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="8X2-HE-1gS" firstAttribute="centerY" secondItem="rMr-lc-V1R" secondAttribute="centerY" id="FLN-v0-IST"/>
-                                            <constraint firstItem="8X2-HE-1gS" firstAttribute="centerX" secondItem="rMr-lc-V1R" secondAttribute="centerX" id="Wdc-O0-F8w"/>
-                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cs8-Hj-D7J">
                                         <rect key="frame" x="219.5" y="0.0" width="109.5" height="43.5"/>
@@ -95,10 +82,22 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43.5" id="AFg-w7-fNe"/>
+                                </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="8X2-HE-1gS">
+                                <rect key="frame" x="143" y="40" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8X2-HE-1gS" secondAttribute="height" multiplier="1:1" id="CF9-0Q-adZ"/>
+                                    <constraint firstAttribute="height" constant="75" id="rEb-BP-9ja"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8X2-HE-1gS" firstAttribute="centerX" secondItem="q8S-Eg-N7A" secondAttribute="centerX" id="73I-ro-RUI"/>
+                            <constraint firstItem="8X2-HE-1gS" firstAttribute="centerY" secondItem="q8S-Eg-N7A" secondAttribute="centerY" id="AU8-Ut-ZPo"/>
                             <constraint firstItem="fsf-O0-FyY" firstAttribute="top" secondItem="Ggy-ja-r1b" secondAttribute="top" constant="20" symbolic="YES" id="HfC-uB-4A1"/>
                             <constraint firstItem="q8S-Eg-N7A" firstAttribute="centerY" secondItem="Ggy-ja-r1b" secondAttribute="centerY" constant="10" id="Mm2-p3-cGZ"/>
                             <constraint firstAttribute="trailing" secondItem="q8S-Eg-N7A" secondAttribute="trailing" constant="16" id="cd7-Yg-IPt"/>
@@ -120,6 +119,7 @@
             <connections>
                 <outlet property="containerView" destination="Ggy-ja-r1b" id="MsW-QI-ncI"/>
                 <outlet property="pointsLabel" destination="774-j9-u4K" id="rX4-Ve-lAh"/>
+                <outlet property="pointsOrUSDLabel" destination="YR5-pL-yYu" id="BVm-Tb-QYb"/>
                 <outlet property="poolNameLabel" destination="fsf-O0-FyY" id="2o1-nD-xSI"/>
                 <outlet property="positionLabel" destination="r5B-VW-dZ7" id="bZB-Vh-Ehv"/>
                 <outlet property="positionSuffixLabel" destination="If0-S0-8Ma" id="tYo-Bg-rCL"/>

@@ -12,11 +12,21 @@ class ActivityTableVC: BaseVc {
 
     @IBOutlet weak var activityTV: UITableView!
     var activity:ActivityNotification?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
 
         // Do any additional setup after loading the view.
+        
+        
+//        if activity == nil {
+//            activity = ActivityNotification()
+//
+//            activity?.totalSteps = 200
+//            activity?.milesTraveled = 20
+//            activity?.savedCalories = 100
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,32 +61,35 @@ extension ActivityTableVC : UITableViewDataSource {
         case consShared.ZERO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_walkrun")
             cell.itemTitleLB.text = "DAILY WALK/RUN"
-            if let activity = activity, let steps = activity.totalSteps {
-                cell.itemValueLB.text = "\(steps) mi"
+            
+            if let activity = activity {
+                cell.itemValueLB.text = "\(activity.totalSteps) steps"
             }else {
-                cell.itemValueLB.text = "\(consShared.ZERO_INT) mi"
-                
+                cell.itemValueLB.text = "\(consShared.ZERO_INT) steps"
+
             }
             break
         case consShared.ONE_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_bike")
-            cell.itemTitleLB.text = "DAILY BICYCLE"
-            if let activity = activity, let miles = activity.milesTraveled {
-                cell.itemValueLB.text = "\(miles) mi"
-            }else {
+            cell.itemTitleLB.text = "DAILY BIKE"
+        
+            if let activity = activity {
+                cell.itemValueLB.text = "\(activity.milesTraveled) mi"
+            } else {
                 cell.itemValueLB.text = "\(consShared.ZERO_INT) mi"
-                
+
             }
             break
         case consShared.TWO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_weight_with_bg")
-            cell.itemTitleLB.text = "DAILY WORKOUT"
-            if let activity = activity, let calories = activity.savedCalories {
-                cell.itemValueLB.text = "\(calories) kCal"
-            }else {
+            cell.itemTitleLB.text = "DAILY GYM CHECK-IN"
+            
+            if let activity = activity {
+                cell.itemValueLB.text = "\(activity.savedCalories) kCal"
+            } else {
                 cell.itemValueLB.text = "\(consShared.ZERO_INT) kCal"
-                
             }
+            
             break
         default:
             break

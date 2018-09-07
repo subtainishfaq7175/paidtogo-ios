@@ -114,7 +114,7 @@ extension ReceiptValidationResult {
                     expiresDateStringFormatted.append(component)
                 }
                 
-                let expiresDate = NSDate.getDateWithFormatddMMyyyy(dateString: expiresDateStringFormatted)
+                let expiresDate = Date.getDateWithFormatddMMyyyy(dateString: expiresDateStringFormatted)
                 
                 if !expiresDate.isDatePreviousToCurrentDate() {
                     return true

@@ -204,7 +204,7 @@ class PoolsViewController: ViewController, UIScrollViewDelegate {
         
         self.closedPoolsLabel.textColor = UIColor.white
         self.closedPoolsIndicatorView.backgroundColor = CustomColors.lightBlueColor()
-    }
+    }     
     
     private func moveIndicatorToRight() {
         setIndicatorOnRight()

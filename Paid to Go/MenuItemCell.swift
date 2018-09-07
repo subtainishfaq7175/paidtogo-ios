@@ -12,6 +12,7 @@ class MenuItemCell: UITableViewCell /*, Reusable*/ {
     
     // MARK: - IBOutlet
     @IBOutlet weak var menuTitleLabel: UILabel!
+    @IBOutlet weak var menuImageView: UIImageView!
     
     // MARK: - Constants
     static let identifier = "MenuItemCell"
@@ -22,7 +23,8 @@ class MenuItemCell: UITableViewCell /*, Reusable*/ {
     }
     
     // MARK: - Configuration
-    func configure(title title: String) {
-        self.menuTitleLabel.text = title
+    func configure(title: String, icon:String) {
+        menuTitleLabel.text = title
+        menuImageView.image = UIImage(named: icon)
     }
 }

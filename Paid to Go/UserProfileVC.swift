@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import YYWebImage
+
 @objc protocol ProfileDelegate {
     @objc optional func profile(photo image:UIImage)
 }
@@ -53,6 +55,9 @@ class UserProfileVC: MenuContentViewController {
         config()
         setUIData()
         addLogoutButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setUserName), name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_USER_UPDATED), object: nil)
+        
     }
     func addLogoutButton() {
         
@@ -70,17 +75,35 @@ class UserProfileVC: MenuContentViewController {
         
         self.navigationItem.rightBarButtonItem = menuButton
     }
-    override func logoutAnimated() {
-        if let window = self.view.window {
-            window.rootViewController?.dismiss(animated: true, completion: nil)
-        }
-    }
+//    override func logoutAnimated() {
+//        if let window = self.view.window {
+//            window.rootViewController?.dismiss(animated: true, completion: nil)
+//        }
+//    }
+    
     @objc func gestureListener(_ gesture:UIGestureRecognizer) {
-        User.currentUser = nil
-        logoutAnimated()
+        showlogOutAlert()
+    
     }
+    
+    private func showlogOutAlert() {
+        let alertController = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
+        
+        let logoutAction = UIAlertAction(title: "Log Out", style: .destructive) { walkingAction in
+            User.logout()
+            self.logoutAnimated()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(logoutAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func config(){
         NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: NSNotification.Name(rawValue: NotificationsHelper.UserProfileUpdated.rawValue), object: nil)
+        profilePhotoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleGesture)))
         editView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleGesture)))
 
     }
@@ -107,16 +130,28 @@ class UserProfileVC: MenuContentViewController {
         }
         
     }
+    
     func setUIData()  {
+        setUserPicture()
+        setUserName()
+    }
+    
+    func setUserPicture()  {
         guard let user = User.currentUser else{
             return
         }
         if let currentProfilePicture = user.profilePicture {
             profileIV.yy_setImage(with: URL(string: currentProfilePicture) , placeholder: #imageLiteral(resourceName: "ic_profile_placeholder"))
         }
-        userNameLB.text = user.fullName()
-
     }
+    
+   @objc func setUserName()  {
+        guard let user = User.currentUser else{
+            return
+        }
+       userNameLB.text = user.fullName()
+    }
+    
     override func viewDidLayoutSubviews() {
         
         if layoutCounter == consShared.ONE_INT {
@@ -141,6 +176,7 @@ class UserProfileVC: MenuContentViewController {
             unselectedButton(accountOL, bottomView: accountBottomView)
         }
     }
+    
     func selectedButton(_ btn:UIButton, bottomView:UIView)  {
         guard let titleLabel = btn.titleLabel else {
             return
@@ -156,20 +192,21 @@ class UserProfileVC: MenuContentViewController {
         titleLabel.font = UIFont(name: consShared.OPEN_SANS_LIGHT, size: titleLabel.font.pointSize)
         bottomView.backgroundColor = UIColor.white
         
-        
     }
+    
 //    Handel tap gesture for all view
     @objc func handleGesture(_ gesture:UIGestureRecognizer){
-        guard let tapedView = gesture.view else{
-            return
-        }
-        switch tapedView {
-        case editView:
-            photoViewTaped()
-            break
-        default:
-            break
-        }
+        photoViewTaped()
+//        guard let tapedView = gesture.view else{
+//            return
+//        }
+//        switch tapedView {
+//        case profilePhotoView:
+//            photoViewTaped()
+//            break
+//        default:
+//            break
+//        }
     }
     func photoViewTaped(){
         let photoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -234,7 +271,7 @@ class UserProfileVC: MenuContentViewController {
 extension UserProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         self.profileImage = image
         
@@ -243,8 +280,41 @@ extension UserProfileVC: UIImagePickerControllerDelegate, UINavigationController
             delegate.profile!(photo: image)
         }
         picker.dismiss(animated: true, completion: nil);
+  
+       let data = UIImageJPEGRepresentation(image, 1)!
+        var imageName:String?
         
-        //        self.signUpButtonShouldChange(value: true)
+        if #available(iOS 11.0, *) {
+            if let fileUrl = info[UIImagePickerControllerImageURL] as? URL {
+                imageName = fileUrl.lastPathComponent
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        self.showProgressHud()
+        DataProvider.sharedInstance.updateProfilePicture(user: User.currentUser!, imageData: data, imageName: "profileImage.jpeg", completion: { (user, error) in
+            self.dismissProgressHud()
+            
+            if let error = error, error.isEmpty == false {
+                self.showAlert(text: error)
+                return
+            }
+            
+            if error == nil && user != nil {
+                
+                User.currentUser = user
+                
+                YYImageCache.shared().removeImage(forKey: (user?.profilePicture)!)
+                
+                NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_USER_UPDATED), object: nil)
+            }
+            
+        }, progresshandler: {(progress) in
+            self.showProgressHud(progress: Float(progress.fractionCompleted))
+        })
+        
+//        uploadImageAndData(image: image)
     }
 
 }

@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 // start_longitude,  , ,
 public class ActivityNotification: Mappable {
-
+    
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kActivityNotificationSavedCo2Key: String = "saved_co2"
     internal let kActivityNotificationSavedCaloriesKey: String = "saved_calories"
@@ -29,7 +29,6 @@ public class ActivityNotification: Mappable {
     internal let kActivityNotificationCodeKey : String = "code"
     internal let kActivityNotificationStepsKey : String = "sum_of_step"
     
-    
 //    New fields
     internal let kActivityNotificationStartLongKey : String = "start_longitude"
     internal let kActivityNotificationStartLatKey : String = "start_latitude"
@@ -40,24 +39,27 @@ public class ActivityNotification: Mappable {
     
     internal let kActivityNotificationStepCountKey : String = "total_steps"
     internal let kActivityNotificationActivityTypeKey : String = "activity_type"
-
+    internal let kActivityNotificationSaveTrafficKey: String = "save_traffic"
+    internal let kActivityNotificationSavedTrafficKey: String = "saved_traffic"
+    
+    internal let kActivityNotificationEarnedPointsKey: String = "earned_points"
     
     // MARK: Properties
-	public var savedCo2: String?
-    public var savedCalories: String?
+	public var savedCo2: Double = 0
+    public var savedCalories: Double = 0
 	public var iconPhoto: String?
-	public var milesTraveled: String?
+	public var milesTraveled: Double = 0
 	public var open: String?
 	public var poolId: String?
 	public var startDateTime: String?
-	public var savedGas: String?
+	public var savedGas: Double = 0
 	public var iconPhotoDescription: String?
 	public var endDateTime: String?
-	public var earnedMoney: String?
+	public var earnedMoney: Double = 0
 	 var user: User?
 	public var name: String?
     public var internalIdentifier: String?
-    public var SumOfStep: Int?
+    public var SumOfStep: Int = 0
 
     public var pool: Pool?
     public var code: Int?
@@ -70,13 +72,21 @@ public class ActivityNotification: Mappable {
     public var photo: String?
 
     public var activityType: Int?
-    public var totalSteps: Int?
+    public var totalSteps: Int = 0
+    
+    public var savedTraffic: Double = 0
+    public var earnedPoints: Double = 0
+    
     // MARK: ObjectMapper Initalizers
     /**
     Map a JSON object to this class using ObjectMapper
     - parameter map: A mapping from ObjectMapper
     */
     public required init?(map: Map){
+
+    }
+    
+    public init() {
 
     }
 
@@ -92,7 +102,7 @@ public class ActivityNotification: Mappable {
 		open <- map[kActivityNotificationOpenKey]
 		poolId <- map[kActivityNotificationPoolIdKey]
 		startDateTime <- map[kActivityNotificationStartDateTimeKey]
-		savedGas <- map[kActivityNotificationSavedGasKey]
+		savedGas <- map[kActivityNotificationSaveTrafficKey]
 		iconPhotoDescription <- map[kActivityNotificationIconPhotoDescriptionKey]
 		endDateTime <- map[kActivityNotificationEndDateTimeKey]
 		earnedMoney <- map[kActivityNotificationEarnedMoneyKey]
@@ -111,6 +121,22 @@ public class ActivityNotification: Mappable {
     photo <- map[kActivityNotificationPhotoKey]
     activityType <- map[kActivityNotificationActivityTypeKey]
     totalSteps <- map[kActivityNotificationStepCountKey]
+    
+    savedTraffic <- map[kActivityNotificationSaveTrafficKey]
+    
+    if map[kActivityNotificationSaveTrafficKey].currentKey == nil {
+        savedTraffic <- map[kActivityNotificationSavedTrafficKey]
+    }
+    
+    earnedPoints <- map[kActivityNotificationEarnedPointsKey]
+    
+    savedTraffic.roundToTwoDecinalPlace()
+    earnedPoints.roundToTwoDecinalPlace()
+    earnedMoney.roundToTwoDecinalPlace()
+    savedGas.roundToTwoDecinalPlace()
+    milesTraveled.roundToTwoDecinalPlace()
+    savedCo2.roundToTwoDecinalPlace()
+    savedCalories.roundToTwoDecinalPlace()
     }
 
     /**
@@ -120,15 +146,14 @@ public class ActivityNotification: Mappable {
     public func dictionaryRepresentation() -> [String : AnyObject ] {
 
         var dictionary: [String : AnyObject ] = [ : ]
-		if savedCo2 != nil {
-            dictionary.updateValue(savedCo2! as AnyObject, forKey: kActivityNotificationSavedCo2Key)
-		}
+        dictionary.updateValue(savedCo2 as AnyObject, forKey: kActivityNotificationSavedCo2Key)
+	
 		if iconPhoto != nil {
             dictionary.updateValue(iconPhoto! as AnyObject, forKey: kActivityNotificationIconPhotoKey)
 		}
-		if milesTraveled != nil {
-            dictionary.updateValue(milesTraveled! as AnyObject, forKey: kActivityNotificationMilesTraveledKey)
-		}
+	
+        dictionary.updateValue(milesTraveled as AnyObject, forKey: kActivityNotificationMilesTraveledKey)
+		
 		if open != nil {
             dictionary.updateValue(open! as AnyObject, forKey: kActivityNotificationOpenKey)
 		}
@@ -138,18 +163,20 @@ public class ActivityNotification: Mappable {
 		if startDateTime != nil {
             dictionary.updateValue(startDateTime! as AnyObject, forKey: kActivityNotificationStartDateTimeKey)
 		}
-		if savedGas != nil {
-            dictionary.updateValue(savedGas! as AnyObject, forKey: kActivityNotificationSavedGasKey)
-		}
+		
+        
+        dictionary.updateValue(savedGas as AnyObject, forKey: kActivityNotificationSavedGasKey)
+		
 		if iconPhotoDescription != nil {
             dictionary.updateValue(iconPhotoDescription! as AnyObject, forKey: kActivityNotificationIconPhotoDescriptionKey)
 		}
 		if endDateTime != nil {
             dictionary.updateValue(endDateTime! as AnyObject, forKey: kActivityNotificationEndDateTimeKey)
 		}
-		if earnedMoney != nil {
-            dictionary.updateValue(earnedMoney! as AnyObject, forKey: kActivityNotificationEarnedMoneyKey)
-		}
+		
+        
+        dictionary.updateValue(earnedMoney as AnyObject, forKey: kActivityNotificationEarnedMoneyKey)
+		
 		if user != nil {
 			dictionary.updateValue(user!, forKey: kActivityNotificationUserKey)
 		}
@@ -159,9 +186,9 @@ public class ActivityNotification: Mappable {
         if pool != nil {
             dictionary.updateValue(pool! as AnyObject, forKey: kActivityNotificationPoolKey)
         }
-        if SumOfStep != nil {
-            dictionary.updateValue(SumOfStep! as AnyObject, forKey: kActivityNotificationStepsKey)
-        }
+     
+        dictionary.updateValue(SumOfStep as AnyObject, forKey: kActivityNotificationStepsKey)
+        
         
         if let startLatitude = startLatitude {
             dictionary.updateValue(startLatitude as AnyObject, forKey: kActivityNotificationStartLongKey)
@@ -184,9 +211,9 @@ public class ActivityNotification: Mappable {
         if let activityType = activityType {
             dictionary.updateValue(activityType as AnyObject, forKey: kActivityNotificationActivityTypeKey)
         }
-        if let totalSteps = totalSteps {
-            dictionary.updateValue(totalSteps as AnyObject, forKey: kActivityNotificationStepsKey)
-        }
+        
+        dictionary.updateValue(totalSteps as AnyObject, forKey: kActivityNotificationStepsKey)
+        
 
         return dictionary
     }

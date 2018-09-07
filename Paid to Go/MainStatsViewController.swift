@@ -21,7 +21,7 @@ class MainStatsViewController: MenuContentViewController {
     @IBOutlet private weak var activityListingContainer: UIView!
     
     private var rightBarButton: UIBarButtonItem?
-    
+    public var showGraph = false
     
     //MARK: - ViewController Methods
     
@@ -32,8 +32,12 @@ class MainStatsViewController: MenuContentViewController {
         
         setNavigationBarVisible(visible: true)
         customizeNavigationBarWithMenu()
-        setupRightBarButton()
+//        setupRightBarButton()
         setupViewController()
+        
+        if showGraph {
+            rightBarButtonTapped()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,11 +63,11 @@ class MainStatsViewController: MenuContentViewController {
     @objc private func rightBarButtonTapped() {
         activityGraphContainer.isHidden = !activityGraphContainer.isHidden
         activityListingContainer.isHidden = !activityListingContainer.isHidden
-        if activityListingContainer.isHidden {
-            rightBarButton!.image = #imageLiteral(resourceName: "activity_listing")
-        } else {
-            rightBarButton!.image = #imageLiteral(resourceName: "activity_graph")
-        }
+//        if activityListingContainer.isHidden {
+//            rightBarButton!.image = #imageLiteral(resourceName: "activity_listing")
+//        } else {
+//            rightBarButton!.image = #imageLiteral(resourceName: "activity_graph")
+//        }
     }
     
 }

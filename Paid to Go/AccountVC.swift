@@ -8,11 +8,12 @@
 
 import UIKit
 
-class AccountVC: BaseVc {
+class AccountVC: ViewController {
 // user profile data connections
     @IBOutlet weak var userFirstNameTF: UITextField!
     @IBOutlet weak var userLastNameTF: UITextField!
     @IBOutlet weak var userEmailTF: UITextField!
+    @IBOutlet weak var userPaypalTF: UITextField!
 //    payment method connections
     @IBOutlet weak var addAccountView: GenCustomView!
 //    change password connections
@@ -31,7 +32,6 @@ class AccountVC: BaseVc {
         super.viewDidLoad()
         fetchUserData()
 //        add tap gesture recognizer for add account and change password
-        addAccountView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handelTap(_:))))
         changePasswordLB.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handelTap(_:))))
     }
     override func viewDidLayoutSubviews() {
@@ -48,6 +48,9 @@ class AccountVC: BaseVc {
         if let email = User.currentUser?.email {
             userEmailTF.text = email
         }
+        if let paypal = User.currentUser?.paypalAccount {
+            userPaypalTF.text = paypal
+        }
     }
     
 //    handel tap gesture
@@ -58,6 +61,7 @@ class AccountVC: BaseVc {
         switch gestureView {
         case addAccountView:
             print("payment account taped")
+            
             break
         case changePasswordLB:
             print("change password taped")
@@ -103,6 +107,7 @@ class AccountVC: BaseVc {
         return true
     }
     func updateUserProfile(){
+        
         if validate() {
             
             self.showProgressHud()
@@ -113,6 +118,7 @@ class AccountVC: BaseVc {
             userToSend.accessToken = User.currentUser?.accessToken
             userToSend.name = userFirstNameTF.text
             userToSend.lastName = userLastNameTF.text
+            userToSend.paypalAccount = userPaypalTF.text
             
 //            if let paypalAcount = self.paypalTextField.text, self.paypalTextField.text != "" {
 //                userToSend.paypalAccount = paypalAcount
@@ -156,11 +162,7 @@ class AccountVC: BaseVc {
                                 User.currentUser = user
                                 self.checkmarksStruct.updateUserLocally()
             
-                                let notificationName = NotificationsHelper.UserProfileUpdated.rawValue
-                                NotificationCenter.default.post(name: NSNotification.Name(notificationName), object: nil)
-//                                    Notification(name: notificationName, object: nil))
-            
-//                                self.signUpButtonShouldChange(false)
+                                 NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_USER_UPDATED), object: nil)
             
                                 self.view.endEditing(true)
             

@@ -17,6 +17,8 @@ public class Leaderboard: Mappable {
 	internal let kLeaderboardFirstNameKey: String = "first_name"
 	internal let kLeaderboardPlaceKey: String = "place"
 
+    internal let kActive_commuteKey: String = "active_commute"
+    internal let kExerciseKey: String = "exercise"
 
     // MARK: Properties
 	public var userId: String?
@@ -24,9 +26,18 @@ public class Leaderboard: Mappable {
 	public var profilePicture: String?
 	public var firstName: String?
 	public var place: Int?
+    
+    public var activeCommutes: [LeaderboardPosition]? = [LeaderboardPosition]()
+    public var exercices: [LeaderboardPosition]? = [LeaderboardPosition]()
 
-
-
+    
+    var firstActiveCommuteEarned_money: Double?
+    var firstActiveCommuteEarned_points: Double?
+    var firstExerciceEarned_money: Double?
+    var firstExerciceEarned_points: Double?
+    
+    var profile_picture: String?
+    
     // MARK: ObjectMapper Initalizers
     /**
     Map a JSON object to this class using ObjectMapper
@@ -35,6 +46,14 @@ public class Leaderboard: Mappable {
     required public init?(map: Map){
 
     }
+    
+    init() {
+        firstActiveCommuteEarned_money = 0
+        firstActiveCommuteEarned_points = 0
+        firstExerciceEarned_money = 0
+        firstExerciceEarned_points = 0
+    }
+    
 
     /**
     Map a JSON object to this class using ObjectMapper
@@ -46,6 +65,29 @@ public class Leaderboard: Mappable {
 		profilePicture <- map[kLeaderboardProfilePictureKey]
 		firstName <- map[kLeaderboardFirstNameKey]
 		place <- map[kLeaderboardPlaceKey]
+      
+        activeCommutes <- map[kActive_commuteKey]
+        exercices <- map[kExerciseKey]
+        
+        if let first = activeCommutes?.first {
+            firstActiveCommuteEarned_money = first.earned_money
+            firstActiveCommuteEarned_points = first.earned_points
+            profile_picture = first.profile_picture
+        }
+        
+        if let first = exercices?.first {
+            firstExerciceEarned_money = first.earned_money
+            firstExerciceEarned_points = first.earned_points
+            profile_picture = first.profile_picture
+        }
+        
+        if firstExerciceEarned_money == nil {
+            firstExerciceEarned_money = 0
+        }
+        
+        if firstExerciceEarned_points == nil {
+            firstExerciceEarned_points = 0
+        }
     }
 
     /**

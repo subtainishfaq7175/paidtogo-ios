@@ -9,7 +9,6 @@
 import UIKit
 import HealthKitUI
 
-
 class HomeViewController: MenuContentViewController {
     
     // MARK: - Outlets -
@@ -17,12 +16,21 @@ class HomeViewController: MenuContentViewController {
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var optionsTV: UITableView!
     @IBOutlet weak var elautlet: UILabel! // title label
+    
+    @IBOutlet weak var startActivityButton: UIButton!
+    @IBOutlet weak var startActivityButtonView: UIView!
+    
     let geolocationManager =  GeolocationManager.sharedInstance
     var tabsAddedCount = Constants.consShared.ZERO_INT
     var pools = [Pool]()
+    var selectedIndex: Int?
+    var dateRange = DateRange.today
+    
     static var steps:Double? = Constants.consShared.ZERO_INT.toDouble
     static var mileTravel:Double? = Constants.consShared.ZERO_INT.toDouble
-
+    
+    var syncBarButton : UIBarButtonItem?
+    
     // MARK: - View life cycle -
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,18 +38,62 @@ class HomeViewController: MenuContentViewController {
         
         setNavigationBarVisible(visible: true)
         addSyncButton()
-       geolocationManager.initLocationManager()
+        geolocationManager.initLocationManager()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             print("\(self.geolocationManager.getCurrentLocationCoordinate().latitude), \(self.geolocationManager.getCurrentLocationCoordinate().longitude)")
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configHealtStore()
+        configureViews()
+        
+        //        getActivityData()
+        customizeNavigationBarWithTitleAndMenu()
+        NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name:.proUserSubscriptionExpired, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(organizationLinked(notification:)) , name:.organizationLinked, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.activitesSynced(notification:)), name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_ACTIVITIES_SYNCED), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getActivityData), name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_WELLDONE_SCREEN_APPEARED), object: nil)
+        
+        getActivityData()
+        
+        if let activitydata = ActivityMoniteringManager.sharedManager.activityResponse {
+            showWellDone(with: activitydata)
             
         }
+    }
+    
+    func configHealtStore(){
+        if PTGHealthStore.healthStoreShared.isHealthDataAvaiable(){
+            PTGHealthStore.healthStoreShared.configHealthKit()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showInitailPopUp()
+        
+        if !ActivityMoniteringManager.sharedManager.isManualActivityDataPresent,
+            !Settings.shared.isAutoTrackingOn {
+           syncBarButton?.isEnabled = false
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
     }
     
     func addSyncButton() {
         
         let menuButtonImage = #imageLiteral(resourceName: "ic_sync_p4").withRenderingMode(.alwaysTemplate)
         
-        let menuButton = UIBarButtonItem(
+        let menuButton = UIBarButtonItem (
             image: menuButtonImage,
             style: .done,
             target: self,
@@ -51,6 +103,7 @@ class HomeViewController: MenuContentViewController {
         menuButton.tintColor = UIColor.black
         menuButton.isEnabled = true
         
+        syncBarButton = menuButton
         
         let trackingButtonImage = #imageLiteral(resourceName: "ic_walkrun").withRenderingMode(.alwaysTemplate)
         
@@ -69,7 +122,38 @@ class HomeViewController: MenuContentViewController {
     
     @objc func showSyncAlert(sender: AnyObject?) {
         configHealtStore()
-        showSyncAlert()
+//        showSyncAlert()
+        
+        ActivityMoniteringManager.sharedManager.postDataAutomatically()
+        
+        showProgressHud()
+        
+//        if Settings.shared.isAutoTrackingOn {
+//            if let lastSyncDate = Settings.shared.autoTrackingStartDate {
+//                let lastDateTimeStamp = lastSyncDate.timeIntervalSince1970
+//                let currentTimeStamp = Date().timeIntervalSince1970
+//                if currentTimeStamp - lastDateTimeStamp > 86400 {
+//                    ActivityMoniteringManager.sharedManager.getHealthKitData()
+//                } else {
+//                    self.showAlert(text: "Auto activities are synced once a day automaticly, you are sycned for the day.")
+//                }
+//            }
+//
+//        } else {
+//            if ActivityMoniteringManager.sharedManager.isManualActivityDataPresent {
+//                self.showProgressHud()
+//                ActivityMoniteringManager.sharedManager.syncManualActivities (completion: { (response, error) in
+//                    self.dismissProgressHud()
+//                    if error == nil {
+//
+//                        self.syncBarButton?.isEnabled = false
+//                    }
+//                })
+//            } else {
+//                self.showAlert(text: "All Activities are synced.")
+//            }
+//        }
+        
     }
     
     @objc func showTracking(sender: AnyObject?) {
@@ -85,33 +169,7 @@ class HomeViewController: MenuContentViewController {
         }
         return poolsData
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configHealtStore()
-       
-        getActivityData()
-        customizeNavigationBarWithTitleAndMenu()
-        NotificationCenter.default.addObserver(self, selector:#selector(proUserSubscriptionExpired(notification:)) , name: NSNotification.Name(rawValue: NotificationsHelper.ProUserSubscriptionExpired.rawValue), object: nil)
-    }
-        func configHealtStore(){
-            if PTGHealthStore.healthStoreShared.isHealthDataAvaiable(){
-                PTGHealthStore.healthStoreShared.configHealthKit()
-            }
-
-        }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    
    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        setBorderToView(view: elautlet, color: CustomColors.NavbarTintColor().cgColor)
-       
-
-    }
     //    MARK: - FETCH DATA FROM SERVER
     
     func getActivityData()  {
@@ -119,8 +177,24 @@ class HomeViewController: MenuContentViewController {
             return
         }
         self.showProgressHud()
-            DataProvider.sharedInstance.getOrganizations(userID, completion: { (data, error) in
-//        DataProvider.sharedInstance.getOrganizations("180", completion: { (data, error) in
+        
+        var startDate = Date()
+        var endDate = startDate.tomorrow
+        
+        switch dateRange {
+        case .today:
+            break
+        case .thisWeek:
+            startDate = Date().addingTimeInterval(-604800)
+            endDate = Date()
+            break
+        case .thisMonth:
+            startDate = Date().startOfMonth
+            endDate = Date().endOfMonth
+            break
+        }
+        
+        DataProvider.sharedInstance.getSubscribedPools (userID,startDate: startDate, endDate: endDate, completion: { (data, error) in
             self.dismissProgressHud()
             
             if let error = error, error.isEmpty == false {
@@ -131,35 +205,52 @@ class HomeViewController: MenuContentViewController {
             
             if let data = data {
                 self.pools = [Pool]()
-                if let sponsorPools = data.sponsorPools {
-                    for pool in sponsorPools {
+                var nationalPool:Pool?
+                
+                for pool in data {
+                    if pool.poolType == .National {
+                        nationalPool = pool
+                    } else {
                         self.pools.append(pool)
                     }
                 }
-                if let nationalPool = data.nationalPool {
-                    self.pools.append(nationalPool)
+                
+                if let nationalPool = nationalPool {
+                    self.pools.insert(nationalPool, at: 0)
                 }
+                
+                Pool.pools = self.pools
+                
+                // Stop monetering all regions
+                GeolocationManager.sharedInstance.stopMoneteringRegions()
+                GeolocationManager.sharedInstance.clearSavedLocation()
+                
+                // add all the items
+                for pool in self.pools {
+                    for gymlocation in pool.gymLocations! {
+                        GeolocationManager.sharedInstance.add(gymlocation: gymlocation)
+                    }
+                }
+                
             }
+            
             self.addTabs()
+            
         })
+
     }
     
     func showSyncAlert()  {
-        let alertNib = Bundle.main.loadNibNamed("PoolSyncAlert", owner: self, options: nil)?.first as! PoolSyncAlert
-        alertNib.pools = self.getPools()
-        alertNib.syncDelegate = self
-        alertNib.showAlert()
+//        let alertNib = Bundle.main.loadNibNamed("PoolSyncAlert", owner: self, options: nil)?.first as! PoolSyncAlert
+//        alertNib.pools = self.getPools()
+//        alertNib.syncDelegate = self
+//        alertNib.showAlert()
     }
     
     func showTracking()  {
-//        let viewController = StoryboardRouter.activityMoniteringViewController()
-//        viewController.showBackButton = true
-//        self.navigationController?.pushViewController(viewController, animated: true)
-        
-         let viewController = StoryboardRouter.activitySponserViewController()
-         self.present(viewController, animated: true, completion: nil)
-        
-        
+        let viewController = StoryboardRouter.activityMoniteringViewController()
+        viewController.showBackButton = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func setString (_ string:String?, label:UILabel){
@@ -169,6 +260,7 @@ class HomeViewController: MenuContentViewController {
             label.text = consShared.ZERO_INT.toString
         }
     }
+    
     func setDouble (_ value:Double?, label:UILabel){
         if let value = value {
             label.text = "\(value)"
@@ -176,15 +268,34 @@ class HomeViewController: MenuContentViewController {
             label.text = "\(consShared.ZERO_INT.toDouble)"
         }
     }
+    
+    func setInt(_ value:Double?, label:UILabel){
+        if let value = value {
+            label.text = "\(Int(value))"
+        }else{
+            label.text = "\(consShared.ZERO_INT)"
+        }
+    }
+    
     func populateUI(_ index:Int, mainPool:MainPoolVC)  {
-        if let statics = pools[index].statistics{
+        if let statics = pools[index].statistics {
             setDouble(statics.savedCalories, label: mainPool.calLB)
-            setDouble(statics.savedGas , label: mainPool.gasLB)
+            setDouble(statics.traffic , label: mainPool.gasLB)
             setDouble(statics.milesTraveled, label: mainPool.traveledLB)
             setDouble(statics.savedCo2, label: mainPool.offsetLB)
-            setDouble(statics.totalSteps, label: mainPool.stepLB)
+            setInt(statics.totalSteps, label: mainPool.stepLB)
+            
+            if  statics.earnedMoney != 0 {
+                setDouble(statics.earnedMoney , label: mainPool.numberLB)
+                mainPool.pointsLB.text = "USD"
+            } else {
+                mainPool.numberLB.text = "\(statics.earnedPoints)"
+                mainPool.pointsLB.text = "POINTS"
+            }
+            
         }
         setString(pools[index].name,label:mainPool.poolNameLb)
+        mainPool.dateRange = self.dateRange
         
 //        for index in 0 ... 2 {
 //            let activityTable = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ACTIVITY_TABLE_VC) as! ActivityTableVC
@@ -206,6 +317,8 @@ class HomeViewController: MenuContentViewController {
 //            activityData.count - consShared.ONE_INT
             for index in Constants.consShared.ZERO_INT...(pools.count - consShared.ONE_INT){
                 let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
+                
+                mainPool.delegate = self
                 let frame = CGRect(x: view.frame.size.width * index.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height)
                 mainPool.view.frame = frame
                 populateUI(index, mainPool: mainPool)
@@ -219,11 +332,15 @@ class HomeViewController: MenuContentViewController {
         
         createTabVC(StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.ADD_ORGANIZATION_VC) as! AddOrganizationVC, frame: CGRect(x: self.view.frame.size.width * pools.count.toCGFloat, y: mainScrollView.frame.origin.y, width: self.view.frame.size.width, height: mainScrollView.frame.size.height), scrollView: self.mainScrollView)
         self.mainScrollView.contentSize = CGSize(width: view.frame.width * (((pools.count) + Constants.consShared.ONE_INT).toCGFloat), height: mainScrollView.frame.size.height)
+    
         
-        
+        if let selectedIndex = selectedIndex {
+            mainScrollView.changeToPage(page: selectedIndex)
+        }
     }
     
-    // MARK: - Navigation -
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as! PoolsViewController
         switch segue.identifier! {
@@ -248,11 +365,38 @@ class HomeViewController: MenuContentViewController {
         }
     }
     
+    //MARK: - Activites Synced
+    
+    @objc private func activitesSynced(notification: NSNotification) {
+        DispatchQueue.main.async {
+            self.dismissProgressHud()
+            
+            if let activitydata = ActivityMoniteringManager.sharedManager.activityResponse {
+                self.showWellDone(with: activitydata)
+            } else {
+                self.showAlert(text: "You are upto Date")
+            }
+        }
+    }
+    
+    func showWellDone(with activityData:ActivityNotification) {
+      
+        let viewControler = StoryboardRouter.wellDoneViewController()
+        viewControler.activityResponse = activityData
+        viewControler.activityType = .none
+        
+        self.navigationController?.pushViewController(viewControler, animated: true)
+        
+        ActivityMoniteringManager.sharedManager.activityResponse = nil
+        
+        getActivityData()
+    }
+    
     // MARK: - Functions
     
     @objc func proUserSubscriptionExpired(notification:NSNotification) {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Paid to Go", message:
+            let alertController = UIAlertController(title: "Paidtogo", message:
                 "Your subscription was cancelled, PRO features will be removed", preferredStyle: UIAlertControllerStyle.alert)
             let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
             alertController.addAction(alertAction)
@@ -279,7 +423,35 @@ class HomeViewController: MenuContentViewController {
 //        }
     }
     
+    @objc func organizationLinked(notification:NSNotification) {
+       getActivityData()
+    }
+    
+    
+    func configureViews() {
+        configureButtonView()
+        mainScrollView.delegate = self
+    }
+    
+    func configureButtonView () {
+        startActivityButtonView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        startActivityButtonView.cardView()
+        //         startActivityButtonView.layer.cornerRadius = (startActivityButtonView.bounds.height / 2) - 2
+    }
+    
+    func showInitailPopUp() {
+        if !Settings.shared.initialPopUpAlreadyShown {
+            Settings.shared.initialPopUpAlreadyShown = true
+            showAlert(text: "initialPopUpText".localize())
+        }
+    }
+    
+    
     // MARK: - Actions
+    
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        showTracking()
+    }
     
     @IBAction func showPoolsViewController(sender: AnyObject) {
         
@@ -379,5 +551,18 @@ extension HomeViewController : SyncDelegate {
         }else{
             showAlert(text: "There is some network problem.")
         }
+    }
+}
+
+extension HomeViewController :UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        selectedIndex = scrollView.currentPage;
+    }
+}
+
+extension HomeViewController :MainPoolVCDelegate {
+    func dateRangeUpdated(withDateRange dateRange: DateRange) {
+        self.dateRange = dateRange
+        getActivityData()
     }
 }

@@ -53,8 +53,40 @@ class StoryboardRouter {
         return menuStoryboard().instantiateInitialViewController()!
     }
     
+    static func loginViewController() -> UIViewController {
+        return mainStoryboard().instantiateInitialViewController()!
+    }
+    
     static func homeViewController() -> HomeViewController {
         return homeStoryboard().instantiateViewController(withIdentifier:IdentifierConstants.idConsShared.HOME_VC) as! HomeViewController
+    }
+    
+    static func webViewController(withUrl url:String) -> WebViewViewController {
+        let webViewViewController = menuStoryboard().instantiateViewController(withIdentifier:IdentifierConstants.idConsShared.WebViewViewController_VC) as! WebViewViewController
+        
+        webViewViewController.url = url
+        
+        return webViewViewController
+    }
+    
+    static func webViewNavController(withUrl url:String) -> UINavigationController {
+        let webViewViewController = menuStoryboard().instantiateViewController(withIdentifier:IdentifierConstants.idConsShared.WebViewViewController_VC) as! WebViewViewController
+        
+        webViewViewController.url = url
+        webViewViewController.hasNavBar = true
+        
+        let navController = UINavigationController(rootViewController: webViewViewController)
+        return navController
+    }
+    
+    static func wellDoneViewController() -> WellDoneViewController {
+        let viewController = homeStoryboard().instantiateViewController(withIdentifier:IdentifierConstants.idConsShared.WellDoneViewController_VC) as! WellDoneViewController
+        
+        return viewController
+    }
+    
+    static func initialMapViewController() -> ActivityMapViewController {
+        return activityStoryboard().instantiateViewController(withIdentifier: "ActivityMapViewController") as! ActivityMapViewController
     }
     
     static func initialSignupViewController() -> SignupViewController {

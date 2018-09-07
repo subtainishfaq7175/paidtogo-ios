@@ -15,10 +15,7 @@ import UIKit
  In this class, the menu button. Other things are done too.
  */
 class MenuContentViewController: ViewController {
-    internal let consShared = Constants.consShared
-    internal let idConsShared = IdentifierConstants.idConsShared
-    internal let colorShared = CustomColors.colorShared
-    internal let utilsShared = AppUtils.utilsShared
+    
     weak var menuButton: UIButton?
     var menuController: MainViewController?
     

@@ -13,12 +13,13 @@ class LeaderBoardPageViewCell: FSPagerViewCell {
    
     // MARK: - Outlets
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var profileImageView: UIView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var poolNameLabel: UILabel!
     @IBOutlet weak var pointsLabel : UILabel!
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var positionSuffixLabel: UILabel!
+    @IBOutlet weak var pointsOrUSDLabel: UILabel!
     
     // MARK: - Constants
     static let identifier = "LeaderBoardPageViewCell"
@@ -28,7 +29,7 @@ class LeaderBoardPageViewCell: FSPagerViewCell {
         // Initialization code
         
 //        containerView.cardView()
-        profileImageView.roundWholeView()
+        profileImageView.round()
         containerView.roundVeryLittleForHeight(height: 10)
     }
 }

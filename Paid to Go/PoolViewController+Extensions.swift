@@ -179,7 +179,7 @@ extension PoolViewController {
     @objc func customBackViewController() {
         if hasPoolStarted {
             
-            let alertController = UIAlertController(title: "Paid to Go", message:
+            let alertController = UIAlertController(title: "Paidtogo", message:
                 "Wait!! If you leave now, all your progress will be lost. Are you sure that you want to leave?", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: backViewController))
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: poolSwitchResume))
@@ -296,8 +296,8 @@ extension PoolViewController: TrackDelegate {
                 
                 wellDoneViewController.type = self.type
                 wellDoneViewController.poolType = self.poolType
-                wellDoneViewController.activityResponse = response
-                wellDoneViewController.activity = self.activity
+//                wellDoneViewController.activityResponse = response
+//                wellDoneViewController.activity = self.activity
                 wellDoneViewController.pool = self.pool
                 
                 if self.quickSwitchBetweenPools {
@@ -325,7 +325,7 @@ extension PoolViewController: SwitchDelegate {
             return
         }
         
-        let alertController = UIAlertController(title: "Paid to Go", message:
+        let alertController = UIAlertController(title: "Paidtogo", message:
             text, preferredStyle: UIAlertControllerStyle.actionSheet)
         alertController.addAction(UIAlertAction(title: "Walk/Run", style: UIAlertActionStyle.default,handler: poolSwitchWalkRunSelected))
         alertController.addAction(UIAlertAction(title: "Bike", style: UIAlertActionStyle.default,handler: poolSwitchBikeSelected))
@@ -465,7 +465,7 @@ extension PoolViewController: ActivityLocationManagerDelegate {
         locationManager?.startUpdatingLocation()
     }
     func pauseLocationUpdates() {
-        locationManager?.stopUpdatingLocation()
+//        locationManager?.stopUpdatingLocation()
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

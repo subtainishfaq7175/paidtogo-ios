@@ -9,12 +9,19 @@
 import Foundation
 import ObjectMapper
 
+public enum PoolState : String {
+    case Public = "public_pool"
+    case Private = "private_pool"
+    case National = "national_pool"
+}
+
 public class Pool: Mappable {
+    static var pools:[Pool]?
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     internal let kPoolQuantMembersKey: String = "quant_members"
     internal let kPoolEarnedMoneyPerMileKey: String = "earned_money_per_mile"
-    internal let kPoolPoolTypeKey: String = "pool_type"
+    internal let kPoolTypeKey: String = "type"
     internal let kPoolBannerKey: String = "banner"
     internal let kPoolDestinationLatitudeKey: String = "destination_latitude"
     internal let kPoolNameKey: String = "name"
@@ -31,15 +38,19 @@ public class Pool: Mappable {
     internal let kPoolSponsorLinkKey: String = "link"
     internal let kTermsAndConditionsKey: String = "terms_and_condition"
     internal let kCountryKey: String = "country"
-    internal let kStaticKey: String = "statistics"
+    internal let kStaticKey: String = "summary"
     internal let kActiviesKey: String = "activities"
     internal let kNationalKey: String = "national"
-
+    internal let kSponsorKey: String = "sponsors"
+    internal let kBalanceKey: String = "balance"
+    internal let kleaderBoardKey: String = "leaderboards"
+    internal let kgymLocationsKey: String = "gym_locations"
     
     // MARK: Properties
+   
     public var quantMembers: Int?
     public var earnedMoneyPerMile: Double?
-    public var poolType: PoolType?
+    public var poolType: PoolState?
     public var banner: String?
     public var destinationLatitude: String?
     public var name: String?
@@ -58,9 +69,12 @@ public class Pool: Mappable {
     public var country: String?
     public var statistics: ActivityResponse? = ActivityResponse()
     public var activities: [ActivityNotification]? = [ActivityNotification]()
+    public var sponsors: [Sponsor]? = [Sponsor]()
+    public var balance: Balance? = Balance()
+    public var leaderBoard: Leaderboard? = Leaderboard()
+    public var gymLocations: [GymLocation]? = [GymLocation]()
     public var id: Int?
     public var national: String?
-
 
     // MARK: ObjectMapper Initalizers
     /**
@@ -80,7 +94,7 @@ public class Pool: Mappable {
         var earnedMoney = ""
         earnedMoney <- map[kPoolEarnedMoneyPerMileKey]
         earnedMoneyPerMile = Double(earnedMoney)
-        poolType <- map[kPoolPoolTypeKey]
+        poolType <- map[kPoolTypeKey]
         banner <- map[kPoolBannerKey]
         destinationLatitude <- map[kPoolDestinationLatitudeKey]
         name <- map[kPoolNameKey]
@@ -101,7 +115,18 @@ public class Pool: Mappable {
         statistics <- map[kStaticKey]
         activities <- map[kActiviesKey]
         national <- map[kNationalKey]
-
+        balance <- map[kBalanceKey]
+        sponsors <- map[kSponsorKey]
+        leaderBoard <- map[kleaderBoardKey]
+        gymLocations <- map[kgymLocationsKey]
+        
+        
+        // This might be from backedend
+        if activities != nil {
+            self.activities!.reverse()
+        }
+        
+        // Set Doubles to 2 decimal places
     }
     
     /**
@@ -118,9 +143,9 @@ public class Pool: Mappable {
         if earnedMoneyPerMile != nil {
             dictionary.updateValue(earnedMoneyPerMile! as AnyObject, forKey: kPoolEarnedMoneyPerMileKey)
         }
-        if poolType != nil {
-            dictionary.updateValue(poolType!.dictionaryRepresentation() as AnyObject, forKey: kPoolPoolTypeKey)
-        }
+//        if poolType != nil {
+//            dictionary.updateValue(poolType!.dictionaryRepresentation() as AnyObject, forKey: kPoolTypeKey)
+//        }
         if banner != nil {
             dictionary.updateValue(banner! as AnyObject, forKey: kPoolBannerKey)
         }

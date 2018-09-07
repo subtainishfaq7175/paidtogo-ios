@@ -30,6 +30,9 @@ class User: Mappable {
     var userIdInt: Int?
 
     var type: String?
+
+    var userTotalMoney: Double?
+    var userTotalPoints: Int?
     
     // MARK: Locally persisted, no API
     
@@ -54,9 +57,10 @@ class User: Mappable {
         self.profilePicture = ""
         self.accessToken = ""
         self.paymentToken = ""
-        self.userId = ""
         self.paypalAccount = ""
         self.type = ""
+        self.userTotalMoney = 0
+        self.userTotalPoints = 0
     }
     
     required init?(map: Map) {
@@ -115,9 +119,19 @@ class User: Mappable {
         accessToken         <- map["access_token"]
         userId              <- map["user_id"]
         userIdInt           <- map["user_id"]
+        
+        if userId == nil {
+            if let userIdInt = userIdInt {
+                userId = userIdInt.toString
+            }
+        }
+        
         paypalAccount       <- map["paypal_account"]
         type                <- map["user_type"]
         paymentToken        <- map["payment_token"]
+        userTotalPoints     <- map["total_points"]
+        userTotalMoney      <- map["total_money"]
+        
         
         age                 <- map["age"]
         gender              <- map["gender"]
@@ -128,6 +142,8 @@ class User: Mappable {
         commuteTypeBike     <- map["bike"]
         commuteTypeBusTrain <- map["bus"]
         commuteTypeCar      <- map["car"]
+        
+        userTotalMoney?.roundToTwoDecinalPlace()
     }
 }
 

@@ -4,12 +4,34 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>Let&apos;s Commute</string>
+		<string>Home</string>
 		<key>identifier</key>
 		<string>HomeNavigationController</string>
 		<key>storyboard</key>
 		<string>Home</string>
+        <key>icon</key>
+        <string>ic_paidtogo_grey</string>
 	</dict>
+    <dict>
+        <key>title</key>
+        <string>Start Activity</string>
+        <key>identifier</key>
+        <string>ActivityTrackingController</string>
+        <key>storyboard</key>
+        <string>Activity</string>
+        <key>icon</key>
+        <string>ic_walkrun</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Gym CheckIn</string>
+        <key>identifier</key>
+        <string>CheckInNavigationController</string>
+        <key>storyboard</key>
+        <string>Activity</string>
+        <key>icon</key>
+        <string>ic_gym_pin</string>
+    </dict>
 	<dict>
 		<key>title</key>
 		<string>Profile</string>
@@ -17,15 +39,29 @@
 		<string>ProfileNavigationController</string>
 		<key>storyboard</key>
 		<string>Profile</string>
+        <key>icon</key>
+        <string>ic_profile_gray</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Activity </string>
+		<string>Activity Feed</string>
 		<key>identifier</key>
 		<string>ActivityNavigationController</string>
 		<key>storyboard</key>
 		<string>Activity</string>
+        <key>icon</key>
+        <string>ic_activity_gray</string>
 	</dict>
+    <dict>
+        <key>title</key>
+        <string>Stats</string>
+        <key>identifier</key>
+        <string>ActivityNavigationController</string>
+        <key>storyboard</key>
+        <string>Activity</string>
+        <key>icon</key>
+        <string>activity_graph</string>
+    </dict>
 	<dict>
 		<key>title</key>
 		<string>Balance</string>
@@ -33,6 +69,8 @@
 		<string>BalanceNavigationController</string>
 		<key>storyboard</key>
 		<string>Balance</string>
+        <key>icon</key>
+        <string>ic_balance_gray</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -41,15 +79,19 @@
 		<string>LeaderboardsNavigationController</string>
 		<key>storyboard</key>
 		<string>Leaderboards</string>
+        <key>icon</key>
+        <string>ic_leaderboard_gray</string>
 	</dict>
-	<dict>
-		<key>title</key>
-		<string>Stats</string>
-		<key>identifier</key>
-		<string>StatsNavigationController</string>
-		<key>storyboard</key>
-		<string>Stats</string>
-	</dict>
+<!--    <dict>-->
+<!--        <key>title</key>-->
+<!--        <string>Stats</string>-->
+<!--        <key>identifier</key>-->
+<!--        <string>StatsNavigationController</string>-->
+<!--        <key>storyboard</key>-->
+<!--        <string>Stats</string>-->
+<!--        <key>icon</key>-->
+<!--        <string>ic_earned</string>-->
+<!--    </dict>-->
 	<dict>
 		<key>title</key>
 		<string>Settings</string>
@@ -57,14 +99,32 @@
 		<string>SettingsNavigationController</string>
 		<key>storyboard</key>
 		<string>Settings</string>
+        <key>icon</key>
+        <string>ic_settings_gray</string>
 	</dict>
     <dict>
         <key>title</key>
-        <string>Tracking</string>
+        <string>How it works</string>
         <key>identifier</key>
-        <string>ActivityTrackingController</string>
+        <string>WebViewViewController</string>
         <key>storyboard</key>
-        <string>Activity</string>
+        <string>Menu</string>
+        <key>url</key>
+        <string>https://www.paidtogo.com/how_it_works</string>
+        <key>icon</key>
+        <string>ic_help_gray</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Terms and Conditions</string>
+        <key>identifier</key>
+        <string>WebViewViewController</string>
+        <key>storyboard</key>
+        <string>Menu</string>
+        <key>url</key>
+        <string>https://www.paidtogo.com/terms-conditions</string>
+        <key>icon</key>
+        <string>ic_help_gray</string>
     </dict>
 </array>
 </plist>

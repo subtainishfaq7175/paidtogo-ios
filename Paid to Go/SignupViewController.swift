@@ -32,6 +32,7 @@ class SignupViewController: ViewController {
     // MARK: - Attributes -
     
     var profileImage: UIImage?
+    var profileName: String?
     
     // MARK: - View life cycle -
     
@@ -168,28 +169,20 @@ class SignupViewController: ViewController {
             
             let newUser: User   = User()
             newUser.email       = emailTextField.text!
-            newUser.name        =  firstNameTextField.text!
+            newUser.name        = firstNameTextField.text!
             newUser.lastName    = lastNameTextField.text!
             newUser.password    = passwordTextField.text!
             newUser.bio         = bioTextField.text!
-            newUser.type         = "1"
+            newUser.type        = "1"
 
+            var imageData: Data?
+            
             if let profileImage = profileImage {
-                
-//                let imageData = UIImagePNGRepresentation(profileImage)
-                
-                let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
-                
-                let base64String = imageData!.base64EncodedString(options: .lineLength64Characters)
-//                dedStringWithOptions(.Encoding64CharacterLineLength)
-                
-                let encodedImageWithPrefix = User.imagePrefix + base64String
-                
-                newUser.profilePicture = encodedImageWithPrefix
-                
+                imageData = UIImageJPEGRepresentation(profileImage, 1)!
             }
             
-            DataProvider.sharedInstance.postRegister(user: newUser, completion: { (user: User?, error: String?) in
+            self.showProgressHud()
+            DataProvider.sharedInstance.postRegister(user: newUser, imageData: imageData, imageName: self.profileName, completion: { (user, error) in
                 self.dismissProgressHud()
                 
                 if let error = error, error.isEmpty == false {
@@ -199,28 +192,14 @@ class SignupViewController: ViewController {
                 
                 if error == nil && user != nil {
                     
-                    newUser.accessToken = user!.accessToken
-                    if let userID = user!.userIdInt {
-                        newUser.userId = "\(userID)"
-                    }else {
-                        newUser.userId = "\(Constants.consShared.ZERO_INT)"
-
-                    }
-                    newUser.profilePicture = user?.profilePicture
-//                    newUser.email = user!.email
-//                    newUser.name = user?.name
-//                    newUser.lastName = user?.lastName
-//                    newUser.bio = user?.bio
-                    
-                    User.currentUser = newUser
-                    
-                    self.present(StoryboardRouter.menuMainViewController(), animated: true, completion: nil)
+                    User.currentUser = user
+                    self.presentHomeViewController()
                 }
+                
+            }, progresshandler: {(progress) in
+                self.showProgressHud(progress: Float(progress.fractionCompleted))
             })
-//            DataProvider.sharedInstance.postRegisterActivity(activity: newUser, completion: { (user: User?, error: String?) in
-//
-//
-//            })
+            
             
         }
     }
@@ -231,6 +210,14 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         self.profileImage = image
+        
+        if #available(iOS 11.0, *) {
+            if let fileUrl = info[UIImagePickerControllerImageURL] as? URL {
+                self.profileName = fileUrl.lastPathComponent
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         
         self.registerPhotoImageView.image = image
         self.addImageView.isHidden = true

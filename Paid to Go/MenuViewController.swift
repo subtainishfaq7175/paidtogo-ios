@@ -18,21 +18,15 @@ class MenuViewController: ViewController {
     
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var userStats: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
-    @IBOutlet weak var goProButton: UIButton!
-    @IBOutlet weak var goProButtonView: UIView!
-    
-    @IBOutlet weak var proUserLabel: UILabel!
-    
-    @IBOutlet weak var upgradeToProViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Variables
     
     weak var menuController: MainViewController?
     
-    typealias MenuItem = (title: String, storyboard: String, identifier: String)
+    typealias MenuItem = (title: String, storyboard: String, identifier: String, url: String?, icon:String)
+    
     typealias JSONObject = [String: AnyObject]
     typealias JSONArray = [JSONObject]
     
@@ -51,11 +45,20 @@ class MenuViewController: ViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.reloadData()
+        tableview.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        tableview.separatorColor = UIColor.lightGray
+        
+        profileImageView.round()
         
         let currentUser = User.currentUser!
         
         nameLabel.text = currentUser.fullName()
-       
+        
+        if let totalMoney = currentUser.userTotalMoney,
+            let totalPoints = currentUser.userTotalPoints {
+            userStats.text = "$ \(Double(totalMoney).rounded(toPlaces: 2)) - \(totalPoints) pts"
+        }
+
         if let currentProfilePicture = currentUser.profilePicture, currentUser.profilePicture != "" {
             
             profileImageView.yy_setImage(with: URL(string: currentProfilePicture), placeholder: UIImage(named: "ic_profile_placeholder"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
@@ -71,7 +74,7 @@ class MenuViewController: ViewController {
             self.profileImageView.image = UIImage(named: "ic_profile_placeholder")
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: NSNotification.Name(rawValue: NotificationsHelper.UserProfileUpdated.rawValue), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(userProfileUpdated), name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_USER_UPDATED), object: nil)
     }
     
     @objc private func userProfileUpdated() {
@@ -80,8 +83,12 @@ class MenuViewController: ViewController {
         
         nameLabel.text = currentUser.fullName()
         
+        if let totalMoney = currentUser.userTotalMoney,
+            let totalPoints = currentUser.userTotalPoints {
+           userStats.text = "$ \(totalMoney) - \(totalPoints) pts"
+        }
+        
         if let currentProfilePicture = currentUser.profilePicture, currentUser.profilePicture != "" {
-            
             profileImageView.yy_setImage(with: URL(string: currentProfilePicture) , placeholder: UIImage(named: "ic_profile_placeholder"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
                 
                 guard let img = image else {
@@ -102,35 +109,32 @@ class MenuViewController: ViewController {
 //        profileImageView.roundWholeView()
 //        nameView.round()
 //        proUserLabel.round()
-        configureViewForProUser()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         profileImageView.roundWholeView()
-        nameView.round()
-        proUserLabel.round()
     }
     
-    func configureViewForProUser() {
-        
-        let user = User.currentUser!
-        
-        if user.isPro() {
-            // Pro User
-            proUserLabel.isHidden = false
-            goProButtonView.isHidden = true
-            upgradeToProViewHeightConstraint.constant = 0.0
-        } else {
-            proUserLabel.isHidden = true
-            goProButtonView.isHidden = false
-            upgradeToProViewHeightConstraint.constant = 64.0
-        }
-        
-        self.view.layoutIfNeeded()
-        
-    }
+//    func configureViewForProUser() {
+//
+//        let user = User.currentUser!
+//
+//        if user.isPro() {
+//            // Pro User
+//            proUserLabel.isHidden = false
+//            goProButtonView.isHidden = true
+//            upgradeToProViewHeightConstraint.constant = 0.0
+//        } else {
+//            proUserLabel.isHidden = true
+//            goProButtonView.isHidden = false
+//            upgradeToProViewHeightConstraint.constant = 64.0
+//        }
+//
+//        self.view.layoutIfNeeded()
+//
+//    }
     
     // MARK: - Utils
     
@@ -175,19 +179,24 @@ class MenuViewController: ViewController {
         }
         
         for item in itemsArray {
-            guard   let title       = item["title"]      as? String,
-                let storyboard  = item["storyboard"] as? String,
-                let identifier  = item["identifier"] as? String else {
-                    
+            guard
+            let title = item["title"] as? String,
+            let storyboard  = item["storyboard"] as? String,
+            let identifier  = item["identifier"] as? String,
+            let icon  = item["icon"] as? String
+             else {
                     
                     log.error("there was a problem while reading MenuItems.plist , please review plist format.")
                     return [MenuItem]()
             }
+            let url = item["url"] as? String
             
             menuItems.append((
                 title: title.localize(),
                 storyboard: storyboard,
-                identifier: identifier
+                identifier: identifier,
+                url :url,
+                icon :icon
             ))
         }
         
@@ -236,11 +245,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     // items section is the menu items themselves.
     private var itemsSection: Int { return 1}
     
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return [headerSection,itemsSection].count
-        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -258,6 +265,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //        if indexPath.section == headerSection {
         //            return tableView.dequeueReusableCellWithIdentifier(MenuHeaderCell.identifier) as! MenuHeaderCell
@@ -268,7 +276,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         let menuItem = items[indexPath.row]
         
-        itemCell.configure(title: menuItem.title)
+        itemCell.configure(title: menuItem.title.uppercased() ,icon: menuItem.icon )
         return itemCell
     }
     
@@ -280,7 +288,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             return 45.0
             
         case itemsSection:
-            return 45.0
+            return 50.0
             
         default:
             log.error("Unhandled section")
@@ -295,7 +303,29 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == itemsSection {
             // Only handles action for items section. Not for header.
             let selectedItem = items[indexPath.row]
-            let controller = UIStoryboard(name: selectedItem.storyboard, bundle: Bundle.main).instantiateViewController(withIdentifier: selectedItem.identifier)
+            var controller = UIStoryboard(name: selectedItem.storyboard, bundle: Bundle.main).instantiateViewController(withIdentifier: selectedItem.identifier)
+            
+            if let url = selectedItem.url {
+                let webViewController = controller as! WebViewViewController
+                
+                webViewController.url = url
+                webViewController.controllerTitle = selectedItem.title
+        
+                let navcontroller = UINavigationController(rootViewController:webViewController)
+            
+                navcontroller.navigationBar.isTranslucent = true
+                controller = navcontroller
+            }
+            
+            if selectedItem.title == "Stats" {
+                let statNavViewController = controller as! UINavigationController
+                let statViewController = statNavViewController.viewControllers.first as? MainStatsViewController
+                statViewController?.showGraph = true
+                
+                let navcontroller = UINavigationController(rootViewController:statViewController!)
+                
+                controller = navcontroller
+            }
             
             self.delegate?.setMenuContentViewController(controller: controller)
         }

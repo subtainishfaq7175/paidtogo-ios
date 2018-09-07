@@ -22,6 +22,16 @@ class BalanceTableViewCell: UITableViewCell {
     @IBOutlet weak var firstActivityLabel: UILabel!
     @IBOutlet weak var secondActivityLabel: UILabel!
     
+    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var firstSopnsorLabel: UILabel!
+    @IBOutlet weak var secondSponsorLabel: UILabel!
+    @IBOutlet weak var thirdSponsorLabel: UILabel!
+    
+    @IBOutlet weak var firstSponsorView : UIView!
+    @IBOutlet weak var secondSponsorView: UIView!
+    @IBOutlet weak var thirdSponsorView: UIView!
+    
     // MARK: - Constants
     static let identifier = "BalanceTableViewCell"
     

@@ -9,14 +9,20 @@
 import UIKit
 import FSPagerView
 
-class ActivitySponsorViewController: UIViewController {
+class ActivitySponsorViewController: ViewController {
 
     // MARK: - Variables
-    var itemsCount = 10
+    var sponsors = [Sponsor]()
+    var reachedEnd = false
+    var selectedIndex = 0
     
     // MARK: - Outlets
     
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var vistUsButton: UIButton!
+    @IBOutlet weak var sopnsorNameLabel: UILabel!
+    @IBOutlet weak var sopnsorDescriptionLabel: UILabel!
+    @IBOutlet weak var crossButton: UIButton!
     
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
@@ -35,7 +41,7 @@ class ActivitySponsorViewController: UIViewController {
             self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
             self.pageControl.contentHorizontalAlignment = .center
             self.pageControl.setFillColor(#colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1), for: .selected)
-            self.pageControl.setFillColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+            self.pageControl.setFillColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         }
     }
     
@@ -44,8 +50,15 @@ class ActivitySponsorViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        addOnTapDismiss()
+//        addOnTapDismiss()
         updatePageView()
+        containerView.cardView()
+        view.addblurView()
+        vistUsButton.cardView()
+        crossButton.cardView()
+        
+        sopnsorNameLabel.text = sponsors[selectedIndex].title
+        sopnsorDescriptionLabel.text = sponsors[selectedIndex].description
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,9 +69,21 @@ class ActivitySponsorViewController: UIViewController {
     
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+       
     }
-
+    
+    @IBAction func dismisAction(sender: AnyObject) {
+        if reachedEnd || sponsors.count == 1 {
+             dismiss(animated: true, completion: nil)
+        } else {
+            showAlert(text: "Swipe to the end to continue")
+        }
+    }
+    
+    @IBAction func visitUsAction(sender: AnyObject) {
+      openURL()
+    }
+    
     
     // MARK: - Private Methods
     
@@ -67,13 +92,25 @@ class ActivitySponsorViewController: UIViewController {
     }
     
     private func updatePageView() {
-        pageControl.numberOfPages = itemsCount
+        pageControl.numberOfPages = sponsors.count
+        
+        if sponsors.count == 1 {
+             pageControl.numberOfPages = 0 
+        }
     }
     
     private func addOnTapDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
+    }
+    
+    private func openURL() {
+        let url = sponsors[selectedIndex].url
+        
+        let viewController = StoryboardRouter.webViewNavController(withUrl: url!)
+        self.present(viewController, animated: false) {
+        }
     }
     
     /*
@@ -91,12 +128,22 @@ extension ActivitySponsorViewController: FSPagerViewDelegate, FSPagerViewDataSou
     
     // MARK:- FSPagerView DataSource
     public func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return itemsCount
+        return sponsors.count
     }
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.image = UIImage(named: "nike_logo")
+        let sponsor = sponsors[index]
+        
+        cell.imageView?.yy_setImage(with: URL(string: sponsor.banner!) , placeholder: UIImage(named: "sponsorplaceholder"), options: .showNetworkActivity, completion: { (image, url, type, stage, error) in
+            
+            guard let img = image else {
+                cell.imageView?.image = UIImage(named: "sponsorplaceholder")
+                return
+            }
+            cell.imageView?.image = img
+        })
+        
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
@@ -108,6 +155,8 @@ extension ActivitySponsorViewController: FSPagerViewDelegate, FSPagerViewDataSou
         pagerView.deselectItem(at: index, animated: true)
         pagerView.scrollToItem(at: index, animated: true)
         self.pageControl.currentPage = index
+       
+        openURL()
     }
     
     func pagerViewDidScroll(_ pagerView: FSPagerView) {
@@ -115,6 +164,15 @@ extension ActivitySponsorViewController: FSPagerViewDelegate, FSPagerViewDataSou
             return
         }
         self.pageControl.currentPage = pagerView.currentIndex // Or Use KVO with property "currentIndex"
+        
+        selectedIndex = pagerView.currentIndex
+        
+        sopnsorNameLabel.text = sponsors[selectedIndex].title
+        sopnsorDescriptionLabel.text = sponsors[selectedIndex].description
+
+        if !reachedEnd {
+            reachedEnd = (pagerView.currentIndex == sponsors.count - 1)
+        }
     }
     
 }

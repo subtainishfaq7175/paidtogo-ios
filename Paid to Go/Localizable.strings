@@ -39,7 +39,7 @@
 // - Home strings
 // -----------------------------------------
 
-"app_name"                  = "Paid to Go"   ;
+"app_name"                  = "Paidtogo"   ;
 "home_select_commute_type"  = "Select Commute Type" ;
 
 // -----------------------------------------
@@ -60,6 +60,7 @@
 
 "error_wrong_email_format"  = "The given email has not a correct format" ;
 "error_user_not_found"      = "Wrong username or password" ;
+"error_email_not_found"    = "The given email doesn't exist in our database" ;
 "error_user_exists"         = "The given email already exists in our database" ;
 
 "error_default"             = "Internal error" ;
@@ -146,8 +147,14 @@
 "password_recover_title"    = "Password Recovery" ;
 
 // -----------------------------------------
-// - My Status
+// - Pop ups
 // -----------------------------------------
+
+"initialPopUpText" = "Paidtogo is in beta and experimenting with ways to get you paid for active commutes and exercise. You are NOT guaranteed payments in Public Pools. It is up to your sponsor (most likely your employer) to pay you in Private Pools. To be paid you must enter your Paypal ID in the Profile screen. Earnings are NOT carried over month to month so if you don’t have your Paypal entered by the end of the month you will lose your payment. Auto tracking is enabled by default. To change to manual tracking go to your settings. Manual tracking will require you to manually “Start” an activity to earn credit. Please share www.paidtogo.com with your friends and family and ask them to donate or sponsor a pool. For more information see How It Works and Terms and Conditions or go to paidtogo.com";
+
+"autoTrackingStartActivityNotRequired" = "You are on auto-tracking and do not NEED to track an activity manually to get credit. If you want to track a specific activity you can do so but it won't overwrite your auto-tracking data";
+
+"switchedToManualTracking" = "You must manually start and end an activity to earn credit if you have switched to manual tracking in settings";
 
 
 

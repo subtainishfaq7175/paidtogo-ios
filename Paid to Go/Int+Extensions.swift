@@ -9,24 +9,7 @@
 import Foundation
 
 extension Int {
-    var ordinal: String {
-        get {
-            var suffix = "th"
-            switch self % 10 {
-            case 1:
-                suffix = "st"
-            case 2:
-                suffix = "nd"
-            case 3:
-                suffix = "rd"
-            default: ()
-            }
-            if 10 < (self % 100) && (self % 100) < 20 {
-                suffix = "th"
-            }
-            return suffix
-        }
-    }
+
     var toCGFloat:CGFloat{
         return CGFloat(self)
     }
@@ -40,7 +23,7 @@ extension Int {
         return "\(self)"
     }
     
-    var suffix:String {
+    var ordinal: String {
         switch (self % 10) {
         case 1:  return "st";
         case 2:  return "nd";
@@ -48,7 +31,4 @@ extension Int {
         default: return "th";
         }
     }
-    
-    
-    
 }

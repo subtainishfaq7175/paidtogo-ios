@@ -126,7 +126,7 @@ class PoolDetailViewController: ViewController {
         }
         
         if let endDate = pool?.endDateTime {
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: endDate)
+            dateLabel.text = Date.getDateStringWithFormatddMMyyyy(dateString: endDate)
         }
         
         if let poolTitle = pool?.name {
@@ -141,7 +141,7 @@ class PoolDetailViewController: ViewController {
             return
         }
         
-        let poolStartDate = NSDate.getDateWithFormatddMMyyyy(dateString: poolStartDateString)
+        let poolStartDate = Date.getDateWithFormatddMMyyyy(dateString: poolStartDateString)
         
         if !poolStartDate.isDatePreviousToCurrentDate() {
             // The pool hasn't started yet
@@ -150,7 +150,7 @@ class PoolDetailViewController: ViewController {
             enterPoolButton.isEnabled = false
             
             dateTitleLabel.text = "Begins on:"
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: poolStartDateString)
+            dateLabel.text = Date.getDateStringWithFormatddMMyyyy(dateString: poolStartDateString)
             
         } else {
             // The pool has started
@@ -159,7 +159,7 @@ class PoolDetailViewController: ViewController {
             enterPoolButton.isEnabled = true
             
             dateTitleLabel.text = "Ends on:"
-            dateLabel.text = NSDate.getDateStringWithFormatddMMyyyy(dateString: (pool?.endDateTime)!)
+            dateLabel.text = Date.getDateStringWithFormatddMMyyyy(dateString: (pool?.endDateTime)!)
         }
     }
     

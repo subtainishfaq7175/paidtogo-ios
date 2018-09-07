@@ -177,9 +177,16 @@
 		D80DAA6420F8CE0700806CB8 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */; };
 		D80DAA6620FCC0FC00806CB8 /* ActivitySponsorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */; };
 		D80DAA7020FF636600806CB8 /* LeaderBoardPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */; };
+		D824E2E0211E3B2300C5720B /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824E2DF211E3B2300C5720B /* Sponsor.swift */; };
+		D824E2E2211E3E9E00C5720B /* LeaderboardPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824E2E1211E3E9E00C5720B /* LeaderboardPosition.swift */; };
+		D8262A472136C73A00CDA733 /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8262A462136C73900CDA733 /* ActivityMapViewController.swift */; };
 		D829834020F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */; };
 		D829834220F1196400FDA7A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834120F1196400FDA7A8 /* Settings.swift */; };
 		D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D829834320F11F9700FDA7A8 /* ManualActivity.swift */; };
+		D82FCAB721396A4000D075AB /* GymCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82FCAB621396A4000D075AB /* GymCheckInViewController.swift */; };
+		D83D8CFB2118E72300EA44EA /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D8CFA2118E72300EA44EA /* WebViewViewController.swift */; };
+		D85CA848213D686B001FCE84 /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CA847213D686B001FCE84 /* MasterData.swift */; };
+		D877FFA52139278E00866659 /* GymLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D877FFA42139278E00866659 /* GymLocation.swift */; };
 		D8C8E30220EF67500031BF1D /* ActivityMoniteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */; };
 		D8C8E30320EF67500031BF1D /* ActivityMoniteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */; };
 		F9952B6A20F18E2C0099BA84 /* MainStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */; };
@@ -367,9 +374,16 @@
 		D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySponsorViewController.swift; sourceTree = "<group>"; };
 		D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardPageViewCell.swift; sourceTree = "<group>"; };
+		D824E2DF211E3B2300C5720B /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
+		D824E2E1211E3E9E00C5720B /* LeaderboardPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPosition.swift; sourceTree = "<group>"; };
+		D8262A462136C73900CDA733 /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
 		D829833F20F0FC0D00FDA7A8 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		D829834120F1196400FDA7A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D829834320F11F9700FDA7A8 /* ManualActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualActivity.swift; sourceTree = "<group>"; };
+		D82FCAB621396A4000D075AB /* GymCheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymCheckInViewController.swift; sourceTree = "<group>"; };
+		D83D8CFA2118E72300EA44EA /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		D85CA847213D686B001FCE84 /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
+		D877FFA42139278E00866659 /* GymLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymLocation.swift; sourceTree = "<group>"; };
 		D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringViewController.swift; sourceTree = "<group>"; };
 		D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringManager.swift; sourceTree = "<group>"; };
 		F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatsViewController.swift; sourceTree = "<group>"; };
@@ -707,6 +721,10 @@
 				4D77430A1D5A16DD00ACD544 /* ActivityRoute.swift */,
 				4D77430C1D5A182C00ACD544 /* ActivitySubroute.swift */,
 				10764ACD20A5AD6F00003A6D /* Invitations.swift */,
+				D824E2DF211E3B2300C5720B /* Sponsor.swift */,
+				D824E2E1211E3E9E00C5720B /* LeaderboardPosition.swift */,
+				D877FFA42139278E00866659 /* GymLocation.swift */,
+				D85CA847213D686B001FCE84 /* MasterData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -720,6 +738,7 @@
 				5234D6FF1C9C465E00910765 /* MenuViewController.swift */,
 				5255239A1CA9879900D92F7F /* MainViewController.swift */,
 				4DBCE93C1D7F43120020B7A2 /* ProViewController.swift */,
+				D83D8CFA2118E72300EA44EA /* WebViewViewController.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -847,6 +866,8 @@
 				D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */,
 				D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */,
 				4D966ADB1D5902DB0078E59A /* ActivityDetailViewController.swift */,
+				D8262A462136C73900CDA733 /* ActivityMapViewController.swift */,
+				D82FCAB621396A4000D075AB /* GymCheckInViewController.swift */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -977,9 +998,9 @@
 				TargetAttributes = {
 					52A3742E1C9844A900E3A4A5 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = VGX8V886Q6;
+						DevelopmentTeam = WBY4S2TLK6;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -1158,6 +1179,7 @@
 				52227FD21C99A115002DBBFA /* NavigationController.swift in Sources */,
 				D80DAA5B20F879AA00806CB8 /* AddOrganizationTableViewCell.swift in Sources */,
 				10924C7C209B20DC00F2C650 /* LocalPoolTVC.swift in Sources */,
+				D8262A472136C73A00CDA733 /* ActivityMapViewController.swift in Sources */,
 				1047795A20B2A11F003D4086 /* ChagnePassVC.swift in Sources */,
 				7C8E737F1CE518F1006B4271 /* Activity.swift in Sources */,
 				10924C78209B048400F2C650 /* BaseVc.swift in Sources */,
@@ -1183,6 +1205,7 @@
 				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,
 				4DDD12C21D9068E9007C11CB /* PaymentValidatorPlatforms.swift in Sources */,
+				D877FFA52139278E00866659 /* GymLocation.swift in Sources */,
 				52B982331CB2C42300706DCC /* PoolViewController.swift in Sources */,
 				5260202A1CEE591E00C6604E /* ActivityResponse.swift in Sources */,
 				4D2CEE321D1058A500009843 /* CMDocumentShare.m in Sources */,
@@ -1196,6 +1219,7 @@
 				52B3E0DB1CA2E5F3000ED657 /* BalanceViewController.swift in Sources */,
 				528F54CE1CF79D6F008E015C /* LeaderboardsResponse.swift in Sources */,
 				4D97C2181D2AAF9100EF35F7 /* CalculatedUnit.swift in Sources */,
+				D82FCAB721396A4000D075AB /* GymCheckInViewController.swift in Sources */,
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				4D9141BB1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D80DAA5920F8798100806CB8 /* BalanceTableViewCell.swift in Sources */,
@@ -1203,6 +1227,7 @@
 				10C4DE7C20CE697C00090F21 /* ActivePoolsRes.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
 				52EBFBBA1CFCC2CB00FE829E /* CarPoolInviteViewController.swift in Sources */,
+				D85CA848213D686B001FCE84 /* MasterData.swift in Sources */,
 				4D966ADC1D5902DB0078E59A /* ActivityDetailViewController.swift in Sources */,
 				10924C73209B029800F2C650 /* GenCustomView.swift in Sources */,
 				D80DAA6220F8CD5F00806CB8 /* LeaderboardViewController.swift in Sources */,
@@ -1230,8 +1255,10 @@
 				5218FB971CCAA30D0038E7F1 /* User.swift in Sources */,
 				52D5B1161CAD7A7E00E0BCE1 /* LocalizableButton.swift in Sources */,
 				4D068EEA1D510F68007FE30A /* TableViewHeader.swift in Sources */,
+				D824E2E0211E3B2300C5720B /* Sponsor.swift in Sources */,
 				52A374351C9844A900E3A4A5 /* LoginViewController.swift in Sources */,
 				522594FE1CB6EBE1002396A4 /* ShareViewController.swift in Sources */,
+				D83D8CFB2118E72300EA44EA /* WebViewViewController.swift in Sources */,
 				4D8880921D6CBC84008E514A /* IAPHelper.swift in Sources */,
 				525523991CA9869700D92F7F /* MenuItemCell.swift in Sources */,
 				5276DE221CF8C458009B2CBE /* ActivityNotification.swift in Sources */,
@@ -1269,6 +1296,7 @@
 				4D61B6CE1D89C7260087300C /* ChartsHelper.swift in Sources */,
 				524D200D1C98925000FCE996 /* UIDevice+ModelName.swift in Sources */,
 				52258C0C1C9AE0EA00E3DAC7 /* TermsAndConditionsViewController.swift in Sources */,
+				D824E2E2211E3E9E00C5720B /* LeaderboardPosition.swift in Sources */,
 				523977D81CAF01C000C85CAF /* PoolCell.swift in Sources */,
 				52B2C90A1CC6A2A400504E49 /* PoolTypeEnum.swift in Sources */,
 				10924C75209B035100F2C650 /* Constants.swift in Sources */,
@@ -1405,15 +1433,17 @@
 				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VGX8V886Q6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = WBY4S2TLK6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e89d2eac-4e63-4a72-9f04-ea09ba1e7a53";
+				PROVISIONING_PROFILE_SPECIFIER = "Paid To Go Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -1429,17 +1459,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Paid to Go/Paid to Go.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VGX8V886Q6;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Paid To Go LLC (WBY4S2TLK6)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = WBY4S2TLK6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Paid to Go/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vb.aaronevans.paidtogo.app.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "5989ac29-a9a3-4427-b616-07a91bbdc9dc";
+				PROVISIONING_PROFILE_SPECIFIER = "Paid To Go Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
