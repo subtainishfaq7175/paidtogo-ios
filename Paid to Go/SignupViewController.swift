@@ -26,7 +26,6 @@ class SignupViewController: ViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordVerificationTextField: UITextField!
-    @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var termsSwitch: UISwitch!
     
     // MARK: - Attributes -
@@ -99,10 +98,7 @@ class SignupViewController: ViewController {
             showAlert(text: "The passwords don't match")
             return false
         }
-        if bioTextField.text! == "" {
-            showAlert(text: "Biography field is empty")
-            return false
-        }
+    
         if !termsSwitch.isOn {
             showAlert(text: "The terms and conditions shall be accepted")
             return false
@@ -172,7 +168,6 @@ class SignupViewController: ViewController {
             newUser.name        = firstNameTextField.text!
             newUser.lastName    = lastNameTextField.text!
             newUser.password    = passwordTextField.text!
-            newUser.bio         = bioTextField.text!
             newUser.type        = "1"
 
             var imageData: Data?

@@ -26,6 +26,7 @@ class LeaderboardViewController: MenuContentViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var activeCommuteButton: UIButton!
     @IBOutlet weak var activeCommuteBottomView: UIView!
     @IBAction func activeCommuteAction(_ sender: Any) {
@@ -71,7 +72,7 @@ class LeaderboardViewController: MenuContentViewController {
         setupViewController()
         setuptableView()
         updatePageView()
-        getLeadeeBoards()
+        getLeaderBoards()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,7 +93,7 @@ class LeaderboardViewController: MenuContentViewController {
         self.tableView.tableFooterView = UIView(frame: .zero)
     }
     
-    func getLeadeeBoards()  {
+    func getLeaderBoards()  {
         guard let userID = User.currentUser?.userId else {
             return
         }
@@ -117,6 +118,8 @@ class LeaderboardViewController: MenuContentViewController {
             if self.pools.count > 0 {
                 self.selectedPool = self.pools.first
             }
+            
+            self.noDataLabel.isHidden = (self.pools.count > 0)
             
             self.tableView.reloadData()
             self.updatePageView()
@@ -163,6 +166,24 @@ class LeaderboardViewController: MenuContentViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSections: Int = 1
+        if pools.count > 0
+        {
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No data found"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+        }
+        return numOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let selectedPool = selectedPool {
             if selectedtab  == .activeCommute{

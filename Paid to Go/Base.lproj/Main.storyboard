@@ -394,7 +394,7 @@ Email Line View</string>
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-uU-bdA" userLabel="Scroll View Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="721.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="661.33333333333337"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-Sn-3Dd" userLabel="Profile Image View">
                                                 <rect key="frame" x="124.33333333333333" y="23" width="165.33333333333337" height="165.66666666666666"/>
@@ -491,32 +491,14 @@ Email Line View</string>
                                                     <constraint firstAttribute="height" constant="1" id="AYs-Mn-F9j"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ZV-JR-1XN" userLabel="Bio Text Field">
-                                                <rect key="frame" x="10" y="539.33333333333337" width="394" height="38.333333333333371"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-aw-oWO" userLabel="Bio Label">
-                                                <rect key="frame" x="10.000000000000002" y="527.33333333333337" width="18.666666666666671" height="14"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-up-h1l" userLabel="Bio Line View">
-                                                <rect key="frame" x="10" y="576.66666666666663" width="394" height="1"/>
-                                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="ceq-1b-JTn"/>
-                                                </constraints>
-                                            </view>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CBN-lm-X6Y">
-                                                <rect key="frame" x="10" y="591.66666666666663" width="51" height="31"/>
+                                                <rect key="frame" x="10" y="531.33333333333337" width="51" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="rE9-iT-pyP"/>
                                                 </constraints>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-ZQ-eYV" userLabel="Signup Button Container">
-                                                <rect key="frame" x="102" y="640.66666666666663" width="210" height="59"/>
+                                                <rect key="frame" x="102" y="580.33333333333337" width="210" height="59"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJp-nq-3ZX">
                                                         <rect key="frame" x="0.0" y="0.0" width="210" height="59"/>
@@ -542,7 +524,7 @@ Email Line View</string>
                                                 <rect key="frame" x="244.66666666666663" y="162.66666666666666" width="40" height="39.666666666666657"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-eA-07q">
-                                                <rect key="frame" x="69" y="593.66666666666663" width="161" height="27"/>
+                                                <rect key="frame" x="69" y="533.33333333333337" width="161" height="27"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="11"/>
                                                 <state key="normal" title="I accept the terms and conditions">
                                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -564,12 +546,9 @@ Email Line View</string>
                                             <constraint firstItem="AnU-wW-xDe" firstAttribute="top" secondItem="z4x-Cr-mnu" secondAttribute="bottom" constant="10" id="35k-Cj-mVX"/>
                                             <constraint firstItem="AJp-nq-3ZX" firstAttribute="top" secondItem="Eck-eA-07q" secondAttribute="bottom" constant="20" id="3O1-4Q-Hnc"/>
                                             <constraint firstItem="vEa-CL-8AK" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="3T2-OI-pKK"/>
-                                            <constraint firstItem="vfh-up-h1l" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="3ys-BP-nAL"/>
                                             <constraint firstItem="Eck-eA-07q" firstAttribute="centerY" secondItem="CBN-lm-X6Y" secondAttribute="centerY" id="45p-l3-8bc"/>
                                             <constraint firstItem="Eck-eA-07q" firstAttribute="leading" secondItem="CBN-lm-X6Y" secondAttribute="trailing" constant="10" id="4f4-b7-LoB"/>
                                             <constraint firstItem="qSR-e0-DMl" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="6uV-o3-uhz"/>
-                                            <constraint firstItem="5ZV-JR-1XN" firstAttribute="top" secondItem="2SH-aw-oWO" secondAttribute="bottom" constant="-2" id="7MC-mR-1mE"/>
-                                            <constraint firstItem="vfh-up-h1l" firstAttribute="bottom" secondItem="5ZV-JR-1XN" secondAttribute="bottom" id="7tf-kO-Nri"/>
                                             <constraint firstItem="Gjd-s1-rOM" firstAttribute="bottom" secondItem="20I-jD-GjQ" secondAttribute="bottom" id="9Xq-ys-bbl"/>
                                             <constraint firstAttribute="bottom" secondItem="Gb6-ZQ-eYV" secondAttribute="bottom" constant="22" id="9hw-it-dhe"/>
                                             <constraint firstAttribute="trailing" secondItem="nh1-HY-7kx" secondAttribute="trailing" constant="10" id="9jb-UL-vCf"/>
@@ -579,13 +558,11 @@ Email Line View</string>
                                             <constraint firstItem="q0T-bH-djN" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="ER5-ve-spN"/>
                                             <constraint firstItem="2b7-5o-TAt" firstAttribute="top" secondItem="uC9-Sn-3Dd" secondAttribute="bottom" constant="38" id="Ejt-RY-Yg0"/>
                                             <constraint firstItem="AnU-wW-xDe" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="F9d-Fv-Elh"/>
-                                            <constraint firstItem="2SH-aw-oWO" firstAttribute="top" secondItem="nh1-HY-7kx" secondAttribute="bottom" constant="10" id="Fda-U7-7Rt"/>
                                             <constraint firstItem="CRd-te-noO" firstAttribute="top" secondItem="vh9-Dc-1UO" secondAttribute="bottom" constant="10" id="Irx-E0-3H1"/>
                                             <constraint firstItem="QPu-dw-DcC" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="M4G-NT-Li0"/>
                                             <constraint firstItem="q0T-bH-djN" firstAttribute="top" secondItem="olo-Ru-6Sk" secondAttribute="bottom" constant="-2" id="MhF-eE-Ck8"/>
                                             <constraint firstItem="olo-Ru-6Sk" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="My3-zb-uLX"/>
                                             <constraint firstItem="20I-jD-GjQ" firstAttribute="top" secondItem="CRd-te-noO" secondAttribute="bottom" constant="-2" id="OFh-Xj-bPX"/>
-                                            <constraint firstAttribute="trailing" secondItem="vfh-up-h1l" secondAttribute="trailing" constant="10" id="OXc-0Y-6oq"/>
                                             <constraint firstItem="20I-jD-GjQ" firstAttribute="height" secondItem="FaN-2u-1ZV" secondAttribute="height" id="Od7-fS-01k"/>
                                             <constraint firstItem="olo-Ru-6Sk" firstAttribute="top" secondItem="QPu-dw-DcC" secondAttribute="bottom" constant="10" id="P8D-1s-Ubt"/>
                                             <constraint firstItem="uC9-Sn-3Dd" firstAttribute="top" secondItem="h4B-uU-bdA" secondAttribute="top" constant="23" id="Q1N-FN-QGk"/>
@@ -593,14 +570,12 @@ Email Line View</string>
                                             <constraint firstItem="nh1-HY-7kx" firstAttribute="bottom" secondItem="q0T-bH-djN" secondAttribute="bottom" id="RTL-39-Wxj"/>
                                             <constraint firstAttribute="trailing" secondItem="20I-jD-GjQ" secondAttribute="trailing" constant="10" id="S5d-w1-u92"/>
                                             <constraint firstAttribute="trailing" secondItem="tV8-ms-2at" secondAttribute="trailing" constant="10" id="Tai-QR-nZz"/>
-                                            <constraint firstItem="5ZV-JR-1XN" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="V5t-My-Hsi"/>
                                             <constraint firstItem="FaN-2u-1ZV" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="V7X-1Y-9Rc"/>
                                             <constraint firstItem="tV8-ms-2at" firstAttribute="height" secondItem="FaN-2u-1ZV" secondAttribute="height" id="WSw-jq-FxH"/>
                                             <constraint firstItem="vh9-Dc-1UO" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="XrS-9E-Fgn"/>
                                             <constraint firstItem="uC9-Sn-3Dd" firstAttribute="centerX" secondItem="h4B-uU-bdA" secondAttribute="centerX" id="YSb-Ta-r9g"/>
                                             <constraint firstAttribute="trailing" secondItem="vEa-CL-8AK" secondAttribute="trailing" constant="10" id="YmT-ug-EN2"/>
-                                            <constraint firstItem="5ZV-JR-1XN" firstAttribute="height" secondItem="FaN-2u-1ZV" secondAttribute="height" id="aKh-Gf-nMI"/>
-                                            <constraint firstAttribute="trailing" secondItem="5ZV-JR-1XN" secondAttribute="trailing" constant="10" id="adP-mY-nYl"/>
+                                            <constraint firstItem="CBN-lm-X6Y" firstAttribute="top" secondItem="nh1-HY-7kx" secondAttribute="bottom" constant="14" id="a8o-gt-YUy"/>
                                             <constraint firstItem="sqK-Aj-pMv" firstAttribute="leading" secondItem="uC9-Sn-3Dd" secondAttribute="trailing" constant="-45" id="cec-84-gfP"/>
                                             <constraint firstItem="vh9-Dc-1UO" firstAttribute="bottom" secondItem="tV8-ms-2at" secondAttribute="bottom" id="dT5-YE-UcD"/>
                                             <constraint firstItem="Gjd-s1-rOM" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="dg4-hy-E0Q"/>
@@ -610,9 +585,7 @@ Email Line View</string>
                                             <constraint firstItem="Gb6-ZQ-eYV" firstAttribute="centerX" secondItem="h4B-uU-bdA" secondAttribute="centerX" id="fiK-bJ-2Zw"/>
                                             <constraint firstItem="tV8-ms-2at" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="hDe-Zz-PhH"/>
                                             <constraint firstItem="QPu-dw-DcC" firstAttribute="bottom" secondItem="vEa-CL-8AK" secondAttribute="bottom" id="i2N-2m-FCV"/>
-                                            <constraint firstItem="2SH-aw-oWO" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="irF-zn-Pkz"/>
                                             <constraint firstItem="q0T-bH-djN" firstAttribute="height" secondItem="FaN-2u-1ZV" secondAttribute="height" id="l0h-pe-Ftl"/>
-                                            <constraint firstItem="CBN-lm-X6Y" firstAttribute="top" secondItem="vfh-up-h1l" secondAttribute="bottom" constant="14" id="m30-Nm-U6w"/>
                                             <constraint firstItem="vEa-CL-8AK" firstAttribute="height" secondItem="FaN-2u-1ZV" secondAttribute="height" id="m59-TC-w3B"/>
                                             <constraint firstItem="CRd-te-noO" firstAttribute="leading" secondItem="h4B-uU-bdA" secondAttribute="leading" constant="10" id="mMG-2p-n3G"/>
                                             <constraint firstAttribute="trailing" secondItem="vh9-Dc-1UO" secondAttribute="trailing" constant="10" id="nwG-GW-wVS"/>
@@ -652,7 +625,6 @@ Email Line View</string>
                     <navigationItem key="navigationItem" id="sbh-GD-naR"/>
                     <connections>
                         <outlet property="addImageView" destination="sqK-Aj-pMv" id="4RK-W3-f4C"/>
-                        <outlet property="bioTextField" destination="5ZV-JR-1XN" id="bx7-mU-hZA"/>
                         <outlet property="emailTextField" destination="FaN-2u-1ZV" id="yFm-Bo-nei"/>
                         <outlet property="firstNameTextField" destination="tV8-ms-2at" id="vMq-V5-7uP"/>
                         <outlet property="lastNameTextField" destination="20I-jD-GjQ" id="vCh-uU-ekV"/>

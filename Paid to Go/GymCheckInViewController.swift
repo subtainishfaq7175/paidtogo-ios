@@ -43,6 +43,8 @@ class GymCheckInViewController: MenuContentViewController {
         
         addLocationsToMap()
         setupViews()
+        
+        GeolocationManager.sharedInstance.startLocationUpdates()
     }
 
     override func didReceiveMemoryWarning() {

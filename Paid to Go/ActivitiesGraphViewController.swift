@@ -191,8 +191,11 @@ class ActivitiesGraphViewController: ViewController {
             self.getChartData()
         }
         
-        self.selectedActivityLabel.text = Pool.pools![selectedPool].name!
-        getChartData()
+        if let pools = Pool.pools, pools.count > selectedPool {
+            self.selectedActivityLabel.text = pools[selectedPool].name!
+            getChartData()
+            
+        }
     }
     
     private func setupDurationDropDown() {
@@ -264,8 +267,6 @@ class ActivitiesGraphViewController: ViewController {
             xPosition = xPosition + 1
         }
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        
         MonthNameFormater.selectedSpan = selectedSpan
         
         lineChart.xAxis.valueFormatter = MonthNameFormater()
@@ -307,7 +308,7 @@ class ActivitiesGraphViewController: ViewController {
             return
         }
         
-        if let pools = Pool.pools
+        if let pools = Pool.pools, pools.count > selectedPool
         {
         
             let poolId = pools[selectedPool].id!

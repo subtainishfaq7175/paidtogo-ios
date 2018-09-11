@@ -11,7 +11,6 @@ import MapKit
 
 class ActivityMapViewController: ViewController {
     
-    
     // MARK: - IBOutlets
     
     @IBOutlet weak var mapView: MKMapView!
@@ -54,6 +53,8 @@ class ActivityMapViewController: ViewController {
         
         // Do any additional setup after loading the view.
         configureMap()
+        
+        GeolocationManager.sharedInstance.startLocationUpdates()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(closeButtonPressed))
         topView.addGestureRecognizer(gesture)

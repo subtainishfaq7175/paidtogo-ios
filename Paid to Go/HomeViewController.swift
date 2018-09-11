@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKitUI
+import FSPagerView
 
 class HomeViewController: MenuContentViewController {
     
@@ -19,6 +20,16 @@ class HomeViewController: MenuContentViewController {
     
     @IBOutlet weak var startActivityButton: UIButton!
     @IBOutlet weak var startActivityButtonView: UIView!
+    
+    @IBOutlet weak var pageControl: FSPageControl! {
+        didSet {
+            self.pageControl.contentHorizontalAlignment = .right
+            self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            self.pageControl.contentHorizontalAlignment = .center
+            self.pageControl.setFillColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .selected)
+            self.pageControl.setFillColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+        }
+    }
     
     let geolocationManager =  GeolocationManager.sharedInstance
     var tabsAddedCount = Constants.consShared.ZERO_INT
@@ -231,6 +242,7 @@ class HomeViewController: MenuContentViewController {
                         GeolocationManager.sharedInstance.add(gymlocation: gymlocation)
                     }
                 }
+             
                 
             }
             
@@ -313,7 +325,10 @@ class HomeViewController: MenuContentViewController {
         vc.didMove(toParentViewController: self)
     }
     func addTabs(){
+        
         if pools.count > consShared.ZERO_INT {
+            pageControl.numberOfPages = pools.count + 1
+            
 //            activityData.count - consShared.ONE_INT
             for index in Constants.consShared.ZERO_INT...(pools.count - consShared.ONE_INT){
                 let mainPool = StoryboardRouter.homeStoryboard().instantiateViewController(withIdentifier: IdentifierConstants.idConsShared.MAIN_POOL_VC) as! MainPoolVC
@@ -336,6 +351,7 @@ class HomeViewController: MenuContentViewController {
         
         if let selectedIndex = selectedIndex {
             mainScrollView.changeToPage(page: selectedIndex)
+            pageControl.currentPage = selectedIndex
         }
     }
     
@@ -556,7 +572,8 @@ extension HomeViewController : SyncDelegate {
 
 extension HomeViewController :UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        selectedIndex = scrollView.currentPage;
+        selectedIndex = scrollView.currentPage
+        self.pageControl.currentPage = selectedIndex!
     }
 }
 

@@ -781,7 +781,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzx-d0-dHk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
                                         <connections>
                                             <outlet property="delegate" destination="6Se-fO-sqA" id="mfm-YX-GA6"/>
                                         </connections>
@@ -811,16 +811,26 @@
                                             <constraint firstAttribute="bottom" secondItem="6iw-Un-Vxd" secondAttribute="bottom" id="r0b-C3-JmM"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUp-59-o47" customClass="FSPageControl" customModule="FSPagerView">
+                                        <rect key="frame" x="0.0" y="336" width="320" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="heT-Oq-xCx"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CUp-59-o47" secondAttribute="trailing" id="1rs-Np-wQJ"/>
                                     <constraint firstItem="Hzx-d0-dHk" firstAttribute="leading" secondItem="0Rd-bm-266" secondAttribute="leading" id="7jt-WL-Lec"/>
                                     <constraint firstItem="Hzx-d0-dHk" firstAttribute="top" secondItem="0Rd-bm-266" secondAttribute="top" id="AgH-Pm-7Gf"/>
+                                    <constraint firstItem="M2K-pe-pkY" firstAttribute="top" secondItem="CUp-59-o47" secondAttribute="bottom" constant="4" id="FFh-gD-uVg"/>
                                     <constraint firstAttribute="bottom" secondItem="M2K-pe-pkY" secondAttribute="bottom" constant="20" symbolic="YES" id="In5-Oq-mgB"/>
+                                    <constraint firstItem="CUp-59-o47" firstAttribute="leading" secondItem="0Rd-bm-266" secondAttribute="leading" id="XCo-Zg-goa"/>
                                     <constraint firstAttribute="trailing" secondItem="Hzx-d0-dHk" secondAttribute="trailing" id="a5Z-Rl-eAX"/>
                                     <constraint firstItem="M2K-pe-pkY" firstAttribute="leading" secondItem="0Rd-bm-266" secondAttribute="leading" constant="20" symbolic="YES" id="gQz-cA-hMi"/>
                                     <constraint firstAttribute="trailing" secondItem="M2K-pe-pkY" secondAttribute="trailing" constant="20" symbolic="YES" id="iHs-bn-hFB"/>
-                                    <constraint firstItem="M2K-pe-pkY" firstAttribute="top" secondItem="Hzx-d0-dHk" secondAttribute="bottom" constant="8" symbolic="YES" id="yvq-Av-eUd"/>
+                                    <constraint firstItem="CUp-59-o47" firstAttribute="top" secondItem="Hzx-d0-dHk" secondAttribute="bottom" constant="4" id="u1P-XD-hVb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -875,6 +885,7 @@
                     <navigationItem key="navigationItem" id="Xrg-U9-k3e"/>
                     <connections>
                         <outlet property="mainScrollView" destination="Hzx-d0-dHk" id="uNf-Hm-HGZ"/>
+                        <outlet property="pageControl" destination="CUp-59-o47" id="ROZ-6k-Ef8"/>
                         <outlet property="startActivityButton" destination="6iw-Un-Vxd" id="6kc-YH-Y83"/>
                         <outlet property="startActivityButtonView" destination="M2K-pe-pkY" id="l62-jW-0KA"/>
                     </connections>
@@ -3633,7 +3644,7 @@
                                                             <constraint firstAttribute="width" secondItem="gq6-uF-clp" secondAttribute="height" multiplier="61:64" id="LNb-gf-vhK"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="It's seems you're not linked with any organization" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtp-Cl-jfg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="It's seems you're not linked with any pool" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtp-Cl-jfg">
                                                         <rect key="frame" x="24" y="175" width="248" height="38.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
@@ -3719,7 +3730,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="0Ae-QV-L54" firstAttribute="height" secondItem="uTi-nl-5c6" secondAttribute="height" multiplier="0.55" id="Cgn-OC-pXS"/>
                                     <constraint firstAttribute="trailing" secondItem="JiR-1x-rKG" secondAttribute="trailing" constant="16" id="Chw-6u-pSX"/>

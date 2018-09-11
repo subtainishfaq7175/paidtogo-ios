@@ -60,7 +60,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jER-2q-ECl" userLabel="Add Image Button">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jER-2q-ECl" userLabel="Add Image Button">
                                                 <rect key="frame" x="96" y="23" width="128" height="128"/>
                                                 <connections>
                                                     <action selector="photoTapAction:" destination="OfH-Bf-BSA" eventType="touchUpInside" id="jRf-xu-nWz"/>

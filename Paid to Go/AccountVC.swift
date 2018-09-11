@@ -15,7 +15,6 @@ class AccountVC: ViewController {
     @IBOutlet weak var userEmailTF: UITextField!
     @IBOutlet weak var userPaypalTF: UITextField!
 //    payment method connections
-    @IBOutlet weak var addAccountView: GenCustomView!
 //    change password connections
     @IBOutlet weak var changePasswordLB: UILabel!
     
@@ -59,10 +58,6 @@ class AccountVC: ViewController {
             return
         }
         switch gestureView {
-        case addAccountView:
-            print("payment account taped")
-            
-            break
         case changePasswordLB:
             print("change password taped")
             guard let navigationController = self.navigationController else {

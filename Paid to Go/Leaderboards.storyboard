@@ -317,9 +317,19 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laj-jP-b30" customClass="FSPagerView" customModule="FSPagerView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="225"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlV-f9-4s6">
+                                        <rect key="frame" x="125" y="102" width="125" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="SlV-f9-4s6" firstAttribute="centerY" secondItem="laj-jP-b30" secondAttribute="centerY" id="4ci-oE-8fr"/>
                                     <constraint firstAttribute="height" constant="225" id="Vse-Nd-Dl8"/>
+                                    <constraint firstItem="SlV-f9-4s6" firstAttribute="centerX" secondItem="laj-jP-b30" secondAttribute="centerX" id="di2-jC-V2g"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="YIu-cL-jaM" id="1i7-yd-4SX"/>
@@ -510,6 +520,7 @@
                         <outlet property="activeCommuteButton" destination="qKu-AU-Kum" id="PzX-EN-nF7"/>
                         <outlet property="excrciseBottomView" destination="nZ1-mZ-Pxf" id="aWK-WG-jCv"/>
                         <outlet property="excrciseButton" destination="XrU-uL-fpA" id="0uz-g9-vm9"/>
+                        <outlet property="noDataLabel" destination="SlV-f9-4s6" id="eNo-1o-SOL"/>
                         <outlet property="pageControl" destination="mAp-0m-XJh" id="370-fE-bSz"/>
                         <outlet property="pagerView" destination="laj-jP-b30" id="OST-ik-Bdk"/>
                         <outlet property="tableView" destination="uK1-r0-5tW" id="94d-uo-vOl"/>
