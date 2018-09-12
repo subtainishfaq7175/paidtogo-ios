@@ -48,6 +48,12 @@ class User: Mappable {
     var commuteTypeBusTrain = false
     var commuteTypeCar = false
     
+    // Facebook variable
+    
+    var facebookId:String?
+    var facebookImageUrl:String?
+    var islogedInViaFacebook = false
+    
     init() {
         self.name = ""
         self.lastName = ""
@@ -119,6 +125,10 @@ class User: Mappable {
         accessToken         <- map["access_token"]
         userId              <- map["user_id"]
         userIdInt           <- map["user_id"]
+        
+        facebookId          <- map["fb_id"]
+        facebookImageUrl    <- map["image"]
+        islogedInViaFacebook <- map["is_facebook"]
         
         if userId == nil {
             if let userIdInt = userIdInt {

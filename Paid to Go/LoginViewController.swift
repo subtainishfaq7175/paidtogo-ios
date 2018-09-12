@@ -109,31 +109,71 @@ class LoginViewController: ViewController {
     }
     
     func loginFB(firstTry: Bool) {
-        
-        let params = ["social_token" : self.tokenFB!]
-        
         self.showProgressHud()
         
-//        DataProvider.sharedInstance.postFacebookLogin(params, completion: { (user, error) in
-//            self.dismissProgressHud()
-//            
-//            if let error = error, error.isEmpty == false {
-//                if firstTry {
-//                    self.loginFB(false)
-//                } else {
-//                    self.showAlert(error)
-//                }
-//                return
-//            }
-//            
-//            if error == nil && user != nil {
-//                
-//                User.currentUser = user
-//                
-//                self.verifyProUserSubscription(user!)
-//                
-//            }
-//        })
+        let req = FBSDKGraphRequest(graphPath: "me", parameters:["fields": "id, name, first_name, last_name, email,picture.type(large)"], tokenString: self.tokenFB!, version: nil, httpMethod: "GET")
+
+        req?.start(completionHandler: { (connection, result, error) in
+            self.dismissProgressHud()
+            
+            if(error == nil)
+            {
+                print("result \(result ?? "")")
+                
+                let info = result as! NSDictionary
+                
+                let newUser: User = User()
+                
+                if let imageURL = ((info.value(forKey: "picture") as? NSDictionary)?.value(forKey: "data") as? NSDictionary)?.value(forKey: "url") as? String {
+                    //Download image from imageURL
+                    newUser.facebookImageUrl = imageURL
+                }
+                
+                if let id = info.value(forKey: "id") as? String {
+                    newUser.facebookId = id
+                }
+                
+                if let first_name = info.value(forKey: "first_name") as? String {
+                    newUser.name = first_name
+                }
+                
+                if let last_name = info.value(forKey: "last_name") as? String {
+                    newUser.lastName = last_name
+                }
+                
+                if let email = info.value(forKey: "email") as? String {
+                    newUser.email = email
+                }
+                
+                self.loginViaFacebook(with: newUser)
+                
+            }
+            else
+            {
+                self.showAlert(text: "Something went wrong try again later!")
+            }
+        })
+        
+    }
+    
+    
+    func loginViaFacebook(with user: User) {
+        self.showProgressHud(title: "Connecting with your Facebook")
+        DataProvider.sharedInstance.postLoginViaFacebook(user: user, completion: { (user, error) in
+            self.dismissProgressHud()
+            
+            if let error = error, error.isEmpty == false {
+                self.showAlert(text: error)
+                return
+            }
+            
+            if error == nil && user != nil {
+                
+                User.currentUser = user
+                
+                self.verifyProUserSubscription(user: user!)
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

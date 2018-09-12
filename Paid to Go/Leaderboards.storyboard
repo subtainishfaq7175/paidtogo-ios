@@ -437,7 +437,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oyv-0F-k3D">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Oyv-0F-k3D">
                                                     <rect key="frame" x="20" y="6.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Oyv-0F-k3D" secondAttribute="height" multiplier="1:1" id="Qkb-o7-KJ9"/>
@@ -637,7 +637,7 @@
     </scenes>
     <resources>
         <image name="bg_pool_walk" width="320" height="282"/>
-        <image name="dummy_profile" width="112" height="112"/>
         <image name="ic_pools_btn_greenblue" width="83" height="3"/>
+        <image name="ic_profile_placeholder" width="194" height="194"/>
     </resources>
 </document>

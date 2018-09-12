@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dMJ-ro-DQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dMJ-ro-DQ5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1421,7 +1421,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNG-3o-dMR">
-                                                    <rect key="frame" x="15" y="48" width="290" height="75"/>
+                                                    <rect key="frame" x="8" y="48" width="304" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgd-I7-lmu">
                                                             <rect key="frame" x="13" y="9" width="39" height="14.5"/>
@@ -1468,7 +1468,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZUd-fM-cWZ">
-                                                            <rect key="frame" x="166" y="12" width="116" height="51"/>
+                                                            <rect key="frame" x="180" y="12" width="116" height="51"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,343 Calories Burned" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="a2m-iN-JUU">
                                                                     <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
@@ -1507,7 +1507,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oU-zD-JSJ">
-                                                    <rect key="frame" x="15" y="131" width="290" height="75"/>
+                                                    <rect key="frame" x="8" y="131" width="304" height="75"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking_activity" translatesAutoresizingMaskIntoConstraints="NO" id="D6R-Bu-onM">
                                                             <rect key="frame" x="20" y="17.5" width="40" height="40"/>
@@ -1524,22 +1524,22 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qDN-cc-nM7">
-                                                            <rect key="frame" x="166" y="12" width="116" height="51"/>
+                                                            <rect key="frame" x="190" y="12" width="106" height="51"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,343 Calories Burned" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Xnz-Dm-EkA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.09 lbs CO2 Offset" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-x6-2nC">
-                                                                    <rect key="frame" x="0.0" y="17" width="116" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="17" width="106" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.06 Gal. Gas Saved" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="L4U-Cq-4YN">
-                                                                    <rect key="frame" x="0.0" y="34" width="116" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="34" width="106" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -1553,7 +1553,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.2 mi / 2354 steps" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P3-dn-9gu">
-                                                            <rect key="frame" x="82" y="38" width="60" height="26.5"/>
+                                                            <rect key="frame" x="82" y="38" width="103" height="13.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1577,7 +1577,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oi9-ED-dh2">
-                                                    <rect key="frame" x="15" y="214" width="290" height="75"/>
+                                                    <rect key="frame" x="8" y="214" width="304" height="75"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bicycle_activity" translatesAutoresizingMaskIntoConstraints="NO" id="eOt-jd-BRb">
                                                             <rect key="frame" x="20" y="18" width="40" height="40"/>
@@ -1594,7 +1594,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vgY-0u-Guc">
-                                                            <rect key="frame" x="166" y="12" width="116" height="51"/>
+                                                            <rect key="frame" x="180" y="12" width="116" height="51"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,343 Calories Burned" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="JWZ-JS-VGN">
                                                                     <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
@@ -1647,7 +1647,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vks-IB-66O">
-                                                    <rect key="frame" x="15" y="297" width="290" height="75"/>
+                                                    <rect key="frame" x="8" y="297" width="304" height="75"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="workout_activity" translatesAutoresizingMaskIntoConstraints="NO" id="OE7-fD-HhR">
                                                             <rect key="frame" x="20" y="18" width="40" height="40"/>
@@ -1664,7 +1664,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-7q-Udh">
-                                                            <rect key="frame" x="166" y="12" width="116" height="51"/>
+                                                            <rect key="frame" x="180" y="12" width="116" height="51"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,343 Calories Burned" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="9EU-xY-ZTV">
                                                                     <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
@@ -2232,7 +2232,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o64-dt-EI6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gym Check In" id="HYB-q4-T5M"/>
+                    <navigationItem key="navigationItem" title="Gym Check In" id="HYB-q4-T5M" userLabel="Gym Check-In"/>
                     <connections>
                         <outlet property="checkInButton" destination="Ha7-Z5-KQR" id="r1s-cf-bLz"/>
                         <outlet property="checkInTimesLabel" destination="Vw5-bb-gSE" id="nrf-84-nOn"/>

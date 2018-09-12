@@ -66,9 +66,10 @@ target 'Paid to Go' do
     pod 'FSPagerView'
     
     # Facebook
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKShareKit'
-    pod 'FBSDKLoginKit'
+    
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
     
     # SwiftDate
     # https://github.com/malcommac/SwiftDate

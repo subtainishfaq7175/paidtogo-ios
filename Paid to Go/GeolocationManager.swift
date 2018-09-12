@@ -176,7 +176,7 @@ class GeolocationManager: NSObject {
     
     func postLocalNotification() {
         let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Gym Check In", arguments: nil)
+        content.title = NSString.localizedUserNotificationString(forKey: "Gym Check-In", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "Open app and checkin to " + (currentGymLocation?.name)!, arguments: nil)
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = (currentGymLocation?.identifier)!

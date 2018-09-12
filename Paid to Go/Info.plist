@@ -23,22 +23,23 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1730253337217048</string>
+				<string>fb446713565846522</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>15</string>
+	<string>16</string>
 	<key>FacebookAppID</key>
-	<string>1730253337217048</string>
+	<string>446713565846522</string>
 	<key>FacebookDisplayName</key>
-	<string>Paid to Go</string>
+	<string>Paidtogo</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
+		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 		<string>twitter</string>

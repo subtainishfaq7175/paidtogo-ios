@@ -24,7 +24,7 @@
     </dict>
     <dict>
         <key>title</key>
-        <string>Gym CheckIn</string>
+        <string>Gym Check-In</string>
         <key>identifier</key>
         <string>CheckInNavigationController</string>
         <key>storyboard</key>
@@ -74,7 +74,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Leaderboards</string>
+		<string>Leaderboard</string>
 		<key>identifier</key>
 		<string>LeaderboardsNavigationController</string>
 		<key>storyboard</key>

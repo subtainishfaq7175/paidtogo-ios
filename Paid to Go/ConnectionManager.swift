@@ -39,6 +39,7 @@ class ConnectionManager {
     private var updateProfilePictureURL : String { return "\(baseURL)/updateProfilePicture" }
     private var masterDataURL : String { return "\(baseURL)/master/data" }
     
+    
 // newlly create requests according to new design
 //    private var invitationsURL: String { return "\(baseURL)/getInvitations" }
 //    private var userActivitiesURL: String { return "\(baseURL)/userActivities?user_id=" }
@@ -49,6 +50,7 @@ class ConnectionManager {
 //    old requests used into new design
     private var registerURL: String { return "\(baseURL)/register" }
     private var loginURL: String { return "\(baseURL)/login" }
+    private var fbLoginURL: String { return "\(baseURL)/social/login" }
     private var forgotPasswordURL : String { return "\(baseURL)/recover_pass" }
     private var acceptInvitationURL : String { return "\(baseURL)/acceptInvitation" }
   
@@ -109,9 +111,13 @@ extension ConnectionManager {
 
         let identifier = "Login API - POST"
         self.postRequest(identifier: identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
-//        self.postRequest(identifier, url: self.loginURL, params: params, apiCompletion: apiCompletion)
-
     }
+    func loginViaFacebook(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+        
+        let identifier = "Facebook Login API - POST"
+        self.postRequest(identifier: identifier, url: self.fbLoginURL, params: params, apiCompletion: apiCompletion)
+    }
+
 //
     func forgotPassword(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
 

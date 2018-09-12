@@ -32,6 +32,10 @@ class AccountVC: ViewController {
         fetchUserData()
 //        add tap gesture recognizer for add account and change password
         changePasswordLB.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handelTap(_:))))
+        
+        if (User.currentUser?.islogedInViaFacebook)! {
+            changePasswordLB.isHidden  = true
+        }
     }
     override func viewDidLayoutSubviews() {
         okBtnOL.round()

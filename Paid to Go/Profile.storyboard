@@ -1102,7 +1102,7 @@
                                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPd-Am-RTc" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
                                                         <rect key="frame" x="119.5" y="16" width="80.5" height="80.5"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="AZd-v2-RRV">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="AZd-v2-RRV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80.5" height="80.5"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-Qy-vJC" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
@@ -1237,7 +1237,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dummy_profile" width="112" height="112"/>
         <image name="ic_add_p4" width="24" height="24"/>
         <image name="ic_edit_p4" width="25" height="25"/>
         <image name="ic_profile_placeholder" width="194" height="194"/>

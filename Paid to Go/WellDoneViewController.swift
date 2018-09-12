@@ -108,7 +108,12 @@ class WellDoneViewController: ViewController {
             
         }
         
-        updateLabelsFromActivityResponse()
+        if activityResponse != nil {
+            updateLabelsFromActivityResponse()
+        } else if  activity != nil {
+            updateLabelsFromActivity()
+        }
+        
     }
     
     private func updateLabelsFromActivityResponse() {

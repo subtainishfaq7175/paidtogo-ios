@@ -86,7 +86,7 @@
                                     <constraint firstAttribute="height" constant="43.5" id="AFg-w7-fNe"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy_profile" translatesAutoresizingMaskIntoConstraints="NO" id="8X2-HE-1gS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="8X2-HE-1gS">
                                 <rect key="frame" x="143" y="40" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8X2-HE-1gS" secondAttribute="height" multiplier="1:1" id="CF9-0Q-adZ"/>
@@ -129,6 +129,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="dummy_profile" width="112" height="112"/>
+        <image name="ic_profile_placeholder" width="194" height="194"/>
     </resources>
 </document>

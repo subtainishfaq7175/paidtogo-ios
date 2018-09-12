@@ -285,6 +285,9 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             currentActivity.steps = 0
         }
         
+        self.totalStepsUptillNow = currentActivity.steps
+        self.totalMilesUptillNow = currentActivity.milesTraveled 
+        
         if Settings.shared.isAutoTrackingOn {
             
            showAlert(text: "autoTrackingStartActivityNotRequired".localize())
@@ -318,11 +321,19 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
                         
                         self.navigationController?.pushViewController(viewControler, animated: true)
                         
-                        self.resetVariables()
+                        
                     }
                 } else {
                     ActivityMoniteringManager.sharedManager.save(activity: self.currentActivity)
+                    
+                    // Show Activity data even if not synced
+                    let viewControler = StoryboardRouter.wellDoneViewController()
+                    viewControler.activity = self.currentActivity
+                    
+                    self.navigationController?.pushViewController(viewControler, animated: true)
                 }
+                
+                self.resetVariables()
             }
             
         }
@@ -371,7 +382,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             GeolocationManager.sharedInstance.locationManager.startUpdatingLocation()
             self.currentActivity.type = .cycling
         }
-        let gymCheckInAction = UIAlertAction(title: "Gym Check-in", style: .default) { runningAction in
+        let gymCheckInAction = UIAlertAction(title: "Gym Check-In", style: .default) { runningAction in
 //            self.stepCountLabel.isHidden = false
 //            self.clearUI()
 //            ActivityMoniteringManager.sharedManager.trackRunning()

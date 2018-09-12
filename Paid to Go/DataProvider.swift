@@ -98,6 +98,27 @@ class DataProvider : DataProviderService {
         }
     }
     
+    func postLoginViaFacebook(user: User, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
+        
+        let json = Mapper().toJSON(user)
+        
+        ConnectionManager.sharedInstance.loginViaFacebook(params: json as [String : AnyObject]) { (responseValue, error) in
+            
+            if (error == nil) {
+                
+                let user = Mapper<User>().map(JSON: responseValue as! [String : Any])
+                completion(user, nil)
+                return
+                
+            } else {
+                
+                completion(nil, self.getError(error: error!))
+                return
+                
+            }
+        }
+    }
+    
     func postRecoverPassword(user: User, completion: @escaping (_ genericResponse: GenericResponse?, _ error: String?) -> Void) {
 
         let json = Mapper().toJSON(user)
