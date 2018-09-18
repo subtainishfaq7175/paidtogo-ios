@@ -330,7 +330,7 @@
 		528F54CD1CF79D6F008E015C /* LeaderboardsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsResponse.swift; sourceTree = "<group>"; };
 		528F54CF1CF79D72008E015C /* Leaderboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		529A9D301CC57DD800720377 /* AntiCheatImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntiCheatImageViewController.swift; sourceTree = "<group>"; };
-		52A3742F1C9844A900E3A4A5 /* Paid to Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paid to Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A3742F1C9844A900E3A4A5 /* Paidtogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paidtogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A374321C9844A900E3A4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52A374341C9844A900E3A4A5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52A374371C9844A900E3A4A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -757,7 +757,7 @@
 		52A374301C9844A900E3A4A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52A3742F1C9844A900E3A4A5 /* Paid to Go.app */,
+				52A3742F1C9844A900E3A4A5 /* Paidtogo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -967,9 +967,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		52A3742E1C9844A900E3A4A5 /* Paid to Go */ = {
+		52A3742E1C9844A900E3A4A5 /* Paidtogo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52A374411C9844A900E3A4A5 /* Build configuration list for PBXNativeTarget "Paid to Go" */;
+			buildConfigurationList = 52A374411C9844A900E3A4A5 /* Build configuration list for PBXNativeTarget "Paidtogo" */;
 			buildPhases = (
 				C19F6246CF909756891082B2 /* [CP] Check Pods Manifest.lock */,
 				52A3742B1C9844A900E3A4A5 /* Sources */,
@@ -982,9 +982,9 @@
 			);
 			dependencies = (
 			);
-			name = "Paid to Go";
+			name = Paidtogo;
 			productName = "Paid to Go";
-			productReference = 52A3742F1C9844A900E3A4A5 /* Paid to Go.app */;
+			productReference = 52A3742F1C9844A900E3A4A5 /* Paidtogo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1012,6 +1012,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -1029,7 +1032,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				52A3742E1C9844A900E3A4A5 /* Paid to Go */,
+				52A3742E1C9844A900E3A4A5 /* Paidtogo */,
 			);
 		};
 /* End PBXProject section */
@@ -1513,7 +1516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52A374411C9844A900E3A4A5 /* Build configuration list for PBXNativeTarget "Paid to Go" */ = {
+		52A374411C9844A900E3A4A5 /* Build configuration list for PBXNativeTarget "Paidtogo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52A374421C9844A900E3A4A5 /* Debug */,

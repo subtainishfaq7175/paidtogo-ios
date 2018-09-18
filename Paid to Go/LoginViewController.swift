@@ -150,7 +150,7 @@ class LoginViewController: ViewController {
             }
             else
             {
-                self.showAlert(text: "Something went wrong try again later!")
+                self.showAlert(text: (error?.localizedDescription)!)
             }
         })
         

@@ -172,8 +172,15 @@ class GymCheckInViewController: MenuContentViewController {
     }
     
     func focusOnCurrentLocation() {
+        
+        if let coor = mapView.userLocation.location?.coordinate{
+            mapView.setCenter(coor, animated: true)
+        } else {
+        
         let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
-        mapView.setRegion(coordinateRegion, animated: true)
+            mapView.setRegion(coordinateRegion, animated: true)
+            
+        }
     }
     
     func gymCheckIn() {

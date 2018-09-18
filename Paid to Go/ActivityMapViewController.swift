@@ -78,12 +78,21 @@ class ActivityMapViewController: ViewController {
     /**
      *  Centers the map on the user's current location
      */
-    private func configureMapRegion() {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
-
-        mapView.setRegion(coordinateRegion, animated: true)
+    
+    func focusOnCurrentLocation() {
         
-//        self.mapView.setCenter(GeolocationManager.sharedInstance.currentLocation.coordinate, animated: true)
+     
+    }
+    
+    private func configureMapRegion() {
+        if let coor = mapView.userLocation.location?.coordinate{
+            mapView.setCenter(coor, animated: true)
+        } else {
+            
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
+            mapView.setRegion(coordinateRegion, animated: true)
+            
+        }
     }
     
     private func addSubroutesToMap() {
@@ -233,7 +242,7 @@ class ActivityMapViewController: ViewController {
     }
     
     @IBAction func currentPositionButtonAction(sender: AnyObject) {
-        self.mapView.setCenter(GeolocationManager.sharedInstance.currentLocation.coordinate, animated: true)
+        configureMapRegion()
     }
 }
 

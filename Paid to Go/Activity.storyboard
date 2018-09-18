@@ -33,7 +33,7 @@
         <!--Activity View Controller-->
         <scene sceneID="Nfz-fG-eWv">
             <objects>
-                <viewController id="mBd-4Q-Eiw" customClass="ActivityViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mBd-4Q-Eiw" customClass="ActivityViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="haL-LQ-GiW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKG-HG-BGS" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paid_to_Go" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKG-HG-BGS" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paidtogo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="37" width="320" height="467"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activitySimpleCell" id="ole-iW-HXf" customClass="ActivitySimpleCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activitySimpleCell" id="ole-iW-HXf" customClass="ActivitySimpleCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ole-iW-HXf" id="cwB-1G-aQb">
@@ -88,7 +88,7 @@
                                             <outlet property="titleLabel" destination="7k0-mB-S2s" id="zfX-Fd-fcR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityDefaultCell" id="Un6-Bg-wU0" customClass="ActivityDefaultCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityDefaultCell" id="Un6-Bg-wU0" customClass="ActivityDefaultCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="81" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Un6-Bg-wU0" id="9BU-hd-cid">
@@ -169,7 +169,7 @@
                                             <outlet property="titleLabel" destination="X3J-xb-1iS" id="oPW-hZ-DID"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityActionCell" id="Zw8-nE-tTv" customClass="ActivityActionCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityActionCell" id="Zw8-nE-tTv" customClass="ActivityActionCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="161" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zw8-nE-tTv" id="706-nZ-jt3">
@@ -243,7 +243,7 @@
         <!--Activity Detail View Controller-->
         <scene sceneID="a55-Ph-gR3">
             <objects>
-                <viewController id="ZE2-sT-B73" customClass="ActivityDetailViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZE2-sT-B73" customClass="ActivityDetailViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4kz-tj-BlP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -523,7 +523,7 @@
         <!--Activity Monitering View Controller-->
         <scene sceneID="wXl-xm-7Fp">
             <objects>
-                <viewController storyboardIdentifier="ActivityMoniteringViewController" id="sXm-4z-t88" customClass="ActivityMoniteringViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityMoniteringViewController" id="sXm-4z-t88" customClass="ActivityMoniteringViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PVj-QH-AeS" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -534,7 +534,7 @@
                             <view clipsSubviews="YES" alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CH2-oM-E1S" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="503" width="200" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgh-dO-jfr" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgh-dO-jfr" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GCE-d4-oB6"/>
@@ -747,7 +747,7 @@
         <!--Main Stats View Controller-->
         <scene sceneID="SQT-ic-eeM">
             <objects>
-                <viewController id="v33-cL-FFn" customClass="MainStatsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="v33-cL-FFn" customClass="MainStatsViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sa7-0M-FIh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,7 +791,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GB5-Zb-lTd">
             <objects>
-                <navigationController storyboardIdentifier="ActivityTrackingController" automaticallyAdjustsScrollViewInsets="NO" id="dMJ-ro-DQ5" customClass="NavigationController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ActivityTrackingController" automaticallyAdjustsScrollViewInsets="NO" id="dMJ-ro-DQ5" customClass="NavigationController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uD6-4q-gIc">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -827,7 +827,7 @@
         <!--Activities Graph View Controller-->
         <scene sceneID="nV5-i8-hYe">
             <objects>
-                <viewController id="Pga-xC-Wsd" customClass="ActivitiesGraphViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pga-xC-Wsd" customClass="ActivitiesGraphViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tb9-6P-RZS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -894,7 +894,7 @@
                                             <inset key="sectionInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GraphsCollectionViewCell" id="yIN-di-wkc" customClass="GraphsCollectionViewCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GraphsCollectionViewCell" id="yIN-di-wkc" customClass="GraphsCollectionViewCell" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="170" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1030,7 +1030,7 @@
         <!--Activity Listing View Controller-->
         <scene sceneID="rTY-kd-n63">
             <objects>
-                <viewController storyboardIdentifier="ActivityListingViewController" id="Sb4-Yc-aBt" customClass="ActivityListingViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityListingViewController" id="Sb4-Yc-aBt" customClass="ActivityListingViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BVM-aK-jwt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1039,7 +1039,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityTableViewCell" rowHeight="380" id="2G5-4z-QMr" customClass="ActivityTableViewCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityTableViewCell" rowHeight="380" id="2G5-4z-QMr" customClass="ActivityTableViewCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2G5-4z-QMr" id="Sz6-5F-vet">
@@ -1403,7 +1403,7 @@
                                             <outlet property="workoutView" destination="03t-hu-s7l" id="AIX-Sa-VBG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityTableViewCell1" rowHeight="380" id="nZK-cN-h9m" customClass="ActivityTableViewCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityTableViewCell1" rowHeight="380" id="nZK-cN-h9m" customClass="ActivityTableViewCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="408" width="320" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nZK-cN-h9m" id="y7g-7j-a4c">
@@ -1804,7 +1804,7 @@
         <!--Activities Graph View Controller-->
         <scene sceneID="fDn-h4-kv0">
             <objects>
-                <viewController id="rSK-me-oEJ" customClass="ActivitiesGraphViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rSK-me-oEJ" customClass="ActivitiesGraphViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RkP-hC-gdd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1904,7 +1904,7 @@
                                             <inset key="sectionInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GraphsCollectionViewCell" id="RYe-YS-bGW" customClass="GraphsCollectionViewCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GraphsCollectionViewCell" id="RYe-YS-bGW" customClass="GraphsCollectionViewCell" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="150" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2064,7 +2064,7 @@
         <!--Gym Check In-->
         <scene sceneID="EZb-bL-Ajx">
             <objects>
-                <viewController id="rlP-VI-alQ" customClass="GymCheckInViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rlP-VI-alQ" customClass="GymCheckInViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JyD-HF-hgz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2250,7 +2250,7 @@
         <!--Map-->
         <scene sceneID="RWh-bd-EdI">
             <objects>
-                <viewController storyboardIdentifier="ActivityMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8uW-zG-skI" customClass="ActivityMapViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8uW-zG-skI" customClass="ActivityMapViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6dl-sE-2j4"/>
                         <viewControllerLayoutGuide type="bottom" id="OgC-6q-PO1"/>
@@ -2262,7 +2262,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfi-ic-UiR" userLabel="Top View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back to Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzm-Ig-9Zy" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back to Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzm-Ig-9Zy" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="55" y="38" width="210" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8Dx-qB-8rN"/>
