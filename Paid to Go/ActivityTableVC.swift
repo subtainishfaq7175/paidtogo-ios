@@ -60,7 +60,7 @@ extension ActivityTableVC : UITableViewDataSource {
         switch  indexPath.row {
         case consShared.ZERO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_walkrun")
-            cell.itemTitleLB.text = "DAILY WALK/RUN"
+            cell.itemTitleLB.text = "STEPS"
             
             if let activity = activity {
                 cell.itemValueLB.text = "\(activity.totalSteps) steps"
@@ -70,8 +70,8 @@ extension ActivityTableVC : UITableViewDataSource {
             }
             break
         case consShared.ONE_INT:
-            cell.itemIV.image = #imageLiteral(resourceName: "ic_bike")
-            cell.itemTitleLB.text = "DAILY BIKE"
+            cell.itemIV.image = #imageLiteral(resourceName: "ic_road_pin_black")
+            cell.itemTitleLB.text = "MILES"
         
             if let activity = activity {
                 cell.itemValueLB.text = "\(activity.milesTraveled) mi"
@@ -82,7 +82,7 @@ extension ActivityTableVC : UITableViewDataSource {
             break
         case consShared.TWO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_weight_with_bg")
-            cell.itemTitleLB.text = "DAILY GYM CHECK-IN"
+            cell.itemTitleLB.text = "CALORIES BURNED"
             
             if let activity = activity {
                 cell.itemValueLB.text = "\(activity.savedCalories) kCal"

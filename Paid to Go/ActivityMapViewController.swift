@@ -65,6 +65,11 @@ class ActivityMapViewController: ViewController {
            updateLabels()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureMapRegion()
+    }
+    
     // MARK: - Map Configuration
     
     private func configureMap() {
@@ -85,10 +90,9 @@ class ActivityMapViewController: ViewController {
     }
     
     private func configureMapRegion() {
-        if let coor = mapView.userLocation.location?.coordinate{
+        if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
         } else {
-            
             let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
             mapView.setRegion(coordinateRegion, animated: true)
             
@@ -232,6 +236,10 @@ class ActivityMapViewController: ViewController {
     
     func showOverSpeedingAlert() {
         showAlert(text: "We have detected that you have crossed the maximum speed allowed for biking i.e \(MasterData.sharedData?.speedOnBike ?? 20) mph")
+    }
+    
+    func showNotRidingBikeAlert() {
+        showAlert(text: "We have detected that you are not riding a bike!")
     }
     
     

@@ -113,7 +113,7 @@ extension PoolBalanceViewController: UITableViewDelegate, UITableViewDataSource 
             var suffex = "USD"
             var poolBalanceOrEarnedMoney = pool.balance?.earnedMoney
             
-            if poolBalanceOrEarnedMoney == 0 {
+            if pool.poolRewardType == .points {
                 poolBalanceOrEarnedMoney = pool.balance?.earnedPoints
                 suffex = "POINTS"
             }

@@ -28,7 +28,7 @@ class ConnectionManager {
     private var subcribeURL: String { return "\(baseURL)/pool/action/subscribe" }
     private var unSubcribeURL: String { return "\(baseURL)/pool/action/unsubscribe" }
     private var changePasswordURL: String { return "\(baseURL)/change-password" }
-    private var searchPoolURL: String { return "\(baseURL)/pools/search" }
+    private var searchPoolURL: String { return "\(baseURL)/pools/search?user_id=" }
     private var balanceURL: String { return "\(baseURL)/balance?user_id=" }
     private var leaderboardURL: String { return "\(baseURL)/user/leaderboard?user_id=" }
     private var sponsorsURL: String { return "\(baseURL)/user/sponsors?user_id=" }
@@ -314,9 +314,10 @@ extension ConnectionManager {
         self.postRequest(identifier: identifier, url: self.changePasswordURL, params: params, apiCompletion: apiCompletion)
     }
     
-    func searchPool(params: [String: AnyObject], apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
+    func searchPool(_ userId:String, lattitude : String, longitude : String, searchString : String, apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         let identifier  = "Search Pool API - POST"
-        self.postRequest(identifier: identifier, url: self.searchPoolURL, params: params, apiCompletion: apiCompletion)
+        
+        self.getRequest(identifier: identifier, url: self.searchPoolURL + userId + "&lat=" + lattitude + "&long=" + longitude + "&pool_name=" + searchString, apiCompletion: apiCompletion)
     }
     
     func userBalance(_ userId:String,apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {

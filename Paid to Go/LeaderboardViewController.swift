@@ -186,10 +186,10 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let selectedPool = selectedPool {
-            if selectedtab  == .activeCommute{
-                return (selectedPool.leaderBoard?.activeCommutes?.count)!
+            if selectedtab  == .activeCommute {
+                return (selectedPool.leaderBoard?.activeCommutes?.count) ?? 0
             } else {
-                return (selectedPool.leaderBoard?.exercices?.count)!
+                return (selectedPool.leaderBoard?.exercices?.count) ?? 0
             }
         }
         return 0
@@ -284,11 +284,11 @@ extension LeaderboardViewController: FSPagerViewDelegate, FSPagerViewDataSource 
             earnedPoints = pool.leaderBoard?.firstExerciceEarned_points
         }
         
-        if let money = earnedMoney, money != 0 {
-            cell.pointsLabel.text = money.toString
+        if pool.poolRewardType == .cash {
+            cell.pointsLabel.text = earnedMoney?.toString ?? "0.0"
             cell.pointsOrUSDLabel.text = "USD"
         } else {
-            cell.pointsLabel.text = earnedPoints?.toString
+            cell.pointsLabel.text = earnedPoints?.toString ?? "0"
             cell.pointsOrUSDLabel.text = "POINTS"
         }
         

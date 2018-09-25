@@ -10,6 +10,7 @@ import UIKit
 import KDCircularProgress
 import ObjectMapper
 import CoreLocation
+import CoreMotion
 
 enum ActivityState : Int {
     case stop = 0
@@ -61,6 +62,12 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     var startDate: Date!
     var traveledDistance: Double = 0
     
+    var cyclingTimer: Timer = Timer()
+    
+    // To
+    var nonCyclingActivitesCount = 0
+    var cyclingFixedTimePassed = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -88,6 +95,14 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         
         NotificationCenter.default.addObserver(self, selector: #selector(ActivityMoniteringViewController.locationUpdated(notification:)), name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_LOCATION_UPDATED), object: nil)
 
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(openMapViewController))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(openMapViewController))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+      
+        self.view.addGestureRecognizer(swipeUp)
+        self.view.addGestureRecognizer(swipeLeft)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,6 +153,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     }
     
     @IBAction func mapButtonTapped(_ sender: UIButton) {
+        openMapViewController()
+    }
+    
+    @objc func openMapViewController() {
         mapViewController = StoryboardRouter.initialMapViewController()
         
         // Send Miles to map through activity
@@ -204,7 +223,8 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             ActivityMoniteringManager.sharedManager.trackRunning()
         } else if currentActivity.type == .cycling {
 //            ActivityMoniteringManager.sharedManager.trackCycling()
-            GeolocationManager.sharedInstance.locationManager.startUpdatingLocation()
+            GeolocationManager.sharedInstance.startLocationUpdates()
+            cyclingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         }
     }
     
@@ -225,6 +245,8 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         lastLocation = nil
         
         activityState = .pause
+        
+        cyclingTimer.invalidate()
         
         // Adjust UI For state Start
         setupUI(forState: activityState)
@@ -290,16 +312,16 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         
         if Settings.shared.isAutoTrackingOn {
             
-           showAlert(text: "autoTrackingStartActivityNotRequired".localize())
+//           showAlert(text: "autoTrackingStartActivityNotRequired".localize())
             
-//            let viewControler = StoryboardRouter.wellDoneViewController()
-//            let activity = ManualActivity()
-//            activity.steps = self.totalStepsUptillNow
-//            activity.milesTraveled = self.totalMilesUptillNow
-//            viewControler.activityType = self.currentActivity.type
-//            viewControler.activity = activity
-//
-//            self.navigationController?.pushViewController(viewControler, animated: true)
+            let viewControler = StoryboardRouter.wellDoneViewController()
+            let activity = ManualActivity()
+            activity.steps = self.totalStepsUptillNow
+            activity.milesTraveled = self.totalMilesUptillNow
+            viewControler.activityType = self.currentActivity.type
+            viewControler.activity = activity
+
+            self.navigationController?.pushViewController(viewControler, animated: true)
             
             resetVariables()
             
@@ -377,18 +399,9 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
 //        }
         let cyclingAction = UIAlertAction(title: "Bike", style: .default) { cyclingAction in
             self.stepCountLabel.isHidden = true
-            self.startActivity()
-//            ActivityMoniteringManager.sharedManager.trackCycling()
-            GeolocationManager.sharedInstance.locationManager.startUpdatingLocation()
             self.currentActivity.type = .cycling
-        }
-        let gymCheckInAction = UIAlertAction(title: "Gym Check-In", style: .default) { runningAction in
-//            self.stepCountLabel.isHidden = false
-//            self.clearUI()
-//            ActivityMoniteringManager.sharedManager.trackRunning()
-//            self.activity.type = .walkingRunning
+            self.startActivity()
             
-            self.showAlert(text: "Under Development")
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -504,9 +517,13 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
                 }
             }
             
-              updateDistanceLabel(withTotalDistance: traveledDistance * 0.000621371)
+             updateDistanceLabel(withTotalDistance: traveledDistance * 0.000621371)
             }
         }
+    }
+    
+    @objc private func updateTimer() {
+        cyclingFixedTimePassed = true
     }
     
     //MARK: - ActivityMoniteringManagerDelegate Methods
@@ -534,8 +551,27 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         
     }
     
-    func didDetectActivity(Activity activity: NSString) {
-        
+    func didDetectActivity(Activity activity: CMMotionActivity) {
+        if activity.confidence != .low {
+            if activity.cycling, activity.stationary {
+                nonCyclingActivitesCount = 0
+            } else if !activity.unknown {
+                if cyclingFixedTimePassed {
+                    cyclingFixedTimePassed = false
+                    
+                    nonCyclingActivitesCount = nonCyclingActivitesCount + 1
+                    
+                    if nonCyclingActivitesCount > 4 {
+                        pauseAction()
+                        showAlert(text: "We have detected that you are not riding a bike!")
+                        
+                        if let mapView = mapViewController {
+                            mapView.showNotRidingBikeAlert()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func getSponsors()  {

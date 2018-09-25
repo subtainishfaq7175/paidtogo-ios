@@ -23,7 +23,7 @@ protocol ActivityMoniteringManagerDelegate {
     func didCycling(activity: ManualActivity)
     func didCycle(Speed speed: Double)
     func didCycle(Distance distance: Double)
-    func didDetectActivity(Activity activity: NSString)
+    func didDetectActivity(Activity activity: CMMotionActivity)
 }
 
 class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
@@ -188,24 +188,8 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     func checkMotion() {
         motionActivityManager.startActivityUpdates(to: OperationQueue.current!) { (activity) in
             
-            if (activity?.running)! {
-                self.trackRunning()
-                self.motionType = "running"
-                self.activityType = .walkingRunning
-            } else if (activity?.walking)! {
-                self.trackWalking()
-                self.motionType = "walking"
-                self.activityType = .walkingRunning
-            } else if (activity?.cycling)! {
-                self.startCyclingTimer()
-                self.motionType = "cycling"
-                self.activityType = .cycling
-            } else {
-                self.activityType = .none
-            }
-            
-            if self.delegate != nil {
-                self.delegate?.didDetectActivity(Activity: self.motionType as NSString)
+            if self.delegate != nil, activity != nil {
+                self.delegate?.didDetectActivity(Activity: activity!)
             }
         }
     }
@@ -215,6 +199,7 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             pedometer.stopEventUpdates()
             cyclingTimer.invalidate()
         }
+        motionActivityManager.stopActivityUpdates()
     }
     
     func trackWalking() {
@@ -258,16 +243,16 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func startCyclingTimer() {
-        if timerIsOn == false {
-            timerCycling = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-            timerIsOn = true
-            self.locationManager?.startUpdatingLocation()
-            self.locationManager?.startMonitoringSignificantLocationChanges()
-            self.locationManager?.distanceFilter = 10
-            self.locationManager?.delegate = self
-        }
-    }
+//    func startCyclingTimer() {
+//        if timerIsOn == false {
+//            timerCycling = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+//            timerIsOn = true
+//            self.locationManager?.startUpdatingLocation()
+//            self.locationManager?.startMonitoringSignificantLocationChanges()
+//            self.locationManager?.distanceFilter = 10
+//            self.locationManager?.delegate = self
+//        }
+//    }
     
     func stopTimer() {
         self.startLocation = nil

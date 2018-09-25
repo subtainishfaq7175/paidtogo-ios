@@ -448,18 +448,18 @@ extension PoolViewController: PedometerDelegate {
 extension PoolViewController: ActivityLocationManagerDelegate {
     
     func initLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.activityType = .fitness
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        
-        // Set Location Manager precision: http://stackoverflow.com/questions/9746675/cllocationmanager-responsiveness
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 10.0;
-        
-        locationManager.allowsBackgroundLocationUpdates = true
-        
-        locationManager.requestAlwaysAuthorization()
+//        locationManager = CLLocationManager()
+//        locationManager.delegate = self
+//        locationManager.activityType = .fitness
+////        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+//        
+//        // Set Location Manager precision: http://stackoverflow.com/questions/9746675/cllocationmanager-responsiveness
+//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.distanceFilter = 1;
+//        
+//        locationManager.allowsBackgroundLocationUpdates = true
+//        
+//        locationManager.requestAlwaysAuthorization()
     }
     func startLocationUpdates() {
         locationManager?.startUpdatingLocation()

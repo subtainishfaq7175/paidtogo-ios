@@ -12,13 +12,12 @@ import Charts
 
 enum ActivitGraphTag : Int {
     case moneyEarned = 0
-    case milesTraveled = 1
-    case carMilesOffset = 2
-    case caloriesSaved = 3
-    case co2Offset = 4
-    case totalSteps = 5
+    case milesTraveled 
+    case caloriesSaved
+    case co2Offset
+    case totalSteps
     
-    static let allValues = [moneyEarned.value, milesTraveled.value, carMilesOffset.value, caloriesSaved.value, co2Offset.value, totalSteps.value]
+    static let allValues = [moneyEarned.value, milesTraveled.value, caloriesSaved.value, co2Offset.value, totalSteps.value]
     
     var value : String {
         switch self {
@@ -26,14 +25,27 @@ enum ActivitGraphTag : Int {
             return "Money Earned"
         case .milesTraveled:
             return "Miles Traveled"
-        case .carMilesOffset:
-            return "Car-Miles Offset"
         case .caloriesSaved:
-            return "Calories Saved"
+            return "Calories Burned"
         case .co2Offset:
             return "CO2 Offset"
         case .totalSteps:
             return "Total Steps"
+        }
+    }
+    
+    var unit : String {
+        switch self {
+        case .moneyEarned:
+            return "USD"
+        case .milesTraveled:
+            return "Miles"
+        case .caloriesSaved:
+            return "Cal"
+        case .co2Offset:
+            return "Tons"
+        case .totalSteps:
+            return "Steps"
         }
     }
     
@@ -64,7 +76,7 @@ class ActivitiesGraphViewController: ViewController {
     
     var selectedTag = ActivitGraphTag.moneyEarned {
         didSet {
-            yAxisLabel.text = self.selectedTag.value
+            yAxisLabel.text = self.selectedTag.unit
         }
     }
     
@@ -243,9 +255,6 @@ class ActivitiesGraphViewController: ViewController {
                 break
             case .milesTraveled:
                 yPostion = activity.milesTraveled
-                break
-            case .carMilesOffset:
-                 yPostion = activity.savedTraffic
                 break
             case .caloriesSaved:
                  yPostion = activity.savedCalories

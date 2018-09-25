@@ -164,6 +164,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     itemCell.toggleSwitch.setOn(Settings.shared.isAutoTrackingOn, animated: false)
                 }
                 
+                if indexPath.row == LocationTag.geoLocation.rawValue {
+                    itemCell.toggleSwitch.setOn(Settings.shared.isGeoTrackingOn, animated: false)
+                }
+                
                 break;
             case .appNotification:
                 title = appNotificationRows[indexPath.row]
@@ -248,6 +252,7 @@ extension SettingsViewController: SettingSwitchTableViewCellDelegate {
                     switch rowTag {
                         
                     case .geoLocation:
+                        Settings.shared.isGeoTrackingOn = state
                         break;
                         
                     case .autoTracking:

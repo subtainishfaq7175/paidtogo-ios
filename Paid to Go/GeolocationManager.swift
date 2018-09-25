@@ -31,18 +31,21 @@ class GeolocationManager: NSObject {
     }
     
     func initLocationManager() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.startUpdatingLocation()
-            
-            switch CLLocationManager.authorizationStatus() {
-            case .authorizedWhenInUse,.authorizedAlways:
-                break
-            default:
-                print(Constants.consShared.APP_NAME,"app not authorized for loacation")
-                break
-            }
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = 1
+        locationManager.allowsBackgroundLocationUpdates = true
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse,.authorizedAlways:
+            break
+        default:
+            print(Constants.consShared.APP_NAME,"app not authorized for loacation")
+            break
+        }
     }
     
     func startLocationUpdates() {

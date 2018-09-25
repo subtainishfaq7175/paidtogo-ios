@@ -880,16 +880,24 @@ func getStatusWithTimeInterval(fromDate:Date, toDate:Date, completion: (_ result
     
     func searchPools(withSearchString searchString: String, poolType type:String, completion: @escaping (_ pools: [Pool]?, _ error: String?) -> Void) {
         
-        let params = ["name": searchString as AnyObject,
-                      "type": type as AnyObject,
-                      "created_at":  Date().formatedStingYYYY_MM_dd() as AnyObject
-                      ]
+        guard let userId = User.currentUser?.userId else {
+            return
+        }
         
-        ConnectionManager.sharedInstance.searchPool(params:params, apiCompletion: { (responseValue, error) in
+        let lat = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude)
+        let long = String(GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude)
+        
+        
+        ConnectionManager.sharedInstance.searchPool(userId, lattitude: lat, longitude: long, searchString: searchString, apiCompletion: { (responseValue, error) in
             
             if (error == nil) {
                 
-                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue as! [[String : Any]])
+                guard let responseValue1 = responseValue as? [[String : Any]] else {
+                    completion([], nil)
+                    return
+                }
+                
+                if let pools : [Pool] = Mapper<Pool>().mapArray(JSONArray:responseValue1)
                 {
                     
                     completion(pools, nil)

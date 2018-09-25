@@ -1013,7 +1013,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1495,7 +1495,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5989ac29-a9a3-4427-b616-07a91bbdc9dc";
+				PROVISIONING_PROFILE = "d9f5d9e5-34a2-4ef7-8cee-c242322bb550";
 				PROVISIONING_PROFILE_SPECIFIER = "Paid To Go Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

@@ -15,6 +15,7 @@ enum DefaultsKeys: String {
     case AutotrackingStartDate
     case CheckInsNotification
     case AutotrackingStartDateForCycling
+    case isGeoTrackingOn
 }
 
 class Settings {
@@ -23,7 +24,7 @@ class Settings {
     private let initialPopUpAlreadyShownKey = "initialPopUpAlreadyShownKey"
     private let trackingNotRequiredPopUpAlreadyShownKey = "trackingNotRequiredPopUpAlreadyShownKey"
     private let checkInsNotificationKey = "checkInsNotificationKey"
-    
+    private let enableAllOptionsBydefaultKey = "enableAllOptionsBydefaultKey"
     
     var isAutoTrackingOn: Bool {
         get {
@@ -31,10 +32,15 @@ class Settings {
         }
         set {
             userdefaults.set(newValue, forKey: DefaultsKeys.Autotracking.rawValue)
-            
-            if newValue {
-                userdefaults.set(Date(), forKey: DefaultsKeys.AutotrackingStartDate.rawValue)
-            }
+        }
+    }
+    
+    var isGeoTrackingOn: Bool {
+        get {
+            return userdefaults.bool(forKey: DefaultsKeys.isGeoTrackingOn.rawValue)
+        }
+        set {
+            userdefaults.set(newValue, forKey: DefaultsKeys.isGeoTrackingOn.rawValue)
         }
     }
     
@@ -95,4 +101,14 @@ class Settings {
     
     }
     
+    func enableAllOptionsBydefault() {
+        let enableAllOptionsBydefault = userdefaults.bool(forKey: enableAllOptionsBydefaultKey)
+        
+        if !enableAllOptionsBydefault {
+            isAutoTrackingOn = true
+            isGeoTrackingOn = true
+            checkInsNotification = true
+            userdefaults.set(true, forKey: enableAllOptionsBydefaultKey)
+        }
+    }
 }

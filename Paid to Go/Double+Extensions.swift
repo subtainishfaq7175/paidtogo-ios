@@ -20,7 +20,7 @@ extension Double {
         self = self.rounded(toPlaces: 2)
     }
     
-    var toString:String {
+    var toString: String {
         return "\(self)"
     }
 }

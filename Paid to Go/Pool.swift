@@ -15,6 +15,11 @@ public enum PoolState : String {
     case National = "national_pool"
 }
 
+public enum PoolRewardType : Int {
+    case cash = 1
+    case points = 2
+}
+
 public class Pool: Mappable {
     static var pools:[Pool]?
     
@@ -22,6 +27,7 @@ public class Pool: Mappable {
     internal let kPoolQuantMembersKey: String = "quant_members"
     internal let kPoolEarnedMoneyPerMileKey: String = "earned_money_per_mile"
     internal let kPoolTypeKey: String = "type"
+    internal let kPoolRewardTypeKey: String = "reward_type"
     internal let kPoolBannerKey: String = "banner"
     internal let kPoolDestinationLatitudeKey: String = "destination_latitude"
     internal let kPoolNameKey: String = "name"
@@ -51,6 +57,7 @@ public class Pool: Mappable {
     public var quantMembers: Int?
     public var earnedMoneyPerMile: Double?
     public var poolType: PoolState?
+    public var poolRewardType: PoolRewardType?
     public var banner: String?
     public var destinationLatitude: String?
     public var name: String?
@@ -95,6 +102,7 @@ public class Pool: Mappable {
         earnedMoney <- map[kPoolEarnedMoneyPerMileKey]
         earnedMoneyPerMile = Double(earnedMoney)
         poolType <- map[kPoolTypeKey]
+        poolRewardType <- map[kPoolRewardTypeKey]
         banner <- map[kPoolBannerKey]
         destinationLatitude <- map[kPoolDestinationLatitudeKey]
         name <- map[kPoolNameKey]

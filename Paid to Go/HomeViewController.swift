@@ -36,6 +36,7 @@ class HomeViewController: MenuContentViewController {
     var pools = [Pool]()
     var selectedIndex: Int?
     var dateRange = DateRange.today
+    var isFirstLaunch = true
     
     static var steps:Double? = Constants.consShared.ZERO_INT.toDouble
     static var mileTravel:Double? = Constants.consShared.ZERO_INT.toDouble
@@ -53,6 +54,9 @@ class HomeViewController: MenuContentViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             print("\(self.geolocationManager.getCurrentLocationCoordinate().latitude), \(self.geolocationManager.getCurrentLocationCoordinate().longitude)")
         }
+        
+        // Enabling all option by deafult
+        Settings.shared.enableAllOptionsBydefault()
     }
     
     override func viewDidLoad() {
@@ -200,7 +204,7 @@ class HomeViewController: MenuContentViewController {
             endDate = Date()
             break
         case .thisMonth:
-            startDate = Date().startOfMonth
+            startDate = Date().addingTimeInterval(-2592000) //startOfMonth
             endDate = Date().endOfMonth
             break
         }
@@ -242,8 +246,6 @@ class HomeViewController: MenuContentViewController {
                         GeolocationManager.sharedInstance.add(gymlocation: gymlocation)
                     }
                 }
-             
-                
             }
             
             self.addTabs()
@@ -297,7 +299,7 @@ class HomeViewController: MenuContentViewController {
             setDouble(statics.savedCo2, label: mainPool.offsetLB)
             setInt(statics.totalSteps, label: mainPool.stepLB)
             
-            if  statics.earnedMoney != 0 {
+            if  pools[index].poolRewardType == .cash {
                 setDouble(statics.earnedMoney , label: mainPool.numberLB)
                 mainPool.pointsLB.text = "USD"
             } else {
@@ -389,9 +391,11 @@ class HomeViewController: MenuContentViewController {
             
             if let activitydata = ActivityMoniteringManager.sharedManager.activityResponse {
                 self.showWellDone(with: activitydata)
-            } else {
-                self.showAlert(text: "You are upto Date")
+            } else if !self.isFirstLaunch {
+                self.showAlert(text: "Data is synced")
             }
+            
+            self.isFirstLaunch = false
         }
     }
     

@@ -58,6 +58,10 @@ class GymCheckInViewController: MenuContentViewController {
         if GeolocationManager.sharedInstance.gymLocations.count == 0 {
             showAlert(text: "No Gyms added in any of your pools")
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.focusOnCurrentLocation()
+        }
     }
     
     
@@ -173,7 +177,7 @@ class GymCheckInViewController: MenuContentViewController {
     
     func focusOnCurrentLocation() {
         
-        if let coor = mapView.userLocation.location?.coordinate{
+        if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
         } else {
         

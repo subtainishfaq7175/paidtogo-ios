@@ -175,13 +175,12 @@ extension User {
         get {
             let defaults = UserDefaults.standard
 //            let userJSON = defaults.object(forKey: currentUserKey)
-            guard let userJSON = defaults.object(forKey: currentUserKey) else {
+            guard let userJSON = defaults.object(forKey: currentUserKey) as? [String : Any] else {
                 return nil
             }
-            let user = Mapper<User>().map(JSON: userJSON as! [String : Any])
-            
+ 
+            let user = Mapper<User>().map(JSON: userJSON )
             return user
-            
         }
         
         set {

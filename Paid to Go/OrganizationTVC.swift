@@ -38,9 +38,13 @@ class OrganizationTVC: UITableViewCell {
     var nationalPool:Int? = Constants.consShared.ZERO_INT
     var organizationDelegate:OrganizationDelegate?
     var position:Int = Constants.consShared.ZERO_INT
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.cardView()
+        poolTypelabel.cardView()
+        bannerIV.cardView()
+//        bannerIV.addBorders()
     }
 
     func linkToOrganization(_ parentVC:UIViewController, isOrgLinked: Bool)  {
@@ -56,7 +60,7 @@ class OrganizationTVC: UITableViewCell {
                     self.linkOL.setTitle("Removed", for: .normal)
                     self.linkOL.isEnabled = false
                 }
-                
+                NotificationCenter.default.post(name: .organizationLinked, object: nil, userInfo: nil)
             }
         } else {
             DataProvider.sharedInstance.subcribePool(userID, poolId: poolId) { (response, error) in

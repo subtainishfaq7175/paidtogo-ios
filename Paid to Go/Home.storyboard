@@ -41,7 +41,7 @@
         <!--Home View Controller-->
         <scene sceneID="HbX-f7-9uS">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="6Se-fO-sqA" customClass="HomeViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="6Se-fO-sqA" customClass="HomeViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tFr-PM-zkZ"/>
                         <viewControllerLayoutGuide type="bottom" id="IwT-x9-ych"/>
@@ -113,7 +113,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iF-Q5-GYO">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="67"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8e-OE-6xX" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8e-OE-6xX" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="4" width="130.5" height="59"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhu-2A-Mi0">
@@ -149,7 +149,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhK-7v-pA3" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhK-7v-pA3" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="149.5" y="4" width="130.5" height="59"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_back35x35" translatesAutoresizingMaskIntoConstraints="NO" id="FVd-Dw-470">
@@ -206,7 +206,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBO-hg-6z6">
                                                         <rect key="frame" x="0.0" y="67" width="288" height="66.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjF-Mx-exv" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjF-Mx-exv" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="4" width="130.5" height="58.5"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_back35x35" translatesAutoresizingMaskIntoConstraints="NO" id="3lR-Fs-anO">
@@ -251,7 +251,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIa-hf-Mhm" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIa-hf-Mhm" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="149.5" y="4" width="130.5" height="58.5"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_back35x35" translatesAutoresizingMaskIntoConstraints="NO" id="Z7N-Wt-Sz7">
@@ -313,7 +313,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9e-N2-2mH">
                                                         <rect key="frame" x="0.0" y="133.5" width="288" height="67"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-uo-hjC" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-uo-hjC" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="4" width="130.5" height="59"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_back35x35" translatesAutoresizingMaskIntoConstraints="NO" id="3Dn-o9-shf">
@@ -358,7 +358,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1i-rW-eO7" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1i-rW-eO7" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                 <rect key="frame" x="149.5" y="4" width="130.5" height="59"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_back35x35" translatesAutoresizingMaskIntoConstraints="NO" id="4Wt-QK-vaE">
@@ -713,7 +713,7 @@
                                             <constraint firstAttribute="width" constant="4" id="AU1-h7-Igc"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_walk" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-JC-BYv" userLabel="Walk Run Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button_walk" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-JC-BYv" userLabel="Walk Run Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="60" y="0.0" width="260" height="60"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="36"/>
                                         <state key="normal" title="Walk/Run">
@@ -757,7 +757,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0T-xo-ur0" userLabel="Subtitle View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="146"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Commute Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCu-eH-3kj" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Commute Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCu-eH-3kj" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="55" y="58" width="210" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ShS-Gg-s4l"/>
@@ -789,7 +789,7 @@
                                     <view clipsSubviews="YES" alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2K-pe-pkY" userLabel="Finish Button View">
                                         <rect key="frame" x="20" y="356" width="280" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-Un-Vxd" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-Un-Vxd" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7gi-3y-4qq"/>
@@ -897,7 +897,7 @@
         <!--Anti Cheat View Controller-->
         <scene sceneID="LxA-8W-dTY">
             <objects>
-                <viewController storyboardIdentifier="AnticheatViewController" id="qEi-hY-t2X" customClass="AntiCheatViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnticheatViewController" id="qEi-hY-t2X" customClass="AntiCheatViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GNR-eJ-6Pa"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ii-ri-7nf"/>
@@ -1006,7 +1006,7 @@
         <!--Anti Cheat Image View Controller-->
         <scene sceneID="vYy-1N-r8t">
             <objects>
-                <viewController storyboardIdentifier="AntiCheatImageViewController" id="Nnh-K6-6hm" customClass="AntiCheatImageViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AntiCheatImageViewController" id="Nnh-K6-6hm" customClass="AntiCheatImageViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qTU-lc-OMe"/>
                         <viewControllerLayoutGuide type="bottom" id="G8Q-aP-Xuz"/>
@@ -1030,7 +1030,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39q-KJ-QUG" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="415" width="200" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ube-vV-kQE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ube-vV-kQE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <state key="normal" title="Let's Start">
@@ -1084,7 +1084,7 @@
         <!--Pools-->
         <scene sceneID="Ub1-3q-ABG">
             <objects>
-                <viewController storyboardIdentifier="PoolsViewController" title="Pools" id="q6E-uN-1rE" customClass="PoolsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PoolsViewController" title="Pools" id="q6E-uN-1rE" customClass="PoolsViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMW-Rr-wpQ"/>
                         <viewControllerLayoutGuide type="bottom" id="lg0-P3-TT6"/>
@@ -1102,19 +1102,19 @@
                                     <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiv-QE-02T" userLabel="Color View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-fT-fex" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-fT-fex" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="115.5" y="106" width="48.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFo-Ov-612" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFo-Ov-612" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="106" width="92.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-Gb-9vQ" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-Gb-9vQ" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="32" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Rs6-O7-4Vb"/>
@@ -1317,7 +1317,7 @@
                                     <constraint firstAttribute="trailing" secondItem="4xS-3B-Nwm" secondAttribute="trailing" id="wax-1j-pXR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Arj-XU-I0h" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paid_to_Go" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Arj-XU-I0h" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paidtogo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="249" width="320" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1334,7 +1334,7 @@
                                                 <rect key="frame" x="320" y="0.0" width="320" height="205"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="dMK-YN-bhz" customClass="PoolCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="dMK-YN-bhz" customClass="PoolCell" customModule="Paidtogo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dMK-YN-bhz" id="FbV-Cs-BEX">
@@ -1405,7 +1405,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="205"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="BtR-Dg-43n" customClass="PoolCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="BtR-Dg-43n" customClass="PoolCell" customModule="Paidtogo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BtR-Dg-43n" id="iFX-i3-6Jw">
@@ -1561,7 +1561,7 @@
         <!--Enter Pools-->
         <scene sceneID="ZWR-YN-VlY">
             <objects>
-                <viewController storyboardIdentifier="LinkOrganizationVC" id="Neo-d3-75G" customClass="LinkOrganizationVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LinkOrganizationVC" id="Neo-d3-75G" customClass="LinkOrganizationVC" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ji-Ga-fOC"/>
                         <viewControllerLayoutGuide type="bottom" id="zLp-7V-TQl"/>
@@ -1613,7 +1613,7 @@
         <!--Map-->
         <scene sceneID="4h0-YD-StX">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cwD-YC-yQK" customClass="MapViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cwD-YC-yQK" customClass="MapViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hBn-6o-59R"/>
                         <viewControllerLayoutGuide type="bottom" id="XPd-ms-sSk"/>
@@ -1625,7 +1625,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agB-QC-VI0" userLabel="Top View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Pools Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-wp-ZNy" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Pools Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-wp-ZNy" userLabel="Subtitle Label" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="55" y="27" width="210" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="T1j-8a-jO1"/>
@@ -1758,7 +1758,7 @@
         <!--Pool View Controller-->
         <scene sceneID="MYQ-l0-DcP">
             <objects>
-                <viewController storyboardIdentifier="PoolViewController" id="ggG-z0-JoP" customClass="PoolViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PoolViewController" id="ggG-z0-JoP" customClass="PoolViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7rq-1V-guP"/>
                         <viewControllerLayoutGuide type="bottom" id="8Yx-Ys-pfj"/>
@@ -1773,7 +1773,7 @@
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEU-96-ToP" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="420" width="200" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-AK-WAy" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-AK-WAy" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                         <state key="normal" title="Start">
@@ -1959,7 +1959,7 @@
         <!--Pool Detail View Controller-->
         <scene sceneID="qak-M2-xMB">
             <objects>
-                <viewController storyboardIdentifier="PoolDetailViewController" id="CMW-r9-UwB" customClass="PoolDetailViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PoolDetailViewController" id="CMW-r9-UwB" customClass="PoolDetailViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hpk-sk-o3b"/>
                         <viewControllerLayoutGuide type="bottom" id="VJO-rI-H3z"/>
@@ -1977,7 +1977,7 @@
                                     <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axA-kY-RLe" userLabel="Color View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pool Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laT-ye-RAv" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pool Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laT-ye-RAv" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="75" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="B7v-kc-7Le"/>
@@ -2079,7 +2079,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74F-Lh-lLb" userLabel="Continue Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74F-Lh-lLb" userLabel="Continue Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="60" y="430" width="200" height="50"/>
                                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2214,7 +2214,7 @@
         <!--National Pools View Controller-->
         <scene sceneID="o2z-wW-mkt">
             <objects>
-                <viewController storyboardIdentifier="NationalPoolsViewController" id="gOS-9t-347" customClass="NationalPoolsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NationalPoolsViewController" id="gOS-9t-347" customClass="NationalPoolsViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uNw-sQ-IfA"/>
                         <viewControllerLayoutGuide type="bottom" id="24L-Qd-fis"/>
@@ -2232,7 +2232,7 @@
                                     <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7H-d2-L7w" userLabel="Color View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8P-55-X9V" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8P-55-X9V" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="84" width="100" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="f5a-5H-8qu"/>
@@ -2242,7 +2242,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention: Paidtogo National Pools are competitive. See the terms and conditions for details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-4d-zm8" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention: Paidtogo National Pools are competitive. See the terms and conditions for details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-4d-zm8" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="129" width="260" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-SemiboldItalic" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2282,7 +2282,7 @@
                                 <rect key="frame" x="0.0" y="230" width="320" height="250"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="SLl-rD-lMh" customClass="PoolCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poolCell" id="SLl-rD-lMh" customClass="PoolCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SLl-rD-lMh" id="rAL-fn-F6t">
@@ -2341,7 +2341,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-9T-hTH" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paid_to_Go" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-9T-hTH" userLabel="Table Header View" customClass="TableViewHeader" customModule="Paidtogo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="200" width="320" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2385,7 +2385,7 @@
         <!--Well Done View Controller-->
         <scene sceneID="bKV-4y-jDp">
             <objects>
-                <viewController storyboardIdentifier="wellDoneViewController" id="6ef-Tf-Qfe" customClass="WellDoneViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wellDoneViewController" id="6ef-Tf-Qfe" customClass="WellDoneViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hiZ-dy-WSa"/>
                         <viewControllerLayoutGuide type="bottom" id="z4v-2C-Ngq"/>
@@ -2397,7 +2397,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nk-Av-lp8" userLabel="Back To Home View">
                                 <rect key="frame" x="0.0" y="441.5" width="320" height="38.5"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGU-j3-njh" userLabel="Back To Home Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGU-j3-njh" userLabel="Back To Home Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="38.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                         <state key="normal" title="Back To Home">
@@ -2421,7 +2421,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-Zy-Ayt" userLabel="Share View">
                                 <rect key="frame" x="0.0" y="403" width="320" height="38.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-1A-RVb" userLabel="Share Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-1A-RVb" userLabel="Share Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="38.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                         <state key="normal" title="Share">
@@ -2448,7 +2448,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kh-pU-WYv" userLabel="Leaderboards View">
                                 <rect key="frame" x="0.0" y="364.5" width="320" height="38.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-Kx-ZWr" userLabel="Leaderboards Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-Kx-ZWr" userLabel="Leaderboards Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="38.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                         <state key="normal" title="Leaderboards">
@@ -2565,7 +2565,7 @@
                                                         <rect key="frame" x="0.0" y="40" width="20" height="20"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 cal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKC-wt-3gF" userLabel="Calories Label">
-                                                        <rect key="frame" x="134.5" y="60.5" width="31" height="19.5"/>
+                                                        <rect key="frame" x="143.5" y="60.5" width="31" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2573,8 +2573,8 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_walkrun" translatesAutoresizingMaskIntoConstraints="NO" id="Lov-zi-CUR" userLabel="Calories Image View">
                                                         <rect key="frame" x="0.0" y="60" width="20" height="20"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Calories: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeX-Nf-sTd" userLabel="Calories Indicator">
-                                                        <rect key="frame" x="28" y="60.5" width="102.5" height="19.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories burned: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeX-Nf-sTd" userLabel="Calories Indicator">
+                                                        <rect key="frame" x="28" y="60.5" width="111.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2729,7 +2729,7 @@
         <!--Leaderboards View Controller-->
         <scene sceneID="oaK-vI-cnc">
             <objects>
-                <viewController id="SuZ-Kv-rC2" customClass="WDLeaderboardsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SuZ-Kv-rC2" customClass="WDLeaderboardsViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VnT-dP-Td8"/>
                         <viewControllerLayoutGuide type="bottom" id="u70-lC-A9U"/>
@@ -2800,7 +2800,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTE-TK-nel" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Pools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTE-TK-nel" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="138" y="84" width="140" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="12H-CI-Mqa"/>
@@ -2931,7 +2931,7 @@
                                 <rect key="frame" x="0.0" y="416" width="600" height="320"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leaderboardCell" id="BOc-ue-a2U" customClass="LeaderboardCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leaderboardCell" id="BOc-ue-a2U" customClass="LeaderboardCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOc-ue-a2U" id="PdL-FI-SgS">
@@ -3006,7 +3006,7 @@
         <!--Data Source-->
         <scene sceneID="EX3-VC-PHu">
             <objects>
-                <viewController storyboardIdentifier="ActivitySponsorViewController" id="lqm-1E-dRi" customClass="ActivitySponsorViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivitySponsorViewController" id="lqm-1E-dRi" customClass="ActivitySponsorViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qq2-rt-3XW"/>
                         <viewControllerLayoutGuide type="bottom" id="5kO-pZ-wRF"/>
@@ -3145,7 +3145,7 @@
         <!--Car Pool Invite View Controller-->
         <scene sceneID="aj1-mh-ZU2">
             <objects>
-                <viewController storyboardIdentifier="CarPoolInviteViewController" id="8XP-qr-ovD" customClass="CarPoolInviteViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarPoolInviteViewController" id="8XP-qr-ovD" customClass="CarPoolInviteViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bPy-vp-BUG"/>
                         <viewControllerLayoutGuide type="bottom" id="jkP-GN-40C"/>
@@ -3169,7 +3169,7 @@
                                 <rect key="frame" x="0.0" y="76" width="320" height="404"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarPoolInviteCell" id="7hu-Ih-u6W" customClass="CarPoolInviteCell" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarPoolInviteCell" id="7hu-Ih-u6W" customClass="CarPoolInviteCell" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7hu-Ih-u6W" id="PH9-3a-9Mo">
@@ -3262,7 +3262,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UI-Y4-zhg" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="380" width="200" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Bd-iVE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Bd-iVE" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <state key="normal" title="Send Invitation Email">
@@ -3327,7 +3327,7 @@
         <!--Share View Controller-->
         <scene sceneID="WkC-SA-byB">
             <objects>
-                <viewController id="WSC-Fb-2ub" customClass="ShareViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WSC-Fb-2ub" customClass="ShareViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ch-zd-fqE"/>
                         <viewControllerLayoutGuide type="bottom" id="Lra-3z-64G"/>
@@ -3411,7 +3411,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQh-OR-47i" userLabel="Description View">
                                 <rect key="frame" x="20" y="175.5" width="280" height="239.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attention" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBU-ml-NfG" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="104" y="-15" width="72" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3420,7 +3420,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="share_attention"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-dA-2Lo" customClass="LocalizableLabel" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="16" width="280" height="229"/>
                                         <string key="text">Our open pools rely in part on contributions and carbon offsets from your network of family and friends to fund your alternative commute. Please share your commute stats on social media and ask your network to contribute to the pool(s) you are participating in. All contributors are given a verified offset certificate that shows the amount of carbon, traffic and/or calories have been offset. The more contributions we get, the more commuters we can pay not to drive!</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
@@ -3443,7 +3443,7 @@
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1v-Et-6hn" userLabel="Finish Button View">
                                 <rect key="frame" x="60" y="415" width="200" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-Kz-saS" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paid_to_Go" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-Kz-saS" userLabel="Finish Button" customClass="LocalizableButton" customModule="Paidtogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                         <state key="normal" title="Finish">
@@ -3577,7 +3577,7 @@
         <!--Activity TableVC-->
         <scene sceneID="wgC-5R-xFO">
             <objects>
-                <viewController storyboardIdentifier="ActivityTableVC" id="uP3-yg-fSG" customClass="ActivityTableVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityTableVC" id="uP3-yg-fSG" customClass="ActivityTableVC" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bZg-5N-R2T"/>
                         <viewControllerLayoutGuide type="bottom" id="vNf-1c-hh1"/>
@@ -3614,7 +3614,7 @@
         <!--Add OrganizationVC-->
         <scene sceneID="AO5-AY-D0c">
             <objects>
-                <viewController storyboardIdentifier="AddOrganizationVC" id="vdB-7o-gy6" customClass="AddOrganizationVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddOrganizationVC" id="vdB-7o-gy6" customClass="AddOrganizationVC" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VEp-bT-3Cp"/>
                         <viewControllerLayoutGuide type="bottom" id="TIF-5S-Ngl"/>
@@ -3679,7 +3679,7 @@
                                                 <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veL-RG-72U" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veL-RG-72U" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                 <rect key="frame" x="28.5" y="0.0" width="46.5" height="46.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_p4" translatesAutoresizingMaskIntoConstraints="NO" id="6gA-Wz-gx2">
@@ -3758,7 +3758,7 @@
         <!--Main PoolVC-->
         <scene sceneID="bmB-Xv-ht3">
             <objects>
-                <viewController storyboardIdentifier="MainPoolVC" automaticallyAdjustsScrollViewInsets="NO" id="leX-ah-GNi" customClass="MainPoolVC" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainPoolVC" automaticallyAdjustsScrollViewInsets="NO" id="leX-ah-GNi" customClass="MainPoolVC" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ogP-UT-Thy"/>
                         <viewControllerLayoutGuide type="bottom" id="N3A-o1-CKl"/>
@@ -3843,7 +3843,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-gA-MvA">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="63.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12e-nh-dAy" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12e-nh-dAy" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="8" y="3.5" width="132" height="55.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfU-Ha-ZEP">
@@ -3895,7 +3895,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PJ-Ha-VbH">
                                                                 <rect key="frame" x="144" y="0.0" width="144" height="63.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgQ-Mc-Mof" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgQ-Mc-Mof" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="4" y="3.5" width="132.5" height="55.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="ic_footsteps_white" translatesAutoresizingMaskIntoConstraints="NO" id="cno-kb-4tv">
@@ -3964,7 +3964,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIQ-Fh-vPx">
                                                                 <rect key="frame" x="144" y="0.0" width="144" height="63.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-LU-JUe" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-LU-JUe" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="4" y="3.5" width="132" height="56"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_road_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ZCR-T4-wsW">
@@ -4017,7 +4017,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5q-L3-BVL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="63.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daR-SL-1LO" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daR-SL-1LO" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="8" y="3.5" width="132" height="56"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gas_station_white" translatesAutoresizingMaskIntoConstraints="NO" id="0TW-dq-6t8">
@@ -4089,7 +4089,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-M1-3GJ">
                                                                 <rect key="frame" x="144" y="0.0" width="144" height="63"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Lx-7c-Xfd" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Lx-7c-Xfd" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="4" y="3.5" width="132.5" height="55"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_fire_white" translatesAutoresizingMaskIntoConstraints="NO" id="u0c-wq-ifg">
@@ -4142,7 +4142,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQN-fY-tmg">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="63"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-3Y-ith" customClass="GenCustomView" customModule="Paid_to_Go" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-3Y-ith" customClass="GenCustomView" customModule="Paidtogo" customModuleProvider="target">
                                                                         <rect key="frame" x="8" y="3.5" width="132" height="55.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="ic_leaf_white" translatesAutoresizingMaskIntoConstraints="NO" id="lFk-1z-LVc">
@@ -4243,27 +4243,38 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNC-eC-TvB">
-                                        <rect key="frame" x="16" y="255" width="288" height="197"/>
+                                        <rect key="frame" x="16" y="271" width="288" height="181"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="leX-ah-GNi" id="oCN-WI-HfW"/>
+                                        </connections>
                                     </scrollView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No activities to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Du-e6-dbR">
-                                        <rect key="frame" x="80.5" y="343" width="159" height="21"/>
+                                        <rect key="frame" x="80.5" y="351" width="159" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-AP-gz4">
+                                        <rect key="frame" x="272.5" y="254" width="27.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="l0a-AP-gz4" firstAttribute="trailing" secondItem="zNC-eC-TvB" secondAttribute="trailing" constant="-4" id="Fru-sA-ARo"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="centerY" secondItem="1Du-e6-dbR" secondAttribute="centerY" id="JH4-KX-qHH"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="leading" secondItem="0Ax-Ln-tWq" secondAttribute="leading" constant="16" id="Sh6-xa-0hd"/>
                                     <constraint firstAttribute="trailing" secondItem="8i7-lU-uLK" secondAttribute="trailing" constant="16" id="Ulg-do-Dcg"/>
+                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="top" secondItem="l0a-AP-gz4" secondAttribute="bottom" id="Uzk-1M-3LX"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="centerX" secondItem="1Du-e6-dbR" secondAttribute="centerX" id="h7j-zp-fDo"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="leading" secondItem="8i7-lU-uLK" secondAttribute="leading" id="q5M-tt-luG"/>
                                     <constraint firstAttribute="bottom" secondItem="zNC-eC-TvB" secondAttribute="bottom" constant="8" id="sXg-yw-0wC"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="height" secondItem="0Ax-Ln-tWq" secondAttribute="height" multiplier="0.52" id="wTb-1O-LJa"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="top" secondItem="0Ax-Ln-tWq" secondAttribute="top" constant="8" id="wfb-gZ-06U"/>
-                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="top" secondItem="8i7-lU-uLK" secondAttribute="bottom" constant="8" id="xSu-Ga-SUQ"/>
+                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="top" secondItem="8i7-lU-uLK" secondAttribute="bottom" constant="24" id="xSu-Ga-SUQ"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="trailing" secondItem="8i7-lU-uLK" secondAttribute="trailing" id="yBk-tC-Wq5"/>
                                 </constraints>
                             </view>
@@ -4287,6 +4298,7 @@
                         <outlet property="dateRangelabel" destination="owz-KT-yWk" id="ZgZ-KI-1tY"/>
                         <outlet property="gasLB" destination="gwz-I6-lGn" id="vzV-OJ-FbT"/>
                         <outlet property="noActiviteslabel" destination="1Du-e6-dbR" id="AAK-iR-7Ll"/>
+                        <outlet property="numberActiviteslabel" destination="l0a-AP-gz4" id="cCn-MW-sog"/>
                         <outlet property="numberLB" destination="rfU-Ha-ZEP" id="zge-ve-bY3"/>
                         <outlet property="offsetLB" destination="Loe-D0-AAk" id="4dp-WT-QRM"/>
                         <outlet property="pointsLB" destination="4dz-Cp-E2g" id="32u-LC-xUt"/>
@@ -4358,7 +4370,7 @@
         <!--Navigation Controller-->
         <scene sceneID="fi8-Ko-731">
             <objects>
-                <navigationController storyboardIdentifier="PoolNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8u1-8V-O5y" customClass="NavigationController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PoolNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8u1-8V-O5y" customClass="NavigationController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cmJ-PE-SI3">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>

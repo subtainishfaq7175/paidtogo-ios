@@ -16,6 +16,7 @@ class MyOrganizationsVC: BaseVc {
     @IBOutlet weak var addOrgContainerView: UIView!
     @IBOutlet weak var addOrgnizationView: GenCustomView!
     @IBOutlet weak var organiztionsTV: UITableView!
+    
     var layoutCount = Constants.consShared.ZERO_INT
     var linkedOrgs = [Pool]()
     var isDisableScroll:Bool = false
@@ -187,15 +188,33 @@ extension MyOrganizationsVC : UITableViewDataSource{
                 cell.invitationId = consShared.ZERO_INT
             }
         }
+        
+        if let pooltype = linkedOrgs[indexPath.row].poolType {
+            cell.linkOL.isHidden = false
+            
+            switch pooltype {
+            case .Private :
+                cell.poolTypelabel.text = "Private"
+                break
+            case .Public :
+                cell.poolTypelabel.text = "Public"
+                
+            case .National:
+                cell.poolTypelabel.text = "National"
+                cell.linkOL.isHidden = true
+                break
+            }
+        }
+        
         if let company = linkedOrgs[indexPath.row].name, company != consShared.EMPTY_STR {
             cell.companyNameLB.text = company
         }else {
-            cell.companyNameLB.text = "Not available"
+            cell.companyNameLB.text = ""
         }
         if let country = linkedOrgs[indexPath.row].country , country != consShared.EMPTY_STR{
             cell.countryLB.text = country
         }else {
-            cell.countryLB.text = "Not available"
+            cell.countryLB.text = ""
         }
         if let url = linkedOrgs[indexPath.row].banner {
             let  completeUrl = "https://www.paidtogo.com/images/pools/"+url

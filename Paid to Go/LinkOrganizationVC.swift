@@ -176,12 +176,12 @@ extension LinkOrganizationVC : UITableViewDataSource {
         if let company = pools[indexPath.row].name, company != consShared.EMPTY_STR {
             cell.companyNameLB.text = company
         }else {
-            cell.companyNameLB.text = "Not available"
+            cell.companyNameLB.text = ""
         }
         if let country = pools[indexPath.row].country , country != consShared.EMPTY_STR{
             cell.countryLB.text = country
         }else {
-            cell.countryLB.text = "Not available"
+            cell.countryLB.text = ""
         }
         if let url = pools[indexPath.row].banner {
             //            MARK: - NEED TO GET COMPLETE URL FROM SERVER
