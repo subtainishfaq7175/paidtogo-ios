@@ -4255,20 +4255,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-AP-gz4">
-                                        <rect key="frame" x="272.5" y="254" width="27.5" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="l0a-AP-gz4" firstAttribute="trailing" secondItem="zNC-eC-TvB" secondAttribute="trailing" constant="-4" id="Fru-sA-ARo"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="centerY" secondItem="1Du-e6-dbR" secondAttribute="centerY" id="JH4-KX-qHH"/>
                                     <constraint firstItem="8i7-lU-uLK" firstAttribute="leading" secondItem="0Ax-Ln-tWq" secondAttribute="leading" constant="16" id="Sh6-xa-0hd"/>
                                     <constraint firstAttribute="trailing" secondItem="8i7-lU-uLK" secondAttribute="trailing" constant="16" id="Ulg-do-Dcg"/>
-                                    <constraint firstItem="zNC-eC-TvB" firstAttribute="top" secondItem="l0a-AP-gz4" secondAttribute="bottom" id="Uzk-1M-3LX"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="centerX" secondItem="1Du-e6-dbR" secondAttribute="centerX" id="h7j-zp-fDo"/>
                                     <constraint firstItem="zNC-eC-TvB" firstAttribute="leading" secondItem="8i7-lU-uLK" secondAttribute="leading" id="q5M-tt-luG"/>
                                     <constraint firstAttribute="bottom" secondItem="zNC-eC-TvB" secondAttribute="bottom" constant="8" id="sXg-yw-0wC"/>
@@ -4298,7 +4290,6 @@
                         <outlet property="dateRangelabel" destination="owz-KT-yWk" id="ZgZ-KI-1tY"/>
                         <outlet property="gasLB" destination="gwz-I6-lGn" id="vzV-OJ-FbT"/>
                         <outlet property="noActiviteslabel" destination="1Du-e6-dbR" id="AAK-iR-7Ll"/>
-                        <outlet property="numberActiviteslabel" destination="l0a-AP-gz4" id="cCn-MW-sog"/>
                         <outlet property="numberLB" destination="rfU-Ha-ZEP" id="zge-ve-bY3"/>
                         <outlet property="offsetLB" destination="Loe-D0-AAk" id="4dp-WT-QRM"/>
                         <outlet property="pointsLB" destination="4dz-Cp-E2g" id="32u-LC-xUt"/>

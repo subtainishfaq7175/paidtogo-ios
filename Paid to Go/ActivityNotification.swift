@@ -77,6 +77,10 @@ public class ActivityNotification: Mappable {
     public var savedTraffic: Double = 0
     public var earnedPoints: Double = 0
     
+    public var bikeMiles: Double?
+    public var walkMiles: Double?
+    public var gymCheckIns: Int?
+    
     // MARK: ObjectMapper Initalizers
     /**
     Map a JSON object to this class using ObjectMapper

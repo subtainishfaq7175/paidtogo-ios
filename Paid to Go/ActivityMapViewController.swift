@@ -203,12 +203,12 @@ class ActivityMapViewController: ViewController {
         
         if let co2 = activity?.co2Offset {
             if co2 == 0.0 {
-                co2Label.text = "0 Metric tons"
+                co2Label.text = "0 Lbs"
             } else {
-                co2Label.text = String(format: "%.2f", co2) + " Metric tons"
+                co2Label.text = String(format: "%.2f", co2) + " Lbs"
             }
         } else {
-            co2Label.text = "0 Metric tons"
+            co2Label.text = "0 Lbs"
         }
         
         if let cal = activity?.calories {

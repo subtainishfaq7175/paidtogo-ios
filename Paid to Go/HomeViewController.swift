@@ -187,7 +187,7 @@ class HomeViewController: MenuContentViewController {
    
     //    MARK: - FETCH DATA FROM SERVER
     
-    func getActivityData()  {
+    @objc func getActivityData()  {
         guard let userID = User.currentUser?.userId else {
             return
         }
@@ -394,6 +394,8 @@ class HomeViewController: MenuContentViewController {
             } else if !self.isFirstLaunch {
                 self.showAlert(text: "Data is synced")
             }
+            
+            self.getActivityData()
             
             self.isFirstLaunch = false
         }

@@ -23,7 +23,6 @@ class MainPoolVC: BaseVc {
     @IBOutlet weak var dateRangelabel: UILabel!
     @IBOutlet weak var noActiviteslabel: UILabel!
     @IBOutlet weak var dateRangeView: UIView!
-    @IBOutlet weak var numberActiviteslabel: UILabel!
     
     @IBOutlet weak var poolNameLb: UILabel!
     @IBOutlet weak var pointsLB: UILabel!
@@ -90,9 +89,6 @@ class MainPoolVC: BaseVc {
     
     func addTabs()  {
         let count = activities.count
-        
-        numberActiviteslabel.isHidden = activities.count < 1
-        numberActiviteslabel.text = String(1) + " / " + String(activities.count)
         
         if count > consShared.ZERO_INT {
             for index in consShared.ZERO_INT ... (count - consShared.ONE_INT) {
@@ -162,7 +158,6 @@ class MainPoolVC: BaseVc {
 extension MainPoolVC :UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let selectedIndex = scrollView.currentPage
-        numberActiviteslabel.text = String(selectedIndex + 1) + " / " + String(activities.count)
     }
 }
 

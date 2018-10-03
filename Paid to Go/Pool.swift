@@ -51,6 +51,9 @@ public class Pool: Mappable {
     internal let kBalanceKey: String = "balance"
     internal let kleaderBoardKey: String = "leaderboards"
     internal let kgymLocationsKey: String = "gym_locations"
+    internal let kWalkMilesKey: String = "walk_miles"
+    internal let kBikeMilesKey: String = "bike_miles"
+    internal let kGymCheckInsKey: String = "gym_checkins"
     
     // MARK: Properties
    
@@ -82,7 +85,10 @@ public class Pool: Mappable {
     public var gymLocations: [GymLocation]? = [GymLocation]()
     public var id: Int?
     public var national: String?
-
+    public var bikeMiles: Double?
+    public var walkMiles: Double?
+    public var gymCheckIns: Int?
+    
     // MARK: ObjectMapper Initalizers
     /**
      Map a JSON object to this class using ObjectMapper
@@ -127,12 +133,26 @@ public class Pool: Mappable {
         sponsors <- map[kSponsorKey]
         leaderBoard <- map[kleaderBoardKey]
         gymLocations <- map[kgymLocationsKey]
-        
+        gymCheckIns <- map[kGymCheckInsKey]
+        walkMiles <- map[kWalkMilesKey]
+        bikeMiles <- map[kBikeMilesKey]
         
         // This might be from backedend
         if activities != nil {
             self.activities!.reverse()
         }
+        
+        // Set a single activty
+        let activity = ActivityNotification()
+        
+        bikeMiles?.roundToTwoDecinalPlace()
+        walkMiles?.roundToTwoDecinalPlace()
+
+        activity.bikeMiles = bikeMiles
+        activity.walkMiles = walkMiles
+        activity.gymCheckIns = gymCheckIns
+        
+        self.activities = [activity]
         
         // Set Doubles to 2 decimal places
     }

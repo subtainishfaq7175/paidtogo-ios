@@ -292,6 +292,10 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     
     func postDataAutomatically() {
         
+        if Settings.shared.autoTrackingStartDate == nil {
+            Settings.shared.autoTrackingStartDate = Date()
+        }
+        
         if Settings.shared.isAutoTrackingOn {
             // Auto data
             getHealthKitData()

@@ -20,7 +20,7 @@
         <key>storyboard</key>
         <string>Activity</string>
         <key>icon</key>
-        <string>ic_walkrun</string>
+        <string>ic_menu_walkrun</string>
     </dict>
     <dict>
         <key>title</key>
@@ -30,7 +30,7 @@
         <key>storyboard</key>
         <string>Activity</string>
         <key>icon</key>
-        <string>ic_gym_pin</string>
+        <string>ic_menu_gym_pin</string>
     </dict>
 	<dict>
 		<key>title</key>
@@ -60,7 +60,7 @@
         <key>storyboard</key>
         <string>Activity</string>
         <key>icon</key>
-        <string>activity_graph</string>
+        <string>ic_menu_activity_graph</string>
     </dict>
 	<dict>
 		<key>title</key>

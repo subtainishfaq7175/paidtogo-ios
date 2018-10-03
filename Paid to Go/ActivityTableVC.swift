@@ -60,21 +60,21 @@ extension ActivityTableVC : UITableViewDataSource {
         switch  indexPath.row {
         case consShared.ZERO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_walkrun")
-            cell.itemTitleLB.text = "STEPS"
+            cell.itemTitleLB.text = "WALK/RUN"
             
-            if let activity = activity {
-                cell.itemValueLB.text = "\(activity.totalSteps) steps"
+            if let activityWalkMiles = activity?.walkMiles {
+                cell.itemValueLB.text = "\(activityWalkMiles) mi"
             }else {
-                cell.itemValueLB.text = "\(consShared.ZERO_INT) steps"
+                cell.itemValueLB.text = "\(consShared.ZERO_INT) mi"
 
             }
             break
         case consShared.ONE_INT:
-            cell.itemIV.image = #imageLiteral(resourceName: "ic_road_pin_black")
-            cell.itemTitleLB.text = "MILES"
+            cell.itemIV.image = #imageLiteral(resourceName: "ic_bike")
+            cell.itemTitleLB.text = "Bike"
         
-            if let activity = activity {
-                cell.itemValueLB.text = "\(activity.milesTraveled) mi"
+            if let activityBikeMiles = activity?.bikeMiles {
+                cell.itemValueLB.text = "\(activityBikeMiles) mi"
             } else {
                 cell.itemValueLB.text = "\(consShared.ZERO_INT) mi"
 
@@ -82,12 +82,12 @@ extension ActivityTableVC : UITableViewDataSource {
             break
         case consShared.TWO_INT:
             cell.itemIV.image = #imageLiteral(resourceName: "ic_weight_with_bg")
-            cell.itemTitleLB.text = "CALORIES BURNED"
+            cell.itemTitleLB.text = "CHECK-INS"
             
-            if let activity = activity {
-                cell.itemValueLB.text = "\(activity.savedCalories) kCal"
+            if let activityGymCheckIns = activity?.gymCheckIns {
+                cell.itemValueLB.text = "\(activityGymCheckIns)"
             } else {
-                cell.itemValueLB.text = "\(consShared.ZERO_INT) kCal"
+                cell.itemValueLB.text = "\(consShared.ZERO_INT)"
             }
             
             break

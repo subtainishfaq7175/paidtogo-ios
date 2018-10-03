@@ -43,7 +43,7 @@ enum ActivitGraphTag : Int {
         case .caloriesSaved:
             return "Cal"
         case .co2Offset:
-            return "Tons"
+            return "Lbs"
         case .totalSteps:
             return "Steps"
         }
