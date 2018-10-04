@@ -145,14 +145,24 @@ public class Pool: Mappable {
         // Set a single activty
         let activity = ActivityNotification()
         
-        bikeMiles?.roundToTwoDecinalPlace()
-        walkMiles?.roundToTwoDecinalPlace()
-
-        activity.bikeMiles = bikeMiles
-        activity.walkMiles = walkMiles
-        activity.gymCheckIns = gymCheckIns
+     
         
-        self.activities = [activity]
+        if bikeMiles != nil {
+            bikeMiles?.roundToTwoDecinalPlace()
+            activity.bikeMiles = bikeMiles!
+        }
+        
+        if walkMiles != nil {
+            walkMiles?.roundToTwoDecinalPlace()
+            activity.walkMiles = walkMiles!
+        }
+        
+        if gymCheckIns != nil {
+            activity.gymCheckIns = gymCheckIns!
+        }
+        
+        
+           self.activities = [activity]
         
         // Set Doubles to 2 decimal places
     }

@@ -44,6 +44,10 @@ public class ActivityNotification: Mappable {
     
     internal let kActivityNotificationEarnedPointsKey: String = "earned_points"
     
+    internal let kWalkMilesKey: String = "walk_miles"
+    internal let kBikeMilesKey: String = "bike_miles"
+    internal let kGymCheckInsKey: String = "gym_checkins"
+    
     // MARK: Properties
 	public var savedCo2: Double = 0
     public var savedCalories: Double = 0
@@ -77,9 +81,9 @@ public class ActivityNotification: Mappable {
     public var savedTraffic: Double = 0
     public var earnedPoints: Double = 0
     
-    public var bikeMiles: Double?
-    public var walkMiles: Double?
-    public var gymCheckIns: Int?
+    public var bikeMiles: Double = 0
+    public var walkMiles: Double = 0
+    public var gymCheckIns: Int = 0
     
     // MARK: ObjectMapper Initalizers
     /**
@@ -134,6 +138,10 @@ public class ActivityNotification: Mappable {
     
     earnedPoints <- map[kActivityNotificationEarnedPointsKey]
     
+    gymCheckIns <- map[kGymCheckInsKey]
+    walkMiles <- map[kWalkMilesKey]
+    bikeMiles <- map[kBikeMilesKey]
+    
     savedTraffic.roundToTwoDecinalPlace()
     earnedPoints.roundToTwoDecinalPlace()
     earnedMoney.roundToTwoDecinalPlace()
@@ -141,6 +149,10 @@ public class ActivityNotification: Mappable {
     milesTraveled.roundToTwoDecinalPlace()
     savedCo2.roundToTwoDecinalPlace()
     savedCalories.roundToTwoDecinalPlace()
+    
+    walkMiles.roundToTwoDecinalPlace()
+    bikeMiles.roundToTwoDecinalPlace()
+    
     }
 
     /**

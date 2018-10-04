@@ -97,9 +97,9 @@ extension ActivityListingViewController: UITableViewDelegate, UITableViewDataSou
         itemCell.totalCO2OffsetLabel.text = "\(activity.savedCo2) lbs Co2 Offset"
         itemCell.totalGasSavedLabel.text = "\(activity.savedTraffic) Gal. Gas Saved"
         itemCell.totalCaloriesBurnedLabel.text = "\(activity.savedCalories) Calories Burned"
-        itemCell.milesLabel.text = "\(activity.milesTraveled) mi"
-        itemCell.stepsLabel.text = "\(activity.totalSteps) steps"
-        itemCell.workotMinLabel.text = "0 min"
+        itemCell.milesLabel.text = "\(activity.bikeMiles) mi"
+        itemCell.stepsLabel.text = "\(activity.walkMiles) mi"
+        itemCell.workotMinLabel.text = "\(activity.gymCheckIns)"
         
         itemCell.selectionStyle = .none
         
