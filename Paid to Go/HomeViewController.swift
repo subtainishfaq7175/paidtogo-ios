@@ -390,7 +390,10 @@ class HomeViewController: MenuContentViewController {
             self.dismissProgressHud()
             
             if let activitydata = ActivityMoniteringManager.sharedManager.activityResponse {
-                self.showWellDone(with: activitydata)
+                // Only show when its the root 
+                if self.navigationController?.viewControllers.count == 1 {
+                    self.showWellDone(with: activitydata)
+                }
             } else if !self.isFirstLaunch {
                 self.showAlert(text: "Data is synced")
             }

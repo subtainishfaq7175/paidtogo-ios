@@ -66,6 +66,9 @@
         
         DataProvider.sharedInstance.fetchMasterData()
         
+        // just to show white in launch screen
+        UIApplication.shared.statusBarStyle = .default
+        
         return true
     }
     

@@ -177,6 +177,7 @@
 		D80DAA6420F8CE0700806CB8 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */; };
 		D80DAA6620FCC0FC00806CB8 /* ActivitySponsorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */; };
 		D80DAA7020FF636600806CB8 /* LeaderBoardPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */; };
+		D80FBF4121689363009F1C25 /* SpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80FBF4021689363009F1C25 /* SpeedView.swift */; };
 		D824E2E0211E3B2300C5720B /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824E2DF211E3B2300C5720B /* Sponsor.swift */; };
 		D824E2E2211E3E9E00C5720B /* LeaderboardPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824E2E1211E3E9E00C5720B /* LeaderboardPosition.swift */; };
 		D8262A472136C73A00CDA733 /* ActivityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8262A462136C73900CDA733 /* ActivityMapViewController.swift */; };
@@ -374,6 +375,7 @@
 		D80DAA6320F8CE0700806CB8 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		D80DAA6520FCC0FC00806CB8 /* ActivitySponsorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySponsorViewController.swift; sourceTree = "<group>"; };
 		D80DAA6F20FF636600806CB8 /* LeaderBoardPageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardPageViewCell.swift; sourceTree = "<group>"; };
+		D80FBF4021689363009F1C25 /* SpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedView.swift; sourceTree = "<group>"; };
 		D824E2DF211E3B2300C5720B /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		D824E2E1211E3E9E00C5720B /* LeaderboardPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPosition.swift; sourceTree = "<group>"; };
 		D8262A462136C73900CDA733 /* ActivityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				10924C72209B029800F2C650 /* GenCustomView.swift */,
+				D80FBF4021689363009F1C25 /* SpeedView.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				10680E5720A9CAC700DC0570 /* AccountVC.swift in Sources */,
 				52B3E0EA1CA326FC000ED657 /* StatsViewController.swift in Sources */,
 				52227FD61C99A331002DBBFA /* CustomColors.swift in Sources */,
+				D80FBF4121689363009F1C25 /* SpeedView.swift in Sources */,
 				D80DAA7020FF636600806CB8 /* LeaderBoardPageViewCell.swift in Sources */,
 				1045EC6320A436F900B6F2D9 /* MainPoolVC.swift in Sources */,
 				5249118F1CAC11E600D6E763 /* DataProvider.swift in Sources */,

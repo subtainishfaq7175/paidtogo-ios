@@ -37,10 +37,17 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet var speedView: SpeedView!
+    @IBOutlet var avgSpeedView: SpeedView!
+    
+    @IBOutlet weak var elaspedTimeView: UIView!
+    @IBOutlet weak var elaspedTimeLabel: UILabel!
+    
+    var totalAverageSpeedMutiple = 0.0
+    var totalSpeedupdtes = 0
     
     var isCycling: Bool = false
     var showBackButton: Bool = false
-//    var isStart: Bool = false
     
     var totalStepsUptillNow = 0
     var totalMilesUptillNow = 0.0
@@ -59,14 +66,18 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
+    
     var startDate: Date!
     var traveledDistance: Double = 0
     
     var cyclingTimer: Timer = Timer()
     
-    // To
+    // To 
     var nonCyclingActivitesCount = 0
     var cyclingFixedTimePassed = false
+    
+    var activityTimer: Timer = Timer()
+    var totalTimeForActivity: TimeInterval = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +99,9 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         
         pauseButton.round()
         mapButton.round()
+        
+        elaspedTimeView.round()
+        elaspedTimeView.addBorders()
         
         getSponsors()
         
@@ -370,14 +384,31 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             circularProgressView.angle = 0
             actionButton.setTitle("Start", for: .normal)
             pauseButton.isHidden = true
+            elaspedTimeView.isHidden = true
+            
+            totalStepsUptillNow = 0
+            totalMilesUptillNow = 0.0
+            speedView.setCurrentSpeed(speed: 0)
+            avgSpeedView.setCurrentSpeed(speed: 0)
+            
+            
+            stopActivityTimer()
             break
         case .start:
             pauseButton.isHidden = false
+             elaspedTimeView.isHidden = false
+            
             actionButton.setTitle("Pause", for: .normal)
+           
+            startActivityTimer()
             break
         case .pause:
             pauseButton.isHidden = false
+            elaspedTimeView.isHidden = false
             actionButton.setTitle("Resume", for: .normal)
+            speedView.setCurrentSpeed(speed: 0)
+            
+            pauseActivityTimer()
             break
         }
     }
@@ -470,6 +501,54 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         currentCoordinates = []
     }
     
+    //MARK: - Activity Timers
+    
+    private func startActivityTimer() {
+        if let startDate = currentActivity.startDate {
+            totalTimeForActivity = totalTimeForActivity + Date().timeIntervalSince(startDate)
+        }
+        
+        activityTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateActivtyTimer)), userInfo: nil, repeats: true)
+    }
+    
+    private func stopActivityTimer() {
+        activityTimer.invalidate()
+        totalTimeForActivity = 0
+        
+        if let startDate = currentActivity.startDate {
+            totalTimeForActivity = totalTimeForActivity + Date().timeIntervalSince(startDate)
+        }
+        
+         elaspedTimeLabel.text = stringFromTimeInterval(interval: 0)
+    }
+    
+    private func pauseActivityTimer() {
+        activityTimer.invalidate()
+        
+        if let startDate = currentActivity.startDate {
+            totalTimeForActivity = totalTimeForActivity + Date().timeIntervalSince(startDate)
+        }
+        
+        elaspedTimeLabel.text = stringFromTimeInterval(interval: totalTimeForActivity)
+    }
+    
+    @objc private func updateActivtyTimer() {
+        // update labels
+        if let startDate = currentActivity.startDate {
+            let totalTime = totalTimeForActivity + Date().timeIntervalSince(startDate)
+            elaspedTimeLabel.text = stringFromTimeInterval(interval: totalTime)
+        }
+        
+    }
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
     //MARK: - Location Updated
     
     @objc private func locationUpdated(notification: NSNotification) {
@@ -484,7 +563,17 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             if let mapViewController = mapViewController {
                 mapViewController.addTravelSectionToMap(currentLocation: currentLocation)
             }
-        
+            
+            let speed = currentLocation.speed * 3.6
+            
+            totalAverageSpeedMutiple = totalAverageSpeedMutiple + speed
+            totalSpeedupdtes += 1
+            
+            let averageSpeed = totalAverageSpeedMutiple / Double(totalSpeedupdtes)
+            
+            avgSpeedView.setCurrentSpeed(speed: averageSpeed)
+            speedView.setCurrentSpeed(speed: speed)
+            
         if self.currentActivity.type == .cycling {
             if startDate == nil {
                 startDate = Date()
@@ -530,12 +619,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     
     func didWalk(Steps steps: NSNumber, Distance distance:Double) {
         updateWalkingAndRunning(distance: distance, steps: steps)
-        
     }
     
     func didRun(Steps steps: NSNumber, Distance distance:Double) {
         updateWalkingAndRunning(distance: distance, steps: steps)
-    
     }
     
     func didCycling(activity: ManualActivity) {

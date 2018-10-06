@@ -43,7 +43,7 @@ class ActivityMapViewController: ViewController {
     
     var previousLocationForSettingMapRegin: CLLocation?
     
-     var coordinates : [[CLLocation]] = []
+    var coordinates : [[CLLocation]] = []
     
     
     // MARK: - ViewController Life cycle
