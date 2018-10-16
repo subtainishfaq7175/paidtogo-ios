@@ -91,8 +91,8 @@ extension ActivityListingViewController: UITableViewDelegate, UITableViewDataSou
         itemCell.dateLabel.text = lastSevenDates[indexPath.row]
         
         let activity = activities[indexPath.row]
-        
-        itemCell.earningsLabel.text = "$ \(activity.earnedMoney)"
+    
+        itemCell.earningsLabel.text = String(format: "$ %.2f", activity.earnedMoney)
         itemCell.pointsLabel.text = "\(activity.earnedPoints) points"
         itemCell.totalCO2OffsetLabel.text = "\(activity.savedCo2) lbs Co2 Offset"
         itemCell.totalGasSavedLabel.text = "\(activity.savedTraffic) Gal. Gas Saved"

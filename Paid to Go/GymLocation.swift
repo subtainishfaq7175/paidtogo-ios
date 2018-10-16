@@ -75,7 +75,7 @@ public class GymLocation : Codable {
     }
     
     func getDistanceFromCurentLocation() -> Double {
-        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(locA:GeolocationManager.sharedInstance.currentLocation , locB:CLLocation(latitude: lattitude!, longitude: longitude!))
+        let distanceBetweenLocations = CLLocationManager.getDistanceBetweenLocations(locA:GeolocationManager.sharedInstance.getCurrentLocation() , locB:CLLocation(latitude: lattitude!, longitude: longitude!))
         
         return distanceBetweenLocations
     }

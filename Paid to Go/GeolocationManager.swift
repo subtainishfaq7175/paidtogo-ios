@@ -19,7 +19,7 @@ class GeolocationManager: NSObject {
     static let sharedInstance = GeolocationManager()
     
     var locationManager = CLLocationManager()
-    var currentLocation = CLLocation()
+    private var currentLocation = CLLocation()
     var gymLocations:[GymLocation] = []
     var currentGymLocation:GymLocation?
     
@@ -62,13 +62,26 @@ class GeolocationManager: NSObject {
         }
     }
     
-    
     func getCurrentLocation() -> CLLocation {
-        return currentLocation
+        
+        if self.currentLocation.coordinate.latitude == 0 && self.currentLocation.coordinate.longitude == 0 {
+             let currentLocation = CLLocation(latitude: getCurrentLocationCoordinate().latitude, longitude: getCurrentLocationCoordinate().longitude)
+            return currentLocation
+        }
+        
+        // if not than we need the speed valuers and other things with this location
+        return self.currentLocation
     }
     
     func getCurrentLocationCoordinate() -> CLLocationCoordinate2D {
-        return currentLocation.coordinate
+        var currentLoaction = self.currentLocation.coordinate
+        
+        if currentLoaction.latitude == 0 && currentLoaction.longitude == 0 {
+            currentLoaction.latitude = userDefaults.double(forKey: "currentLoaction.latitude")
+            currentLoaction.longitude = userDefaults.double(forKey: "currentLoaction.longitude")
+        }
+        
+        return currentLoaction
     }
     
     private func fetchLocations() {
@@ -263,6 +276,10 @@ extension GeolocationManager : CLLocationManagerDelegate {
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
         
+        // Save coordinates in userDefaults
+        userDefaults.set(locationObj.coordinate.latitude, forKey: "currentLoaction.latitude")
+        userDefaults.set(locationObj.coordinate.longitude, forKey: "currentLoaction.longitude")
+        
         currentLocation = locationObj
         
         NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_LOCATION_UPDATED), object: nil)
@@ -297,6 +314,5 @@ extension GeolocationManager : CLLocationManagerDelegate {
             }
         }
     }
-    
     
 }

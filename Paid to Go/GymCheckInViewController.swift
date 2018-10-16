@@ -181,7 +181,7 @@ class GymCheckInViewController: MenuContentViewController {
             mapView.setCenter(coor, animated: true)
         } else {
         
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.getCurrentLocation().coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
             mapView.setRegion(coordinateRegion, animated: true)
             
         }
@@ -226,7 +226,7 @@ class GymCheckInViewController: MenuContentViewController {
     //MARK: - Location Updated
     
     @objc private func locationUpdated(notification: NSNotification) {
-        let currentLocation = GeolocationManager.sharedInstance.currentLocation
+        let currentLocation = GeolocationManager.sharedInstance.getCurrentLocation()
         addTravelSectionToMap(currentLocation: currentLocation)
         updateGymDetailView()
     }

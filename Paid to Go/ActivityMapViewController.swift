@@ -93,7 +93,7 @@ class ActivityMapViewController: ViewController {
         if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
         } else {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.currentLocation.coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance((GeolocationManager.sharedInstance.getCurrentLocation().coordinate), 0.4 * metersPerMile, 0.4 * metersPerMile)
             mapView.setRegion(coordinateRegion, animated: true)
             
         }

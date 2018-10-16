@@ -552,7 +552,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     //MARK: - Location Updated
     
     @objc private func locationUpdated(notification: NSNotification) {
-        let currentLocation = GeolocationManager.sharedInstance.currentLocation
+        let currentLocation = GeolocationManager.sharedInstance.getCurrentLocation()
         
         if activityState == .start {
             currentCoordinates.append(currentLocation)

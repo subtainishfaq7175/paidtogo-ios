@@ -285,7 +285,8 @@ extension LeaderboardViewController: FSPagerViewDelegate, FSPagerViewDataSource 
         }
         
         if pool.poolRewardType == .cash {
-            cell.pointsLabel.text = earnedMoney?.toString ?? "0.0"
+            
+            cell.pointsLabel.text = String(format: "$ %.2f", earnedMoney ?? 0.00)
             cell.pointsOrUSDLabel.text = "USD"
         } else {
             cell.pointsLabel.text = earnedPoints?.toString ?? "0"

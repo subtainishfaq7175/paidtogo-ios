@@ -111,6 +111,7 @@ extension PoolBalanceViewController: UITableViewDelegate, UITableViewDataSource 
             itemCell.poolNameLabel.text = pool.name
             
             var suffex = "USD"
+            
             var poolBalanceOrEarnedMoney = pool.balance?.earnedMoney
             
             if pool.poolRewardType == .points {
@@ -119,9 +120,12 @@ extension PoolBalanceViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             if let poolBalance = poolBalanceOrEarnedMoney {
-                itemCell.pointsOrEarningLabel.text = "\(poolBalance) " + suffex
+                itemCell.pointsOrEarningLabel.text =  String(format: "$ %.2f %@", poolBalance, suffex)
+                if pool.poolRewardType == .points {
+                    itemCell.pointsOrEarningLabel.text = "\(poolBalance) " + suffex
+                }
             } else {
-                 itemCell.pointsOrEarningLabel.text = "0 " + suffex
+                itemCell.pointsOrEarningLabel.text = "0 " + suffex
             }
             
             if var sponsorCount = pool.sponsors?.count {

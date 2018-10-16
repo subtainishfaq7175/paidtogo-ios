@@ -300,7 +300,7 @@ class HomeViewController: MenuContentViewController {
             setInt(statics.totalSteps, label: mainPool.stepLB)
             
             if  pools[index].poolRewardType == .cash {
-                setDouble(statics.earnedMoney , label: mainPool.numberLB)
+                mainPool.numberLB.text = String(format: "%.2f", statics.earnedMoney)
                 mainPool.pointsLB.text = "USD"
             } else {
                 mainPool.numberLB.text = "\(statics.earnedPoints)"
