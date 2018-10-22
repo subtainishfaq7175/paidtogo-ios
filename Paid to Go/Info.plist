@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>26</string>
 	<key>FacebookAppID</key>
 	<string>446713565846522</string>
 	<key>FacebookDisplayName</key>
@@ -78,10 +78,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to use the camera to take users profile picture.</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>We need to use the health data to track your activity.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>We need to use the health data to track your activity.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need your location to track your activity.</string>
 	<key>NSLocationAlwaysUsageDescription</key>

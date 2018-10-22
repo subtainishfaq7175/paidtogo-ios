@@ -47,8 +47,6 @@ class ManualActivity: Codable {
     var endLat: Double?
     var endLong: Double?
     
-    
-    
     var co2Offset:Double {
         get {
             return milesTraveled * ((MasterData.sharedData?.co2OffsetPerMile) ?? 0.00082850)

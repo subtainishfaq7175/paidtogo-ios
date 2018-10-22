@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HealthKitUI
+//import HealthKitUI
 import FSPagerView
 
 class HomeViewController: MenuContentViewController {
@@ -61,7 +61,7 @@ class HomeViewController: MenuContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configHealtStore()
+//        configHealtStore()
         configureViews()
         
         //        getActivityData()
@@ -83,9 +83,9 @@ class HomeViewController: MenuContentViewController {
     }
     
     func configHealtStore(){
-        if PTGHealthStore.healthStoreShared.isHealthDataAvaiable(){
-            PTGHealthStore.healthStoreShared.configHealthKit()
-        }
+//        if PTGHealthStore.healthStoreShared.isHealthDataAvaiable(){
+//            PTGHealthStore.healthStoreShared.configHealthKit()
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,7 +136,7 @@ class HomeViewController: MenuContentViewController {
     }
     
     @objc func showSyncAlert(sender: AnyObject?) {
-        configHealtStore()
+//        configHealtStore()
 //        showSyncAlert()
         
         ActivityMoniteringManager.sharedManager.postDataAutomatically()

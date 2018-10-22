@@ -91,6 +91,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         }
 
         ActivityMoniteringManager.sharedManager.delegate = self
+        
+        // Ask for request
+        ActivityMoniteringManager.sharedManager.checkMotion()
+        
         actionButtonView.layer.cornerRadius = (actionButtonView.bounds.height / 2) - 2
         
         bannerView.layer.cornerRadius = (bannerView.bounds.height / 2)
@@ -324,7 +328,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         self.totalStepsUptillNow = currentActivity.steps
         self.totalMilesUptillNow = currentActivity.milesTraveled 
         
-        if Settings.shared.isAutoTrackingOn {
+        if Settings.shared.isAutoTrackingOn && currentActivity.type != .cycling {
             
 //           showAlert(text: "autoTrackingStartActivityNotRequired".localize())
             
@@ -463,8 +467,6 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
                     activity.milesTraveled = totalDistance
                     mapView.activity = activity
                 }
-                
-                
             }
             
             currentActivity.steps = steps.intValue
@@ -639,10 +641,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     }
     
     func didDetectActivity(Activity activity: CMMotionActivity) {
-        if activity.confidence != .low {
-            if activity.cycling, activity.stationary {
+        if activity.confidence != .high {
+            if !activity.automotive {
                 nonCyclingActivitesCount = 0
-            } else if !activity.unknown {
+            } else {
                 if cyclingFixedTimePassed {
                     cyclingFixedTimePassed = false
                     

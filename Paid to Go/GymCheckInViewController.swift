@@ -44,6 +44,8 @@ class GymCheckInViewController: MenuContentViewController {
         addLocationsToMap()
         setupViews()
         
+        self.gymDetailView.isHidden = true
+        
         GeolocationManager.sharedInstance.startLocationUpdates()
     }
 

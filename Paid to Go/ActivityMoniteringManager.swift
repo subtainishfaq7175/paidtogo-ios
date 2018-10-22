@@ -7,7 +7,7 @@
 //
 import CoreLocation
 import CoreMotion
-import HealthKit
+//import HealthKit
 import ObjectMapper
 
 enum ActivityTypeEnum : Int , Codable {
@@ -134,6 +134,7 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
                 print(error)
             }
         }
+
     }
     
     deinit {
@@ -151,39 +152,39 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func getData(for type: HKSampleType, unit: HKUnit, startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let newPredicate = NSPredicate(format: "metadata.%K != YES", HKMetadataKeyWasUserEntered)
-        
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, newPredicate])
-        
-        let query = HKSampleQuery(sampleType: type, predicate: compoundPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
-            
-            var distance: Double = 0
-            
-            if (results?.count)! > 0 {
-                for result in results as! [HKQuantitySample] {
-                    distance += result.quantity.doubleValue(for: unit)
-                }
-                
-                if type.identifier == HKSampleType.quantityType(forIdentifier: .distanceCycling)?.identifier {
-                    // The iitem we get data for, the start date should be set to this, so that we don't lose
-                    if let lastItem = results?.last {
-                        Settings.shared.autoTrackingStartDateForCycling = lastItem.endDate
-                    }
-                }
-                
-                completion(distance, nil)
-            } else {
-                completion(distance, error)
-            }
-        }
-        
-        let healthStore = HKHealthStore()
-        healthStore.execute(query)
-    }
+//    func getData(for type: HKSampleType, unit: HKUnit, startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
+//
+//        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+//
+//        let newPredicate = NSPredicate(format: "metadata.%K != YES", HKMetadataKeyWasUserEntered)
+//
+//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, newPredicate])
+//
+//        let query = HKSampleQuery(sampleType: type, predicate: compoundPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+//
+//            var distance: Double = 0
+//
+//            if (results?.count)! > 0 {
+//                for result in results as! [HKQuantitySample] {
+//                    distance += result.quantity.doubleValue(for: unit)
+//                }
+//
+//                if type.identifier == HKSampleType.quantityType(forIdentifier: .distanceCycling)?.identifier {
+//                    // The iitem we get data for, the start date should be set to this, so that we don't lose
+//                    if let lastItem = results?.last {
+//                        Settings.shared.autoTrackingStartDateForCycling = lastItem.endDate
+//                    }
+//                }
+//
+//                completion(distance, nil)
+//            } else {
+//                completion(distance, error)
+//            }
+//        }
+//
+//        let healthStore = HKHealthStore()
+//        healthStore.execute(query)
+//    }
     
     func checkMotion() {
         motionActivityManager.startActivityUpdates(to: OperationQueue.current!) { (activity) in
@@ -226,21 +227,21 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         })
     }
     
-    func trackCycling(){
+    func trackCycling() {
         cyclingTimer.invalidate()
         manualTrackingStartDateForCycling = Date()
         cyclingTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(getCycling), userInfo: nil, repeats: true)
     }
     
     @objc func getCycling() {
-        getCyclingData { [weak self] activity in
-            guard let strongSelf = self, let strongActivity = activity else {
-                return
-            }
-            if strongSelf.delegate != nil {
-                strongSelf.delegate?.didCycling(activity: strongActivity)
-            }
-        }
+//        getCyclingData { [weak self] activity in
+//            guard let strongSelf = self, let strongActivity = activity else {
+//                return
+//            }
+//            if strongSelf.delegate != nil {
+//                strongSelf.delegate?.didCycling(activity: strongActivity)
+//            }
+//        }
     }
     
 //    func startCyclingTimer() {
@@ -331,14 +332,16 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             self.didGetHealthKitData()
         }
         
-        getCyclingData { cyclingActivity in
-            if let activity = cyclingActivity {
-                self.autoTrackingActivityCyclingData = activity
-            }
-            self.autoTrackingCycling = true
-      
-            self.didGetHealthKitData()
-        }
+        self.autoTrackingCycling = true
+        
+//        getCyclingData { cyclingActivity in
+//            if let activity = cyclingActivity {
+//                self.autoTrackingActivityCyclingData = activity
+//            }
+//            self.autoTrackingCycling = true
+//
+//            self.didGetHealthKitData()
+//        }
     }
     
     func didGetHealthKitData() {
@@ -398,10 +401,10 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     private func getWalkingRunningData(completion: @escaping (ManualActivity?) -> Void) {
         let autoActivity = ManualActivity()
         
-        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning) else {
-            return
-        }
-        let distanceUnit = HKUnit.mile()
+//        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning) else {
+//            return
+//        }
+//        let distanceUnit = HKUnit.mile()
         let startDate = autoTrackingStartDate
         let endDate = Date()
         
@@ -473,43 +476,43 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
 //        }
     }
     
-    private func getCyclingData(completion: @escaping (ManualActivity?) -> Void) {
-        let autoActivity = ManualActivity()
-        
-        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceCycling) else {
-            return
-        }
-        
-        let distanceUnit = HKUnit.mile()
-        var startDate = autoTrackingStartDateForCycling
-        
-        if !Settings.shared.isAutoTrackingOn {
-            startDate = manualTrackingStartDateForCycling
-        }
-        
-        let endDate = Date()
-        
-        getData(for: distanceType, unit: distanceUnit, startDate: startDate, endDate: endDate) { distance, error in
-            if (error != nil) {
-                completion(nil)
-                print(error ?? "error")
-            } else {
-                autoActivity.milesTraveled = distance
-                autoActivity.startDate = startDate
-                autoActivity.endDate = endDate
-                autoActivity.type = .cycling
-                
-                autoActivity.startLat = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude
-                autoActivity.startLong = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude
-                
-                autoActivity.endLat = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude
-                autoActivity.endLong = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude
-                
-                print(autoActivity)
-                completion(autoActivity)
-            }
-        }
-    }
+//    private func getCyclingData(completion: @escaping (ManualActivity?) -> Void) {
+//        let autoActivity = ManualActivity()
+//        
+//        guard let distanceType = HKSampleType.quantityType(forIdentifier: .distanceCycling) else {
+//            return
+//        }
+//        
+//        let distanceUnit = HKUnit.mile()
+//        var startDate = autoTrackingStartDateForCycling
+//        
+//        if !Settings.shared.isAutoTrackingOn {
+//            startDate = manualTrackingStartDateForCycling
+//        }
+//        
+//        let endDate = Date()
+//        
+//        getData(for: distanceType, unit: distanceUnit, startDate: startDate, endDate: endDate) { distance, error in
+//            if (error != nil) {
+//                completion(nil)
+//                print(error ?? "error")
+//            } else {
+//                autoActivity.milesTraveled = distance
+//                autoActivity.startDate = startDate
+//                autoActivity.endDate = endDate
+//                autoActivity.type = .cycling
+//                
+//                autoActivity.startLat = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude
+//                autoActivity.startLong = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude
+//                
+//                autoActivity.endLat = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().latitude
+//                autoActivity.endLong = GeolocationManager.sharedInstance.getCurrentLocationCoordinate().longitude
+//                
+//                print(autoActivity)
+//                completion(autoActivity)
+//            }
+//        }
+//    }
     
     func getJSONArray(fromActivities activities:[ManualActivity]) -> [[String : Any]] {
         var jsonArray: [[String : Any]] = []

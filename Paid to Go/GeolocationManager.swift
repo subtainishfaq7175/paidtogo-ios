@@ -28,6 +28,7 @@ class GeolocationManager: NSObject {
     private override init() {
         super.init()
         fetchLocations()
+        
     }
     
     func initLocationManager() {
@@ -37,7 +38,11 @@ class GeolocationManager: NSObject {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.distanceFilter = 1
+        
         locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        
+        locationManager.startMonitoringSignificantLocationChanges()
         
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse,.authorizedAlways:
@@ -46,6 +51,7 @@ class GeolocationManager: NSObject {
             print(Constants.consShared.APP_NAME,"app not authorized for loacation")
             break
         }
+        
     }
     
     func startLocationUpdates() {
@@ -204,61 +210,6 @@ class GeolocationManager: NSObject {
         center.add(request)
     }
     
-    
-    func addDummyLocations() {
-        var gymLoaction = GymLocation()
-        
-        gymLoaction.lattitude = 37.33445840
-        gymLoaction.longitude = -122.406417
-        gymLoaction.name = "Location 1"
-        gymLoaction.identifier = gymLoaction.name
-        
-        startMoniteringGymLocation(gymlocation: gymLoaction)
-        gymLocations.append(gymLoaction)
-        
-        gymLoaction = GymLocation()
-        
-        gymLoaction.lattitude = +37.33445283
-        gymLoaction.longitude = -122.04113765
-        gymLoaction.name = "Location 2"
-        gymLoaction.identifier = gymLoaction.name
-        
-        startMoniteringGymLocation(gymlocation: gymLoaction)
-        gymLocations.append(gymLoaction)
-        
-        
-        gymLoaction = GymLocation()
-        
-        gymLoaction.lattitude = 37.34031484
-        gymLoaction.longitude = -122.08856086
-        gymLoaction.name = "Location 3"
-        gymLoaction.identifier = gymLoaction.name
-        
-        startMoniteringGymLocation(gymlocation: gymLoaction)
-        gymLocations.append(gymLoaction)
-        
-        gymLoaction = GymLocation()
-        
-        gymLoaction.lattitude = 37.34046597
-        gymLoaction.longitude = -122.08886286
-        gymLoaction.name = "Location 4"
-        gymLoaction.identifier = gymLoaction.name
-        
-        startMoniteringGymLocation(gymlocation: gymLoaction)
-        gymLocations.append(gymLoaction)
-        
-        
-        gymLoaction = GymLocation()
-        
-        gymLoaction.lattitude = 37.35750030
-        gymLoaction.longitude = -122.11741087
-        gymLoaction.name = "Location 5"
-        gymLoaction.identifier = gymLoaction.name
-        
-        startMoniteringGymLocation(gymlocation: gymLoaction)
-        gymLocations.append(gymLoaction)
-        
-    }
 }
 
 extension GeolocationManager : CLLocationManagerDelegate {
@@ -275,6 +226,9 @@ extension GeolocationManager : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
+        
+        // In case the app was suspended and launched from significant location changed
+        locationManager.startUpdatingLocation()
         
         // Save coordinates in userDefaults
         userDefaults.set(locationObj.coordinate.latitude, forKey: "currentLoaction.latitude")
@@ -308,11 +262,9 @@ extension GeolocationManager : CLLocationManagerDelegate {
                 checkOutCurrentGym()
                 self.currentGymLocation = nil
                 
-                
                 // Post notification
                 NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_DID_EXIT_CURRENT_GYM), object: nil)
             }
         }
     }
-    
 }

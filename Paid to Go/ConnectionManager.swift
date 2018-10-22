@@ -427,6 +427,11 @@ extension ConnectionManager {
         
         request.httpBody = try! JSONSerialization.data(withJSONObject: params)
         
+        self.printRequest(identifier: identifier,
+                          requestType: RequestType.Request,
+                          requestURL: url,
+                          value: params as AnyObject)
+        
         Alamofire.request(request)
             .responseJSON { response in
                 guard let value = response.result.value else {
