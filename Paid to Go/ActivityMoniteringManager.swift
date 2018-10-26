@@ -26,9 +26,15 @@ protocol ActivityMoniteringManagerDelegate {
     func didDetectActivity(Activity activity: CMMotionActivity)
 }
 
+protocol ActivityMoniteringMotionDelegate {
+    func didDetectActivity(Activity activity: CMMotionActivity)
+}
+
 class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     
-    var delegate:ActivityMoniteringManagerDelegate?
+    var delegate: ActivityMoniteringManagerDelegate?
+    
+    var motionDelegate: ActivityMoniteringMotionDelegate?
     
     var activityType:ActivityTypeEnum = .none
     var locationManager : CLLocationManager?
@@ -102,6 +108,8 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
     
     var activityData: [ManualActivity] = []
     
+    var bikeActivityData: [ManualActivity] = []
+    
     // These are the properties you can store in your singleton
     
     public var ActivityON: Bool = false
@@ -120,21 +128,20 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             do {
                 let activities = try JSONDecoder().decode([ManualActivity].self, from: activityData)
                 self.activityData = activities
-                
-                var jsonArray: [[String : Any]] = []
-                for activity in activities {
-                    jsonArray.append(activity.toJSON())
-                }
-                
-                let jsonData = try JSONSerialization.data(withJSONObject: jsonArray, options: .prettyPrinted)
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
             } catch {
                 print(error)
             }
         }
-
+        
+        if let bikeActivityData = userDefaults.value(forKey: "BikeActivityData") as? Data {
+            do {
+                let activities = try JSONDecoder().decode([ManualActivity].self, from: bikeActivityData)
+                self.bikeActivityData = activities
+                
+            } catch {
+                print(error)
+            }
+        }
     }
     
     deinit {
@@ -147,6 +154,16 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         do {
             let data = try JSONEncoder().encode(activityData)
             userDefaults.set(data, forKey: "ActivityData")
+        } catch {
+            print(error)
+        }
+    }
+    
+    public func saveBike(activity: ManualActivity) {
+        bikeActivityData.append(activity)
+        do {
+            let data = try JSONEncoder().encode(bikeActivityData)
+            userDefaults.set(data, forKey: "BikeActivityData")
         } catch {
             print(error)
         }
@@ -191,6 +208,10 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
             
             if self.delegate != nil, activity != nil {
                 self.delegate?.didDetectActivity(Activity: activity!)
+            }
+            
+            if self.motionDelegate != nil, activity != nil {
+                self.motionDelegate?.didDetectActivity(Activity: activity!)
             }
         }
     }
@@ -307,6 +328,8 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    
+    
 //    func postAutoTrackingData() {
 //        // Sync when ever postAutoTrackingData is called
 //        getHealthKitData()
@@ -362,11 +385,13 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
                 }
             }
             
-            if let activity = autoTrackingActivityCyclingData {
-                if activity.milesTraveled != 0 {
-                    autoTrackingActivityData.append(activity)
-                }
-            }
+//            if let activity = autoTrackingActivityCyclingData {
+//                if activity.milesTraveled != 0 {
+//                    autoTrackingActivityData.append(activity)
+//                }
+//            }
+          
+            autoTrackingActivityData.append(contentsOf: bikeActivityData)
             
             if autoTrackingActivityData.count > 0 {
                 DataProvider.sharedInstance.registerActivites(getJSONArray(fromActivities: autoTrackingActivityData) as [AnyObject]) { (response, error) in
@@ -381,6 +406,10 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
                             }
                             self.activityResponse = activityData
                         }
+                        
+                        self.userDefaults.set(nil, forKey: "BikeActivityData")
+                        self.bikeActivityData = []
+                        
                     } else {
                          self.activityResponse = nil
                     }
@@ -538,4 +567,3 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
 }
-

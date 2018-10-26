@@ -243,6 +243,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
 //            ActivityMoniteringManager.sharedManager.trackCycling()
             GeolocationManager.sharedInstance.startLocationUpdates()
             cyclingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+            
         }
     }
     
@@ -328,7 +329,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         self.totalStepsUptillNow = currentActivity.steps
         self.totalMilesUptillNow = currentActivity.milesTraveled 
         
-        if Settings.shared.isAutoTrackingOn && currentActivity.type != .cycling {
+        if Settings.shared.isAutoTrackingOn {
             
 //           showAlert(text: "autoTrackingStartActivityNotRequired".localize())
             
@@ -395,6 +396,9 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             speedView.setCurrentSpeed(speed: 0)
             avgSpeedView.setCurrentSpeed(speed: 0)
             
+            if Settings.shared.isAutoTrackingOn {
+                GeolocationManager.sharedInstance.endCyclingActivity()
+            }
             
             stopActivityTimer()
             break
@@ -437,6 +441,10 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             self.currentActivity.type = .cycling
             self.startActivity()
             
+            // assuming that the user is ready to do some cycyling
+            if Settings.shared.isAutoTrackingOn {
+                GeolocationManager.sharedInstance.startCyclingActivity()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -566,7 +574,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
                 mapViewController.addTravelSectionToMap(currentLocation: currentLocation)
             }
             
-            let speed = currentLocation.speed * 3.6
+            let speed = currentLocation.speed * 2.23694
             
             totalAverageSpeedMutiple = totalAverageSpeedMutiple + speed
             totalSpeedupdtes += 1
@@ -641,23 +649,31 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     }
     
     func didDetectActivity(Activity activity: CMMotionActivity) {
-        if activity.confidence != .high {
-            if !activity.automotive {
-                nonCyclingActivitesCount = 0
-            } else {
-                if cyclingFixedTimePassed {
-                    cyclingFixedTimePassed = false
-                    
-                    nonCyclingActivitesCount = nonCyclingActivitesCount + 1
-                    
-                    if nonCyclingActivitesCount > 4 {
-                        pauseAction()
-                        showAlert(text: "We have detected that you are not riding a bike!")
-                        
-                        if let mapView = mapViewController {
-                            mapView.showNotRidingBikeAlert()
-                        }
-                    }
+        
+        // confidence -> high, medium, low
+        if activity.cycling {
+            nonCyclingActivitesCount = 0
+        }
+        
+        if activity.confidence == .high {
+            if !activity.cycling, !activity.stationary {
+                 notCyclingDetected()
+            }
+        }
+    }
+    
+    func notCyclingDetected() {
+        if cyclingFixedTimePassed {
+            cyclingFixedTimePassed = false
+            
+            nonCyclingActivitesCount = nonCyclingActivitesCount + 1
+            
+            if nonCyclingActivitesCount > 4 {
+                pauseAction()
+                showAlert(text: "We have detected that you are not riding a bike!")
+                
+                if let mapView = mapViewController {
+                    mapView.showNotRidingBikeAlert()
                 }
             }
         }

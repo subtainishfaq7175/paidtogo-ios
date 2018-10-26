@@ -347,7 +347,7 @@ extension ConnectionManager {
     
     func graphData(_ userId:String, span:String, poolID:String , apiCompletion: @escaping (_ responseValue: AnyObject?, _ error: String?) -> Void) {
         let identifier = "GRAPH API - GET"
-        let url = self.graphDataURL + poolID + "&span=" + span
+        let url = self.graphDataURL + poolID + "&span=" + span + "&user_id=" + userId
         self.getRequest(identifier: identifier, url: url , apiCompletion: apiCompletion)
     }
     

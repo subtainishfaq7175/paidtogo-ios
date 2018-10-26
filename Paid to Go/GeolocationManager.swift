@@ -8,9 +8,10 @@
 //
 
 import Foundation
+
 import CoreLocation
 import UserNotifications
-
+import CoreMotion
 
 let k20MeterDistance = 20
 
@@ -25,10 +26,27 @@ class GeolocationManager: NSObject {
     
     let userDefaults = UserDefaults.standard
     
+    
+    // For bike Detection
+    
+    var startLocation: CLLocation!
+    var lastLocation: CLLocation!
+    
+    var startDate: Date?
+    var traveledDistance: Double = 0
+    
+    var cyclingDetected = false
+    
+    var cyclingSelectedFromManual = false
+    
+    var nonCyclingActivitesCount = 0
+    var cyclingFixedTimePassed = false
+    
+    var cyclingTimer: Timer = Timer()
+    
     private override init() {
         super.init()
         fetchLocations()
-        
     }
     
     func initLocationManager() {
@@ -44,6 +62,8 @@ class GeolocationManager: NSObject {
         
         locationManager.startMonitoringSignificantLocationChanges()
         
+        ActivityMoniteringManager.sharedManager.motionDelegate = self
+        
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse,.authorizedAlways:
             break
@@ -51,6 +71,7 @@ class GeolocationManager: NSObject {
             print(Constants.consShared.APP_NAME,"app not authorized for loacation")
             break
         }
+        
         
     }
     
@@ -210,6 +231,105 @@ class GeolocationManager: NSObject {
         center.add(request)
     }
     
+    private func autoTrackingBikelocationUpdated() {
+        let currentLocation = GeolocationManager.sharedInstance.getCurrentLocation()
+        
+        // Ask for request
+        ActivityMoniteringManager.sharedManager.checkMotion()
+        
+        if  ActivityMoniteringManager.sharedManager.motionDelegate  == nil {
+            ActivityMoniteringManager.sharedManager.motionDelegate = self
+        }
+        
+        // if cycling detected
+        if cyclingDetected {
+            let speed = currentLocation.speed * 2.23694
+            
+            if startDate == nil {
+               startCyclingActivity()
+            } else {
+                print("elapsedTime:", String(format: "%.0fs", Date().timeIntervalSince(startDate!)))
+            }
+            
+            if lastLocation != nil {
+                let location = currentLocation
+                traveledDistance += lastLocation.distance(from: location)
+                print("Traveled Distance:",  traveledDistance)
+            }
+            
+            lastLocation = currentLocation
+            
+            if (speed) > Double(5 + (MasterData.sharedData?.speedOnBike)! ) {
+                endCyclingActivity()
+            }
+        }
+    }
+    
+    func startCyclingActivity() {
+        cyclingDetected = true
+        startDate = Date()
+        startLocation = GeolocationManager.sharedInstance.getCurrentLocation()
+    }
+    
+    func endCyclingActivity() {
+        cyclingDetected = false
+        
+        let newBikingActivity = ManualActivity()
+        newBikingActivity.type = .cycling
+        
+        newBikingActivity.startLat = startLocation.coordinate.latitude
+        newBikingActivity.startLong = startLocation.coordinate.longitude
+        
+        newBikingActivity.endLat = currentLocation.coordinate.latitude
+        newBikingActivity.endLong = currentLocation.coordinate.longitude
+        
+        newBikingActivity.milesTraveled = traveledDistance * 0.000621371
+        
+        newBikingActivity.startDate = startDate
+        newBikingActivity.endDate = Date()
+        
+        ActivityMoniteringManager.sharedManager.saveBike(activity: newBikingActivity)
+        
+        startDate = nil
+        traveledDistance = 0
+        lastLocation = nil
+    }
+}
+
+extension GeolocationManager : ActivityMoniteringMotionDelegate {
+    
+    func didDetectActivity(Activity activity: CMMotionActivity) {
+        
+        // confidence -> high, medium, low
+        if activity.cycling {
+            nonCyclingActivitesCount = 0
+            cyclingDetected = true
+            cyclingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        }
+        
+        if activity.confidence == .high {
+            if !activity.cycling, !activity.stationary {
+                notCyclingDetected()
+            }
+        }
+    }
+    
+    func notCyclingDetected() {
+        if cyclingFixedTimePassed {
+            cyclingFixedTimePassed = false
+            nonCyclingActivitesCount = nonCyclingActivitesCount + 1
+            
+            if nonCyclingActivitesCount > 4 {
+                cyclingDetected = false
+                cyclingTimer.invalidate()
+                endCyclingActivity()
+            }
+        }
+    }
+    
+    @objc private func updateTimer() {
+        cyclingFixedTimePassed = true
+    }
 }
 
 extension GeolocationManager : CLLocationManagerDelegate {
@@ -236,6 +356,7 @@ extension GeolocationManager : CLLocationManagerDelegate {
         
         currentLocation = locationObj
         
+        autoTrackingBikelocationUpdated()
         NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_LOCATION_UPDATED), object: nil)
     }
     
