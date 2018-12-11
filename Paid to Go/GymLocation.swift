@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 
-public class GymLocation : Codable {
+public class GymLocation : Mappable, Codable {
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     
@@ -40,13 +40,26 @@ public class GymLocation : Codable {
     }
     
     public func mapping(map: Map) {
-        lattitude <- map["lattitude"]
+        lattitude <- map["latitude"]
         longitude <- map["longitude"]
         name <- map["name"]
-        gymId <- map["gym_id"]
+        gymId <- map["id"]
         imageURL <- map["imageUrl"]
-        timesCheckIns <- map[""]
-    
+        timesCheckIns <- map["checkin_count"]
+        
+        // As the server is sending String
+        if lattitude == nil, longitude == nil {
+            var latString: String?
+            latString <- map["latitude"]
+            
+            var longString: String?
+            longString <- map["longitude"]
+            
+            if latString != nil, longString != nil {
+                lattitude = Double(latString!)
+                longitude = Double(longString!)}
+        }
+        
         if lattitude != nil, longitude != nil {
             identifier = String(lattitude!) + "," + String(longitude!)
         }

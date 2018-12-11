@@ -189,6 +189,11 @@
 		D877FFA52139278E00866659 /* GymLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D877FFA42139278E00866659 /* GymLocation.swift */; };
 		D8C8E30220EF67500031BF1D /* ActivityMoniteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */; };
 		D8C8E30320EF67500031BF1D /* ActivityMoniteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */; };
+		D8E3C0C021B694AE0042B868 /* PaidtogoPro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E3C0BF21B694AE0042B868 /* PaidtogoPro.storyboard */; };
+		D8E3C0C221B694D40042B868 /* PaidtogoProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3C0C121B694D40042B868 /* PaidtogoProViewController.swift */; };
+		D8E3C0C421B69ECD0042B868 /* BenefitsOfPaidtogoProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3C0C321B69ECD0042B868 /* BenefitsOfPaidtogoProViewController.swift */; };
+		D8E3C0C621B6BB470042B868 /* TermsAndConditionsUpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3C0C521B6BB470042B868 /* TermsAndConditionsUpgradeViewController.swift */; };
+		D8E3C0C821B6C0E10042B868 /* PoolRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3C0C721B6C0E10042B868 /* PoolRulesViewController.swift */; };
 		F9952B6A20F18E2C0099BA84 /* MainStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */; };
 		F9952B6C20F193E60099BA84 /* ActivitiesGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9952B6B20F193E60099BA84 /* ActivitiesGraphViewController.swift */; };
 		F9AF15D720F1A8B800158A02 /* GraphsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF15D620F1A8B800158A02 /* GraphsCollectionViewCell.swift */; };
@@ -386,6 +391,11 @@
 		D877FFA42139278E00866659 /* GymLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymLocation.swift; sourceTree = "<group>"; };
 		D8C8E30020EF674F0031BF1D /* ActivityMoniteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringViewController.swift; sourceTree = "<group>"; };
 		D8C8E30120EF67500031BF1D /* ActivityMoniteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoniteringManager.swift; sourceTree = "<group>"; };
+		D8E3C0BF21B694AE0042B868 /* PaidtogoPro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaidtogoPro.storyboard; sourceTree = "<group>"; };
+		D8E3C0C121B694D40042B868 /* PaidtogoProViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidtogoProViewController.swift; sourceTree = "<group>"; };
+		D8E3C0C321B69ECD0042B868 /* BenefitsOfPaidtogoProViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsOfPaidtogoProViewController.swift; sourceTree = "<group>"; };
+		D8E3C0C521B6BB470042B868 /* TermsAndConditionsUpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsUpgradeViewController.swift; sourceTree = "<group>"; };
+		D8E3C0C721B6C0E10042B868 /* PoolRulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolRulesViewController.swift; sourceTree = "<group>"; };
 		F9952B6920F18E2C0099BA84 /* MainStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatsViewController.swift; sourceTree = "<group>"; };
 		F9952B6B20F193E60099BA84 /* ActivitiesGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesGraphViewController.swift; sourceTree = "<group>"; };
 		F9AF15D620F1A8B800158A02 /* GraphsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -809,6 +819,7 @@
 				52B3E0D21CA2D2B9000ED657 /* Settings */,
 				52227FD01C99A109002DBBFA /* Base */,
 				52A374461C984B0400E3A4A5 /* Main */,
+				D8E3C0BE21B694730042B868 /* PaidtogoPro */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -944,6 +955,18 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		D8E3C0BE21B694730042B868 /* PaidtogoPro */ = {
+			isa = PBXGroup;
+			children = (
+				D8E3C0BF21B694AE0042B868 /* PaidtogoPro.storyboard */,
+				D8E3C0C121B694D40042B868 /* PaidtogoProViewController.swift */,
+				D8E3C0C321B69ECD0042B868 /* BenefitsOfPaidtogoProViewController.swift */,
+				D8E3C0C521B6BB470042B868 /* TermsAndConditionsUpgradeViewController.swift */,
+				D8E3C0C721B6C0E10042B868 /* PoolRulesViewController.swift */,
+			);
+			name = PaidtogoPro;
+			sourceTree = "<group>";
+		};
 		DF8DB721E9BE9F72CADCA60E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1086,7 @@
 				52444B711CDA6EF900934656 /* OpenSans-BoldItalic.ttf in Resources */,
 				10924C7D209B20DC00F2C650 /* LocalPoolTVC.xib in Resources */,
 				52A374381C9844A900E3A4A5 /* Main.storyboard in Resources */,
+				D8E3C0C021B694AE0042B868 /* PaidtogoPro.storyboard in Resources */,
 				103D80E720CF9BDF004FD490 /* PoolSyncAlert.xib in Resources */,
 				52444B761CDA6EF900934656 /* OpenSans-LightItalic.ttf in Resources */,
 				52444B721CDA6EF900934656 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1193,6 +1217,7 @@
 				520C69F91CD2531E00ACB4CC /* GenericResponse.swift in Sources */,
 				4D2F43241D9AE6C70022B01E /* InApp.swift in Sources */,
 				103D80E920CFA114004FD490 /* PoolSyncAlert.swift in Sources */,
+				D8E3C0C221B694D40042B868 /* PaidtogoProViewController.swift in Sources */,
 				F9952B6C20F193E60099BA84 /* ActivitiesGraphViewController.swift in Sources */,
 				52227FCF1C999F2E002DBBFA /* ViewController.swift in Sources */,
 				5255239B1CA9879900D92F7F /* MainViewController.swift in Sources */,
@@ -1248,6 +1273,7 @@
 				52EBFBBC1CFCD06E00FE829E /* CarPoolInviteCell.swift in Sources */,
 				4D9141BB1D78BFE9001E2564 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D80DAA5920F8798100806CB8 /* BalanceTableViewCell.swift in Sources */,
+				D8E3C0C421B69ECD0042B868 /* BenefitsOfPaidtogoProViewController.swift in Sources */,
 				104BEBDC20A1971600B3AE1D /* AppUtils.swift in Sources */,
 				10C4DE7C20CE697C00090F21 /* ActivePoolsRes.swift in Sources */,
 				524911961CAC5FFC00D6E763 /* PoolsViewController.swift in Sources */,
@@ -1307,6 +1333,7 @@
 				524D200F1C989CBA00FCE996 /* UIView+Round.swift in Sources */,
 				5210C7521CAAC450002B4DF3 /* ActivitySimpleCell.swift in Sources */,
 				F9AF15D720F1A8B800158A02 /* GraphsCollectionViewCell.swift in Sources */,
+				D8E3C0C621B6BB470042B868 /* TermsAndConditionsUpgradeViewController.swift in Sources */,
 				4D8880941D6CC7D4008E514A /* ProUserSubscription.swift in Sources */,
 				105C7E3020A34D5F00299F4D /* AddOrganizationVC.swift in Sources */,
 				4D73F56C1D369571001B05C4 /* Notifications.swift in Sources */,
@@ -1328,6 +1355,7 @@
 				4DF0005D1D469094001394E3 /* MapAnnotation.swift in Sources */,
 				F9952B6A20F18E2C0099BA84 /* MainStatsViewController.swift in Sources */,
 				524911911CAC123100D6E763 /* Notification.swift in Sources */,
+				D8E3C0C821B6C0E10042B868 /* PoolRulesViewController.swift in Sources */,
 				D829834420F11F9700FDA7A8 /* ManualActivity.swift in Sources */,
 				5234D6FA1C9C343400910765 /* ForgotPasswordViewController.swift in Sources */,
 				10680E5920A9CADF00DC0570 /* MyOrganizationsVC.swift in Sources */,
@@ -1467,7 +1495,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronevans.paidtogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "df5c384d-e5b5-47a1-bba6-175e41f86dbe";
+				PROVISIONING_PROFILE = "688aa8f3-ac2d-4049-bc7e-bcfdd9b32319";
 				PROVISIONING_PROFILE_SPECIFIER = "Paid To Go Development (with Out Health Kit)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Paid to Go/Paid to Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

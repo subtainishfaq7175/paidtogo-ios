@@ -47,6 +47,8 @@ class ManualActivity: Codable {
     var endLat: Double?
     var endLong: Double?
     
+    var cyclingPossiblyDetected = false
+    
     var co2Offset:Double {
         get {
             return milesTraveled * ((MasterData.sharedData?.co2OffsetPerMile) ?? 0.00082850)
@@ -103,6 +105,7 @@ class ManualActivity: Codable {
         case endLat
         case endLong
         case gymId
+        case cyclingPossiblyDetected
     }
     
   
@@ -119,51 +122,51 @@ class ManualActivity: Codable {
 //
     func toJSON() -> [String : Any] {
         var dictionary: [String : Any] = [:]
-        
+
         if let startDate = self.startDate {
             dictionary[kActivitystart_date_timeKey] = startDate.formatedStingYYYY_MM_dd_hh_mm_ss()
         } else {
             dictionary[kActivitystart_date_timeKey] = Date().formatedStingYYYY_MM_dd_hh_mm_ss()
         }
-        
+
         if let endDate = self.endDate {
             dictionary[kActivityend_date_timeKey] = endDate.formatedStingYYYY_MM_dd_hh_mm_ss()
         } else {
             dictionary[kActivityend_date_timeKey] = Date().formatedStingYYYY_MM_dd_hh_mm_ss()
         }
-        
+
         if let createdDate = self.createdDate {
             dictionary[kActivitycreated_atKey] = createdDate.formatedStingYYYY_MM_dd_hh_mm_ss()
         } else {
             dictionary[kActivitycreated_atKey] = Date().formatedStingYYYY_MM_dd_hh_mm_ss()
         }
-        
+
         if let updatedDate = self.updatedDate {
             dictionary[kActivityupdated_atKey] = updatedDate.formatedStingYYYY_MM_dd_hh_mm_ss()
         } else {
             dictionary[kActivityupdated_atKey] = Date().formatedStingYYYY_MM_dd_hh_mm_ss()
         }
-        
+
         dictionary[kActivitymiles_traveledKey] = self.milesTraveled
         dictionary[kActivitytotal_stepsKey] = self.steps
         dictionary[kActivityactivity_typeKey] = self.type.rawValue
 //        dictionary[kActivitycaloriesKey] = self.calories
-        
+
         dictionary[kActivitystart_latitudeKey] = startLat ?? 0.00
         dictionary[kActivityend_latitudeKey] = endLat ?? 0.00
         dictionary[kActivitystart_longitudeKey] = startLong ?? 0.00
         dictionary[kActivityend_longitudeKey] = endLong ?? 0.00
-       
+
         if let userID  = User.currentUser?.userId {
              dictionary[kActivityuser_idKey] = userID
         } else {
 //            dictionary[kActivityuser_idKey] = Date()
         }
-        
+
         if let gymID = gymId {
             dictionary[kActivityGymIDKey] = gymID
         }
-        
+
         if let accessToken  = User.currentUser?.accessToken {
             dictionary[kActivityaccess_tokenKey] = accessToken
         } else {

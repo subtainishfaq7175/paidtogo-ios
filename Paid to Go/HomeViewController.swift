@@ -138,7 +138,6 @@ class HomeViewController: MenuContentViewController {
     @objc func showSyncAlert(sender: AnyObject?) {
 //        configHealtStore()
 //        showSyncAlert()
-        
         ActivityMoniteringManager.sharedManager.postDataAutomatically()
         
         showProgressHud()
@@ -242,8 +241,10 @@ class HomeViewController: MenuContentViewController {
                 
                 // add all the items
                 for pool in self.pools {
-                    for gymlocation in pool.gymLocations! {
-                        GeolocationManager.sharedInstance.add(gymlocation: gymlocation)
+                    if let gymLocations = pool.gymLocations {
+                        for gymlocation in gymLocations {
+                            GeolocationManager.sharedInstance.add(gymlocation: gymlocation)
+                        }
                     }
                 }
             }

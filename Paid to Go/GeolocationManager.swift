@@ -14,6 +14,8 @@ import UserNotifications
 import CoreMotion
 
 let k20MeterDistance = 20
+let CYLING_POSSIBLY_DETECTED = "CYLING_POSSIBLY_DETECTED"
+
 
 class GeolocationManager: NSObject {
     //    Singalton Implementations
@@ -36,6 +38,7 @@ class GeolocationManager: NSObject {
     var traveledDistance: Double = 0
     
     var cyclingDetected = false
+    var cyclingPossiblyDetected = false
     
     var cyclingSelectedFromManual = false
     
@@ -47,6 +50,7 @@ class GeolocationManager: NSObject {
     private override init() {
         super.init()
         fetchLocations()
+        configureNotification()
     }
     
     func initLocationManager() {
@@ -62,7 +66,7 @@ class GeolocationManager: NSObject {
         
         locationManager.startMonitoringSignificantLocationChanges()
         
-        ActivityMoniteringManager.sharedManager.motionDelegate = self
+//        ActivityMoniteringManager.sharedManager.motionDelegate = self
         
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse,.authorizedAlways:
@@ -121,6 +125,31 @@ class GeolocationManager: NSObject {
             } catch {
                 print(error)
             }
+        }
+    }
+    
+    private func configureNotification() {
+        // Define the custom actions.
+        let acceptAction = UNNotificationAction(identifier: "ACCEPT_ACTION",
+                                                title: "Yes",
+                                                options: UNNotificationActionOptions(rawValue: 0))
+        let declineAction = UNNotificationAction(identifier: "DECLINE_ACTION",
+                                                 title: "No",
+                                                 options: UNNotificationActionOptions(rawValue: 0))
+        // Define the notification type
+        if #available(iOS 11.0, *) {
+            let meetingInviteCategory =
+                UNNotificationCategory(identifier: CYLING_POSSIBLY_DETECTED,
+                                       actions: [acceptAction, declineAction],
+                                       intentIdentifiers: [],
+                                       hiddenPreviewsBodyPlaceholder: "",
+                                       options: .customDismissAction)
+            
+            // Register the notification type.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.setNotificationCategories([meetingInviteCategory])
+        } else {
+            // Fallback on earlier versions
         }
     }
     
@@ -217,120 +246,168 @@ class GeolocationManager: NSObject {
         }
     }
     
-    func postLocalNotification() {
+    func postLocalGymCheckInNotification() {
+        postLocalNotification(withTitle: "Gym Check-In", body: "Open app and checkin to " + (currentGymLocation?.name)!, idendifier: (currentGymLocation?.identifier)!)
+    }
+    
+    func postLocalNotification(withTitle title: String, body: String, idendifier: String, timeInterval: TimeInterval = 0.1) {
         let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Gym Check-In", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Open app and checkin to " + (currentGymLocation?.name)!, arguments: nil)
+        content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
         content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = (currentGymLocation?.identifier)!
+        content.categoryIdentifier = idendifier
         
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest.init(identifier: (currentGymLocation?.identifier)!, content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: timeInterval, repeats: false)
+        let request = UNNotificationRequest.init(identifier: idendifier , content: content, trigger: trigger)
         
         let center = UNUserNotificationCenter.current()
         center.add(request)
     }
     
-    private func autoTrackingBikelocationUpdated() {
-        let currentLocation = GeolocationManager.sharedInstance.getCurrentLocation()
-        
-        // Ask for request
-        ActivityMoniteringManager.sharedManager.checkMotion()
-        
-        if  ActivityMoniteringManager.sharedManager.motionDelegate  == nil {
-            ActivityMoniteringManager.sharedManager.motionDelegate = self
-        }
-        
-        // if cycling detected
-        if cyclingDetected {
-            let speed = currentLocation.speed * 2.23694
-            
-            if startDate == nil {
-               startCyclingActivity()
-            } else {
-                print("elapsedTime:", String(format: "%.0fs", Date().timeIntervalSince(startDate!)))
-            }
-            
-            if lastLocation != nil {
-                let location = currentLocation
-                traveledDistance += lastLocation.distance(from: location)
-                print("Traveled Distance:",  traveledDistance)
-            }
-            
-            lastLocation = currentLocation
-            
-            if (speed) > Double(5 + (MasterData.sharedData?.speedOnBike)! ) {
-                endCyclingActivity()
-            }
-        }
-    }
+    // Not Required as of now as the data accumilated for cycling is not that acurate for cycling
+//    private func autoTrackingBikelocationUpdated() {
+//        let currentLocation = GeolocationManager.sharedInstance.getCurrentLocation()
+//
+//        // Ask for request
+//        ActivityMoniteringManager.sharedManager.checkMotion()
+//
+//        if  ActivityMoniteringManager.sharedManager.motionDelegate  == nil {
+//            ActivityMoniteringManager.sharedManager.motionDelegate = self
+//        }
+//
+//        // if cycling detected
+//        if cyclingDetected {
+//            let speed = currentLocation.speed * 2.23694
+//
+//            if startDate == nil {
+//               startCyclingActivity()
+//            } else {
+//                print("elapsedTime:", String(format: "%.0fs", Date().timeIntervalSince(startDate!)))
+//            }
+//
+//            if lastLocation != nil {
+//                let location = currentLocation
+//                traveledDistance += lastLocation.distance(from: location)
+//                print("Traveled Distance:",  traveledDistance)
+//            }
+//
+//            lastLocation = currentLocation
+//
+//            if (speed) > Double(5 + (MasterData.sharedData?.speedOnBike)! ) {
+//                endCyclingActivity()
+//            }
+//        } else {
+//            let speed = currentLocation.speed * 2.23694
+//
+//            if speed >= 10 && speed < 20 {
+//                cyclingDetected = true
+//                cyclingPossiblyDetected = true
+//
+//                postLocalNotification(withTitle: "Cycling Detected!", body: "We have detected that you might have been cycling, Was your activity cycling?", idendifier:CYLING_POSSIBLY_DETECTED)
+//            }
+//        }
+//    }
     
-    func startCyclingActivity() {
-        cyclingDetected = true
-        startDate = Date()
-        startLocation = GeolocationManager.sharedInstance.getCurrentLocation()
-    }
-    
-    func endCyclingActivity() {
-        cyclingDetected = false
-        
-        let newBikingActivity = ManualActivity()
-        newBikingActivity.type = .cycling
-        
-        newBikingActivity.startLat = startLocation.coordinate.latitude
-        newBikingActivity.startLong = startLocation.coordinate.longitude
-        
-        newBikingActivity.endLat = currentLocation.coordinate.latitude
-        newBikingActivity.endLong = currentLocation.coordinate.longitude
-        
-        newBikingActivity.milesTraveled = traveledDistance * 0.000621371
-        
-        newBikingActivity.startDate = startDate
-        newBikingActivity.endDate = Date()
-        
-        ActivityMoniteringManager.sharedManager.saveBike(activity: newBikingActivity)
-        
-        startDate = nil
-        traveledDistance = 0
-        lastLocation = nil
-    }
+//    func startCyclingActivity() {
+//        cyclingDetected = true
+//        startDate = Date()
+//        startLocation = GeolocationManager.sharedInstance.getCurrentLocation()
+//
+////        postLocalNotification(withTitle: "startCyclingActivity", body: "traveledDistance = " + traveledDistance.toString, idendifier: "startCyclingActivity" + Int(arc4random()).toString)
+//    }
+//
+//    func endCyclingActivity() {
+//        cyclingDetected = false
+//
+//        let newBikingActivity = ManualActivity()
+//        newBikingActivity.type = .cycling
+//
+//        newBikingActivity.startLat = startLocation.coordinate.latitude
+//        newBikingActivity.startLong = startLocation.coordinate.longitude
+//
+//        newBikingActivity.endLat = currentLocation.coordinate.latitude
+//        newBikingActivity.endLong = currentLocation.coordinate.longitude
+//
+//        newBikingActivity.milesTraveled = traveledDistance * 0.000621371
+//
+//        newBikingActivity.startDate = startDate
+//        newBikingActivity.endDate = Date()
+//
+//        newBikingActivity.cyclingPossiblyDetected = cyclingPossiblyDetected
+//
+//        if traveledDistance > 0 {
+//            ActivityMoniteringManager.sharedManager.saveBike(activity: newBikingActivity)
+//        }
+//
+//        postLocalNotification(withTitle: "Cycling Activity Ended", body: "Traveled Distance = " + traveledDistance.toString, idendifier: "endCyclingActivity" + Int(arc4random()).toString)
+//
+//        startDate = nil
+//        traveledDistance = 0
+//        lastLocation = nil
+//        cyclingPossiblyDetected = false
+//    }
 }
 
-extension GeolocationManager : ActivityMoniteringMotionDelegate {
-    
-    func didDetectActivity(Activity activity: CMMotionActivity) {
-        
-        // confidence -> high, medium, low
-        if activity.cycling {
-            nonCyclingActivitesCount = 0
-            cyclingDetected = true
-            cyclingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-        }
-        
-        if activity.confidence == .high {
-            if !activity.cycling, !activity.stationary {
-                notCyclingDetected()
-            }
-        }
-    }
-    
-    func notCyclingDetected() {
-        if cyclingFixedTimePassed {
-            cyclingFixedTimePassed = false
-            nonCyclingActivitesCount = nonCyclingActivitesCount + 1
-            
-            if nonCyclingActivitesCount > 4 {
-                cyclingDetected = false
-                cyclingTimer.invalidate()
-                endCyclingActivity()
-            }
-        }
-    }
-    
-    @objc private func updateTimer() {
-        cyclingFixedTimePassed = true
-    }
-}
+//extension GeolocationManager : ActivityMoniteringMotionDelegate {
+//
+//    func didDetectActivity(Activity activity: CMMotionActivity) {
+//
+//        // confidence -> high, medium, low
+//        if activity.cycling {
+//            cyclingDetected = true
+//            cyclingPossiblyDetected = false
+//            cyclingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+//        }
+//
+//
+//        // re set the fraud detection even if the user is stationary
+//        if activity.cycling || activity.stationary {
+//            nonCyclingActivitesCount = 0
+//
+////            postLocalNotification(withTitle: "activity.cycling || activity.stationary", body: "", idendifier: "activity.cycling || activity.stationary")
+//        }
+//
+//        if activity.confidence == .high {
+//            if !activity.cycling, !activity.stationary {
+//                notCyclingDetected()
+////                postLocalNotification(withTitle: "notCyclingDetected" , body: "notCyclingDetected ", idendifier: "notCyclingDetected")
+//            }
+//        }
+//
+//        if activity.confidence == .high {
+//            if activity.automotive {
+//                notCyclingDetected()
+//            }
+//        }
+//
+////        let body = "C = " + activity.confidence.rawValue.toString +
+////                   ", cyc = " + ((activity.cycling) ? "Y" : "N") +
+////                   ", sta = " + ((activity.stationary) ? "Y" : "N") +
+////                   ", run = " + ((activity.running) ? "Y" : "N") +
+////                   ", wal = " + ((activity.walking) ? "Y" : "N") +
+////                   ", aut = " + ((activity.automotive) ? "Y" : "N") +
+////                   ", unk = " + ((activity.unknown) ? "Y" : "N")
+////
+////        postLocalNotification(withTitle: "confidence" , body: body , idendifier: "ActivityDetected")
+//    }
+//
+////    func notCyclingDetected() {
+////        if cyclingFixedTimePassed {
+////            cyclingFixedTimePassed = false
+////            nonCyclingActivitesCount = nonCyclingActivitesCount + 1
+////
+////            if nonCyclingActivitesCount > 5 {
+////                cyclingDetected = false
+////                cyclingTimer.invalidate()
+////                endCyclingActivity()
+////            }
+////        }
+////    }
+//    
+//    @objc private func updateTimer() {
+//        cyclingFixedTimePassed = true
+//    }
+//}
 
 extension GeolocationManager : CLLocationManagerDelegate {
     
@@ -356,7 +433,7 @@ extension GeolocationManager : CLLocationManagerDelegate {
         
         currentLocation = locationObj
         
-        autoTrackingBikelocationUpdated()
+//        autoTrackingBikelocationUpdated()
         NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_LOCATION_UPDATED), object: nil)
     }
     
@@ -371,7 +448,7 @@ extension GeolocationManager : CLLocationManagerDelegate {
                 NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_DID_ENTER_CURRENT_GYM), object: nil)
                 
                 // Post local notification
-                postLocalNotification()
+                postLocalGymCheckInNotification()
             }
         }
     }

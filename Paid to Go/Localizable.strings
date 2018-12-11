@@ -34,6 +34,8 @@
 "menu_leaderboards"        = "Leaderboards" ;
 "menu_stats"               = "Stats" ;
 "menu_settings"            = "Settings" ;
+"menu_upgradetopro"        = "Upgrade To Paidtogo Pro" ;
+
 
 // -----------------------------------------
 // - Home strings
@@ -147,12 +149,19 @@
 "password_recover_title"    = "Password Recovery" ;
 
 // -----------------------------------------
+// - Upgrade To Paidtogo Pro
+// -----------------------------------------
+
+"benefits_of_pro_title"     = "Benefits Of Paidtogo Pro";
+"pool_rules_title"          = "Pool Rules";
+
+// -----------------------------------------
 // - Pop ups
 // -----------------------------------------
 
-"initialPopUpText" = "Paidtogo is experimenting with ways to get you paid for active commutes and exercise. You are NOT guaranteed payments in Public Pools. It is up to your sponsor (most likely your employer) to pay you in Private Pools. To be paid you must enter your Paypal ID in the Profile screen. Earnings are NOT carried over month to month so if you don’t have your Paypal entered by the end of the month you will lose your payment. Auto tracking is enabled by default. To change to manual tracking go to your settings. Manual tracking will require you to manually “Start” an activity to earn credit. Please share www.paidtogo.com with your friends and family and ask them to donate or sponsor a pool. For more information see How It Works and Terms and Conditions or go to paidtogo.com";
+"initialPopUpText" = "Paidtogo is experimenting with ways to get you paid for active commutes and exercise. You are NOT guaranteed payments in Public Pools. It is up to your sponsor (most likely your employer) to pay you in Private Pools. To be paid you must enter your Paypal ID in the Profile screen. Earnings are NOT carried over month to month so if you don’t have your Paypal entered by the end of the month you will lose your payment. Auto tracking (Only for Walk/Run) is enabled by default. To change to manual tracking go to your settings. Manual tracking will require you to manually “Start” an activity to earn credit. Please share www.paidtogo.com with your friends and family and ask them to donate or sponsor a pool. For more information see How It Works and Terms and Conditions or go to paidtogo.com";
 
-"autoTrackingStartActivityNotRequired" = "You are on auto-tracking and do not NEED to track an activity manually to get credit. If you want to track a specific activity you can do so but it won't overwrite your auto-tracking data. NOTE: FOR BIKE YOU MUST MANUALLY START AND STOP YOUR ACTIVITY";
+"autoTrackingStartActivityNotRequired" = "You are on Auto tracking (Only for Walk/Run) and do not NEED to track an activity manually to get credit. If you want to track a specific activity you can do so but it won't overwrite your auto-tracking data. NOTE: FOR BIKE YOU MUST MANUALLY START AND STOP YOUR ACTIVITY";
 
 "switchedToManualTracking" = "You must manually start and end an activity to earn credit if you have switched to manual tracking in settings";
 

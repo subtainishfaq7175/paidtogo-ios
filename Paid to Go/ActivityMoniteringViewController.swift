@@ -292,10 +292,14 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         
         ActivityMoniteringManager.sharedManager.stopTracking()
         
+//        if Settings.shared.isAutoTrackingOn && currentActivity.type == .cycling {
+//            GeolocationManager.sharedInstance.endCyclingActivity()
+//        }
+        
         addAllActivities()
         
         activities = []
-    
+        
         activityState = .stop
         
         // Adjust UI For state Start
@@ -329,7 +333,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         self.totalStepsUptillNow = currentActivity.steps
         self.totalMilesUptillNow = currentActivity.milesTraveled 
         
-        if Settings.shared.isAutoTrackingOn {
+        if Settings.shared.isAutoTrackingOn && currentActivity.type != .cycling  {
             
 //           showAlert(text: "autoTrackingStartActivityNotRequired".localize())
             
@@ -349,6 +353,12 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
         } else {
             // send that activity to server
             showProgressHud()
+            
+            // If cycling then we have saved the current
+            if currentActivity.type == .cycling {
+                Settings.shared.autoTrackingStartDate = Date()
+            }
+            
             DataProvider.sharedInstance.registerActivites(ActivityMoniteringManager.sharedManager.getJSONArray(fromActivities: [currentActivity]) as [AnyObject]) { (response, error) in
                 
                 self.dismissProgressHud()
@@ -396,10 +406,6 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             speedView.setCurrentSpeed(speed: 0)
             avgSpeedView.setCurrentSpeed(speed: 0)
             
-            if Settings.shared.isAutoTrackingOn {
-                GeolocationManager.sharedInstance.endCyclingActivity()
-            }
-            
             stopActivityTimer()
             break
         case .start:
@@ -440,11 +446,14 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             self.stepCountLabel.isHidden = true
             self.currentActivity.type = .cycling
             self.startActivity()
+    
+            // Save auto tracking data for walking so that the data is not overridden.
+            ActivityMoniteringManager.sharedManager.saveAutoTackingDataforWalking()
             
             // assuming that the user is ready to do some cycyling
-            if Settings.shared.isAutoTrackingOn {
-                GeolocationManager.sharedInstance.startCyclingActivity()
-            }
+//            if Settings.shared.isAutoTrackingOn {
+//                GeolocationManager.sharedInstance.startCyclingActivity()
+//            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -651,12 +660,12 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
     func didDetectActivity(Activity activity: CMMotionActivity) {
         
         // confidence -> high, medium, low
-        if activity.cycling {
+        if activity.cycling || activity.stationary {
             nonCyclingActivitesCount = 0
         }
         
         if activity.confidence == .high {
-            if !activity.cycling, !activity.stationary {
+            if !activity.cycling, !activity.stationary, activity.automotive {
                  notCyclingDetected()
             }
         }
@@ -668,7 +677,7 @@ class ActivityMoniteringViewController: MenuContentViewController, ActivityMonit
             
             nonCyclingActivitesCount = nonCyclingActivitesCount + 1
             
-            if nonCyclingActivitesCount > 4 {
+            if nonCyclingActivitesCount > 25 {
                 pauseAction()
                 showAlert(text: "We have detected that you are not riding a bike!")
                 

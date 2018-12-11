@@ -55,7 +55,7 @@ class SettingsViewController: MenuContentViewController {
     
     let sectionTitles = ["Location", "App Notification", "Email Notificaion"]
    
-    let locationRows = ["Geolocation", "Auto Tracking"]
+    let locationRows = ["Geolocation", "Auto Tracking (Only for Walk/Run)"]
     
     let appNotificationRows = ["Check Ins", "Available Coupon Nearby", "New Coupon Earned","Available Offers Near Me", "Weekly Offers", "Monthly Offers"]
     

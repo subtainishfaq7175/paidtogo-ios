@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XOF-2P-5xX">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -277,7 +277,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="DH8-eR-577">
             <objects>
-                <viewController id="sGa-0V-qky" customClass="ForgotPasswordViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sGa-0V-qky" customClass="ForgotPasswordViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jxM-Jo-FLV"/>
                         <viewControllerLayoutGuide type="bottom" id="sYC-Fr-FgW"/>
@@ -384,7 +384,7 @@ Email Line View</string>
         <!--Signup View Controller-->
         <scene sceneID="mQP-Lt-nsA">
             <objects>
-                <viewController storyboardIdentifier="SignupViewController" automaticallyAdjustsScrollViewInsets="NO" id="TPs-cv-zMZ" customClass="SignupViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" automaticallyAdjustsScrollViewInsets="NO" id="TPs-cv-zMZ" customClass="SignupViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Qn-oR-Azc"/>
                         <viewControllerLayoutGuide type="bottom" id="1JS-M7-Pno"/>
@@ -647,7 +647,7 @@ Email Line View</string>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="ybf-Ac-nBd">
             <objects>
-                <viewController storyboardIdentifier="TermsAndConditions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iM9-5Y-2pU" customClass="TermsAndConditionsViewController" customModule="Paid_to_Go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsAndConditions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iM9-5Y-2pU" customClass="TermsAndConditionsViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O72-9F-cLm"/>
                         <viewControllerLayoutGuide type="bottom" id="Xjf-E4-sfK"/>

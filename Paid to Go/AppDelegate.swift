@@ -10,6 +10,7 @@
  import XCGLogger
  import FBSDKCoreKit
  import FacebookCore
+ import UserNotifications
  
  
 
@@ -69,6 +70,9 @@
         // just to show white in launch screen
         UIApplication.shared.statusBarStyle = .default
         
+        UNUserNotificationCenter.current().delegate = self
+        
+        
         return true
     }
     
@@ -109,6 +113,9 @@
         
         GeolocationManager.sharedInstance.pauseLocationUpdates()
     }
+    
+
+
     
     
     private func verifyIfThereIsCurrentUser() {
@@ -154,4 +161,30 @@
         }
     }
 }
+
+ extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Perform the task associated with the action.
+        switch response.actionIdentifier {
+        case "ACCEPT_ACTION":
+      
+            
+            break
+            
+        case "DECLINE_ACTION":
+            // Remove activity from data
+            ActivityMoniteringManager.sharedManager.removeLatestPossibleCyclingActivity()
+            break
+            
+        default:
+            break
+        }
+        
+        
+        // Always call the completion handler when done.
+        completionHandler()
+    }
+
+ }
  

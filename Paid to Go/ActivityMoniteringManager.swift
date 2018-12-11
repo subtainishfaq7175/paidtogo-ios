@@ -169,6 +169,28 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    public func removeLatestPossibleCyclingActivity() {
+        
+        // find the latest in the list
+        bikeActivityData = bikeActivityData.reversed()
+       
+        var index = 0
+        for bikeActivty in bikeActivityData {
+            if bikeActivty.cyclingPossiblyDetected {
+                bikeActivityData.remove(at: index)
+            }
+            index = index + 1
+        }
+        
+        // Saving the array
+        do {
+            let data = try JSONEncoder().encode(bikeActivityData)
+            userDefaults.set(data, forKey: "BikeActivityData")
+        } catch {
+            print(error)
+        }
+    }
+    
 //    func getData(for type: HKSampleType, unit: HKUnit, startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
 //
 //        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
@@ -276,41 +298,41 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
 //        }
 //    }
     
-    func stopTimer() {
-        self.startLocation = nil
-        //        traveledDistance = 0.0
-        var total: Double = 0.0
-        speeds.forEach { speed in
-            total += speed
-        }
-        var averageSpeed = total / Double(speeds.count)
-        averageSpeed = Double(averageSpeed * 1000).rounded()/1000
-        print("AverageSpeed: \(averageSpeed) Km/hrs")
-        print(averageSpeed)
-        
-        //traveledDistance = Double(traveledDistance * 1000).rounded()/1000
-        traveledDistance = traveledDistance/1000
-        print("Distance: \(traveledDistance/1000) Kms")
-        
-        self.calorieBurnt = (self.traveledDistance / 75.0) * 1.050
-        self.distanceCovered = "\(self.traveledDistance)"
-        self.avgSpeed = "avgSpeed: \(averageSpeed)"
-        
-        timerCycling.invalidate()
-        seconds = 0
-        minutes = 0
-        timerIsOn = false
-        self.locationManager?.stopUpdatingLocation()
-    }
-    
-    @objc func updateTimer() {
-        seconds += 1
-        if seconds == 60 {
-            minutes += 1
-            seconds = 0
-        }
-        //print("\(seconds)")
-    }
+//    func stopTimer() {
+//        self.startLocation = nil
+//        //        traveledDistance = 0.0
+//        var total: Double = 0.0
+//        speeds.forEach { speed in
+//            total += speed
+//        }
+//        var averageSpeed = total / Double(speeds.count)
+//        averageSpeed = Double(averageSpeed * 1000).rounded()/1000
+//        print("AverageSpeed: \(averageSpeed) Km/hrs")
+//        print(averageSpeed)
+//
+//        //traveledDistance = Double(traveledDistance * 1000).rounded()/1000
+//        traveledDistance = traveledDistance/1000
+//        print("Distance: \(traveledDistance/1000) Kms")
+//
+//        self.calorieBurnt = (self.traveledDistance / 75.0) * 1.050
+//        self.distanceCovered = "\(self.traveledDistance)"
+//        self.avgSpeed = "avgSpeed: \(averageSpeed)"
+//
+//        timerCycling.invalidate()
+//        seconds = 0
+//        minutes = 0
+//        timerIsOn = false
+//        self.locationManager?.stopUpdatingLocation()
+//    }
+//
+//    @objc func updateTimer() {
+//        seconds += 1
+//        if seconds == 60 {
+//            minutes += 1
+//            seconds = 0
+//        }
+//        //print("\(seconds)")
+//    }
     
     func postDataAutomatically() {
         
@@ -321,14 +343,26 @@ class ActivityMoniteringManager: NSObject, CLLocationManagerDelegate {
         if Settings.shared.isAutoTrackingOn {
             // Auto data
             getHealthKitData()
-        } else {
-            syncManualActivities { (response, error) in
-                 NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_ACTIVITIES_SYNCED), object: nil)
-            }
+        }
+        
+        // Sync activities for both the manual tracking and auto tracking
+        // 
+        syncManualActivities { (response, error) in
+            NotificationCenter.default.post(name: Foundation.Notification.Name(Constants.consShared.NOTIFICATION_ACTIVITIES_SYNCED), object: nil)
         }
     }
     
-    
+    func saveAutoTackingDataforWalking() {
+        if Settings.shared.isAutoTrackingOn {
+            
+            getWalkingRunningData { walkingRunningactivity in
+                
+                if let activity = walkingRunningactivity {
+                    self.activityData.append(activity)
+                }
+            }
+        }
+    }
     
 //    func postAutoTrackingData() {
 //        // Sync when ever postAutoTrackingData is called

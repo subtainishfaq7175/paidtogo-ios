@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Paidtogo Pro View Controller-->
+        <scene sceneID="AkL-H6-Bc8">
+            <objects>
+                <viewController storyboardIdentifier="PaidtogoProViewController" id="MaN-WK-fqT" customClass="PaidtogoProViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qaF-84-exe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSu-f7-JmN" userLabel="Signup View Container">
+                                <rect key="frame" x="16" y="483" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7z-4Y-RGK" userLabel="Signup Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Learn More">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="QVR-lU-fOG" kind="show" id="Vah-sL-qc7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="C7z-4Y-RGK" secondAttribute="trailing" id="9df-Kr-gd9"/>
+                                    <constraint firstItem="C7z-4Y-RGK" firstAttribute="leading" secondItem="xSu-f7-JmN" secondAttribute="leading" id="F6f-eD-bK4"/>
+                                    <constraint firstItem="C7z-4Y-RGK" firstAttribute="top" secondItem="xSu-f7-JmN" secondAttribute="top" id="LUv-vG-hzq"/>
+                                    <constraint firstAttribute="bottom" secondItem="C7z-4Y-RGK" secondAttribute="bottom" id="VSd-SR-7qx"/>
+                                    <constraint firstItem="C7z-4Y-RGK" firstAttribute="centerX" secondItem="xSu-f7-JmN" secondAttribute="centerX" id="YNs-Ua-iSQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="e2q-VG-lMm"/>
+                                </constraints>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-99-KKm" userLabel="Login View Container">
+                                <rect key="frame" x="16" y="543" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-v7-5DL" userLabel="Login Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="MNc-v7-5DL" firstAttribute="top" secondItem="KQq-99-KKm" secondAttribute="top" id="4rt-I7-f9Z"/>
+                                    <constraint firstAttribute="bottom" secondItem="MNc-v7-5DL" secondAttribute="bottom" id="7u1-fO-Pc3"/>
+                                    <constraint firstItem="MNc-v7-5DL" firstAttribute="leading" secondItem="KQq-99-KKm" secondAttribute="leading" id="8pL-PS-Be2"/>
+                                    <constraint firstAttribute="trailing" secondItem="MNc-v7-5DL" secondAttribute="trailing" id="wKi-Ls-lgZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljs-mI-NUO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFn-OA-38F">
+                                        <rect key="frame" x="16" y="160.5" width="343" height="162.5"/>
+                                        <string key="text">❖  Compete to earn 20 cents per mile in the Paidtogo Pro pool.
+
+❖  Earn up to $50 per month with your $9.99/month subscription.
+
+❖  Payments are not guaranteed and based on funds available and leaderboard position</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cFn-OA-38F" secondAttribute="trailing" constant="16" id="2Qd-JY-edl"/>
+                                    <constraint firstItem="cFn-OA-38F" firstAttribute="leading" secondItem="Ljs-mI-NUO" secondAttribute="leading" constant="16" id="FGc-bi-q6l"/>
+                                    <constraint firstItem="cFn-OA-38F" firstAttribute="centerY" secondItem="Ljs-mI-NUO" secondAttribute="centerY" id="Oop-pS-CEk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ljs-mI-NUO" firstAttribute="leading" secondItem="QjE-bJ-ZFh" secondAttribute="leading" id="1fe-yf-6b4"/>
+                            <constraint firstItem="xSu-f7-JmN" firstAttribute="height" secondItem="KQq-99-KKm" secondAttribute="height" id="6p5-Zj-fDU"/>
+                            <constraint firstItem="KQq-99-KKm" firstAttribute="centerX" secondItem="qaF-84-exe" secondAttribute="centerX" id="FmL-y0-hcs"/>
+                            <constraint firstItem="xSu-f7-JmN" firstAttribute="leading" secondItem="QjE-bJ-ZFh" secondAttribute="leading" constant="16" id="QPm-OP-ZKS"/>
+                            <constraint firstItem="KQq-99-KKm" firstAttribute="top" secondItem="xSu-f7-JmN" secondAttribute="bottom" constant="10" id="UdE-83-1Ko"/>
+                            <constraint firstItem="QjE-bJ-ZFh" firstAttribute="bottom" secondItem="KQq-99-KKm" secondAttribute="bottom" constant="10" id="XFs-ng-8E6"/>
+                            <constraint firstItem="xSu-f7-JmN" firstAttribute="top" secondItem="Ljs-mI-NUO" secondAttribute="bottom" id="Y0s-Y8-L7m"/>
+                            <constraint firstItem="xSu-f7-JmN" firstAttribute="leading" secondItem="KQq-99-KKm" secondAttribute="leading" id="ZpM-SI-W1E"/>
+                            <constraint firstItem="QjE-bJ-ZFh" firstAttribute="trailing" secondItem="Ljs-mI-NUO" secondAttribute="trailing" id="aGI-Op-WhM"/>
+                            <constraint firstItem="QjE-bJ-ZFh" firstAttribute="trailing" secondItem="xSu-f7-JmN" secondAttribute="trailing" constant="16" id="sZA-bq-bUf"/>
+                            <constraint firstItem="Ljs-mI-NUO" firstAttribute="top" secondItem="QjE-bJ-ZFh" secondAttribute="top" id="uzQ-V6-cEx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QjE-bJ-ZFh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="83f-S9-prw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRJ-id-nIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="-495"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fy3-mO-Y8f">
+            <objects>
+                <navigationController storyboardIdentifier="PaidtogoProNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="Vab-mw-hQB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="xbf-IB-GLR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MaN-WK-fqT" kind="relationship" relationship="rootViewController" id="cfq-i6-taK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cty-s3-ScO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-935.20000000000005" y="-495.20239880059972"/>
+        </scene>
+        <!--Benefits Of Paidtogo Pro View Controller-->
+        <scene sceneID="eoj-Fa-V9z">
+            <objects>
+                <viewController storyboardIdentifier="BenefitsOfPaidtogoProViewController" id="QVR-lU-fOG" customClass="BenefitsOfPaidtogoProViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ikj-ht-YBa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjF-mU-Qzh" userLabel="Signup View Container">
+                                <rect key="frame" x="16" y="483" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3O-JG-S5m" userLabel="Signup Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Subscribe">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Z3O-JG-S5m" firstAttribute="leading" secondItem="BjF-mU-Qzh" secondAttribute="leading" id="579-gf-5uZ"/>
+                                    <constraint firstItem="Z3O-JG-S5m" firstAttribute="top" secondItem="BjF-mU-Qzh" secondAttribute="top" id="7Uw-Ip-Gif"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z3O-JG-S5m" secondAttribute="trailing" id="J5X-st-rCh"/>
+                                    <constraint firstItem="Z3O-JG-S5m" firstAttribute="centerX" secondItem="BjF-mU-Qzh" secondAttribute="centerX" id="K2R-jk-MUX"/>
+                                    <constraint firstAttribute="height" constant="50" id="Z4G-WH-2kn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z3O-JG-S5m" secondAttribute="bottom" id="ddm-CM-Sof"/>
+                                </constraints>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-ZL-bXF" userLabel="Login View Container">
+                                <rect key="frame" x="16" y="543" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuL-JS-1So" userLabel="Login Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Pool Rules">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="eqf-U5-q5c" kind="show" id="ZUa-uo-ssu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="XuL-JS-1So" secondAttribute="trailing" id="FKz-iz-QqB"/>
+                                    <constraint firstItem="XuL-JS-1So" firstAttribute="leading" secondItem="0Yd-ZL-bXF" secondAttribute="leading" id="Gw7-Gb-k4d"/>
+                                    <constraint firstItem="XuL-JS-1So" firstAttribute="top" secondItem="0Yd-ZL-bXF" secondAttribute="top" id="iM6-rh-soQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="XuL-JS-1So" secondAttribute="bottom" id="mQC-0y-QNF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kw9-Ah-R4R">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLo-tY-x6g">
+                                        <rect key="frame" x="16" y="151" width="343" height="142.5"/>
+                                        <string key="text">▶︎  Access to Paidtogo Pro Cash Pool
+▶︎  Compete To Earn Up To $50 Per Mile*
+▶︎  Enable Auto Tracking (no need to login)
+▶︎  Remove Ads (Remove Ads when user upgrades to Pro except on Earn Points screen)
+▶︎  Only $9.99 Per Month  </string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUw-hb-h5n">
+                                        <rect key="frame" x="24" y="445" width="135" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Terms &amp; Conditions">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ck9-UB-jLF" kind="show" id="Vqi-Ux-Y1C"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLP-wK-iY0">
+                                        <rect key="frame" x="230" y="445" width="121" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Restore Purchase">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Payments are not guaranteed and based on leaderboard position and funds available. Payouts are currently to the top 10%-20%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXP-eb-jIk">
+                                        <rect key="frame" x="20" y="323.5" width="335" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dLP-wK-iY0" firstAttribute="top" secondItem="XUw-hb-h5n" secondAttribute="top" id="JTz-8i-l82"/>
+                                    <constraint firstItem="zLo-tY-x6g" firstAttribute="centerY" secondItem="kw9-Ah-R4R" secondAttribute="centerY" constant="-20" id="U3w-Lr-3tV"/>
+                                    <constraint firstItem="rXP-eb-jIk" firstAttribute="leading" secondItem="zLo-tY-x6g" secondAttribute="leading" constant="4" id="Zf1-QG-ZNh"/>
+                                    <constraint firstAttribute="trailing" secondItem="zLo-tY-x6g" secondAttribute="trailing" constant="16" id="bVH-th-K0s"/>
+                                    <constraint firstItem="zLo-tY-x6g" firstAttribute="leading" secondItem="kw9-Ah-R4R" secondAttribute="leading" constant="16" id="m8A-C5-9YA"/>
+                                    <constraint firstItem="rXP-eb-jIk" firstAttribute="trailing" secondItem="zLo-tY-x6g" secondAttribute="trailing" constant="-4" id="odW-nX-w8N"/>
+                                    <constraint firstItem="rXP-eb-jIk" firstAttribute="top" secondItem="zLo-tY-x6g" secondAttribute="bottom" constant="30" id="x0e-mH-iqL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bDy-qX-9KY" firstAttribute="trailing" secondItem="BjF-mU-Qzh" secondAttribute="trailing" constant="16" id="4Cb-FH-7aZ"/>
+                            <constraint firstItem="bDy-qX-9KY" firstAttribute="bottom" secondItem="0Yd-ZL-bXF" secondAttribute="bottom" constant="10" id="AMb-k1-FLi"/>
+                            <constraint firstItem="BjF-mU-Qzh" firstAttribute="leading" secondItem="bDy-qX-9KY" secondAttribute="leading" constant="16" id="CEj-9k-H8Z"/>
+                            <constraint firstItem="BjF-mU-Qzh" firstAttribute="height" secondItem="0Yd-ZL-bXF" secondAttribute="height" id="ExT-5M-xjz"/>
+                            <constraint firstItem="kw9-Ah-R4R" firstAttribute="leading" secondItem="bDy-qX-9KY" secondAttribute="leading" id="F16-55-ib6"/>
+                            <constraint firstItem="kw9-Ah-R4R" firstAttribute="top" secondItem="bDy-qX-9KY" secondAttribute="top" id="GUa-Ov-mmy"/>
+                            <constraint firstItem="BjF-mU-Qzh" firstAttribute="leading" secondItem="0Yd-ZL-bXF" secondAttribute="leading" id="KAw-HF-VFz"/>
+                            <constraint firstItem="BjF-mU-Qzh" firstAttribute="top" secondItem="kw9-Ah-R4R" secondAttribute="bottom" id="LUx-Nm-GYx"/>
+                            <constraint firstItem="Z3O-JG-S5m" firstAttribute="top" secondItem="XUw-hb-h5n" secondAttribute="bottom" constant="8" id="Vgu-bU-jsH"/>
+                            <constraint firstItem="0Yd-ZL-bXF" firstAttribute="centerX" secondItem="Ikj-ht-YBa" secondAttribute="centerX" id="baF-Dw-Iqf"/>
+                            <constraint firstItem="dLP-wK-iY0" firstAttribute="trailing" secondItem="Z3O-JG-S5m" secondAttribute="trailing" constant="-8" id="e47-CC-84Y"/>
+                            <constraint firstItem="0Yd-ZL-bXF" firstAttribute="top" secondItem="BjF-mU-Qzh" secondAttribute="bottom" constant="10" id="ngh-30-CsJ"/>
+                            <constraint firstItem="XUw-hb-h5n" firstAttribute="leading" secondItem="Z3O-JG-S5m" secondAttribute="leading" constant="8" id="qfX-dG-yUx"/>
+                            <constraint firstItem="bDy-qX-9KY" firstAttribute="trailing" secondItem="kw9-Ah-R4R" secondAttribute="trailing" id="zZh-FS-aK5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bDy-qX-9KY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bqn-x8-Hob"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REY-Dg-fj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="-495"/>
+        </scene>
+        <!--Terms And Conditions Upgrade View Controller-->
+        <scene sceneID="U7I-Tp-pa8">
+            <objects>
+                <viewController storyboardIdentifier="TermsAndConditionsUpgradeViewController" id="Ck9-UB-jLF" customClass="TermsAndConditionsUpgradeViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BcW-vQ-rXy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWp-t1-KtH" userLabel="Signup View Container">
+                                <rect key="frame" x="16" y="483" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mw3-lJ-6NK" userLabel="Signup Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Got It">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mw3-lJ-6NK" secondAttribute="trailing" id="9FU-mL-MVz"/>
+                                    <constraint firstItem="mw3-lJ-6NK" firstAttribute="leading" secondItem="FWp-t1-KtH" secondAttribute="leading" id="HCK-dQ-VNo"/>
+                                    <constraint firstAttribute="height" constant="50" id="LNQ-m4-bHL"/>
+                                    <constraint firstItem="mw3-lJ-6NK" firstAttribute="centerX" secondItem="FWp-t1-KtH" secondAttribute="centerX" id="Rb2-DM-LsC"/>
+                                    <constraint firstAttribute="bottom" secondItem="mw3-lJ-6NK" secondAttribute="bottom" id="TVU-cp-RGc"/>
+                                    <constraint firstItem="mw3-lJ-6NK" firstAttribute="top" secondItem="FWp-t1-KtH" secondAttribute="top" id="ctU-VP-ca4"/>
+                                </constraints>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQ4-vA-zbu" userLabel="Login View Container">
+                                <rect key="frame" x="16" y="543" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLc-dI-xqn" userLabel="Login Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="eLc-dI-xqn" firstAttribute="top" secondItem="KQ4-vA-zbu" secondAttribute="top" id="03g-In-vO3"/>
+                                    <constraint firstAttribute="bottom" secondItem="eLc-dI-xqn" secondAttribute="bottom" id="HJ7-Nx-z6V"/>
+                                    <constraint firstAttribute="trailing" secondItem="eLc-dI-xqn" secondAttribute="trailing" id="UQw-od-rgB"/>
+                                    <constraint firstItem="eLc-dI-xqn" firstAttribute="leading" secondItem="KQ4-vA-zbu" secondAttribute="leading" id="abI-bl-s5t"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jS4-m5-Suf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="kAK-gy-aKn">
+                                        <rect key="frame" x="16" y="10" width="343" height="423.5"/>
+                                        <string key="text">▶︎  Payments are not guaranteed and based on your leaderboard position and funds available. We fund the Pro pool through subscription revenue, ad revenue, carbon offsets and donations. 50% of subscription funds go directly to funding the Paidtogo Pool. On average you need to be in the top 10%-20% of miles traveled monthly to get paid. You must have your Paypal ID added to your profile in order to get paid. Earnings are forfeit at the end of each month if you do not have your Paypal Id entered. 
+
+▶︎  GPS tracking is not 100% accurate and we have fraud detection systems in place that may affect your activity data. For more accurate results manually track your activities by going to “Start Activity”. Paidtogo is not responsible or liable for any lost data or earnings related to your activities </string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kAK-gy-aKn" firstAttribute="centerY" secondItem="jS4-m5-Suf" secondAttribute="centerY" constant="-20" id="EkW-x6-bgW"/>
+                                    <constraint firstAttribute="trailing" secondItem="kAK-gy-aKn" secondAttribute="trailing" constant="16" id="Qms-qv-auo"/>
+                                    <constraint firstItem="kAK-gy-aKn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jS4-m5-Suf" secondAttribute="top" constant="10" id="g30-Nh-ET1"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kAK-gy-aKn" secondAttribute="bottom" constant="10" id="uK7-3i-AaL"/>
+                                    <constraint firstItem="kAK-gy-aKn" firstAttribute="leading" secondItem="jS4-m5-Suf" secondAttribute="leading" constant="16" id="wUq-Hi-p9o"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FWp-t1-KtH" firstAttribute="height" secondItem="KQ4-vA-zbu" secondAttribute="height" id="0WZ-N7-4rN"/>
+                            <constraint firstItem="UM9-F6-7cQ" firstAttribute="trailing" secondItem="jS4-m5-Suf" secondAttribute="trailing" id="2H8-Wh-g8m"/>
+                            <constraint firstItem="FWp-t1-KtH" firstAttribute="top" secondItem="jS4-m5-Suf" secondAttribute="bottom" id="4oq-u0-Mcj"/>
+                            <constraint firstItem="KQ4-vA-zbu" firstAttribute="centerX" secondItem="BcW-vQ-rXy" secondAttribute="centerX" id="Cf1-qJ-RHI"/>
+                            <constraint firstItem="UM9-F6-7cQ" firstAttribute="trailing" secondItem="FWp-t1-KtH" secondAttribute="trailing" constant="16" id="Dtm-Af-DNC"/>
+                            <constraint firstItem="FWp-t1-KtH" firstAttribute="leading" secondItem="UM9-F6-7cQ" secondAttribute="leading" constant="16" id="EFb-fZ-zys"/>
+                            <constraint firstItem="jS4-m5-Suf" firstAttribute="leading" secondItem="UM9-F6-7cQ" secondAttribute="leading" id="IiC-Dr-O5z"/>
+                            <constraint firstItem="FWp-t1-KtH" firstAttribute="leading" secondItem="KQ4-vA-zbu" secondAttribute="leading" id="Xp2-HM-ruB"/>
+                            <constraint firstItem="UM9-F6-7cQ" firstAttribute="bottom" secondItem="KQ4-vA-zbu" secondAttribute="bottom" constant="10" id="aRr-2D-kFk"/>
+                            <constraint firstItem="KQ4-vA-zbu" firstAttribute="top" secondItem="FWp-t1-KtH" secondAttribute="bottom" constant="10" id="of3-ii-QxF"/>
+                            <constraint firstItem="jS4-m5-Suf" firstAttribute="top" secondItem="UM9-F6-7cQ" secondAttribute="top" id="wUf-PX-nuq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UM9-F6-7cQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XkP-yb-Iug"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ti-eE-mJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-496"/>
+        </scene>
+        <!--Pool Rules View Controller-->
+        <scene sceneID="DDp-mO-Les">
+            <objects>
+                <viewController storyboardIdentifier="PoolRulesViewController" id="eqf-U5-q5c" customClass="PoolRulesViewController" customModule="Paidtogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uvu-2z-DpB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7U-oB-EBm" userLabel="Signup View Container">
+                                <rect key="frame" x="16" y="483" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBv-Wo-ptU" userLabel="Signup Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Subscribe">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9kl-bR-fM9"/>
+                                    <constraint firstAttribute="bottom" secondItem="xBv-Wo-ptU" secondAttribute="bottom" id="C7j-S7-45G"/>
+                                    <constraint firstItem="xBv-Wo-ptU" firstAttribute="top" secondItem="o7U-oB-EBm" secondAttribute="top" id="DvZ-Jo-poB"/>
+                                    <constraint firstItem="xBv-Wo-ptU" firstAttribute="centerX" secondItem="o7U-oB-EBm" secondAttribute="centerX" id="Uk9-Pn-ca5"/>
+                                    <constraint firstAttribute="trailing" secondItem="xBv-Wo-ptU" secondAttribute="trailing" id="cNq-Nf-mM5"/>
+                                    <constraint firstItem="xBv-Wo-ptU" firstAttribute="leading" secondItem="o7U-oB-EBm" secondAttribute="leading" id="hkM-Ph-a52"/>
+                                </constraints>
+                            </view>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICO-bS-DeZ" userLabel="Login View Container">
+                                <rect key="frame" x="16" y="543" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF1-wi-NRk" userLabel="Login Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JF1-wi-NRk" secondAttribute="trailing" id="6wZ-Ea-hX3"/>
+                                    <constraint firstItem="JF1-wi-NRk" firstAttribute="leading" secondItem="ICO-bS-DeZ" secondAttribute="leading" id="ChY-bE-cC2"/>
+                                    <constraint firstAttribute="bottom" secondItem="JF1-wi-NRk" secondAttribute="bottom" id="Vfb-L1-PrM"/>
+                                    <constraint firstItem="JF1-wi-NRk" firstAttribute="top" secondItem="ICO-bS-DeZ" secondAttribute="top" id="XpR-yk-xM4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCZ-fe-ork">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx4-EK-1gC">
+                                        <rect key="frame" x="16" y="111" width="343" height="61"/>
+                                        <string key="text">▶︎  Rate per mile: 20 Cents
+▶︎  Limit Per Day $2.00*
+▶︎  Limit Per Month: $50.00** </string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5G-f4-sZc">
+                                        <rect key="frame" x="24" y="445" width="135" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Terms &amp; Conditions">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ck9-UB-jLF" kind="show" id="kQs-8Q-Rdk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8K-9q-0u5">
+                                        <rect key="frame" x="230" y="445" width="121" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Restore Purchase">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEU-am-D52">
+                                        <rect key="frame" x="20" y="202" width="335" height="93.5"/>
+                                        <string key="text">*Payments are not guaranteed and are made based on your leaderboard position and funds available
+
+**You must add Paypal to get paid. If Paypal is not added by the end of a month then the earnings are lost for that month.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hEU-am-D52" firstAttribute="trailing" secondItem="Tx4-EK-1gC" secondAttribute="trailing" constant="-4" id="BBz-0o-N1j"/>
+                                    <constraint firstItem="Tx4-EK-1gC" firstAttribute="centerY" secondItem="CCZ-fe-ork" secondAttribute="centerY" constant="-100" id="OId-Ng-GkD"/>
+                                    <constraint firstItem="hEU-am-D52" firstAttribute="top" secondItem="Tx4-EK-1gC" secondAttribute="bottom" constant="30" id="Ofa-lX-IJP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tx4-EK-1gC" secondAttribute="trailing" constant="16" id="eBn-hz-kcb"/>
+                                    <constraint firstItem="v8K-9q-0u5" firstAttribute="top" secondItem="e5G-f4-sZc" secondAttribute="top" id="fT9-J8-ChC"/>
+                                    <constraint firstItem="Tx4-EK-1gC" firstAttribute="leading" secondItem="CCZ-fe-ork" secondAttribute="leading" constant="16" id="gQx-We-eUm"/>
+                                    <constraint firstItem="hEU-am-D52" firstAttribute="leading" secondItem="Tx4-EK-1gC" secondAttribute="leading" constant="4" id="r8X-xL-jhf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.85490196080000003" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e5G-f4-sZc" firstAttribute="leading" secondItem="xBv-Wo-ptU" secondAttribute="leading" constant="8" id="1We-md-9bg"/>
+                            <constraint firstItem="o7U-oB-EBm" firstAttribute="height" secondItem="ICO-bS-DeZ" secondAttribute="height" id="9cr-kZ-x2j"/>
+                            <constraint firstItem="CCZ-fe-ork" firstAttribute="top" secondItem="n64-3q-Y82" secondAttribute="top" id="9zP-kA-07i"/>
+                            <constraint firstItem="ICO-bS-DeZ" firstAttribute="top" secondItem="o7U-oB-EBm" secondAttribute="bottom" constant="10" id="A9A-tt-XB0"/>
+                            <constraint firstItem="ICO-bS-DeZ" firstAttribute="centerX" secondItem="Uvu-2z-DpB" secondAttribute="centerX" id="FWs-cV-9NF"/>
+                            <constraint firstItem="o7U-oB-EBm" firstAttribute="leading" secondItem="ICO-bS-DeZ" secondAttribute="leading" id="Y78-Vm-xe7"/>
+                            <constraint firstItem="n64-3q-Y82" firstAttribute="trailing" secondItem="CCZ-fe-ork" secondAttribute="trailing" id="aTP-KI-3hD"/>
+                            <constraint firstItem="xBv-Wo-ptU" firstAttribute="top" secondItem="e5G-f4-sZc" secondAttribute="bottom" constant="8" id="bgL-iv-muv"/>
+                            <constraint firstItem="n64-3q-Y82" firstAttribute="bottom" secondItem="ICO-bS-DeZ" secondAttribute="bottom" constant="10" id="dCX-HG-asa"/>
+                            <constraint firstItem="v8K-9q-0u5" firstAttribute="trailing" secondItem="xBv-Wo-ptU" secondAttribute="trailing" constant="-8" id="fi9-sg-ri9"/>
+                            <constraint firstItem="n64-3q-Y82" firstAttribute="trailing" secondItem="o7U-oB-EBm" secondAttribute="trailing" constant="16" id="jfW-d3-O4R"/>
+                            <constraint firstItem="CCZ-fe-ork" firstAttribute="leading" secondItem="n64-3q-Y82" secondAttribute="leading" id="oLL-in-nxn"/>
+                            <constraint firstItem="o7U-oB-EBm" firstAttribute="leading" secondItem="n64-3q-Y82" secondAttribute="leading" constant="16" id="uyK-UK-epe"/>
+                            <constraint firstItem="o7U-oB-EBm" firstAttribute="top" secondItem="CCZ-fe-ork" secondAttribute="bottom" id="ylL-2K-72W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n64-3q-Y82"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cjM-6R-0Vh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAt-2F-J64" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="198"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="kQs-8Q-Rdk"/>
+    </inferredMetricsTieBreakers>
+</document>

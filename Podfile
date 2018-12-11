@@ -61,7 +61,7 @@ target 'Paid to Go' do
     # https://github.com/AssistoLab/DropDown
     pod 'DropDown'
     
-    # DropDown
+    # FSPagerView
     # https://github.com/WenchaoD/FSPagerView
     pod 'FSPagerView'
     

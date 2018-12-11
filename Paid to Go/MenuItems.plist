@@ -104,6 +104,16 @@
 	</dict>
     <dict>
         <key>title</key>
+        <string>Upgrade To Paidtogo Pro</string>
+        <key>identifier</key>
+        <string>PaidtogoProNavViewController</string>
+        <key>storyboard</key>
+        <string>PaidtogoPro</string>
+        <key>icon</key>
+        <string>ic_help_gray</string>
+    </dict>
+    <dict>
+        <key>title</key>
         <string>How it works</string>
         <key>identifier</key>
         <string>WebViewViewController</string>
